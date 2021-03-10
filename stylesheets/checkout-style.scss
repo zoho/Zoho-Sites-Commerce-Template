@@ -1,0 +1,277 @@
+/* #EXCLUDEOUTPUTSTARTS */
+@import "_base-variable";
+/* #EXCLUDEOUTPUTENDS */
+@import "_mixin";
+
+.theme-cart-area-container {
+  color:map-get($base_vars,'color-text');
+}
+.theme-shopping-cart-table-container {
+  .theme-cart-table-row {
+    border-bottom:1px solid map-get($base_vars,'color-border');
+    .theme-cart-table-data {
+      .theme-cart-item-info {
+        @include respond-to(smalldevice) {
+        }
+        ul {
+          li {
+            &:after {
+              color:map-get($base_vars,'color-border');
+            }
+          }
+        }
+        .item-price{
+          color:map-get($base_vars,'color-primary');
+        }
+      }
+      &.theme-cart-qty {
+        input[type=text] {
+          border: 1px solid map-get($default_vars,'color-form-field-border');
+        }
+        .theme-cart-qty-change {
+          background:map-get($base_vars,'color-primary');
+          color:map-get($base_vars,'color-default');
+        }
+      }
+      &.theme-cart-item-remove {
+      .remove-icon {
+          fill : map-get($default_vars,'color-form-error-message-text');
+        }
+      }
+    }
+  }
+}
+.theme-checkout-container {
+  .theme-checkout-tab {
+    background:map-get($default_vars,'color-checkout-tab-background');
+    border: 1px solid map-get($base_vars,'color-border');
+    color:map-get($base_vars,'color-secondary');
+    &.theme-checkout-tab-selected {
+      background: map-get($default_vars,'color-checkout-tab-background-selected');
+    }
+    .theme-checkout-steps-count-label {
+      background:map-get($base_vars,'color-default');
+      border: 1px solid map-get($base_vars,'color-border');
+      color : map-get($base_vars,'color-text');
+    }
+    .theme-checkout-tab-change-button {
+      background:map-get($base_vars,'color-default');
+      border: 1px solid map-get($base_vars,'color-border');
+      color : map-get($base_vars,'color-text');
+    }
+  }
+  .theme-checkout-tab-content {
+    border: 1px solid map-get($base_vars,'color-border');
+    color : map-get($base_vars,'color-text');
+    &.login-method {
+      .login-types {
+        .gust-login, .user-login {
+          .login-method-label {
+            color:map-get($base_vars,'color-secondary');
+          }
+        }
+        .user-login {
+          @include respond-to(mediumdevice) {
+            border-left: 1px solid map-get($base_vars,'color-border');
+          }
+        }
+      }
+      .change-login-container {
+        .notification-bar {
+          background:map-get($default_vars,'color-checkout-change-login-notification-background');
+          border: 1px solid map-get($default_vars,'color-checkout-change-login-notification-border');
+          .close-notification {
+            fill:map-get($default_vars,'color-checkout-change-login-notification-border');
+          }
+        }
+        .change-login-options-container {
+          .change-login-option {
+            a {
+              color:map-get($base_vars,'color-text');
+              &:after {
+                background:map-get($base_vars,'color-border');
+              }
+            }
+            &:last-child {
+              @include respond-to(smalldevice){
+                border-left:1px solid map-get($base_vars,'color-border');
+              }
+            }
+          }
+        }
+      }
+    }
+    &.address {
+      .theme-checkout-user-address-box-container {
+        .theme-user-address-box {
+        .theme-checkout-user-address-box {
+          border: 1px solid map-get($base_vars,'color-border');
+          .user-address-header {
+            border-bottom:1px dashed map-get($base_vars,'color-border');
+            color:map-get($base_vars,'color-primary');
+            input[type=radio] {
+              &:checked + label {
+                background:map-get($default_vars,'color-checkout-address-shipping-label-background');
+              }
+            }
+            label {
+              background:map-get($base_vars,'color-default');
+              border:1px solid map-get($base_vars,'color-border');
+              &:before, &:after {
+                background:map-get($base_vars,'color-default');
+              }
+            }
+          }
+        }
+        .user-address-footer {
+          border:1px solid map-get($base_vars,'color-border');
+          .edit-address, .delete-address {
+            div {
+              color:map-get($base_vars,'color-secondary');
+              .icon {
+                fill:map-get($base_vars,'color-text');
+              }
+            }
+          }
+          .delete-address {
+            border-left:1px solid map-get($base_vars,'color-border');
+          }
+        }
+      }
+
+      }
+    }
+    .theme-checkout-form-area {
+      .theme-chekcout-form-head {
+        border-bottom: 1px dashed map-get($base_vars,'color-border');
+      }
+      ul.theme-checkout-form-container {
+        li.form-field-container {
+          list-style:none;
+          label {
+            &.mandotry-field:after {
+              color: map-get($default_vars,'color-form-error-message-text');
+            }
+          }
+          input[type=text],
+          input[type=address],
+          input[type=number],
+          textarea, select {
+            background:map-get($default_vars,'color-form-field-background');
+            border:1px solid map-get($default_vars,'color-form-field-border');
+            color:map-get($default_vars,'color-form-field-text');
+          }
+        }
+      }
+    }
+    &.shipping-methods {
+      .shipping-method-box-container {
+        .shipping-method-box {
+          border:1px solid map-get($base_vars,'color-border');
+          input[type=radio] {
+            &:checked + label {
+              background: map-get($default_vars,'color-checkout-address-shipping-label-background');
+            }
+            &:checked + label + .shipping-method-details {
+              color:map-get($base_vars,'color-primary');
+              background:map-get($default_vars,'color-checkout-tab-background-selected');
+            }
+            &:checked + label + .shipping-method-details + .shipping-price {
+              color:map-get($base_vars,'color-primary');
+            }
+          }
+          label {
+            border: 1px solid map-get($base_vars,'color-border');
+            &:before, &:after {
+              background: map-get($base_vars,'color-default');
+            }
+          }
+          .shipping-method-details {
+            background: map-get($default_vars,'color-checkout-tab-background');
+            .shipping-method-type {
+              span {
+                color:map-get($default_vars,'color-text');
+              }
+            }
+          }
+          .shipping-price {
+            border-top:1px solid map-get($base_vars,'color-border');
+            color:map-get($base_vars,'color-primary');
+            span {
+              color:map-get($default_vars,'color-text');
+            }
+          }
+        }
+      }
+    }
+    &.order-review {
+      .theme-order-review-address-area {
+        .order-review-address {
+          .order-review-address-head {
+            border-bottom:1px dashed map-get($base_vars,'color-border');
+          }
+        }
+      }
+      .theme-checkout-order-summary-container {
+        .theme-order-summary-footer {
+          border-bottom:1px dashed map-get($base_vars,'color-border');
+          .price-label {
+            color:map-get($base_vars,'color-primary');
+          }
+        }
+      }
+      .theme-cart-area-container {
+        .theme-shopping-cart-table-container {
+          .theme-cart-table-row {
+            &:last-child {
+              border-bottom:1px solid map-get($base_vars,'color-border');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.theme-checkout-order-summary-container {
+  .theme-chekout-ordersummar {
+    border: 1px solid map-get($base_vars,'color-border');
+    .theme-order-summary-head {
+      border-bottom: 1px dashed map-get($base_vars,'color-border');
+    }
+    ul.theme-order-summary-list {
+      border-bottom: 1px dashed map-get($base_vars,'color-border');
+    }
+    .theme-order-summary-footer {
+      .price-label {
+        color:map-get($base_vars,'color-primary');
+      }
+    }
+  }
+}
+.theme-order-confirmation-msg-container {
+  border: 1px solid map-get($base_vars,'color-border');
+  background:map-get($default_vars,'color-order-confirmation-box-background');
+  .order-success-icon {
+    svg {
+      fill:map-get($base_vars,'color-primary');
+    }
+  }
+  .divider-line {
+    &:before, &:after {
+      background:map-get($base_vars,'color-border');
+    }
+    .divider-icon {
+      fill:map-get($base_vars,'color-border');
+    }
+  }
+}
+.theme-checkout-primary-btn,
+.theme-checkout-secondary-btn{
+  border:0 none;
+}
+
+.theme-checkout-additional-information{
+  p{
+    margin-bottom: 10px;
+  }
+}

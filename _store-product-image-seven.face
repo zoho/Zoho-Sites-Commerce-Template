@@ -1,0 +1,43 @@
+
+	{% if product.images | size < 2 %}
+
+	<div class="theme-product-detail-image">
+		<div class="theme-product-detail-image-inner" data-lightbox-container="prod_images_grid_{{product.product_id}}">
+			{% if product.images[0].is_placeholder_image %}
+				<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+			{% else %}
+				<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/600x600" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+			{% endif %}
+		</div>
+	</div>
+
+	{% else %}
+
+  <div class="theme-product-detail-image">
+      <div class="theme-product-detail-image-inner">
+
+				<div class="theme-image-overlay" data-theme-image-overlay="theme-image-overlay-{{product.product_id}}">
+					<div class="theme-image-loader"></div>
+				</div>
+
+        {% if product.images[0].is_placeholder_image %}
+            <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+        {% else %}
+            <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/600x600" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+        {% endif %}
+      </div>
+  </div>
+
+	<div class="theme-product-detail-thumbnail-container" data-lightbox-container="prod_images_grid_{{product.product_id}}" data-theme-thumbnail-container="theme-thumbnail-container-{{product.product_id}}" data-thumbnail-prod-id="{{product.product_id}}">
+		{% for image in product.images %}
+		<div class="theme-product-detail-thumbnail" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}" data-lightbox-thumbnail>
+			{% if image.is_placeholder_image %}
+				<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" src="{{ image.url }}">
+			{% else %}
+				<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/600x600" src="{{ image.url }}/300x300">
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+
+	{% endif %}

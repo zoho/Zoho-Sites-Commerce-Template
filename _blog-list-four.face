@@ -1,0 +1,121 @@
+<div class="zprow">
+  <div class="zpcol-md-8 zpcol-sm-12 theme-blog-container-column">
+    {% if page.blog_author.name || page.blog_category.name || page.blog_tag.name %}
+      <h1 class="theme-blog-list-seo">
+        {% if page.blog_author.name %}
+          {{i18n.get("blog.post.listing.author",page.blog_author.name)}}
+        {% elif page.blog_category.name %}
+          {{i18n.get("blog.post.listing.category",page.blog_category.name)}}
+        {% elif page.blog_tag.name %}
+          {{i18n.get("blog.post.listing.tag",page.blog_tag.name)}}
+        {% endif %}
+      </h1>
+    {% endif %}
+    <div class="zprow" data-zs-app="blog_comments">
+      {% for post in blog_posts %}
+      <div class="zpcol-md-6 zpcol-sm-12">
+        <div class="theme-blog-container">
+          {% if post.post_image %}
+          <div class="theme-blog-cover-img-container">
+            <div class="theme-blog-cover-img-container-inner">
+              <img src="{{post.post_image}}" class="theme-blog-cover-img" alt="{{post.post_title}}"/>
+            </div>
+          </div>
+          {% endif %}
+          <div class="theme-blog-part theme-blog-heading-author {% if page.blog_summary_view %}theme-blog-heading-space{% endif %}">
+            <h3 class="theme-blog-heading">
+              <a href="{{post.post_url}}" data-blogpost-heading="true">{{post.post_title}}</a>
+            </h3>
+          </div>
+          <div class="theme-blog-part">
+            {% if !post.post_image && post.summary_image %}
+              <div class="theme-blog-summary-image">
+                <img src="{{post.summary_image}}" alt="{{post.post_title}}" />
+              </div>
+            {% endif %}
+
+            {{post.summary}}
+          </div>
+          <div class="theme-blog-part theme-blog-readmore">
+            <a href="{{post.post_url}}" data-blogpost-heading="true">{{i18n.get("blog.post.readmore")}}</a>
+          </div>
+          <div class="theme-blog-part theme-blog-date-container">
+            <a href="{{post.author.author_url}}" class="theme-blog-author" data-blog-author="true">{{post.author.author_name}}</a>
+            <div class="theme-blog-date-comment-count">
+              <span class="theme-blog-date">
+                 {{ post.post_published_time }}
+              </span>
+              <span class="theme-blog-comment-count">
+                <a href="{{post.post_url}}#comments"> - <span data-post-id="{{post.post_id}}"></span> {{i18n.get("blog.message.noofcomments")}} </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if page.blog_prev_page != 0 || page.blog_next_page != 0 %}
+    <div class="theme-blog-container theme-blog-prev-next {% if page.blog_prev_page != 0 && page.blog_next_page != 0 %}theme-blog-prev-next-divider{% endif %}">
+      {% if page.blog_prev_page != 0 %}
+      <div class="theme-blog-prev-next-link-container">
+        <a href="{{page.blog_pagination_url}}{{page.blog_prev_page}}" class="theme-blog-previous-link" data-blog-prevpage="true">
+          {{i18n.get("blog.post.previous")}}
+        </a>
+      </div>
+      {% endif %}
+      {% if page.blog_next_page != 0 %}
+      <div class="theme-blog-prev-next-link-container">
+        <a href="{{page.blog_pagination_url}}{{page.blog_next_page}}" class="theme-blog-next-link" data-blog-nextpage="true">
+          {{i18n.get("blog.post.next")}}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+  <div class="zpcol-md-4 zpcol-sm-12 theme-blog-category-column">
+    <div class="theme-blog-category-container theme-blog-rss-feed">
+      <a href="{{page.blog_feed_url}}" target="_blank">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" fill-rule="evenodd">
+            <path d="M0 0h24v24H0"/>
+            <circle fill-rule="nonzero" cx="6.18" cy="17.82" r="2.18"/>
+            <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z" fill-rule="nonzero"/>
+          </g>
+        </svg>
+        <span>{{i18n.get("blog.rss.subscribe_rss_feed")}}</span>
+      </a>
+    </div>
+    <div class="theme-blog-category-container">
+      <div class="theme-blog-category-part theme-blog-category-heading-container">
+        <h4 class="theme-blog-category-heading">{{i18n.get("blog.post.category")}}</h4>
+      </div>
+      <div class="theme-blog-category-part theme-blog-category-list">
+        <ul>
+          {% for category in blog_categories %}
+          <li class="theme-blog-category-list">
+            <a href="{{category.category_url}}" class="theme-blog-side-menu-link">{{category.category_name}}</a>
+            <p class="theme-blog-count">({{category.published_post_count}})</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="theme-blog-category-container">
+      <div class="theme-blog-category-part theme-blog-category-heading-container">
+        <h4 class="theme-blog-category-heading">{{i18n.get("blog.post.tag")}}</h4>
+      </div>
+      <div class="theme-blog-category-part theme-blog-tag-list">
+        <ul>
+          {% for tag in blog_tags %}
+          <li class="theme-blog-category-tag-list">
+            <a href="{{tag.tag_url}}" class="theme-blog-category-tag-list-link">{{tag.tag_name}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

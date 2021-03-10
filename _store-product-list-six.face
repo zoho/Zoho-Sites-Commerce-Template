@@ -1,0 +1,90 @@
+<div class="theme-product-box-content">
+  <div class="theme-product-image-area">
+    {% if product.images[0].is_placeholder_image %}
+      <img data-src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+      <noscript>
+        <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+      </noscript>
+    {% else %}
+      <img data-src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+      <noscript>
+        <img src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+      </noscript>
+    {% endif %}
+
+    {% if product.is_out_of_stock == false %}
+      <div class="theme-product-quick-view-button" onclick="javascript:viewProductQuickLook(this)" data-zs-product-url="{{ product.quick_look_url }}">
+        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 6.967h3v2.005H9v3.008H7V8.972H4V6.967h3V3.96h2v3.007zm11 11.615L18.586 20l-4.243-4.254 1.414-1.417L20 18.582zM8 14.035c-3.308 0-6-2.698-6-6.015 0-3.316 2.692-6.015 6-6.015s6 2.699 6 6.015c0 3.317-2.692 6.015-6 6.015zM8 0C3.582 0 0 3.591 0 8.02c0 4.43 3.582 8.02 8 8.02s8-3.59 8-8.02C16 3.591 12.418 0 8 0z"/>
+        </svg>
+      </div>
+    {% else %}
+      <a href="{{ product.url }}" class="theme-out-of-stock-button">{{i18n.get("product.message.out_of_stock")}}</a>
+    {% endif %}
+    <a href="{{ product.url }}" class="theme-product-overlay-link {% if product.is_out_of_stock %}theme-out-of-stock-overlay{% endif %}"></a>
+  </div>
+  <div class="theme-product-details-area">
+    <div class="theme-product-name">
+      <a href="{{ product.url }}">{{ product.name }}</a>
+    </div>
+    {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+    <div class="theme-prod-coupons-code-container">
+    {% endif %}
+    {% if product.is_product_review_enabled %}
+    <div class="theme-rating" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+    {% endif %}
+    {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+      <span class="theme-prod-coupons-code" data-list-coupon-code style="display:none"></span>
+    </div>
+    <div class="theme-prod-coupons-container" data-zs-coupon-product-id = "{{ product.product_id }}"></div>
+    {% endif %}
+    <div class="theme-product-price-and-ribbon-area">
+    <div class="theme-product-price-lable">
+      <div class="theme-product-price">
+        {% if product.has_variant_price %}
+          <span data-zs-selling-price="{{ product.starts_with }}"> {{ product.starts_with | currency(currency) }} </span> - <span data-zs-selling-price="{{ product.ends_with }}"> {{ product.ends_with | currency(currency) }} </span>
+        {% elif product.label_price && (product.label_price > product.selling_price) %}
+          <span data-zs-selling-price="{{ product.selling_price }}">
+            {{ product.selling_price | currency(currency) }}
+          </span>
+          <span class="theme-product-price-old" data-zs-label-price="{{ product.label_price }}">
+              {{ product.label_price | currency(currency) }}
+          </span>
+        {% else %}
+          <span data-zs-selling-price="{{ product.selling_price }}">
+            {{ product.selling_price | currency(currency) }}
+          </span>
+        {% endif %}
+    </div>
+    </div>
+    <div class="theme-product-ribbon-and-button-area">
+      <div class="theme-product-ribbon-area">
+        {% if product.on_sale %}
+          <div class="theme-product-sale-ribbon">{{i18n.get("product.message.sale")}}</div>
+        {% endif %}
+        {% if product.is_out_of_stock == true %}
+          <div class="theme-ribbon-stock">{{i18n.get("product.message.out_of_stock")}}</div>
+        {% endif %}
+      </div>
+      <div class="theme-product-button-area">
+        {% if product.has_variants %}
+          <a href="{{product.url}}" class="zpbutton zpbutton-style-secondary zpbutton-type-link zpbutton-size-md">{{i18n.get("product.label.view_details")}}</a>
+        {% else %}
+          {% if product.is_out_of_stock == false %}
+            {% if product.is_product_custom_fields_enabled && product.is_input_custom_field_available %}
+              <a href="{{product.url}}" class="zpbutton zpbutton-style-secondary zpbutton-type-link zpbutton-size-md">{{i18n.get("product.label.view_details")}}</a>
+            {% else %}
+              <a href="javascript:;" data-zs-add-to-cart data-zs-product-variant-id="{{ product.variants[0].variant_id }}">
+                <span data-theme-cart-button-text="theme-cart-button-text">{{i18n.get("product.action.add_to_cart")}}</span>
+                <span class="theme-cart-button-loading-container" data-theme-cart-button-loading="theme-cart-button-loading" style="display:none;">
+                  {{i18n.get("product.message.adding_to_cart")}} <div class="theme-cart-button-loading-dots"><span></span><span></span><span></span></div>
+                </span>
+              </a>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

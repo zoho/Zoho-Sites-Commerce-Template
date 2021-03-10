@@ -1,0 +1,46 @@
+
+{% macro navi(menu) %}
+	{% assign sub_menus=menu.menu_items %}
+	{% if sub_menus %}
+		<ul>
+			{% for sub_menu in sub_menus %}
+				{% assign count = 1 %}
+				{{ subnavi(sub_menu, count) }}
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+	<div data-zp-submenu-icon="mymenu1" style="display:none">
+    <span class="theme-sub-li-menu theme-non-responsive-menu"></span>
+    <span class="theme-sub-li-menu theme-responsive-menu theme-submenu-down-arrow"></span>
+  </div>
+
+{% endmacro %}
+{% macro subnavi(menu_item, count) %}
+	<li {% if menu_item.more_menu %}data-zp-more-menu="mymenu1"{% endif %}>
+		{% assign sub_menus=menu_item.menu_items %}
+		<a href="{% if menu_item.url %}{{menu_item.url}}{% else %}javascript:;{% endif %}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}>{{menu_item.item_name}}
+				{% if sub_menus && sub_menus | length > 0 %}
+					{% if count == 1 %}
+						<span class="theme-sub-li-menu theme-non-responsive-menu theme-submenu-down-arrow">
+						</span>
+						<span class="theme-sub-li-menu theme-responsive-menu theme-submenu-down-arrow">
+						</span>
+					{% else %}
+						<span class="theme-sub-li-menu theme-non-responsive-menu theme-submenu-right-arrow">
+						</span>
+						<span class="theme-sub-li-menu theme-responsive-menu theme-submenu-down-arrow">
+						</span>
+					{% endif %}
+				{% endif %}
+		</a>
+		{% if sub_menus && sub_menus | length > 0 %}
+		<ul class="theme-sub-menu" style="display:none;">
+			{% for sub_menu in sub_menus %}
+				{% assign temp_count = count+1 %}
+				{{ subnavi(sub_menu, temp_count) }}
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</li>
+{% endmacro %}

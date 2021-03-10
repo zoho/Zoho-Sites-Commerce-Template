@@ -1,0 +1,27 @@
+<div class="theme-topbar-contact-info {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}theme-verticalheader-top-space{% endif %}" data-contact-info="zptheme-contact-info">
+  <ul data-contact-info-inner="zptheme-contact-info-inner">
+    {% if page.email_id %}
+    <li class="theme-topbar-info">
+      <a href="mailto:{{ page.email_id }}">
+        <span class="theme-topbar-info-icon">
+          <svg viewBox="0 0 512 513.5" xmlns="http://www.w3.org/2000/svg">
+            <path d="M48 128h16 384 16v16 256 16h-16-384-16v-16-256-16z m69 32l139 92.5 139-92.5h-278z m-37 14v210h352v-210l-167 111.5-9 5.5-9-5.5z"/>
+          </svg>
+        </span>
+      <span class="theme-topbar-info-icon-text">{{ page.email_id }}</span></a>
+    </li>
+    {% endif %}
+    {% if page.phone_number %}
+    <li class="theme-topbar-info">
+      <a href="tel:{{ page.phone_number }}">
+        <span class="theme-topbar-info-icon">
+          <svg viewBox="0 0 512 513.5" xmlns="http://www.w3.org/2000/svg">
+            <path d="M138.5 48c8.376 0 16.6562 3.0244 23.5 8.5l1 0.5 0.5 0.5 64 66 1.5 1.5-0.5 0.5c14.1738 13.2119 13.9678 35.5322 0.5 49l-32 32c4.9189 11.2773 18.3291 40.0186 44.5 65 26.3584 25.1602 53.9316 39.4668 65.5 45l31.5-31.5 0.5-0.5c13.2793-13.2793 36.7207-13.2793 50 0l0.5 1 65 65c13.2793 13.2793 13.2793 36.2207 0 49.5l-49.5 49.5-0.5 0.5-0.5 0.5c-15.0107 12.8672-36.04 17.4863-55.5 11h-0.5c-37.5488-14.6934-113.509-48.0088-181.5-116-67.7266-67.7266-102.448-142.659-116-181.5-0.0352-0.0996 0.0342-0.4004 0-0.5-6.7031-18.4336-1.915-39.7383 13.5-54l-0.5-0.5 50-51.5 0.5-0.5 1-0.5c6.8438-5.4756 15.124-8.5 23.5-8.5z m0 32c-1.1719 0-2.3438 0.5752-3.5 1.5l-48.5 49.5-0.5 0.5-0.5 0.5c-5.6738 4.8633-7.4394 14.4932-5 21 12.1201 34.8467 45.1992 106.699 108.5 170 62.7842 62.7842 133.224 93.7607 169.5 108 9.3408 3.1133 17.1113 1.833 24.5-4.5l49-49c2.7207-2.7207 2.7207-1.7793 0-4.5l-65.5-65.5c-2.7207-2.7207-2.2793-2.7207-5 0l-40 40-7.5 7.5-10-4.5s-43.8311-18.5518-81-52.5l-3.5-3c-38.5947-36.8408-57-86-57-86l-3.5-10 7.5-7 40-40c1.9658-1.9658 0.874-3.6006 1-3.5l-0.5-0.5-1-1-64-65.5c-1.1563-0.9248-2.3281-1.5-3.5-1.5z"/>
+          </svg>
+        </span>
+        <span class="theme-topbar-info-icon-text">{{ page.phone_number }}</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</div>

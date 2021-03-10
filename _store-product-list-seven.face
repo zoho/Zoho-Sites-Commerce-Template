@@ -1,0 +1,83 @@
+<div class="theme-product-box-container">
+  <div class="theme-product-image">
+    <div class="theme-product-image-and-ribbon-container">
+      {% if product.images[0].is_placeholder_image %}
+        <img data-src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+        <noscript>
+          <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+        </noscript>
+      {% else %}
+        <img data-src="{{ product.images[0].url }}/300x300" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+        <noscript>
+          <img src="{{ product.images[0].url }}/300x300" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+        </noscript>
+      {% endif %}
+      <div class="theme-ribbons">
+        {% if product.on_sale %}
+        <span class="theme-ribbon-content theme-ribbon-sale">
+          {{i18n.get("product.message.sale")}}
+        </span>
+        {% endif %}
+        {% if product.is_out_of_stock == true %}
+        <span class="theme-ribbon-content theme-ribbon-stock">
+          {{i18n.get("product.message.out_of_stock")}}
+        </span>
+        {% endif %}
+      </div>
+    </div>
+    <a href="{{ product.url }}" class="theme-product-overlay-link {% if product.is_out_of_stock %}theme-out-of-stock-overlay{% endif %}"></a>
+    {% if product.is_out_of_stock == false %}
+    <div class="theme-product-hover-view">
+        <a class="theme-product-quick-view-link" onclick="javascript:viewProductQuickLook(this)" data-zs-product-url="{{ product.quick_look_url }}">{{i18n.get("product.label.quick_view")}}</a>
+        {% if product.has_variants %}
+          <a href="{{ product.url }}" class="theme-button">{{i18n.get("product.label.view_details")}}</a>
+        {% else %}
+          {% if product.is_product_custom_fields_enabled && product.is_input_custom_field_available %}
+            <a href="{{ product.url }}" class="theme-button">{{i18n.get("product.label.view_details")}}</a>
+          {% else %}
+            <a href="javascript:;" data-zs-add-to-cart data-zs-product-variant-id="{{ product.variants[0].variant_id }}" class="theme-button">
+              <span data-theme-cart-button-text="theme-cart-button-text">{{i18n.get("product.action.add_to_cart")}}</span>
+              <span class="theme-cart-button-loading-container" data-theme-cart-button-loading="theme-cart-button-loading" style="display:none;">
+                {{i18n.get("product.message.please_wait")}} <div class="theme-cart-button-loading-dots"><span></span><span></span><span></span></div>
+              </span>
+            </a>
+          {% endif %}
+        {% endif %}
+    </div>
+    {% else %}
+      <a href="{{ product.url }}" class="theme-out-of-stock-button">{{i18n.get("product.message.out_of_stock")}}</a>
+    {% endif %}
+
+  </div>
+  {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+  <div class="theme-prod-coupons-code-container">
+  {% endif %}
+  {% if product.is_product_review_enabled %}
+  <div class="theme-rating" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+  {% endif %}
+  {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+    <span class="theme-prod-coupons-code" data-list-coupon-code style="display:none"></span>
+  </div>
+  <div class="theme-prod-coupons-container" data-zs-coupon-product-id = "{{ product.product_id }}"></div>
+  {% endif %}
+  <div class="theme-product-name">
+    <a href="{{ product.url }}">{{ product.name }}</a>
+  </div>
+  <div class="theme-product-price">
+    {% if product.has_variant_price %}
+      <span data-zs-selling-price="{{ product.starts_with }}"> {{ product.starts_with | currency(currency) }} </span> - <span data-zs-selling-price="{{ product.ends_with }}"> {{ product.ends_with | currency(currency) }} </span>
+    {% elif product.label_price && (product.label_price > product.selling_price) %}
+      <span data-zs-selling-price="{{ product.selling_price }}">
+        {{ product.selling_price | currency(currency) }}
+      </span>
+      <span class="theme-prod-old-price" data-zs-label-price="{{ product.label_price }}">
+          {{ product.label_price | currency(currency) }}
+      </span>
+    {% else %}
+      <span data-zs-selling-price="{{ product.selling_price }}">
+        {{ product.selling_price | currency(currency) }}
+      </span>
+    {% endif %}
+  </div>
+
+</div>

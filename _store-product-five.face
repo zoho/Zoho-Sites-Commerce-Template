@@ -1,0 +1,119 @@
+<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}">
+  <div class="zpcontainer">
+
+    <div class="theme-product-details-area-container">
+      <div class="theme-product-details-column theme-product-details-variants-area">
+        <div class="theme-product-name-and-availability">
+          <div class="theme-product-name-area">
+            <h1>{{ product.name }}</h1>
+
+            {% if !product.is_returnable %}
+                <div class="theme-prod-non-returnable">
+                  {{i18n.get("product.label.non_returnable")}}
+                </div>
+            {% endif %}
+
+          </div>
+
+          <div class="theme-rating-review-container">
+            {% if product.is_product_review_enabled %}
+            <div class="theme-rating-review" data-comments-summary = "rating-review-write-review"></div>
+            {% endif %}
+            <div class="theme-product-rating-and-availability">
+              {% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
+              <div class="theme-product-availability-status">
+                  {% if product.has_variants %}
+                    {% for variant in product.variants %}
+                    <span class="theme-prod-stock-details" data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
+                        {{i18n.get("product.message.out_of_stock")}}
+                    </span>
+                    {% endfor %}
+                  {% else %}
+                    {% if product.is_out_of_stock == true %}
+                      <span class="theme-prod-stock-details {% if product.is_out_of_stock == true %}theme-out-of-stock {% else %} theme-stock-background-color{% endif %}">
+                          {{i18n.get("product.message.out_of_stock")}}
+                      </span>
+                    {% endif %}
+                  {% endif %}
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+
+        {% if product.short_description %}
+        <div class="theme-short-desc-row {% if product.is_social_share_enabled %}theme-short-desc-row-social-enable{% endif %}">
+          <div class="theme-product-short-description">
+            {{ product.short_description }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if product.is_social_share_enabled %}
+          <div class="theme-product-social-share" data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
+        {% endif %}
+
+        <div class="theme-product-details-variants-list">
+          <ul>
+            {% include '_store-product-variants-five' %}
+            {% include '_store-product-custom-field-five' %}
+            {% include '_store-product-quantity-five' %}
+          </ul>
+
+
+          <div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+
+        </div>
+
+        {% include '_store-product-pricing-add-cart-five' %}
+
+      </div>
+      <div class="theme-product-details-column">
+
+        {% if product.images | size < 2 %}
+        <div class="theme-product-images-container theme-product-images-with-thumbnail">
+          {% for image in product.images %}
+          <div class="theme-product-full-image" data-zs-image-id="{{ image.id }}" data-lightbox-container="prod_images_grid_{{product.product_id}}">
+            {% if image.is_placeholder_image %}
+              <img alt="{{ image.alternate_text }}" title="{{ image.title }}" src="{{ image.url }}" data-lightbox-detailImage>
+            {% else %}
+              <img alt="{{ image.alternate_text }}" title="{{ image.title }}" src="{{ image.url }}/600x600" data-lightbox-detailImage>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="theme-product-images-container theme-product-images-with-thumbnail">
+          <div class="theme-product-full-image">
+
+            <div class="theme-image-overlay" data-theme-image-overlay="theme-image-overlay-{{product.product_id}}">
+              <div class="theme-image-loader"></div>
+            </div>
+
+            {% if product.images[0].is_placeholder_image %}
+            <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+            {% else %}
+            <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/600x600" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+            {% endif %}
+
+          </div>
+          <div class="theme-product-thumbnail-area" data-lightbox-container="prod_images_grid_{{product.product_id}}" data-theme-thumbnail-container="theme-thumbnail-container-{{product.product_id}}" data-thumbnail-prod-id="{{product.product_id}}">
+            {% for image in product.images %}
+            <div class="theme-product-thumbnail-image" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}" data-lightbox-thumbnail>
+              {% if image.is_placeholder_image %}
+              <img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" src="{{ image.url }}">
+              {% else %}
+              <img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/600x600" src="{{ image.url }}/200x200">
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>

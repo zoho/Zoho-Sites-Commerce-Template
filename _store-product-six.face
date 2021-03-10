@@ -1,0 +1,52 @@
+<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}">
+  <div class="zpcontainer">
+    <div class="theme-product-details-area-container">
+      <div class="theme-product-name-area">
+        <h1>{{ product.name }}</h1>
+        {% if !product.is_returnable %}
+            <div class="theme-prod-non-returnable">
+              {{i18n.get("product.label.non_returnable")}}
+            </div>
+        {% endif %}
+      </div>
+
+      <div class="theme-product-details-and-image-container">
+        <div class="theme-product-varient-container">
+          <div class="theme-product-price-and-review-area">
+            {% include "_store-product-pricing-six" %}
+            {% if product.is_product_review_enabled %}
+            <div class="theme-rating-review-container">
+              <div class="theme-rating-review" data-comments-summary = "rating-review-write-review"></div>
+            </div>
+            {% endif %}
+          </div>
+
+          {% if product.short_description %}
+          <div class="theme-short-desc-row">
+            <div class="theme-product-short-description">
+              {{ product.short_description }}
+            </div>
+          </div>
+          {% endif %}
+
+          {% if product.is_social_share_enabled %}
+            <div class="theme-product-social-share" data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
+          {% endif %}
+          {% if product.has_variants %}
+          <div class="theme-product-properties-area theme-product-properties-area-with-variant">
+              {% include "_store-product-variants-six" %}
+          </div>
+          {% endif %}
+          {% include "_store-product-custom-field-six" %}
+          {% if product.is_out_of_stock == false  %}
+          <div class="theme-product-properties-area theme-product-properties-area-quantitycart {% if !product.is_product_custom_fields_enabled && !product.has_variants %}theme-quantity-top-space{% endif %}">
+            {% include "_store-product-quantity-add-cart-six" %}
+          </div>
+          {% endif %}
+        </div>
+        {% include "_store-product-image-six" %}
+      </div>
+
+    </div>
+  </div>
+</div>

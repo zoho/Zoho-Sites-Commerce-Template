@@ -1,0 +1,27 @@
+{% if product.is_out_of_stock == false  %}
+<div class="theme-prod-detail-entry-row">
+	<h4 class="theme-cal-detail-title {% if product.is_out_of_stock == true  %}theme-quantity-label-nostock{% endif %}" data-nostock-quantity>
+		{{i18n.get("product.message.choose_quantity")}}
+	</h4>
+	<div class="theme-prod-quantity-to-cart">
+		<div class="theme-quantity-spinner-container {% if product.is_out_of_stock == true  %}theme-quantity-nostock{% endif %}" data-nostock-quantity>
+			<input type="text" name="qty" data-quantity="{{product.product_id}}" maxlength="999" title="quantity" value="1" onkeypress='return productQuantity(event);' data-theme-quantity data-zs-quantity>
+			<div class="theme-quantity-arrows">
+				<input type="button" class="theme-quantity-increase" onclick="increaseCount(this)">
+				<input type="button" class="theme-quantity-decrease" onclick="decreaseCount(this)">
+			</div>
+		</div>
+
+		<span class="theme-cart-button {% if product.is_out_of_stock == true  %}theme-cart-button-nostock{% endif %}" data-nostock-cart-add="theme-nostock-cart-add" data-zs-add-to-cart data-zs-product-variant-id{% if !product.has_variants %} ="{{ product.variants[0].variant_id }}" {% endif %}>
+			<span data-theme-cart-button-text="theme-cart-button-text">{{i18n.get("product.action.add_to_cart")}}</span>
+			<span data-theme-cart-button-loading="theme-cart-button-loading" class="theme-cart-loading">. . .</span>
+		</span>
+
+		<div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+
+	</div>
+	{% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+	<div class="theme-prod-coupons-outtercontainer" data-zs-app="product_coupons" data-zs-coupons-list></div>
+    {% endif %}
+</div>
+{% endif %}

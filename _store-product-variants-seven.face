@@ -1,0 +1,50 @@
+<select style="display: none" data-zs-variants>
+	{% for variant in product.variants %}
+		{% assign variant_options = variant.options %}
+		{% assign variant_option_identifiers = variant_options | map(attr="id") %}
+		{% assign variant_images = variant.images %}
+		{% assign variant_image_identifiers = variant_images | map(attr="id") %}
+		<option value='{{ variant.variant_id }}' data-zs-attributes='{{ variant_option_identifiers | json }}' data-zs-images='{{ variant_image_identifiers | json }}'></option>
+	{% endfor %}
+</select>
+
+{% for attribute in product.attributes %}
+<div class="theme-product-varients-row">
+		<div class="theme-product-variant">
+			<div class="theme-product-variant-label">
+				{{ attribute.name }}
+			</div>
+
+			{% if attribute.type == 'Color' %}
+				<div class="theme-product-color-variations" data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">
+						{% for coloroption in attribute.options %}
+						<span class="theme-product-color">
+							<label data-theme-color-label style="background:{{coloroption.color_code}}" onclick="selectcolor(this,'{{ attribute.name }}')">
+								<input type="radio" name="{{ attribute.id }}" data-zs-attribute-option value="{{ coloroption.id }}" data-text="{{ coloroption.value }}">
+							</label>
+						</span>
+						{% endfor %}
+
+						<div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">{{i18n.get("product.message.attribute_select",attribute.name)}}</div>
+
+				</div>
+			{% else %}
+				<div class="theme-variant-select-container-main">
+					<div class="theme-variant-select-container" data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">
+						{% for variantOption in attribute.options %}
+						<span class="theme-product-variant">
+							<label data-theme-variant-label onclick="selectVariant(this,'{{ attribute.name }}')">
+								{{variantOption.value}}
+								<input type="radio" name="{{ attribute.id }}" data-zs-attribute-option value="{{ variantOption.id }}" data-text="{{ variantOption.value }}">
+							</label>
+						</span>
+						{% endfor %}
+					</div>
+
+					<div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">{{i18n.get("product.message.attribute_select",attribute.name)}}</div>
+
+				</div>
+			{% endif %}
+		</div>
+</div>
+{% endfor %}

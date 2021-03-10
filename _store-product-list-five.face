@@ -1,0 +1,73 @@
+<div class="theme-product-box-container">
+  <div class="theme-product-name">
+    <a href="{{ product.url }}">{{ product.name }}</a>
+  </div>
+  <div class="theme-product-pricing-area">
+    <div class="theme-product-lable-price">
+      {% if product.has_variant_price %}
+        <span data-zs-selling-price="{{ product.starts_with }}"> {{ product.starts_with | currency(currency) }} </span> - <span data-zs-selling-price="{{ product.ends_with }}"> {{ product.ends_with | currency(currency) }} </span>
+      {% elif product.label_price && (product.label_price > product.selling_price) %}
+        <span data-zs-selling-price="{{ product.selling_price }}">
+          {{ product.selling_price | currency(currency) }}
+        </span>
+        <span class="theme-product-old-price" data-zs-label-price="{{ product.label_price }}">
+            {{ product.label_price | currency(currency) }}
+        </span>
+      {% else %}
+        <span data-zs-selling-price="{{ product.selling_price }}">
+          {{ product.selling_price | currency(currency) }}
+        </span>
+      {% endif %}
+  </div>
+  </div>
+  <div class="theme-product-details-container">
+    <div class="theme-product-image-area">
+      <a href="{{ product.url }}" class="theme-overlay-product-link"></a>
+      {% if product.images[0].is_placeholder_image %}
+        <img data-src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none" />
+        <noscript>
+          <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+        </noscript>
+      {% else %}
+        <img data-src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none" />
+        <noscript>
+          <img src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+        </noscript>
+      {% endif %}
+    </div>
+
+    {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+    <div class="theme-prod-coupons-code-container">
+    {% endif %}
+    {% if product.is_product_review_enabled %}
+    <div class="theme-rating" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "average-rating"></div>
+    {% endif %}
+    {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+      <span class="theme-prod-coupons-code" data-list-coupon-code style="display:none"></span>
+    </div>
+    <div class="theme-prod-coupons-container" data-zs-coupon-product-id = "{{ product.product_id }}"></div>
+    {% endif %}
+
+    {% if product.is_out_of_stock == true %}
+      <a href="{{ product.url }}" class="theme-product-quick-view-button theme-out-of-stock-button">
+        {{i18n.get("product.message.out_of_stock")}}
+      </a>
+      {% else %}
+      <div class="theme-product-quick-view-button" onclick="javascript:viewProductQuickLook(this)" data-zs-product-url="{{ product.quick_look_url }}">
+        {{i18n.get("product.label.quick_view")}}
+      </div>
+    {% endif %}
+
+    <div class="theme-product-ribbon-and-button-area">
+        <div class="theme-product-ribbon-area">
+          {% if product.on_sale %}
+            <div class="theme-product-sale-ribbon">{{i18n.get("product.message.sale")}}</div>
+          {% endif %}
+          {% if product.is_out_of_stock == true %}
+            <div class="theme-ribbon-stock">{{i18n.get("product.message.out_of_stock")}}</div>
+          {% endif %}
+        </div>
+      </div>
+
+  </div>
+</div>

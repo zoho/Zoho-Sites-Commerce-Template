@@ -1,0 +1,1048 @@
+.theme-header-animate{
+  @include respond-to(mediumdevice){
+    right:0;
+    width:100%;
+    top:0;
+    z-index:250;
+    position: fixed;
+    visibility: visible;
+    @include prefix(animation,headerStart 0.8s linear 1 alternate);
+    @include box-shadow(0,3px,5px,RGBA(0, 0, 0, 0.05));
+  }
+}
+
+@if map-get($user_layout_vars,'header_style') == 01 {
+  .zpheader-style-01{
+    .theme-header{
+      .zpcontainer{
+        @include prefix(transition,0.3s linear);
+      }
+    }
+  }
+}
+
+@if map-get($user_layout_vars,'header_style') == 02 {
+  .zpheader-style-02{
+    .zpdark-header-portion{
+      &.theme-header{
+        @include prefix(flex,1 0 0px);
+        &.theme-header-navigation-style{
+          @include prefix(flex,0 1 auto);
+        }
+      }
+    }
+    .zpdark-header-portion{
+      &.theme-header{
+        &.theme-header-navigation-style{
+          background: transparent;
+          @include respond-to(mediumdevice){
+            background: map-get($default_vars,'darkbg-color-navigation-bar-background');
+            border-top:0 none;
+          }
+          &.theme-header-transparent{
+            background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+          }
+        }
+      }
+    }
+    &.theme-header-fixed{
+      .zpdark-header-portion{
+        &.theme-header{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:map-get($default_vars,'color-navigation-bar-overlap-background');
+            }
+            &.theme-header-transparent{
+              @include respond-to(mediumdevice){
+                background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+              }
+            }
+          }
+        }
+      }
+      &.theme-header-animate{
+        .zpdark-header-portion{
+          &.theme-header{
+            &.theme-header-navigation-style{
+              @include respond-to(mediumdevice){
+                background:map-get($default_vars,'darkbg-color-navigation-bar-background');
+              }
+              &.theme-header-transparent{
+                @include respond-to(mediumdevice){
+                  background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+                }
+              }
+            }
+          }
+        }
+      }
+      .theme-header {
+        &.theme-header-navigation-style{
+          @include respond-to(mediumdevice){
+            background: map-get($default_vars,'color-navigation-bar-overlap-background');
+          }
+        }
+      }
+    }
+    &.theme-header-animate{
+      .theme-header{
+        &.theme-header-navigation-style{
+          @include respond-to(mediumdevice){
+            background:map-get($default_vars,'color-navigation-bar-background');
+          }
+        }
+        &.zpdark-header-portion{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:map-get($default_vars,'color-navigation-bar-background');
+            }
+          }
+        }
+        &.theme-header-transparent{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.7);
+            }
+          }
+          &.zpdark-header-portion{
+            &.theme-header-navigation-style{
+              @include respond-to(mediumdevice){
+                background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.7);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width:992px){
+    .zpheader-style-02{
+      .theme-header {
+        &.theme-responsive-dark{
+          background:map-get($default_vars,'darkbg-color-navigation-background');
+          .theme-responsive-menu-area{
+            &.zpcontainer{
+              .theme-responsive-menu-container{
+                .theme-burger-icon{
+                  background: map-get($default_vars,'darkbg-color-mobile-burger-icon');
+                  &:after,
+                  &:before{
+                    background: map-get($default_vars,'darkbg-color-mobile-burger-icon');
+                  }
+                  &.theme-close-icon{
+                    background: transparent;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .zpdark-header-portion{
+          .theme-responsive-menu-area{
+            &.zpcontainer{
+              .theme-responsive-menu-container{
+                .theme-burger-icon{
+                  background: map-get($default_vars,'color-mobile-burger-icon');
+                  &:after,
+                  &:before{
+                    background: map-get($default_vars,'color-mobile-burger-icon');
+                  }
+                  &.theme-close-icon{
+                    background: transparent;
+                  }
+                }
+              }
+            }
+          }
+      }
+      .zpdark-header-portion{
+        &.theme-header{
+          &.theme-responsive-dark{
+            background: map-get($default_vars,'darkbg-color-header-background');
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width:768px){
+    .zpheader-style-02{
+      .zpdark-header-portion{
+        &.theme-header{
+          &.theme-header-navigation-style{
+            &.theme-dark-nav-mobile-02{
+              background:map-get($default_vars, 'color-header-background');
+            }
+          }
+        }
+      }
+    }
+    .zpheader-style-02{
+      background:map-get($default_vars, 'color-header-background');
+      &.theme-header-style-02-responsive-dark-background{
+        background:map-get($default_vars,'darkbg-color-header-background');
+      }
+    }
+  }
+  .theme-header-style-02-responsive-dark-background{
+    background:map-get($default_vars,'darkbg-color-header-background');
+    @include respond-to(mediumdevice){
+      background: transparent;
+    }
+  }
+}
+
+@if map-get($user_layout_vars,'header_style') == 03 {
+  .zpheader-style-03{
+    .theme-header {
+      &.zpdark-header-portion{
+        .theme-header-topbar{
+           .theme-portal-login{
+             .theme-portal-container{
+               .theme-portal-content{
+                 a{
+                   color: map-get($default_vars,'darkbg-color-portal');
+                   @include prefix(transition,0.15s linear);
+                 }
+                 ul{
+                   li{
+                     a{
+                       color : map-get($base_vars,'color-secondary');
+                       &:hover{
+                         color: map-get($base_vars,'color-primary');
+                       }
+                     }
+                   }
+                 }
+              }
+            }
+          }
+        }
+        .zpcontainer {
+          .theme-navigation-and-icons{
+            &.theme-search-mini-cart-style-03{
+              .theme-search-icon{
+                border-left-color: map-get($default_vars,'darkbg-color-search-cart-icon');
+              }
+            }
+          }
+        }
+      }
+    }
+    .zpdark-header-portion{
+      &.theme-header{
+        &.zpheader-style-navigation-03{
+          background: map-get($default_vars,'darkbg-color-navigation-bar-background');
+          border-top:0 none;
+          &.theme-header-transparent{
+            background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+          }
+        }
+      }
+    }
+    &.theme-header-fixed{
+      .zpdark-header-portion{
+        &.theme-header{
+          &.zpheader-style-navigation-03{
+            @include respond-to(mediumdevice){
+              background:map-get($default_vars,'color-navigation-bar-overlap-background');
+            }
+            &.theme-header-transparent{
+              @include respond-to(mediumdevice){
+                background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+              }
+            }
+          }
+        }
+      }
+      &.theme-header-animate{
+        .zpdark-header-portion{
+          &.theme-header{
+            &.zpheader-style-navigation-03{
+              background:map-get($default_vars,'darkbg-color-navigation-bar-background');
+              &.theme-header-transparent{
+                background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+              }
+            }
+          }
+        }
+      }
+    }
+    &.theme-header-animate{
+      .theme-header{
+        &.theme-header-navigation-style{
+          @include respond-to(mediumdevice){
+            background:map-get($default_vars,'color-navigation-bar-background');
+          }
+        }
+        &.zpdark-header-portion{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:map-get($default_vars,'color-navigation-bar-background');
+            }
+          }
+        }
+        &.theme-header-transparent{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.7);
+            }
+          }
+          &.zpdark-header-portion{
+            &.theme-header-navigation-style{
+              @include respond-to(mediumdevice){
+                background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.7);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width:768px){
+    .zpheader-style-03{
+      .theme-header{
+        .theme-responsive-menu-area-style-03{
+          &.theme-only-menu-in-mobile{
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@if map-get($user_layout_vars,'header_style') == 04 {
+  .zpheader-style-04{
+    .theme-header{
+      .zpcontainer{
+        @include prefix(transition,0.3s linear);
+      }
+    }
+    .zpdark-header-portion{
+      &.theme-header-topbar{
+        .theme-portal-login{
+          &.theme-portal-space{
+            border-left-color: map-get($default_vars,'darkbg-color-portal');
+            @include prefix(transition,0.15s linear);
+          }
+        }
+      }
+    }
+  }
+}
+
+@if map-get($user_layout_vars,'header_style') == 05 {
+  .zpheader-style-05{
+    .zpdark-header-portion{
+      &.theme-header{
+        &.theme-header-navigation-style{
+          background: transparent;
+          @include respond-to(mediumdevice){
+            background: map-get($default_vars,'darkbg-color-navigation-bar-style-05-background');
+            border-top:0 none;
+          }
+          &.theme-header-transparent{
+            background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-style-05-background-rgba'),0.8);
+          }
+        }
+      }
+    }
+    &.theme-header-fixed{
+      .zpdark-header-portion{
+        &.theme-header{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:map-get($default_vars,'color-navigation-bar-overlap-background');
+            }
+            &.theme-header-transparent{
+              @include respond-to(mediumdevice){
+                background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-style-05-background-rgba'),0.8);
+              }
+            }
+          }
+        }
+      }
+      &.theme-header-animate{
+        .zpdark-header-portion{
+          &.theme-header{
+            &.theme-header-navigation-style{
+              @include respond-to(mediumdevice){
+                background:map-get($default_vars,'darkbg-color-navigation-bar-style-05-background');
+              }
+              &.theme-header-transparent{
+                @include respond-to(mediumdevice){
+                  background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-style-05-background-rgba'),0.8);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .zpdark-header-portion{
+      &.theme-header-topbar,
+      &.theme-header{
+        .theme-portal-login{
+          &.theme-portal-space{
+            border-left-color: map-get($default_vars,'darkbg-color-portal');
+            @include prefix(transition,0.15s linear);
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width:768px){
+    .zpheader-style-05{
+      .zpdark-header-portion{
+        &.theme-header{
+          &.theme-header-navigation-style{
+            &.theme-dark-nav-mobile-02{
+              background:map-get($default_vars, 'color-header-background');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if map-get($user_layout_vars,'header_style') == 06 {
+  .theme-vertical-navigation-container{
+    .theme-header{
+      &.zpdark-header-portion{
+        .zpcontainer{
+          .theme-navigation-and-icons{
+            .theme-menu-area{
+              .theme-menu{
+                > ul{
+                  > li{
+                    &:hover,
+                    &.theme-menu-selected{
+                      > a{
+                        color:map-get($default_vars,'darkbg-color-hover-active-text-style-06-navigation');
+                        background: transparent;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .theme-vertical-navigation-search-cart-container{
+            border-top:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
+    				border-bottom:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
+          }
+          .theme-vertical-navigation-contact-social{
+            border-top:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
+          }
+        }
+        .theme-portal-login {
+          .theme-portal-container{
+            .theme-portal-content{
+              a{
+                color:map-get($default_vars,'color-portal');
+                @include prefix(transition,0.15s linear);
+              }
+              &:last-child{
+                border-left-color: map-get($default_vars,'color-portal');
+                @include prefix(transition,0.15s linear);
+              }
+            }
+          }
+        }
+        .zpdark-header-portion{
+          .theme-portal-container{
+            .theme-portal-content{
+              a{
+                color:map-get($default_vars,'darkbg-color-portal');
+                @include prefix(transition,0.15s linear);
+              }
+              &:last-child{
+                border-left-color: map-get($default_vars,'darkbg-color-portal');
+                @include prefix(transition,0.15s linear);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .zpbanner-for-header-06{
+    .zphero {
+      ul{
+        li{
+          &.zphero-slide{
+            .zphero-slider-container{
+              padding-left: 15px;
+              padding-right: 15px;
+              @include respond-to(mediumdevice){
+                padding-left: 60px;
+                padding-right: 60px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .zphero-boxed{
+    &.zpbanner-for-header-06{
+      &.zpcontainer{
+        width:100%;
+        padding-right:15px;
+        padding-left: 15px;
+        @include respond-to(mediumdevice){
+          padding-left: 300px;
+          padding-right: 0px;
+        }
+        .zpcontent-container{
+          &.hero-container{
+            width:100%;
+            padding-right:0px;
+            padding-left: 0px;
+            @include respond-to(mediumdevice){
+              padding-left:50px;
+              padding-right:50px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1500px){
+    .zphero-boxed{
+      &.zpbanner-for-header-06{
+        &.zpcontainer{
+          width:100%;
+          .zpcontent-container{
+            &.hero-container{
+              width:1100px;
+              margin:0 auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if map-get($user_layout_vars,'header_style') == 07 {
+  .zpheader-style-07{
+    .theme-header {
+      .zpcontainer {
+        .theme-navigation-and-icons {
+          .theme-search-and-mini-cart-group {
+            .theme-search-and-mini-cart-group-item {
+              .theme-search-field-container-07 {
+                form {
+                  .theme-search-go-icon {
+                    svg {
+                      fill:map-get($default_vars,'color-7th-header-style-search-icon');
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      &.zpdark-header-portion{
+        .theme-header-topbar{
+           .theme-portal-login{
+             .theme-portal-container{
+               .theme-portal-content{
+                 a{
+                   color: map-get($default_vars,'darkbg-color-portal');
+                   @include prefix(transition,0.15s linear);
+                 }
+                 ul{
+                   li{
+                     a{
+                       color : map-get($base_vars,'color-secondary');
+                       &:hover{
+                         color: map-get($base_vars,'color-primary');
+                       }
+                     }
+                   }
+                 }
+              }
+            }
+          }
+        }
+        .zpcontainer {
+          .theme-navigation-and-icons{
+            &.theme-search-mini-cart-style-03{
+              .theme-search-icon{
+                border-left-color: map-get($default_vars,'darkbg-color-7th-header-style-cart-divider-border');
+              }
+            }
+          }
+        }
+      }
+      &.zpheader-style-navigation-07 {
+        border-top: 1px solid map-get($base_vars,'color-border');
+      }
+    }
+    .zpdark-header-portion{
+      &.theme-header{
+        &.zpheader-style-navigation-07{
+          background: map-get($default_vars,'darkbg-color-navigation-bar-background');
+          border-top:0px none;
+          &.theme-header-transparent{
+            background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+          }
+        }
+
+      }
+    }
+    &.theme-header-fixed{
+      .zpdark-header-portion{
+        &.theme-header{
+          &.zpheader-style-navigation-07{
+            @include respond-to(mediumdevice){
+              background:map-get($default_vars,'color-navigation-bar-overlap-background');
+            }
+            &.theme-header-transparent{
+              @include respond-to(mediumdevice){
+                background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+              }
+            }
+          }
+        }
+      }
+      &.theme-header-animate{
+        .zpdark-header-portion{
+          &.theme-header{
+            &.zpheader-style-navigation-07{
+              background:map-get($default_vars,'darkbg-color-navigation-bar-background');
+              &.theme-header-transparent{
+                background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
+              }
+            }
+          }
+        }
+      }
+    }
+    &.theme-header-animate{
+      .theme-header{
+        &.theme-header-navigation-style{
+          @include respond-to(mediumdevice){
+            background:map-get($default_vars,'color-navigation-bar-background');
+          }
+        }
+        &.zpdark-header-portion{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:map-get($default_vars,'color-navigation-bar-background');
+            }
+          }
+        }
+        &.theme-header-transparent{
+          &.theme-header-navigation-style{
+            @include respond-to(mediumdevice){
+              background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.7);
+            }
+          }
+          &.zpdark-header-portion{
+            &.theme-header-navigation-style{
+              @include respond-to(mediumdevice){
+                background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.7);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media all and (max-width:768px){
+    .zpheader-style-07{
+      .theme-header{
+        .theme-responsive-menu-area-style-03{
+          &.theme-only-menu-in-mobile{
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.theme-header-transparent{
+  @include respond-to(mediumdevice){
+	   background: RGBA(map-get($default_vars, 'color-header-background-rgba'),0.9);
+  }
+  &.zpdark-header-portion{
+    &.theme-header{
+      @include respond-to(mediumdevice){
+        background:RGBA(map-get($default_vars, 'darkbg-color-header-background-rgba'),0.9);
+      }
+    }
+  }
+}
+@include keyframe(noTopBarAni){
+ from{
+     top:-300px;
+  }
+}
+@include keyframe(headerStart){
+	from{
+    top:-300px;
+	}
+}
+.theme-header-fixed{
+  @include respond-to(mediumdevice){
+    position: fixed;
+    left: 0;
+    top: 0;
+    right:0;
+    width: 100%;
+    z-index: 248;
+  }
+  &.theme-header-transparent{
+    @include respond-to(mediumdevice){
+  	   background:transparent;
+    }
+  }
+  .theme-header-topbar{
+    @include respond-to(mediumdevice){
+      background: map-get($default_vars,'color-topbar-overlap-background');
+    }
+  }
+  .theme-header{
+    @include respond-to(mediumdevice){
+      background: map-get($default_vars,'color-header-overlap-background');
+      box-shadow:none;
+    }
+    .theme-menu-area{
+      .theme-menu{
+        > ul{
+         > li{
+           &:hover,
+           &.theme-menu-selected{
+             > a{
+               @include respond-to(mediumdevice){
+                 background: transparent;
+                 color:map-get($default_vars,'color-navigation-hover-active-arrow-text');
+               }
+             }
+           }
+          }
+        }
+      }
+    }
+    &.zpdark-header-portion{
+      .theme-navigation-and-icons{
+        .theme-menu-area{
+          .theme-menu{
+            > ul{
+              > li{
+               a{
+                 @include respond-to(mediumdevice){
+                   color:map-get($default_vars,'darkbg-color-navigation');
+                   @include prefix(transition,0.15s linear);
+                 }
+               }
+               &:hover,
+               &.theme-menu-selected{
+                 > a{
+                   @include respond-to(mediumdevice){
+                     background: transparent;
+                     color:map-get($default_vars,'darkbg-color-navigation-hover-active-arrow-text');
+                   }
+                 }
+               }
+               ul{
+                  li{
+                    a{
+                      color:map-get($default_vars, 'color-submenu');
+                    }
+                    &:hover,
+                    &.theme-menu-selected{
+                      > a{
+                        @include respond-to(mediumdevice){
+                          color:map-get($default_vars, 'color-submenu-hover-active-text');
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.theme-header-animate{
+    @include prefix(animation,none);
+    .theme-header{
+      @include respond-to(mediumdevice){
+        background:map-get($default_vars, 'color-header-background');
+        @include prefix(box-shadow,0 0 3px RGBA(0,0,0,0.1));
+      }
+      &.theme-header-transparent{
+        @include respond-to(mediumdevice){
+          background:RGBA(map-get($default_vars, 'color-header-background-rgba'),0.9);
+        }
+        &.zpdark-header-portion{
+          @include respond-to(mediumdevice){
+            background:RGBA(map-get($default_vars, 'darkbg-color-header-background-rgba'),0.9);
+          }
+        }
+      }
+    }
+  }
+}
+@include keyframe(fixedHeaderStart){
+  from{
+    opacity:0;
+  }
+}
+@include keyframe(fixedHeaderEnd){
+  from{
+    background: map-get($default_vars, 'color-header-background');
+    opacity: 0
+  }
+}
+
+// BANNER STYLE
+
+.zphero-full-screen{
+  .zphero{
+	  height:100vh !important;
+  }
+}
+.zphero{
+   .zpflex-align-self-end{
+     @include respond-to(mediumdevice){
+       padding-bottom:80px !important;
+    }
+  }
+  .zphero-slides,
+  .zphero-slide{
+    padding:0;
+  }
+  .zsslider-arrows-container{
+    .zsslider-arrow-left,
+    .zsslider-arrow-right{
+      z-index:200 !important;
+      svg{
+        @include prefix(transition,fill 0.5s linear);
+      }
+    }
+  }
+}
+.zphero-fullwidth-overlap{
+  .zphero{
+    @include respond-to(mediumdevice){
+      height:72vh !important;
+    }
+  }
+}
+.zphero-boxed{
+  .zphero {
+    ul{
+      li{
+        &.zphero-slide{
+          .zphero-slider-container{
+            padding-left: 15px;
+            padding-right: 15px;
+            @include respond-to(mediumdevice){
+              padding-left: 60px;
+              padding-right: 60px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.zphero-boxed{
+  padding-top:50px;
+}
+
+// DARK HEADER STYLES
+
+.zpdark-header-portion{
+  &.theme-header-topbar,
+  &.theme-header{
+    .theme-topbar-contact-info{
+      ul{
+        .theme-topbar-info{
+          a{
+            color : map-get($default_vars,'darkbg-color-contact-info');
+            @include prefix(transition,0.15s linear);
+          }
+          &:last-child{
+            border-left-color: map-get($default_vars,'darkbg-color-contact-info');
+            @include prefix(transition,0.15s linear);
+          }
+        }
+      }
+    }
+    .theme-socialicon-parent{
+      border-left-color: map-get($default_vars,'darkbg-color-contact-info');
+      @include prefix(transition,0.15s linear);
+      ul{
+        li{
+          a{
+            svg{
+              fill :map-get($default_vars,'darkbg-color-social-icon');
+              @include prefix(transition,0.15s linear);
+            }
+          }
+        }
+      }
+    }
+    .theme-portal-login {
+      .theme-portal-container{
+        .theme-portal-content{
+          a{
+            color: map-get($default_vars,'darkbg-color-portal');
+            @include prefix(transition,0.15s linear);
+          }
+          &:last-child{
+            border-left-color: map-get($default_vars,'darkbg-color-portal');
+            @include prefix(transition,0.15s linear);
+          }
+        }
+      }
+    }
+    .zpcontainer {
+      .theme-branding-info{
+        .theme-site-name-caption{
+          .theme-site-name{
+            color: map-get($default_vars,'darkbg-color-site-name');
+          }
+          .theme-site-caption{
+            color : map-get($default_vars,'darkbg-color-site-caption');
+          }
+        }
+      }
+    }
+  }
+  &.theme-header{
+    background:map-get($default_vars,'darkbg-color-header-background');
+    @include prefix(flex,1 0 auto);
+    @include respond-to(mediumdevice){
+      background:map-get($default_vars,'darkbg-color-header-background');
+      @include prefix(flex,0 1 auto);
+    }
+    .theme-navigation-and-icons{
+      .theme-menu-area{
+        .theme-menu{
+          > ul{
+            > li{
+              > a{
+                @include respond-to(mediumdevice){
+                  color:map-get($default_vars,'darkbg-color-navigation');
+                }
+              }
+              &:hover{
+                >a{
+                  @include respond-to(mediumdevice){
+                    background:map-get($default_vars,'darkbg-color-navigation-hover-active-arrow-background');
+                    color:map-get($default_vars,'darkbg-color-navigation-hover-active-text-arrow');
+                  }
+                }
+              }
+              &.theme-menu-selected{
+                > a{
+                  @include respond-to(mediumdevice){
+                    background:map-get($default_vars,'darkbg-color-navigation-hover-active-arrow-background');
+                    color : map-get($default_vars,'darkbg-color-navigation-hover-active-text-arrow');
+                  }
+                }
+              }
+              ul{
+                li{
+                  &:first-of-type{
+                    @include respond-to(mediumdevice){
+                      // border-top-color:lighten(map-get($default_vars,'darkbg-color-header-background'),30%);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.theme-header-topbar{
+    background:map-get($default_vars,'darkbg-color-topbar-background');
+    @include respond-to(mediumdevice){
+      background:map-get($default_vars,'darkbg-color-topbar-background');
+    }
+  }
+  .theme-responsive-menu-area{
+    &.zpcontainer{
+      .theme-responsive-menu-container{
+        .theme-burger-icon{
+          background: map-get($default_vars,'darkbg-color-mobile-burger-icon');
+          &.theme-close-icon{
+            background: transparent;
+          }
+          &:before,
+          &:after{
+            background: map-get($default_vars,'darkbg-color-mobile-burger-icon');
+          }
+        }
+      }
+    }
+  }
+  &.theme-header,
+  &.theme-header-topbar{
+    .theme-navigation-and-icons{
+      .theme-search-and-mini-cart-group{
+        .theme-search {
+          .theme-search-icon{
+            svg{
+              fill: map-get($default_vars,'darkbg-color-search-cart-icon');
+            }
+          }
+        }
+        .theme-mini-cart {
+          .theme-minicart-icon{
+            svg{
+              fill:map-get($default_vars,'darkbg-color-search-cart-icon');
+              stroke:map-get($default_vars,'darkbg-color-search-cart-icon');
+            }
+          }
+        }
+        .theme-search-and-mini-cart-group-item{
+          &:first-child {
+            .theme-search-icon{
+              border-right-color: map-get($default_vars,'darkbg-color-search-cart-icon');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.theme-header-fixed{
+  .zpdark-header-portion{
+    &.theme-header{
+      @include respond-to(mediumdevice){
+        background:map-get($default_vars,'color-header-overlap-background');
+      }
+    }
+    &.theme-header-topbar{
+      @include respond-to(mediumdevice){
+        background:map-get($default_vars,'color-topbar-overlap-background');
+      }
+    }
+  }
+  &.theme-header-animate{
+    .zpdark-header-portion{
+      &.theme-header{
+        @include respond-to(mediumdevice){
+          background:map-get($default_vars,'darkbg-color-header-background');
+        }
+      }
+    }
+  }
+}

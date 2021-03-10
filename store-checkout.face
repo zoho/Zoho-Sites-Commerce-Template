@@ -1,0 +1,99 @@
+{% extends "_theme" %}
+
+{% block header_block %}
+{% endblock %}
+
+{% block cart_checkout_remove_block %}
+{% endblock %}
+
+{% block topbar_remove_checkout_block %}
+{% endblock %}
+
+{% block cart_checkout_block %}
+
+{% if page.template_vars.header_style == "06" %}
+
+<div data-theme-header-six-res="theme-header-six-res" data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-01 theme-cart-checkout-headersix {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %}">
+
+  {% if page.is_contact_information_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled %}
+
+  <div class="theme-header-topbar {% if !page.is_portal_enabled %}theme-headersix-hide-topbar{% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}">
+    <div class="zpcontainer">
+        {% if page.is_contact_information_enabled %}
+        <div data-topbarinfo-position="zptheme-topbarinfo-position">
+            {% include '_contacts' %}
+        </div>
+        {% endif %}
+
+        {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+
+
+        		{% include '_social-links' %}
+
+        {% endif %}
+
+        {% if page.is_portal_enabled %}
+
+        <div class="theme-portal-login">
+            <div class="theme-portal-container" data-portal-loggedout style="display:block">
+                <div class="theme-portal-content"> <a data-portal-signin href="javascript:;">{{ i18n.get("portal.signin") }}</a> </div>
+                {% if page.is_portal_signup_enabled %}
+                <div class="theme-portal-content"> <a data-portal-signup href="javascript:;">{{ i18n.get("portal.signup") }}</a> </div>
+                {% endif %}
+            </div>
+            <div class="theme-portal-container" data-portal-loggedin style="display:none">
+                <div class="theme-portal-content {% if page.is_store_enabled %}theme-portal-username-content{% endif %}">
+                    <a class="{% if page.is_store_enabled %}theme-user-name-dropdown{% endif %}" data-portal-profile href="javascript:;">
+                        <span data-portal-user-name></span>
+                        {% if page.is_store_enabled %}
+                        <span class="theme-user-profile-down-arrow"></span>
+                        {% endif %}
+                    </a>
+                    {% if page.is_store_enabled %}
+                    <ul class="theme-username-dropdown-list">
+                        <li>
+                            <a href="/account/profile">{{i18n.get("portal.profile.title")}}</a>
+                        </li>
+                        <li>
+                            <a href="/account/orders">{{i18n.get("orders.title.myorders")}}</a>
+                        </li>
+                        <li>
+                            <a href="/account/address">{{i18n.get("address.tab.title")}}</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="theme-portal-content">
+                    <a data-portal-logout href="javascript:;">{{ i18n.get("portal.signout") }}</a>
+                </div>
+            </div>
+        </div>
+
+
+        {% endif %}
+
+    </div>
+  </div>
+
+  {% endif %}
+
+  <div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
+      <div class="zpcontainer">
+          {% include '_branding' %}
+      </div>
+  </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+{% block content_area %}
+
+<div class="theme-content-area" data-theme-content-container="theme-content-container">
+	{{checkout.form}}
+</div>
+<div style="clear:both"></div>
+
+{% endblock %}

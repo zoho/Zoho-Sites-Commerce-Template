@@ -1,0 +1,137 @@
+.zptabelem-inner-container {
+	&.zptabs-style-01{
+		&.zptab-type-01, &.zptab-type-02, &.zptab-type-03{
+			.zptab {
+				font-family: map-get($default_vars,'font-family-tab-style-one');
+				font-size: map-get($default_vars,'font-size-tab-style-one');
+				font-weight: map-get($default_vars,'font-weight-tab-style-one');
+				text-transform: map-get($default_vars,'font-transform-tab-style-one');
+				line-height: map-get($default_vars,'font-line-height-tab-style-one');
+				letter-spacing: map-get($default_vars,'font-letter-spacing-tab-style-one');
+			}
+		}
+	}
+	&.zptabs-style-02{
+		&.zptab-type-01, &.zptab-type-02, &.zptab-type-03{
+			.zptab {
+				font-family: map-get($default_vars,'font-family-tab-style-two');
+				font-size: map-get($default_vars,'font-size-tab-style-two');
+				font-weight: map-get($default_vars,'font-weight-tab-style-two');
+				text-transform: map-get($default_vars,'font-transform-tab-style-two');
+				line-height: map-get($default_vars,'font-line-height-tab-style-two');
+				letter-spacing: map-get($default_vars,'font-letter-spacing-tab-style-two');
+			}
+		}
+	}
+}
+
+@mixin tabs-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zptabelem-inner-container {
+    &.zptabs-style-01{
+			&.zptab-type-01, &.zptab-type-02, &.zptab-type-03{
+				.zptab {
+          border-color:transparent;
+					background : map-get($default_vars, '#{$section-bg}color-tab-style-one-inactive-background');
+					color : map-get($default_vars, '#{$section-bg}color-tab-style-one');
+					@include respond-to(smalldevice){
+						border-color:map-get($default_vars, '#{$section-bg}color-tab-style-one-border');
+					}
+					&.zptab-active,&:hover{
+						background:map-get($default_vars, '#{$section-bg}color-tab-style-one-active-background');
+						color:map-get($default_vars, '#{$section-bg}color-tab-style-one-active');
+						border-color:map-get($default_vars, '#{$section-bg}color-tab-style-one-active-background');
+					}
+				}
+				.zptabs-content-container {
+					.zptab-content{
+						border-color:map-get($default_vars, '#{$section-bg}color-tab-style-one-border');
+						background:map-get($default_vars, '#{$section-bg}color-tab-style-one-content-background');
+					}
+				}
+			}
+			&.zptab-type-02, &.zptab-type-03 {
+				.zptabs-content-container {
+					.zptab-content{
+						background: transparent;
+						border-color:transparent;
+					}
+				}
+			}
+		}
+    &.zptabs-style-02{
+			&.zptab-type-01{
+				.zptab{
+					color : map-get($default_vars, '#{$section-bg}color-tab-style-two');
+					background : map-get($default_vars, '#{$section-bg}color-tab-style-two-inactive-background');
+					@include respond-to(smalldevice){
+						background:transparent;
+					}
+					&.zptab-active{
+						background : map-get($default_vars,'#{$section-bg}color-tab-style-two-active');
+						color:map-get($default_vars, '#{$section-bg}color-tab-style-two-active-fill-text');
+						&:hover{
+							color:map-get($default_vars, '#{$section-bg}color-tab-style-two-active-fill-text');
+						}
+					}
+					&:hover{
+						color:map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+					}
+				}
+				.zptabs-content-container {
+					.zptab-content{
+						border-color:map-get($default_vars, '#{$section-bg}color-tab-style-two-border');
+					}
+				}
+			}
+			&.zptab-type-02{
+				.zptab{
+					color: map-get($default_vars, '#{$section-bg}color-tab-style-two');
+					border-bottom-color:map-get($default_vars, '#{$section-bg}color-tab-style-two');
+					&.zptab-active{
+						color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+						border-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+						&:after{
+							background: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+						}
+					}
+					&:hover{
+						color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+					}
+				}
+				.zptabs-content-container {
+					.zptab-content{
+						border-top-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-border');
+					}
+				}
+			}
+			&.zptab-type-03{
+				.zptab{
+					color: map-get($default_vars, '#{$section-bg}color-tab-style-two');
+					border-bottom-color:map-get($default_vars, '#{$section-bg}color-tab-style-two');
+					&.zptab-active{
+						color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+						border-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+						&:after{
+							border-top-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+						}
+					}
+					&:hover{
+						color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+					}
+				}
+				.zptabs-content-container {
+					.zptab-content{
+						border-top-color:map-get($default_vars, '#{$section-bg}color-tab-style-two-border');
+					}
+				}
+			}
+		}
+  }
+}
+
+@include tabs-style(null);
+@include tabs-style('.zpdark-section');

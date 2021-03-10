@@ -1,0 +1,5 @@
+<div class="theme-loader" data-theme-loader>
+  <span>
+    {{i18n.get("search.wait.message")}} . . .
+  </span>
+</div>

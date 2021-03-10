@@ -1,0 +1,124 @@
+<div class="theme-quick-view-container">
+	<div class="theme-overlay" onclick="closeProductQuickLook(this)">
+	</div>
+	<div class="theme-quick-view-inner-container" data-zs-product-id = "{{ product.product_id }}">
+		<div class="theme-product-quick-view-close-button">
+			<a onclick="closeProductQuickLook(this)">Close</a>
+		</div>
+		<div class="theme-product-details-area-container">
+			<div class="theme-product-details-column theme-product-details-varients-area">
+				<div class="theme-product-name-and-availability">
+					<div class="theme-product-name-area">
+						<h3>{{ product.name }}</h3>
+
+						{% if !product.is_returnable %}
+								<div class="theme-prod-non-returnable">
+									{{i18n.get("product.label.non_returnable")}}
+								</div>
+						{% endif %}
+
+					</div>
+
+					<div class="theme-rating-review-container">
+						{% if product.is_product_review_enabled %}
+						<div class="theme-rating-review" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+						{% endif %}
+						<div class="theme-product-rating-and-availability">
+							{% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
+							<div class="theme-product-availability-status">
+									{% if product.has_variants %}
+										{% for variant in product.variants %}
+										<span class="theme-prod-stock-details" data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
+												{{i18n.get("product.message.out_of_stock")}}
+										</span>
+										{% endfor %}
+									{% else %}
+										{% if product.is_out_of_stock == true %}
+											<span class="theme-prod-stock-details {% if product.is_out_of_stock == true %}theme-out-of-stock {% else %} theme-stock-background-color{% endif %}">
+													{{i18n.get("product.message.out_of_stock")}}
+											</span>
+										{% endif %}
+									{% endif %}
+							</div>
+							{% endif %}
+						</div>
+					</div>
+
+				</div>
+				<div class="theme-product-details-variants-list">
+					<ul>
+						{% include '_store-product-variants-five' %}
+						{% include '_store-product-custom-field-five' %}
+						{% include '_store-product-quantity-five' %}
+					</ul>
+
+
+					<div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+
+				</div>
+				{% include '_store-product-pricing-add-cart-five' %}
+				<div class="theme-product-details-view-button">
+					<a href="{{ product.url }}" class="">{{i18n.get("product.label.view_full")}}
+						<span>
+							<svg viewBox="0 0 12 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							        <g id="Quick-view" transform="translate(-476.000000, -786.000000)" fill="#12364D">
+							            <g id="qv" transform="translate(291.000000, 319.000000)">
+							                <g id="Group-6" transform="translate(22.000000, 317.000000)">
+							                    <polygon id="→" points="174.564453 152.941406 171.611328 149.988281 171.611328 152.435547 163.599609 152.435547 163.599609 153.447266 171.611328 153.447266 171.611328 155.894531"></polygon>
+							                </g>
+							            </g>
+							        </g>
+							    </g>
+							</svg>
+						</span>
+					</a>
+				</div>
+			</div>
+
+			{% if product.images | size < 2 %}
+
+			<div class="theme-product-details-column theme-product-image-area-container">
+				<div class="theme-product-full-image">
+					{% if product.images[0].is_placeholder_image %}
+					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}">
+					{% else %}
+					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/500x500" data-detail-image="theme-detail-image-{{product.product_id}}">
+					{% endif %}
+				</div>
+			</div>
+
+			{% else %}
+
+			<div class="theme-product-details-column theme-product-image-area-container">
+				<div class="theme-product-full-image">
+
+					<div class="theme-image-overlay" data-theme-image-overlay="theme-image-overlay-{{product.product_id}}">
+						<div class="theme-image-loader"></div>
+					</div>
+
+					{% if product.images[0].is_placeholder_image %}
+					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}">
+					{% else %}
+					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/500x500" data-detail-image="theme-detail-image-{{product.product_id}}">
+					{% endif %}
+
+				</div>
+				<div class="theme-product-thumbnail-area" data-theme-thumbnail-container="theme-thumbnail-container-{{product.product_id}}" data-thumbnail-prod-id="{{product.product_id}}">
+					{% for image in product.images %}
+					<div class="theme-product-thumbnail-image" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}"  data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}">
+						{% if image.is_placeholder_image %}
+						<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" src="{{ image.url }}">
+						{% else %}
+						<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/500x500" src="{{ image.url }}/200x200">
+						{% endif %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			{% endif %}
+
+		</div>
+	</div>
+</div>

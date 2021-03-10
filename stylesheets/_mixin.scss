@@ -1,0 +1,78 @@
+/*$Id$*/
+// MIXIN FOR PREFIX
+
+@mixin prefix($property,$value){
+	#{$property}:#{$value};
+}
+
+// MIXIN FOR PREFIX END
+
+//  MIXIN FOR KEYFRAMES
+
+@mixin keyframe($name){
+	@keyframes #{$name}{
+		@content;
+	}
+}
+
+//  MIXIN FOR KEYFRAMES END
+
+// MIXIN FOR RESPONSIVE BREAKPOINTS
+
+@mixin respond-to($media){
+	@if $media == smalldevice{
+		@media all and(min-width: 768px){ @content;}
+	}
+	@else if $media == mediumdevice{
+		@media all and (min-width: 992px){@content}
+	}
+	@else if $media == largedevice {
+    	@media only screen and (min-width: 1200px) { @content; }
+  }
+}
+
+// MIXIN FOR RESPONSIVE BREAKPOINTS END
+
+  // MIXIN FOR RGBA BACKGROUND
+
+@mixin background-opacity($property,$color, $opacity) {
+    #{$property} : $color;
+    #{$property} : rgba($color, $opacity);
+}
+
+  // MIXIN FOR BOX-SHADOW
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+// MIXIN FOR FLEX PROPERTIES
+
+@mixin flexbox {
+  display: flex;
+}
+
+@mixin inline-flex {
+	display: inline-flex;
+}
+
+// MIXIN FOR FLEX PROPERTIES END
+
+// CLEAR BOTH MIXIN
+
+@mixin clear-both {
+	clear: both; zoom: 1;
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+	&:before {
+		content: "";
+		display: table;
+	}
+}

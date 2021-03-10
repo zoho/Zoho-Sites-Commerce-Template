@@ -1,0 +1,45 @@
+{% extends "_theme" %}
+
+{% block header_block %}
+{% endblock %}
+
+{% block content_area %}
+
+	<div data-theme-content-container="theme-content-container" class="zpsection {% if page.template_vars.blog_post_style == '01' || page.template_vars.blog_post_style == '03' || page.template_vars.blog_post_style == '04' %}theme-blog-section{% endif %} {% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled %}zpcontent-for-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
+		<div class="zpcontainer" data-zs-app="blogpost">
+
+				{% if page.template_vars.blog_post_style == '01' %}
+					{% include '_blog-post-one' %}
+				{% endif %}
+
+				{% if page.template_vars.blog_post_style == '02' %}
+					{% include '_blog-post-two' %}
+				{% endif %}
+
+				{% if page.template_vars.blog_post_style == '03' %}
+					{% include '_blog-post-three' %}
+				{% endif %}
+
+				{% if page.template_vars.blog_post_style == '04' %}
+					{% include '_blog-post-four' %}
+				{% endif %}
+
+				{% if page.template_vars.blog_post_style == '05' %}
+					{% include '_blog-post-five' %}
+				{% endif %}
+
+		</div>
+	</div>
+	<div class="zpsection {% if page.template_vars.blog_post_style != '05' %}theme-single-blog-comment-container{% endif %} {% if page.template_vars.blog_post_style == '05' %}theme-single-blog-post-commentbox-area{% endif %} {% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled %}zpcontent-for-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
+		<div class="zpcontainer">
+			<div class="zprow">
+				<div class="zpcol-md-12 zpcol-sm-12 theme-blog-container-column theme-single-post">
+					<div id="comments" data-zs-app="commentbox">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

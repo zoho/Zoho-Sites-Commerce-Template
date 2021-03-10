@@ -1,0 +1,56 @@
+{% assign coupons_list = coupons.list %}
+{% assign coupons_size = coupons_list | size %}
+{% if coupons_size > 0 %}
+
+    <div class="theme-prod-coupons-container" data-zs-discount-value="{{ coupons_list[0].discount_value }}" data-zs-discount-type="{{ coupons_list[0].discount_type }}">
+        {% if coupons_list[0].description != '' %}
+        <div class="theme-prod-coupons-code-container">
+            <span class="theme-prod-coupons-code">{{ coupons_list[0].description }}</span>
+        </div>
+        {% endif %}
+        {% if coupons.is_claim_rate_enabled && coupons_list[0].claimed_percentage > coupons.min_claim_rate %}
+        <div class="theme-prod-coupons-claimed-container">
+            <p class="theme-prod-coupons-claimed">{{ i18n.get('coupons.message.claimed', coupons_list[0].claimed_percentage) }}</p>
+            <div class="theme-prod-coupons-claimed-progress">
+                <div style="width:{{ coupons_list[0].claimed_percentage }}%" class="theme-prod-coupons-claimed-progressbar"></div>
+            </div>
+        </div>
+        {% endif %}
+        {% if coupons.is_timer_enabled && coupons_list[0].is_timer_needed %}
+        <div class="theme-prod-coupons-duration-container" data-zs-duration-container>
+            <p class="theme-prod-coupons-duration"><span class="theme-prod-coupons-duration-msg">{{ i18n.get('coupons.duration.message') }}</span> <span class="theme-prod-coupons-duration-timer"><b data-zs-coupon-expiry="{{ coupons_list[0].expiry_time }}"></b></span></p>
+        </div>
+        {% endif %}
+    </div>
+    {% if coupons_size > 1 %}
+        <div class="theme-prod-coupons-container-toggleoutter">
+            <div class="theme-prod-coupons-container-toggle" data-zs-more-coupons>
+            {% for i in range(1, coupons_size) %}
+            <div class="theme-prod-coupons-container" data-zs-discount-value="{{ coupons_list[i].discount_value }}" data-zs-discount-type="{{ coupons_list[i].discount_type }}">
+                {% if coupons_list[i].description != '' %}
+                <div class="theme-prod-coupons-code-container">
+                    <span class="theme-prod-coupons-code">{{ coupons_list[i].description }}</span>
+                </div>
+                {% endif %}
+                {% if coupons.is_claim_rate_enabled && coupons_list[i].claimed_percentage > coupons.min_claim_rate  %}
+                <div class="theme-prod-coupons-claimed-container">
+                    <p class="theme-prod-coupons-claimed">{{ i18n.get('coupons.message.claimed',coupons_list[i].claimed_percentage) }}</p>
+                    <div class="theme-prod-coupons-claimed-progress">
+                        <div style="width:{{ coupons_list[i].claimed_percentage }}%" class="theme-prod-coupons-claimed-progressbar"></div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if coupons.is_timer_enabled && coupons_list[i].is_timer_needed %}
+                <div class="theme-prod-coupons-duration-container" data-zs-duration-container>
+                    <p class="theme-prod-coupons-duration"><span class="theme-prod-coupons-duration-msg">{{ i18n.get('coupons.duration.message') }}</span> <span class="theme-prod-coupons-duration-timer"><b data-zs-coupon-expiry="{{ coupons_list[i].expiry_time }}"></b></span></p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+        <p class="theme-prod-coupons-show-btn" onclick="showCoupons(this)">+ {{coupons_size - 1}} {{ i18n.get('coupons.message.showmore') }}</p>
+        <p style="display: none;" class="theme-prod-coupons-hide-btn" onclick="hideCoupons(this)">{{ i18n.get('coupons.message.showless') }}</p>
+    {% endif %}
+
+{% endif %}

@@ -1,0 +1,18 @@
+.zpelem-box{
+  padding : map-get($default_vars, 'space-box-padding');
+  border-width : map-get($default_vars, 'size-box-border');
+  border-style : map-get($default_vars, 'style-box-border');
+}
+@mixin box-style($section-class-name) {
+  $section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+  #{$section-class-name} .zpelem-box {
+    background-color : map-get($default_vars, '#{$section-bg}color-box-background');
+    border-color : map-get($default_vars, '#{$section-bg}color-box-border');
+  }
+}
+
+@include box-style(null);
+@include box-style('.zpdark-section');

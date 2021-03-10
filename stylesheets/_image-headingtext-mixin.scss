@@ -1,0 +1,42 @@
+$image-headingtext-size : 'h1','h2','h3','h4','h5','h6';
+@each $image-headingtext-tag in $image-headingtext-size {
+	.zpelem-imageheadingtext #{$image-headingtext-tag}{
+		&.zpimage-heading {
+			font-family:map-get($default_vars, "font-family-imageheadingtext-#{$image-headingtext-tag}");
+			font-size:map-get($default_vars, "font-size-imageheadingtext-#{$image-headingtext-tag}");
+			font-weight:map-get($default_vars, "font-weight-imageheadingtext-#{$image-headingtext-tag}");
+			text-transform:map-get($default_vars, "font-transform-imageheadingtext-#{$image-headingtext-tag}");
+			color:map-get($default_vars, "color-imageheadingtext-#{$image-headingtext-tag}");
+			line-height: map-get($default_vars, "font-line-height-imageheadingtext-#{$image-headingtext-tag}");
+			letter-spacing: map-get($default_vars, "font-letter-spacing-imageheadingtext-#{$image-headingtext-tag}");
+		}
+	}
+}
+.zpelem-imageheadingtext .zpimage-text{
+	color: map-get($default_vars, "color-imageheadingtext-text");
+	font-family: map-get($default_vars, "font-family-imageheadingtext-text");
+	font-size: map-get($default_vars, "font-size-imageheadingtext-text");
+	font-weight: map-get($default_vars, "font-weight-imageheadingtext-text");
+	text-transform: map-get($default_vars, "font-transform-imageheadingtext-text");
+	line-height: map-get($default_vars, "font-line-height-imageheadingtext-text");
+	letter-spacing: map-get($default_vars, "font-letter-spacing-imageheadingtext-text");
+}
+@mixin image-headingtext-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpelem-imageheadingtext .zpimage-text{
+		color: map-get($default_vars, "#{$section-bg}color-imageheadingtext-text");
+	}
+	@each $image-headingtext-tag in $image-headingtext-size {
+		#{$section-class-name} .zpelem-imageheadingtext #{$image-headingtext-tag}{
+			&.zpimage-heading {
+				color:map-get($default_vars, "#{$section-bg}color-imageheadingtext-#{$image-headingtext-tag}");
+			}
+		}
+	}
+}
+
+@include image-headingtext-style(null);
+@include image-headingtext-style('.zpdark-section');

@@ -1,0 +1,18 @@
+<div class="theme-search-and-mini-cart-group" data-theme-search-cart-group="zptheme-search-cart-group">
+
+  {% comment %} SEARCH STARTS {% endcomment %}
+
+  {% if page.is_search_enabled %}
+    {% include '_search-box' %}
+  {% endif %}
+  {% comment %} SEARCH ENDS {% endcomment %}
+
+  {% comment %} MINI-CART START {% endcomment %}
+
+  {% if page.is_store_enabled && page.show_cart_icon %}
+    {% include '_store-cart-count' %}
+  {% endif %}
+
+  {% comment %} MINI-CART END {% endcomment %}
+
+</div>

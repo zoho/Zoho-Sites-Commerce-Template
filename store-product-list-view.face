@@ -1,0 +1,57 @@
+<div class="theme-prod-box theme-product-list-style-{{page.template_vars.product_list_style}} theme-product-count-xsm-{{page.template_vars.store_product_list_count_xsm}} theme-product-count-sm-{{page.template_vars.store_product_list_count_sm}} theme-product-count-md-{{page.template_vars.store_product_list_count_md}}" data-zs-product-id = "{{ product.product_id }}">
+
+	{% if page.template_vars.product_list_style == '01' %}
+
+		{% include '_store-product-list-one' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '02' %}
+
+		{% include '_store-product-list-two' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '03' %}
+
+		{% include '_store-product-list-three' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '04' %}
+
+		{% include '_store-product-list-four' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '05' %}
+
+		{% include '_store-product-list-five' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '06' %}
+
+		{% include '_store-product-list-six' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '07' %}
+
+		{% include '_store-product-list-seven' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '08' %}
+
+		{% include '_store-product-list-eight' %}
+
+	{% endif %}
+
+	{% if page.template_vars.product_list_style == '09' %}
+
+		{% include '_store-product-list-nine' %}
+
+	{% endif %}
+
+</div>

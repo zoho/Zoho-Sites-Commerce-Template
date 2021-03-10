@@ -1,0 +1,54 @@
+<div class="zprow">
+  <div class="zpcol-md-12 zpcol-sm-12 theme-blog-container-column theme-single-post">
+    <div class="theme-blog-container">
+      <div class="theme-blog-part theme-single-blog-header">
+        <h1 class="theme-blog-heading" data-post-heading="true">{{blog_post.post_title}}</h1>
+        <div class="theme-blog-author">
+          {{i18n.get("blog.post.postby")}} - <a href="{{blog_post.author.author_url}}" data-blog-author="true">{{blog_post.author.author_name}}</a>
+        </div>
+        <div class="theme-blog-date">
+          {% if blog_post.post_last_modified_time %}
+            {{ blog_post.post_last_modified_time }}
+          {% else %}
+           {{ blog_post.post_published_time }}
+          {% endif %}
+      </div>
+      </div>
+      <div class="theme-blog-part theme-blog-single-post-content">
+        {{blog_post.content}}
+      </div>
+        <div class="theme-blog-part theme-blog-single-post-footer">
+          <div class="theme-single-blog-post-footer-content ">
+            <div class="theme-single-blog-category">
+              <div class="theme-single-post-footer-content-heading">
+                {{i18n.get("blog.post.category")}} -
+              </div>
+              <div class="theme-single-post-category-list">
+                <a href="{{blog_post.category.category_url}}"> {{ blog_post.category.category_name }}</a>
+              </div>
+            </div>
+            <div class="theme-single-blog-tags">
+              <div class="theme-single-post-footer-content-heading">
+                {{i18n.get("blog.post.tag")}} -
+              </div>
+              <div class="theme-single-post-tags-list">
+                  {% for tag in blog_post.tags %}
+                    <a href="{{tag.tag_url}}"> {{ tag.tag_name }}</a>
+                  {% endfor %}
+              </div>
+            </div>
+            {% if blog_post.is_social_share_enabled %}
+              <div class="theme-single-blog-post-social-share">
+                <div class="theme-single-post-footer-content-heading">
+                  {{i18n.get("blog.post.share")}} -
+                </div>
+                <div class="theme-single-blog-post-socialshare" data-zs-app="social_share" data-style="{{ blog_post.social_share_options.style }}" data-align="{{ blog_post.social_share_options.align }}" data-count="{{blog_post.social_share_options.show_count}}">
+
+                </div>
+              </div>
+            {% endif %}
+        </div>
+      </div>
+  </div>
+</div>
+</div>

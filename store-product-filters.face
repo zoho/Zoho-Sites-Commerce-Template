@@ -1,0 +1,302 @@
+{% for filter in filters.filter_set %}
+  {% if filter.has_filter_options %}
+    <div data-zs-filter-option-container="{{ filter.name }}" data-zs-filter-option-container-id="{{ filter.id }}" data-zs-filter-option-type="{{ filter.type }}" data-zs-filter-option-default-value-to-show="{{ filter.value_to_show_by_default }}" class="theme-product-filter-box">
+      <div data-zs-filter-option-name class="theme-product-filter-type">
+          <span>{{ filter.name }}</span>
+          <svg id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" class="theme-filter-expand-icon {% if !filter.collapse_by_default %} theme-filter-expclose-default-hide {% endif %}"><path stroke-miterlimit="10" stroke-width="2" d="M21 8.5l-9 9-9-9"/></svg>
+          <svg id="Layer_1" version="1.0" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" class="theme-filter-close-icon {% if filter.collapse_by_default %} theme-filter-expclose-default-hide {% endif %}"><path stroke-miterlimit="10" stroke-width="2" d="M3 15.5l9-9 9 9"/></svg>
+      </div>
+      <div data-zs-filter-option-values-wrapper {% if filter.collapse_by_default %} style="display:none;" {% endif %}>
+        <a data-zs-filter-option-clear href="javascript:;" class="theme-product-clear-filter" style="display:none;">
+          <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard-Copy-2" stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M9.484 7.655l.07.058 1.589 1.589 1.59-1.589a.5.5 0 01.764.638l-.058.07-1.589 1.588 1.59 1.59a.5.5 0 01-.639.765l-.069-.058-1.59-1.59-1.588 1.59a.5.5 0 01-.765-.638l.057-.07 1.589-1.589L8.846 8.42a.5.5 0 01.638-.765zM7 8a.5.5 0 01.09.992L7 9H5a.5.5 0 01-.09-.992L5 8h2zm4-3a.5.5 0 01.09.992L11 6H3a.5.5 0 01-.09-.992L3 5h8zm1-3a.5.5 0 01.09.992L12 3H2a.5.5 0 01-.09-.992L2 2h10z" id="Combined-Shape" fill-rule="nonzero"/></g></svg>
+          {{i18n.get("product_filters.clear.label")}}
+        </a>
+        {% if filter.type == 1 %}
+          {% comment %} FILTER TYPE - CATEGORY STARTS {% endcomment %}
+
+            <div class="theme-product-filter-option-container">
+                <ul>
+
+                  {% for ancestor_category_data in filter.ancestors_category_filter %}
+                    <li>
+                      <span class="theme-product-filter-text">
+                        <a href="javascript:;" data-zs-filter-option-category data-href="/categories/{{ancestor_category_data.id}}">
+                          <svg id="Layer_1" style="enable-background:new 0 0 50 50" version="1.1" viewBox="0 0 50 50" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" class="theme-parentcategory-filter-icon"><path d="M37.561 47.293L15.267 25 37.561 2.707l-1.415-1.414L12.439 25l23.707 23.707z" id="Layer_1_1_"/></svg>
+                          {{ ancestor_category_data.name }}
+                        </a>
+                      </span>
+                    </li>
+                  {% endfor %}
+
+                  <li>
+                    {% assign category_filter = filter.category_filter %}
+                    {% if category_filter && category_filter.name %}
+                      <span class="theme-product-filter-text">
+                        <a href="javascript:;" data-zs-filter-option-category data-href="/categories/{{ category_filter.id }}">{{ category_filter.name }}</a>
+                      </span>
+                      {% if filter.show_product_count && category_filter.count > 0 %}
+                        <span class="theme-product-filter-count">{{ category_filter.count }}</span>
+                      {% endif %}
+                    {% endif %}
+                    <ul>
+                      {% assign available_filter_options = 0 %}
+                      {% for children_category_data in filter.children_category_filter %}
+                        {% assign available_filter_options = available_filter_options + 1 %}
+                        <li data-zs-filter-option-value-container {% if available_filter_options > filter.value_to_show_by_default %}style="display:none;"{% endif %}>
+                          <span class="theme-product-filter-text">
+                            <a href="javascript:;" data-zs-filter-option-category data-href="/categories/{{ children_category_data.id }}">{{ children_category_data.name }}</a>
+                          </span>
+                          {% if filter.show_product_count && children_category_data.count > 0 %}
+                            <span class="theme-product-filter-count">{{ children_category_data.count }}</span>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+
+                </ul>
+            </div>
+            {% if filter.children_category_filter | size > filter.value_to_show_by_default %}
+              <a data-zs-filter-option-showmore-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.show_more.label")}}</a>
+              <a data-zs-filter-option-showless-btn href="javascript:;" class="theme-product-filter-show-more" style="display:none;">{{i18n.get("product_filters.show_less.label")}}</a>
+            {% endif %}
+
+          {% comment %} FILTER TYPE - CATEGORY ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 2 %}
+          {% comment %} FILTER TYPE - PRICE STARTS {% endcomment %}
+            {% assign available_filter_options = 0 %}
+            {% for price_data in filter.price_filter %}
+              {% if price_data.count > 0 %}
+                {% assign available_filter_options = available_filter_options + 1 %}
+                {% assign from_price = price_data.from  %}
+                {% if !price_data.to %}
+                  {% assign to_price = 0  %}
+                {% else %}
+                  {% assign to_price = price_data.to  %}
+                {% endif %}
+                <div data-zs-filter-option-value-container class="theme-product-filter-option-container" {% if available_filter_options > filter.value_to_show_by_default %}style="display:none;"{% endif %}>
+                  <div class="theme-product-filter-select-option">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{price_data.container_id}}" data-zs-filter-option-value-data="{{from_price}}_{{to_price}}" data-zs-filter-option-value-formatted="" class="theme-product-filter-check" type="radio" name="price" />
+                    <span class="theme-product-filter-custom-radio theme-product-filter-custom-check"></span>
+                  </div>
+                  <div data-zs-filter-option-value-price-formatted class="theme-product-filter-text">
+                    <span class="theme-product-filter-min-price" data-zs-filter-option-value-price-min {% if from_price!=0 %} data-zs-selling-price="{{from_price}}" {% else %} data-zs-selling-price="{{to_price}}" {% endif %}>{% if from_price == 0 %}{{ to_price | currency(currency) }}{% else %}{{ from_price | currency(currency) }}{% endif %}</span>
+                      {% if from_price!=0 && to_price!=0 %} - {% endif %}
+                    <span class="theme-product-filter-max-price" data-zs-filter-option-value-price-max {% if from_price!=0 && to_price!=0 %} data-zs-selling-price="{{to_price}}"{% endif %}>{% if from_price == 0 %} & {{i18n.get("product_filters.and_below.label")}}{% elif to_price == 0 %} & {{i18n.get("product_filters.and_above.label")}}{% else %}{{ to_price | currency(currency) }}{% endif %}</span>
+                  </div>
+                  {% if filter.show_product_count %}
+                    <div class="theme-product-filter-count">{{ price_data.count }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% comment %} CUSTOM PRICE - INPUT RADIO STARTS {% endcomment %}
+            <div data-zs-filter-option-value-container data-zs-filter-option-price-custom-container class="theme-product-filter-option-container" style="display:none;">
+              <div class="theme-product-filter-select-option">
+                <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="custom_price" data-zs-filter-option-value-data="" data-zs-filter-option-value-formatted="" class="theme-product-filter-check" type="radio" name="price" />
+                <span class="theme-product-filter-custom-radio theme-product-filter-custom-check"></span>
+              </div>
+              <div data-zs-filter-option-value-price-formatted class="theme-product-filter-text">
+                {{i18n.get("product_filters.custom.label")}} :
+                <span class="theme-product-filter-min-price" data-zs-filter-option-value-price-min data-zs-filter-option-price-custom-min-elm data-zs-selling-price></span>
+                <span data-zs-filter-option-price-custom-separator> - </span>
+                <span class="theme-product-filter-max-price" data-zs-filter-option-value-price-max data-zs-filter-option-price-custom-max-elm data-zs-selling-price></span>
+              </div>
+            </div>
+            {% comment %} CUSTOM PRICE - INPUT RADIO ENDS {% endcomment %}
+            {% if available_filter_options > filter.value_to_show_by_default %}
+              <a data-zs-filter-option-showmore-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.show_more.label")}}</a>
+              <a data-zs-filter-option-showless-btn href="javascript:;" class="theme-product-filter-show-more" style="display:none;"></a>
+            {% endif %}
+            {% comment %} CUSTOM PRICE - INPUT BOX STARTS {% endcomment %}
+            <div class="theme-product-filter-price-minmax" {% if !filter.show_custom_box %}style="display:none;"{% endif %}>
+              <input data-zs-filter-option-price-custom-min-box class="theme-product-filter-minmax-input" type="text" placeholder="{{i18n.get('product_filters.min.label')}}" name="" value="" onkeypress="return productQuantity(event);" />
+              <span>{{i18n.get("product_filters.to.label")}}</span>
+              <input data-zs-filter-option-price-custom-max-box class="theme-product-filter-minmax-input" type="text" placeholder="{{i18n.get('product_filters.max.label')}}" name="" value="" onkeypress="return productQuantity(event);" />
+            </div>
+            <a data-zs-filter-option-price-custom-btn href="javascript:;" class="zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-full-width zpbutton-style-none" {% if !filter.show_custom_box %}style="display:none;"{% endif %}>{{i18n.get("product_filters.apply.label")}}</a>
+            <div data-zs-filter-option-price-custom-error-container class="" style="display:none; color:#FF4949; margin-top:5px;">{{i18n.get("product_filters.custom_price.error.message")}}</div>
+            {% comment %} CUSTOM PRICE - INPUT BOX ENDS {% endcomment %}
+
+          {% comment %} FILTER TYPE - PRICE ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 3 %}
+          {% comment %} FILTER TYPE - USER RATING STARTS {% endcomment %}
+
+            {% for rating_data in filter.rating_filter %}
+              {% if rating_data.count > 0 && rating_data.star > 0 && rating_data.star < 5 %}
+                <div data-zs-filter-option-value-container class="theme-product-filter-option-container">
+                  <div class="theme-product-filter-select-option">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{rating_data.container_id}}" data-zs-filter-option-value-data="{{rating_data.star}}" data-zs-filter-option-value-formatted="" class="theme-product-filter-check" type="radio" name="user_rating" />
+                    <span class="theme-product-filter-custom-radio theme-product-filter-custom-check"></span>
+                  </div>
+                  <div class="theme-product-filter-text theme-product-filter-rating {% if rating_data.star == 4 %}theme-product-filter-rating-four{% elif rating_data.star == 3 %}theme-product-filter-rating-three{% elif rating_data.star == 2 %}theme-product-filter-rating-two{% elif rating_data.star == 1 %}theme-product-filter-rating-one{% endif %}">
+                    <svg height="512" id="Layer_1" style="enable-background:new 0 0 512 512" version="1.1" viewBox="0 0 512 512" width="512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M448 208H301L256 64l-45 144H64l119.1 89.3L136 448l120-96 120 96-47.1-150.7z"/></svg>
+                    <svg height="512" id="Layer_1" style="enable-background:new 0 0 512 512" version="1.1" viewBox="0 0 512 512" width="512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M448 208H301L256 64l-45 144H64l119.1 89.3L136 448l120-96 120 96-47.1-150.7z"/></svg>
+                    <svg height="512" id="Layer_1" style="enable-background:new 0 0 512 512" version="1.1" viewBox="0 0 512 512" width="512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M448 208H301L256 64l-45 144H64l119.1 89.3L136 448l120-96 120 96-47.1-150.7z"/></svg>
+                    <svg height="512" id="Layer_1" style="enable-background:new 0 0 512 512" version="1.1" viewBox="0 0 512 512" width="512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M448 208H301L256 64l-45 144H64l119.1 89.3L136 448l120-96 120 96-47.1-150.7z"/></svg>
+                    <svg height="512" id="Layer_1" style="enable-background:new 0 0 512 512" version="1.1" viewBox="0 0 512 512" width="512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="M448 208H301L256 64l-45 144H64l119.1 89.3L136 448l120-96 120 96-47.1-150.7z"/></svg>
+                    <span>& up</span>
+                  </div>
+                  {% if filter.show_product_count %}
+                    <div class="theme-product-filter-count">{{ rating_data.count }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+
+          {% comment %} FILTER TYPE - USER RATING ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 4 %}
+          {% comment %} FILTER TYPE - COLOR STARTS {% endcomment %}
+
+            <div class="theme-product-filter-color-container">
+              {% for color_data in filter.color_filter %}
+                {% if color_data.count > 0 %}
+                  <div data-zs-filter-option-value-container class="theme-product-filter-color">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{color_data.container_id}}" data-zs-filter-option-value-data="{{color_data.id}}" data-zs-filter-option-value-formatted="{{color_data.name}}_{{color_data.color_code}}" class="theme-product-filter-check" type="checkbox" name="" />
+                    <span class="theme-product-filter-custom-check" style="background:{{color_data.color_code}}"></span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+          {% comment %} FILTER TYPE - COLOR ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 5 %}
+          {% comment %} FILTER TYPE - ATTRIBUTE STARTS {% endcomment %}
+            {% assign available_filter_options = 0 %}
+            {% for attribute_data in filter.attribute_filter %}
+              {% if attribute_data.count > 0 %}
+                {% assign available_filter_options = available_filter_options + 1 %}
+                <div data-zs-filter-option-value-container class="theme-product-filter-option-container" {% if available_filter_options > filter.value_to_show_by_default %}style="display:none;"{% endif %}>
+                  <div class="theme-product-filter-select-option">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{attribute_data.container_id}}" data-zs-filter-option-group-id="{{filter.filter_option_group_id}}" data-zs-filter-option-value-data="{{attribute_data.id}}" data-zs-filter-option-value-formatted="{{attribute_data.name}}" class="theme-product-filter-check" type="checkbox" name="" />
+                    <span class="theme-product-filter-custom-check"></span>
+                  </div>
+                  <div class="theme-product-filter-text">{{ attribute_data.name }}</div>
+                  {% if filter.show_product_count %}
+                    <div class="theme-product-filter-count">{{ attribute_data.count }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% if available_filter_options > filter.value_to_show_by_default %}
+              <a data-zs-filter-option-showmore-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.show_more.label")}}</a>
+              <a data-zs-filter-option-showless-btn href="javascript:;" class="theme-product-filter-show-more" style="display:none;">{{i18n.get("product_filters.show_less.label")}}</a>
+            {% endif %}
+
+          {% comment %} FILTER TYPE - ATTRIBUTE ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 6 %}
+          {% comment %} FILTER TYPE - SPECIFICATION STARTS {% endcomment %}
+            {% assign available_filter_options = 0 %}
+            {% for specification_data in filter.specification_filter %}
+              {% if specification_data.count > 0 %}
+                {% assign available_filter_options = available_filter_options + 1 %}
+                <div data-zs-filter-option-value-container class="theme-product-filter-option-container" {% if available_filter_options > filter.value_to_show_by_default %}style="display:none;"{% endif %}>
+                  <div class="theme-product-filter-select-option">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{specification_data.container_id}}" data-zs-filter-option-group-id="{{filter.filter_option_group_id}}" data-zs-filter-option-value-data="{{specification_data.id}}" data-zs-filter-option-value-formatted="{{specification_data.name}}" class="theme-product-filter-check" type="checkbox" name="" />
+                    <span class="theme-product-filter-custom-check"></span>
+                  </div>
+                  <div class="theme-product-filter-text">{{ specification_data.name }}</div>
+                  {% if filter.show_product_count %}
+                    <div class="theme-product-filter-count">{{ specification_data.count }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% if available_filter_options > filter.value_to_show_by_default %}
+              <a data-zs-filter-option-showmore-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.show_more.label")}}</a>
+              <a data-zs-filter-option-showless-btn href="javascript:;" class="theme-product-filter-show-more" style="display:none;">{{i18n.get("product_filters.show_less.label")}}</a>
+            {% endif %}
+
+          {% comment %} FILTER TYPE - SPECIFICATION ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 7 %}
+          {% comment %} FILTER TYPE - CUSTOM FEILD STARTS {% endcomment %}
+            {% assign available_filter_options = 0 %}
+            {% for custom_field_data in filter.custom_field_filter %}
+              {% if custom_field_data.count > 0 %}
+                {% assign available_filter_options = available_filter_options + 1 %}
+                <div data-zs-filter-option-value-container class="theme-product-filter-option-container" {% if available_filter_options > filter.value_to_show_by_default %}style="display:none;"{% endif %}>
+                  <div class="theme-product-filter-select-option">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{custom_field_data.container_id}}" data-zs-filter-option-value-data="{{custom_field_data.id}}" data-zs-filter-option-value-formatted="{{custom_field_data.name}}" class="theme-product-filter-check" type="checkbox" name="" />
+                    <span class="theme-product-filter-custom-check"></span>
+                  </div>
+                  <div class="theme-product-filter-text">{{ custom_field_data.name }}</div>
+                  {% if filter.show_product_count %}
+                    <div class="theme-product-filter-count">{{ custom_field_data.count }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% if available_filter_options > filter.value_to_show_by_default %}
+              <a data-zs-filter-option-showmore-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.show_more.label")}}</a>
+              <a data-zs-filter-option-showless-btn href="javascript:;" class="theme-product-filter-show-more" style="display:none;">{{i18n.get("product_filters.show_less.label")}}</a>
+            {% endif %}
+
+          {% comment %} FILTER TYPE - CUSTOM FEILD ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 8 %}
+          {% comment %} FILTER TYPE - BRAND STARTS {% endcomment %}
+
+            <div data-zs-filter-option-search-brand-container class="theme-product-filter-search">
+              <input data-zs-filter-option-search-brand type="text" placeholder="{{i18n.get('product_filters.search.label')}}" oninput="searchBrands(this)" />
+              <svg fill="none" height="24" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+            </div>
+            <span data-zs-filter-option-search-brand-result style="display:none;">{{i18n.get("product_filters.search.empty.message")}}</span>
+
+            {% assign available_filter_options = 0 %}
+            {% for brand_data in filter.brand_filter %}
+              {% if brand_data.count > 0 %}
+                {% assign available_filter_options = available_filter_options + 1 %}
+                <div data-zs-filter-option-value-container data-zs-filter-option-brand-name="{{ brand_data.name }}" class="theme-product-filter-option-container" {% if available_filter_options > filter.value_to_show_by_default %}data-zs-filter-option-brand-hidden-search-matched style="display:none;"{% endif %}>
+                  <div class="theme-product-filter-select-option">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{brand_data.container_id}}" data-zs-filter-option-value-data="{{brand_data.id}}" data-zs-filter-option-value-formatted="{{brand_data.name}}" class="theme-product-filter-check" type="checkbox" name="" />
+                    <span class="theme-product-filter-custom-check"></span>
+                  </div>
+                  <div class="theme-product-filter-text">{{ brand_data.name }}</div>
+                  {% if filter.show_product_count %}
+                    <div class="theme-product-filter-count">{{ brand_data.count }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% if available_filter_options > filter.value_to_show_by_default %}
+              <a data-zs-filter-option-showmore-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.show_more.label")}}</a>
+              <a data-zs-filter-option-showless-btn href="javascript:;" class="theme-product-filter-show-more" style="display:none;">{{i18n.get("product_filters.show_less.label")}}</a>
+            {% endif %}
+
+          {% comment %} FILTER TYPE - BRAND ENDS {% endcomment %}
+        {% endif %}
+        {% if filter.type == 9 %}
+          {% comment %} FILTER TYPE - TAG STARTS {% endcomment %}
+            {% assign available_filter_options = 0 %}
+            {% for tag_data in filter.tag_filter %}
+              {% if tag_data.count > 0 %}
+                {% assign available_filter_options = available_filter_options + 1 %}
+                <div data-zs-filter-option-value-container class="theme-product-filter-option-container" {% if available_filter_options > filter.value_to_show_by_default %}style="display:none;"{% endif %}>
+                  <div class="theme-product-filter-select-option">
+                    <input data-zs-filter-option-value data-zs-filter-option-value-type="{{filter.type}}" data-zs-filter-option-value-id="{{tag_data.container_id}}" data-zs-filter-option-value-data="{{tag_data.id}}" data-zs-filter-option-value-formatted="{{tag_data.name}}" class="theme-product-filter-check" type="checkbox" name="" />
+                    <span class="theme-product-filter-custom-check"></span>
+                  </div>
+                  <div class="theme-product-filter-text">{{ tag_data.name }}</div>
+                  {% if filter.show_product_count %}
+                    <div class="theme-product-filter-count">{{ tag_data.count }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% if available_filter_options > filter.value_to_show_by_default %}
+              <a data-zs-filter-option-showmore-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.show_more.label")}}</a>
+              <a data-zs-filter-option-showless-btn href="javascript:;" class="theme-product-filter-show-more" style="display:none;">{{i18n.get("product_filters.show_less.label")}}</a>
+            {% endif %}
+
+          {% comment %} FILTER TYPE - TAG ENDS {% endcomment %}
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}

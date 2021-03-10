@@ -1,0 +1,129 @@
+.zpform-container{
+	input[type='text'],
+	input[type='email'],
+	input[type='date'],
+	input[type="file"],
+	textarea,
+	select{
+		font-family: map-get($default_vars,  'font-family-form-field');
+		font-size: map-get($default_vars,  'font-size-form-field');
+		text-transform: map-get($default_vars,  'font-transform-form-field');
+		font-weight: map-get($default_vars,  'font-weight-form-field');
+		line-height: map-get($default_vars,  'font-line-height-form-field');
+		letter-spacing: map-get($default_vars,  'font-letter-spacing-form-field');
+	}
+	label{
+		font-family: map-get($default_vars,  'font-family-form-label');
+		font-size: map-get($default_vars,  'font-size-form-label');
+		text-transform: map-get($default_vars,  'font-transform-form-label');
+		font-weight: map-get($default_vars,  'font-weight-form-label');
+		line-height: map-get($default_vars,  'font-line-height-form-label');
+		letter-spacing: map-get($default_vars,  'font-letter-spacing-form-label');
+	}
+	h2{
+		font-family: map-get($default_vars,  'font-family-form-heading');
+		font-size: map-get($default_vars,  'font-size-form-heading');
+		text-transform: map-get($default_vars,  'font-transform-form-heading');
+		font-weight: map-get($default_vars,  'font-weight-form-heading');
+		line-height: map-get($default_vars,  'font-line-height-form-heading');
+		letter-spacing: map-get($default_vars,  'font-letter-spacing-form-heading');
+	}
+	.zpbutton{
+		&.zpbutton-type-primary{
+			font-family: map-get($default_vars,  'font-family-form-button-submit');
+			font-size: map-get($default_vars,  'font-size-form-button-submit');
+			font-weight: map-get($default_vars,  'font-weight-form-button-submit');
+			text-transform: map-get($default_vars,  'font-transform-form-button-submit');
+			border-width: map-get($default_vars,  'size-form-button-submit-border');
+			border-style: map-get($default_vars,  'style-form-button-submit-border');
+			line-height: map-get($default_vars,  'font-line-height-form-button-submit');
+			letter-spacing: map-get($default_vars,  'font-letter-spacing-form-button-submit');
+		}
+		&.zpbutton-type-secondary{
+			font-family: map-get($default_vars,  'font-family-form-button-reset');
+			font-size: map-get($default_vars,  'font-size-form-button-reset');
+			font-weight: map-get($default_vars,  'font-weight-form-button-reset');
+			text-transform: map-get($default_vars,  'font-transform-form-button-reset');
+			border-width: map-get($default_vars,  'size-form-button-reset-border');
+			border-style: map-get($default_vars,  'style-form-button-reset-border');
+			line-height: map-get($default_vars,  'font-line-height-form-button-reset');
+			letter-spacing: map-get($default_vars,  'font-letter-spacing-form-button-reset');
+		}
+	}
+}
+@mixin form-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpform-container{
+    input[type='text'],
+    input[type='email'],
+    input[type='date'],
+    input[type="file"],
+    textarea,
+    select{
+      background: map-get($default_vars,  '#{$section-bg}color-form-field-background');
+      border-color: map-get($default_vars,  '#{$section-bg}color-form-field-border');
+      color: map-get($default_vars,  '#{$section-bg}color-form-field');
+			&:focus{
+				border-color : map-get($default_vars,  '#{$section-bg}color-form-field-active-border');
+			}
+    }
+    input[type="file"]{
+      background: transparent;
+    }
+    input,
+    textarea,
+    select {
+      &::-webkit-input-placeholder{
+        color: map-get($default_vars,  '#{$section-bg}color-form-placeholder');
+      }
+      &::-moz-placeholder{
+        color: map-get($default_vars,  '#{$section-bg}color-form-placeholder');
+      }
+    }
+    .zpform-errormsg,
+    .zpform-common-errormsg{
+       color: map-get($default_vars,  '#{$section-bg}color-form-error-message-text');
+    }
+    .zpform-common-successmsg{
+       color: map-get($default_vars,  '#{$section-bg}color-form-success-message-text');
+    }
+    .zpform-mandatory{
+      &:after{
+        color: map-get($default_vars,  '#{$section-bg}color-form-error-message-text');
+      }
+    }
+		label{
+			color: map-get($default_vars,  '#{$section-bg}color-form-label');
+		}
+		h2{
+			color: map-get($default_vars,  '#{$section-bg}color-form-heading');
+		}
+		.zpbutton{
+			&.zpbutton-type-primary{
+				background-color: map-get($default_vars,  '#{$section-bg}color-form-button-submit-background');
+				color: map-get($default_vars,  '#{$section-bg}color-form-button-submit');
+				border-color: map-get($default_vars,  '#{$section-bg}color-form-button-submit-border');
+				&:hover{
+					background-color: map-get($default_vars,  '#{$section-bg}color-form-button-submit-hover-background');
+					color: map-get($default_vars,  '#{$section-bg}color-form-button-submit-hover-text-and-icon');
+					border-color: map-get($default_vars,  '#{$section-bg}color-form-button-submit-hover-border');
+				}
+			}
+			&.zpbutton-type-secondary{
+				background-color: map-get($default_vars,  '#{$section-bg}color-form-button-reset-background');
+				color: map-get($default_vars,  '#{$section-bg}color-form-button-reset');
+				border-color: map-get($default_vars,  '#{$section-bg}color-form-button-reset-border');
+				&:hover{
+					background-color: map-get($default_vars,  '#{$section-bg}color-form-button-reset-hover-background');
+					color: map-get($default_vars,  '#{$section-bg}color-form-button-reset-hover-text-and-icon');
+					border-color: map-get($default_vars,  '#{$section-bg}color-form-button-reset-hover-border');
+				}
+			}
+		}
+  }
+}
+@include form-style(null);
+@include form-style('.zpdark-section');

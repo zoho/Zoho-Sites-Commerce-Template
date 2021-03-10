@@ -1,0 +1,124 @@
+<div class="zprow" data-zs-app="blog_comments">
+  <div class="zpcol-md-9 zpcol-sm-12 theme-blog-container-column">
+    {% if page.blog_author.name || page.blog_category.name || page.blog_tag.name %}
+      <h1 class="theme-blog-list-seo">
+        {% if page.blog_author.name %}
+          {{i18n.get("blog.post.listing.author",page.blog_author.name)}}
+        {% elif page.blog_category.name %}
+          {{i18n.get("blog.post.listing.category",page.blog_category.name)}}
+        {% elif page.blog_tag.name %}
+          {{i18n.get("blog.post.listing.tag",page.blog_tag.name)}}
+        {% endif %}
+      </h1>
+    {% endif %}
+    {% for post in blog_posts %}
+    <div class="theme-blog-container">
+      <div class="theme-blog-part theme-blog-heading-author {% if page.blog_summary_view %}theme-blog-heading-space{% endif %}">
+        <h3 class="theme-blog-heading">
+          <a href="{{post.post_url}}" data-blogpost-heading="true">{{post.post_title}}</a>
+        </h3>
+        <p>
+          {{i18n.get("blog.post.postby")}}
+          <a href="{{post.author.author_url}}" class="theme-blog-author" data-blog-author="true">{{post.author.author_name}}</a>
+        </p>
+      </div>
+      {% if post.post_image %}
+      <div class="theme-blog-cover-img-container">
+        <img src="{{post.post_image}}" class="theme-blog-cover-img" alt="{{post.post_title}}"/>
+      </div>
+      {% endif %}
+      <div class="theme-blog-part theme-blog-author">
+
+        {% if !post.post_image && post.summary_image %}
+          <div class="theme-blog-summary-image">
+            <img src="{{post.summary_image}}" alt="{{post.post_title}}" />
+          </div>
+        {% endif %}
+
+        {{post.summary}}
+
+      </div>
+      <div class="theme-blog-part theme-blog-date-container">
+        <div class="theme-blog-date-comment-count">
+          <span class="theme-blog-date">
+             {{ post.post_published_time }}
+          </span>
+          <span class="theme-blog-comment-count">
+            <a href="{{post.post_url}}#comments"> - <span data-post-id="{{post.post_id}}"></span> {{i18n.get("blog.message.noofcomments")}} </a>
+          </span>
+        </div>
+        <div class="theme-blog-readmore">
+          <a href="{{post.post_url}}" data-blogpost-heading="true">{{i18n.get("blog.post.readmore")}}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% if page.blog_prev_page != 0 || page.blog_next_page != 0 %}
+    <div class="theme-blog-container theme-blog-prev-next">
+      {% if page.blog_prev_page != 0 %}
+      <a href="{{page.blog_pagination_url}}{{page.blog_prev_page}}" class="theme-blog-previous-link" data-blog-prevpage="true">
+        <span>
+          <svg viewBox="13 14 17 12" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24.4476024,14.1797714 C24.2160051,13.9400762 23.8305494,13.9400762 23.5908542,14.1797714 C23.3592569,14.4113687 23.3592569,14.7968244 23.5908542,15.0278819 L27.9350587,19.3720864 L13.5997777,19.3720864 C13.2656081,19.3726262 13,19.6382344 13,19.9724039 C13,20.3065735 13.2656081,20.5808193 13.5997777,20.5808193 L27.9350587,20.5808193 L23.5908542,24.916926 C23.3592569,25.1566211 23.3592569,25.5426167 23.5908542,25.7736742 C23.8305494,26.0133693 24.2165449,26.0133693 24.4476024,25.7736742 L29.8202286,20.401048 C30.0599238,20.1694506 30.0599238,19.7839949 29.8202286,19.5529374 L24.4476024,14.1797714 Z" transform="translate(21.500000, 19.976723) scale(-1, 1) translate(-21.500000, -19.976723) "></path>
+          </svg>
+        </span>
+        {{i18n.get("blog.post.previous")}}
+      </a>
+      {% endif %}
+      {% if page.blog_next_page != 0 %}
+      <a href="{{page.blog_pagination_url}}{{page.blog_next_page}}" class="theme-blog-next-link" data-blog-nextpage="true">
+        {{i18n.get("blog.post.next")}}
+        <span>
+          <svg viewBox="13 14 17 12" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24.4476024,14.1797714 C24.2160051,13.9400762 23.8305494,13.9400762 23.5908542,14.1797714 C23.3592569,14.4113687 23.3592569,14.7968244 23.5908542,15.0278819 L27.9350587,19.3720864 L13.5997777,19.3720864 C13.2656081,19.3726262 13,19.6382344 13,19.9724039 C13,20.3065735 13.2656081,20.5808193 13.5997777,20.5808193 L27.9350587,20.5808193 L23.5908542,24.916926 C23.3592569,25.1566211 23.3592569,25.5426167 23.5908542,25.7736742 C23.8305494,26.0133693 24.2165449,26.0133693 24.4476024,25.7736742 L29.8202286,20.401048 C30.0599238,20.1694506 30.0599238,19.7839949 29.8202286,19.5529374 L24.4476024,14.1797714 Z"></path>
+          </svg>
+        </span>
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  <div class="zpcol-md-3 zpcol-sm-12 theme-blog-category-column">
+    <div class="theme-blog-category-container">
+      <div class="theme-blog-category-part theme-blog-category-heading-container">
+        <h4 class="theme-blog-category-heading">{{i18n.get("blog.post.category")}}</h4>
+      </div>
+      <div class="theme-blog-category-part theme-blog-category-list">
+        <ul>
+          {% for category in blog_categories %}
+          <li class="theme-blog-category-list">
+            <a href="{{category.category_url}}" class="theme-blog-side-menu-link">{{category.category_name}}</a>
+            <p class="theme-blog-count">({{category.published_post_count}})</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="theme-blog-category-container">
+      <div class="theme-blog-category-part theme-blog-category-heading-container">
+        <h4 class="theme-blog-category-heading">{{i18n.get("blog.post.tag")}}</h4>
+      </div>
+      <div class="theme-blog-category-part theme-blog-tag-list">
+        <ul>
+          {% for tag in blog_tags %}
+          <li class="theme-blog-category-tag-list">
+            <a href="{{tag.tag_url}}" class="theme-blog-category-tag-list-link">{{tag.tag_name}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="theme-blog-category-container theme-blog-rss-feed">
+      <a href="{{page.blog_feed_url}}" target="_blank">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(-4 -4)" fill="none" fill-rule="evenodd">
+            <path d="M0 0h24v24H0"/>
+            <circle fill-rule="nonzero" cx="6.18" cy="17.82" r="2.18"/>
+            <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z" fill-rule="nonzero"/>
+          </g>
+        </svg>
+        <span>{{i18n.get("blog.rss.subscribe_rss_feed")}}</span>
+      </a>
+    </div>
+  </div>
+</div>

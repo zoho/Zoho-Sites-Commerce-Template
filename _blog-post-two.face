@@ -1,0 +1,59 @@
+<div class="zprow">
+  <div class="zpcol-md-12 zpcol-sm-12 theme-blog-container-column theme-single-post">
+    <div class="theme-blog-container">
+      <div class="theme-blog-part theme-blog-post-header-area">
+        <h1 class="theme-blog-heading theme-single-blog-heading" data-post-heading="true">{{blog_post.post_title}}</h1>
+        <div class="theme-blog-post-details-area">
+            <span class="theme-blog-date">
+              {% if blog_post.post_last_modified_time %}
+               {{ blog_post.post_last_modified_time }}
+             {% else %}
+              {{ blog_post.post_published_time }}
+             {% endif %}
+            </span>
+            <span class="theme-blog-author">
+              {{i18n.get("blog.post.postby")}}
+              <a href="{{blog_post.author.author_url}}" data-blog-author="true">{{blog_post.author.author_name}}</a>
+            </span>
+            {% comment %}
+            <span class="theme-blog-comment">
+              <a href="{{post.post_url}}#comments"> - {{post.comments_count}} {{i18n.get("blog.message.noofcomments")}} </a>
+            </span>
+            {% endcomment %}
+        </div>
+      </div>
+      <div class="theme-blog-part theme-blog-post-content">
+        {{blog_post.content}}
+      </div>
+      {% comment %}  SOCIAL SHARE STARTS HERE {% endcomment %}
+
+      {% if blog_post.is_social_share_enabled %}
+        <div class="theme-blog-post-social-share" data-zs-app="social_share" data-style="{{blog_post.social_share_options.style}}" data-align="{{blog_post.social_share_options.align}}" data-count="{{blog_post.social_share_options.show_count}}">
+        </div>
+      {% endif %}
+
+      {% comment %}  SOCIAL SHARE ENDS HERE {% endcomment %}
+
+      <div class="theme-blog-part theme-blog-post-footer-area">
+        <div class="theme-blog-post-footer-content">
+          <span>{{i18n.get("blog.post.tag")}} :</span>
+          <div>
+              {% for tag in blog_post.tags %}
+                {% if loop.last %}
+                  <a href="{{tag.tag_url}}">{{tag.tag_name}}</a>
+                {% else %}
+                  <a href="{{tag.tag_url}}">{{tag.tag_name}}, &nbsp;</a>
+                {% endif %}
+              {% endfor %}
+          </div>
+        </div>
+        <div class="theme-blog-post-footer-content">
+          <span>{{i18n.get("blog.post.category")}} :</span>
+          <div>
+            <a href="{{blog_post.category.category_url}}"> {{ blog_post.category.category_name }}</a>
+          </div>
+        </div>
+    </div>
+  </div>
+  </div>
+</div>

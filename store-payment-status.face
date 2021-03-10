@@ -1,0 +1,185 @@
+{% extends "_theme" %}
+
+{% block header_block %}
+{% endblock %}
+
+{% block cart_checkout_remove_block %}
+{% endblock %}
+
+{% block cart_checkout_block %}
+
+{% if page.template_vars.header_style == "06" %}
+
+<div data-theme-header-six-res="theme-header-six-res" data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-01 theme-cart-checkout-headersix {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %}">
+
+  {% if page.is_contact_information_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled %}
+
+  <div class="theme-header-topbar {% if !page.is_portal_enabled %}theme-headersix-hide-topbar{% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}">
+    <div class="zpcontainer">
+        {% if page.is_contact_information_enabled %}
+        <div data-topbarinfo-position="zptheme-topbarinfo-position">
+            {% include '_contacts' %}
+        </div>
+        {% endif %}
+
+        {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+
+
+        		{% include '_social-links' %}
+
+        {% endif %}
+
+        {% if page.is_portal_enabled %}
+
+        <div class="theme-portal-login">
+            <div class="theme-portal-container" data-portal-loggedout style="display:block">
+                <div class="theme-portal-content"> <a data-portal-signin href="javascript:;">{{ i18n.get("portal.signin") }}</a> </div>
+                {% if page.is_portal_signup_enabled %}
+                <div class="theme-portal-content"> <a data-portal-signup href="javascript:;">{{ i18n.get("portal.signup") }}</a> </div>
+                {% endif %}
+            </div>
+            <div class="theme-portal-container" data-portal-loggedin style="display:none">
+                <div class="theme-portal-content {% if page.is_store_enabled %}theme-portal-username-content{% endif %}">
+                    <a class="{% if page.is_store_enabled %}theme-user-name-dropdown{% endif %}" data-portal-profile href="javascript:;">
+                        <span data-portal-user-name></span>
+                        {% if page.is_store_enabled %}
+                        <span class="theme-user-profile-down-arrow"></span>
+                        {% endif %}
+                    </a>
+                    {% if page.is_store_enabled %}
+                    <ul class="theme-username-dropdown-list">
+                        <li>
+                            <a href="/account/profile">{{i18n.get("portal.profile.title")}}</a>
+                        </li>
+                        <li>
+                            <a href="/account/orders">{{i18n.get("orders.title.myorders")}}</a>
+                        </li>
+                        <li>
+                            <a href="/account/address">{{i18n.get("address.tab.title")}}</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="theme-portal-content">
+                    <a data-portal-logout href="javascript:;">{{ i18n.get("portal.signout") }}</a>
+                </div>
+            </div>
+        </div>
+
+
+        {% endif %}
+
+    </div>
+  </div>
+
+  {% endif %}
+
+  <div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
+      <div class="zpcontainer">
+          {% include '_branding' %}
+      </div>
+  </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+{% block content_area %}
+<div class="theme-payment-content-area" data-theme-content-container="theme-content-container">
+  <div class="zpcontainer">
+    <div class="theme-payment-success-indicator">
+      {% if payment_status.order_placed %}
+      <svg viewBox="-1 0 252 85" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <g id="success-icon" stroke="none" fill="none">
+              <polygon stroke="#979797" stroke-width="1" fill="#D8D8D8" fill-rule="evenodd" points="53.5714286 70.3243243 50.0727068 72.1617227 50.7409032 68.2700505 47.9103779 65.513953 51.8220677 64.9461657 53.5714286 61.4054054 55.3207894 64.9461657 59.2324793 65.513953 56.4019539 68.2700505 57.0701503 72.1617227"></polygon>
+              <polygon stroke="#979797" stroke-width="1" fill="#D8D8D8" fill-rule="evenodd" points="5.95238095 81.027027 2.45365921 82.8644254 3.12185561 78.9727532 0.29133026 76.2166557 4.20302008 75.6488684 5.95238095 72.1081081 7.70174182 75.6488684 11.6134316 76.2166557 8.7829063 78.9727532 9.45110269 82.8644254"></polygon>
+              <polygon stroke="#979797" stroke-width="1" fill="#D8D8D8" fill-rule="evenodd" points="244.047619 81.027027 240.548897 82.8644254 241.217094 78.9727532 238.386568 76.2166557 242.298258 75.6488684 244.047619 72.1081081 245.79698 75.6488684 249.70867 76.2166557 246.878144 78.9727532 247.546341 82.8644254"></polygon>
+              <polygon stroke="#979797" stroke-width="1" fill="#D8D8D8" fill-rule="evenodd" points="195.238095 69.1351351 191.739373 70.9725335 192.40757 67.0808613 189.577045 64.3247638 193.488734 63.7569765 195.238095 60.2162162 196.987456 63.7569765 200.899146 64.3247638 198.068621 67.0808613 198.736817 70.9725335"></polygon>
+              <path d="M112.568538,51.8370238 C112.810012,52.1864746 113.20658,52.3854129 113.625398,52.3854129 C113.712433,52.3854129 113.801432,52.3533472 113.889776,52.3356783 C113.953907,52.3461488 114.016076,52.3775601 114.080862,52.3775601 C114.457143,52.3775601 114.822954,52.2146139 115.079479,51.9319121 L143.555139,23.4516721 C144.068844,22.9386207 144.068844,22.1062211 143.555139,21.5925153 C143.042087,21.0794639 142.209688,21.0794639 141.696636,21.5925153 L113.871453,49.4216251 L104.487325,40.0394602 C103.974273,39.5257544 103.141874,39.5257544 102.628822,40.0394602 C102.115116,40.5525115 102.115116,41.3849112 102.628822,41.8986169 L112.568538,51.8370238 L112.568538,51.8370238 Z" id="Shape" fill="#7EBE4C" fill-rule="nonzero"></path>
+              <path d="M149.923839,10.9678006 C142.851273,3.89494273 133.448003,0 123.445747,0 C113.44349,0 104.04022,3.89494273 96.9678006,10.9678006 C89.8949427,18.0402198 86,27.4434903 86,37.4457465 C86,47.4480028 89.8949427,56.8512733 96.9678006,63.9238387 C104.04022,70.9965503 113.44349,74.8914931 123.445747,74.8914931 C133.448003,74.8914931 142.851273,70.9965503 149.923839,63.9238387 C156.99655,56.8512733 160.891493,47.4480028 160.891493,37.4457465 C160.891493,27.4434903 156.99655,18.0402198 149.923839,10.9678006 Z M123.445747,71.9078277 C104.443347,71.9078277 88.9836654,56.4482927 88.9836654,37.4457465 C88.9836654,18.4432003 104.443347,2.98366538 123.445747,2.98366538 C132.946946,2.98366538 141.562467,6.84858569 147.802687,13.088806 C154.042907,19.3290263 157.907828,27.9445466 157.907828,37.4457465 C157.907828,56.4481464 142.448146,71.9078277 123.445747,71.9078277 Z" fill="#7EBE4C" fill-rule="nonzero"></path>
+          </g>
+      </svg>
+      {% endif %}
+    </div>
+    <div class="theme-payment-success-message">
+      {% if payment_status.order_placed %}
+        <h3>{{i18n.get("sales.message.order_confirmed")}}</h3>
+        {% else %}
+          {% if payment_status.transaction_status == "pending" %}
+            <div class="theme-payment-message-header">
+              <span class="theme-payment-fail-icon">
+                <svg class="theme-payment-fail-svg" viewBox="0 0 32 27" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(-2 -1)" fill-rule="nonzero" fill="none">
+                    <path d="M20.496 3.744l12.395 18.592A3 3 0 0 1 30.394 27H5.606a3 3 0 0 1-2.497-4.664L15.504 3.744a3 3 0 0 1 4.992 0z" stroke="#EE667C"/>
+                    <rect fill="#EE667C" x="17" y="9" width="2" height="8" rx="1"/>
+                    <circle fill="#EE667C" cx="18" cy="22" r="1"/>
+                  </g>
+                </svg>
+              </span>
+              <h3 class="theme-payment-message-heading">{{ i18n.get("sales.message.transaction_pending") }}</h3>
+            </div>
+            <div class="theme-payment-message-box">
+              <ul class="theme-payment-message-lists">
+                <li class="theme-payment-message-list">{{ i18n.get("sales.message.transaction_pending.info.success") }}</li>
+                <li class="theme-payment-message-list">{{ i18n.get("sales.message.transaction_pending.info.failure") }}</li>
+              </ul>
+              <br>
+              {% if org_meta.support_email_id != "" %}
+                <p>{{ i18n.get("sales.message.transaction_pending.help.contactemail", org_meta.support_email_id) }}</p>
+              {% else %}
+                <p>{{ i18n.get("sales.message.transaction_pending.help") }}</p>
+              {% endif %}
+            </div>
+          {% else %}
+            <div class="theme-payment-message-header">
+              <span class="theme-payment-fail-icon">
+                <svg class="theme-payment-fail-svg" viewBox="0 0 32 27" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="translate(-2 -1)" fill-rule="nonzero" fill="none">
+                    <path d="M20.496 3.744l12.395 18.592A3 3 0 0 1 30.394 27H5.606a3 3 0 0 1-2.497-4.664L15.504 3.744a3 3 0 0 1 4.992 0z" stroke="#EE667C"/>
+                    <rect fill="#EE667C" x="17" y="9" width="2" height="8" rx="1"/>
+                    <circle fill="#EE667C" cx="18" cy="22" r="1"/>
+                  </g>
+                </svg>
+              </span>
+              <h3 class="theme-payment-message-heading">{{i18n.get("sales.message.transaction_failed")}}</h3>
+            </div>
+            <div class="theme-payment-message-box">
+              <h5>{{i18n.get("sales.message.possible_reasons")}}:</h5>
+              <ul class="theme-payment-message-lists">
+                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.authentication_error")}}</li>
+                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.insufficient_balance")}}</li>
+                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.network_error")}}</li>
+                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.payment_cancelled")}}</li>
+              </ul>
+            </div>
+          {% endif %}
+      {% endif %}
+    </div>
+    {% if payment_status.order_placed %}
+      <div class="theme-payment-info light-section-bg">
+        <div class="theme-payment-info-list">{{i18n.get("sales.label.sales_order_id")}} : <span>{{ payment_status.salesorder_number}}</span></div>
+        <div class="theme-payment-info-list">{{i18n.get("sales.label.payment_amount")}} :  <span>{{ payment_status.currency_code }} {{ payment_status.payments[0].amount}}</span></div>
+        <div class="theme-payment-info-list">{{i18n.get("sales.label.payment_mode")}} : <span>{{ payment_status.payments[0].payment_mode }}</span></div>
+      </div>
+      <div class="theme-payment-thank-message">
+        {{i18n.get("sales.message.thank_you_for_shopping")}}
+      </div>
+    {% endif %}
+    <div class="theme-payment-button">
+      {% if payment_status.order_placed %}
+        <a href="/" class="zpbutton zpbutton-size-md zpbutton-type-primary">{{i18n.get("orders.continue.shopping.button")}}</a>
+      {% else %}
+        {% if payment_status.transaction_status == "pending" %}
+          <a href="/" class="zpbutton zpbutton-size-md zpbutton-type-primary">{{i18n.get("orders.continue.shopping.button")}}</a>
+        {% else %}
+        <a href="/checkout" class="zpbutton zpbutton-size-lg zpbutton-type-primary zpbutton-style-roundcorner">{{i18n.get("sales.label.retry_payment")}}</a>
+        <a href="/" class="zpbutton zpbutton-size-lg zpbutton-type-link">{{i18n.get("orders.continue.shopping.button")}}</a>
+        <div data-zs-label-amount-detected data-zs-mail-sent-success-message="{{i18n.get("sales.message.mail_sent.success")}}" data-zs-mail-sent-failure-message="{{i18n.get("sales.message.mail_sent.failure")}}" class="theme-payment-bottom-message"><a href="javascript:;" onclick="informMerchantAboutFailureTransaction()">{{i18n.get("sales.label.click_here")}}</a> {{i18n.get("sales.message.amount_detected")}}</div>
+      {% endif %}
+    {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

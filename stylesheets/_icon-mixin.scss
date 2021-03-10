@@ -1,0 +1,29 @@
+@mixin icon-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpicon-common {
+      svg{
+  		    fill: map-get($default_vars,'#{$section-bg}color-icon');
+      }
+      &.zpicon-style-bgfill,
+      &.zpicon-style-circle-fill,
+      &.zpicon-style-roundcorner-fill {
+        background: map-get($default_vars,'#{$section-bg}color-icon-fill-background');
+        svg{
+          fill:map-get($default_vars,'#{$section-bg}color-icon-fill');
+        }
+      }
+      &.zpicon-style-border,
+      &.zpicon-style-circle,
+      &.zpicon-style-roundcorner {
+        border-color: map-get($default_vars,'#{$section-bg}color-icon-border');
+				svg{
+        	fill:map-get($default_vars,'#{$section-bg}color-icon-border-style');
+        }
+      }
+  	}
+  }
+@include icon-style(null);
+@include icon-style('.zpdark-section');

@@ -1,0 +1,323 @@
+{% extends "_theme" %}
+
+{% comment %} CONTENT AREA TO JUST TEST THE HREADING ELEMENT {% endcomment %}
+
+{% comment %} THEME BANNER AREA START {% endcomment %}
+
+{% block content_area %}
+
+{% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+  <div class="theme-vertical-navigation-sidebar-container">
+{% endif %}
+
+  {% if page.template_vars.header_style == "06" && page.is_portal_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_multi_currency_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_menu_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_search_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_store_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_logo_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_title_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_caption_enabled && page.is_sidebar_enabled  %}
+
+  <div class="theme-vertical-navigation-container {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %} {% if page.is_sidebar_enabled %} theme-veritical-nav-with-sidebar {% endif %}" data-theme-vertical-menu="zptheme-vertical-menu">
+    <div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %} {% if page.template_vars.header_background == "dark" && page.is_sidebar_enabled %}zpdark-section{% endif %}" data-banner-base-header="theme-banner-base-header">
+      <div class="zpcontainer">
+        {% if page.is_portal_enabled || page.is_multi_currency_enabled %}
+        <div class="theme-header-topbar theme-vertical-navigation-portal {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %}" data-banner-base-header="theme-banner-base-header">
+          {% if page.is_portal_enabled %}
+          <div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
+            {% include '_member-portal' %}
+          </div>
+          {% endif %}
+
+          {% if page.is_multi_currency_enabled %}
+          <div data-theme-currency-placeholder-non-res class="theme-currency-container-style-06-non-res">
+            {% include '_store-currency-target' %}
+          </div>
+          {% endif %}
+
+        </div>
+        {% endif %}
+
+        {% include '_branding' %}
+
+        {% if page.is_search_enabled || page.is_store_enabled %}
+        <div class="theme-navigation-and-icons theme-vertical-navigation-search-cart-container">
+          <div data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive" class="theme-search-cart-non-res">
+            {% include '_search-store-cart-count' %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if page.is_menu_enabled %}
+        <div class="theme-navigation-and-icons">
+          <div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
+            <div class="theme-menu" data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem: {{page.template_vars.maxmenuitem}};position: theme-sub-menu-position-change; orientation: vertical; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
+              {{navi(menu)}}
+              <div data-theme-currency-placeholder-res class="theme-currency-res">
+              </div>
+              <div class="theme-close-mobile-currency" data-theme-currency-open-top>
+                <div class="theme-currency-open-label">
+                  {{i18n.get("currency.label")}}
+                </div>
+                <div onclick="closeCurrencyMobile()" class="theme-currency-close-icon-container" data-theme-currency-hide-mobile>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <div data-theme-sidebar-content-container class="theme-sidebar-area">
+          <div data-theme-sidebar-content>
+            {{page.sidebar_content}}
+          </div>
+        </div>
+
+      </div>
+
+      {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled %}
+      <div class="zpcontainer theme-vertical-navigation-contact-social-container">
+        <div class="theme-vertical-navigation-contact-social">
+          <div class="theme-header-topbar">
+            {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+              {% include '_social-links' %}
+            {% endif %}
+            {% if page.is_contact_information_enabled %}
+            <div data-topbarinfo-position="zptheme-topbarinfo-position">
+              {% include '_contacts' %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+  {% endif %}
+
+  {% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+    <div class="theme-vertical-header-sidebar-banner-content-container">
+  {% endif %}
+
+{% if page.is_banner_enabled %}
+{% if page.banner %}
+<div data-themebanner="zptheme-banner" class="theme-banner{% if page.template_vars.banner_style == "full-screen" %} zphero-full-screen {% endif %} {% if page.template_vars.banner_style == "boxed" %} zpcontainer zphero-boxed {% endif %} {% if page.template_vars.banner_style == "full-width-header-overlaped" %} zphero-fullwidth-overlap {% endif %} {% if page.template_vars.header_style == "06" && page.is_portal_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_search_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_store_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_title_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled && !page.is_sidebar_enabled %}zpbanner-for-header-06{% endif %}">
+
+    {{page.banner}}
+
+</div>
+{% endif %}
+{% endif %}
+
+{% comment %} THEME BANNER AREA END {% endcomment %}
+
+<div data-theme-content-container="theme-content-container" class="theme-content-area {% if page.is_sidebar_enabled && page.template_vars.header_style == '01' || page.is_sidebar_enabled && page.template_vars.header_style == '02' || page.is_sidebar_enabled && page.template_vars.header_style == '03' || page.is_sidebar_enabled && page.template_vars.header_style == '07' || page.is_sidebar_enabled && page.template_vars.header_style == '04' || page.is_sidebar_enabled && page.template_vars.header_style == '05' %}theme-sidebar-enable{% endif %} {% if page.is_sidebar_right_enabled %}theme-sidebar-enable-right{% endif %} {% if page.template_vars.header_style == "06" && page.is_portal_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_search_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_store_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_title_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled && !page.is_sidebar_enabled %}zpcontent-for-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
+    <div class="theme-content-container">
+      <div class="theme-content-area-inner">
+
+        {% comment %} BREADCRUMB STARTS HERE {% endcomment %}
+
+        {% if page.template_vars.breadcrumb_style == '01' && page.is_breadcrumb_enabled %}
+        <div class="theme-section theme-breadcrumb-container">
+    			<div class="zpcontainer">
+    				<div class="theme-breadcrumb">
+    					{% for bread_crumb in page.breadcrumbs %}
+                {% if loop.last %}
+                  <span class="theme-last-breadcrumb-nav theme-breadcrumb-nav">
+        						{{ bread_crumb.name }}
+        					</span>
+                  <span class="theme-breadcrumb-divider">//</span>
+                {% else %}
+      					<a href="{{ bread_crumb.url }}" class="theme-breadcrumb-nav">
+      						{{ bread_crumb.name }}
+      					</a>
+                <span class="theme-breadcrumb-divider">//</span>
+              {% endif %}
+    					{% endfor %}
+    				</div>
+    			</div>
+    		</div>
+        {% endif %}
+
+        {% if page.template_vars.breadcrumb_style == '02' && page.is_breadcrumb_enabled %}
+        <div class="theme-product-page-breadcrumb">
+          <div class="zpcontainer">
+            <div class="theme-porduct-bredcrumb">
+              {% for bread_crumb in page.breadcrumbs %}
+              {% if loop.last %}
+              <span class="theme-last-breadcrumb-nav">
+                {{ bread_crumb.name }}
+              </span>
+              <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/>
+              </svg>
+              {% else %}
+              <a href="{{ bread_crumb.url }}">
+                {{ bread_crumb.name }}
+              </a>
+              <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"/>
+              </svg>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if page.template_vars.breadcrumb_style == '03' && page.is_breadcrumb_enabled %}
+        <div class="theme-section theme-breadcrumb-container">
+    			<div class="zpcontainer">
+    				<div class="theme-breadcrumb">
+    					{% for bread_crumb in page.breadcrumbs %}
+              {% if loop.last %}
+              <span class="theme-last-breadcrumb-nav theme-breadcrumb-nav">
+    						{{ bread_crumb.name }}
+    					</span>
+              <span class="theme-breadcrumb-divider">
+                <svg width="11px" height="6px" viewBox="0 0 11 6" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="category" transform="translate(-176.000000, -76.000000)">
+                            <polygon points="186.964844 78.953125 184.011719 76 184.011719 78.4472656 176 78.4472656 176 79.4589844 184.011719 79.4589844 184.011719 81.90625"></polygon>
+                        </g>
+                    </g>
+                </svg>
+              </span>
+              {% else %}
+    					<a href="{{ bread_crumb.url }}" class="theme-breadcrumb-nav">
+    						{{ bread_crumb.name }}
+    					</a>
+              <span class="theme-breadcrumb-divider">
+                <svg width="11px" height="6px" viewBox="0 0 11 6" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="category" transform="translate(-176.000000, -76.000000)">
+                            <polygon points="186.964844 78.953125 184.011719 76 184.011719 78.4472656 176 78.4472656 176 79.4589844 184.011719 79.4589844 184.011719 81.90625"></polygon>
+                        </g>
+                    </g>
+                </svg>
+              </span>
+              {% endif %}
+    					{% endfor %}
+    				</div>
+    			</div>
+    		</div>
+        {% endif %}
+
+        {% if page.template_vars.breadcrumb_style == '04' && page.is_breadcrumb_enabled %}
+        <div class="theme-section theme-breadcrumb-container">
+    			<div class="zpcontainer">
+    				<div class="theme-breadcrumb">
+    					{% for bread_crumb in page.breadcrumbs %}
+              {% if loop.last %}
+              <span class="theme-last-breadcrumb-nav theme-breadcrumb-nav">
+    						{{ bread_crumb.name }}
+    					</span>
+              <span class="theme-breadcrumb-divider">
+                >>
+              </span>
+              {% else %}
+    					<a href="{{ bread_crumb.url }}" class="theme-breadcrumb-nav">
+    						{{ bread_crumb.name }}
+    					</a>
+              <span class="theme-breadcrumb-divider">
+                >>
+              </span>
+              {% endif %}
+    					{% endfor %}
+    				</div>
+    			</div>
+    		</div>
+        {% endif %}
+
+        {% if page.template_vars.breadcrumb_style == '05' && page.is_breadcrumb_enabled %}
+        <div class="theme-section theme-breadcrumb-container">
+  					<div class="zpcontainer">
+  							<div class="theme-porduct-breadcrumb">
+  								{% for bread_crumb in page.breadcrumbs %}
+  								{% if loop.last %}
+  								<div class="theme-breadcrumb-active">
+  									{{ bread_crumb.name }}
+  								</div>
+  								<span>/</span>
+  								{% else %}
+  								<a href="{{ bread_crumb.url}}">
+  									{{ bread_crumb.name }}
+  								</a>
+  								<span>/</span>
+  								{% endif %}
+  								{% endfor %}
+  							</div>
+  						</div>
+  			</div>
+        {% endif %}
+
+        {% if page.template_vars.breadcrumb_style == '06' && page.is_breadcrumb_enabled %}
+        <div class="theme-section theme-breadcrumb-container">
+  					<div class="zpcontainer">
+  						<div class="zpcol-md-12">
+                <div class="theme-porduct-breadcrumb">
+  								{% for bread_crumb in page.breadcrumbs %}
+  								{% if loop.last %}
+  								<div class="theme-breadcrumb-active">
+  									{{ bread_crumb.name }}
+  								</div>
+  								<span>/</span>
+  								{% else %}
+  								<a href="{{ bread_crumb.url}}">
+  									{{ bread_crumb.name }}
+  								</a>
+  								<span>/</span>
+  								{% endif %}
+  								{% endfor %}
+  							</div>
+  						</div>
+  					</div>
+  			</div>
+        {% endif %}
+
+        {% if page.template_vars.breadcrumb_style == '07' && page.is_breadcrumb_enabled %}
+        <div class="theme-section theme-breadcrumb-container">
+  				<div class="zpcontainer">
+  					<div class="theme-breadcrumb">
+  						{% for bread_crumb in page.breadcrumbs %}
+  						{% if loop.last %}
+  						<div class="theme-breadcrumb-active">
+  							{{ bread_crumb.name }}
+  						</div>
+  						<span>/</span>
+  						{% else %}
+  						<a href="{{ bread_crumb.url}}">
+  							{{ bread_crumb.name }}
+  						</a>
+  						<span>/</span>
+  						{% endif %}
+  						{% endfor %}
+  					</div>
+  				</div>
+  			</div>
+        {% endif %}
+
+    		{% comment %} BREADCRUMB ENDS HERE {% endcomment %}
+
+        {{page.content}}
+
+      </div>
+    </div>
+
+    {% comment %} SIDEBAR AREA STARTS HERE {% endcomment %}
+
+    {% if page.is_sidebar_enabled %}
+    <div data-theme-sidebar-mobile-content-container class="theme-sidebar-area {% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}theme-vertical-header-sidebar-responsive{% endif %}">
+      {% if page.template_vars.header_style != '06' %}
+        {{page.sidebar_content}}
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% comment %} SIDEBAR AREA ENDS HERE {% endcomment %}
+
+</div>
+{% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+  </div>
+{% endif %}
+{% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+</div>
+{% endif %}
+
+<div style="clear:both"></div>
+{% endblock %}

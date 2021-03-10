@@ -1,0 +1,57 @@
+@mixin icon-heading-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpelem-iconheading .zpicon-common {
+    svg{
+		    fill: map-get($default_vars,'#{$section-bg}color-iconheading');
+    }
+    &.zpicon-style-bgfill,
+    &.zpicon-style-circle-fill,
+    &.zpicon-style-roundcorner-fill {
+      background: map-get($default_vars,'#{$section-bg}color-iconheading-fill-background');
+      svg{
+        fill:map-get($default_vars,'#{$section-bg}color-iconheading-fill');
+      }
+    }
+    &.zpicon-style-border,
+    &.zpicon-style-circle,
+    &.zpicon-style-roundcorner {
+      border-color: map-get($default_vars,'#{$section-bg}color-iconheading-border');
+			svg{
+      	fill:map-get($default_vars,'#{$section-bg}color-iconheading-border-style');
+      }
+    }
+	}
+}
+
+$icon-heading-size : 'h1','h2','h3','h4','h5','h6';
+@each $icon-heading-tag in $icon-heading-size {
+	.zpelem-iconheading #{$icon-heading-tag}{
+		font-family:map-get($default_vars, "font-family-iconheading-#{$icon-heading-tag}");
+		font-size:map-get($default_vars, "font-size-iconheading-#{$icon-heading-tag}");
+		font-weight:map-get($default_vars, "font-weight-iconheading-#{$icon-heading-tag}");
+		text-transform:map-get($default_vars, "font-transform-iconheading-#{$icon-heading-tag}");
+		color:map-get($default_vars, "color-iconheading-#{$icon-heading-tag}");
+		line-height: map-get($default_vars, "font-line-height-iconheading-#{$icon-heading-tag}");
+		letter-spacing: map-get($default_vars, "font-letter-spacing-iconheading-#{$icon-heading-tag}");
+	}
+}
+@mixin icon-heading-font-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	@each $icon-heading-tag in $icon-heading-size {
+		#{$section-class-name} .zpelem-iconheading #{$icon-heading-tag}{
+			color:map-get($default_vars, "#{$section-bg}color-iconheading-#{$icon-heading-tag}");
+		}
+	}
+}
+
+@include icon-heading-style(null);
+@include icon-heading-style('.zpdark-section');
+
+@include icon-heading-font-style(null);
+@include icon-heading-font-style('.zpdark-section');

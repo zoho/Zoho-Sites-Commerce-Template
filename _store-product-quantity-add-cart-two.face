@@ -1,0 +1,92 @@
+{% if product.is_out_of_stock == false  %}
+<div class="theme-product-options" data-nostock-quantity>
+		<div class="theme-product-quantity">
+				<div class="theme-product-option-label">{{i18n.get("cart.quantity.label")}}</div>
+				<div class="theme-product-quantity-select">
+						<div class="theme-box-qty">
+								<input type="text" name="qty" data-quantity="{{product.product_id}}" maxlength="999" title="quantity" value="1" onkeypress='return productQuantity(event);' data-theme-quantity data-zs-quantity>
+								<div class="theme-qty-arrows">
+									<span>
+										<svg width="8px" height="6px"  viewBox="0 0 8 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+												<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+														<g id="a-copy-2" transform="translate(-983.000000, -680.000000)" stroke="#003570">
+																<g id="Group-4" transform="translate(758.000000, 628.000000)">
+																		<g id="Group-3">
+																				<g id="d-copy" transform="translate(229.000000, 55.000000) scale(1, -1) rotate(-270.000000) translate(-229.000000, -55.000000) translate(227.000000, 51.000000)">
+																						<path d="M3.96243053,-1.26217745e-29 L0,3.98176216" id="Line"></path>
+																						<path d="M0,3.98176216 L3.96243053,7.96352432" id="Line"></path>
+																				</g>
+																		</g>
+																</g>
+														</g>
+												</g>
+										</svg>
+									</span>
+										<input type="button" class="theme-cart-qty-increase" onclick="increaseCount(this)">
+										<input type="button" class="theme-cart-qty-decrease" onclick="decreaseCount(this)">
+										<span>
+											<svg width="8px" height="6px" viewBox="0 0 8 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+													<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+															<g id="a-copy-2" transform="translate(-983.000000, -680.000000)" stroke="#003570">
+																	<g id="Group-4" transform="translate(758.000000, 628.000000)">
+																			<g id="Group-3">
+																					<g id="d-copy" transform="translate(229.000000, 55.000000) scale(1, -1) rotate(-270.000000) translate(-229.000000, -55.000000) translate(227.000000, 51.000000)">
+																							<path d="M3.96243053,-1.26217745e-29 L0,3.98176216" id="Line"></path>
+																							<path d="M0,3.98176216 L3.96243053,7.96352432" id="Line"></path>
+																					</g>
+																			</g>
+																	</g>
+															</g>
+													</g>
+											</svg>
+										</span>
+								</div>
+						</div>
+				</div>
+		</div>
+</div>
+{% endif %}
+<div class="theme-product-cart-button {% if product.is_out_of_stock == true  %}theme-cart-button-nostock{% endif %}">
+	<div class="theme-cart-button zpbutton zpbutton-type-secondary zpbutton-style-roundcorner zpbutton-full-width zpbutton-size-md" data-nostock-cart-add="theme-nostock-cart-add" data-zs-add-to-cart data-zs-product-variant-id{% if !product.has_variants %} ="{{ product.variants[0].variant_id }}" {% endif %}>
+		<span class="theme-add-to-cart">{{i18n.get("product.action.add_to_cart")}}</span>
+		<span class="theme-cart-icon" data-theme-cart-button-icon="data-theme-cart-button-icon">
+			<svg class="theme-cart-icon-svg" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+			        <g id="a-copy-7" transform="translate(-1236.000000, -771.000000)" fill-rule="nonzero" fill="#FFFFFF">
+			            <g id="Group-4" transform="translate(758.000000, 628.000000)">
+			                <g id="Group-3-Copy-3" transform="translate(258.000000, 129.000000)">
+			                    <g id="ic_shopping_cart_black_24px" transform="translate(219.570801, 12.570801)">
+			                        <path d="M5.21087325,13.3993884 C4.39202174,13.3993884 3.72949643,14.0693578 3.72949643,14.8882093 C3.72949643,15.7070608 4.39202174,16.3770302 5.21087325,16.3770302 C6.02972476,16.3770302 6.69969418,15.7070608 6.69969418,14.8882093 C6.69969418,14.0693578 6.02972476,13.3993884 5.21087325,13.3993884 Z M0.744410465,1.48882093 L0.744410465,2.97764186 L2.23323139,2.97764186 L4.91310907,8.62771729 L3.90815494,10.4515229 C3.78904927,10.6599579 3.72205232,10.9056133 3.72205232,11.166157 C3.72205232,11.9850085 4.39202174,12.6549779 5.21087325,12.6549779 L14.1437988,12.6549779 L14.1437988,11.166157 L5.52352565,11.166157 C5.41930818,11.166157 5.33742303,11.0842718 5.33742303,10.9800544 L5.35975535,10.8907251 L6.02972476,9.67733604 L11.5755827,9.67733604 C12.1338906,9.67733604 12.6252015,9.37212775 12.878301,8.91059326 L15.5432905,4.07936935 C15.6028433,3.97515188 15.6326198,3.8486021 15.6326198,3.72205232 C15.6326198,3.31262657 15.297635,2.97764186 14.8882093,2.97764186 L3.87837852,2.97764186 L3.17863268,1.48882093 L0.744410465,1.48882093 Z M12.6549779,13.3993884 C11.8361264,13.3993884 11.1736011,14.0693578 11.1736011,14.8882093 C11.1736011,15.7070608 11.8361264,16.3770302 12.6549779,16.3770302 C13.4738294,16.3770302 14.1437988,15.7070608 14.1437988,14.8882093 C14.1437988,14.0693578 13.4738294,13.3993884 12.6549779,13.3993884 Z" id="Shape"></path>
+			                    </g>
+			                </g>
+			            </g>
+			        </g>
+			    </g>
+			</svg>
+		</span>
+		<span data-theme-cart-button-loading="theme-cart-button-loading" data-theme-cart-button-loading="theme-cart-button-loading" class="theme-cart-icon theme-cart-loading">
+			<svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg" class="theme-cart-loading">
+				<g transform="translate(0 .563)" fill-rule="nonzero">
+					<circle cx="3" cy="11.438" r="3"/>
+					<circle transform="rotate(45 5.636 5.074)" cx="5.636" cy="5.074" r="2.689"/>
+					<circle transform="rotate(90 12 2.438)" cx="12" cy="2.438" r="2.35"/>
+					<circle transform="rotate(135 18.364 5.074)" cx="18.364" cy="5.074" r="2.016"/>
+					<circle transform="rotate(180 21 11.438)" cx="21" cy="11.438" r="1.887"/>
+					<circle transform="rotate(-135 18.364 17.8)" cx="18.364" cy="17.801" r="1.512"/>
+					<circle transform="rotate(-90 12 20.438)" cx="12" cy="20.438" r="1.207"/>
+					<circle transform="rotate(-45 5.636 17.8)" cx="5.636" cy="17.801" r="1.008"/>
+				</g>
+			</svg>
+		</span>
+	</div>
+</div>
+
+<div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+
+<div data-zs-pricelist class="theme-prod-pricelist-outter">
+	{% include 'store-product-pricelist' %}
+</div>
+
+{% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+<div class="theme-prod-coupons-outtercontainer" data-zs-app="product_coupons" data-zs-coupons-list></div>
+{% endif %}

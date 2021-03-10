@@ -1,0 +1,546 @@
+{% extends "_theme" %}
+
+{% block header_block %}
+{% endblock %}
+
+{% block cart_checkout_remove_block %}
+{% endblock %}
+
+{% block cart_checkout_block %}
+
+{% if page.template_vars.header_style == "06" %}
+
+<div data-theme-header-six-res="theme-header-six-res" data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-01 theme-cart-checkout-headersix {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
+
+  {% if page.is_contact_information_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled %}
+
+  <div class="theme-header-topbar {% if !page.is_portal_enabled %}theme-headersix-hide-topbar{% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}">
+    <div class="zpcontainer">
+        {% if page.is_contact_information_enabled %}
+        <div data-topbarinfo-position="zptheme-topbarinfo-position">
+            {% include '_contacts' %}
+        </div>
+        {% endif %}
+
+        {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+
+        		{% include '_social-links' %}
+
+        {% endif %}
+
+        {% if page.is_portal_enabled %}
+
+        <div class="theme-portal-login">
+            <div class="theme-portal-container" data-portal-loggedout style="display:block">
+                <div class="theme-portal-content"> <a data-portal-signin href="javascript:;">{{ i18n.get("portal.signin") }}</a> </div>
+                {% if page.is_portal_signup_enabled %}
+                <div class="theme-portal-content"> <a data-portal-signup href="javascript:;">{{ i18n.get("portal.signup") }}</a> </div>
+                {% endif %}
+            </div>
+            <div class="theme-portal-container" data-portal-loggedin style="display:none">
+                <div class="theme-portal-content {% if page.is_store_enabled %}theme-portal-username-content{% endif %}">
+                    <a class="{% if page.is_store_enabled %}theme-user-name-dropdown{% endif %}" data-portal-profile href="javascript:;">
+                        <span data-portal-user-name></span>
+                        {% if page.is_store_enabled %}
+                        <span class="theme-user-profile-down-arrow"></span>
+                        {% endif %}
+                    </a>
+                    {% if page.is_store_enabled %}
+                    <ul class="theme-username-dropdown-list">
+                        <li>
+                            <a href="/account/profile">{{i18n.get("portal.profile.title")}}</a>
+                        </li>
+                        <li>
+                            <a href="/account/orders">{{i18n.get("orders.title.myorders")}}</a>
+                        </li>
+                        <li>
+                            <a href="/account/address">{{i18n.get("address.tab.title")}}</a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="theme-portal-content">
+                    <a data-portal-logout href="javascript:;">{{ i18n.get("portal.signout") }}</a>
+                </div>
+            </div>
+        </div>
+
+
+        {% endif %}
+
+    </div>
+  </div>
+
+  {% endif %}
+
+  <div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
+      <div class="zpcontainer">
+
+          {% include '_branding' %}
+
+          {% if page.is_search_enabled || page.is_store_enabled %}
+          <div class="theme-navigation-and-icons">
+             <div class="theme-search-cart-non-res theme-header-06-search-cart">
+                <div class="theme-search-and-mini-cart-group">
+                  {% if page.is_search_enabled %}
+                   <div class="theme-search theme-search-and-mini-cart-group-item">
+                      <div class="theme-search-field-container" data-search="zptheme-search-container">
+                         <form method="get" action="/search-products"><input type="text" name="q" placeholder="Search" autofocus="" data-search-input="zptheme-search-input"><input type="submit" name="" class="theme-search-go" value="Go" data-zs-search=""></form>
+                      </div>
+                      <div class="theme-search-hide-overlay" data-theme-search-overlay="theme-search-overlay" style="display:none;"></div>
+                      <span class="theme-search-icon" onclick="toggleSearch()">
+                         <svg viewBox="0 9 17 18" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.11998304,9 C9.49467136,9 12.2401638,11.7792946 12.2401638,15.1954945 C12.2401638,16.6310021 11.7542814,17.9528473 10.9418418,19.0044723 L16.7453489,24.8898164 C17.0883131,25.2377224 17.0843596,25.7977325 16.7364536,26.1406967 C16.5642797,26.3106962 16.3399198,26.3953006 16.11556,26.3953006 C15.8872467,26.3953006 15.6589333,26.3075334 15.485771,26.131999 L9.6721825,20.2361782 C8.6697783,20.9620366 7.44380495,21.3911866 6.11998304,21.3911866 C2.74529472,21.3911866 0,18.611892 0,15.1954945 C0,11.7792946 2.74529472,9 6.11998304,9 Z M6.11998304,19.8186909 C8.62787144,19.8186909 10.6678658,17.7446967 10.6678658,15.1954945 C10.6678658,12.6464899 8.62787144,10.5724956 6.11998304,10.5724956 C3.61248999,10.5724956 1.57229797,12.6464899 1.57229797,15.1954945 C1.57229797,17.7446967 3.61248999,19.8186909 6.11998304,19.8186909 Z M4.50063869,16.7758971 C4.64592899,16.6284323 4.85052144,16.5440256 5.05669529,16.5440256 C5.26306681,16.5440256 5.46548485,16.6284323 5.61294956,16.7758971 C5.75843753,16.921385 5.84284427,17.1238031 5.84284427,17.3301746 C5.84284427,17.5385228 5.75843753,17.7409409 5.61294956,17.8864289 C5.46548485,18.0338936 5.26306681,18.1163236 5.05669529,18.1163236 C4.85052144,18.1163236 4.64592899,18.0338936 4.50063869,17.8864289 C4.35515072,17.7409409 4.2705463,17.5385228 4.2705463,17.3301746 C4.2705463,17.1238031 4.35515072,16.921385 4.50063869,16.7758971 Z M3.05228224,15.2674477 C2.77810858,13.2116395 4.82640523,12.2782235 4.91377708,12.2394794 C5.25970635,12.0864798 5.66236803,12.2416538 5.81773969,12.5865947 C5.97311135,12.9315356 5.81912341,13.3381508 5.47517087,13.4956968 C5.42614775,13.518034 4.27865093,14.0561023 4.4158366,15.0855878 C4.46604576,15.4623542 4.20155812,15.8082835 3.8249894,15.8584926 C3.79415228,15.8626438 3.76351283,15.8646205 3.73326872,15.8646205 C3.39366501,15.8646205 3.09834025,15.6131793 3.05228224,15.2674477 Z" stroke="none" fill-rule="evenodd"></path>
+                         </svg>
+                      </span>
+                   </div>
+                   {% endif %}
+                   {% if page.is_store_enabled && page.show_cart_icon %}
+                   <div class="theme-mini-cart theme-search-and-mini-cart-group-item" data-zs-view-cart>
+                      <span class="theme-minicart-icon">
+                         <svg viewBox="0 0 24 21" xmlns="http://www.w3.org/2000/svg">
+                            <g transform="translate(0 -.036)" fill="transparent" fill-rule="evenodd">
+                               <path d="M2.818 2.676H23.31l-3.015 12.058H5.835L2.817 2.676z"></path>
+                            </g>
+                            <ellipse cx="7.445" cy="18.323" rx="2.001" ry="2" stroke="none"></ellipse>
+                            <ellipse cx="2" cy="1.999" rx="2" ry="1.999" stroke="none"></ellipse>
+                            <ellipse cx="17.242" cy="18.322" rx="2" ry="1.999" stroke="none"></ellipse>
+                         </svg>
+                         <span class="theme-mini-cart-count" data-zs-view-cart-count>8</span>
+                      </span>
+                   </div>
+                   {% endif %}
+                </div>
+             </div>
+          </div>
+          {% endif %}
+      </div>
+  </div>
+
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block content_area %}
+<div class="theme-content-area {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}" data-theme-content-container="theme-content-container">
+  <div class="theme-content-container">
+    <div class="theme-content-area-inner">
+      <div class="zpcontainer">
+        <div class="zprow">
+          <div class="zpcol-md-12">
+            <div class="theme-cart-area-container">
+              <div class="theme-shopping-cart-table-container">
+                {% if cart.items | size != 0 %}
+                <div class="theme-cart-table-row theme-cart-head" data-cart-table>
+                {% else %}
+                <div class="theme-cart-table-row theme-cart-empty" data-cart-table>
+                {% endif %}
+                  <div class="theme-cart-table-data theme-cart-items">{{i18n.get("cart.items.label")}}</div>
+                  <div class="theme-cart-table-data theme-cart-qty">{{i18n.get("cart.quantity.label")}}</div>
+                  <div class="theme-cart-table-data theme-cart-price-label">{{i18n.get("cart.sub_total.label")}}</div>
+                  <div class="theme-cart-table-data theme-cart-controle">{{i18n.get("cart.remove.label")}}</div>
+                </div>
+
+                {% for cartItem in cart.items %}
+
+                <div class="theme-cart-table-row" data-cart-item data-zs-product-id="{{cartItem.variant_id}}">
+                  <div class="theme-cart-table-data theme-cart-items">
+                    <div class="theme-cart-item-img">
+                      <a href="{{cartItem.url}}">
+                        {% if cartItem.images[0].is_placeholder_image %}
+                          <img alt="{{cartItem.images[0].alternate_text}}" title="{{cartItem.images[0].title}}" src="{{cartItem.images[0].url}}">
+                        {% else %}
+                          <img alt="{{cartItem.images[0].alternate_text}}" title="{{cartItem.images[0].title}}" src="{{cartItem.images[0].url}}/200x200">
+                        {% endif %}
+                      </a>
+                    </div>
+                    <div class="theme-cart-item-info">
+                      <div><a href="{{cartItem.url}}">{{cartItem.name}}</a></div>
+                      <ul>
+                        {% for option in cartItem.options %}
+                          <li>{{ option.name }}:
+                            {% if option.color_code != "" %}
+                            <span class="theme-cart-color" style="background-color:{{option.color_code}};"></span>
+                            {% endif %}
+                            <span> {{option.value}} </span>
+                          </li>
+                        {% endfor %}
+                        {% for field in cartItem.custom_fields %}
+                          {% if field.value != "" %}
+                              <li>{{ field.label }}:
+                                  <span> {{ field.display_value }} </span>
+                              </li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                      <div data-zs-cartitem-price-{{cartItem.variant_id}} class="item-price">{{ cartItem.selling_price | currency(currency) }}</div>
+                    </div>
+                  </div>
+                  <div class="theme-cart-table-data theme-cart-qty">
+                    <span class="theme-qty-head"><b>{{i18n.get("cart.quantity.label")}} : </b></span>
+                    {% if page.template_vars.product_details_style == "01" %}
+                      <span class="theme-quantity-field-button">
+                        <input type="text" value="{{ cartItem.quantity }}" onfocus="showUpdate('{{cartItem.variant_id}}')" onkeypress='return productQuantity(event);' data-zs-quantity data-zs-product-variant-id="{{cartItem.variant_id}}">
+                        <div class="theme-cart-quantity-error" data-quantity-error-cart="{{cartItem.variant_id}}" style="display:none">
+                          {{i18n.get("product.message.error.invalid_quantity")}}
+                        </div>
+                        <button class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-button" data-theme-update="{{cartItem.variant_id}}" data-zs-update data-zs-product-variant-id="{{cartItem.variant_id}}">
+                          {{i18n.get("cart.update.label")}}
+                        </button>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-loading-button">
+                          <span class="theme-cart-update-loading-dots">. . .</span>
+                        </div>
+                      </span>
+                    {% endif %}
+                    {% if page.template_vars.product_details_style == "02" %}
+                      <span class="theme-quantity-field-button">
+                        <input type="text" value="{{ cartItem.quantity }}" onfocus="showUpdate('{{cartItem.variant_id}}')" onkeypress='return productQuantity(event);' data-zs-quantity data-zs-product-variant-id="{{cartItem.variant_id}}">
+                        <div class="theme-cart-quantity-error" data-quantity-error-cart="{{cartItem.variant_id}}" style="display:none">
+                          {{i18n.get("product.message.error.invalid_quantity")}}
+                        </div>
+                        <button class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-button" data-theme-update="{{cartItem.variant_id}}" data-zs-update data-zs-product-variant-id="{{cartItem.variant_id}}">
+                          {{i18n.get("cart.update.label")}}
+                        </button>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-loading-button">
+                          <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg" class="theme-cart-loading">
+                            <g transform="translate(0 .563)" fill-rule="nonzero">
+                              <circle cx="3" cy="11.438" r="3"/>
+                              <circle transform="rotate(45 5.636 5.074)" cx="5.636" cy="5.074" r="2.689"/>
+                              <circle transform="rotate(90 12 2.438)" cx="12" cy="2.438" r="2.35"/>
+                              <circle transform="rotate(135 18.364 5.074)" cx="18.364" cy="5.074" r="2.016"/>
+                              <circle transform="rotate(180 21 11.438)" cx="21" cy="11.438" r="1.887"/>
+                              <circle transform="rotate(-135 18.364 17.8)" cx="18.364" cy="17.801" r="1.512"/>
+                              <circle transform="rotate(-90 12 20.438)" cx="12" cy="20.438" r="1.207"/>
+                              <circle transform="rotate(-45 5.636 17.8)" cx="5.636" cy="17.801" r="1.008"/>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    {% endif %}
+                    {% if page.template_vars.product_details_style == "03" %}
+                      <span class="theme-quantity-field-button">
+                        <input type="text" value="{{ cartItem.quantity }}" onfocus="showUpdate('{{cartItem.variant_id}}')" onkeypress='return productQuantity(event);' data-zs-quantity data-zs-product-variant-id="{{cartItem.variant_id}}">
+                        <div class="theme-cart-quantity-error" data-quantity-error-cart="{{cartItem.variant_id}}" style="display:none">
+                          {{i18n.get("product.message.error.invalid_quantity")}}
+                        </div>
+                        <button class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-button" data-theme-update="{{cartItem.variant_id}}" data-zs-update data-zs-product-variant-id="{{cartItem.variant_id}}">
+                          {{i18n.get("cart.update.label")}}
+                        </button>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-loading-button">
+                          <span class="theme-cart-update-loading-dots">. . .</span>
+                        </div>
+                      </span>
+                    {% endif %}
+                    {% if page.template_vars.product_details_style == "04" %}
+                      <span class="theme-quantity-field-button">
+                        <input type="text" value="{{ cartItem.quantity }}" onfocus="showUpdate('{{cartItem.variant_id}}')" onkeypress='return productQuantity(event);' data-zs-quantity data-zs-product-variant-id="{{cartItem.variant_id}}">
+                        <div class="theme-cart-quantity-error" data-quantity-error-cart="{{cartItem.variant_id}}" style="display:none">
+                          {{i18n.get("product.message.error.invalid_quantity")}}
+                        </div>
+                        <button class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-button" data-theme-update="{{cartItem.variant_id}}" data-zs-update data-zs-product-variant-id="{{cartItem.variant_id}}">
+                          {{i18n.get("cart.update.label")}}
+                        </button>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-loading-button">
+                          <svg width="16" height="22" viewBox="0 0 16 22" xmlns="http://www.w3.org/2000/svg" class="theme-cart-loading">
+                            <path d="M8 5v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L2.7 13.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L13.3 8.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" fill-rule="nonzero" />
+                          </svg>
+                        </div>
+                      </span>
+                    {% endif %}
+                    {% if page.template_vars.product_details_style == "05" %}
+                      <span class="theme-quantity-field-button">
+                        <input type="text" value="{{ cartItem.quantity }}" onfocus="showUpdate('{{cartItem.variant_id}}')" onkeypress='return productQuantity(event);' data-zs-quantity data-zs-product-variant-id="{{cartItem.variant_id}}">
+                        <div class="theme-cart-quantity-error" data-quantity-error-cart="{{cartItem.variant_id}}" style="display:none">{{i18n.get("product.message.error.invalid_quantity")}}</div>
+                        <button class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-qty-change" data-theme-update="{{cartItem.variant_id}}" data-zs-update data-zs-product-variant-id="{{cartItem.variant_id}}">{{i18n.get("cart.update.label")}}</button>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-loading-button">
+                          <svg class="theme-cart-button-loading-container" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="Artboard" transform="translate(-469.000000, -81.000000)" fill-rule="nonzero" fill="#FFFFFF">
+                                <g id="35-(1)" transform="translate(469.000000, 81.000000)">
+                                  <g id="Group">
+                                    <path d="M11.175,0 L12.675,0 L12.675,7.5 L11.175,7.5 L11.175,0 L11.175,0 Z M17.285529,1.19519515 L18.5845671,1.94519515 L14.8345671,8.44038568 L13.535529,7.69038568 L17.285529,1.19519515 L17.285529,1.19519515 Z M21.9798048,5.28552904 L22.7298048,6.58456715 L16.2346143,10.3345671 L15.4846143,9.03552904 L21.9798048,5.28552904 L21.9798048,5.28552904 Z M24,11.175 L24,12.675 L16.5,12.675 L16.5,11.175 L24,11.175 L24,11.175 Z M22.8048048,17.285529 L22.0548048,18.5845671 L15.5596143,14.8345671 L16.3096143,13.535529 L22.8048048,17.285529 Z M18.714471,21.9798048 L17.4154329,22.7298048 L13.6654329,16.2346143 L14.964471,15.4846143 L18.714471,21.9798048 Z M12.825,24 L11.325,24 L11.325,16.5 L12.825,16.5 L12.825,24 L12.825,24 Z M6.71447096,22.8048048 L5.41543285,22.0548048 L9.16543285,15.5596143 L10.464471,16.3096143 L6.71447096,22.8048048 L6.71447096,22.8048048 Z M2.02019515,18.714471 L1.27019515,17.4154329 L7.76538568,13.6654329 L8.51538568,14.964471 L2.02019515,18.714471 L2.02019515,18.714471 Z M4.4408921e-16,12.825 L-1.30196095e-16,11.325 L7.5,11.325 L7.5,12.825 L4.4408921e-16,12.825 L4.4408921e-16,12.825 Z M1.19519515,6.71447096 L1.94519515,5.41543285 L9.30641109,9.66543285 L8.55641109,10.964471 L1.19519515,6.71447096 L1.19519515,6.71447096 Z M5.28552904,2.02019515 L6.58456715,1.27019515 L10.3345671,7.76538568 L9.03552904,8.51538568 L5.28552904,2.02019515 L5.28552904,2.02019515 Z" id="Combined-Shape">
+                                    </path>
+                                  </g>
+                                </g>
+                              </g>
+                            </g>
+                          </svg>
+                        </div>
+                      </span>
+                    {% endif %}
+                    {% if page.template_vars.product_details_style == "06" %}
+                      <span class="theme-quantity-field-button">
+                        <input type="text" value="{{ cartItem.quantity }}" onfocus="showUpdate('{{cartItem.variant_id}}')" onkeypress='return productQuantity(event);' data-zs-quantity data-zs-product-variant-id="{{cartItem.variant_id}}">
+                        <div class="theme-cart-quantity-error" data-quantity-error-cart="{{cartItem.variant_id}}" style="display:none">
+                          {{i18n.get("product.message.error.invalid_quantity")}}
+                        </div>
+                        <button class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-qty-change" data-theme-update="{{cartItem.variant_id}}" data-zs-update data-zs-product-variant-id="{{cartItem.variant_id}}">
+                          {{i18n.get("cart.update.label")}}
+                        </button>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-loading-button">
+                          <svg class="theme-cart-button-loading-container" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.428 2.743V.003c4.436 1.043 7.9 4.507 8.944 8.943h-2.747c-.912-2.967-3.234-5.29-6.2-6.203h.003zm-11.685 6.2H0C1.045 4.51 4.508 1.046 8.944 0v2.747c-2.966.913-5.288 3.234-6.2 6.2v-.003zm6.2 11.686v2.74C4.51 22.326 1.046 18.863 0 14.428h2.743c.913 2.966 3.235 5.288 6.2 6.2zm11.686-6.202h2.74c-1.045 4.436-4.508 7.9-8.944 8.944V20.63c2.967-.913 5.29-3.235 6.203-6.202z" fill-rule="nonzero" />
+                          </svg>
+                        </div>
+                      </span>
+                    {% endif %}
+                    {% if page.template_vars.product_details_style == "07" %}
+                      <span class="theme-quantity-field-button">
+                        <input type="text" value="{{ cartItem.quantity }}" onfocus="showUpdate('{{cartItem.variant_id}}')" onkeypress='return productQuantity(event);' data-zs-quantity data-zs-product-variant-id="{{cartItem.variant_id}}">
+                        <div class="theme-cart-quantity-error" data-quantity-error-cart="{{cartItem.variant_id}}" style="display:none">{{i18n.get("product.message.error.invalid_quantity")}}</div>
+                        <button class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-qty-change" data-theme-update="{{cartItem.variant_id}}" data-zs-update data-zs-product-variant-id="{{cartItem.variant_id}}">{{i18n.get("cart.update.label")}}</button>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-update-loading-button">
+                          <span class="theme-cart-button-loading-container">
+                            <div class="theme-cart-button-loading-dots">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                            </div>
+                          </span>
+                        </div>
+                      </span>
+                    {% endif %}
+                  </div>
+                  <div class="theme-cart-table-data theme-cart-price-label">
+                    <span class="price-label">{{i18n.get("cart.sub_total.label")}}</span><span data-zs-sub-total-item-{{cartItem.variant_id}}> {{ cartItem.approximate_total | currency(currency) }} </span>
+                  </div>
+                  {% if page.template_vars.product_details_style == "01" %}
+                    <div class="theme-cart-table-data theme-cart-controle theme-cart-item-remove">
+                      <span data-zs-delete data-zs-product-variant-id="{{cartItem.variant_id}}" style="cursor:pointer;">
+                        <svg class="theme-cart-remove-icon" viewBox="18 0 403 439" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <path d="M417.689,75.654 C415.978,73.945 413.788,73.086 411.126,73.086 L322.902,73.086 L302.917,25.41 C300.063,18.366 294.923,12.37 287.504,7.421 C280.078,2.473 272.556,0 264.945,0 L173.582,0 C165.971,0 158.451,2.473 151.028,7.421 C143.604,12.37 138.465,18.365 135.609,25.41 L115.624,73.086 L27.404,73.086 C24.737,73.086 22.551,73.945 20.837,75.654 C19.128,77.367 18.269,79.557 18.269,82.221 L18.269,100.495 C18.269,103.159 19.124,105.349 20.837,107.059 C22.551,108.771 24.741,109.627 27.404,109.627 L54.81,109.627 L54.81,381.427 C54.81,397.23 59.283,410.693 68.228,421.825 C77.175,432.964 87.929,438.528 100.492,438.528 L338.034,438.528 C350.6,438.528 361.353,432.772 370.299,421.26 C379.244,409.74 383.714,396.086 383.714,380.289 L383.714,109.627 L411.125,109.627 C413.787,109.627 415.978,108.771 417.688,107.059 C419.396,105.35 420.258,103.159 420.258,100.495 L420.258,82.221 C420.26,79.557 419.397,77.367 417.689,75.654 L417.689,75.654 Z M169.301,39.678 C170.632,37.966 172.251,36.916 174.154,36.538 L264.658,36.538 C266.561,36.919 268.183,37.968 269.512,39.678 L283.221,73.082 L155.311,73.082 L169.301,39.678 L169.301,39.678 Z M347.173,380.291 C347.173,384.477 346.509,388.333 345.174,391.852 C343.84,395.37 342.457,397.94 341.033,399.558 C339.602,401.18 338.61,401.985 338.035,401.985 L100.493,401.985 C99.922,401.985 98.928,401.18 97.497,399.558 C96.068,397.94 94.687,395.37 93.354,391.852 C92.023,388.333 91.357,384.473 91.357,380.291 L91.357,109.627 L347.172,109.627 L347.172,380.291 L347.173,380.291 Z M137.04,347.172 L155.311,347.172 C157.978,347.172 160.169,346.317 161.878,344.605 C163.587,342.887 164.446,340.704 164.446,338.035 L164.446,173.581 C164.446,170.918 163.587,168.728 161.878,167.014 C160.164,165.305 157.979,164.449 155.311,164.449 L137.04,164.449 C134.373,164.449 132.186,165.304 130.473,167.014 C128.762,168.728 127.905,170.918 127.905,173.581 L127.905,338.035 C127.905,340.704 128.759,342.888 130.473,344.605 C132.186,346.316 134.373,347.172 137.04,347.172 Z M210.129,347.172 L228.4,347.172 C231.066,347.172 233.256,346.317 234.964,344.605 C236.682,342.887 237.533,340.704 237.533,338.035 L237.533,173.581 C237.533,170.918 236.681,168.728 234.964,167.014 C233.256,165.305 231.066,164.449 228.4,164.449 L210.129,164.449 C207.465,164.449 205.275,165.304 203.562,167.014 C201.848,168.728 200.994,170.918 200.994,173.581 L200.994,338.035 C200.994,340.704 201.848,342.888 203.562,344.605 C205.274,346.316 207.465,347.172 210.129,347.172 Z M283.22,347.172 L301.488,347.172 C304.157,347.172 306.347,346.317 308.058,344.605 C309.769,342.887 310.62,340.704 310.62,338.035 L310.62,173.581 C310.62,170.918 309.768,168.728 308.058,167.014 C306.347,165.305 304.157,164.449 301.488,164.449 L283.22,164.449 C280.55,164.449 278.367,165.304 276.649,167.014 C274.938,168.728 274.083,170.918 274.083,173.581 L274.083,338.035 C274.083,340.704 274.938,342.888 276.649,344.605 C278.367,346.316 280.55,347.172 283.22,347.172 Z"></path>
+                        </svg>
+                        <span class="theme-cart-remove-loading">. . .</span>
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if page.template_vars.product_details_style == "02" %}
+                    <div class="theme-cart-table-data theme-cart-controle theme-cart-item-remove">
+                      <span data-zs-delete data-zs-product-variant-id="{{cartItem.variant_id}}" style="cursor:pointer;">
+                        <svg class="theme-cart-remove-icon" viewBox="18 0 403 439" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <path d="M417.689,75.654 C415.978,73.945 413.788,73.086 411.126,73.086 L322.902,73.086 L302.917,25.41 C300.063,18.366 294.923,12.37 287.504,7.421 C280.078,2.473 272.556,0 264.945,0 L173.582,0 C165.971,0 158.451,2.473 151.028,7.421 C143.604,12.37 138.465,18.365 135.609,25.41 L115.624,73.086 L27.404,73.086 C24.737,73.086 22.551,73.945 20.837,75.654 C19.128,77.367 18.269,79.557 18.269,82.221 L18.269,100.495 C18.269,103.159 19.124,105.349 20.837,107.059 C22.551,108.771 24.741,109.627 27.404,109.627 L54.81,109.627 L54.81,381.427 C54.81,397.23 59.283,410.693 68.228,421.825 C77.175,432.964 87.929,438.528 100.492,438.528 L338.034,438.528 C350.6,438.528 361.353,432.772 370.299,421.26 C379.244,409.74 383.714,396.086 383.714,380.289 L383.714,109.627 L411.125,109.627 C413.787,109.627 415.978,108.771 417.688,107.059 C419.396,105.35 420.258,103.159 420.258,100.495 L420.258,82.221 C420.26,79.557 419.397,77.367 417.689,75.654 L417.689,75.654 Z M169.301,39.678 C170.632,37.966 172.251,36.916 174.154,36.538 L264.658,36.538 C266.561,36.919 268.183,37.968 269.512,39.678 L283.221,73.082 L155.311,73.082 L169.301,39.678 L169.301,39.678 Z M347.173,380.291 C347.173,384.477 346.509,388.333 345.174,391.852 C343.84,395.37 342.457,397.94 341.033,399.558 C339.602,401.18 338.61,401.985 338.035,401.985 L100.493,401.985 C99.922,401.985 98.928,401.18 97.497,399.558 C96.068,397.94 94.687,395.37 93.354,391.852 C92.023,388.333 91.357,384.473 91.357,380.291 L91.357,109.627 L347.172,109.627 L347.172,380.291 L347.173,380.291 Z M137.04,347.172 L155.311,347.172 C157.978,347.172 160.169,346.317 161.878,344.605 C163.587,342.887 164.446,340.704 164.446,338.035 L164.446,173.581 C164.446,170.918 163.587,168.728 161.878,167.014 C160.164,165.305 157.979,164.449 155.311,164.449 L137.04,164.449 C134.373,164.449 132.186,165.304 130.473,167.014 C128.762,168.728 127.905,170.918 127.905,173.581 L127.905,338.035 C127.905,340.704 128.759,342.888 130.473,344.605 C132.186,346.316 134.373,347.172 137.04,347.172 Z M210.129,347.172 L228.4,347.172 C231.066,347.172 233.256,346.317 234.964,344.605 C236.682,342.887 237.533,340.704 237.533,338.035 L237.533,173.581 C237.533,170.918 236.681,168.728 234.964,167.014 C233.256,165.305 231.066,164.449 228.4,164.449 L210.129,164.449 C207.465,164.449 205.275,165.304 203.562,167.014 C201.848,168.728 200.994,170.918 200.994,173.581 L200.994,338.035 C200.994,340.704 201.848,342.888 203.562,344.605 C205.274,346.316 207.465,347.172 210.129,347.172 Z M283.22,347.172 L301.488,347.172 C304.157,347.172 306.347,346.317 308.058,344.605 C309.769,342.887 310.62,340.704 310.62,338.035 L310.62,173.581 C310.62,170.918 309.768,168.728 308.058,167.014 C306.347,165.305 304.157,164.449 301.488,164.449 L283.22,164.449 C280.55,164.449 278.367,165.304 276.649,167.014 C274.938,168.728 274.083,170.918 274.083,173.581 L274.083,338.035 C274.083,340.704 274.938,342.888 276.649,344.605 C278.367,346.316 280.55,347.172 283.22,347.172 Z"></path>
+                        </svg>
+                        <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg" class="theme-cart-remove-loading">
+                          <g transform="translate(0 .563)" fill-rule="nonzero">
+                            <circle cx="3" cy="11.438" r="3"/>
+                            <circle transform="rotate(45 5.636 5.074)" cx="5.636" cy="5.074" r="2.689"/>
+                            <circle transform="rotate(90 12 2.438)" cx="12" cy="2.438" r="2.35"/>
+                            <circle transform="rotate(135 18.364 5.074)" cx="18.364" cy="5.074" r="2.016"/>
+                            <circle transform="rotate(180 21 11.438)" cx="21" cy="11.438" r="1.887"/>
+                            <circle transform="rotate(-135 18.364 17.8)" cx="18.364" cy="17.801" r="1.512"/>
+                            <circle transform="rotate(-90 12 20.438)" cx="12" cy="20.438" r="1.207"/>
+                            <circle transform="rotate(-45 5.636 17.8)" cx="5.636" cy="17.801" r="1.008"/>
+                          </g>
+                        </svg>
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if page.template_vars.product_details_style == "03" %}
+                    <div class="theme-cart-table-data theme-cart-controle theme-cart-item-remove">
+                      <span data-zs-delete data-zs-product-variant-id="{{cartItem.variant_id}}" style="cursor:pointer;">
+                        <svg class="theme-cart-remove-icon" viewBox="18 0 403 439" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <path d="M417.689,75.654 C415.978,73.945 413.788,73.086 411.126,73.086 L322.902,73.086 L302.917,25.41 C300.063,18.366 294.923,12.37 287.504,7.421 C280.078,2.473 272.556,0 264.945,0 L173.582,0 C165.971,0 158.451,2.473 151.028,7.421 C143.604,12.37 138.465,18.365 135.609,25.41 L115.624,73.086 L27.404,73.086 C24.737,73.086 22.551,73.945 20.837,75.654 C19.128,77.367 18.269,79.557 18.269,82.221 L18.269,100.495 C18.269,103.159 19.124,105.349 20.837,107.059 C22.551,108.771 24.741,109.627 27.404,109.627 L54.81,109.627 L54.81,381.427 C54.81,397.23 59.283,410.693 68.228,421.825 C77.175,432.964 87.929,438.528 100.492,438.528 L338.034,438.528 C350.6,438.528 361.353,432.772 370.299,421.26 C379.244,409.74 383.714,396.086 383.714,380.289 L383.714,109.627 L411.125,109.627 C413.787,109.627 415.978,108.771 417.688,107.059 C419.396,105.35 420.258,103.159 420.258,100.495 L420.258,82.221 C420.26,79.557 419.397,77.367 417.689,75.654 L417.689,75.654 Z M169.301,39.678 C170.632,37.966 172.251,36.916 174.154,36.538 L264.658,36.538 C266.561,36.919 268.183,37.968 269.512,39.678 L283.221,73.082 L155.311,73.082 L169.301,39.678 L169.301,39.678 Z M347.173,380.291 C347.173,384.477 346.509,388.333 345.174,391.852 C343.84,395.37 342.457,397.94 341.033,399.558 C339.602,401.18 338.61,401.985 338.035,401.985 L100.493,401.985 C99.922,401.985 98.928,401.18 97.497,399.558 C96.068,397.94 94.687,395.37 93.354,391.852 C92.023,388.333 91.357,384.473 91.357,380.291 L91.357,109.627 L347.172,109.627 L347.172,380.291 L347.173,380.291 Z M137.04,347.172 L155.311,347.172 C157.978,347.172 160.169,346.317 161.878,344.605 C163.587,342.887 164.446,340.704 164.446,338.035 L164.446,173.581 C164.446,170.918 163.587,168.728 161.878,167.014 C160.164,165.305 157.979,164.449 155.311,164.449 L137.04,164.449 C134.373,164.449 132.186,165.304 130.473,167.014 C128.762,168.728 127.905,170.918 127.905,173.581 L127.905,338.035 C127.905,340.704 128.759,342.888 130.473,344.605 C132.186,346.316 134.373,347.172 137.04,347.172 Z M210.129,347.172 L228.4,347.172 C231.066,347.172 233.256,346.317 234.964,344.605 C236.682,342.887 237.533,340.704 237.533,338.035 L237.533,173.581 C237.533,170.918 236.681,168.728 234.964,167.014 C233.256,165.305 231.066,164.449 228.4,164.449 L210.129,164.449 C207.465,164.449 205.275,165.304 203.562,167.014 C201.848,168.728 200.994,170.918 200.994,173.581 L200.994,338.035 C200.994,340.704 201.848,342.888 203.562,344.605 C205.274,346.316 207.465,347.172 210.129,347.172 Z M283.22,347.172 L301.488,347.172 C304.157,347.172 306.347,346.317 308.058,344.605 C309.769,342.887 310.62,340.704 310.62,338.035 L310.62,173.581 C310.62,170.918 309.768,168.728 308.058,167.014 C306.347,165.305 304.157,164.449 301.488,164.449 L283.22,164.449 C280.55,164.449 278.367,165.304 276.649,167.014 C274.938,168.728 274.083,170.918 274.083,173.581 L274.083,338.035 C274.083,340.704 274.938,342.888 276.649,344.605 C278.367,346.316 280.55,347.172 283.22,347.172 Z"></path>
+                        </svg>
+                        <span class="theme-cart-remove-loading">. . .</span>
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if page.template_vars.product_details_style == "04" %}
+                    <div class="theme-cart-table-data theme-cart-controle theme-cart-item-remove">
+                      <span data-zs-delete data-zs-product-variant-id="{{cartItem.variant_id}}" style="cursor:pointer;">
+                        <svg class="theme-cart-remove-icon" viewBox="18 0 403 439" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <path d="M417.689,75.654 C415.978,73.945 413.788,73.086 411.126,73.086 L322.902,73.086 L302.917,25.41 C300.063,18.366 294.923,12.37 287.504,7.421 C280.078,2.473 272.556,0 264.945,0 L173.582,0 C165.971,0 158.451,2.473 151.028,7.421 C143.604,12.37 138.465,18.365 135.609,25.41 L115.624,73.086 L27.404,73.086 C24.737,73.086 22.551,73.945 20.837,75.654 C19.128,77.367 18.269,79.557 18.269,82.221 L18.269,100.495 C18.269,103.159 19.124,105.349 20.837,107.059 C22.551,108.771 24.741,109.627 27.404,109.627 L54.81,109.627 L54.81,381.427 C54.81,397.23 59.283,410.693 68.228,421.825 C77.175,432.964 87.929,438.528 100.492,438.528 L338.034,438.528 C350.6,438.528 361.353,432.772 370.299,421.26 C379.244,409.74 383.714,396.086 383.714,380.289 L383.714,109.627 L411.125,109.627 C413.787,109.627 415.978,108.771 417.688,107.059 C419.396,105.35 420.258,103.159 420.258,100.495 L420.258,82.221 C420.26,79.557 419.397,77.367 417.689,75.654 L417.689,75.654 Z M169.301,39.678 C170.632,37.966 172.251,36.916 174.154,36.538 L264.658,36.538 C266.561,36.919 268.183,37.968 269.512,39.678 L283.221,73.082 L155.311,73.082 L169.301,39.678 L169.301,39.678 Z M347.173,380.291 C347.173,384.477 346.509,388.333 345.174,391.852 C343.84,395.37 342.457,397.94 341.033,399.558 C339.602,401.18 338.61,401.985 338.035,401.985 L100.493,401.985 C99.922,401.985 98.928,401.18 97.497,399.558 C96.068,397.94 94.687,395.37 93.354,391.852 C92.023,388.333 91.357,384.473 91.357,380.291 L91.357,109.627 L347.172,109.627 L347.172,380.291 L347.173,380.291 Z M137.04,347.172 L155.311,347.172 C157.978,347.172 160.169,346.317 161.878,344.605 C163.587,342.887 164.446,340.704 164.446,338.035 L164.446,173.581 C164.446,170.918 163.587,168.728 161.878,167.014 C160.164,165.305 157.979,164.449 155.311,164.449 L137.04,164.449 C134.373,164.449 132.186,165.304 130.473,167.014 C128.762,168.728 127.905,170.918 127.905,173.581 L127.905,338.035 C127.905,340.704 128.759,342.888 130.473,344.605 C132.186,346.316 134.373,347.172 137.04,347.172 Z M210.129,347.172 L228.4,347.172 C231.066,347.172 233.256,346.317 234.964,344.605 C236.682,342.887 237.533,340.704 237.533,338.035 L237.533,173.581 C237.533,170.918 236.681,168.728 234.964,167.014 C233.256,165.305 231.066,164.449 228.4,164.449 L210.129,164.449 C207.465,164.449 205.275,165.304 203.562,167.014 C201.848,168.728 200.994,170.918 200.994,173.581 L200.994,338.035 C200.994,340.704 201.848,342.888 203.562,344.605 C205.274,346.316 207.465,347.172 210.129,347.172 Z M283.22,347.172 L301.488,347.172 C304.157,347.172 306.347,346.317 308.058,344.605 C309.769,342.887 310.62,340.704 310.62,338.035 L310.62,173.581 C310.62,170.918 309.768,168.728 308.058,167.014 C306.347,165.305 304.157,164.449 301.488,164.449 L283.22,164.449 C280.55,164.449 278.367,165.304 276.649,167.014 C274.938,168.728 274.083,170.918 274.083,173.581 L274.083,338.035 C274.083,340.704 274.938,342.888 276.649,344.605 C278.367,346.316 280.55,347.172 283.22,347.172 Z"></path>
+                        </svg>
+                        <svg width="16" height="22" viewBox="0 0 16 22" xmlns="http://www.w3.org/2000/svg" class="theme-cart-remove-loading">
+                          <path d="M8 5v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L2.7 13.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L13.3 8.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" fill-rule="nonzero" />
+                        </svg>
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if page.template_vars.product_details_style == "05" %}
+                    <div class="theme-cart-table-data theme-cart-controle theme-cart-item-remove">
+                      <span data-zs-delete data-zs-product-variant-id="{{cartItem.variant_id}}" style="cursor:pointer;">
+                        <svg class="theme-remove-icon" viewBox="18 0 403 439" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <path d="M417.689,75.654 C415.978,73.945 413.788,73.086 411.126,73.086 L322.902,73.086 L302.917,25.41 C300.063,18.366 294.923,12.37 287.504,7.421 C280.078,2.473 272.556,0 264.945,0 L173.582,0 C165.971,0 158.451,2.473 151.028,7.421 C143.604,12.37 138.465,18.365 135.609,25.41 L115.624,73.086 L27.404,73.086 C24.737,73.086 22.551,73.945 20.837,75.654 C19.128,77.367 18.269,79.557 18.269,82.221 L18.269,100.495 C18.269,103.159 19.124,105.349 20.837,107.059 C22.551,108.771 24.741,109.627 27.404,109.627 L54.81,109.627 L54.81,381.427 C54.81,397.23 59.283,410.693 68.228,421.825 C77.175,432.964 87.929,438.528 100.492,438.528 L338.034,438.528 C350.6,438.528 361.353,432.772 370.299,421.26 C379.244,409.74 383.714,396.086 383.714,380.289 L383.714,109.627 L411.125,109.627 C413.787,109.627 415.978,108.771 417.688,107.059 C419.396,105.35 420.258,103.159 420.258,100.495 L420.258,82.221 C420.26,79.557 419.397,77.367 417.689,75.654 L417.689,75.654 Z M169.301,39.678 C170.632,37.966 172.251,36.916 174.154,36.538 L264.658,36.538 C266.561,36.919 268.183,37.968 269.512,39.678 L283.221,73.082 L155.311,73.082 L169.301,39.678 L169.301,39.678 Z M347.173,380.291 C347.173,384.477 346.509,388.333 345.174,391.852 C343.84,395.37 342.457,397.94 341.033,399.558 C339.602,401.18 338.61,401.985 338.035,401.985 L100.493,401.985 C99.922,401.985 98.928,401.18 97.497,399.558 C96.068,397.94 94.687,395.37 93.354,391.852 C92.023,388.333 91.357,384.473 91.357,380.291 L91.357,109.627 L347.172,109.627 L347.172,380.291 L347.173,380.291 Z M137.04,347.172 L155.311,347.172 C157.978,347.172 160.169,346.317 161.878,344.605 C163.587,342.887 164.446,340.704 164.446,338.035 L164.446,173.581 C164.446,170.918 163.587,168.728 161.878,167.014 C160.164,165.305 157.979,164.449 155.311,164.449 L137.04,164.449 C134.373,164.449 132.186,165.304 130.473,167.014 C128.762,168.728 127.905,170.918 127.905,173.581 L127.905,338.035 C127.905,340.704 128.759,342.888 130.473,344.605 C132.186,346.316 134.373,347.172 137.04,347.172 Z M210.129,347.172 L228.4,347.172 C231.066,347.172 233.256,346.317 234.964,344.605 C236.682,342.887 237.533,340.704 237.533,338.035 L237.533,173.581 C237.533,170.918 236.681,168.728 234.964,167.014 C233.256,165.305 231.066,164.449 228.4,164.449 L210.129,164.449 C207.465,164.449 205.275,165.304 203.562,167.014 C201.848,168.728 200.994,170.918 200.994,173.581 L200.994,338.035 C200.994,340.704 201.848,342.888 203.562,344.605 C205.274,346.316 207.465,347.172 210.129,347.172 Z M283.22,347.172 L301.488,347.172 C304.157,347.172 306.347,346.317 308.058,344.605 C309.769,342.887 310.62,340.704 310.62,338.035 L310.62,173.581 C310.62,170.918 309.768,168.728 308.058,167.014 C306.347,165.305 304.157,164.449 301.488,164.449 L283.22,164.449 C280.55,164.449 278.367,165.304 276.649,167.014 C274.938,168.728 274.083,170.918 274.083,173.581 L274.083,338.035 C274.083,340.704 274.938,342.888 276.649,344.605 C278.367,346.316 280.55,347.172 283.22,347.172 Z"></path>
+                        </svg>
+                        <svg class="theme-cart-remove-loading" width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Artboard" transform="translate(-469.000000, -81.000000)" fill-rule="nonzero" fill="#ffffff">
+                                    <g id="35-(1)" transform="translate(469.000000, 81.000000)">
+                                        <g id="Group">
+                                            <path d="M11.175,0 L12.675,0 L12.675,7.5 L11.175,7.5 L11.175,0 L11.175,0 Z M17.285529,1.19519515 L18.5845671,1.94519515 L14.8345671,8.44038568 L13.535529,7.69038568 L17.285529,1.19519515 L17.285529,1.19519515 Z M21.9798048,5.28552904 L22.7298048,6.58456715 L16.2346143,10.3345671 L15.4846143,9.03552904 L21.9798048,5.28552904 L21.9798048,5.28552904 Z M24,11.175 L24,12.675 L16.5,12.675 L16.5,11.175 L24,11.175 L24,11.175 Z M22.8048048,17.285529 L22.0548048,18.5845671 L15.5596143,14.8345671 L16.3096143,13.535529 L22.8048048,17.285529 Z M18.714471,21.9798048 L17.4154329,22.7298048 L13.6654329,16.2346143 L14.964471,15.4846143 L18.714471,21.9798048 Z M12.825,24 L11.325,24 L11.325,16.5 L12.825,16.5 L12.825,24 L12.825,24 Z M6.71447096,22.8048048 L5.41543285,22.0548048 L9.16543285,15.5596143 L10.464471,16.3096143 L6.71447096,22.8048048 L6.71447096,22.8048048 Z M2.02019515,18.714471 L1.27019515,17.4154329 L7.76538568,13.6654329 L8.51538568,14.964471 L2.02019515,18.714471 L2.02019515,18.714471 Z M4.4408921e-16,12.825 L-1.30196095e-16,11.325 L7.5,11.325 L7.5,12.825 L4.4408921e-16,12.825 L4.4408921e-16,12.825 Z M1.19519515,6.71447096 L1.94519515,5.41543285 L9.30641109,9.66543285 L8.55641109,10.964471 L1.19519515,6.71447096 L1.19519515,6.71447096 Z M5.28552904,2.02019515 L6.58456715,1.27019515 L10.3345671,7.76538568 L9.03552904,8.51538568 L5.28552904,2.02019515 L5.28552904,2.02019515 Z" id="Combined-Shape"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if page.template_vars.product_details_style == "06" %}
+                    <div class="theme-cart-table-data theme-cart-controle theme-cart-item-remove">
+                      <span data-zs-delete data-zs-product-variant-id="{{cartItem.variant_id}}" style="cursor:pointer;">
+                        <svg class="theme-remove-icon" viewBox="18 0 403 439" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <path d="M417.689,75.654 C415.978,73.945 413.788,73.086 411.126,73.086 L322.902,73.086 L302.917,25.41 C300.063,18.366 294.923,12.37 287.504,7.421 C280.078,2.473 272.556,0 264.945,0 L173.582,0 C165.971,0 158.451,2.473 151.028,7.421 C143.604,12.37 138.465,18.365 135.609,25.41 L115.624,73.086 L27.404,73.086 C24.737,73.086 22.551,73.945 20.837,75.654 C19.128,77.367 18.269,79.557 18.269,82.221 L18.269,100.495 C18.269,103.159 19.124,105.349 20.837,107.059 C22.551,108.771 24.741,109.627 27.404,109.627 L54.81,109.627 L54.81,381.427 C54.81,397.23 59.283,410.693 68.228,421.825 C77.175,432.964 87.929,438.528 100.492,438.528 L338.034,438.528 C350.6,438.528 361.353,432.772 370.299,421.26 C379.244,409.74 383.714,396.086 383.714,380.289 L383.714,109.627 L411.125,109.627 C413.787,109.627 415.978,108.771 417.688,107.059 C419.396,105.35 420.258,103.159 420.258,100.495 L420.258,82.221 C420.26,79.557 419.397,77.367 417.689,75.654 L417.689,75.654 Z M169.301,39.678 C170.632,37.966 172.251,36.916 174.154,36.538 L264.658,36.538 C266.561,36.919 268.183,37.968 269.512,39.678 L283.221,73.082 L155.311,73.082 L169.301,39.678 L169.301,39.678 Z M347.173,380.291 C347.173,384.477 346.509,388.333 345.174,391.852 C343.84,395.37 342.457,397.94 341.033,399.558 C339.602,401.18 338.61,401.985 338.035,401.985 L100.493,401.985 C99.922,401.985 98.928,401.18 97.497,399.558 C96.068,397.94 94.687,395.37 93.354,391.852 C92.023,388.333 91.357,384.473 91.357,380.291 L91.357,109.627 L347.172,109.627 L347.172,380.291 L347.173,380.291 Z M137.04,347.172 L155.311,347.172 C157.978,347.172 160.169,346.317 161.878,344.605 C163.587,342.887 164.446,340.704 164.446,338.035 L164.446,173.581 C164.446,170.918 163.587,168.728 161.878,167.014 C160.164,165.305 157.979,164.449 155.311,164.449 L137.04,164.449 C134.373,164.449 132.186,165.304 130.473,167.014 C128.762,168.728 127.905,170.918 127.905,173.581 L127.905,338.035 C127.905,340.704 128.759,342.888 130.473,344.605 C132.186,346.316 134.373,347.172 137.04,347.172 Z M210.129,347.172 L228.4,347.172 C231.066,347.172 233.256,346.317 234.964,344.605 C236.682,342.887 237.533,340.704 237.533,338.035 L237.533,173.581 C237.533,170.918 236.681,168.728 234.964,167.014 C233.256,165.305 231.066,164.449 228.4,164.449 L210.129,164.449 C207.465,164.449 205.275,165.304 203.562,167.014 C201.848,168.728 200.994,170.918 200.994,173.581 L200.994,338.035 C200.994,340.704 201.848,342.888 203.562,344.605 C205.274,346.316 207.465,347.172 210.129,347.172 Z M283.22,347.172 L301.488,347.172 C304.157,347.172 306.347,346.317 308.058,344.605 C309.769,342.887 310.62,340.704 310.62,338.035 L310.62,173.581 C310.62,170.918 309.768,168.728 308.058,167.014 C306.347,165.305 304.157,164.449 301.488,164.449 L283.22,164.449 C280.55,164.449 278.367,165.304 276.649,167.014 C274.938,168.728 274.083,170.918 274.083,173.581 L274.083,338.035 C274.083,340.704 274.938,342.888 276.649,344.605 C278.367,346.316 280.55,347.172 283.22,347.172 Z"></path>
+                        </svg>
+                        <svg class="theme-cart-remove-loading" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14.428 2.743V.003c4.436 1.043 7.9 4.507 8.944 8.943h-2.747c-.912-2.967-3.234-5.29-6.2-6.203h.003zm-11.685 6.2H0C1.045 4.51 4.508 1.046 8.944 0v2.747c-2.966.913-5.288 3.234-6.2 6.2v-.003zm6.2 11.686v2.74C4.51 22.326 1.046 18.863 0 14.428h2.743c.913 2.966 3.235 5.288 6.2 6.2zm11.686-6.202h2.74c-1.045 4.436-4.508 7.9-8.944 8.944V20.63c2.967-.913 5.29-3.235 6.203-6.202z" fill-rule="nonzero"/>
+                        </svg>
+                      </span>
+                    </div>
+                  {% endif %}
+                  {% if page.template_vars.product_details_style == "07" %}
+                    <div class="theme-cart-table-data theme-cart-controle theme-cart-item-remove">
+                      <span data-zs-delete data-zs-product-variant-id="{{cartItem.variant_id}}" style="cursor:pointer;">
+                        <svg class="theme-remove-icon" viewBox="18 0 403 439" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                          <path d="M417.689,75.654 C415.978,73.945 413.788,73.086 411.126,73.086 L322.902,73.086 L302.917,25.41 C300.063,18.366 294.923,12.37 287.504,7.421 C280.078,2.473 272.556,0 264.945,0 L173.582,0 C165.971,0 158.451,2.473 151.028,7.421 C143.604,12.37 138.465,18.365 135.609,25.41 L115.624,73.086 L27.404,73.086 C24.737,73.086 22.551,73.945 20.837,75.654 C19.128,77.367 18.269,79.557 18.269,82.221 L18.269,100.495 C18.269,103.159 19.124,105.349 20.837,107.059 C22.551,108.771 24.741,109.627 27.404,109.627 L54.81,109.627 L54.81,381.427 C54.81,397.23 59.283,410.693 68.228,421.825 C77.175,432.964 87.929,438.528 100.492,438.528 L338.034,438.528 C350.6,438.528 361.353,432.772 370.299,421.26 C379.244,409.74 383.714,396.086 383.714,380.289 L383.714,109.627 L411.125,109.627 C413.787,109.627 415.978,108.771 417.688,107.059 C419.396,105.35 420.258,103.159 420.258,100.495 L420.258,82.221 C420.26,79.557 419.397,77.367 417.689,75.654 L417.689,75.654 Z M169.301,39.678 C170.632,37.966 172.251,36.916 174.154,36.538 L264.658,36.538 C266.561,36.919 268.183,37.968 269.512,39.678 L283.221,73.082 L155.311,73.082 L169.301,39.678 L169.301,39.678 Z M347.173,380.291 C347.173,384.477 346.509,388.333 345.174,391.852 C343.84,395.37 342.457,397.94 341.033,399.558 C339.602,401.18 338.61,401.985 338.035,401.985 L100.493,401.985 C99.922,401.985 98.928,401.18 97.497,399.558 C96.068,397.94 94.687,395.37 93.354,391.852 C92.023,388.333 91.357,384.473 91.357,380.291 L91.357,109.627 L347.172,109.627 L347.172,380.291 L347.173,380.291 Z M137.04,347.172 L155.311,347.172 C157.978,347.172 160.169,346.317 161.878,344.605 C163.587,342.887 164.446,340.704 164.446,338.035 L164.446,173.581 C164.446,170.918 163.587,168.728 161.878,167.014 C160.164,165.305 157.979,164.449 155.311,164.449 L137.04,164.449 C134.373,164.449 132.186,165.304 130.473,167.014 C128.762,168.728 127.905,170.918 127.905,173.581 L127.905,338.035 C127.905,340.704 128.759,342.888 130.473,344.605 C132.186,346.316 134.373,347.172 137.04,347.172 Z M210.129,347.172 L228.4,347.172 C231.066,347.172 233.256,346.317 234.964,344.605 C236.682,342.887 237.533,340.704 237.533,338.035 L237.533,173.581 C237.533,170.918 236.681,168.728 234.964,167.014 C233.256,165.305 231.066,164.449 228.4,164.449 L210.129,164.449 C207.465,164.449 205.275,165.304 203.562,167.014 C201.848,168.728 200.994,170.918 200.994,173.581 L200.994,338.035 C200.994,340.704 201.848,342.888 203.562,344.605 C205.274,346.316 207.465,347.172 210.129,347.172 Z M283.22,347.172 L301.488,347.172 C304.157,347.172 306.347,346.317 308.058,344.605 C309.769,342.887 310.62,340.704 310.62,338.035 L310.62,173.581 C310.62,170.918 309.768,168.728 308.058,167.014 C306.347,165.305 304.157,164.449 301.488,164.449 L283.22,164.449 C280.55,164.449 278.367,165.304 276.649,167.014 C274.938,168.728 274.083,170.918 274.083,173.581 L274.083,338.035 C274.083,340.704 274.938,342.888 276.649,344.605 C278.367,346.316 280.55,347.172 283.22,347.172 Z"></path>
+                        </svg>
+                        <div class="zpbutton zpbutton-type-primary zpbutton-size-sm theme-cart-remove-loading">
+            							<span class="theme-cart-remove-loading">
+            								<div class="theme-cart-button-loading-dots"><span></span><span></span><span></span></div>
+            							</span>
+                        </div>
+                      </span>
+                    </div>
+                  {% endif %}
+                </div>
+                {% endfor %}
+                {% if cart.items | size == 0 %}
+                <div class="theme-cart-error-empty-message" data-cart-empty-message>
+                {% else %}
+                <div class="theme-cart-error-message-not-empty" data-cart-empty-message>
+                {% endif %}
+                  <svg width="416px" height="243px" viewBox="0 0 416 243" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                          <rect id="path-1" x="0" y="31" width="164" height="114" rx="5"></rect>
+                          <filter x="-6.1%" y="-7.0%" width="112.2%" height="117.5%" filterUnits="objectBoundingBox" id="filter-2">
+                              <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                              <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                              <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+                              <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0524230072 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+                          </filter>
+                          <circle id="path-3" cx="82" cy="29" r="29"></circle>
+                          <filter x="-3.4%" y="-3.4%" width="106.9%" height="113.8%" filterUnits="objectBoundingBox" id="filter-4">
+                              <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                              <feColorMatrix values="0 0 0 0 0.945098039   0 0 0 0 0.960784314   0 0 0 0 0.968627451  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+                          </filter>
+                          <filter x="-5.9%" y="-8.3%" width="111.9%" height="123.3%" filterUnits="objectBoundingBox" id="filter-5">
+                              <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                              <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                              <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0454030797 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+                              <feMerge>
+                                  <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                              </feMerge>
+                          </filter>
+                          <linearGradient x1="23.3742236%" y1="11.144546%" x2="76.689185%" y2="85.4302587%" id="linearGradient-6">
+                              <stop stop-color="#6DC7F1" offset="0%"></stop>
+                              <stop stop-color="#D383CC" offset="100%"></stop>
+                          </linearGradient>
+                          <linearGradient x1="0%" y1="35.5674342%" x2="239.951795%" y2="129.571144%" id="linearGradient-7">
+                              <stop stop-color="#70DEF9" offset="0%"></stop>
+                              <stop stop-color="#62ADE6" offset="100%"></stop>
+                          </linearGradient>
+                          <linearGradient x1="0%" y1="35.5674342%" x2="239.951795%" y2="129.571144%" id="linearGradient-8">
+                              <stop stop-color="#7BE5FF" offset="0%"></stop>
+                              <stop stop-color="#62ADE6" offset="100%"></stop>
+                          </linearGradient>
+                      </defs>
+                      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <g id="a-File-manager-Copy" transform="translate(-253.000000, -145.000000)">
+                              <g id="empty-cart-copy" transform="translate(253.000000, 145.000000)">
+                                  <g id="Combined-Shape-Copy">
+                                      <path d="M141.32981,23.7894737 C145.113069,24.4975789 148,27.9165263 148,31.8741053 C148,36.3430526 144.320534,40 139.824069,40 L132.556328,40 C132.454017,40 132.354672,39.9882105 132.253103,39.9845263 C132.152276,39.9882105 132.052931,40 131.950621,40 L113.781638,40 C108.951552,40 105,36.0726316 105,31.2721053 C105,27.8104211 107.233034,24.4614737 110.189655,23.0526316 C110.189655,22.92 110.199293,22.7844211 110.206707,22.6503158 C110.200034,22.5383158 110.189655,22.4285263 110.189655,22.3157895 C110.189655,19.0604211 112.845276,16.4210526 116.12069,16.4210526 C117.333586,16.4210526 118.461224,16.7843158 119.39981,17.4054737 C121.536466,14.2142105 125.406466,12 129.527793,12 C135.997069,12 141.244552,17.3796842 141.32981,23.7894737 Z" stroke="#6D7A86" stroke-width="2" fill="#E8EBED" fill-rule="evenodd" transform="translate(126.500000, 26.000000) scale(-1, 1) translate(-126.500000, -26.000000) "></path>
+                                      <path d="M282.759137,37.2631579 C285.731697,37.8195263 288,40.5058421 288,43.6153684 C288,47.1266842 285.108991,50 281.576054,50 L275.865686,50 C275.785299,50 275.707243,49.9907368 275.627438,49.9878421 C275.548217,49.9907368 275.47016,50 275.389773,50 L261.114144,50 C257.319076,50 254.214286,46.9142105 254.214286,43.1423684 C254.214286,40.4224737 255.968813,37.7911579 258.291872,36.6842105 C258.291872,36.58 258.299445,36.4734737 258.30527,36.3681053 C258.300027,36.2801053 258.291872,36.1938421 258.291872,36.1052632 C258.291872,33.5474737 260.378431,31.4736842 262.95197,31.4736842 C263.904961,31.4736842 264.790962,31.7591053 265.528422,32.2471579 C267.207223,29.7397368 270.247937,28 273.486123,28 C278.569126,28 282.692148,32.2268947 282.759137,37.2631579 Z" id="Combined-Shape-Copy-2" stroke="#6D7A86" stroke-width="2" fill="#E8EBED" fill-rule="evenodd"></path>
+                                      <polygon id="Shape-Copy-4" fill="#FFD138" fill-rule="evenodd" transform="translate(380.999003, 186.478778) rotate(63.000000) translate(-380.999003, -186.478778) " points="380.816804 182.545824 375.411588 190.411732 375.411588 190.411732 386.586417 190.144679"></polygon>
+                                      <rect id="Rectangle-path-Copy-2" fill="#3F3F40" fill-rule="evenodd" transform="translate(408.505735, 155.426584) rotate(63.000000) translate(-408.505735, -155.426584) " x="403.076499" y="150.000836" width="10.8584735" height="10.8514958"></rect>
+                                      <polygon id="Shape-Copy-3" fill="#F3714E" fill-rule="evenodd" transform="translate(392.348650, 113.432968) rotate(63.000000) translate(-392.348650, -113.432968) " points="389.536264 118.494806 386.555974 113.530849 389.36836 108.46901 395.161036 108.37113 398.141326 113.335087 395.342932 118.396926"></polygon>
+                                      <rect id="Rectangle-path-Copy" fill="#488ED8" fill-rule="evenodd" transform="translate(27.661080, 104.809653) rotate(57.990000) translate(-27.661080, -104.809653) " x="22.677858" y="99.8296337" width="9.96644322" height="9.96003878"></rect>
+                                      <ellipse id="Oval-Copy-4" fill="#AAB7BE" fill-rule="evenodd" transform="translate(35.959977, 179.692136) rotate(-1.010000) translate(-35.959977, -179.692136) " cx="35.9599774" cy="179.692136" rx="5.27792266" ry="5.27453106"></ellipse>
+                                      <ellipse id="Oval-Copy-3" fill="#E8EBED" fill-rule="evenodd" transform="translate(200.959977, 5.692136) rotate(-1.010000) translate(-200.959977, -5.692136) " cx="200.959977" cy="5.6921356" rx="5.27792266" ry="5.27453106"></ellipse>
+                                      <ellipse id="Oval-Copy-2" fill="#FFD138" fill-rule="evenodd" transform="translate(5.455801, 150.722160) rotate(-1.145763) translate(-5.455801, -150.722160) " cx="5.45580106" cy="150.72216" rx="5.27897814" ry="5.27558586"></ellipse>
+                                      <text id="+" font-family=".SFNSDisplay-Regular, .SF NS Display" font-size="28" font-weight="normal" fill="#E8EBED">
+                                          <tspan x="328.896792" y="35">+</tspan>
+                                      </text>
+                                      <g id="empty-cart" stroke-width="1" fill-rule="evenodd" transform="translate(129.000000, 66.000000)">
+                                          <g id="Rectangle-7">
+                                              <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                                              <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                              <rect stroke="#E3E8EB" stroke-width="1" x="0.5" y="31.5" width="163" height="113" rx="5"></rect>
+                                          </g>
+                                          <circle id="Oval-3" fill-opacity="0.620103034" fill="#A6B1BB" cx="82.5" cy="137.5" r="2.5"></circle>
+                                          <g id="Oval-9">
+                                              <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                                              <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                                          </g>
+                                          <g id="check-symbol" transform="translate(76.000000, 44.000000)" fill="#A6B2BC">
+                                              <g id="Capa_1">
+                                                  <g id="check">
+                                                      <g id="Group-6">
+                                                          <circle id="Oval-2" cx="1.5" cy="1.5" r="1.5"></circle>
+                                                          <circle id="Oval-2-Copy" cx="6.5" cy="1.5" r="1.5"></circle>
+                                                          <circle id="Oval-2-Copy-2" cx="11.5" cy="1.5" r="1.5"></circle>
+                                                      </g>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                          <path d="M85.3218445,31.8480871 L83.8417963,33.2600953 C83.5223543,33.5620971 83.0086434,33.3360958 83.0086434,32.8970932 L83.0086434,18.0000059 C83.0086434,17.4480026 82.5520115,17 81.9992466,17 L82.0072577,17 C81.4544928,17 81.0058719,17.4480026 81.0058719,18.0000059 L81.0058719,32.8820931 C81.0058719,33.3230957 80.4631209,33.548097 80.1456816,33.2420952 L78.6836584,31.838087 C78.2851069,31.4580848 77.6482256,31.4750849 77.2717045,31.8780872 L77.267699,31.8800872 C76.8951835,32.2780896 76.9132084,32.9020932 77.3107586,33.2770954 L80.6533842,36.4541141 C81.4274553,37.1851183 82.6391321,37.1811183 83.4101991,36.447114 L86.6927415,33.2980956 C87.0852847,32.9240934 87.1043111,32.3050897 86.7347997,31.9080874 L86.7247859,31.8970873 C86.351269,31.496085 85.7223988,31.4740849 85.3218445,31.8480871" id="arrow_down-[#364]-copy" fill="#6D7A86"></path>
+                                          <g id="Base" transform="translate(22.000000, 152.000000)">
+                                              <ellipse id="Oval-5" fill="#E3E8EB" cx="60.3949409" cy="19.7" rx="60.3949409" ry="4.7"></ellipse>
+                                              <path d="M27,4.30434783 C27,1.92712216 28.9217549,5.68434189e-14 31.3049851,5.68434189e-14 L88.6950149,5.68434189e-14 C91.0725925,5.68434189e-14 93,1.93195934 93,4.30434783 L93,8.60869565 L27,8.60869565 L27,4.30434783 Z" id="Rectangle-2" fill="#AAB7BE"></path>
+                                              <path d="M15,13 C15,9.6862915 17.6935212,7 21.0098334,7 L98.9901666,7 C102.309306,7 105,9.69303423 105,13 L105,19 L15,19 L15,13 Z" id="Rectangle-2-Copy-2" fill="#BFCCD4"></path>
+                                          </g>
+                                          <g id="Cart-circle" filter="url(#filter-5)" transform="translate(23.000000, 64.000000)">
+                                              <g id="Group-2" transform="translate(0.000000, 11.000000)">
+                                                  <path d="M42.1198282,6.5483231 C42.1198282,6.5483231 42.4529506,2.02432715 56.3228217,7.48000173 C70.1926928,12.9356763 73.2433063,10.5355049 78.1654769,8.81932608 C83.0876475,7.10314724 86.8248542,3.96979458 95.6291315,9.12452781 C104.433409,14.2792611 113.122488,5.82618017 113.122488,5.82618017 L113.122488,14.7369527 C113.122488,14.7369527 101.129132,22.4599652 94.9873375,18.3068907 C88.845543,14.1538162 84.5092432,8.60630388 68.739754,16.0545049 C52.9702648,23.502706 54.7453312,11.0049269 44.4259214,13.0263073 C34.1065115,15.0476877 42.1198282,6.5483231 42.1198282,6.5483231 Z" id="Path-25-Copy" fill="#E8EDFA" transform="translate(76.138517, 12.160697) scale(-1, 1) translate(-76.138517, -12.160697) "></path>
+                                                  <path d="M40.1086579,5.43372552 C40.1086579,5.43372552 40.470191,0.909729573 55.5229699,6.36540416 C70.5757488,11.8210787 73.8865374,9.42090734 79.228501,7.70472851 C84.5704646,5.98854967 88.6264032,2.855197 98.1815633,8.00993024 C107.736724,13.1646635 117.166861,4.71158259 117.166861,4.71158259 L117.166861,18.2610695 C117.166861,18.2610695 104.035016,22.8933561 97.4850333,17.9059415 C90.9350504,12.9185268 86.1133027,7.4917063 68.9988945,14.9399074 C51.8844863,22.3881084 53.8109414,9.8903293 42.6114288,11.9117097 C31.4119162,13.9330902 40.1086579,5.43372552 40.1086579,5.43372552 Z" id="Path-25" fill-opacity="0.5" fill="url(#linearGradient-6)" opacity="0.490729944" transform="translate(77.028669, 11.945812) rotate(-185.000000) translate(-77.028669, -11.945812) "></path>
+                                                  <path d="M6.18346459,6.5483231 C6.18346459,6.5483231 6.51658699,2.02432715 20.3864581,7.48000173 C34.2563291,12.9356763 37.3069426,10.5355049 42.2291133,8.81932608 C47.1512839,7.10314724 50.8884905,3.96979458 59.6927678,9.12452781 C68.4970452,14.2792611 77.1861245,5.82618017 77.1861245,5.82618017 L77.1861245,14.7369527 C77.1861245,14.7369527 65.1927685,22.4599652 59.0509739,18.3068907 C52.9091793,14.1538162 48.5728796,8.60630388 32.8033904,16.0545049 C17.0339011,23.502706 18.8089676,11.0049269 8.48955773,13.0263073 C-1.82985215,15.0476877 6.18346459,6.5483231 6.18346459,6.5483231 Z" id="Path-25-Copy-3" fill="#E8EDFA"></path>
+                                                  <path d="M4.17229425,5.43372552 C4.17229425,5.43372552 4.53382737,0.909729573 19.5866063,6.36540416 C34.6393852,11.8210787 37.9501738,9.42090734 43.2921373,7.70472851 C48.6341009,5.98854967 52.6900395,2.855197 62.2451997,8.00993024 C71.8003599,13.1646635 81.2304973,4.71158259 81.2304973,4.71158259 L81.2304973,18.2610695 C81.2304973,18.2610695 68.0986525,22.8933561 61.5486696,17.9059415 C54.9986868,12.9185268 50.1769391,7.4917063 33.0625309,14.9399074 C15.9481227,22.3881084 17.8745778,9.8903293 6.67506518,11.9117097 C-4.52444739,13.9330902 4.17229425,5.43372552 4.17229425,5.43372552 Z" id="Path-25-Copy-2" fill-opacity="0.5" fill="url(#linearGradient-6)" opacity="0.490729944" transform="translate(41.092306, 11.945812) scale(-1, 1) rotate(-185.000000) translate(-41.092306, -11.945812) "></path>
+                                              </g>
+                                              <g id="Group-9" transform="translate(22.123251, 0.938970)">
+                                                  <path d="M0.254665398,0.239526297 L9.39876194,0.239526297 L15.1138223,36.3314612 C15.9139307,40.2857839 20.1705077,43.0986991 24.2579188,43.0986991 L57.4052688,43.0986991" id="Stroke-90" fill="url(#linearGradient-7)"></path>
+                                                  <polyline id="Stroke-91" fill="#7BE6FF" points="11.6847861 9.26251003 64.2633412 9.26251003 59.6912929 31.8199694 16.2568344 38.5872072"></polyline>
+                                                  <path d="M26.9768346,52.8991983 C26.9768346,55.8204934 24.5773412,58.1882057 21.6168345,58.1882057 C18.6563277,58.1882057 16.2568344,55.8204934 16.2568344,52.8991983 C16.2568344,49.9779032 18.6563277,47.6101909 21.6168345,47.6101909 C24.5773412,47.6101909 26.9768346,49.9779032 26.9768346,52.8991983 L26.9768346,52.8991983 Z" id="Stroke-92" fill="url(#linearGradient-8)"></path>
+                                                  <path d="M54.4091243,52.8991983 C54.4091243,55.8204934 52.0096309,58.1882057 49.0491241,58.1882057 C46.0886174,58.1882057 43.689124,55.8204934 43.689124,52.8991983 C43.689124,49.9779032 46.0886174,47.6101909 49.0491241,47.6101909 C52.0096309,47.6101909 54.4091243,49.9779032 54.4091243,52.8991983 L54.4091243,52.8991983 Z" id="Stroke-93" fill="url(#linearGradient-8)"></path>
+                                                  <g id="Group-3" transform="translate(36.671467, 23.449182) rotate(1.000000) translate(-36.671467, -23.449182) translate(27.671467, 16.949182)" fill-rule="nonzero" fill="#FFFFFF">
+                                                      <path d="M0.674287286,12.1694722 C0.410191432,12.033844 0.278143505,11.7625877 0.278143505,11.4913313 L0.146095579,1.04796194 C0.146095579,0.505449241 0.542239359,0.0985647204 1.07043107,0.0985647204 C1.59862277,0.0985647204 1.99476655,0.505449241 1.99476655,1.04796194 L1.99476655,11.4913313 C1.99476655,12.033844 1.59862277,12.4407285 1.07043107,12.4407285 C0.938383139,12.3051003 0.806335213,12.3051003 0.674287286,12.1694722 Z" id="Shape"></path>
+                                                      <path d="M8.33306704,12.1694722 C8.06897119,12.033844 7.93692326,11.7625877 7.93692326,11.4913313 L7.80487533,1.04796194 C7.80487533,0.505449241 8.20101911,0.0985647204 8.72921082,0.0985647204 C9.25740253,0.0985647204 9.65354631,0.505449241 9.65354631,1.04796194 L9.78559423,11.4913313 C9.78559423,12.033844 9.38945045,12.4407285 8.86125875,12.4407285 C8.59716289,12.3051003 8.46511497,12.3051003 8.33306704,12.1694722 Z" id="Shape"></path>
+                                                      <path d="M15.8597989,12.1694722 C15.595703,12.033844 15.4636551,11.7625877 15.4636551,11.4913313 L15.3316072,1.04796194 C15.3316072,0.505449241 15.7277509,0.0985647204 16.2559426,0.0985647204 C16.7841344,0.0985647204 17.1802781,0.505449241 17.1802781,1.04796194 L17.3123261,11.4913313 C17.3123261,12.033844 16.9161823,12.4407285 16.3879906,12.4407285 C16.2559426,12.3051003 16.1238947,12.3051003 15.8597989,12.1694722 Z" id="Shape"></path>
+                                                  </g>
+                                              </g>
+                                          </g>
+                                      </g>
+                                  </g>
+                              </g>
+                          </g>
+                      </g>
+                  </svg>
+                  {{i18n.get("cart.message.empty_cart")}}
+                </div>
+                <div class="theme-cart-table-row theme-checkout-button-area">
+                  {% if cart.items | size != 0 %}
+                  <div class="theme-cart-table-data theme-cart-continue-shopping-button" data-cart-empty-shopping-button>
+                  {% else %}
+                  <div class="theme-cart-table-data theme-cart-empty-shopping-button" data-cart-empty-shopping-button>
+                  {% endif %}
+                    <button class="zpbutton zpbutton-type-primary zpbutton-outline zpbutton-size-md theme-continue-shopping-button" data-zs-continue-shopping>{{i18n.get("cart.action.continue_shopping")}}</button>
+                  </div>
+                  {% if cart.items | size != 0 %}
+                  <div class="theme-cart-table-data" data-cart-empty-checkout-button>
+                  {% else %}
+                  <div class="theme-cart-table-data theme-cart-empty-checkout-buton" data-cart-empty-checkout-button>
+                  {% endif %}
+                    <button class="zpbutton zpbutton-type-primary zpbutton-size-md theme-checkout-button" data-zs-checkout>{{i18n.get("cart.action.checkout")}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="clear:both"></div>
+{% endblock %}

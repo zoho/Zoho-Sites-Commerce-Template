@@ -1,0 +1,172 @@
+.theme-sidebar-area {
+    display: none;
+    [data-theme-sidebar-content]{
+      width: 100%;
+    }
+}
+
+.theme-sidebar-enable {
+  &.theme-content-area {
+      @include respond-to(mediumdevice){
+        @include flexbox;
+        @include prefix(flex-direction,row-reverse);
+      }
+      .theme-content-container {
+    		@include respond-to(mediumdevice){
+          @include prefix(flex,1 1 auto);
+          width: calc(100% - 350px);
+    		}
+        .theme-content-area-inner {
+      		.zpcontainer{
+            @include respond-to(mediumdevice){
+              width: 100%;
+              padding-left: 50px;
+              padding-right: 50px;
+              margin: 0 auto;
+              max-width: 1140px;
+            }
+      		}
+      	}
+    	}
+  }
+  &.theme-sidebar-enable-right{
+    @include respond-to(mediumdevice){
+      @include prefix(flex-direction,row);
+    }
+  }
+	.theme-sidebar-area {
+    background:map-get($default_vars,'sidebar-color-background');
+    width: 100%;
+    display: block;
+		@include respond-to(mediumdevice){
+      width: 250px;
+      @include flexbox;
+		}
+    @include respond-to(largedevice){
+      width: 300px;
+    }
+	  .zprow{
+			margin-left:0;
+			margin-right:0;
+		}
+    .zptab{
+      width:100%;
+    }
+    .zptabs-style-01{
+      &.zptab-type-03{
+        .zptab{
+          border-radius:50px;
+          &:first-of-type,
+          &:last-of-type{
+            border-radius:50px;
+          }
+        }
+      }
+    }
+    .sidebar-container{
+       width: 100%;
+       @include flexbox;
+       .zpsidebar-section{
+         width:100%;
+         .zpsidebar-container{
+           padding: 20px 15px;
+         }
+       }
+     }
+	}
+}
+.theme-vertical-navigation-sidebar-container{
+  @include respond-to(mediumdevice){
+    @include flexbox;
+  }
+  .theme-sidebar-area{
+    display: block;
+    &.theme-vertical-header-sidebar-responsive{
+      display: block;
+      @include respond-to(mediumdevice){
+        display: none;
+      }
+    }
+    .zprow{
+			margin-left:0;
+			margin-right:0;
+		}
+    .zptab{
+      width:100%;
+    }
+    .zptabs-style-01{
+      &.zptab-type-03{
+        .zptab{
+          border-radius:50px;
+          &:first-of-type,
+          &:last-of-type{
+            border-radius:50px;
+          }
+        }
+      }
+    }
+    .sidebar-container{
+       width: 100%;
+       @include flexbox;
+       .zpsidebar-section{
+         width:100%;
+         .zpsidebar-container{
+           padding: 20px 15px;
+           @include respond-to(mediumdevice){
+             padding:0px;
+           }
+         }
+       }
+     }
+  }
+  .theme-vertical-header-sidebar-banner-content-container{
+    width: 100%;
+    @include respond-to(mediumdevice){
+      @include prefix(flex,1 1 auto);
+    }
+    .theme-content-container {
+      .theme-content-area-inner {
+        .zpcontainer{
+          @include respond-to(mediumdevice){
+            width: 100%;
+            padding-left: 50px;
+            padding-right: 50px;
+            margin: 0 auto;
+            max-width: 1140px;
+          }
+        }
+      }
+    }
+    .zpcontent-for-productdetails-header-06{
+      .theme-content-container {
+        .theme-content-area-inner {
+          .zpcontainer{
+            @include respond-to(largedevice){
+              width: 100%;
+              padding-left: 50px;
+              padding-right: 50px;
+              margin: 0 auto;
+              max-width: 1140px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .zphero-boxed{
+    &.zpcontainer{
+      @include respond-to(mediumdevice){
+        width: 100%;
+      }
+    }
+  }
+}
+@media all and (min-width:1500px){
+  .theme-vertical-navigation-sidebar-container{
+    .zphero-boxed{
+      &.zpcontainer{
+        width: 100%;
+      }
+    }
+  }
+}

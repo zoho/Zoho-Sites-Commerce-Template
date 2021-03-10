@@ -1,0 +1,71 @@
+@mixin icon-headingtext-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpelem-iconheadingtext .zpicon-common {
+    svg{
+		    fill: map-get($default_vars,'#{$section-bg}color-iconheadingtext');
+    }
+    &.zpicon-style-bgfill,
+    &.zpicon-style-circle-fill,
+    &.zpicon-style-roundcorner-fill {
+      background: map-get($default_vars,'#{$section-bg}color-iconheadingtext-fill-background');
+      svg{
+        fill:map-get($default_vars,'#{$section-bg}color-iconheadingtext-fill');
+      }
+    }
+    &.zpicon-style-border,
+    &.zpicon-style-circle,
+    &.zpicon-style-roundcorner {
+      border-color: map-get($default_vars,'#{$section-bg}color-iconheadingtext-border');
+			svg{
+      	fill:map-get($default_vars,'#{$section-bg}color-iconheadingtext-border-style');
+      }
+    }
+	}
+}
+
+$icon-headingtext-size : 'h1','h2','h3','h4','h5','h6';
+
+.zpelem-iconheadingtext{
+	color: map-get($default_vars, "color-iconheadingtext-text");
+	font-family: map-get($default_vars, "font-family-iconheadingtext-text");
+	font-size: map-get($default_vars, "font-size-iconheadingtext-text");
+	font-weight: map-get($default_vars, "font-weight-iconheadingtext-text");
+	text-transform: map-get($default_vars, "font-transform-iconheadingtext-text");
+	line-height: map-get($default_vars, "font-line-height-iconheadingtext-text");
+	letter-spacing: map-get($default_vars, "font-letter-spacing-iconheadingtext-text");
+}
+@each $icon-headingtext-tag in $icon-headingtext-size {
+	.zpelem-iconheadingtext #{$icon-headingtext-tag}{
+		font-family:map-get($default_vars, "font-family-iconheadingtext-#{$icon-headingtext-tag}");
+		font-size:map-get($default_vars, "font-size-iconheadingtext-#{$icon-headingtext-tag}");
+		font-weight:map-get($default_vars, "font-weight-iconheadingtext-#{$icon-headingtext-tag}");
+		text-transform:map-get($default_vars, "font-transform-iconheadingtext-#{$icon-headingtext-tag}");
+		color:map-get($default_vars, "color-iconheadingtext-#{$icon-headingtext-tag}");
+		line-height: map-get($default_vars, "font-line-height-iconheadingtext-#{$icon-headingtext-tag}");
+		letter-spacing: map-get($default_vars, "font-letter-spacing-iconheadingtext-#{$icon-headingtext-tag}");
+	}
+}
+
+@mixin icon-headingtext-font-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpelem-iconheadingtext{
+		color: map-get($default_vars, "#{$section-bg}color-iconheadingtext-text");
+	}
+	@each $icon-headingtext-tag in $icon-headingtext-size {
+		#{$section-class-name} .zpelem-iconheadingtext #{$icon-headingtext-tag}{
+			color:map-get($default_vars, "#{$section-bg}color-iconheadingtext-#{$icon-headingtext-tag}");
+		}
+	}
+}
+
+@include icon-headingtext-style(null);
+@include icon-headingtext-style('.zpdark-section');
+
+@include icon-headingtext-font-style(null);
+@include icon-headingtext-font-style('.zpdark-section');

@@ -1,0 +1,109 @@
+.zpaccordion-container {
+	&.zpaccordion-style-01 {
+		.zpaccordion {
+			font-family :map-get($default_vars,'font-family-accordion-style-one');
+			font-size: map-get($default_vars,'font-size-accordion-style-one');
+			font-weight: map-get($default_vars,'font-weight-accordion-style-one');
+			text-transform: map-get($default_vars,'font-transform-accordion-style-one');
+			line-height: map-get($default_vars,'font-line-height-accordion-style-one');
+			letter-spacing: map-get($default_vars,'font-letter-spacing-accordion-style-one');
+		}
+	}
+	&.zpaccordion-style-02 {
+		.zpaccordion {
+			font-family :map-get($default_vars,'font-family-accordion-style-two');
+			font-size: map-get($default_vars,'font-size-accordion-style-two');
+			font-weight: map-get($default_vars,'font-weight-accordion-style-two');
+			text-transform: map-get($default_vars,'font-transform-accordion-style-two');
+			line-height: map-get($default_vars,'font-line-height-accordion-style-two');
+			letter-spacing: map-get($default_vars,'font-letter-spacing-accordion-style-two');
+		}
+	}
+}
+
+@mixin accordion-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpaccordion-container {
+    &.zpaccordion-style-01 {
+      .zpaccordion {
+        background:map-get($default_vars, '#{$section-bg}color-accordion-style-one-background');
+        color: map-get($default_vars, '#{$section-bg}color-accordion-style-one');
+				margin-bottom:0;
+				border-color:map-get($default_vars, '#{$section-bg}color-accordion-style-one-border');
+        &.zpaccordion-active {
+          background: map-get($default_vars, '#{$section-bg}color-accordion-style-one-active-background');
+          color: map-get($default_vars, '#{$section-bg}color-accordion-style-one-active-text-color');
+					border-bottom : 1px solid;
+					border-bottom-color:map-get($default_vars, '#{$section-bg}color-accordion-style-one-active-border');
+        }
+				&:hover {
+					@include respond-to(mediumdevice){
+						background: map-get($default_vars, '#{$section-bg}color-accordion-style-one-active-background');
+						color: map-get($default_vars, '#{$section-bg}color-accordion-style-one-active-text-color');
+					}
+				}
+      }
+      .zpaccordion-content {
+				margin-bottom:0;
+				border-left:1px solid map-get($default_vars, '#{$section-bg}color-accordion-style-one-border');
+				border-right:1px solid map-get($default_vars, '#{$section-bg}color-accordion-style-one-border');
+				background:map-get($default_vars, '#{$section-bg}color-accordion-style-one-content-background');
+				border-top-color:transparent;
+				&:last-of-type{
+					border-bottom-color:map-get($default_vars, '#{$section-bg}color-accordion-style-one-border');
+				}
+      }
+    }
+    &.zpaccordion-style-02 {
+      .zpaccordion {
+        color: map-get($default_vars, '#{$section-bg}color-accordion-style-two');
+				&.zpaccordion-active{
+					color:  map-get($default_vars, '#{$section-bg}color-accordion-style-two');
+				}
+				&:hover{
+					@include respond-to(mediumdevice){
+						color:  map-get($default_vars, '#{$section-bg}color-accordion-style-two');
+					}
+				}
+      }
+    }
+  }
+}
+
+.zpaccordion-container {
+	&.zpaccordion-style-01 {
+		.zpaccordion {
+			border-width:1px;
+			border-style: solid;
+			&.zpaccordion-active {
+				border-bottom-width:2px;
+			}
+		}
+		.zpaccordion-content {
+			border-width:1px;
+			border-style: solid;
+			border-bottom:0px;
+			&:last-of-type{
+				border-bottom-width:1px;
+				border-bottom-style:solid;
+			}
+		}
+	}
+}
+.zpdark-section .zpaccordion-container {
+	&.zpaccordion-style-01 {
+		.zpaccordion {
+			border: 0px;
+			border-top: 1px solid RGBA(255,255,255,0.24);
+		}
+		.zpaccordion-content {
+			border: 0px !important;
+		}
+	}
+}
+
+@include accordion-style(null);
+@include accordion-style('.zpdark-section');

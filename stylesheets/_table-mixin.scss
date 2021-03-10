@@ -1,0 +1,68 @@
+.zptable{
+  table{
+    td,th{
+      font-family: map-get($default_vars,'font-family-table-text');
+      font-size: map-get($default_vars,'font-size-table-text');
+      text-transform: map-get($default_vars,'font-transform-table-text');
+      font-weight: map-get($default_vars,'font-weight-table-text');
+      line-height: map-get($default_vars,'font-line-height-table-text');
+      letter-spacing: map-get($default_vars,'font-letter-spacing-table-text');
+    }
+  }
+}
+@mixin table-style($section-class-name){
+  $section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+  #{$section-class-name} .zptable{
+    table{
+      border-color:map-get($default_vars,'#{$section-bg}color-table-border');
+      td,th{
+        border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+        border-right-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+        color:map-get($default_vars,'#{$section-bg}color-header-transparent-text');
+      }
+      td{
+        color:map-get($default_vars,'#{$section-bg}color-table-text');
+      }
+    }
+    &.zptable-header-dark{
+      table{
+        tr{
+          th{
+            background: map-get($default_vars,'#{$section-bg}color-header-dark-background');
+            color:map-get($default_vars,'#{$section-bg}color-header-dark-background-text');
+            border-right-color:map-get($default_vars,'#{$section-bg}color-table-headerdark-border');
+            border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-headerdark-border');
+          }
+        }
+      }
+    }
+    &.zptable-header-light{
+      table{
+        tr{
+          th{
+            background:map-get($default_vars,'#{$section-bg}color-header-light-background');
+            color:map-get($default_vars,'#{$section-bg}color-header-light-background-text');
+            border-right-color:map-get($default_vars,'#{$section-bg}color-table-header-border');
+            border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-header-border');
+          }
+        }
+      }
+    }
+    &.zptable-header-transparent{
+      table{
+        tr{
+          th{
+            color:map-get($default_vars,'#{$section-bg}color-header-transparent-text');
+            border-right-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+            border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+          }
+        }
+      }
+    }
+  }
+}
+@include table-style(null);
+@include table-style('.zpdark-section');

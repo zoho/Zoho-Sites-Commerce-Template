@@ -1,0 +1,132 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+img{
+  max-width : 100%;
+  border: 0 none;
+  vertical-align: middle;
+}
+a,
+a:hover,
+a:active,
+a:focus{
+  text-decoration:none;
+}
+:focus,:active,
+.active{
+  outline : 0 none;
+}
+// ul li,
+// ol li{
+//   list-style: none;
+// }
+
+// BUTTON RESET STARTS
+
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button']{
+  margin-bottom: 0;
+  font-size: inherit;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  //@include prefix(user-select,none);
+  background-image: none;
+  text-decoration:none;
+  line-height:1.42857143;
+  border:0 none;
+  &:hover{
+ 	 @include prefix(transition,0.3s linear);
+  }
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    @include prefix(box-shadow,none);
+  }
+  &::-moz-focus-inner{
+	  border: none;
+	  padding:0;
+  }
+}
+
+// BUTTON RESET END
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+input,
+textarea,
+select{
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] {
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    opacity:0.65;
+    @include prefix(box-shadow,none);
+  }
+}
+
+// INPUT AND FORM RESET STARTS
+
+input,
+textarea,
+select{
+  border: 1px solid #ccc;
+  padding:10px 5px;
+  width:100%;
+  font-family: inherit;
+  font-size:inherit;
+  color:inherit;
+}
+textarea{
+  resize:none;
+  height:110px;
+  display: block;
+}
+input[type='radio'],
+input[type='file'],
+input[type='checkbox']{
+  padding:0;
+  border:0 none;
+  width:auto;
+}
+select{
+  background:#fff;
+  height:39px;
+  padding-right:0;
+}
+select[multiple]{
+  height:75px;
+  padding:10px 5px;
+  padding-right:0;
+}
+
+// INPUT AND FORM RESET END
+
+// TABLE RESET STARTS
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+tr{
+  vertical-align: middle;
+}
+
+// TABLE RESET ENDS
+
+// NO SCRIPTS TAG STYLE
+
+noscript{
+  height: 100%;
+}

@@ -1,0 +1,163 @@
+.#{zpbutton},
+button,
+input[type=submit],
+input[type=button] {
+	&.zpbutton-type-primary {
+		font-family: map-get($default_vars, 'font-family-button-primary');
+		text-transform: map-get($default_vars, 'font-transform-button-primary');
+		font-weight: map-get($default_vars, 'font-weight-button-primary');
+		border : map-get($default_vars, 'size-button-default-primary-border') map-get($default_vars,'style-button-default-primary-border');
+		line-height: map-get($default_vars, 'font-line-height-button-primary');
+		letter-spacing: map-get($default_vars, 'font-letter-spacing-button-primary');
+		&.zpbutton-outline {
+			border : map-get($default_vars, 'size-button-outline-primary-border') map-get($default_vars,'style-button-outline-primary-border');
+		}
+		&.zpbutton-size-sm{
+			font-size: map-get($default_vars, 'font-size-button-primary-sm');
+		}
+		&.zpbutton-size-md{
+			font-size: map-get($default_vars, 'font-size-button-primary-md');
+		}
+		&.zpbutton-size-lg{
+			font-size: map-get($default_vars, 'font-size-button-primary-lg');
+		}
+	}
+	&.zpbutton-type-secondary{
+		font-family: map-get($default_vars, 'font-family-button-secondary');
+		text-transform: map-get($default_vars, 'font-transform-button-secondary');
+		font-weight: map-get($default_vars, 'font-weight-button-secondary');
+		border : map-get($default_vars, 'size-button-default-secondary-border') map-get($default_vars,'style-button-default-secondary-border');
+		line-height: map-get($default_vars, 'font-line-height-button-secondary');
+		letter-spacing: map-get($default_vars, 'font-letter-spacing-button-secondary');
+		&.zpbutton-outline {
+			border : map-get($default_vars, 'size-button-outline-secondary-border') map-get($default_vars,'style-button-outline-secondary-border');
+		}
+		&.zpbutton-size-sm{
+			font-size: map-get($default_vars, 'font-size-button-secondary-sm');
+		}
+		&.zpbutton-size-md{
+			font-size: map-get($default_vars, 'font-size-button-secondary-md');
+		}
+		&.zpbutton-size-lg{
+			font-size: map-get($default_vars, 'font-size-button-secondary-lg');
+		}
+	}
+	&.zpbutton-type-link{
+		background: transparent;
+		padding-left:0;
+		padding-right:0;
+		border : 0 none;
+		font-family: map-get($default_vars, 'font-family-button-link');
+		text-transform: map-get($default_vars, 'font-transform-button-link');
+		font-weight: map-get($default_vars, 'font-weight-button-link');
+		line-height: map-get($default_vars, 'font-line-height-button-link');
+		letter-spacing: map-get($default_vars, 'font-letter-spacing-button-link');
+		&.disabled {
+			&:hover {
+				background: transparent;
+			}
+		}
+		&.zpbutton-size-sm{
+			font-size: map-get($default_vars, 'font-size-button-link-sm');
+		}
+		&.zpbutton-size-md{
+			font-size: map-get($default_vars, 'font-size-button-link-md');
+		}
+		&.zpbutton-size-lg{
+			font-size: map-get($default_vars, 'font-size-button-link-lg');
+		}
+	}
+}
+
+@mixin button-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .#{zpbutton},
+	#{$section-class-name} button,
+  #{$section-class-name} input[type=submit],
+  #{$section-class-name} input[type=button] {
+		&.zpbutton-type-primary {
+      background : map-get($default_vars, '#{$section-bg}color-button-default-primary-background');
+      color : map-get($default_vars, '#{$section-bg}color-button-primary');
+			border-color : map-get($default_vars, '#{$section-bg}color-button-default-primary-border');
+			&.zpbutton-outline {
+				background : map-get($default_vars, '#{$section-bg}color-button-outline-primary-background');
+	      color : map-get($default_vars, '#{$section-bg}color-button-outline-primary-text-and-icon');
+				border-color : map-get($default_vars, '#{$section-bg}color-button-outline-primary-border');
+				&.disabled {
+					&:hover {
+						background: transparent;
+						color :map-get($default_vars, '#{$section-bg}color-button-outline-primary-hover-text-and-icon');
+						border-color : map-get($default_vars, '#{$section-bg}color-button-outline-primary-hover-border');
+					}
+				}
+				&:hover {
+					background: map-get($default_vars, '#{$section-bg}color-button-outline-primary-hover-background');
+					color:	map-get($default_vars, '#{$section-bg}color-button-outline-primary-hover-text-and-icon');
+					border-color : map-get($default_vars, '#{$section-bg}color-button-outline-primary-hover-border');
+				}
+			}
+			&:hover {
+				background: map-get($default_vars, '#{$section-bg}color-button-default-primary-hover-background');
+				color:	map-get($default_vars, '#{$section-bg}color-button-default-primary-hover-text-and-icon');
+				border-color : map-get($default_vars, '#{$section-bg}color-button-default-primary-hover-border');
+			}
+			&.disabled {
+				&:hover {
+					background : map-get($default_vars, '#{$section-bg}color-button-default-primary-hover-background');
+		      color : map-get($default_vars, '#{$section-bg}color-button-default-primary-hover-text-and-icon');
+				}
+			}
+    }
+		&.zpbutton-type-secondary{
+			background : map-get($default_vars, '#{$section-bg}color-button-default-secondary-background');
+      color : map-get($default_vars, '#{$section-bg}color-button-secondary');
+			border-color : map-get($default_vars, '#{$section-bg}color-button-default-secondary-border');
+			&.zpbutton-outline {
+				background : map-get($default_vars, '#{$section-bg}color-button-outline-secondary-background');
+	      color : map-get($default_vars, '#{$section-bg}color-button-outline-secondary-text-and-icon');
+				border-color : map-get($default_vars, '#{$section-bg}color-button-outline-secondary-border');
+				&.disabled {
+					&:hover {
+						background: transparent;
+						color :map-get($default_vars, '#{$section-bg}color-button-outline-secondary-hover-text-and-icon');
+						border-color : map-get($default_vars, '#{$section-bg}color-button-outline-secondary-hover-border');
+					}
+				}
+				&:hover {
+					background: map-get($default_vars, '#{$section-bg}color-button-outline-secondary-hover-background');
+					color:map-get($default_vars, '#{$section-bg}color-button-outline-secondary-hover-text-and-icon');
+					border-color : map-get($default_vars, '#{$section-bg}color-button-outline-secondary-hover-border');
+				}
+			}
+			&:hover {
+				background: map-get($default_vars, '#{$section-bg}color-button-default-secondary-hover-background');
+				color:map-get($default_vars, '#{$section-bg}color-button-default-secondary-hover-text-and-icon');
+				border-color : map-get($default_vars, '#{$section-bg}color-button-default-secondary-hover-border');
+			}
+			&.disabled {
+				&:hover {
+					background:map-get($default_vars, '#{$section-bg}color-button-default-secondary-hover-background');
+					color:map-get($default_vars, '#{$section-bg}color-button-default-secondary-hover-text-and-icon');
+				}
+			}
+		}
+		&.zpbutton-type-link{
+      color : map-get($default_vars, '#{$section-bg}color-button-link');
+			&.disabled {
+				&:hover {
+					background: transparent;
+					color :map-get($default_vars, '#{$section-bg}color-button-hover-link');
+				}
+			}
+			&:hover {
+				color:map-get($default_vars,'#{$section-bg}color-button-hover-link');
+			}
+		}
+	}
+}
+
+@include button-style(null);
+@include button-style('.zpdark-section');

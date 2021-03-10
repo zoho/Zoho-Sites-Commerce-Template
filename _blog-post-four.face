@@ -1,0 +1,77 @@
+<div class="zprow" data-zs-app="blog_comments">
+  <div class="zpcol-md-12 zpcol-sm-12 theme-blog-container-column theme-single-post">
+    <div class="theme-blog-container">
+      <div class="theme-blog-part theme-blog-heading-author">
+        <h1 class="theme-blog-heading theme-single-blog-heading" data-post-heading="true">{{blog_post.post_title}}</h1>
+        <span class="theme-blog-author">
+          <a href="{{blog_post.author.author_url}}" data-blog-author="true">{{blog_post.author.author_name}}</a>
+        </span>
+        <div>
+          <span class="theme-blog-date">
+            {% if blog_post.post_last_modified_time %}
+              {{ blog_post.post_last_modified_time }}
+            {% else %}
+             {{ blog_post.post_published_time }}
+            {% endif %}
+          </span>
+          <span class="theme-blog-comment-count">
+            <a href="{{blog_post.post_url}}#comments"><span data-post-id="{{blog_post.post_id}}"></span> {{i18n.get("blog.message.noofcomments")}} </a>
+          </span>
+        </div>
+      </div>
+      <div class="theme-blog-part">
+        {{blog_post.content}}
+      </div>
+      <div class="theme-single-blog-social-cat-tag-group">
+
+        <div class="theme-blog-part single-post-category-tag">
+          <div class="singlepost-category-tag-heading">
+            <svg viewBox="0 0 11 19" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <path d="M6.134 7.19H10.5v4.352H6.134zM6.134 14.148H10.5V18.5H6.134z"/>
+                <path d="M2.616 9.215h3.097M2.616 16.04h3.088M2.664 5.285V15.99" stroke-linecap="square"/>
+                <path d="M.5.5h4.366v4.352H.5z"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <ul>
+              <li>
+                <a href="{{blog_post.category.category_url}}"> {{ blog_post.category.category_name }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="theme-blog-part single-post-category-tag theme-blog-tag-list">
+          <div class="singlepost-category-tag-heading">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd" stroke-linecap="round">
+                <path d="M18.17 10.668l-.736-8.102-8.102-.737-8.102 8.1 8.84 8.84 8.1-8.103z" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M9.98 13.146L6.853 10.02"/>
+              </g>
+            </svg>
+          </div>
+          <div class="theme-singlepost-tags-container">
+            <ul>
+              {% for tag in blog_post.tags %}
+              <li>
+                <a href="{{tag.tag_url}}"> {{ tag.tag_name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        {% comment %}  SOCIAL SHARE STARTS HERE {% endcomment %}
+
+        {% if blog_post.is_social_share_enabled %}
+          <div data-zs-app="social_share" data-style="{{blog_post.social_share_options.style}}" data-align="{{blog_post.social_share_options.align}}" data-count="{{blog_post.social_share_options.show_count}}"></div>
+        {% endif %}
+
+        {% comment %}  SOCIAL SHARE ENDS HERE {% endcomment %}
+
+    </div>
+  </div>
+  </div>
+</div>

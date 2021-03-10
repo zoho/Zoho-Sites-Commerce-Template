@@ -1,0 +1,58 @@
+<select style="display: none" data-zs-variants>
+	{% for variant in product.variants %}
+		{% assign variant_options = variant.options %}
+		{% assign variant_option_identifiers = variant_options | map(attr="id") %}
+		{% assign variant_images = variant.images %}
+		{% assign variant_image_identifiers = variant_images | map(attr="id") %}
+		<option value='{{ variant.variant_id }}' data-zs-attributes='{{ variant_option_identifiers | json }}' data-zs-images='{{ variant_image_identifiers | json }}'></option>
+	{% endfor %}
+</select>
+
+{% for attribute in product.attributes %}
+<div class="theme-prod-detail-entry-row theme-prod-detail-attr-variants">
+	<div class="theme-prod-review-entry">
+		<div class="theme-prod-variant">
+			<div class="theme-prod-variant-label">
+				Select {{ attribute.name }}
+			</div>
+			{% if attribute.type == 'Color' %}
+			<div class="theme-product-color-variations" data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">
+					{% for coloroption in attribute.options %}
+					<span class="theme-product-color">
+						<label data-theme-color-label style="background:{{coloroption.color_code}}" onclick="selectcolor(this,'{{ attribute.name }}')">
+							<input type="radio" name="{{ attribute.id }}" data-zs-attribute-option value="{{ coloroption.id }}" data-text="{{ coloroption.value }}">
+						</label>
+						<svg xmlns="http://www.w3.org/2000/svg">
+						  <defs>
+						    <path d="M49.846 6.154a.478.478 0 0 0-.69-.013l-6.58 6.547a.477.477 0 0 1-.66.016l-3.14-2.838a.478.478 0 0 0-.69.048l-.965 1.138a.516.516 0 0 0 .046.712l4.829 4.363c.19.173.478.166.66-.016l8.194-8.154a.516.516 0 0 0 .013-.713l-1.017-1.09z" id="b"/>
+						    <filter x="-50%" y="-48.8%" width="200%" height="236.6%" filterUnits="objectBoundingBox" id="a">
+						      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+						      <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+						      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.203634511 0" in="shadowBlurOuter1"/>
+						    </filter>
+						  </defs>
+						  <g transform="translate(-33 -4)" fill-rule="nonzero" fill="none">
+						    <use  filter="url(#a)" xlink:href="#b"/>
+						    <use fill-rule="evenodd" xlink:href="#b"/>
+						  </g>
+						</svg>
+					</span>
+					{% endfor %}
+			</div>
+			{% else %}
+			<div class="theme-variant-select-container" data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">
+				{% for variantOption in attribute.options %}
+				<span class="theme-product-variant">
+					<label data-theme-variant-label onclick="selectVariant(this,'{{ attribute.name }}')">
+						{{variantOption.value}}
+						<input type="radio" name="{{ attribute.id }}" data-zs-attribute-option value="{{ variantOption.id }}" data-text="{{ variantOption.value }}">
+					</label>
+				</span>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">{{i18n.get("product.message.attribute_select",attribute.name)}}</div>
+		</div>
+	</div>
+</div>
+{% endfor %}

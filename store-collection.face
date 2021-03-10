@@ -1,0 +1,642 @@
+{% extends "_theme" %}
+
+{% block header_block %}
+{% endblock %}
+
+{% block content_area %}
+
+{% comment %} HEADER STYLE-06 CODE COMES HERE WHEN THERE IS HEADER STYLE-06 AND SIDEBAR ENABLED {% endcomment %}
+
+{% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+  <div class="theme-vertical-navigation-sidebar-container">
+{% endif %}
+
+{% if page.template_vars.header_style == "06" && page.is_portal_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_multi_currency_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_menu_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_search_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_store_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_logo_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_title_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_caption_enabled && page.is_sidebar_enabled  %}
+
+<div class="theme-vertical-navigation-container {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %} {% if page.is_sidebar_enabled %} theme-veritical-nav-with-sidebar {% endif %}" data-theme-vertical-menu="zptheme-vertical-menu">
+	<div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %} {% if page.template_vars.header_background == "dark" && page.is_sidebar_enabled %}zpdark-section{% endif %}" data-banner-base-header="theme-banner-base-header">
+		<div class="zpcontainer">
+			{% if page.is_portal_enabled || page.is_multi_currency_enabled %}
+			<div class="theme-header-topbar theme-vertical-navigation-portal {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %}" data-banner-base-header="theme-banner-base-header">
+				{% if page.is_portal_enabled %}
+				<div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
+					{% include '_member-portal' %}
+				</div>
+				{% endif %}
+
+        {% if page.is_multi_currency_enabled %}
+				<div data-theme-currency-placeholder-non-res class="theme-currency-container-style-06-non-res">
+					{% include '_store-currency-target' %}
+				</div>
+        {% endif %}
+
+			</div>
+			{% endif %}
+
+			{% include '_branding' %}
+
+			{% if page.is_search_enabled || page.is_store_enabled %}
+			<div class="theme-navigation-and-icons theme-vertical-navigation-search-cart-container">
+				<div data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive" class="theme-search-cart-non-res">
+					{% include '_search-store-cart-count' %}
+				</div>
+			</div>
+			{% endif %}
+
+			{% if page.is_menu_enabled %}
+			<div class="theme-navigation-and-icons">
+				<div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
+					<div class="theme-menu" data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem: {{page.template_vars.maxmenuitem}};position: theme-sub-menu-position-change; orientation: vertical; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
+						{{navi(menu)}}
+						<div data-theme-currency-placeholder-res class="theme-currency-res">
+						</div>
+						<div class="theme-close-mobile-currency" data-theme-currency-open-top>
+							<div class="theme-currency-open-label">
+								{{i18n.get("currency.label")}}
+							</div>
+							<div onclick="closeCurrencyMobile()" class="theme-currency-close-icon-container" data-theme-currency-hide-mobile>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+
+      <div class="theme-sidebar-area">  {% comment %} TO GIVE BOTTOM SPACE TO CONTACT INFO - IN PAGE FACE WE HAVE SIDEBAR CONTENT {% endcomment %}
+      </div>
+
+		</div>
+
+		{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled %}
+		<div class="zpcontainer theme-vertical-navigation-contact-social-container">
+			<div class="theme-vertical-navigation-contact-social">
+				<div class="theme-header-topbar">
+					{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+						{% include '_social-links' %}
+					{% endif %}
+					{% if page.is_contact_information_enabled %}
+					<div data-topbarinfo-position="zptheme-topbarinfo-position">
+						{% include '_contacts' %}
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+	</div>
+</div>
+{% endif %}
+
+{% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+	<div class="theme-vertical-header-sidebar-banner-content-container">
+{% endif %}
+
+<div data-theme-content-container="theme-content-container" class="theme-content-area {% if page.template_vars.header_style == "06" && page.is_portal_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_search_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_store_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_title_enabled && !page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled && !page.is_sidebar_enabled %}zpcontent-for-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
+	<div class="theme-content-container">
+		<div class="theme-content-area-inner">
+
+			{% if page.template_vars.product_category_style == '01' %}
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION {% endcomment %}
+
+				<div class="theme-section">
+	        <div class="zpcontainer">
+	          <div class="zprow">
+	            <div class="theme-category-col zpcol-md-12 zpcol-sm-12">
+	              <div class="zpdark-section theme-category-description theme-collection-description">
+	                <h1 class="{% if collection.description %}theme-collection-heading-with-desc{% endif %}">{{ collection.name }}</h1>
+									{% if collection.description %}
+	                  {{ collection.description }}
+									{% endif %}
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION END {% endcomment %}
+
+				{% comment %} COLLECTION SORTBY {% endcomment %}
+
+				{% if page.is_sorting_enabled && collection.products | size > 1 %}
+				<div class="theme-collection-sortby-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+								<div class="theme-collection-sort-inner">
+									<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+									<select data-sort-by-products>
+										{% for sort_by_option in collection.sort_by_options %}
+											<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% comment %} COLLECTION SORTBY END {% endcomment %}
+
+				{% comment %} PRODUCTS LIST IN COLLECTION PAGE {% endcomment %}
+
+				<div class="theme-collection-section">
+					<div class="zpcontainer">
+						{% if page.template_vars.product_list_style == '04' %}
+						<div class="theme-store-collection-container">
+						{% endif %}
+							{% if collection.products | size == 0 %}
+								<h2 class="theme-no-products-error">{{i18n.get("collection.noproducts.message")}}</h2>
+							{% endif %}
+							<div class="zprow">
+								<div class="zpcol-md-12 zpcol-sm-12">
+									<div class="zprow theme-product-ratio {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %}" data-sort-by-products-target>
+										{% for product in collection.products %}
+											{% include "store-product-list-view" %}
+										{% endfor %}
+										{% include "_store-pagination" %}
+									</div>
+								</div>
+							</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+				{% comment %} PRODUCTS LIST COLLECTION PAGE END {% endcomment %}
+
+			{% endif %}
+
+			{% if page.template_vars.product_category_style == '02' %}
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION STARTS {% endcomment %}
+
+				 <div class="theme-store-front-container theme-category-description-container">
+					<div class="zpcontainer">
+						<div class="zprow">
+								<div class="zpcol-md-12">
+										<div class="theme-category-image-description-conatainer">
+												<div class="theme-category-name-description-no-imgage theme-category-name-description zpdark-section theme-collection-description">
+														<h1 class="theme-category-name {% if collection.description %}theme-collection-name-with-desc{% endif %}">{{ collection.name }}</h1>
+														{% if collection.description %}
+															{{ collection.description }}
+														{% endif %}
+												</div>
+										</div>
+								</div>
+						</div>
+					</div>
+				 </div>
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION END {% endcomment %}
+
+				{% comment %} COLLECTION SORTBY {% endcomment %}
+
+				{% if page.is_sorting_enabled && collection.products | size > 1 %}
+				<div class="theme-collection-sortby-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+								<div class="theme-collection-sort-inner">
+									<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+									<select data-sort-by-products>
+										{% for sort_by_option in collection.sort_by_options %}
+											<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% comment %} COLLECTION SORTBY END {% endcomment %}
+
+				{% comment %} PRODUCTS LIST IN COLLECTION PAGE {% endcomment %}
+
+				<div class="theme-category-collection-product-container theme-collection-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 zpcol-sm-12">
+								{% if collection.products | size == 0 %}
+									<h2 class="theme-no-products-error">{{i18n.get("collection.noproducts.message")}}</h2>
+								{% endif %}
+							</div>
+						</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						<div class="theme-store-collection-container">
+						{% endif %}
+							<div class="zprow">
+								<div class="zpcol-md-12 zpcol-sm-12">
+									<div data-sort-by-products-target class="zprow theme-product-ratio {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %} {% if page.template_vars.product_list_style == '05' || page.template_vars.product_list_style == '07'  %}theme-collection-row-no-margin{% endif %}">
+										{% for product in collection.products %}
+											{% include "store-product-list-view" %}
+										{% endfor %}
+										{% include "_store-pagination" %}
+									</div>
+								</div>
+							</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+				{% comment %} PRODUCTS LIST IN COLLECTION PAGE END {% endcomment %}
+
+			{% endif %}
+
+			{% if page.template_vars.product_category_style == '03' %}
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION {% endcomment %}
+
+				<div class="theme-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 theme-category-description-no-image theme-category-col">
+								<div class="theme-category-description">
+									<h1 class="theme-category-name">{{ collection.name }}</h1>
+									{% if collection.description %}
+										{{ collection.description }}
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION END {% endcomment %}
+
+				{% comment %} COLLECTION SORTBY {% endcomment %}
+
+				{% if page.is_sorting_enabled && collection.products | size > 1 %}
+				<div class="theme-collection-sortby-section">
+					<div class="zpcontainer">
+						<div class="zprow theme-collection-sortby-row">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+								<div class="theme-collection-sort-inner">
+									<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+									<select data-sort-by-products>
+										{% for sort_by_option in collection.sort_by_options %}
+											<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% comment %} COLLECTION SORTBY END {% endcomment %}
+
+
+				{% comment %} PRODUCTS LIST IN COLLECTION PAGE {% endcomment %}
+				<div class="theme-collection-container theme-collection-section">
+					<div class="zpcontainer">
+						{% if collection.products | size == 0 %}
+							<h2 class="theme-no-products-error">{{i18n.get("collection.noproducts.message")}}</h2>
+						{% endif %}
+						{% if page.template_vars.product_list_style == '04' %}
+						<div class="theme-store-collection-container">
+						{% endif %}
+							<div class="zprow">
+								<div class="zpcol-md-12 zpcol-sm-12">
+									<div data-sort-by-products-target class="zprow theme-product-ratio theme-collection-row {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %} {% if page.template_vars.product_list_style == '05' || page.template_vars.product_list_style == '07'  %}theme-collection-row-no-margin{% endif %}">
+										{% for product in collection.products %}
+											{% include "store-product-list-view" %}
+										{% endfor %}
+										{% include "_store-pagination" %}
+									</div>
+								</div>
+							</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				{% comment %} PRODUCTS LIST COLLECTION PAGE END {% endcomment %}
+
+			{% endif %}
+
+			{% if page.template_vars.product_category_style == '04' %}
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION STARTS {% endcomment %}
+
+				 <div class="theme-section">
+						<div class="zpcontainer">
+							<div class="zprow">
+									<div class="zpcol-md-12">
+											<div class="theme-category-name theme-collection-name">
+													<h1 class="theme-category-heading">{{ collection.name }}</h1>
+											</div>
+									</div>
+							</div>
+							{% if collection.description %}
+							<div class="zprow theme-category-description">
+									<div class="zpcol-md-12">
+											{{ collection.description }}
+									</div>
+							</div>
+							{% endif %}
+						</div>
+				 </div>
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION END {% endcomment %}
+
+				{% comment %} COLLECTION SORTBY {% endcomment %}
+
+				{% if page.is_sorting_enabled && collection.products | size > 1 %}
+				<div class="theme-collection-sortby-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+								<div class="theme-collection-sort-inner">
+									<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+									<select data-sort-by-products>
+										{% for sort_by_option in collection.sort_by_options %}
+											<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% comment %} COLLECTION SORTBY END {% endcomment %}
+
+				{% comment %} PRODUCTS LIST IN COLLECTION PAGE {% endcomment %}
+				<div class="theme-collection-section">
+					<div class="zpcontainer">
+						{% if page.template_vars.product_list_style == '04' %}
+						<div class="theme-store-collection-container">
+						{% endif %}
+							{% if collection.products | size == 0 %}
+								<h2 class="theme-no-products-error">{{i18n.get("collection.noproducts.message")}}</h2>
+							{% endif %}
+							<div class="zprow">
+								<div class="zpcol-md-12 zpcol-sm-12">
+									<div class="zprow theme-product-ratio {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %} {% if page.template_vars.product_list_style == '04' %}theme-collection-row{% endif %} {% if page.template_vars.product_list_style == '05' || page.template_vars.product_list_style == '07'  %}theme-collection-row-no-margin{% endif %}" data-sort-by-products-target>
+									{% for product in collection.products %}
+										{% include "store-product-list-view" %}
+									{% endfor %}
+									{% include "_store-pagination" %}
+									</div>
+								</div>
+							</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				{% comment %} PRODUCTS LIST COLLECTION PAGE END {% endcomment %}
+
+			{% endif %}
+
+			{% if page.template_vars.product_category_style == '05' %}
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION STARTS {% endcomment %}
+
+				 <div class="theme-section">
+						<div class="zpcontainer">
+							<div class="zprow">
+									<div class="zpcol-md-12">
+											<div class="theme-category-name-description theme-collection-description">
+													<h1 class="theme-category-name {% if collection.description %}theme-collection-name-with-desc{% endif %}">{{ collection.name }}</h1>
+													{% if collection.description %}
+															{{ collection.description }}
+													{% endif %}
+											</div>
+									</div>
+							</div>
+						</div>
+				 </div>
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION END {% endcomment %}
+
+				{% comment %} COLLECTION SORTBY {% endcomment %}
+
+				{% if page.is_sorting_enabled && collection.products | size > 1 %}
+				<div class="theme-collection-sortby-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+								<div class="theme-collection-sort-inner">
+									<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+									<select data-sort-by-products>
+										{% for sort_by_option in collection.sort_by_options %}
+											<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% comment %} COLLECTION SORTBY END {% endcomment %}
+
+				{% comment %} PRODUCT LIST IN COLLECTION PAGE {% endcomment %}
+
+				<div class="theme-collection-section">
+					<div class="zpcontainer">
+						{% if page.template_vars.product_list_style == '04' %}
+						<div class="theme-store-collection-container">
+						{% endif %}
+							{% if collection.products | size == 0 %}
+								<h2 class="theme-no-products-error">{{i18n.get("collection.noproducts.message")}}</h2>
+							{% endif %}
+							<div class="zprow">
+								<div class="zpcol-md-12 zpcol-sm-12">
+									<div class="zprow theme-product-ratio theme-product-collection-container {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %} {% if page.template_vars.product_list_style == '05' || page.template_vars.product_list_style == '07'  %}theme-collection-row-no-margin{% endif %}" data-sort-by-products-target>
+									{% for product in collection.products %}
+										{% include "store-product-list-view" %}
+									{% endfor %}
+									{% include "_store-pagination" %}
+									</div>
+								</div>
+							</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+				{% comment %} PRODUCT LIST IN COLLECTION PAGE END {% endcomment %}
+
+			{% endif %}
+
+			{% if page.template_vars.product_category_style == '06' %}
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION {% endcomment %}
+
+					<div class="theme-section">
+							<div class="zpcontainer">
+									<div class="zprow">
+											<div class="zpcol-md-12">
+													<div class="theme-category-name-description theme-category-name-description-noimage">
+															<div class="theme-category-description theme-collection-description">
+																<h1 class="theme-category-name {% if collection.description %}theme-collection-name-with-desc{% endif %}">{{ collection.name }}</h1>
+																{% if collection.description %}
+
+																		{{ collection.description }}
+
+																{% endif %}
+															</div>
+													</div>
+											</div>
+									</div>
+							</div>
+					</div>
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION END {% endcomment %}
+
+				{% comment %} COLLECTION SORTBY {% endcomment %}
+
+				{% if page.is_sorting_enabled && collection.products | size > 1 %}
+				<div class="theme-collection-sortby-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+								<div class="theme-collection-sort-inner">
+									<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+									<select data-sort-by-products>
+										{% for sort_by_option in collection.sort_by_options %}
+											<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% comment %} COLLECTION SORTBY END {% endcomment %}
+
+				{% comment %} PRODUCT LIST IN COLLECTION PAGE {% endcomment %}
+
+				<div class="theme-collection-section">
+					<div class="zpcontainer">
+						{% if page.template_vars.product_list_style == '04' %}
+						<div class="theme-store-collection-container">
+						{% endif %}
+							{% if collection.products | size == 0 %}
+								<h2 class="theme-no-products-error">{{i18n.get("collection.noproducts.message")}}</h2>
+							{% endif %}
+							<div class="zprow">
+								<div class="zpcol-md-12 zpcol-sm-12">
+									<div class="zprow theme-product-ratio {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %} {% if page.template_vars.product_list_style == '02' && collection.products | size != 0 %}theme-store-style-02-collection-row{% endif %} {% if page.template_vars.product_list_style == '05' || page.template_vars.product_list_style == '07'  %}theme-collection-row-no-margin{% endif %}" data-sort-by-products-target>
+									{% for product in collection.products %}
+										{% include "store-product-list-view" %}
+									{% endfor %}
+									{% include "_store-pagination" %}
+									</div>
+								</div>
+							</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+				{% comment %} PRODUCT LIST IN COLLECTION PAGE END {% endcomment %}
+
+			{% endif %}
+
+			{% if page.template_vars.product_category_style == '07' %}
+
+				{% comment %} COLLECTION NAME AND DESCRIPTION STARTS {% endcomment %}
+
+					 <div class="theme-section">
+						<div class="zpcontainer">
+							<div class="zprow">
+									<div class="zpcol-md-12">
+										<div class="theme-category-image-description-conatainer theme-category-image-description-conatainer-no-image">
+												<div class="theme-category-name-description-no-imgage theme-category-name-description zpdark-section">
+														<h1 class="theme-category-name {% if collection.description %}theme-collection-name-with-desc{% endif %}">{{ collection.name }}</h1>
+														{% if collection.description %}
+															{{ collection.description }}
+														{% endif %}
+												</div>
+										</div>
+									</div>
+							</div>
+						</div>
+					 </div>
+
+				 {% comment %} COLLECTION NAME AND DESCRIPTION END {% endcomment %}
+
+				 {% comment %} COLLECTION SORTBY {% endcomment %}
+
+				{% if page.is_sorting_enabled && collection.products | size > 1 %}
+				<div class="theme-collection-sortby-section">
+					<div class="zpcontainer">
+						<div class="zprow">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+								<div class="theme-collection-sort-inner">
+									<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+									<select data-sort-by-products>
+										{% for sort_by_option in collection.sort_by_options %}
+											<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% comment %} COLLECTION SORTBY END {% endcomment %}
+
+				{% comment %} PRODUCTS LIST IN COLLECTION PAGE {% endcomment %}
+
+				<div class="theme-collection-section">
+					<div class="zpcontainer">
+						{% if page.template_vars.product_list_style == '04' %}
+						<div class="theme-store-collection-container">
+						{% endif %}
+							{% if collection.products | size == 0 %}
+								<h2 class="theme-no-products-error">{{i18n.get("collection.noproducts.message")}}</h2>
+							{% endif %}
+							<div class="zprow">
+								<div class="zpcol-md-12 zpcol-sm-12">
+									<div class="zprow theme-product-ratio theme-product-collection-container {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %} {% if page.template_vars.product_list_style == '02' && collection.products | size != 0 %}theme-store-style-02-collection-row{% endif %} {% if page.template_vars.product_list_style == '05' || page.template_vars.product_list_style == '07'  %}theme-collection-row-no-margin{% endif %}" data-sort-by-products-target>
+									{% for product in collection.products %}
+										{% include "store-product-list-view" %}
+									{% endfor %}
+									{% include "_store-pagination" %}
+									</div>
+								</div>
+							</div>
+						{% if page.template_vars.product_list_style == '04' %}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+
+				{% comment %} PRODUCTS LIST COLLECTION PAGE END {% endcomment %}
+
+			{% endif %}
+
+		</div>
+	</div>
+
+</div>
+
+{% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+  </div>
+{% endif %}
+{% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% if product.is_out_of_stock == false  %}
+{% if product.is_product_custom_fields_enabled %}
+<div class="theme-custom-field-main-container" data-custom-field-main-container {% if product.has_variants %}style="display:none"{% endif %}>
+{% endif %}
+    {% for variant in product.variants %}
+        {% for custom_field  in variant.custom_fields %}
+			{% assign is_valid_field = true %}
+			{% if custom_field.edit_on_store == false && custom_field.value == "" %}
+				{% assign is_valid_field = false %}
+			{% endif %}
+
+			{% if is_valid_field %}
+				<div class="theme-prod-detail-entry-row theme-prod-detail-attr-variants theme-prod-detail-entry-row-custom-fields" data-variant-id="{{ variant.variant_id }}" {% if product.has_variants %}style="display:none"{% endif %}>
+					<div class="theme-prod-review-entry">
+						<div class="theme-prod-variant theme-custom-field-container {% if custom_field.field_type == 'check_box' %}theme-custom-field-checkbox-container{% endif %}">
+              {% if custom_field.field_type != "check_box" %}
+							<div class="theme-prod-variant-label theme-custom-field-label">
+								    {{ custom_field.label }}
+								{% if custom_field.edit_on_store && custom_field.is_mandatory %}
+									<span class="theme-custom-mandatory-field"> * </span>
+								{% endif %}
+							</div>
+              {% endif %}
+							{% if custom_field.edit_on_store == false %}
+                  {% if custom_field.field_type == "check_box" %}
+                    <input type="checkbox" {% if custom_field.value == "true" %}checked{% endif %} disabled>
+                  {% elif custom_field.field_type == "multiselect" %}
+                    {% for value in  custom_field.values %}
+                      <span class="theme-custom-field-value theme-custom-field-value-multi-select">{{ value }}</span>
+                    {% endfor %}
+                  {% else %}
+                			<span class="theme-custom-field-value">
+                        {% if custom_field.field_type == "amount" || custom_field.field_type == "decimal" || custom_field.field_type == "number" %}
+                          {{ custom_field.display_value }}
+                        {% elif custom_field.field_type == "url" %}
+                          <a href="{{ custom_field.value }}">{{ custom_field.value }}</a>
+                        {% else %}
+                          {{ custom_field.value }}
+                        {% endif %}
+                      </span>
+                  {% endif %}
+                  {% if custom_field.field_type == "check_box" %}
+                    <div class="theme-prod-variant-label theme-custom-field-label">
+                        {{ custom_field.label }}
+                    </div>
+              		{% endif %}
+							{% else %}
+
+									{% if custom_field.field_type == "check_box" %}
+											<input type="checkbox" data-default-value="{{ custom_field.value }}" data-field-type="{{ custom_field.field_type }}" data-label="{{ custom_field.label }}" data-custom-field-id="{{ custom_field.customfield_id }}" {% if custom_field.is_mandatory %}data-validate="required" {% endif %} value="{{ custom_field.value }}" {% if custom_field.value == "true" %}checked{% endif %} data-onchange-event>
+                      <div class="theme-prod-variant-label theme-custom-field-label">
+        								    {{ custom_field.label }}
+        								{% if custom_field.edit_on_store && custom_field.is_mandatory %}
+        									<span class="theme-custom-mandatory-field"> * </span>
+        								{% endif %}
+        							</div>
+
+									{% elif custom_field.field_type == "dropdown" %}
+                      <div class="theme-custom-field-select-container">
+  											<select data-default-value="{{ custom_field.value }}" data-field-type="{{ custom_field.field_type }}" data-label="{{ custom_field.label }}" data-custom-field-id="{{ custom_field.customfield_id }}" {% if custom_field.is_mandatory %}data-validate="required" {% endif %} value="{{ custom_field.value }}" class="theme-custom-field-select">
+                          <option value="">{{ i18n.get("product.custom_field.dropdown.select_option") }}</option>
+                          {% for option in custom_field.options %}
+                            <option value="{{ option }}" {% if custom_field.value == option %}selected{% endif %}>{{ option }}</option>
+                          {% endfor %}
+  											</select>
+                      </div>
+									{% elif custom_field.field_type == "date" %}
+
+											<div class="zpform-container">
+													<ul class="zpform-outer">
+															<li>
+																	<div class="zpform-field-container zpform-datetime-formula">
+																			<input type="text" data-default-value="{{ custom_field.value }}" data-field-type="{{ custom_field.field_type }}" data-label="{{ custom_field.label }}"
+																					data-custom-field-id="{{ custom_field.customfield_id }}"
+																					{% if custom_field.is_mandatory %}data-validate="required" {% endif %}
+																					value="{{ custom_field.value }}"
+																					format="yyyy-MM-dd"
+																					placeholder="yyyy-MM-dd"
+																					data-zs-app="datepicker_app" data-onchange-event>
+																			<span class="zpform-icon-formula" data-element-id="date">
+                                        {% comment %}
+																					<svg viewBox="0 0 128 128" class="svg-icon-16px">
+																							<path
+																									d="M108,8h-8V4c0-2.211-1.789-4-4-4s-4,1.789-4,4v4h-8V4c0-2.211-1.789-4-4-4s-4,1.789-4,4v4h-8V4    c0-2.211-1.789-4-4-4s-4,1.789-4,4v4h-8V4c0-2.211-1.789-4-4-4s-4,1.789-4,4v4h-8V4c0-2.211-1.789-4-4-4s-4,1.789-4,4v4h-8    C11.164,8,4,15.164,4,24v88c0,8.836,7.164,16,16,16h88c8.836,0,16-7.164,16-16V24C124,15.164,116.836,8,108,8z M116,112    c0,4.414-3.59,8-8,8H20c-4.412,0-8-3.586-8-8V24c0-4.416,3.588-8,8-8h8v4c0,2.211,1.789,4,4,4s4-1.789,4-4v-4h8v4    c0,2.211,1.789,4,4,4s4-1.789,4-4v-4h8v4c0,2.211,1.789,4,4,4s4-1.789,4-4v-4h8v4c0,2.211,1.789,4,4,4s4-1.789,4-4v-4h8v4    c0,2.211,1.789,4,4,4s4-1.789,4-4v-4h8c4.41,0,8,3.584,8,8V112z" />
+																							<path
+																									d="M20,40v72h88V40H20z M84,48v8h-8v-8H84z M52,72h-8v-8h8V72z M60,64h8v8h-8V64z M52,80v8h-8v-8H52z M60,80h8  v8h-8V80z M76,80h8v8h-8V80z M76,72v-8h8v8H76z M68,48v8h-8v-8H68z M52,48v8h-8v-8H52z M28,48h8v8h-8V48z M28,64h8v8h-8V64z M28,80  h8v8h-8V80z M28,104v-8h8v8H28z M44,104v-8h8v8H44z M60,104v-8h8v8H60z M76,104v-8h8v8H76z M100,104h-8v-8h8V104z M100,88h-8v-8h8  V88z M100,72h-8v-8h8V72z M100,56h-8v-8h8V56z" />
+																					</svg>
+                                        {% endcomment %}
+                                          <svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                                            <g fill="none" fill-rule="evenodd">
+                                              <rect x=".5" y="1.5" width="14" height="13" rx="2"/>
+                                              <path d="M1 4h13v1H1zM3 0h1v3H3zM11 0h1v3h-1z"/>
+                                            </g>
+                                          </svg>
+																			</span>
+																	</div>
+															</li>
+													</ul>
+											</div>
+
+									{% else %}
+											{% if custom_field.field_type == "amount" %}
+                          <div class="theme-custom-field-amount-container">
+													   <span>{{ currency.symbol }}</span>
+											{% endif %}
+                      {% if custom_field.field_type == "percent" %}
+                          <div class="theme-custom-field-percentage-container">
+                      {% endif %}
+											       <input type="text" data-default-value="{{ custom_field.value }}" data-field-type="{{ custom_field.field_type }}" data-label="{{ custom_field.label }}" data-custom-field-id="{{ custom_field.customfield_id }}" {% if custom_field.is_mandatory %} data-validate="required"{% endif %} value="{{ custom_field.value }}" class="theme-custom-field-input">
+                      {% if custom_field.field_type == "amount" %}
+                          </div>
+                      {% endif %}
+											{% if custom_field.field_type == "percent" %}
+													    <span>%</span>
+                          </div>
+											{% endif %}
+									{% endif %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+		{% endif %}
+			{% endfor %}
+		{% endfor %}
+  {% if product.is_product_custom_fields_enabled %}
+  </div>
+  {% endif %}
+{% endif %}

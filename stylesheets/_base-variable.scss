@@ -1,0 +1,1611 @@
+@import "_base-function";
+
+
+// THEME VARIABLES
+
+// THEME COLOR PALETTE
+
+$base_vars : (
+
+color-primary :#4CB5AB,
+color-secondary : #00376E,
+color-default : #ffffff,
+color-light : #F4FAFA,
+color-border : #E7E7E7,
+color-text : #5981A9,
+darkbg-color-link : #F5F460,
+color-link:#4CB5AB,
+font-family-heading : unquote("'Noto Sans', sans-serif"),
+font-family-base : unquote("'Noto Sans', sans-serif")
+
+);
+
+@if variable-exists(user_base_vars) {
+$base_vars : map-merge($base_vars,$user_base_vars);
+}
+
+$default_vars: (
+
+// BASE RGB VARIABLES
+
+color-text-rgba : convertHexToRgb(map-get($base_vars, 'color-text')),
+color-primary-rgba : convertHexToRgb(map-get($base_vars, 'color-primary')),
+color-default-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
+color-secondary-rgba : convertHexToRgb(map-get($base_vars, 'color-secondary')),
+color-border-rgba : convertHexToRgb(map-get($base_vars, 'color-border')),
+
+// THEME SECTION VARIABLES
+
+dark-secion-bg : map-get($base_vars,'color-primary'),
+light-secion-bg : map-get($base_vars,'color-light'),
+
+// THEME HEADER VARIABLES
+
+color-header-background : map-get($base_vars, 'color-default'),
+color-header-background-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
+
+darkbg-color-header-background : map-get($base_vars, 'color-secondary'),
+darkbg-color-header-background-rgba : convertHexToRgb(map-get($base_vars, 'color-secondary')),
+
+color-header-overlap-background : transparent,
+
+  // TOPBAR VARIABLES
+
+color-topbar-background : map-get($base_vars, 'color-light'),
+color-topbar-background-rgba : convertHexToRgb(map-get($base_vars, 'color-light')),
+darkbg-color-topbar-background : map-get($base_vars, 'color-secondary'),
+color-topbar-text-and-icon : map-get($base_vars, 'color-secondary'),
+darkbg-color-topbar-text-and-icon : map-get($base_vars, 'color-default'),
+darkbg-color-topbar-text-and-icon-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
+font-size-topbar : 13px,
+font-family-topbar : map-get($base_vars, 'font-family-base'),
+
+color-topbar-portal-login-register-text : map-get($base_vars, 'color-secondary'),
+darkbg-color-topbar-portal-login-register-text : map-get($base_vars, 'color-default'),
+darkbg-color-topbar-portal-login-register-text-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
+font-transform-portal-login-register : uppercase,
+font-weight-portal-login-register : bold,
+
+color-topbar-overlap-background : transparent,
+
+  // THEME SITE INFO VARIABLES
+
+font-size-site-caption : 15px,
+font-family-site-caption : map-get($base_vars, 'font-family-base'),
+
+  // THEME NAVIGATION VARIABLES
+
+color-navigation-text-icon : map-get($base_vars, 'color-secondary'),
+darkbg-color-navigation-text-icon : map-get($base_vars, 'color-default'),
+darkbg-color-navigation-text-icon-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
+darkbg-color-navigation-background : map-get($base_vars, 'color-secondary'),
+darkbg-color-navigation-background-rgba : convertHexToRgb(map-get($base_vars, 'color-secondary')),
+color-navigation-hover-active-arrow-background : map-get($base_vars, 'color-primary'),
+color-navigation-hover-active-text-arrow : map-get($base_vars, 'color-default'),
+
+// THEME CART VARIABLES
+
+color-cart-count-background : map-get($base_vars, 'color-primary'),
+color-cart-count-text : map-get($base_vars, 'color-default'),
+
+darkbg-color-cart-count-background : map-get($base_vars, 'color-default'),
+darkbg-color-cart-count-text : map-get($base_vars, 'color-primary'),
+
+// THEME SUBMENU VARIABLES
+
+color-submenu-border-arrow : map-get($base_vars, 'color-primary'),
+
+font-size-submenu: 14px,
+
+// TYPOGRAPHY VARIABLES
+
+color-text:map-get($base_vars, 'color-text'),
+font-family-text:map-get($base_vars, 'font-family-base'),
+font-size-text:14px,
+font-transform-text:none,
+font-weight-text:normal,
+font-line-height-text : 1.8,
+font-letter-spacing-text : normal,
+darkbg-color-text:map-get($base_vars, 'color-default'),
+
+// HEADING
+
+color-heading-h1 : map-get($base_vars, 'color-secondary'),
+color-heading-h2 : map-get($base_vars, 'color-secondary'),
+color-heading-h3 : map-get($base_vars, 'color-secondary'),
+color-heading-h4 : map-get($base_vars, 'color-secondary'),
+color-heading-h5 : map-get($base_vars, 'color-secondary'),
+color-heading-h6 : map-get($base_vars, 'color-secondary'),
+
+font-family-heading-h1 : map-get($base_vars, 'font-family-heading'),
+font-family-heading-h2 : map-get($base_vars, 'font-family-heading'),
+font-family-heading-h3 : map-get($base_vars, 'font-family-heading'),
+font-family-heading-h4 : map-get($base_vars, 'font-family-heading'),
+font-family-heading-h5 : map-get($base_vars, 'font-family-heading'),
+font-family-heading-h6 : map-get($base_vars, 'font-family-heading'),
+
+font-size-heading-h1 : 36px,
+font-size-heading-h2 : 30px,
+font-size-heading-h3 : 24px,
+font-size-heading-h4 : 18px,
+font-size-heading-h5 : 16px,
+font-size-heading-h6 : 14px,
+
+font-weight-heading-h1 : normal,
+font-weight-heading-h2 : normal,
+font-weight-heading-h3 : normal,
+font-weight-heading-h4 : normal,
+font-weight-heading-h5 : normal,
+font-weight-heading-h6 : normal,
+
+font-transform-heading-h1 : none,
+font-transform-heading-h2 : none,
+font-transform-heading-h3 : none,
+font-transform-heading-h4 : none,
+font-transform-heading-h5 : none,
+font-transform-heading-h6 : none,
+
+font-line-height-heading-h1 : 1.8,
+font-line-height-heading-h2 : 1.8,
+font-line-height-heading-h3 : 1.8,
+font-line-height-heading-h4 : 1.8,
+font-line-height-heading-h5 : 1.8,
+font-line-height-heading-h6 : 1.8,
+
+font-letter-spacing-heading-h1 : normal,
+font-letter-spacing-heading-h2 : normal,
+font-letter-spacing-heading-h3 : normal,
+font-letter-spacing-heading-h4 : normal,
+font-letter-spacing-heading-h5 : normal,
+font-letter-spacing-heading-h6 : normal,
+
+// LINK
+
+color-link:map-get($base_vars, 'color-link'),
+color-link-hover:darken(map-get($base_vars, 'color-link'),10%),
+
+// BUTTON ELEMENT VARIABLES
+
+color-product-detail-price-style-03:map-get($base_vars, 'color-secondary'),
+
+color-product-detail-price-style-04:map-get($base_vars, 'color-secondary'),
+
+// DIVIDER ELEMENT VARIABLES
+
+color-divider-line : map-get($base_vars, 'color-border'),
+
+color-divider-icon : map-get($base_vars, 'color-primary'),
+color-divider-icon-style-bg-color :map-get($base_vars, 'color-primary'),
+color-divider-icon-style-color :map-get($base_vars, 'color-default'),
+color-divider-icon-style-border :map-get($base_vars, 'color-border'),
+
+color-divider-text :map-get($base_vars, 'color-primary'),
+font-family-divider-text : map-get($base_vars,'font-family-base'),
+font-size-divider-text : 14px,
+font-weight-divider-text : normal,
+font-transform-divider-text : none,
+font-line-height-divider-text : normal,
+font-letter-spacing-divider-text : normal,
+
+color-divider-text-style-bg-color :map-get($base_vars, 'color-primary'),
+color-divider-text-style-color :map-get($base_vars, 'color-default'),
+color-divider-text-style-border :map-get($base_vars, 'color-border'),
+
+// ICON ELEMENT VARIABLES
+
+color-icon : map-get($base_vars, 'color-primary'),
+color-icon-border :map-get($base_vars, 'color-border'),
+color-icon-fill-background : map-get($base_vars, 'color-primary'),
+color-icon-fill : map-get($base_vars, 'color-default'),
+
+// TAB ELEMENT VARIABLES
+
+color-tab-style-one-inactive-background : map-get($base_vars, 'color-default'),
+color-tab-style-one-active-background : map-get($base_vars, 'color-primary'),
+color-tab-style-one-active : map-get($base_vars, 'color-default'),
+color-tab-style-one-border : map-get($base_vars, 'color-border'),
+color-tab-style-one-content-background : map-get($base_vars, 'color-default'),
+
+color-tab-style-one : map-get($base_vars, 'color-secondary'),
+font-family-tab-style-one : map-get($base_vars,'font-family-base'),
+font-size-tab-style-one : 14px,
+font-weight-tab-style-one : normal,
+font-transform-tab-style-one : none,
+font-line-height-tab-style-one : 1.8,
+font-letter-spacing-tab-style-one : normal,
+
+
+color-tab-style-two-border : map-get($base_vars, 'color-primary'),
+color-tab-style-two-active-fill-text : map-get($base_vars, 'color-default'),
+color-tab-style-two-active : map-get($base_vars, 'color-primary'),
+color-tab-style-two-inactive-background : map-get($base_vars, 'color-default'),
+
+color-tab-style-two : map-get($base_vars, 'color-secondary'),
+font-family-tab-style-two : map-get($base_vars,'font-family-base'),
+font-size-tab-style-two : 14px,
+font-weight-tab-style-two : normal,
+font-transform-tab-style-two : none,
+font-line-height-tab-style-two : 1.8,
+font-letter-spacing-tab-style-two : normal,
+
+// CAROUSEL ELEMENT VARIABLES
+
+color-carousel-indicator-background : transparent,
+color-carousel-indicator-and-arrow-border : darken(map-get($base_vars, 'color-border'),15%),
+color-carousel-indicator-active-background : darken(map-get($base_vars, 'color-border'),15%),
+color-carousel-arrow :RGBA(convertHexToRgb(map-get($base_vars, 'color-text')),0.8),
+// color-carousel-arrow-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-text')),0.8),
+color-carousel-arrow-background : darken(map-get($base_vars, 'color-default'),8%),
+
+
+// ACCORDION ELEMENT VARIABLES
+
+color-accordion-style-one : map-get($base_vars, 'color-secondary'),
+font-family-accordion-style-one : map-get($base_vars,'font-family-base'),
+font-size-accordion-style-one : 14px,
+font-weight-accordion-style-one : normal,
+font-transform-accordion-style-one : none,
+font-line-height-accordion-style-one : 1.8,
+font-letter-spacing-accordion-style-one : normal,
+
+color-accordion-style-one-border : map-get($base_vars, 'color-border'),
+color-accordion-style-one-active-border : map-get($base_vars, 'color-primary'),
+color-accordion-style-one-background : map-get($base_vars, 'color-default'),
+color-accordion-style-one-content-background : map-get($base_vars, 'color-default'),
+
+color-accordion-style-one-active-background : map-get($base_vars, 'color-default'),
+color-accordion-style-one-active-text-color : map-get($base_vars, 'color-secondary'),
+
+color-accordion-style-two : map-get($base_vars, 'color-secondary'),
+font-family-accordion-style-two : map-get($base_vars,'font-family-base'),
+font-size-accordion-style-two : 14px,
+font-weight-accordion-style-two : normal,
+font-transform-accordion-style-two : none,
+font-line-height-accordion-style-two : 1.8,
+font-letter-spacing-accordion-style-two : normal,
+
+// TABLE ELEMENT VARIABLES
+
+color-table-border:map-get($base_vars,'color-border'),
+color-table-cell-border:map-get($base_vars,'color-border'),
+color-header-light-background:map-get($base_vars,'color-light'),
+color-header-light-background-text:map-get($base_vars,'color-secondary'),
+color-header-dark-background:map-get($base_vars,'color-secondary'),
+color-header-dark-background-text:map-get($base_vars,'color-default'),
+color-header-transparent-text:map-get($base_vars,'color-secondary'),
+color-table-header-border : map-get($base_vars,'color-border'),
+color-table-headerdark-border : lighten(map-get($base_vars,'color-secondary'),10%),
+
+color-table-text:map-get($base_vars,'color-text'),
+font-family-table-text : map-get($base_vars,'font-family-base'),
+font-size-table-text : 14px,
+font-weight-table-text : normal,
+font-transform-table-text : none,
+font-line-height-table-text:1.8,
+font-letter-spacing-table-text:normal,
+
+// FORM ELEMENT VARIABLES
+
+color-form-label : map-get($base_vars, 'color-text'),
+color-form-field : map-get($base_vars, 'color-text'),
+color-form-field-background : map-get($base_vars, 'color-default'),
+color-form-field-border : map-get($base_vars, 'color-border'),
+color-form-field-active-border : map-get($base_vars, 'color-text'),
+color-form-placeholder : RGBA(convertHexToRgb(map-get($base_vars, 'color-text')),0.5),
+
+// FORM ELEMENT MESSAGES
+
+color-form-error-message-text : #FF4949,
+color-form-warning-message-text : #FFC82C,
+color-form-success-message-text : #13CE66,
+color-form-info-message-text : #1FB6FF,
+
+// IMAGE ELEMENT VARIABLES
+
+color-image-overlay-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-primary')),0.80),
+color-image-overlay-text : map-get($base_vars, 'color-default'),
+color-image-overlay-background-hv3 : RGBA(convertHexToRgb(map-get($base_vars, 'color-primary')),0.4),
+color-image-overlay-background-hv9 : map-get($base_vars, 'color-primary'),
+
+// DARK SECTION VARIABLES
+
+//DARK SECTION HEADING VARIABLES
+
+darkbg-color-heading-h1 : map-get($base_vars, 'color-default'),
+darkbg-color-heading-h2 : map-get($base_vars, 'color-default'),
+darkbg-color-heading-h3 : map-get($base_vars, 'color-default'),
+darkbg-color-heading-h4 : map-get($base_vars, 'color-default'),
+darkbg-color-heading-h5 : map-get($base_vars, 'color-default'),
+darkbg-color-heading-h6 : map-get($base_vars, 'color-default'),
+
+//DARK SECTION LINK VARIABLES
+
+darkbg-color-link:map-get($base_vars, 'darkbg-color-link'),
+darkbg-color-link-hover:darken(map-get($base_vars, 'darkbg-color-link'),10%),
+
+// DIVIDER ELEMENT VARIABLES
+
+darkbg-color-divider-line : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.7),
+
+darkbg-color-divider-icon : map-get($base_vars, 'color-default'),
+darkbg-color-divider-icon-style-bg-color :map-get($base_vars, 'color-default'),
+darkbg-color-divider-icon-style-color :map-get($base_vars, 'color-primary'),
+darkbg-color-divider-icon-style-border :RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.7),
+
+darkbg-color-divider-text :map-get($base_vars, 'color-default'),
+darkbg-color-divider-text-style-bg-color :map-get($base_vars, 'color-default'),
+darkbg-color-divider-text-style-color :map-get($base_vars, 'color-primary'),
+darkbg-color-divider-text-style-border :RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.7),
+
+// ICON ELEMENT VARIABLES
+
+darkbg-color-icon : map-get($base_vars, 'color-default'),
+darkbg-color-icon-border : map-get($base_vars, 'color-default'),
+darkbg-color-icon-fill-background : map-get($base_vars, 'color-default'),
+darkbg-color-icon-fill : map-get($base_vars, 'color-primary'),
+
+// TAB ELEMENT VARIABLES
+
+darkbg-color-tab-style-one-inactive-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.25),
+darkbg-color-tab-style-one : map-get($base_vars, 'color-default'),
+darkbg-color-tab-style-one-active-background : map-get($base_vars, 'color-default'),
+darkbg-color-tab-style-one-active : map-get($base_vars, 'color-secondary'),
+darkbg-color-tab-style-one-border : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.25),
+darkbg-color-tab-style-one-content-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.15),
+
+darkbg-color-tab-style-two : map-get($base_vars, 'color-default'),
+darkbg-color-tab-style-two-border : map-get($base_vars, 'color-default'),
+darkbg-color-tab-style-two-active-fill-text : map-get($base_vars, 'color-secondary'),
+darkbg-color-tab-style-two-active : map-get($base_vars, 'color-default'),
+darkbg-color-tab-style-two-inactive-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.25),
+
+// CAROUSEL ELEMENT VARIABLES
+
+darkbg-color-carousel-indicator-background : transparent,
+darkbg-color-carousel-indicator-and-arrow-border : lighten(map-get($base_vars, 'color-border'),15%),
+darkbg-color-carousel-indicator-active-background : map-get($base_vars, 'color-default'),
+darkbg-color-carousel-arrow : map-get($base_vars, 'color-default'),
+darkbg-color-carousel-arrow-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.3),
+
+// ACCORDION ELEMENT VARIABLES
+
+darkbg-color-accordion-style-one : map-get($base_vars, 'color-default'),
+darkbg-color-accordion-style-one-border : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.25),
+darkbg-color-accordion-style-one-active-border : map-get($base_vars, 'color-default'),
+darkbg-color-accordion-style-one-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.24),
+darkbg-color-accordion-style-one-content-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.24),
+
+darkbg-color-accordion-style-one-active-background : map-get($base_vars, 'color-default'),
+darkbg-color-accordion-style-one-active-text-color : map-get($base_vars, 'color-secondary'),
+
+darkbg-color-accordion-style-two : map-get($base_vars, 'color-default'),
+
+// TABLE ELEMENT VARIABLES
+
+darkbg-color-table-border:RGBA(convertHexToRgb(map-get($base_vars,'color-border')),0.6),
+darkbg-color-table-cell-border:RGBA(convertHexToRgb(map-get($base_vars,'color-border')),0.6),
+darkbg-color-header-light-background:map-get($base_vars,'color-light'),
+darkbg-color-header-light-background-text:map-get($base_vars,'color-secondary'),
+darkbg-color-header-dark-background:map-get($base_vars,'color-secondary'),
+darkbg-color-header-dark-background-text:map-get($base_vars,'color-default'),
+darkbg-color-header-transparent-text:map-get($base_vars,'color-default'),
+darkbg-color-table-text:map-get($base_vars,'color-default'),
+darkbg-color-table-header-border : RGBA(convertHexToRgb(map-get($base_vars, 'color-border')),0.6),
+darkbg-color-table-headerdark-border : lighten(map-get($base_vars,'color-secondary'),10%),
+
+// FORM ELEMENT VARIABLES
+
+darkbg-color-form-label : map-get($base_vars, 'color-default'),
+darkbg-color-form-field : map-get($base_vars, 'color-default'),
+darkbg-color-form-field-background : transparent,
+darkbg-color-form-field-border : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.5),
+darkbg-color-form-field-active-border : map-get($base_vars, 'color-default'),
+darkbg-color-form-placeholder : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.5),
+
+darkbg-color-form-error-message-text : map-get($base_vars, 'color-default'),
+darkbg-color-form-warning-message-text : map-get($base_vars, 'color-default'),
+darkbg-color-form-success-message-text : map-get($base_vars, 'color-default'),
+darkbg-color-form-info-message-text : map-get($base_vars, 'color-default'),
+
+// IMAGE ELEMENT VARIABLES
+
+darkbg-color-image-overlay-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-secondary')),0.50),
+darkbg-color-image-overlay-text : map-get($base_vars, 'color-default'),
+darkbg-color-image-overlay-background-hv3 : RGBA(convertHexToRgb(map-get($base_vars, 'color-secondary')),0.4),
+darkbg-color-image-overlay-background-hv9 : map-get($base_vars, 'color-secondary'),
+
+// BLOG PAGE VARIABLES
+
+color-blog-border: map-get($base_vars,'color-border'),
+color-blog-border-rgba: convertHexToRgb(map-get($base_vars,'color-border')),
+color-blog-tag-background-style-01 : #F3F6F7,
+color-blog-tag-background-border-style-01 : darken(#F3F6F7,4%),
+color-blog-tag-background-style-02 : #F3F6F7,
+color-blog-tag-background-border-style-02 : darken(#F3F6F7,4%),
+color-blog-tag-background:map-get($base_vars,'color-light'),
+color-blog-tag-background-border:darken(map-get($base_vars,'color-light'),4%),
+color-blog-tag-category-container-background:lighten(map-get($base_vars,'color-light'),25%),
+color-blog-tag-category-container-background-border : darken(map-get($base_vars,'color-light'),30%),
+color-blog-tag-category-container-background-style-04:map-get($base_vars,'color-light'),
+color-blog-tag-category-container-background-style-03:map-get($base_vars,'color-light'),
+color-blog-tag-category-container-background-border-style-03: lighten(map-get($base_vars,'color-light'),25%),
+color-blog-footer-content : darken(map-get($base_vars,'color-text'),10%),
+color-blog-rss-icon:#FA9A00,
+font-size-blog-author:16px,
+color-blog-rss-icon-path:map-get($base_vars,'color-default'),
+
+color-bloglist-h1:map-get($base_vars, 'color-secondary'),
+font-family-bloglist-h1:map-get($base_vars, 'font-family-heading'),
+font-size-bloglist-h1:16px,
+font-weight-bloglist-h1 : normal,
+font-transform-bloglist-h1 : none,
+font-line-height-bloglist-h1 : 1.8,
+font-letter-spacing-bloglist-h1 : normal,
+
+// FOOTER VARIABLES
+
+footer-color-heading-h1 : map-get($base_vars, 'color-default'),
+footer-color-heading-h2 : map-get($base_vars, 'color-default'),
+footer-color-heading-h3 : map-get($base_vars, 'color-default'),
+footer-color-heading-h4 : map-get($base_vars, 'color-default'),
+footer-color-heading-h5 : map-get($base_vars, 'color-default'),
+footer-color-heading-h6 : map-get($base_vars, 'color-default'),
+
+footer-color-text-icon : map-get($base_vars, 'color-text'),
+
+footer-color-border: map-get($base_vars, 'color-border'),
+
+footer-color-background: map-get($base_vars,'color-secondary'),
+
+// SIDEBAR VARIABLES
+
+sidebar-color-heading-h1 : map-get($base_vars, 'color-default'),
+sidebar-color-heading-h2 : map-get($base_vars, 'color-default'),
+sidebar-color-heading-h3 : map-get($base_vars, 'color-default'),
+sidebar-color-heading-h4 : map-get($base_vars, 'color-default'),
+sidebar-color-heading-h5 : map-get($base_vars, 'color-default'),
+sidebar-color-heading-h6 : map-get($base_vars, 'color-default'),
+
+sidebar-color-text-icon : map-get($base_vars, 'color-text'),
+
+sidebar-color-border: map-get($base_vars, 'color-border'),
+
+sidebar-color-background: darken(map-get($base_vars,'color-light'),5%),
+
+// ECOMMERCE VARIABLES
+
+color-breadcrumb-background:map-get($base_vars,'color-light'),
+color-breadcrumb-background-style-03 : transparent,
+color-breadcrumb-background-style-04 : transparent,
+color-breadcrumb-text:map-get($base_vars,'color-secondary'),
+color-breadcrumb-text-rgba:convertHexToRgb(map-get($base_vars,'color-secondary')),
+color-breadcrumb-border:map-get($base_vars,'color-border'),
+font-size-breadcrumb:14px,
+color-breadcrumb-hov-active-background:map-get($base_vars,'color-light'),
+color-breadcrumb-hov-active-text-icon:darken(map-get($base_vars,'color-primary'),5%),
+
+color-ribbon-sale-background:lighten(map-get($base_vars, 'color-primary'),5%),
+color-ribbon-new-background:lighten(map-get($base_vars, 'color-secondary'),10%),
+color-ribbon-text:map-get($base_vars, 'color-default'),
+color-ribbon-stock-info-background:map-get($base_vars,'color-default'),
+color-ribbon-stock-icon:map-get($base_vars,'color-primary'),
+
+color-ribbon-stock-border-style-02:map-get($base_vars,'color-primary'),
+
+color-product-box-info-price-text-style-02:map-get($base_vars,'color-default'),
+
+color-ribbon-stock-background-style-03:map-get($base_vars,'color-default'),
+
+color-ribbon-stock-background-style-04: #EB4D5E,
+
+color-ribbon-stock-text-style-03:#EB4D5E,
+
+color-available-status-text-style-02:map-get($base_vars,'color-default'),
+
+color-ribbon-stock-text-style-04: map-get($base_vars,'color-default'),
+
+color-product-box-info-price-text-border-style-03:map-get($base_vars,'color-primary'),
+color-product-box-info-price-text-border-hover-style-03 : darken(map-get($base_vars,'color-primary'),18%),
+color-product-addcart-loading-style-03 : map-get($base_vars,'color-default'),
+
+font-size-product-box-text-style-03:18px,
+
+color-nostock-button-border-style-03:#EB4D5E,
+
+color-nostock-button-border-style-04:#EB4D5E,
+
+color-ribbon-stock-text-style-05: #EB4D5E,
+
+color-ribbon-stock-background-style-05: map-get($base_vars,'color-default'),
+
+color-nostock-button-border-style-05:#EB4D5E,
+
+color-not-available-status-background-style-02:#EB4D5E,
+
+color-available-status-background-style-02:#2ECC71,
+
+color-nostock-details-background-style-04:#EB4D5E,
+
+color-nostock-details-background-style-06:#EB4D5E,
+
+color-product-box-info-price-text-style-06:map-get($base_vars,'color-secondary'),
+
+color-product-box-info-border-style-06:map-get($base_vars,'color-border'),
+
+color-nostock-details-background-style-07 : #EB4D5E,
+
+color-stock-detail-text-style-04:map-get($base_vars,'color-default'),
+
+font-size-product-detail-name-style-04:24px,
+
+font-size-product-detail-price-style-04:24px,
+
+font-size-product-detail-old-price-style-04:20px,
+
+color-stock-details-text-style-06 : map-get($base_vars,'color-default'),
+
+color-stock-details-background-style-06 : map-get($base_vars,'color-primary'),
+
+color-stock-details-text-style-07 : map-get($base_vars,'color-default'),
+
+color-stock-details-background-style-07 : map-get($base_vars,'color-primary'),
+
+color-product-price:map-get($base_vars,'color-secondary'),
+font-size-product-price:18px,
+color-product-old-price:map-get($base_vars,'color-secondary'),
+font-size-product-old-price:14px,
+
+color-product-name:map-get($base_vars, 'color-secondary'),
+font-size-product-name:16px,
+
+font-size-product-name-md-6:14px,
+font-size-product-price-md-6:14px,
+
+color-product-details-image-container-background:map-get($base_vars,'color-default'),
+color-product-details-entry-background:lighten(map-get($base_vars,'color-primary'),6%),
+color-product-calculated-details-entry-background:map-get($base_vars,'color-secondary'),
+color-product-calculated-details-entry-background-rgba:convertHexToRgb(map-get($base_vars,'color-secondary')),
+
+color-product-details-entry-background-style-04:map-get($base_vars,'color-default'),
+
+color-product-details-image-container-background-style-04:map-get($base_vars,'color-default'),
+
+color-product-details-entry-background-style-03:map-get($base_vars,'color-default'),
+
+color-product-calculated-details-entry-background-style-02:map-get($base_vars,'color-light'),
+
+color-product-details-tab:map-get($base_vars, 'color-secondary'),
+color-product-details-tab-background:map-get($base_vars, 'color-light'),
+color-product-details-tab-background-style-05:transparent,
+color-product-details-tab-content-background:map-get($base_vars, 'color-default'),
+color-product-details-tab-content-heading:map-get($base_vars, 'color-secondary'),
+font-size-product-details-tab-content-heading:18px,
+
+color-product-details-input-background:transparent,
+color-product-details-input-text:map-get($base_vars, 'color-default'),
+color-product-details-input-border:map-get($base_vars, 'color-default'),
+color-product-details-input-border-rgba:convertHexToRgb(map-get($base_vars, 'color-default')),
+
+color-product-details-input-text-style-03:map-get($base_vars, 'color-text'),
+
+color-product-details-input-text-style-06:map-get($base_vars, 'color-secondary'),
+
+color-details-stock-background: map-get($base_vars,'color-default'),
+color-details-stock-text: map-get($base_vars,'color-secondary'),
+color-details-nostock-text:#EB4D5E,
+
+color-non-returnable : map-get($base_vars,'color-default'),
+font-size-non-returnable : 13px,
+
+color-quantity-error : map-get($base_vars,'color-default'),
+
+color-list-rating-one : #cccccc,
+color-list-rating-active-one : darken(map-get($base_vars,'color-primary'),15%),
+
+color-list-rating-two : #cccccc,
+color-list-rating-active-two : map-get($base_vars,'color-primary'),
+
+color-list-rating-three : #cccccc,
+color-list-rating-active-three : map-get($base_vars,'color-default'),
+
+color-list-rating-four : #cccccc,
+color-list-rating-active-four : map-get($base_vars,'color-primary'),
+
+color-list-rating-five : #cccccc,
+color-list-rating-active-five : map-get($base_vars,'color-primary'),
+
+color-list-rating-six : #cccccc,
+color-list-rating-active-six : map-get($base_vars,'color-primary'),
+
+color-list-rating-seven : #cccccc,
+color-list-rating-active-seven : map-get($base_vars,'color-primary'),
+
+
+color-review-star-one:#eaeaea,
+color-review-star-one-rgba:convertHexToRgb(#eaeaea),
+color-review-star-active-one:#fcbb54,
+
+color-review-star-two:#E0E0E0,
+color-review-star-active-two:map-get($base_vars,'color-primary'),
+
+color-review-star-three:#E0E0E0,
+color-review-star-active-three:map-get($base_vars,'color-primary'),
+
+color-review-star-four:#E0E0E0,
+color-review-star-active-four:map-get($base_vars,'color-primary'),
+
+color-review-star-five:#E0E0E0,
+color-review-star-active-five:map-get($base_vars,'color-primary'),
+
+color-review-star-six:#E0E0E0,
+color-review-star-active-six:map-get($base_vars,'color-primary'),
+
+color-review-star-seven:#E0E0E0,
+color-review-star-active-seven:map-get($base_vars,'color-primary'),
+
+color-review-count-text:map-get($base_vars,'color-default'),
+color-write-review-text:map-get($base_vars,'color-default'),
+
+color-instock-info-style-03 : #3ace18,
+color-nostock-info-style-03 : #EB4D5E,
+
+color-nostock-info-style-05 : #EB4D5E,
+
+color-instock-info-style-05 : #3ace18,
+
+font-size-stock-info-style-05:16px,
+
+color-write-review-text-style-02 : map-get($base_vars,'color-secondary'),
+
+color-review-count-text-style-02 : map-get($base_vars,'color-secondary'),
+
+color-rating-count-style-03 : map-get($base_vars,'color-default'),
+
+color-review-count-text-style-03 : map-get($base_vars,'color-secondary'),
+
+color-review-count-text-style-04 : map-get($base_vars,'color-secondary'),
+
+color-review-count-text-style-05 : map-get($base_vars,'color-secondary'),
+
+color-review-count-text-style-06 : map-get($base_vars,'color-secondary'),
+
+font-size-rating-count-style-03 : 14px,
+
+font-size-rating-count-style-05 : 14px,
+
+color-rating-count-style-05 : map-get($base_vars,'color-secondary'),
+
+color-review-count-text-style-07 : map-get($base_vars,'color-secondary'),
+
+font-size-product-box-info-price-style-06:22px,
+
+color-add-cart-button-background:map-get($base_vars,'color-default'),
+color-add-cart-button-text:map-get($base_vars, 'color-secondary'),
+color-add-cart-button-border:map-get($base_vars, 'color-default'),
+
+color-add-cart-button-active-background:map-get($base_vars, 'color-default'),
+color-add-cart-button-active-text:map-get($base_vars, 'color-secondary'),
+
+color-product-review-button-background:map-get($base_vars, 'color-primary'),
+color-product-review-button-text:map-get($base_vars, 'color-default'),
+
+color-product-review-button-text-style-07:map-get($base_vars, 'color-secondary'),
+
+color-category-and-filter-background:map-get($base_vars, 'color-default'),
+color-category-and-filter-text:map-get($base_vars, 'color-text'),
+color-category-list-hover-text:map-get($base_vars, 'color-primary'),
+
+color-product-box-info-background:map-get($base_vars,'color-primary'),
+color-product-box-info-background-rgba:convertHexToRgb(map-get($base_vars,'color-primary')),
+color-product-box-info-button-border:map-get($base_vars,'color-default'),
+color-product-box-info-button-text:map-get($base_vars,'color-default'),
+font-size-product-box-info-button:12px,
+color-product-box-info-button-hover-background:map-get($base_vars,'color-default'),
+color-product-box-info-button-hover-text:map-get($base_vars,'color-primary'),
+color-product-box-info-icon:map-get($base_vars,'color-default'),
+
+font-size-detail-cart-button-style-04:20px,
+
+color-product-box-info-background-style-02:map-get($base_vars,'color-secondary'),
+color-product-box-info-background-style-02-rgba:convertHexToRgb(map-get($base_vars,'color-secondary')),
+
+color-product-box-info-background-style-03:map-get($base_vars,'color-default'),
+color-product-box-info-background-style-03-rgba:convertHexToRgb(map-get($base_vars,'color-default')),
+
+color-product-box-background-style-02:map-get($base_vars,'color-default'),
+
+color-nostock-button-background-style-02 : map-get($base_vars,'color-default'),
+
+color-nostock-button-text-style-02 :#EB4D5E,
+
+color-background-product-price-style-03:map-get($base_vars,'color-light'),
+
+color-background-product-price-style-04:transparent,
+
+color-nostock-button-text-style-03:#EB4D5E,
+
+color-addcart-icon-style-03:map-get($base_vars,'color-primary'),
+
+color-addcart-icon-style-04:map-get($base_vars,'color-primary'),
+
+font-size-nostock-button-style-03:15px,
+
+font-size-nostock-button-style-04:15px,
+
+color-nostock-button-text-style-04:#EB4D5E,
+
+color-nostock-button-background-style-03:map-get($base_vars,'color-default'),
+
+color-nostock-overlay-background-style-04:map-get($base_vars,'color-default'),
+color-nostock-overlay-background-style-04-rgba:convertHexToRgb(map-get($base_vars,'color-default')),
+
+color-nostock-button-background-style-04:map-get($base_vars,'color-default'),
+
+color-product-box-info-background-style-04:transparent,
+
+color-nostock-button-text-style-05:#EB4D5E,
+
+color-nostock-button-background-style-05:map-get($base_vars,'color-default'),
+
+color-quickview-container-background-style-01 : #ffffff,
+
+color-quickview-close-background-style-05:RGBA(convertHexToRgb(map-get($base_vars,'color-primary')),0.90),
+
+color-quickview-close-background-style-06:RGBA(convertHexToRgb(map-get($base_vars,'color-primary')),0.95),
+
+color-nostock-button-background-style-06 : map-get($base_vars,'color-default'),
+
+color-nostock-button-text-style-06 : #EB4D5E,
+
+color-nostock-button-border-style-06 : #EB4D5E,
+
+color-nostock-overlay-background-style-06 : map-get($base_vars,'color-default'),
+color-nostock-overlay-background-style-06-rgba : convertHexToRgb(map-get($base_vars,'color-default')),
+
+color-product-box-info-background-style-06:map-get($base_vars,'color-default'),
+
+font-size-ribbon-style-06 : 13px,
+
+color-product-box-info-background-style-07:map-get($base_vars,'color-default'),
+
+color-nostock-button-background-style-07 : map-get($base_vars,'color-default'),
+
+color-nostock-button-text-style-07 : #EB4D5E,
+
+color-nostock-button-border-style-07 : #EB4D5E,
+
+color-nostock-overlay-background-style-07 : map-get($base_vars,'color-default'),
+color-nostock-overlay-background-style-07-rgba : convertHexToRgb(map-get($base_vars,'color-default')),
+
+color-quickview-close-background:map-get($base_vars,'color-default'),
+color-quickview-close-icon:map-get($base_vars,'color-secondary'),
+
+color-selection-tick : #ffffff,
+color-section-tick-shadow:#000000,
+color-selection-border:#ffffff,
+color-selection-background:#ffffff,
+color-selection-text : map-get($base_vars,'color-secondary'),
+
+color-selection-tick-style-04 : transparent,
+color-selection-tick-style-03 : transparent,
+
+color-selection-tick-style-05 : transparent,
+
+color-selection-border-style-03:map-get($base_vars,'color-primary'),
+
+color-selection-border-style-04 : map-get($base_vars,'color-primary'),
+
+color-selection-border-style-05 : map-get($base_vars,'color-primary'),
+
+color-selection-border-style-06:map-get($base_vars,'color-primary'),
+
+color-selection-tick-style-06 : transparent,
+
+color-selection-border-style-07 : map-get($base_vars,'color-primary'),
+
+color-selection-tick-style-07 : transparent,
+
+color-product-coupons-claimed-progress: #dddddd,
+
+// CHECKOUT VARIABLES
+
+color-checkout-tab-background:map-get($base_vars,'color-light'),
+color-checkout-tab-background-selected:darken(map-get($base_vars,'color-light'),3%),
+color-checkout-change-login-notification-background:#FFFDF1,
+color-checkout-change-login-notification-border:#FEE1A4,
+color-order-confirmation-box-background:#FDFDFD,
+
+// STORE ERROR MESSAGE VARIABLE STARTS
+
+color-store-success-message-background:#1ABC9C,
+color-store-success-message-background-rgba:convertHexToRgb(#1ABC9C),
+color-store-success-message-text:map-get($base_vars,'color-default'),
+color-store-failure-message-background:#E74C3C,
+color-store-failure-message-background-rgba:convertHexToRgb(#E74C3C),
+color-store-failure-message-text:map-get($base_vars,'color-default'),
+
+color-store-success-message-background-style-02:#EFF5EA,
+color-store-success-message-text-style-02:map-get($base_vars,'color-secondary'),
+color-store-success-message-border-style-02:#1ABC9C,
+color-store-failure-message-background-style-02:#EFF5EA,
+color-store-failure-message-text-style-02:map-get($base_vars,'color-secondary'),
+color-store-failure-message-border-style-02:#E74C3C,
+
+color-store-success-message-background-style-03:#13CE66,
+color-store-success-message-text-style-03:map-get($base_vars,'color-default'),
+color-store-failure-message-background-style-03:#FF4949,
+color-store-failure-message-text-style-03:map-get($base_vars,'color-default'),
+
+color-store-success-message-background-style-04:#1ABC9C,
+color-store-success-message-text-style-04:map-get($base_vars,'color-default'),
+color-store-failure-message-background-style-04:#E74C3C,
+color-store-failure-message-text-style-04:map-get($base_vars,'color-default'),
+
+color-store-success-message-style-04:#13CE66,
+color-store-message-text-style-04:map-get($base_vars,'color-default'),
+color-store-failure-message-style-04:#FF4949,
+
+color-store-success-message-background-style-05:#EFF5EA,
+color-store-success-message-text-style-05:map-get($base_vars,'color-secondary'),
+color-store-success-message-border-style-05:#00B600,
+color-store-failure-message-background-style-05:#FEE6E6,
+color-store-failure-message-text-style-05:map-get($base_vars,'color-secondary'),
+color-store-failure-message-border-style-05:#FF4949,
+
+color-store-success-message-background-style-06:#EFF5EA,
+color-store-success-message-text-style-06:map-get($base_vars,'color-secondary'),
+color-store-success-message-border-style-06:#00B600,
+color-store-failure-message-background-style-06:#FFE3E3,
+color-store-failure-message-text-style-06:map-get($base_vars,'color-secondary'),
+color-store-failure-message-border-style-06:#FF4949,
+
+color-store-success-message-background-style-07:#EFF5EA,
+color-store-success-message-text-style-07:map-get($base_vars,'color-secondary'),
+color-store-success-message-border-style-07:#00B600,
+color-store-failure-message-background-style-07:#FFE3E3,
+color-store-failure-message-text-style-07:map-get($base_vars,'color-secondary'),
+color-store-failure-message-border-style-07:#FF4949,
+
+color-store-addcart-variant-error-background:map-get($base_vars,'color-default'),
+color-store-addcart-variant-error-text:map-get($base_vars,'color-secondary'),
+
+color-store-addcart-variant-error-background-style-02:#FFF9EA,
+color-store-addcart-variant-error-text-style-02:#2B3449,
+color-store-addcart-variant-error-border-style-02:#F8DE83,
+
+color-store-addcart-variant-error-background-style-04:#FFF9EA,
+color-store-addcart-variant-error-background-border-style-04:darken(#FFF9EA,15%),
+color-store-addcart-variant-error-text-style-04:#2B3449,
+color-store-addcart-variant-common-error-text-style-04 : #FF4949,
+
+color-store-addcart-variant-error-background-style-06:#FFF9EA,
+color-store-addcart-variant-error-text-style-06:#2B3449,
+color-store-addcart-variant-error-border-style-06:#F8DE83,
+
+color-textvariant-border-style-04 : darken(map-get($base_vars,'color-border'),10%),
+
+color-textvariant-border-style-05 : darken(map-get($base_vars,'color-border'),10%),
+
+color-textvariant-border-style-07 : darken(map-get($base_vars,'color-border'),10%),
+
+color-store-addcart-variant-error-text-style-07:#2B3449,
+
+color-store-addcart-variant-error-border-style-05:#F8DE83,
+
+color-store-addcart-variant-error-border-style-07:#F8DE83,
+
+font-size-variant-label:15px,
+
+color-store-addcart-variant-error-background-style-03:#FFF9EA,
+color-store-addcart-variant-error-background-border-style-03:darken(#FFF9EA,15%),
+color-store-addcart-variant-error-text-style-03:#2B3449,
+
+color-store-addcart-variant-error-text-style-05:map-get($base_vars,'color-secondary'),
+
+color-store-addcart-variant-error-background-style-05:#FFF9EA,
+
+color-store-addcart-variant-error-background-style-07:#FFF9EA,
+
+// STORE CURRENCY OPTIONS
+
+font-size-currency-option : 13px,
+font-family-currency-option : map-get($base_vars, 'font-family-base'),
+font-weight-currency-option : normal,
+font-transform-currency-option : none,
+font-line-height-currency-option : 1.8,
+font-letter-spacing-currency-option : normal,
+color-currency-option : map-get($base_vars, 'color-secondary'),
+darkbg-color-currency-option : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.8),
+color-currency-hover-background : #eee,
+color-currency-shadow : #626262,
+color-currency-shadow-rgba : convertHexToRgb(#626262),
+color-currency-background : map-get($base_vars,'color-default'),
+color-currency-option-hover : map-get($base_vars,'color-primary'),
+color-currency-decorate-border : map-get($base_vars,'color-primary'),
+color-currency-option-border : map-get($base_vars,'color-border'),
+
+// NEW VARIABLES FOR ADVANCE VISUAL EDITOR
+
+  // SITE NAME
+
+color-site-name : map-get($base_vars, 'color-secondary'),
+darkbg-color-site-name : map-get($base_vars, 'color-default'),
+font-size-site-name : 24px,
+font-family-site-name : unquote("'Nunito',sans-serif"),
+font-transform-site-name : none,
+font-weight-site-name : normal,
+font-line-height-site-name : normal,
+font-letter-spacing-site-name : normal,
+
+  // SITE CAPTION
+
+color-site-caption : lighten(map-get($base_vars, 'color-text'),10%),
+darkbg-color-site-caption : map-get($base_vars, 'color-default'),
+font-transform-site-caption : none,
+font-weight-site-caption : normal,
+font-line-height-site-caption : normal,
+font-letter-spacing-site-caption : normal,
+
+  // SOCIAL ICON
+
+color-social-icon : map-get($base_vars, 'color-secondary'),
+size-social-icon : 13px,
+darkbg-color-social-icon : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.8),
+
+  // NAVIGATION
+
+color-navigation : map-get($base_vars, 'color-secondary'),
+darkbg-color-navigation : map-get($base_vars, 'color-default'),
+font-transform-navigation : none,
+font-weight-navigation : normal,
+font-size-navigation : 15px,
+font-family-navigation : map-get($base_vars, 'font-family-base'),
+font-line-height-navigation-one : 1,
+font-line-height-navigation-normal : normal,
+font-letter-spacing-navigation : normal,
+
+darkbg-color-hover-active-text-style-06-navigation : lighten(map-get($base_vars,'color-secondary'),40%),
+color-navigation-hover-active-arrow-text : map-get($base_vars, 'color-primary'),
+darkbg-color-navigation-hover-active-arrow-text: map-get($base_vars, 'color-default'),
+darkbg-color-navigation-hover-active-arrow-background : lighten(map-get($base_vars, 'color-secondary'),20%),
+darkbg-color-navigation-hover-active-text-arrow : map-get($base_vars, 'color-default'),
+color-navigation-hover-active-effect : map-get($base_vars, 'color-primary'),
+darkbg-color-navigation-hover-active-effect : map-get($base_vars, 'color-default'),
+color-hover-active-text-style-02-03-navigation : map-get($base_vars, 'color-secondary'),
+darkbg-color-hover-active-text-style-02-03-navigation : map-get($base_vars, 'color-default'),
+color-hover-active-text-style-06-navigation : map-get($base_vars, 'color-primary'),
+
+  // SEARCH AND CART ICON
+
+color-search-cart-icon : map-get($base_vars, 'color-secondary'),
+darkbg-color-search-cart-icon : map-get($base_vars, 'color-default'),
+size-search-icon : 17px,
+size-cart-icon : 24px,
+
+
+  //  THEME SEARCH VARIABLES
+
+color-search-field : map-get($base_vars, 'color-text'),
+font-family-search-field : map-get($base_vars,'font-family-base'),
+font-size-search-field : 14px,
+font-weight-search-field : normal,
+font-transform-search-field : none,
+font-line-height-search-field : normal,
+font-letter-spacing-search-field : normal,
+color-search-field-background : map-get($base_vars, 'color-default'),
+color-search-field-border : map-get($base_vars, 'color-primary'),
+
+
+color-search-button :map-get($base_vars, 'color-default'),
+color-search-button-rgba :convertHexToRgb(map-get($base_vars, 'color-default')),
+font-size-search-button : 18px,
+font-family-search-button : map-get($base_vars, 'font-family-base'),
+font-weight-search-button : normal,
+font-transform-search-button : none,
+font-line-height-search-button : normal,
+font-letter-spacing-search-button : 1.42857143,
+color-search-button-background : map-get($base_vars, 'color-primary'),
+// color-search-button-text : map-get($base_vars, 'color-default'),
+// color-search-button-text-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
+
+
+// SEVENTH HEADER SEARCH BOX VARIABLES
+
+border-radius-7th-header-style-search-field:0px,
+color-7th-header-search-field-text:map-get($base_vars, 'color-text'),
+color-7th-header-style-search-field-background:map-get($base_vars, 'color-default'),
+color-7th-header-style-search-field-border: map-get($base_vars, 'color-border'),
+color-7th-header-style-search-icon:map-get($base_vars, 'color-secondary'),
+size-header7-search-icon:18px,
+
+
+// SEVENTH HEADER CART ICON VARIABLES
+
+color-7th-header-style-cart-icon: map-get($base_vars, 'color-secondary'),
+color-7th-header-style-cart-divider-border: map-get($base_vars, 'color-secondary'),
+size-header7-cart-icon:18px,
+
+
+darkbg-color-7th-header-style-cart-icon: map-get($base_vars, 'color-default'),
+darkbg-color-7th-header-style-cart-divider-border : map-get($base_vars, 'color-default'),
+
+
+
+  // NAVIGATION BAR
+
+color-navigation-bar-background : map-get($base_vars, 'color-default'),
+color-navigation-bar-background-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
+
+color-navigation-bar-overlap-background : transparent,
+
+color-navigation-bar-style-05-background : map-get($base_vars, 'color-light'),
+color-navigation-bar-style-05-background-rgba : convertHexToRgb(map-get($base_vars, 'color-light')),
+darkbg-color-navigation-bar-style-05-background : map-get($base_vars, 'color-secondary'),
+darkbg-color-navigation-bar-style-05-background-rgba : convertHexToRgb(map-get($base_vars, 'color-secondary')),
+darkbg-color-navigation-bar-background : map-get($base_vars, 'color-secondary'),
+darkbg-color-navigation-bar-background-rgba : convertHexToRgb(map-get($base_vars, 'color-secondary')),
+
+  // SUB MENU
+
+color-submenu : map-get($base_vars, 'color-secondary'),
+color-submenu-hover-active-text : map-get($base_vars, 'color-primary'),
+color-submenu-background : map-get($base_vars, 'color-default'),
+color-mobile-burger-icon : map-get($base_vars, 'color-primary'),
+darkbg-color-mobile-burger-icon : map-get($base_vars, 'color-default'),
+
+color-submenu-hover-background : map-get($base_vars, 'color-default'),
+color-submenu-hover-background-05 : map-get($base_vars, 'color-light'),
+color-submenu-hover-background-06 : RGBA(convertHexToRgb(map-get($base_vars, 'color-primary')),0.1),
+color-submenu-border : RGBA(convertHexToRgb(map-get($base_vars, 'color-border')),0.4),
+font-family-submenu : map-get($base_vars,'font-family-base'),
+font-weight-submenu : normal,
+font-transform-submenu : none,
+font-line-height-submenu : normal,
+font-letter-spacing-submenu : normal,
+
+  // CONTACT INFO
+
+color-contact-info : map-get($base_vars, 'color-secondary'),
+color-contact-info-rgba : convertHexToRgb(map-get($base_vars, 'color-secondary')),
+font-size-contact-info : 13px,
+font-family-contact-info : map-get($base_vars, 'font-family-base'),
+font-transform-contact-info : none,
+font-weight-contact-info : normal,
+font-line-height-contact-info : 1.8,
+font-letter-spacing-contact-info : normal,
+
+darkbg-color-contact-info : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.8),
+
+  // MEMBER PORTAL
+
+color-portal: map-get($base_vars, 'color-secondary'),
+font-size-portal : 13px,
+font-family-portal : map-get($base_vars, 'font-family-base'),
+font-transform-portal : none,
+font-weight-portal : normal,
+font-line-height-portal : 1.8,
+font-letter-spacing-portal : normal,
+
+darkbg-color-portal : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.8),
+
+  // FORM ELEMENT
+
+color-form-heading : map-get($base_vars, 'color-secondary'),
+font-family-form-heading : map-get($base_vars, 'font-family-heading'),
+font-size-form-heading : 30px,
+font-transform-form-heading : none,
+font-weight-form-heading : normal,
+font-line-height-form-heading : 1.8,
+font-letter-spacing-form-heading : normal,
+
+font-family-form-label : map-get($base_vars, 'font-family-base'),
+font-size-form-label : 14px,
+font-transform-form-label : none,
+font-weight-form-label : normal,
+font-line-height-form-label : 1.8,
+font-letter-spacing-form-label : normal,
+
+font-family-form-field : map-get($base_vars, 'font-family-base'),
+font-size-form-field: 14px,
+font-transform-form-field : none,
+font-weight-form-field : normal,
+font-line-height-form-field : normal,
+font-letter-spacing-form-field : normal,
+
+font-family-form-error-message-text :map-get($base_vars, 'font-family-base'),
+font-size-form-error-message-text :14px,
+font-transform-form-error-message-text :none,
+font-weight-form-error-message-text :normal,
+
+font-family-form-warning-message-text :map-get($base_vars, 'font-family-base'),
+font-size-form-warning-message-text :14px,
+font-transform-form-warning-message-text :none,
+font-weight-form-warning-message-text :normal,
+
+font-family-form-success-message-text :map-get($base_vars, 'font-family-base'),
+font-size-form-success-message-text :14px,
+font-transform-form-success-message-text :none,
+font-weight-form-success-message-text :normal,
+
+font-family-form-info-message-text :map-get($base_vars, 'font-family-base'),
+font-size-form-info-message-text :14px,
+font-transform-form-info-message-text :none,
+font-weight-form-info-message-text :normal,
+
+darkbg-color-form-heading : map-get($base_vars, 'color-default'),
+
+  // BOX ELEMENT
+
+color-box-background : transparent,
+space-box-padding : 0px,
+size-box-border : 0px,
+style-box-border : solid,
+color-box-border : transparent,
+
+darkbg-color-box-background : transparent,
+darkbg-color-box-border : transparent,
+
+  // ICON ELEMENT ADVANCED
+
+color-icon-border-style : map-get($base_vars, 'color-primary'),
+darkbg-color-icon-border-style : map-get($base_vars, 'color-default'),
+
+  // ICON HEADING ADVANCE
+
+color-iconheading : map-get($base_vars, 'color-primary'),
+color-iconheading-border :map-get($base_vars, 'color-border'),
+color-iconheading-fill-background : map-get($base_vars, 'color-primary'),
+color-iconheading-fill : map-get($base_vars, 'color-default'),
+color-iconheading-border-style : map-get($base_vars, 'color-primary'),
+
+color-iconheading-h1 : map-get($base_vars, 'color-secondary'),
+color-iconheading-h2 : map-get($base_vars, 'color-secondary'),
+color-iconheading-h3 : map-get($base_vars, 'color-secondary'),
+color-iconheading-h4 : map-get($base_vars, 'color-secondary'),
+color-iconheading-h5 : map-get($base_vars, 'color-secondary'),
+color-iconheading-h6 : map-get($base_vars, 'color-secondary'),
+
+font-family-iconheading-h1 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheading-h2 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheading-h3 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheading-h4 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheading-h5 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheading-h6 : map-get($base_vars, 'font-family-heading'),
+
+font-size-iconheading-h1 : 36px,
+font-size-iconheading-h2 : 30px,
+font-size-iconheading-h3 : 24px,
+font-size-iconheading-h4 : 18px,
+font-size-iconheading-h5 : 16px,
+font-size-iconheading-h6 : 14px,
+
+font-weight-iconheading-h1 : normal,
+font-weight-iconheading-h2 : normal,
+font-weight-iconheading-h3 : normal,
+font-weight-iconheading-h4 : normal,
+font-weight-iconheading-h5 : normal,
+font-weight-iconheading-h6 : normal,
+
+font-transform-iconheading-h1 : none,
+font-transform-iconheading-h2 : none,
+font-transform-iconheading-h3 : none,
+font-transform-iconheading-h4 : none,
+font-transform-iconheading-h5 : none,
+font-transform-iconheading-h6 : none,
+
+font-line-height-iconheading-h1 : 1.8,
+font-line-height-iconheading-h2 : 1.8,
+font-line-height-iconheading-h3 : 1.8,
+font-line-height-iconheading-h4 : 1.8,
+font-line-height-iconheading-h5 : 1.8,
+font-line-height-iconheading-h6 : 1.8,
+
+font-letter-spacing-iconheading-h1 : normal,
+font-letter-spacing-iconheading-h2 : normal,
+font-letter-spacing-iconheading-h3 : normal,
+font-letter-spacing-iconheading-h4 : normal,
+font-letter-spacing-iconheading-h5 : normal,
+font-letter-spacing-iconheading-h6 : normal,
+
+darkbg-color-iconheading : map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-border :map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-fill-background : map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-fill : map-get($base_vars, 'color-primary'),
+darkbg-color-iconheading-border-style : map-get($base_vars, 'color-default'),
+
+darkbg-color-iconheading-h1 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-h2 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-h3 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-h4 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-h5 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheading-h6 : map-get($base_vars, 'color-default'),
+
+  // ICON HEADING TEXT ADVANCE
+
+color-iconheadingtext : map-get($base_vars, 'color-primary'),
+color-iconheadingtext-border :map-get($base_vars, 'color-border'),
+color-iconheadingtext-fill-background : map-get($base_vars, 'color-primary'),
+color-iconheadingtext-fill : map-get($base_vars, 'color-default'),
+color-iconheadingtext-border-style : map-get($base_vars, 'color-primary'),
+
+color-iconheadingtext-text : map-get($base_vars, 'color-text'),
+font-family-iconheadingtext-text : map-get($base_vars, 'font-family-base'),
+font-size-iconheadingtext-text : 14px,
+font-weight-iconheadingtext-text: normal,
+font-transform-iconheadingtext-text : none,
+font-line-height-iconheadingtext-text : 1.8,
+font-letter-spacing-iconheadingtext-text : normal,
+
+color-iconheadingtext-h1 : map-get($base_vars, 'color-secondary'),
+color-iconheadingtext-h2 : map-get($base_vars, 'color-secondary'),
+color-iconheadingtext-h3 : map-get($base_vars, 'color-secondary'),
+color-iconheadingtext-h4 : map-get($base_vars, 'color-secondary'),
+color-iconheadingtext-h5 : map-get($base_vars, 'color-secondary'),
+color-iconheadingtext-h6 : map-get($base_vars, 'color-secondary'),
+
+font-family-iconheadingtext-h1 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheadingtext-h2 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheadingtext-h3 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheadingtext-h4 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheadingtext-h5 : map-get($base_vars, 'font-family-heading'),
+font-family-iconheadingtext-h6 : map-get($base_vars, 'font-family-heading'),
+
+font-size-iconheadingtext-h1 : 36px,
+font-size-iconheadingtext-h2 : 30px,
+font-size-iconheadingtext-h3 : 24px,
+font-size-iconheadingtext-h4 : 18px,
+font-size-iconheadingtext-h5 : 16px,
+font-size-iconheadingtext-h6 : 14px,
+
+font-weight-iconheadingtext-h1 : normal,
+font-weight-iconheadingtext-h2 : normal,
+font-weight-iconheadingtext-h3 : normal,
+font-weight-iconheadingtext-h4 : normal,
+font-weight-iconheadingtext-h5 : normal,
+font-weight-iconheadingtext-h6 : normal,
+
+font-transform-iconheadingtext-h1 : none,
+font-transform-iconheadingtext-h2 : none,
+font-transform-iconheadingtext-h3 : none,
+font-transform-iconheadingtext-h4 : none,
+font-transform-iconheadingtext-h5 : none,
+font-transform-iconheadingtext-h6 : none,
+
+font-line-height-iconheadingtext-h1 : 1.8,
+font-line-height-iconheadingtext-h2 : 1.8,
+font-line-height-iconheadingtext-h3 : 1.8,
+font-line-height-iconheadingtext-h4 : 1.8,
+font-line-height-iconheadingtext-h5 : 1.8,
+font-line-height-iconheadingtext-h6 : 1.8,
+
+font-letter-spacing-iconheadingtext-h1 : normal,
+font-letter-spacing-iconheadingtext-h2 : normal,
+font-letter-spacing-iconheadingtext-h3 : normal,
+font-letter-spacing-iconheadingtext-h4 : normal,
+font-letter-spacing-iconheadingtext-h5 : normal,
+font-letter-spacing-iconheadingtext-h6 : normal,
+
+darkbg-color-iconheadingtext : map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-border :map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-fill-background : map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-fill : map-get($base_vars, 'color-primary'),
+darkbg-color-iconheadingtext-border-style : map-get($base_vars, 'color-default'),
+
+darkbg-color-iconheadingtext-text : map-get($base_vars, 'color-default'),
+darkbg-font-family-iconheadingtext-text : map-get($base_vars, 'font-family-base'),
+darkbg-font-size-iconheadingtext-text : 14px,
+darkbg-font-text-transform-iconheadingtext-text : none,
+darkbg-font-weight-iconheadingtext-text: normal,
+
+darkbg-color-iconheadingtext-h1 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-h2 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-h3 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-h4 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-h5 : map-get($base_vars, 'color-default'),
+darkbg-color-iconheadingtext-h6 : map-get($base_vars, 'color-default'),
+
+darkbg-font-family-iconheadingtext-h1 : map-get($base_vars, 'font-family-heading'),
+darkbg-font-family-iconheadingtext-h2 : map-get($base_vars, 'font-family-heading'),
+darkbg-font-family-iconheadingtext-h3 : map-get($base_vars, 'font-family-heading'),
+darkbg-font-family-iconheadingtext-h4 : map-get($base_vars, 'font-family-heading'),
+darkbg-font-family-iconheadingtext-h5 : map-get($base_vars, 'font-family-heading'),
+darkbg-font-family-iconheadingtext-h6 : map-get($base_vars, 'font-family-heading'),
+
+darkbg-font-size-iconheadingtext-h1 : 36px,
+darkbg-font-size-iconheadingtext-h2 : 30px,
+darkbg-font-size-iconheadingtext-h3 : 24px,
+darkbg-font-size-iconheadingtext-h4 : 18px,
+darkbg-font-size-iconheadingtext-h5 : 16px,
+darkbg-font-size-iconheadingtext-h6 : 14px,
+
+darkbg-font-weight-iconheadingtext-h1 : normal,
+darkbg-font-weight-iconheadingtext-h2 : normal,
+darkbg-font-weight-iconheadingtext-h3 : normal,
+darkbg-font-weight-iconheadingtext-h4 : normal,
+darkbg-font-weight-iconheadingtext-h5 : normal,
+darkbg-font-weight-iconheadingtext-h6 : normal,
+
+darkbg-font-transform-iconheadingtext-h1 : none,
+darkbg-font-transform-iconheadingtext-h2 : none,
+darkbg-font-transform-iconheadingtext-h3 : none,
+darkbg-font-transform-iconheadingtext-h4 : none,
+darkbg-font-transform-iconheadingtext-h5 : none,
+darkbg-font-transform-iconheadingtext-h6 : none,
+
+  // IMAGE TEXT ADVANCES
+
+color-imagetext-text : map-get($base_vars, 'color-text'),
+font-family-imagetext-text : map-get($base_vars, 'font-family-base'),
+font-size-imagetext-text : 14px,
+font-weight-imagetext-text: normal,
+font-transform-imagetext-text : none,
+font-line-height-imagetext-text : 1.8,
+font-letter-spacing-imagetext-text : normal,
+
+darkbg-color-imagetext-text : map-get($base_vars, 'color-default'),
+
+  // IMAGE HEADING TEXT ADVANCES
+
+color-imageheadingtext-text : map-get($base_vars, 'color-text'),
+font-family-imageheadingtext-text : map-get($base_vars, 'font-family-base'),
+font-size-imageheadingtext-text : 14px,
+font-transform-imageheadingtext-text : none,
+font-weight-imageheadingtext-text: normal,
+font-line-height-imageheadingtext-text : 1.8,
+font-letter-spacing-imageheadingtext-text : normal,
+
+darkbg-color-imageheadingtext-text : map-get($base_vars, 'color-default'),
+
+color-imageheadingtext-h1 : map-get($base_vars, 'color-secondary'),
+color-imageheadingtext-h2 : map-get($base_vars, 'color-secondary'),
+color-imageheadingtext-h3 : map-get($base_vars, 'color-secondary'),
+color-imageheadingtext-h4 : map-get($base_vars, 'color-secondary'),
+color-imageheadingtext-h5 : map-get($base_vars, 'color-secondary'),
+color-imageheadingtext-h6 : map-get($base_vars, 'color-secondary'),
+
+font-family-imageheadingtext-h1 : map-get($base_vars, 'font-family-heading'),
+font-family-imageheadingtext-h2 : map-get($base_vars, 'font-family-heading'),
+font-family-imageheadingtext-h3 : map-get($base_vars, 'font-family-heading'),
+font-family-imageheadingtext-h4 : map-get($base_vars, 'font-family-heading'),
+font-family-imageheadingtext-h5 : map-get($base_vars, 'font-family-heading'),
+font-family-imageheadingtext-h6 : map-get($base_vars, 'font-family-heading'),
+
+font-size-imageheadingtext-h1 : 36px,
+font-size-imageheadingtext-h2 : 30px,
+font-size-imageheadingtext-h3 : 24px,
+font-size-imageheadingtext-h4 : 18px,
+font-size-imageheadingtext-h5 : 16px,
+font-size-imageheadingtext-h6 : 14px,
+
+font-weight-imageheadingtext-h1 : normal,
+font-weight-imageheadingtext-h2 : normal,
+font-weight-imageheadingtext-h3 : normal,
+font-weight-imageheadingtext-h4 : normal,
+font-weight-imageheadingtext-h5 : normal,
+font-weight-imageheadingtext-h6 : normal,
+
+font-transform-imageheadingtext-h1 : none,
+font-transform-imageheadingtext-h2 : none,
+font-transform-imageheadingtext-h3 : none,
+font-transform-imageheadingtext-h4 : none,
+font-transform-imageheadingtext-h5 : none,
+font-transform-imageheadingtext-h6 : none,
+
+font-line-height-imageheadingtext-h1 : 1.8,
+font-line-height-imageheadingtext-h2 : 1.8,
+font-line-height-imageheadingtext-h3 : 1.8,
+font-line-height-imageheadingtext-h4 : 1.8,
+font-line-height-imageheadingtext-h5 : 1.8,
+font-line-height-imageheadingtext-h6 : 1.8,
+
+font-letter-spacing-imageheadingtext-h1 : normal,
+font-letter-spacing-imageheadingtext-h2 : normal,
+font-letter-spacing-imageheadingtext-h3 : normal,
+font-letter-spacing-imageheadingtext-h4 : normal,
+font-letter-spacing-imageheadingtext-h5 : normal,
+font-letter-spacing-imageheadingtext-h6 : normal,
+
+darkbg-color-imageheadingtext-h1 : map-get($base_vars, 'color-default'),
+darkbg-color-imageheadingtext-h2 : map-get($base_vars, 'color-default'),
+darkbg-color-imageheadingtext-h3 : map-get($base_vars, 'color-default'),
+darkbg-color-imageheadingtext-h4 : map-get($base_vars, 'color-default'),
+darkbg-color-imageheadingtext-h5 : map-get($base_vars, 'color-default'),
+darkbg-color-imageheadingtext-h6 : map-get($base_vars, 'color-default'),
+
+  // BUTTON ELEMENT ADVANCES
+
+color-button-default-primary-background : map-get($base_vars, 'color-primary'),
+color-button-primary: map-get($base_vars, 'color-default'),
+color-button-default-primary-border : transparent,
+size-button-default-primary-border : 0,
+style-button-default-primary-border : none,
+
+color-button-default-primary-hover-background : darken(map-get($base_vars, 'color-primary'),10%),
+color-button-default-primary-hover-text-and-icon : map-get($base_vars, 'color-default'),
+color-button-default-primary-hover-border : transparent,
+
+color-button-outline-primary-background : transparent,
+color-button-outline-primary-text-and-icon : map-get($base_vars, 'color-primary'),
+color-button-outline-primary-border : map-get($base_vars, 'color-primary'),
+size-button-outline-primary-border : 1px,
+style-button-outline-primary-border : solid,
+
+color-button-outline-primary-hover-background : map-get($base_vars, 'color-primary'),
+color-button-outline-primary-hover-text-and-icon : map-get($base_vars, 'color-default'),
+color-button-outline-primary-hover-border : map-get($base_vars, 'color-primary'),
+
+font-family-button-primary : map-get($base_vars,'font-family-base'),
+font-size-button-primary-md : 14px,
+font-size-button-primary-sm : 13px,
+font-size-button-primary-lg : 18px,
+font-transform-button-primary : none,
+font-weight-button-primary : normal,
+font-line-height-button-primary:1.42857143,
+font-letter-spacing-button-primary:normal,
+
+color-button-default-secondary-background : map-get($base_vars, 'color-secondary'),
+color-button-secondary : map-get($base_vars, 'color-default'),
+color-button-default-secondary-border : transparent,
+size-button-default-secondary-border : 0,
+style-button-default-secondary-border : none,
+
+color-button-default-secondary-hover-background : darken(map-get($base_vars, 'color-secondary'),10%),
+color-button-default-secondary-hover-text-and-icon : map-get($base_vars, 'color-default'),
+color-button-default-secondary-hover-border : transparent,
+
+color-button-outline-secondary-background : transparent,
+color-button-outline-secondary-text-and-icon : map-get($base_vars, 'color-secondary'),
+color-button-outline-secondary-border : map-get($base_vars, 'color-secondary'),
+size-button-outline-secondary-border : 1px,
+style-button-outline-secondary-border : solid,
+
+color-button-outline-secondary-hover-background : darken(map-get($base_vars, 'color-secondary'),10%),
+color-button-outline-secondary-hover-text-and-icon : map-get($base_vars, 'color-default'),
+color-button-outline-secondary-hover-border : map-get($base_vars, 'color-secondary'),
+
+font-family-button-secondary : map-get($base_vars,'font-family-base'),
+font-size-button-secondary-md : 14px,
+font-size-button-secondary-sm : 13px,
+font-size-button-secondary-lg : 18px,
+font-transform-button-secondary : none,
+font-weight-button-secondary : normal,
+font-line-height-button-secondary:1.42857143,
+font-letter-spacing-button-secondary:normal,
+
+color-button-link : map-get($base_vars,'color-primary'),
+font-family-button-link : map-get($base_vars,'font-family-base'),
+font-size-button-link-md : 14px,
+font-size-button-link-sm : 13px,
+font-size-button-link-lg : 18px,
+font-transform-button-link : none,
+font-weight-button-link : normal,
+font-line-height-button-link:1.42857143,
+font-letter-spacing-button-link:normal,
+
+color-button-hover-link : darken(map-get($base_vars,'color-primary'),10%),
+
+darkbg-color-button-default-primary-background : map-get($base_vars, 'color-default'),
+darkbg-color-button-primary : map-get($base_vars, 'color-primary'),
+darkbg-color-button-default-primary-border : transparent,
+
+darkbg-color-button-default-primary-hover-background : darken(map-get($base_vars, 'color-default'),10%),
+darkbg-color-button-default-primary-hover-text-and-icon : map-get($base_vars, 'color-primary'),
+darkbg-color-button-default-primary-hover-border : transparent,
+
+darkbg-color-button-outline-primary-background : transparent,
+darkbg-color-button-outline-primary-text-and-icon : map-get($base_vars, 'color-default'),
+darkbg-color-button-outline-primary-border : map-get($base_vars, 'color-default'),
+
+
+darkbg-color-button-outline-primary-hover-background : map-get($base_vars, 'color-default'),
+darkbg-color-button-outline-primary-hover-text-and-icon : map-get($base_vars, 'color-primary'),
+darkbg-color-button-outline-primary-hover-border : map-get($base_vars, 'color-default'),
+
+
+darkbg-color-button-default-secondary-background : map-get($base_vars, 'color-secondary'),
+darkbg-color-button-secondary : map-get($base_vars, 'color-default'),
+darkbg-color-button-default-secondary-border : transparent,
+
+
+darkbg-color-button-default-secondary-hover-background : darken(map-get($base_vars, 'color-secondary'),10%),
+darkbg-color-button-default-secondary-hover-text-and-icon : map-get($base_vars, 'color-default'),
+darkbg-color-button-default-secondary-hover-border : transparent,
+
+darkbg-color-button-outline-secondary-background : transparent,
+darkbg-color-button-outline-secondary-text-and-icon : map-get($base_vars, 'color-secondary'),
+darkbg-color-button-outline-secondary-border : map-get($base_vars, 'color-secondary'),
+
+
+darkbg-color-button-outline-secondary-hover-background : map-get($base_vars, 'color-secondary'),
+darkbg-color-button-outline-secondary-hover-text-and-icon : map-get($base_vars, 'color-default'),
+darkbg-color-button-outline-secondary-hover-border : map-get($base_vars, 'color-secondary'),
+
+
+
+darkbg-color-button-link : map-get($base_vars,'color-default'),
+
+
+darkbg-color-button-hover-link : darken(map-get($base_vars,'color-default'),10%),
+
+  // FORM BUTTON
+
+color-form-button-submit-background : map-get($base_vars, 'color-primary'),
+color-form-button-submit-border : transparent,
+size-form-button-submit-border : 0,
+style-form-button-submit-border : none,
+
+color-form-button-submit-hover-background : darken(map-get($base_vars, 'color-primary'),10%),
+color-form-button-submit-hover-text-and-icon : map-get($base_vars, 'color-default'),
+color-form-button-submit-hover-border : transparent,
+
+color-form-button-submit : map-get($base_vars, 'color-default'),
+font-family-form-button-submit : map-get($base_vars,'font-family-base'),
+font-size-form-button-submit : 14px,
+font-transform-form-button-submit : none,
+font-weight-form-button-submit : normal,
+font-line-height-form-button-submit:  1.42857143,
+font-letter-spacing-form-button-submit: normal,
+
+color-form-button-reset-background : map-get($base_vars, 'color-secondary'),
+color-form-button-reset-border : transparent,
+size-form-button-reset-border : 0,
+style-form-button-reset-border : none,
+
+color-form-button-reset-hover-background : darken(map-get($base_vars, 'color-secondary'),10%),
+color-form-button-reset-hover-text-and-icon : map-get($base_vars, 'color-default'),
+color-form-button-reset-hover-border : transparent,
+
+color-form-button-reset : map-get($base_vars, 'color-default'),
+font-family-form-button-reset : map-get($base_vars,'font-family-base'),
+font-size-form-button-reset : 14px,
+font-transform-form-button-reset : none,
+font-weight-form-button-reset : normal,
+font-line-height-form-button-reset:  1.42857143,
+font-letter-spacing-form-button-reset: normal,
+
+darkbg-color-form-button-submit-background : map-get($base_vars, 'color-default'),
+darkbg-color-form-button-submit : map-get($base_vars, 'color-primary'),
+darkbg-color-form-button-submit-border : transparent,
+
+
+darkbg-color-form-button-submit-hover-background : darken(map-get($base_vars, 'color-default'),10%),
+darkbg-color-form-button-submit-hover-text-and-icon : map-get($base_vars, 'color-primary'),
+darkbg-color-form-button-submit-hover-border : transparent,
+
+darkbg-font-family-form-button-submit : map-get($base_vars,'font-family-base'),
+darkbg-font-transform-form-button-submit : none,
+darkbg-font-weight-form-button-submit : normal,
+
+darkbg-color-form-button-reset-background : map-get($base_vars, 'color-secondary'),
+darkbg-color-form-button-reset : map-get($base_vars, 'color-default'),
+darkbg-color-form-button-reset-border : transparent,
+
+darkbg-color-form-button-reset-hover-background : darken(map-get($base_vars, 'color-secondary'),10%),
+darkbg-color-form-button-reset-hover-text-and-icon : map-get($base_vars, 'color-default'),
+darkbg-color-form-button-reset-hover-border : transparent,
+
+darkbg-font-family-form-button-reset : map-get($base_vars,'font-family-base'),
+darkbg-font-transform-form-button-reset : none,
+darkbg-font-weight-form-button-reset : normal,
+
+  // CAROUSEL
+
+color-carousel-fill-style-arrow : map-get($base_vars, 'color-text'),
+darkbg-color-carousel-fill-style-arrow : map-get($base_vars, 'color-text'),
+
+  // CHECKOUT
+
+color-checkout-address-shipping-label-background : lighten(map-get($base_vars,'color-primary'),5%),
+
+// LOADER VARIABLES
+
+color-loader-overlay-background : RGBA(convertHexToRgb(map-get($base_vars,'color-default')),0.8),
+color-loader-text : map-get($base_vars,'color-text'),
+
+// SORTING VARIABLES
+
+font-size-sorting-select : 15px,
+
+);
+
+@import "_base-map";

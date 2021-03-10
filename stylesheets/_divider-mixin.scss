@@ -1,0 +1,74 @@
+.zpdivider-container{
+  &.zpdivider-text{
+    .zpdivider-common{
+      font-family: map-get($default_vars,'font-family-divider-text');
+      font-size: map-get($default_vars,'font-size-divider-text');
+      font-weight: map-get($default_vars,'font-weight-divider-text');
+      text-transform: map-get($default_vars,'font-transform-divider-text');
+      line-height: map-get($default_vars,'font-line-height-divider-text');
+      letter-spacing: map-get($default_vars,'font-letter-spacing-divider-text');
+    }
+  }
+}
+
+@mixin divider-style($section-class-name) {
+  $section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+#{$section-class-name} .zpdivider-container {
+
+        .zpdivider-common {
+            &:after, &:before {
+                border-color: map-get($default_vars, '#{$section-bg}color-divider-line');
+            }
+        }
+        &.zpdivider-icon{
+            &.zpdivider-style-border,
+            &.zpdivider-style-roundcorner,
+            &.zpdivider-style-circle {
+                .zpdivider-common {
+                    border-color: map-get($default_vars, '#{$section-bg}color-divider-icon-style-border');
+                }
+            }
+            &.zpdivider-style-bgfill,
+            &.zpdivider-style-roundcorner-fill,
+            &.zpdivider-style-circle-fill {
+                .zpdivider-common {
+                    background: map-get($default_vars, '#{$section-bg}color-divider-icon-style-bg-color');
+                    svg {
+                        fill: map-get($default_vars,  '#{$section-bg}color-divider-icon-style-color');
+                    }
+                }
+            }
+            .zpdivider-common {
+                svg {
+                    fill: map-get($default_vars,  '#{$section-bg}color-divider-icon');
+                }
+
+            }
+        }
+        &.zpdivider-text {
+            &.zpdivider-style-border,
+            &.zpdivider-style-roundcorner,
+            &.zpdivider-style-circle {
+                .zpdivider-common {
+                    border-color: map-get($default_vars, '#{$section-bg}color-divider-text-style-border');
+                }
+            }
+            &.zpdivider-style-bgfill,
+            &.zpdivider-style-roundcorner-fill,
+            &.zpdivider-style-circle-fill {
+                .zpdivider-common {
+                    background: map-get($default_vars, '#{$section-bg}color-divider-text-style-bg-color');
+                    color:map-get($default_vars, '#{$section-bg}color-divider-text-style-color');
+                }
+            }
+            .zpdivider-common {
+                color: map-get($default_vars, '#{$section-bg}color-divider-text');
+            }
+        }
+    }
+}
+@include divider-style(null);
+@include divider-style('.zpdark-section');

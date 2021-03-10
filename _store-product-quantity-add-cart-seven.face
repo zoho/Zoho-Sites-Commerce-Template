@@ -1,0 +1,30 @@
+{% if product.is_out_of_stock == false  %}
+<div class="theme-product-varients-row" data-nostock-cart-add="theme-nostock-cart-add">
+	<div class="theme-product-variant theme-product-quantity-cart-container">
+		<div class="theme-product-variant-label">
+			{{i18n.get("product.message.choose_quantity")}}
+		</div>
+		<div class="theme-product-varient-quantity">
+			<div class="theme-product-quantity-spinner">
+	      <input class="theme-quantity-decrease" onclick="decreaseCount(this)" type="button">
+	      <input name="qty" title="quantity" type="text" maxlength="999" onkeypress='return productQuantity(event);' value="1" data-quantity="{{ product.product_id }}" data-theme-quantity data-zs-quantity>
+	      <input class="theme-quantity-increase" onclick="increaseCount(this)" type="button">
+	    </div>
+
+			<div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+
+				<div class="theme-cart-button zpbutton zpbutton-type-primary zpbutton-size-lg zpbutton-full-width" data-zs-add-to-cart data-zs-product-variant-id{% if !product.has_variants %} ="{{ product.variants[0].variant_id }}" {% endif %}>
+					<span data-theme-cart-button-text="theme-cart-button-text">+ {{i18n.get("product.action.add_to_cart")}}</span>
+					<span class="theme-cart-button-loading-container" data-theme-cart-button-loading="theme-cart-button-loading" style="display:none">
+						{{i18n.get("product.message.please_wait")}} <div class="theme-cart-button-loading-dots"><span></span><span></span><span></span></div>
+					</span>
+				</div>
+		</div>
+	</div>
+</div>
+<div class="theme-product-varients-row" style="width: 100%;">
+	{% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+	<div class="theme-prod-coupons-outtercontainer" data-zs-app="product_coupons" data-zs-coupons-list></div>
+	{% endif %}
+</div>
+{% endif %}

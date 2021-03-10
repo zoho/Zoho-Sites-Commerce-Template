@@ -1,0 +1,9 @@
+{% for product in products %}
+	{% include "store-product-list-view" %}
+{% forelse %}
+	<div class="zpcol-md-12 theme-no-products-error">
+		{{ i18n.get("product_filters.products.empty.message") }}
+	</div>
+{% endfor %}
+
+{% include '_store-pagination' %}

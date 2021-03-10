@@ -1,0 +1,26 @@
+{% if product.is_out_of_stock == false  %}
+<div class="theme-product-qty-and-add-cart {% if product.is_out_of_stock == true  %}theme-cart-button-nostock{% endif %}" data-nostock-cart-add="theme-nostock-cart-add">
+	<input value="1" maxlength="999" onkeypress='return productQuantity(event);' data-quantity="theme-quantity" data-theme-quantity data-zs-quantity>
+		<span class="zpbutton zpbutton-type-primary zpbutton-size-md theme-cart-button" data-zs-add-to-cart data-zs-product-variant-id{% if !product.has_variants %} ="{{ product.variants[0].variant_id }}" {% endif %}>
+			<span data-theme-cart-button-text="theme-cart-button-text">{{i18n.get("product.action.add_to_cart")}}</span>
+			<div class="theme-cart-loading-area" data-theme-cart-button-loading="theme-cart-button-loading" style="display:none;">
+				<span class="theme-cart-loading-icon-area">{{i18n.get("product.message.adding_to_cart")}}</span>
+				<span class="theme-cart-loading-icon-area">
+					<svg class="theme-add-cart-loading-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M14.428 2.743V.003c4.436 1.043 7.9 4.507 8.944 8.943h-2.747c-.912-2.967-3.234-5.29-6.2-6.203h.003zm-11.685 6.2H0C1.045 4.51 4.508 1.046 8.944 0v2.747c-2.966.913-5.288 3.234-6.2 6.2v-.003zm6.2 11.686v2.74C4.51 22.326 1.046 18.863 0 14.428h2.743c.913 2.966 3.235 5.288 6.2 6.2zm11.686-6.202h2.74c-1.045 4.436-4.508 7.9-8.944 8.944V20.63c2.967-.913 5.29-3.235 6.203-6.202z" fill-rule="nonzero" />
+					</svg>
+				</span>
+			</div>
+		</span>
+</div>
+{% endif %}
+
+<div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+
+<div data-zs-pricelist class="theme-prod-pricelist-outter">
+	{% include 'store-product-pricelist' %}
+</div>
+
+{% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+<div class="theme-prod-coupons-outtercontainer" data-zs-app="product_coupons" data-zs-coupons-list></div>
+{% endif %}

@@ -1,0 +1,97 @@
+<div class="theme-section theme-product-image-container theme-product-details-page {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}">
+  <div class="zpcontainer">
+    <div class="theme-product-details-container">
+      {% include "_store-product-image-two" %}
+      <div class="theme-product-main-info-container">
+        <div class="theme-product-info-content-row theme-product-info-header-area">
+          <h1 class="zpheading theme-product-details-heading">{{ product.name }}</h1>
+
+          {% if product.is_product_review_enabled %}
+          <div class="theme-rating-review-container">
+            <div class="theme-rating-review" data-comments-summary = "rating-review-write-review"></div>
+            <div class="theme-write-review" data-comments-other="showhide-rating-review-value">
+                <a href="#zppost_rating">{{i18n.get("review.form.entercomments_placeholder")}}</a>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if !product.is_returnable %}
+            <div class="theme-prod-non-returnable">{{i18n.get("product.label.non_returnable")}}</div>
+          {% endif %}
+        </div>
+        <div class="theme-product-info-content-row theme-product-details-price-and-availability-container {% if product.short_description %}theme-short-desc-noborder{% endif %}">
+          <div class="theme-product-details-price">
+            {% include '_store-product-pricing-two' %}
+          </div>
+
+          {% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
+          <div class="theme-product-details-availability-status">
+            {% if product.has_variants %}
+              {% for variant in product.variants %}
+              <span data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
+                  {{i18n.get("product.message.out_of_stock")}}
+              </span>
+              {% endfor %}
+            {% else %}
+              {% if product.is_out_of_stock == true %}
+                <span class="{% if product.is_out_of_stock == true %}theme-out-of-stock {% else %} theme-stock-background-color{% endif %}">
+                    {{i18n.get("product.message.out_of_stock")}}
+                </span>
+              {% endif %}
+            {% endif %}
+          </div>
+          {% endif %}
+
+          {% if product.tags | size != 0 %}
+          <div class="theme-product-details-tags-code">
+            <ul>
+              {% if product.tags | size != 0 %}
+              <li class="theme-product-details-tags">
+                {{i18n.get("product.label.tags")}} : &nbsp;
+                {% for tag in product.tags %}
+                  {% if loop.last %}
+                    <span>
+                      {{ tag.name }}
+                    </span>
+                  {% else %}
+                    <span>
+                      {{ tag.name }},&nbsp;
+                    </span>
+                  {% endif %}
+                {% endfor %}
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+          {% endif %}
+
+        </div>
+
+        {% if product.short_description %}
+        <div class="theme-product-info-content-row theme-short-desc-row">
+          <div class="theme-product-short-description">
+            {{ product.short_description }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if product.is_social_share_enabled %}
+          <div class="theme-product-info-content-row theme-product-social-share" data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
+        {% endif %}
+
+        <div class="theme-product-info-content-row theme-product-variants-area">
+        {% if product.has_variants %}
+        <div class="theme-product-options-varient-container">
+          {% include "_store-product-variants-two" %}
+        </div>
+        {% endif %}
+        {% include "_store-product-custom-field-two" %}
+        <div class="theme-product-options-and-cart-button-container">
+          {% include "_store-product-quantity-add-cart-two" %}
+        </div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</div>

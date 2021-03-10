@@ -1,0 +1,53 @@
+// RGB GENERATE FUNCTION
+
+@function convertHexToRgb($color){
+  @return red($color),green($color),blue($color);
+}
+
+// ADVANCE FUNCTIONS
+
+@function map-set($old_map,$key,$value){
+      $new : ($key : $value);
+      $old_map : map-merge($old_map,$new);
+        @return $old_map;
+}
+
+@function replacemapvalues($old_map,$map_name){
+      $value_map : ();
+      $merge_map : ();
+      @each $name, $value in $old_map {
+            $new : map-set($value_map,$name, unquote("var(#{$map_name}-_-#{$name})"));
+            $merge-map : map-merge($merge-map,$new);
+      }
+      $old_map : map-merge($old_map,$merge-map);
+        @return $old_map;
+}
+
+@mixin generateroot($map_name,$map_string){
+  @each $name, $value in $map_name {
+          $name_var : #{$map_string}-_-#{$name};
+          #{$name_var} : $value;
+  }
+}
+
+@function generatergbvalues($temp_map){
+    @each $name, $value in $temp_map {
+      @if str-index($name,'color') and not str-index(#{$value},'RGBA'){
+        $color_var_rgb : red($value), green($value), blue($value);
+        $temp_map : map-set($temp_map,#{$name}-rgba,$color_var_rgb);
+      }
+    }
+    @return $temp_map;
+}
+
+@function color-header($default_vars,$header-color-array){
+  @each $header-color in $header-color-array{
+    @if variable-exists(user_default_vars) and map-has-key($user_default_vars,'#{$header-color}') {
+      $default_vars : map-merge($default_vars,('darkbg-#{$header-color}':map-get($user_default_vars,'#{$header-color}') ));
+      @if $header-color == 'color-header-background' or $header-color == 'color-navigation-bar-style-05-background' or $header-color == 'color-navigation-bar-background' {
+        $default_vars : map-merge($default_vars,('darkbg-#{$header-color}-rgba': convertHexToRgb(map-get($user_default_vars,'#{$header-color}')) ));
+      }
+    }
+  }
+   @return $default_vars;
+}

@@ -1,0 +1,22 @@
+.zpelem-imagetext .zpimage-text{
+	color: map-get($default_vars, "color-imagetext-text");
+	font-family: map-get($default_vars, "font-family-imagetext-text");
+	font-size: map-get($default_vars, "font-size-imagetext-text");
+	font-weight: map-get($default_vars, "font-weight-imagetext-text");
+	text-transform: map-get($default_vars, "font-transform-imagetext-text");
+	line-height: map-get($default_vars, "font-line-height-imagetext-text");
+	letter-spacing: map-get($default_vars, "font-letter-spacing-imagetext-text");
+}
+
+@mixin image-text-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpelem-imagetext .zpimage-text{
+		color: map-get($default_vars, "#{$section-bg}color-imagetext-text");
+	}
+}
+
+@include image-text-style(null);
+@include image-text-style('.zpdark-section');

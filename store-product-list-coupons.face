@@ -1,0 +1,14 @@
+{% assign coupons_list = coupons.list %}
+{% if coupons.is_claim_rate_enabled && coupons_list[0].claimed_percentage > coupons.min_claim_rate %}
+<div class="theme-prod-coupons-claimed-container">
+    <p class="theme-prod-coupons-claimed">{{ i18n.get('coupons.message.claimed', coupons_list[0].claimed_percentage) }}</p>
+    <div class="theme-prod-coupons-claimed-progress">
+        <div style="width:{{ coupons_list[0].claimed_percentage }}%" class="theme-prod-coupons-claimed-progressbar"></div>
+    </div>
+</div>
+{% endif %}
+{% if coupons.is_timer_enabled && coupons_list[0].is_timer_needed %}
+<div class="theme-prod-coupons-duration-container" data-zs-duration-container>
+    <p class="theme-prod-coupons-duration"><span class="theme-prod-coupons-duration-timer" data-zs-coupon-expiry="{{ coupons_list[0].expiry_time }}"></span></p>
+</div>
+{% endif %}

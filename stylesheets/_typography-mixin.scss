@@ -1,0 +1,70 @@
+body {
+	color:map-get($default_vars,'color-text');
+	font-family:map-get($default_vars, 'font-family-text');
+	font-size:map-get($default_vars, 'font-size-text');
+	font-weight:map-get($default_vars, 'font-weight-text');
+	text-transform:map-get($default_vars, 'font-transform-text');
+	line-height: map-get($default_vars, 'font-line-height-text');
+	letter-spacing:map-get($default_vars, 'font-letter-spacing-text');
+}
+
+@mixin text-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	body #{$section-class-name}{
+		color:map-get($default_vars,'#{$section-bg}color-text');
+	}
+}
+
+$heading-size : 'h1','h2','h3','h4','h5','h6';
+@each $heading-tag in $heading-size {
+	#{$heading-tag}{
+		font-family:map-get($default_vars, "font-family-heading-#{$heading-tag}");
+		font-size:map-get($default_vars, "font-size-heading-#{$heading-tag}");
+		font-weight:map-get($default_vars, "font-weight-heading-#{$heading-tag}");
+		text-transform:map-get($default_vars, "font-transform-heading-#{$heading-tag}");
+		color:map-get($default_vars, "color-heading-#{$heading-tag}");
+		line-height:map-get($default_vars, "font-line-height-heading-#{$heading-tag}");
+		letter-spacing:map-get($default_vars, "font-letter-spacing-heading-#{$heading-tag}");
+		&:before, &:after {
+			background:map-get($default_vars, "color-heading-#{$heading-tag}");
+		}
+	}
+}
+@mixin heading-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	@each $heading-tag in $heading-size {
+		#{$section-class-name} #{$heading-tag}{
+			color:map-get($default_vars, "#{$section-bg}color-heading-#{$heading-tag}");
+			&:before, &:after {
+				background:map-get($default_vars, "#{$section-bg}color-heading-#{$heading-tag}");
+			}
+		}
+	}
+}
+@mixin link-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} a {
+		color:map-get($default_vars, '#{$section-bg}color-link');
+		&:hover {
+			color:map-get($default_vars, '#{$section-bg}color-link-hover');
+		}
+	}
+}
+
+@include text-style(null);
+@include text-style('.zpdark-section');
+
+@include link-style(null);
+@include link-style('.zpdark-section');
+
+@include heading-style(null);
+@include heading-style('.zpdark-section');

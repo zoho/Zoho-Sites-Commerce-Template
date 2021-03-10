@@ -1,0 +1,51 @@
+@mixin carousel-style($section-class-name) {
+	$section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+	#{$section-class-name} .zpcarousel-container{
+  &.zpcarousel-style-01, &.zpcarousel-style-02, &.zpcarousel-style-03, &.zpcarousel-style-04, &.zpcarousel-style-05 {
+     .zpcarousel-arrows-container{
+         &.zpcarousel-arrow-type-02,
+         &.zpcarousel-arrow-type-03 {
+            .zpcarousel-arrow-left,
+            .zpcarousel-arrow-right{
+               background:map-get($default_vars, '#{$section-bg}color-carousel-arrow-background');
+               &:hover {
+                 background:map-get($default_vars, '#{$section-bg}color-carousel-arrow-background');
+               }
+            }
+            svg {
+              fill:map-get($default_vars, '#{$section-bg}color-carousel-fill-style-arrow');
+            }
+         }
+         &.zpcarousel-arrow-type-01 {
+           .zpcarousel-arrow-left, .zpcarousel-arrow-right{
+             svg {
+              fill:map-get($default_vars, '#{$section-bg}color-carousel-arrow');
+            }
+           }
+         }
+      }
+  }
+  .zpcarousel-controller-container {
+      &.zpcarousel-controller-type-01,
+      &.zpcarousel-controller-type-02,
+      &.zpcarousel-controller-type-03,
+      &.zpcarousel-controller-type-04 {
+        .zpcarousel-controller {
+          background:map-get($default_vars, '#{$section-bg}color-carousel-indicator-background');
+          border-color:map-get($default_vars, '#{$section-bg}color-carousel-indicator-and-arrow-border');
+          &:hover, &.zpcarousel-controller-active {
+            background:map-get($default_vars, '#{$section-bg}color-carousel-indicator-active-background');
+            border-color:map-get($default_vars, '#{$section-bg}color-carousel-indicator-active-background');
+          }
+       }
+    }
+  }
+}
+
+}
+
+@include carousel-style(null);
+@include carousel-style('.zpdark-section');

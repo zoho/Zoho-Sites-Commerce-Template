@@ -1,0 +1,41 @@
+
+@if variable-exists(user_default_vars) {
+  $user_default_vars : generatergbvalues($user_default_vars);
+  $default_vars : map-merge($default_vars,$user_default_vars);
+}
+
+$header-color-array:(
+  'color-site-name',
+  'color-site-caption',
+	'color-header-background',
+  'color-topbar-background',
+  'color-navigation',
+  'color-navigation-hover-active-text-arrow',
+  'color-navigation-hover-active-arrow-text',
+  'color-navigation-hover-active-effect',
+  'color-navigation-hover-active-arrow-background',
+  'color-hover-active-text-style-02-03-navigation',
+  'color-hover-active-text-style-06-navigation',
+  'color-navigation-bar-background',
+  'color-navigation-bar-style-05-background',
+  'color-contact-info',
+  'color-social-icon',
+  'color-portal',
+  'color-mobile-burger-icon',
+  'color-search-cart-icon',
+  'color-currency-option',
+  'color-7th-header-style-cart-divider-border',
+  'color-7th-header-style-cart-icon'
+);
+
+$default_vars : color-header($default_vars,$header-color-array);
+
+@if variable-exists(need_css_vars) and $need_css_vars {
+  :root{
+    @include generateroot($base_vars,'--base_vars');
+    @include generateroot($default_vars,'--default_vars');
+    --header-value-map:#{$header-color-array};
+  }
+  $base_vars     : replacemapvalues($base_vars,'--base_vars');
+  $default_vars  : replacemapvalues($default_vars,'--default_vars');
+}

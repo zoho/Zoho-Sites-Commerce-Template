@@ -1,0 +1,63 @@
+<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}">
+  <div class="zpcontainer">
+
+    <div class="zprow theme-prod-details-container">
+      <div class="zpcol-sm-12 zpcol-md-6 theme-prod-detail-entries">
+        <div class="theme-prod-detail-entry-row {% if product.short_description %}theme-prod-detail-entry-shortdesc-row{% endif %}">
+          <h1 class="theme-product-name">{{ product.name }}</h1>
+
+          <div class="theme-rating-review-container">
+            {% if product.is_product_review_enabled %}
+            <div class="theme-rating-review" data-comments-summary = "rating-review-write-review"></div>
+            {% endif %}
+            <div class="theme-prod-stock">
+              {% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
+                {% if product.has_variants %}
+                  {% for variant in product.variants %}
+                  <span class="theme-prod-stock-info theme-prod-stock-details {% if product.is_product_review_enabled && variant.is_out_of_stock %}theme-prod-stock-space{% endif %}" data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
+                      {{i18n.get("product.message.out_of_stock")}}
+                  </span>
+                  {% endfor %}
+                {% else %}
+                  {% if product.is_out_of_stock == true %}
+                    <span class="theme-prod-stock-info theme-prod-stock-details {% if product.is_product_review_enabled && product.is_out_of_stock %}theme-prod-stock-space{% endif %} {% if product.is_out_of_stock == true %}theme-out-of-stock {% else %} theme-stock-background-color{% endif %}">
+                      {{i18n.get("product.message.out_of_stock")}}
+                    </span>
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+
+          {% if !product.is_returnable %}
+            <div class="theme-prod-non-returnable">{{i18n.get("product.label.non_returnable")}}</div>
+          {% endif %}
+
+        </div>
+
+        {% if product.short_description %}
+        <div class="theme-prod-detail-entry-row theme-short-desc-row">
+          <div class="theme-product-short-description">
+            {{ product.short_description }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if product.is_social_share_enabled %}
+          <div class="theme-prod-detail-entry-row" data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
+        {% endif %}
+
+        {% if product.has_variants %}
+        {% include "_store-product-variants-three" %}
+        {% endif %}
+        {% include "_store-product-custom-field-three" %}
+        {% include "_store-product-quantity-add-cart-three" %}
+      </div>
+
+      <div class="zpcol-sm-12 zpcol-md-6 theme-prod-detail-image-container">
+        {% include "_store-product-image-three" %}
+      </div>
+
+    </div>
+  </div>
+</div>

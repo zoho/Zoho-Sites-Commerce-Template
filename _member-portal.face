@@ -1,0 +1,34 @@
+<div data-theme-portal="zptheme-portal" class="theme-portal-login {% if page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_contact_information_enabled %}theme-portal-space{% endif %}{% if page.template_vars.header_style == "04" && !page.is_social_icon_enabled || page.template_vars.header_style == "04" && page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled %}theme-portal-space-style-04{% endif %}">
+  <div class="theme-portal-container" data-portal-loggedout style="display:block">
+    <div class="theme-portal-content"> <a data-portal-signin href="javascript:;">{{ i18n.get("portal.signin") }}</a> </div>
+    {% if page.is_portal_signup_enabled %}
+      <div class="theme-portal-content"> <a data-portal-signup href="javascript:;">{{ i18n.get("portal.signup") }}</a> </div>
+    {% endif %}
+  </div>
+  <div class="theme-portal-container" data-portal-loggedin style="display:none">
+    <div class="theme-portal-content {% if page.is_store_enabled %}theme-portal-username-content{% endif %}">
+      <a class="{% if page.is_store_enabled %}theme-user-name-dropdown{% endif %}" data-portal-profile href="javascript:;">
+        <span class="theme-portal-username" data-portal-user-name></span>
+        {% if page.is_store_enabled %}
+          <span class="theme-user-profile-down-arrow"></span>
+        {% endif %}
+      </a>
+      {% if page.is_store_enabled %}
+        <ul class="theme-username-dropdown-list">
+           <li>
+             <a href="/account/profile">{{i18n.get("portal.profile.title")}}</a>
+           </li>
+           <li>
+             <a href="/account/orders">{{i18n.get("orders.title.myorders")}}</a>
+           </li>
+           <li>
+             <a href="/account/address">{{i18n.get("address.tab.title")}}</a>
+           </li>
+         </ul>
+       {% endif %}
+    </div>
+    <div class="theme-portal-content">
+      <a data-portal-logout href="javascript:;">{{ i18n.get("portal.signout") }}</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+{% comment %} PRODUCT SELECTED FILTER STARTS {% endcomment %}
+
+{% comment %} SELECTED FILTER SYNTAX STARTS {% endcomment %}
+{% if filters.is_enabled && filters.has_filters && (category.products | size > 1 || search.products | size > 1 ) %}
+  <!-- Product filter error validation message container begins -->
+  <div id="zs-filter-error-validation-messages" style="display:none;">
+    <label id="zs-filter-price-maxlessthanmin-error" data-zs-error-message="{{ i18n.get('product_filters.custom_price.max_lessthan_min.error.message') }}"></label>
+    <label id="zs-filter-price-empty-error" data-zs-error-message="{{ i18n.get('product_filters.custom_price.empty.error.message') }}"></label>
+    <label id="zs-filter-price-invalid-error" data-zs-error-message="{{ i18n.get('product_filters.custom_price.invalid.error.message') }}"></label>
+  </div>
+  <!-- Product filter error validation message container ends -->
+  <div data-zs-selected-filter-syntax style="display:none;">
+    {% comment %} SELECTED FILTER SYNTAX [TEXT] STARTS {% endcomment %}
+    <span data-zs-selected-filter data-zs-selected-filter-group-id="" data-zs-selected-filter-value="" data-zs-selected-filter-type="" data-zs-selected-filter-text-container class="theme-product-filter-selected-value">
+      <span data-zs-selected-filter-text></span>
+      <svg onclick="unSelectFilterOptionValue(this);" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard" stroke="none" stroke-width="1" fill-rule="evenodd"><g id="x-square-(1)" fill-rule="nonzero"><path d="M11.667.5c1.012 0 1.833.82 1.833 1.833v9.334c0 1.012-.82 1.833-1.833 1.833H2.333A1.833 1.833 0 01.5 11.667V2.333C.5 1.321 1.32.5 2.333.5zm0 1H2.333a.833.833 0 00-.833.833v9.334c0 .46.373.833.833.833h9.334c.46 0 .833-.373.833-.833V2.333a.833.833 0 00-.833-.833zM5.284 4.589l.07.057L7 6.293l1.646-1.647a.5.5 0 01.765.638l-.057.07L7.707 7l1.647 1.646a.5.5 0 01-.638.765l-.07-.057L7 7.707 5.354 9.354a.5.5 0 01-.765-.638l.057-.07L6.293 7 4.646 5.354a.5.5 0 01.638-.765z" id="Combined-Shape"/></g></g></svg>
+    </span>
+    {% comment %} SELECTED FILTER SYNTAX [TEXT] ENDS {% endcomment %}
+    {% comment %} SELECTED FILTER SYNTAX [USER_RATINGS] STARTS {% endcomment %}
+    <span data-zs-selected-filter data-zs-selected-filter-value="" data-zs-selected-filter-type="" data-zs-selected-filter-userratings-container class="theme-product-filter-selected-value">
+      <span data-zs-selected-filter-userratings></span>
+      <svg onclick="unSelectFilterOptionValue(this);" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard" stroke="none" stroke-width="1" fill-rule="evenodd"><g id="x-square-(1)" fill-rule="nonzero"><path d="M11.667.5c1.012 0 1.833.82 1.833 1.833v9.334c0 1.012-.82 1.833-1.833 1.833H2.333A1.833 1.833 0 01.5 11.667V2.333C.5 1.321 1.32.5 2.333.5zm0 1H2.333a.833.833 0 00-.833.833v9.334c0 .46.373.833.833.833h9.334c.46 0 .833-.373.833-.833V2.333a.833.833 0 00-.833-.833zM5.284 4.589l.07.057L7 6.293l1.646-1.647a.5.5 0 01.765.638l-.057.07L7.707 7l1.647 1.646a.5.5 0 01-.638.765l-.07-.057L7 7.707 5.354 9.354a.5.5 0 01-.765-.638l.057-.07L6.293 7 4.646 5.354a.5.5 0 01.638-.765z" id="Combined-Shape"/></g></g></svg>
+    </span>
+    {% comment %} SELECTED FILTER SYNTAX [USER_RATINGS] ENDS {% endcomment %}
+    {% comment %} SELECTED FILTER SYNTAX [PRICE] STARTS {% endcomment %}
+    <span data-zs-selected-filter data-zs-selected-filter-value="" data-zs-selected-filter-type="" data-zs-selected-filter-price-container class="theme-product-filter-selected-value">
+      <span data-zs-selected-filter-price-min data-zs-selling-price=""></span>
+      <span data-zs-selected-filter-price-separator style="white-space: pre-wrap;"> - </span>
+      <span data-zs-selected-filter-price-max data-zs-selling-price="" style="white-space: pre-wrap;"></span>
+      <svg onclick="unSelectFilterOptionValue(this);" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard" stroke="none" stroke-width="1" fill-rule="evenodd"><g id="x-square-(1)" fill-rule="nonzero"><path d="M11.667.5c1.012 0 1.833.82 1.833 1.833v9.334c0 1.012-.82 1.833-1.833 1.833H2.333A1.833 1.833 0 01.5 11.667V2.333C.5 1.321 1.32.5 2.333.5zm0 1H2.333a.833.833 0 00-.833.833v9.334c0 .46.373.833.833.833h9.334c.46 0 .833-.373.833-.833V2.333a.833.833 0 00-.833-.833zM5.284 4.589l.07.057L7 6.293l1.646-1.647a.5.5 0 01.765.638l-.057.07L7.707 7l1.647 1.646a.5.5 0 01-.638.765l-.07-.057L7 7.707 5.354 9.354a.5.5 0 01-.765-.638l.057-.07L6.293 7 4.646 5.354a.5.5 0 01.638-.765z" id="Combined-Shape"/></g></g></svg>
+    </span>
+    {% comment %} SELECTED FILTER SYNTAX [PRICE] ENDS {% endcomment %}
+    {% comment %} SELECTED FILTER SYNTAX [COLOR] STARTS {% endcomment %}
+    {% comment %} style="background:#54e0e6" {% endcomment %}
+    <span data-zs-selected-filter data-zs-selected-filter-value="" data-zs-selected-filter-type="" data-zs-selected-filter-color-container class="theme-product-filter-selected-value">
+      <span data-zs-selected-filter-color class="theme-product-filter-custom-check" style=""></span>
+      <span data-zs-selected-filter-color-name></span>
+      <svg onclick="unSelectFilterOptionValue(this);" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard" stroke="none" stroke-width="1" fill-rule="evenodd"><g id="x-square-(1)" fill-rule="nonzero"><path d="M11.667.5c1.012 0 1.833.82 1.833 1.833v9.334c0 1.012-.82 1.833-1.833 1.833H2.333A1.833 1.833 0 01.5 11.667V2.333C.5 1.321 1.32.5 2.333.5zm0 1H2.333a.833.833 0 00-.833.833v9.334c0 .46.373.833.833.833h9.334c.46 0 .833-.373.833-.833V2.333a.833.833 0 00-.833-.833zM5.284 4.589l.07.057L7 6.293l1.646-1.647a.5.5 0 01.765.638l-.057.07L7.707 7l1.647 1.646a.5.5 0 01-.638.765l-.07-.057L7 7.707 5.354 9.354a.5.5 0 01-.765-.638l.057-.07L6.293 7 4.646 5.354a.5.5 0 01.638-.765z" id="Combined-Shape"/></g></g></svg>
+    </span>
+    {% comment %} SELECTED FILTER SYNTAX [COLOR] ENDS {% endcomment %}
+  </div>
+{% endif %}
+{% comment %} SELECTED FILTER SYNTAX ENDS {% endcomment %}
+
+{% if filters.is_enabled && filters.has_filters && (category.products | size > 1 || search.products | size > 1 ) %}
+  <div data-zs-selected-filters-conatainer class="theme-product-filter-selected-container" style="display:none;">
+    <span class="theme-product-filter-selected-label">
+      <span data-zs-filter-refineby-container style="display:none;">
+        {{i18n.get("product_filters.refine_by.label")}} :
+        <a data-zs-filter-refineby-clear-btn href="javascript:;" class="theme-product-filter-show-more">{{i18n.get("product_filters.clear_all.label")}}</a>
+      </span>
+    </span>
+  </div>
+{% endif %}
+
+{% comment %} PRODUCT SELECTED FILTER ENDS {% endcomment %}

@@ -1,0 +1,56 @@
+@mixin image-style($section-class-name) {
+  $section-bg : '';
+	@if $section-class-name == '.zpdark-section'{
+		$section-bg : 'darkbg-';
+	}
+
+  #{$section-class-name} .zpimage-container,#{$section-class-name} .zpimage-with-text-container{
+    &[class*='zpimage-overlay-effect-'] figure{
+        figcaption{
+          background: map-get($default_vars, '#{$section-bg}color-image-overlay-background');
+          color: map-get($default_vars, '#{$section-bg}color-image-overlay-text');
+        }
+      &:hover{
+        figcaption{
+          background: map-get($default_vars, '#{$section-bg}color-image-overlay-background');
+          color: map-get($default_vars, '#{$section-bg}color-image-overlay-text');
+
+        }
+      }
+    }
+    &[class*='zpimage-overlay-effect-static-'] figure{
+      figcaption{
+        background: map-get($default_vars, '#{$section-bg}color-image-overlay-background');
+        color: map-get($default_vars, '#{$section-bg}color-image-overlay-text');
+      }
+    }
+  }
+  #{$section-class-name} .hb-grid-gallery{
+  	&[class*='zpimage-overlay-effect-hv-'] figure{
+      &:hover{
+        figcaption{
+          background: map-get($default_vars, '#{$section-bg}color-image-overlay-background');
+          color: map-get($default_vars, '#{$section-bg}color-image-overlay-text');
+        }
+      }
+    }
+    &.zpimage-overlay-effect-hv-9{
+      .hb-grid-item{
+        background: map-get($default_vars, '#{$section-bg}color-image-overlay-background-hv9');
+        figure{
+          figcaption{
+            color: map-get($default_vars, '#{$section-bg}color-image-overlay-text');
+          }
+        }
+      }
+    }
+  }
+  #{$section-class-name} [data-caption_style="hv-3"], .hv-3 {
+    figcaption{
+      background:linear-gradient(to bottom, RGBA(255, 255, 255, 0) 0%, map-get($default_vars, '#{$section-bg}color-image-overlay-background-hv3') 80%);
+    }
+  }
+
+}
+@include image-style(null);
+@include image-style('.zpdark-section');

@@ -1,0 +1,63 @@
+<div class="theme-quick-view-container">
+	<div class="theme-overlay theme-quickview-close" onclick="closeProductQuickLook(this)">
+	</div>
+	<div class="theme-quick-view-inner-container" data-zs-product-id = "{{ product.product_id }}">
+		<div class="theme-prod-details-container">
+			<div class="theme-prod-details-container-inner">
+				{% include "_store-product-image-one" %}
+				<div class="theme-prod-detail-entries zpdark-section">
+					<div class="theme-prod-detail-entry-row theme-prod-name-review-entry">
+						<h3 class="theme-product-name">{{ product.name }}</h3>
+
+						{% if product.is_product_review_enabled %}
+						<div class="theme-rating-review-container">
+							<div class="theme-rating-review" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+						</div>
+						{% endif %}
+
+						{% if !product.is_returnable %}
+								<div class="theme-prod-non-returnable">
+									{{i18n.get("product.label.non_returnable")}}
+								</div>
+						{% endif %}
+
+						{% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
+							<div class="theme-stock-info-container">
+									{% if product.has_variants %}
+										{% for variant in product.variants %}
+										<span data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
+											{% if variant.is_out_of_stock == true %}
+												{{i18n.get("product.message.out_of_stock")}}
+											{% endif %}
+										</span>
+										{% endfor %}
+									{% else %}
+										{% if product.is_out_of_stock == true %}
+											<span class="{% if product.is_out_of_stock == true %}theme-out-of-stock{% endif %}">
+													{{i18n.get("product.message.out_of_stock")}}
+											</span>
+										{% endif %}
+									{% endif %}
+							</div>
+						{% endif %}
+					</div>
+					<div class="theme-prod-calculated-detail-entries theme-quickview-calculated-detail">
+						<div class="theme-prod-detail-entry-row theme-prod-name-review-entry">
+							{% include '_store-product-pricing-one' %}
+						</div>
+					</div>
+					{% include "_store-product-variants-one" %}
+					<div {% if product.is_product_custom_fields_enabled %}data-theme-custom-field-quickview{% endif %} class="theme-prod-calculated-detail-entries {% if product.is_product_custom_fields_enabled %}theme-quickview-custom-field-container{% endif %} {% if product.has_variants && product.is_product_custom_fields_enabled %}theme-custom-field-variant-quickview-container{% endif %}">
+						{% include '_store-product-custom-field-one' %}
+					</div>
+					<div class="theme-prod-calculated-detail-entries theme-quickview-calculated-detail theme-quick-view-quantity-add">
+						{% include "_store-product-quantity-add-cart-one" %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<button onclick="closeProductQuickLook(this)" class="theme-quickview-close">
+			{% include "_close-icon-one" %}
+		</button>
+	</div>
+</div>

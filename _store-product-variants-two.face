@@ -1,0 +1,46 @@
+{% for attribute in product.attributes %}
+		<div class="theme-product-options">
+				<div class="theme-product-sizes">
+						<div class="theme-product-option-label">{{ attribute.name }}</div>
+						<div class="theme-product-size-select">
+								<span>
+									<svg width="8px" height="6px" viewBox="0 0 8 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+											<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+													<g id="a-copy-2" transform="translate(-983.000000, -680.000000)" stroke="#003570">
+															<g id="Group-4" transform="translate(758.000000, 628.000000)">
+																	<g id="Group-3">
+																			<g id="d-copy" transform="translate(229.000000, 55.000000) scale(1, -1) rotate(-270.000000) translate(-229.000000, -55.000000) translate(227.000000, 51.000000)">
+																					<path d="M3.96243053,-1.26217745e-29 L0,3.98176216" id="Line"></path>
+																					<path d="M0,3.98176216 L3.96243053,7.96352432" id="Line"></path>
+																			</g>
+																	</g>
+															</g>
+													</g>
+											</g>
+									</svg>
+								</span>
+								<select data-zs-attribute-name="{{ attribute.name }}" data-zs-attribute-select >
+									<option value="-1" >
+										{{i18n.get("product.message.attribute_select",attribute.name)}}
+									</option>
+									{% for option in attribute.options %}
+									<option data-zs-attribute-option value="{{ option.id }}" >
+										{{ option.value }}
+									</option>
+									{% endfor %}
+							</select>
+						</div>
+						<div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">Select {{ attribute.name }}</div>
+				</div>
+		</div>
+{% endfor %}
+
+<select style="display: none" data-zs-variants >
+	{% for variant in product.variants %}
+		{% assign variant_options = variant.options %}
+		{% assign variant_option_identifiers = variant_options | map(attr="id") %}
+		{% assign variant_images = variant.images %}
+		{% assign variant_image_identifiers = variant_images | map(attr="id") %}
+		<option value='{{ variant.variant_id }}' data-zs-attributes='{{ variant_option_identifiers | json }}' data-zs-images='{{ variant_image_identifiers | json }}'></option>
+	{% endfor %}
+</select>

@@ -1,0 +1,64 @@
+<div class="theme-quick-view-container">
+	<div class="theme-overlay" onclick="closeProductQuickLook(this)">
+	</div>
+	<div class="theme-product-quick-view-inner" data-zs-product-id = "{{ product.product_id }}">
+		<div class="theme-product-detail-container">
+			<div class="theme-product-detail-container-inner">
+			<div class="theme-product-detail-column theme-product-detail-image-container">
+				{% include '_store-product-image-seven' %}
+			</div>
+			<div class="theme-product-detail-column theme-product-detail-varients-container">
+				<div class="theme-product-name">
+					<h3>{{ product.name }}</h3>
+
+					{% if product.is_product_review_enabled %}
+					<div class="theme-rating-review-container">
+						<div class="theme-rating-review" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+					</div>
+					{% endif %}
+
+					{% if !product.is_returnable %}
+							<div class="theme-prod-non-returnable">
+								{{i18n.get("product.label.non_returnable")}}
+							</div>
+					{% endif %}
+
+				</div>
+				{% include '_store-product-pricing-seven' %}
+
+				{% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
+					<div class="theme-product-stock-availability-details">
+						{% if product.has_variants %}
+							{% for variant in product.variants %}
+							<span class="theme-prod-stock-details" data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
+									{{i18n.get("product.message.out_of_stock")}}
+							</span>
+							{% endfor %}
+						{% else %}
+							{% if product.is_out_of_stock == true %}
+								<span class="theme-prod-stock-details {% if product.is_out_of_stock == true %}theme-out-of-stock {% else %} theme-stock-background-color{% endif %}">
+										{{i18n.get("product.message.out_of_stock")}}
+								</span>
+							{% endif %}
+						{% endif %}
+					</div>
+				{% endif %}
+
+				<div class="theme-product-details-page-link">
+					<a href="{{ product.url }}">{{i18n.get("product.label.view_full")}}</a>
+				</div>
+				<div class="theme-product-varients-area">
+					{% if product.has_variants %}
+						{% include "_store-product-variants-seven" %}
+					{% endif %}
+					{% include "_store-product-custom-field-seven" %}
+					{% include "_store-product-quantity-add-cart-seven" %}
+				</div>
+			</div>
+			<button onclick="closeProductQuickLook(this)" class="theme-quickview-close">
+				{% include "_close-icon-seven" %}
+			</button>
+			</div>
+		</div>
+	</div>
+</div>

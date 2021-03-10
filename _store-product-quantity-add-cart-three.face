@@ -1,0 +1,38 @@
+{% if product.is_out_of_stock == false  %}
+<div class="theme-prod-variant theme-prod-detail-entry-row" data-nostock-quantity>
+		<div class="theme-prod-variant-label">
+			{{i18n.get("product.message.choose_quantity")}}
+		</div>
+		<div class="theme-prod-quantity-to-cart">
+			<div class="theme-quantity-spinner">
+				<input type="button" class="theme-quantity-decrease" onclick="decreaseCount(this)">
+			</div>
+			<input type="text" name="qty" data-quantity="{{product.product_id}}" maxlength="999" title="quantity" value="1" onkeypress='return productQuantity(event);' data-theme-quantity data-zs-quantity>
+			<div class="theme-quantity-spinner">
+				<input type="button" class="theme-quantity-increase" onclick="increaseCount(this)">
+			</div>
+		</div>
+</div>
+{% endif %}
+<div class="theme-prod-cart-add-pricing theme-prod-detail-entry-row">
+
+	{% include "_store-product-pricing-three" %}
+
+		{% if product.is_out_of_stock == false  %}
+		<span class="zpbutton zpbutton-type-primary zpbutton-size-md zpbutton-style-oval zpbutton-outline theme-cart-button {% if product.is_out_of_stock == true  %}theme-cart-button-nostock{% endif %}" data-nostock-cart-add="theme-nostock-cart-add" data-zs-add-to-cart data-zs-product-variant-id{% if !product.has_variants %} ="{{ product.variants[0].variant_id }}" {% endif %}>
+			<span data-theme-cart-button-text="theme-cart-button-text">+ {{i18n.get("product.action.add_to_cart")}}</span>
+			<span data-theme-cart-button-loading="theme-cart-button-loading" class="theme-cart-loading">+ {{i18n.get("product.message.adding_to_cart")}} <span class="theme-adding-dots"></span><span class="theme-adding-dots"></span><span class="theme-adding-dots"></span></span>
+
+			<div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+
+		</span>
+		{% endif %}
+	
+	<div data-zs-pricelist class="theme-prod-pricelist-outter">
+		{% include 'store-product-pricelist' %}
+	</div>
+	
+    {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+    <div class="theme-prod-coupons-outtercontainer" data-zs-app="product_coupons" data-zs-coupons-list></div>
+    {% endif %}
+</div>

@@ -1,0 +1,9 @@
+.zpdark-section-bg{
+  background-color:map-get($default_vars,'dark-secion-bg');
+}
+.zplight-section-bg{
+  background-color:map-get($default_vars,'light-secion-bg');
+}
+.theme-footer-area{
+  background-color: map-get($base_vars,'color-secondary');
+}

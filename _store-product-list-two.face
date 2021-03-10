@@ -1,0 +1,134 @@
+<div class="theme-product-box-container">
+    <div class="theme-product-image-container">
+      <div class="theme-product-badge">
+          {% if product.on_sale %}
+            <span class="theme-ribbon-sale">{{i18n.get("product.message.sale")}}</span>
+          {% endif %}
+          {% if product.is_out_of_stock == true %}
+          <span class="theme-ribbon-sale theme-ribbon-stock">
+            <svg viewBox="0 0 21 23" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" fill-rule="evenodd">
+                <path fill-rule="nonzero" d="M14.282 12.44l-.725-.724-3.058 3.058-3.06-3.058-.724.725 3.058 3.06-3.058 3.057.725.725 3.06-3.058 3.057 3.058.725-.725-3.058-3.058"/>
+                <path  stroke-linecap="square" d="M20.5 22.5H.5l2-16h16z"/>
+                <path d="M6.5 6.698V4.5c0-2.2 1.8-4 4-4s4 1.8 4 4v2.198" stroke-linecap="square"/>
+              </g>
+            </svg>
+          </span>
+          {% endif %}
+      </div>
+      {% if product.images[0].is_placeholder_image %}
+        <img data-src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none">
+        <noscript>
+          <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+        </noscript>
+      {% else %}
+        <img data-src="{{ product.images[0].url }}/300x300" style="display:none" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+        <noscript>
+          <img src="{{ product.images[0].url }}/300x300" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+        </noscript>
+      {% endif %}
+    </div>
+    <div class="theme-product-name">{{ product.name }}</div>
+    {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+      <div class="theme-prod-coupons-code-container">
+    {% endif %}  
+      {% if product.is_product_review_enabled %}
+      <div class="theme-rating" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+      {% endif %}
+    {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+      <span class="theme-prod-coupons-code" data-list-coupon-code style="display:none"></span>
+    </div>
+    <div class="theme-prod-coupons-container" data-zs-coupon-product-id = "{{ product.product_id }}"></div>
+    {% endif %}
+    <div class="theme-product-discription-and-pricing">
+        <span class="theme-product-pricing">
+          {% if product.has_variant_price %}
+            <span data-zs-selling-price="{{ product.starts_with }}"> {{ product.starts_with | currency(currency) }} </span> - <span data-zs-selling-price="{{ product.ends_with }}"> {{ product.ends_with | currency(currency) }} </span>
+          {% elif product.label_price && (product.label_price > product.selling_price) %}
+            <span data-zs-selling-price="{{ product.selling_price }}">
+              {{ product.selling_price | currency(currency) }}
+            </span>
+            <span class="theme-offered-price" data-zs-label-price="{{ product.label_price }}">
+                {{ product.label_price | currency(currency) }}
+            </span>
+          {% else %}
+            <span data-zs-selling-price="{{ product.selling_price }}">
+              {{ product.selling_price | currency(currency) }}
+            </span>
+          {% endif %}
+        </span>
+    </div>
+
+    <a href="{{ product.url }}"></a>
+    <div class="theme-product-hover-properties">
+        {% if product.is_out_of_stock == false %}
+          <a href="{{ product.url }}" class="theme-product-hover-discription">{{product.name}}</a>
+        {% endif %}
+        {% if product.has_variants %}
+          {% if product.is_out_of_stock == true %}
+            <a href="{{ product.url }}" class="theme-hover-cart-button zpbutton-style-oval zpbutton-wrapper zpbutton zpbutton-type-primary zpbutton-size-md theme-out-of-stock-button">
+              <span>{{i18n.get("product.message.out_of_stock")}}</span>
+            </a>
+          {% else %}
+            <a href="{{ product.url }}" class="theme-hover-cart-button zpbutton-style-oval zpbutton-wrapper zpbutton zpbutton-type-primary zpbutton-size-md">
+              <span class="zpbutton-content">{{i18n.get("product.label.view_details")}}</span>
+            </a>
+          {% endif %}
+        {% else %}
+          {% if product.is_out_of_stock == true %}
+            <a href="{{ product.url }}" class="theme-hover-cart-button zpbutton-style-oval zpbutton-wrapper zpbutton zpbutton-type-primary zpbutton-size-md theme-out-of-stock-button">
+              <span>{{i18n.get("product.message.out_of_stock")}}</span>
+            </a>
+          {% elif product.is_product_custom_fields_enabled && product.is_input_custom_field_available %}
+            <a href="{{ product.url }}" class="theme-hover-cart-button zpbutton-style-oval zpbutton-wrapper zpbutton zpbutton-type-primary zpbutton-size-md">
+              <span class="zpbutton-content">{{i18n.get("product.label.view_details")}}</span>
+            </a>
+          {% else %}
+            <a href="javascript:;" data="add-to-cart" data-zs-add-to-cart data-zs-product-variant-id="{{ product.variants[0].variant_id }}" class="theme-hover-cart-button zpbutton-style-oval zpbutton-wrapper zpbutton zpbutton-type-primary zpbutton-size-md">
+              <span class="zpbutton-content" data-theme-cart-button-text="theme-cart-button-text">{{i18n.get("product.action.add_to_cart")}}</span>
+              <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg" data-theme-cart-button-loading="theme-cart-button-loading" class="theme-cart-loading">
+                <g transform="translate(0 .563)" fill-rule="nonzero">
+                  <circle cx="3" cy="11.438" r="3"/>
+                  <circle transform="rotate(45 5.636 5.074)" cx="5.636" cy="5.074" r="2.689"/>
+                  <circle transform="rotate(90 12 2.438)" cx="12" cy="2.438" r="2.35"/>
+                  <circle transform="rotate(135 18.364 5.074)" cx="18.364" cy="5.074" r="2.016"/>
+                  <circle transform="rotate(180 21 11.438)" cx="21" cy="11.438" r="1.887"/>
+                  <circle transform="rotate(-135 18.364 17.8)" cx="18.364" cy="17.801" r="1.512"/>
+                  <circle transform="rotate(-90 12 20.438)" cx="12" cy="20.438" r="1.207"/>
+                  <circle transform="rotate(-45 5.636 17.8)" cx="5.636" cy="17.801" r="1.008"/>
+                </g>
+              </svg>
+            </a>
+          {% endif %}
+        {% endif %}
+
+        {% if product.is_out_of_stock == false %}
+          <div class="theme-product-hover-icon-area">
+            <span class="theme-quick-view-icon" onclick="javascript:viewProductQuickLook(this)" data-zs-product-url="{{ product.quick_look_url }}">
+              <svg viewBox="0 0 512 513.5" xmlns="http://www.w3.org/2000/svg">
+                <path d="M64 64h16 128v32h-89l137 137 137-137h-89v-32h128 16v16 128h-32v-89l-137 137 137 137v-89h32v128 16h-16-128v-32h89l-137-137-137 137h89v32h-128-16v-16-128h32v89l137-137-137-137v89h-32v-128-16z"/>
+              </svg>
+           </span>
+          </div>
+        {% endif %}
+
+        {% if product.is_out_of_stock == false %}
+          <div class="theme-product-hover-price">
+            {% if product.has_variant_price %}
+              <span data-zs-selling-price="{{ product.starts_with }}"> {{ product.starts_with | currency(currency) }} </span> - <span data-zs-selling-price="{{ product.ends_with }}"> {{ product.ends_with | currency(currency) }} </span>
+            {% elif product.label_price && (product.label_price > product.selling_price) %}
+              <span data-zs-selling-price="{{ product.selling_price }}">
+                {{ product.selling_price | currency(currency) }}
+              </span>
+              <span class="theme-offered-price" data-zs-label-price="{{ product.label_price }}">
+                  {{ product.label_price | currency(currency) }}
+              </span>
+            {% else %}
+              <span data-zs-selling-price="{{ product.selling_price }}">
+                {{ product.selling_price | currency(currency) }}
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+    </div>
+</div>

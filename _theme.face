@@ -1,0 +1,920 @@
+<!doctype html>
+{% include "_navigation" %}
+<html {{page.html_tag_attributes}}>
+<head>
+<title>{{page.title}}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+{{page.meta_tags}}
+
+{{page.stylesheets}}
+
+{{page.scripts}}
+
+{{page.header_code}}
+</head>
+<body>
+	{{page.after_body_scripts}}
+	<div	{% block header_block %} data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-{{ page.template_vars.header_style }} {% if page.is_banner_enabled && page.template_vars.banner_style == 'full-screen'|| page.is_banner_enabled && page.template_vars.banner_style == 'full-width-header-overlaped' %}theme-header-fixed{% endif %} {% if page.template_vars.header_style == "02" && page.template_vars.header_background == "dark" %}theme-header-style-02-responsive-dark-background{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}" {% endblock %} data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-{{ page.template_vars.header_style }} {% if page.template_vars.header_style == "02" && page.template_vars.header_background == "dark" %}theme-header-style-02-responsive-dark-background{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
+
+		{% comment %} THEME TOPBAR STARTS HERE {% endcomment %}
+
+		{% if page.template_vars.header_style == "05" %}
+			<div class="theme-header-topbar theme-header-topbar-05 {% if !page.is_portal_enabled && !page.is_search_enabled && !page.show_cart_icon %} theme-checkout-topbar {% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-topbar="zptheme-topbar">
+				<div class="zpcontainer">
+					{% if page.is_search_enabled || page.is_store_enabled %}
+					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
+
+					</div>
+					{% endif %}
+					{% if page.is_portal_enabled %}
+						<div data-theme-portal-responsive="zptheme-portal-responsive" class="theme-portal-responsive-style-05">
+
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+		{% endif %}
+
+		{% if  page.template_vars.header_style == "01" && page.is_contact_information_enabled || page.template_vars.header_style == "01" && page.is_multi_currency_enabled || page.template_vars.header_style == "04" && page.is_contact_information_enabled || page.template_vars.header_style == "04" && page.is_multi_currency_enabled || page.template_vars.header_style == "02" && page.is_contact_information_enabled || page.template_vars.header_style == "02" && page.is_multi_currency_enabled || page.template_vars.header_style == "02" && page.is_portal_enabled || page.template_vars.header_style == "01" && page.is_portal_enabled || page.template_vars.header_style == "04" && page.is_portal_enabled  || page.template_vars.header_style == "01" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "02" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "03" && page.is_contact_information_enabled || page.template_vars.header_style == "07" && page.is_contact_information_enabled || page.template_vars.header_style == "03" && page.is_portal_enabled || page.template_vars.header_style == "07" && page.is_portal_enabled || page.template_vars.header_style == "03" && page.is_search_enabled || page.template_vars.header_style == "03" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "07" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "03" && page.is_multi_currency_enabled || page.template_vars.header_style == "07" && page.is_multi_currency_enabled %}
+
+		<div class="theme-header-topbar {% if page.template_vars.header_style == "07" && !page.is_portal_enabled %}theme-topbar-header-07{% endif %} {% if !page.is_portal_enabled %}theme-hide-res-topbar-checkout{% endif %} {% if page.template_vars.header_style == "01" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "02" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "03" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "07" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "04" && !page.is_contact_information_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !page.is_portal_enabled && page.is_multi_currency_enabled %}theme-hide-currency-checkout{% endif %} {% if page.template_vars.header_style == "03" && !page.is_contact_information_enabled && !page.is_social_icon_enabled && !page.is_multi_currency_enabled || page.template_vars.header_style == "07" && !page.is_contact_information_enabled && !page.is_social_icon_enabled && !page.is_multi_currency_enabled || page.template_vars.header_style == "03" && !page.is_contact_information_enabled && !page.is_multi_currency_enabled && page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "07" && !page.is_contact_information_enabled && !page.is_multi_currency_enabled && page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled %}theme-topbar-in-none-responsive-header-03{% endif %} {% if page.template_vars.header_style == "03" && !page.is_portal_enabled && !page.is_search_enabled && !page.show_cart_icon ||  page.template_vars.header_style == "07" && !page.is_portal_enabled && !page.is_search_enabled && !page.show_cart_icon %} theme-checkout-topbar {% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-topbar="zptheme-topbar">
+			<div class="zpcontainer">
+				{% if page.is_contact_information_enabled %}
+				 <div data-topbarinfo-position="zptheme-topbarinfo-position">
+					{% include '_contacts' %}
+				 </div>
+				{% endif %}
+
+				{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+				{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "02" || page.template_vars.header_style == "03" || page.template_vars.header_style == "07" ||
+				page.template_vars.header_style == "04" %}
+
+					{% include '_social-links' %}
+
+				{% endif %}
+				{% endif %}
+
+
+				{% if page.template_vars.header_style != "07" %}
+				{% if page.is_search_enabled || page.is_store_enabled %}
+				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
+
+				</div>
+				{% endif %}
+				{% endif %}
+
+				{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "02" || page.template_vars.header_style == "04" || page.template_vars.header_style == "07" %}
+					{% if page.is_portal_enabled %}
+						{% include '_member-portal' %}
+					{% endif %}
+				{% endif %}
+
+					{% if page.template_vars.header_style == "03" %}
+					{% if page.is_search_enabled || page.is_store_enabled %}
+					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
+
+					</div>
+					{% endif %}
+					{% if page.is_portal_enabled %}
+						<div class="theme-portal-style-03" data-theme-portal-responsive="zptheme-portal-responsive">
+
+						</div>
+					{% endif %}
+				{% endif %}
+
+				{% if page.is_multi_currency_enabled %}
+					<div data-theme-currency-placeholder-non-res class="theme-currency-non-res {% if page.template_vars.header_style == "01" && page.is_portal_enabled || page.template_vars.header_style == "02" && page.is_portal_enabled || page.template_vars.header_style == "03" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "07" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "04" && page.is_portal_enabled %}theme-curency-option-left-space{% endif %}">
+						{% include '_store-currency-target' %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+
+		{% endif %}
+
+		{% block topbar_remove_checkout_block %}
+
+		{% if page.template_vars.header_style == "01" && !page.is_contact_information_enabled && page.is_store_enabled || page.template_vars.header_style == "01" && !page.is_contact_information_enabled && page.is_search_enabled || page.template_vars.header_style == "04" && !page.is_contact_information_enabled && page.is_store_enabled || page.template_vars.header_style == "04" && !page.is_contact_information_enabled && page.is_search_enabled || page.template_vars.header_style == "02" && !page.is_contact_information_enabled && page.is_store_enabled || page.template_vars.header_style == "02" && !page.is_contact_information_enabled && page.is_search_enabled || page.template_vars.header_style == "02" && !page.is_portal_enabled && page.is_store_enabled || page.template_vars.header_style == "02" && !page.is_portal_enabled && page.is_search_enabled || page.template_vars.header_style == "01" && !page.is_portal_enabled && page.is_store_enabled || page.template_vars.header_style == "01" && !page.is_portal_enabled && page.is_search_enabled || page.template_vars.header_style == "04" && !page.is_portal_enabled && page.is_store_enabled || page.template_vars.header_style == "04" && !page.is_portal_enabled && page.is_search_enabled || page.template_vars.header_style == "01" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_store_enabled || page.template_vars.header_style == "01" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_search_enabled || page.template_vars.header_style == "04" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_store_enabled || page.template_vars.header_style == "04" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_search_enabled || page.template_vars.header_style == "02" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_store_enabled || page.template_vars.header_style == "02" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_search_enabled %}
+
+		<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
+			<div class="zpcontainer">
+				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart>
+				</div>
+			</div>
+		</div>
+
+		{% endif %}
+
+		{% endblock %}
+
+		{% comment %} THEME TOPBAR ENDS HERE {% endcomment %}
+
+		{% comment %} THEME MAIN HEADER STARTS HERE {% endcomment %}
+
+		{% if page.template_vars.header_style == "02" || page.template_vars.header_style == "03" || page.template_vars.header_style == "05" || page.template_vars.header_style == "07" %}
+
+		<div class="theme-header {% if page.template_vars.header_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "05" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.header_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "05" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
+
+			{% if page.is_title_enabled  || page.is_caption_enabled || page.is_logo_enabled || page.template_vars.header_style == "02" && page.is_search_enabled || page.template_vars.header_style == "02" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_portal_enabled || page.template_vars.header_style == "07" && page.is_portal_enabled || page.template_vars.header_style == "03" && page.is_search_enabled || page.template_vars.header_style == "07" && page.is_search_enabled || page.template_vars.header_style == "03" && page.is_store_enabled || page.template_vars.header_style == "07" && page.is_store_enabled || page.template_vars.header_style == "04" || page.template_vars.header_style == "05" && page.is_contact_information_enabled || page.template_vars.header_style == "05" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_portal_enabled %}
+
+			<div class="zpcontainer">
+
+				 {% include '_branding' %}
+
+				 {% if page.template_vars.header_style == "03" %}
+					 {% if page.is_portal_enabled %}
+						 <div class="theme-header-topbar theme-portal-non-responsive" data-theme-portal-non-responsive="zptheme-portal-non-responsive">
+							 {% include '_member-portal' %}
+						 </div>
+					 {% endif %}
+				 {% endif %}
+
+				 {% if page.template_vars.header_style == "02" && page.is_search_enabled || page.template_vars.header_style == "02" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_search_enabled || page.template_vars.header_style == "07" && page.is_search_enabled || page.template_vars.header_style == "07" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_store_enabled %}
+				 <div class="theme-navigation-and-icons {% if page.template_vars.header_style == '02' %}theme-search-mini-cart-style-02{% endif %} {% if page.template_vars.header_style == '03' && page.is_portal_enabled %}theme-search-mini-cart-style-03{% endif %}" data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive">
+					 {% include '_search-store-cart-count' %}
+				 </div>
+				 {% endif %}
+
+				{% if page.template_vars.header_style == "05" %}
+					<div class="theme-header-topbar">
+						{% if page.is_contact_information_enabled %}
+							<div data-topbarinfo-position="zptheme-topbarinfo-position">
+		 						{% include '_contacts' %}
+							</div>
+		 				{% endif %}
+
+		 				{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+
+		 					{% include '_social-links' %}
+
+		 				{% endif %}
+
+						{% if page.is_multi_currency_enabled %}
+							<div data-theme-currency-placeholder-non-res class="theme-currency-container-style-05-non-res {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled %} theme-curency-option-left-space {% endif %}">
+								{% include '_store-currency-target' %}
+							</div>
+						{% endif %}
+
+	 					{% if page.is_portal_enabled %}
+						<div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
+	 						{% include '_member-portal' %}
+						</div>
+	 					{% endif %}
+					</div>
+				{% endif %}
+
+			</div>
+			{% endif %}
+
+			{% if page.template_vars.header_style == '03' || page.template_vars.header_style == '07' ||  page.template_vars.header_style == '05' %}
+				{% if page.is_menu_enabled %}
+				<div class="theme-responsive-menu-area theme-navigation-and-icons theme-responsive-menu-area-style-03 zpcontainer {% if page.template_vars.header_style == "03" && !page.is_title_enabled && !page.is_logo_enabled && !page.is_caption_enabled || page.template_vars.header_style == "07" && !page.is_title_enabled && !page.is_logo_enabled && !page.is_caption_enabled %}theme-only-menu-in-mobile{% endif %} theme-hide-burgericon-cart-mobile">
+					<div class="theme-responsive-menu-container" data-zp-burger-clickable-area="mymenu1">
+						<span class="theme-burger-icon" data-zp-theme-burger-icon="mymenu1"></span>
+					</div>
+					<div class="theme-responsive-menu theme-menu-area" data-zp-responsive-container="mymenu1">
+					</div>
+				</div>
+				{% endif %}
+			{% endif %}
+
+			{% if page.template_vars.header_style == "07" %}
+			{% if page.is_search_enabled || page.is_store_enabled %}
+			<div class="theme-responsive-search-cart-style-07">
+				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
+
+				</div>
+			</div>
+			{% endif %}
+			{% endif %}
+
+		</div>
+
+		{% endif %}
+
+		{% comment %} THEME MAIN HEADER ENDS HERE {% endcomment %}
+
+		{% comment %} THEME MAIN HEADER STARTS HERE {% endcomment %}
+
+		<div class="theme-header {% if page.template_vars.header_style == "02" && page.template_vars.navigation_background == "dark" && page.template_vars.header_background != "dark" %}theme-dark-nav-mobile-02{% endif %} {% if page.template_vars.header_style == "02" && page.template_vars.header_background == "dark" %}theme-responsive-dark{% endif %} {% if page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "05" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "01" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "04" %}zpdark-header-portion{% endif %} {% if page.template_vars.header_style == '03' %}zpheader-style-navigation-03{% endif %} {% if page.template_vars.header_style == '07' %}zpheader-style-navigation-07{% endif %} {% if page.template_vars.header_style == '05' %} zpheader-style-navigation-05 {% endif %}{% if page.template_vars.header_style == '02' || page.template_vars.header_style == '05' %}theme-header-navigation-style{% endif %}"  data-header="{% if page.template_vars.header_effect == 'header-animated' %}zptheme-data-header{% endif %}{% if page.template_vars.header_effect == 'header-transparent-animated' %}zptheme-data-header-transparent{% endif %}{% if page.template_vars.header_effect == 'none' %}none{% endif %}" data-dark-part-applied="{% if page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "05" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "01" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "04" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
+
+			{% if page.template_vars.header_style == "02" && page.is_menu_enabled || page.template_vars.header_style == "03" && page.is_menu_enabled || page.template_vars.header_style == "07" && page.is_menu_enabled || page.template_vars.header_style == "01" && page.is_menu_enabled || page.template_vars.header_style == "01" && page.is_search_enabled || page.template_vars.header_style == "01" && page.is_store_enabled || page.template_vars.header_style == "01" && page.is_title_enabled || page.template_vars.header_style == "01" && page.is_logo_enabled || page.template_vars.header_style == "01" && page.is_caption_enabled || page.template_vars.header_style == "04" && page.is_search_enabled || page.template_vars.header_style == "04" && page.is_menu_enabled || page.template_vars.header_style == "04" && page.is_store_enabled || page.template_vars.header_style == "04" && page.is_title_enabled || page.template_vars.header_style == "04" && page.is_logo_enabled || page.template_vars.header_style == "04" && page.is_caption_enabled || page.template_vars.header_style == "05" && page.is_menu_enabled || page.template_vars.header_style == "05" && page.is_search_enabled || page.template_vars.header_style == "05" && page.is_store_enabled %}
+
+			<div class="zpcontainer">
+					{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "04" %}
+							{% include '_branding' %}
+					{% endif %}
+					{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "02" || page.template_vars.header_style == "03" || page.template_vars.header_style == "07" || page.template_vars.header_style == "04" || page.template_vars.header_style == "05" %}
+					{% if page.is_menu_enabled || page.is_search_enabled || page.is_store_enabled %}
+					<div class="theme-navigation-and-icons">
+						{% if page.is_menu_enabled %}
+						<div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
+							<div class="theme-menu" data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem:5;position: theme-sub-menu-position-change; orientation: horizontal; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
+								{{navi(menu)}}
+								{% if page.is_multi_currency_enabled %}
+									<div data-theme-currency-placeholder-res class="theme-currency-res">
+									</div>
+									<div class="theme-close-mobile-currency" data-theme-currency-open-top>
+										<div class="theme-currency-open-label">
+											{{i18n.get("currency.label")}}
+										</div>
+										<div onclick="closeCurrencyMobile()" class="theme-currency-close-icon-container" data-theme-currency-hide-mobile>
+										</div>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+						{% endif %}
+						{% if page.template_vars.header_style == "01" && page.is_search_enabled || page.template_vars.header_style == "01" && page.is_store_enabled || page.template_vars.header_style == "04" && page.is_search_enabled || page.template_vars.header_style == "04" && page.is_store_enabled || page.template_vars.header_style == "05" && page.is_search_enabled || page.template_vars.header_style == "05" && page.is_store_enabled %}
+						 <div data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive" class="theme-search-cart-non-res">
+							{% include '_search-store-cart-count' %}
+						 </div>
+						{% endif %}
+
+						{% if page.template_vars.header_style == "02" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_store_enabled || page.template_vars.header_style == "07" && page.is_store_enabled %}
+							<div data-search-cart-scrollposition-non-responsive="zptheme-search-cart-scrollposition-non-responsive" class="theme-search-cart-non-res theme-search-cart-scrollposition-non-responsive">
+							</div>
+						{% endif %}
+
+					</div>
+					{% endif %}
+					{% endif %}
+			</div>
+			{% endif %}
+			{% if page.is_menu_enabled && page.template_vars.header_style == '01' || page.is_menu_enabled && page.template_vars.header_style == '02' || page.is_menu_enabled && page.template_vars.header_style == '04' %}
+			<div class="theme-responsive-menu-area theme-navigation-and-icons zpcontainer theme-hide-burgericon-cart-mobile">
+				<div class="theme-responsive-menu-container" data-zp-burger-clickable-area="mymenu1">
+					<span class="theme-burger-icon" data-zp-theme-burger-icon="mymenu1"></span>
+				</div>
+				<div class="theme-responsive-menu theme-menu-area" data-zp-responsive-container="mymenu1">
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+		{% comment %} THEME FLOATER SOCIAL ICON STARTS HERE {% endcomment %}
+
+		{% if page.template_vars.is_social_icon_floater_enabled && page.is_social_icon_enabled %}
+		<div class="zpsocialicon-floater">
+			{% include "_social-links" %}
+		</div>
+		{% endif %}
+
+		{% comment %} THEME FLOATER SOCIAL ICON END HERE {% endcomment %}
+	</div>
+
+	{% block cart_checkout_remove_block %}
+
+	{% if page.template_vars.header_style == "06" %}
+	<div class="theme-vertical-navigation-resposnive {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %}" data-theme-header-six-res="theme-header-six-res">
+		{% if page.is_search_enabled || page.is_store_enabled || page.is_portal_enabled || page.is_multi_currency_enabled %}
+		<div class="theme-header-topbar {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
+			{% if page.is_search_enabled || page.is_store_enabled || page.is_portal_enabled || page.is_multi_currency_enabled  %}
+			<div class="zpcontainer">
+				{% if page.is_search_enabled || page.is_store_enabled %}
+					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
+
+					</div>
+				{% endif %}
+				{% if page.is_portal_enabled %}
+					<div data-theme-portal-responsive="zptheme-portal-responsive" class="theme-portal-style-06">
+
+					</div>
+				{% endif %}
+			</div>
+			{% endif %}
+		</div>
+		{% endif %}
+		{% if page.is_title_enabled || page.is_logo_enabled || page.is_caption_enabled || page.is_menu_enabled  %}
+		<div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.header_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
+			<div class="zpcontainer">
+				{% include '_branding' %}
+
+				{% if page.is_menu_enabled %}
+				<div class="theme-responsive-menu-area theme-navigation-and-icons zpcontainer theme-hide-burgericon-cart-mobile">
+					<div class="theme-responsive-menu-container" data-zp-burger-clickable-area="mymenu1">
+						<span class="theme-burger-icon" data-zp-theme-burger-icon="mymenu1"></span>
+					</div>
+					<div class="theme-responsive-menu theme-menu-area" data-zp-responsive-container="mymenu1">
+					</div>
+				</div>
+				{% endif %}
+
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	{% endif %}
+
+	{% endblock %}
+
+	{% block cart_checkout_block %}
+
+	{% if page.template_vars.header_style == '06' && !page.is_sidebar_enabled  %}
+
+		{% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_multi_currency_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled %}
+
+		<div class="theme-vertical-navigation-container {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %}" data-theme-vertical-menu="zptheme-vertical-menu">
+			<div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.header_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
+				<div class="zpcontainer">
+					{% if page.is_portal_enabled || page.is_multi_currency_enabled %}
+					<div class="theme-header-topbar theme-vertical-navigation-portal {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
+						{% if page.is_portal_enabled %}
+							<div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
+								{% include '_member-portal' %}
+							</div>
+						{% endif %}
+
+						{% if page.is_multi_currency_enabled %}
+							<div data-theme-currency-placeholder-non-res class="theme-currency-container-style-06-non-res">
+								{% include '_store-currency-target' %}
+							</div>
+						{% endif %}
+					</div>
+					{% endif %}
+
+					{% include '_branding' %}
+
+					{% if page.is_search_enabled || page.is_store_enabled %}
+					<div class="theme-navigation-and-icons theme-vertical-navigation-search-cart-container">
+						<div data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive" class="theme-search-cart-non-res">
+							{% include '_search-store-cart-count' %}
+						</div>
+					</div>
+					{% endif %}
+
+					{% if page.is_menu_enabled %}
+					<div class="theme-navigation-and-icons">
+						<div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
+							<div class="theme-menu" data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem:{{page.template_vars.maxmenuitem}};position: theme-sub-menu-position-change; orientation: vertical; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
+								{{navi(menu)}}
+
+								{% if page.is_multi_currency_enabled %}
+									<div data-theme-currency-placeholder-res class="theme-currency-res">
+									</div>
+									<div class="theme-close-mobile-currency" data-theme-currency-open-top>
+										<div class="theme-currency-open-label">
+											{{i18n.get("currency.label")}}
+										</div>
+										<div onclick="closeCurrencyMobile()" class="theme-currency-close-icon-container" data-theme-currency-hide-mobile>
+										</div>
+									</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					{% endif %}
+
+				</div>
+
+				{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled %}
+				<div class="zpcontainer theme-vertical-navigation-contact-social-container">
+					<div class="theme-vertical-navigation-contact-social">
+						<div class="theme-header-topbar">
+							{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
+								{% include '_social-links' %}
+							{% endif %}
+							{% if page.is_contact_information_enabled %}
+							<div data-topbarinfo-position="zptheme-topbarinfo-position">
+								{% include '_contacts' %}
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% endif %}
+
+			</div>
+		</div>
+		{% endif %}
+	{% endif %}
+
+	{% endblock %}
+
+	{% comment %} THEME CONTENT AREA START {% endcomment %}
+
+		{% block content_area %}
+
+		{% endblock %}
+
+	{% comment %} THEME CONTENT AREA END {% endcomment %}
+
+	{% comment %} THEME FOOTER START {% endcomment %}
+
+	{% if page.is_footer_enabled %}
+
+	<div class="theme-footer-area zpdark-section {% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled %}zpfooter-for-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
+		{{page.footer_content}}
+	</div>
+
+	{% endif %}
+
+	{% comment %} THEME FOOTER END {% endcomment %}
+
+
+	{% if page.is_store_enabled %}
+
+	<div id="product_quick_look">
+	</div>
+
+
+	{% comment %} STORE MESSAGES {% endcomment %}
+
+	{% if page.template_vars.store_message_style == "01" %}
+
+			<div data-cart-add-success="theme-cart-add-success" class="theme-cart-add-success-message">
+				<div class="theme-cart-add-success-message-inner">
+					<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg">
+					    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+					        <g id="d" transform="translate(-525.000000, -26.000000)" fill-rule="nonzero" fill="#FFFFFF">
+					            <g id="Group-21" transform="translate(525.000000, 26.000000)">
+					                <g id="checked">
+					                    <path d="M13,0.60546875 C6.12666903,0.60546875 0.60546875,6.12666903 0.60546875,13 C0.60546875,19.873331 6.12666903,25.3945312 13,25.3945312 C19.873331,25.3945312 25.3945312,19.873331 25.3945312,13 C25.3945312,6.12666903 19.873331,0.60546875 13,0.60546875 Z M20.1550249,9.11262429 L20.1550249,9.11262429 L11.1408203,18.4648615 C11.0281428,18.5775391 10.9154652,18.6338778 10.7464489,18.6338778 C10.5774325,18.6338778 10.4084162,18.5775391 10.3520774,18.4648615 L5.9576527,13.7324041 L5.84497514,13.6197266 C5.73229759,13.507049 5.67595881,13.3380327 5.67595881,13.2253551 C5.67595881,13.1126776 5.73229759,12.9436612 5.84497514,12.8309837 L6.63371804,12.0422408 C6.85907315,11.8168857 7.19710582,11.8168857 7.42246094,12.0422408 L7.47879972,12.0985795 L10.5774325,15.4225675 C10.6901101,15.535245 10.8591264,15.535245 10.971804,15.4225675 L18.5212003,7.59147727 L18.5775391,7.59147727 C18.8028942,7.36612216 19.1409268,7.36612216 19.366282,7.59147727 L20.1550249,8.38022017 C20.38038,8.54923651 20.38038,8.88726918 20.1550249,9.11262429 L20.1550249,9.11262429 Z" id="Shape"></path>
+					                </g>
+					            </g>
+					        </g>
+					    </g>
+					</svg>
+					{{i18n.get("product.message.success.add_to_cart")}}
+				</div>
+				<div class="theme-cart-success-message-links zpdark-section">
+					<a href="javascript:;" class="theme-cart-success-to-cart zpbutton zpbutton-type-primary zpbutton-size-sm" data-zs-view-cart>{{i18n.get("product.label.view_cart")}}</a>
+					<a href="javascript:;" class="theme-cart-success-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-add-failure="theme-cart-add-failure" class="theme-cart-add-failure-message zpdark-section">
+					<div class="theme-cart-add-failure-message-inner">
+						<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg">
+						    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+						        <g id="d-copy-4" transform="translate(-509.000000, -26.000000)" fill-rule="nonzero" fill="#FFFFFF">
+						            <g id="Group-21" transform="translate(507.000000, 24.000000)">
+						                <g id="checked">
+						                    <g id="ic_error_black_24px" transform="translate(0.045410, 0.045410)">
+						                        <path d="M14.9545898,2.49243164 C8.07547852,2.49243164 2.49243164,8.07547852 2.49243164,14.9545898 C2.49243164,21.8337012 8.07547852,27.416748 14.9545898,27.416748 C21.8337012,27.416748 27.416748,21.8337012 27.416748,14.9545898 C27.416748,8.07547852 21.8337012,2.49243164 14.9545898,2.49243164 Z M16.2008057,21.1856689 L13.708374,21.1856689 L13.708374,18.6932373 L16.2008057,18.6932373 L16.2008057,21.1856689 Z M16.2008057,16.2008057 L13.708374,16.2008057 L13.708374,8.72351074 L16.2008057,8.72351074 L16.2008057,16.2008057 Z" id="Shape"></path>
+						                    </g>
+						                </g>
+						            </g>
+						        </g>
+						    </g>
+						</svg>
+						<div>
+							<span data-theme-failure-reason="theme-failure-reason"></span> - {{i18n.get("product.message.error.add_to_cart")}}
+						</div>
+					</div>
+					<div class="theme-cart-failure-message-links">
+						<a href="javascript:;" class="theme-cart-failure-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+					</div>
+			</div>
+
+			<div data-cart-update-success="theme-cart-update-success" class="theme-cart-update-success-message">
+				<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				        <g id="d" transform="translate(-525.000000, -26.000000)" fill-rule="nonzero" fill="#FFFFFF">
+				            <g id="Group-21" transform="translate(525.000000, 26.000000)">
+				                <g id="checked">
+				                    <path d="M13,0.60546875 C6.12666903,0.60546875 0.60546875,6.12666903 0.60546875,13 C0.60546875,19.873331 6.12666903,25.3945312 13,25.3945312 C19.873331,25.3945312 25.3945312,19.873331 25.3945312,13 C25.3945312,6.12666903 19.873331,0.60546875 13,0.60546875 Z M20.1550249,9.11262429 L20.1550249,9.11262429 L11.1408203,18.4648615 C11.0281428,18.5775391 10.9154652,18.6338778 10.7464489,18.6338778 C10.5774325,18.6338778 10.4084162,18.5775391 10.3520774,18.4648615 L5.9576527,13.7324041 L5.84497514,13.6197266 C5.73229759,13.507049 5.67595881,13.3380327 5.67595881,13.2253551 C5.67595881,13.1126776 5.73229759,12.9436612 5.84497514,12.8309837 L6.63371804,12.0422408 C6.85907315,11.8168857 7.19710582,11.8168857 7.42246094,12.0422408 L7.47879972,12.0985795 L10.5774325,15.4225675 C10.6901101,15.535245 10.8591264,15.535245 10.971804,15.4225675 L18.5212003,7.59147727 L18.5775391,7.59147727 C18.8028942,7.36612216 19.1409268,7.36612216 19.366282,7.59147727 L20.1550249,8.38022017 C20.38038,8.54923651 20.38038,8.88726918 20.1550249,9.11262429 L20.1550249,9.11262429 Z" id="Shape"></path>
+				                </g>
+				            </g>
+				        </g>
+				    </g>
+				</svg>
+				{{i18n.get("product.message.success.update_to_cart")}}
+			</div>
+			<div data-cart-update-failure="theme-cart-update-failure" class="theme-cart-update-failure-message">
+				<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				        <g id="d-copy-4" transform="translate(-509.000000, -26.000000)" fill-rule="nonzero" fill="#FFFFFF">
+				            <g id="Group-21" transform="translate(507.000000, 24.000000)">
+				                <g id="checked">
+				                    <g id="ic_error_black_24px" transform="translate(0.045410, 0.045410)">
+				                        <path d="M14.9545898,2.49243164 C8.07547852,2.49243164 2.49243164,8.07547852 2.49243164,14.9545898 C2.49243164,21.8337012 8.07547852,27.416748 14.9545898,27.416748 C21.8337012,27.416748 27.416748,21.8337012 27.416748,14.9545898 C27.416748,8.07547852 21.8337012,2.49243164 14.9545898,2.49243164 Z M16.2008057,21.1856689 L13.708374,21.1856689 L13.708374,18.6932373 L16.2008057,18.6932373 L16.2008057,21.1856689 Z M16.2008057,16.2008057 L13.708374,16.2008057 L13.708374,8.72351074 L16.2008057,8.72351074 L16.2008057,16.2008057 Z" id="Shape"></path>
+				                    </g>
+				                </g>
+				            </g>
+				        </g>
+				    </g>
+				</svg>
+				<span data-theme-update-failure-reason="theme-update-failure-reason"></span> -
+				{{i18n.get("product.message.error.update_to_cart")}}
+			</div>
+
+			<div data-cart-delete-success="theme-cart-delete-success" class="theme-cart-delete-success-message">
+				<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				        <g id="d" transform="translate(-525.000000, -26.000000)" fill-rule="nonzero" fill="#FFFFFF">
+				            <g id="Group-21" transform="translate(525.000000, 26.000000)">
+				                <g id="checked">
+				                    <path d="M13,0.60546875 C6.12666903,0.60546875 0.60546875,6.12666903 0.60546875,13 C0.60546875,19.873331 6.12666903,25.3945312 13,25.3945312 C19.873331,25.3945312 25.3945312,19.873331 25.3945312,13 C25.3945312,6.12666903 19.873331,0.60546875 13,0.60546875 Z M20.1550249,9.11262429 L20.1550249,9.11262429 L11.1408203,18.4648615 C11.0281428,18.5775391 10.9154652,18.6338778 10.7464489,18.6338778 C10.5774325,18.6338778 10.4084162,18.5775391 10.3520774,18.4648615 L5.9576527,13.7324041 L5.84497514,13.6197266 C5.73229759,13.507049 5.67595881,13.3380327 5.67595881,13.2253551 C5.67595881,13.1126776 5.73229759,12.9436612 5.84497514,12.8309837 L6.63371804,12.0422408 C6.85907315,11.8168857 7.19710582,11.8168857 7.42246094,12.0422408 L7.47879972,12.0985795 L10.5774325,15.4225675 C10.6901101,15.535245 10.8591264,15.535245 10.971804,15.4225675 L18.5212003,7.59147727 L18.5775391,7.59147727 C18.8028942,7.36612216 19.1409268,7.36612216 19.366282,7.59147727 L20.1550249,8.38022017 C20.38038,8.54923651 20.38038,8.88726918 20.1550249,9.11262429 L20.1550249,9.11262429 Z" id="Shape"></path>
+				                </g>
+				            </g>
+				        </g>
+				    </g>
+				</svg>
+				{{i18n.get("product.message.success.delete_from_cart")}}
+			</div>
+			<div data-cart-delete-failure="theme-cart-delete-failure" class="theme-cart-delete-failure-message">
+				<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg">
+				    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				        <g id="d-copy-4" transform="translate(-509.000000, -26.000000)" fill-rule="nonzero" fill="#FFFFFF">
+				            <g id="Group-21" transform="translate(507.000000, 24.000000)">
+				                <g id="checked">
+				                    <g id="ic_error_black_24px" transform="translate(0.045410, 0.045410)">
+				                        <path d="M14.9545898,2.49243164 C8.07547852,2.49243164 2.49243164,8.07547852 2.49243164,14.9545898 C2.49243164,21.8337012 8.07547852,27.416748 14.9545898,27.416748 C21.8337012,27.416748 27.416748,21.8337012 27.416748,14.9545898 C27.416748,8.07547852 21.8337012,2.49243164 14.9545898,2.49243164 Z M16.2008057,21.1856689 L13.708374,21.1856689 L13.708374,18.6932373 L16.2008057,18.6932373 L16.2008057,21.1856689 Z M16.2008057,16.2008057 L13.708374,16.2008057 L13.708374,8.72351074 L16.2008057,8.72351074 L16.2008057,16.2008057 Z" id="Shape"></path>
+				                    </g>
+				                </g>
+				            </g>
+				        </g>
+				    </g>
+				</svg>
+				<span data-theme-delete-failure-reason="theme-delete-failure-reason"></span> -
+				{{i18n.get("product.message.error.delete_from_cart")}}
+			</div>
+
+		{% endif %}
+
+		{% if page.template_vars.store_message_style == "02" %}
+
+			<div data-cart-add-success="theme-cart-add-success" class="theme-cart-add-success-message theme-cart-message-collection">
+				{{i18n.get("product.message.success.add_to_cart")}}
+				<div class="theme-cart-success-message-links">
+					<a href="javascript:;" class="theme-cart-success-to-cart zpbutton zpbutton-type-primary zpbutton-size-sm" data-zs-view-cart>{{i18n.get("product.label.view_cart")}}</a>
+					<a href="javascript:;" class="theme-cart-success-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-add-failure="theme-cart-add-failure" class="theme-cart-add-failure-message theme-cart-message-collection">
+				<span data-theme-failure-reason="theme-failure-reason"></span> - {{i18n.get("product.message.error.add_to_cart")}}
+				<div class="theme-cart-failure-message-links">
+					<a href="javascript:;" class="theme-cart-failure-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-update-success="theme-cart-update-success" class="theme-cart-update-success-message">
+				{{i18n.get("product.message.success.update_to_cart")}}
+			</div>
+			<div data-cart-update-failure="theme-cart-update-failure" class="theme-cart-update-failure-message">
+				<span data-theme-update-failure-reason="theme-update-failure-reason"></span> -
+				{{i18n.get("product.message.error.update_to_cart")}}
+			</div>
+			<div data-cart-delete-success="theme-cart-delete-success" class="theme-cart-delete-success-message">
+				{{i18n.get("product.message.success.delete_from_cart")}}
+			</div>
+			<div data-cart-delete-failure="theme-cart-delete-failure" class="theme-cart-delete-failure-message">
+				<span data-theme-delete-failure-reason="theme-delete-failure-reason"></span> -
+				{{i18n.get("product.message.error.delete_from_cart")}}
+			</div>
+
+		{% endif %}
+
+		{% if page.template_vars.store_message_style == "03" %}
+
+			<div data-cart-add-success="theme-cart-add-success" class="theme-cart-add-success-message">
+				<div class="theme-cart-add-success-message-inner">
+					<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+						<g id="Page-1" fill="none" fill-rule="evenodd">
+							<g id="Artboard">
+								<g id="Group-2">
+									<g id="cart">
+											<g id="Group">
+												<path d="M2 18h16V2H2v16zm-2 2h20V0H0v20zm9.44-6.25L5.9 10.2l1.42-1.4 2.12 2.12 4.25-4.24 1.4 1.4-5.65 5.67z" id="done_cover-[#1485]"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</svg>
+						{{i18n.get("product.message.success.add_to_cart")}}
+					</div>
+					<div class="theme-cart-success-message-links zpdark-section">
+						<a href="javascript:;" class="theme-cart-success-to-cart zpbutton zpbutton-type-primary zpbutton-size-sm" data-zs-view-cart>{{i18n.get("product.label.view_cart")}}</a>
+						<a href="javascript:;" class="theme-cart-success-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+					</div>
+			</div>
+			<div data-cart-add-failure="theme-cart-add-failure" class="theme-cart-add-failure-message zpdark-section">
+				<div class="theme-cart-add-failure-message-inner">
+					<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+						<g id="Page-1" fill="none" fill-rule="evenodd">
+							<g id="Artboard">
+								<g id="Group-9">
+									<g id="cart">
+										<g id="Group-8">
+											<g id="Group-3">
+												<path d="M9 11.5v-7c0-.54.45-1 1-1s1 .46 1 1v7c0 .56-.45 1-1 1s-1-.44-1-1zm2 3c0 .56-.45 1-1 1s-1-.44-1-1c0-.54.45-1 1-1s1 .46 1 1zM2 18h16V2H2v16zm-2 2h20V0H0v20z" id="important_message-[#1449]-copy"/>
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</svg>
+					<div class="theme-cart-fail-reason">
+						<span data-theme-failure-reason="theme-failure-reason"></span>  -  {{i18n.get("product.message.error.add_to_cart")}}
+					</div>
+				</div>
+				<div class="theme-cart-failure-message-links">
+					<a href="javascript:;" class="theme-cart-failure-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-update-success="theme-cart-update-success" class="theme-cart-update-success-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-2">
+	              <g id="cart">
+	                  <g id="Group">
+	                    <path d="M2 18h16V2H2v16zm-2 2h20V0H0v20zm9.44-6.25L5.9 10.2l1.42-1.4 2.12 2.12 4.25-4.24 1.4 1.4-5.65 5.67z" id="done_cover-[#1485]"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </svg>
+	  		{{i18n.get("product.message.success.update_to_cart")}}
+	  	</div>
+	  	<div data-cart-update-failure="theme-cart-update-failure" class="theme-cart-update-failure-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-9">
+	              <g id="cart">
+	                <g id="Group-8">
+	                  <g id="Group-3">
+	                    <path d="M9 11.5v-7c0-.54.45-1 1-1s1 .46 1 1v7c0 .56-.45 1-1 1s-1-.44-1-1zm2 3c0 .56-.45 1-1 1s-1-.44-1-1c0-.54.45-1 1-1s1 .46 1 1zM2 18h16V2H2v16zm-2 2h20V0H0v20z" id="important_message-[#1449]-copy"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </g>
+	      </svg>
+	      <div class="theme-cart-fail-reason">
+	        <span data-theme-update-failure-reason="theme-update-failure-reason"></span> - {{i18n.get("product.message.error.update_to_cart")}}
+	      </div>
+	  	</div>
+	  	<div data-cart-delete-success="theme-cart-delete-success" class="theme-cart-delete-success-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-2">
+	              <g id="cart">
+	                  <g id="Group">
+	                    <path d="M2 18h16V2H2v16zm-2 2h20V0H0v20zm9.44-6.25L5.9 10.2l1.42-1.4 2.12 2.12 4.25-4.24 1.4 1.4-5.65 5.67z" id="done_cover-[#1485]"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </svg>
+	  		{{i18n.get("product.message.success.delete_from_cart")}}
+	  	</div>
+	  	<div data-cart-delete-failure="theme-cart-delete-failure" class="theme-cart-delete-failure-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-9">
+	              <g id="cart">
+	                <g id="Group-8">
+	                  <g id="Group-3">
+	                    <path d="M9 11.5v-7c0-.54.45-1 1-1s1 .46 1 1v7c0 .56-.45 1-1 1s-1-.44-1-1zm2 3c0 .56-.45 1-1 1s-1-.44-1-1c0-.54.45-1 1-1s1 .46 1 1zM2 18h16V2H2v16zm-2 2h20V0H0v20z" id="important_message-[#1449]-copy"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </g>
+	      </svg>
+	      <div class="theme-cart-fail-reason">
+	        <span data-theme-delete-failure-reason="theme-delete-failure-reason"></span> - {{i18n.get("product.message.error.delete_from_cart")}}
+	      </div>
+	  	</div>
+
+		{% endif %}
+
+		{% if page.template_vars.store_message_style == "04" %}
+
+			<div data-cart-add-success="theme-cart-add-success" class="theme-cart-add-success-message" data-theme-message-four>
+				<div class="theme-cart-success-inner-container">
+					<div class="theme-cart-success-vertical-scroll">
+						<span class="theme-cart-message-close" onclick="closeSuccessMessage();">
+							{% include "_close-icon" %}
+						</span>
+						<div class="theme-cart-message-item theme-cart-message-text">
+							{{i18n.get("product.message.added_to_cart")}}
+						</div>
+						<div class="theme-cart-message-item theme-cart-message-prod-name" data-cart-add-success-prod-name="theme-cart-add-success-prod-name">
+						</div>
+						<div class="theme-cart-message-item theme-cart-message-prod-img">
+							<div class="theme-cart-message-prod-img-inner">
+								<img alt="" title="" src="" data-cart-add-success-prod-img="theme-cart-add-success-prod-img"/>
+							</div>
+						</div>
+						<div class="theme-cart-message-item theme-cart-message-buttons">
+							<a href="javascript:;" class="zpbutton zpbutton-type-secondary zpbutton-style-roundcorner zpbutton-outline zpbutton-size-lg" onclick="closeSuccessMessage();">{{i18n.get("cart.action.continue_shopping")}}</a>
+							<a href="javascript:;" class="zpbutton zpbutton-type-primary zpbutton-style-roundcorner zpbutton-size-lg" data-zs-view-cart>{{i18n.get("product.label.view_cart")}}</a>
+						</div>
+						<div class="theme-cart-message-item theme-cart-message-count">
+							{{ i18n.get("cart.count.message","<span data-cart-add-success-count='theme-cart-add-success-prod-count'></span>") }}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-cart-add-failure="theme-cart-add-failure" class="theme-cart-add-failure-message">
+				<div class="theme-cart-success-inner-container">
+					<div class="theme-cart-success-vertical-scroll">
+						<span class="theme-cart-message-close" onclick="closeFailureMessage();">
+							{% include "_close-icon" %}
+						</span>
+						<div class="theme-cart-message-item theme-cart-message-text theme-cart-message-failure">
+							<span data-theme-failure-reason="theme-failure-reason"></span>  -  {{i18n.get("product.label.added_to_cart_failure")}}
+						</div>
+						<div class="theme-cart-message-item theme-cart-message-buttons theme-cart-message-button-failure">
+							<a href="javascript:;" class="zpbutton zpbutton-type-secondary zpbutton-style-roundcorner zpbutton-outline zpbutton-size-lg" onclick="closeFailureMessage();">{{i18n.get("cart.action.continue_shopping")}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-cart-update-success="theme-cart-update-success" class="theme-cart-update-success-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-2">
+	              <g id="cart">
+	                  <g id="Group">
+	                    <path d="M2 18h16V2H2v16zm-2 2h20V0H0v20zm9.44-6.25L5.9 10.2l1.42-1.4 2.12 2.12 4.25-4.24 1.4 1.4-5.65 5.67z" id="done_cover-[#1485]"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </svg>
+	  		{{i18n.get("product.message.success.update_to_cart")}}
+	  	</div>
+	  	<div data-cart-update-failure="theme-cart-update-failure" class="theme-cart-update-failure-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-9">
+	              <g id="cart">
+	                <g id="Group-8">
+	                  <g id="Group-3">
+	                    <path d="M9 11.5v-7c0-.54.45-1 1-1s1 .46 1 1v7c0 .56-.45 1-1 1s-1-.44-1-1zm2 3c0 .56-.45 1-1 1s-1-.44-1-1c0-.54.45-1 1-1s1 .46 1 1zM2 18h16V2H2v16zm-2 2h20V0H0v20z" id="important_message-[#1449]-copy"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </g>
+	      </svg>
+				<div>
+	      	<span data-theme-update-failure-reason="theme-update-failure-reason"></span> - {{i18n.get("product.message.error.update_to_cart")}}
+				</div>
+	  	</div>
+	  	<div data-cart-delete-success="theme-cart-delete-success" class="theme-cart-delete-success-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-2">
+	              <g id="cart">
+	                  <g id="Group">
+	                    <path d="M2 18h16V2H2v16zm-2 2h20V0H0v20zm9.44-6.25L5.9 10.2l1.42-1.4 2.12 2.12 4.25-4.24 1.4 1.4-5.65 5.67z" id="done_cover-[#1485]"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </svg>
+	  		{{i18n.get("product.message.success.delete_from_cart")}}
+	  	</div>
+	  	<div data-cart-delete-failure="theme-cart-delete-failure" class="theme-cart-delete-failure-message">
+	      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+	        <g id="Page-1" fill="none" fill-rule="evenodd">
+	          <g id="Artboard">
+	            <g id="Group-9">
+	              <g id="cart">
+	                <g id="Group-8">
+	                  <g id="Group-3">
+	                    <path d="M9 11.5v-7c0-.54.45-1 1-1s1 .46 1 1v7c0 .56-.45 1-1 1s-1-.44-1-1zm2 3c0 .56-.45 1-1 1s-1-.44-1-1c0-.54.45-1 1-1s1 .46 1 1zM2 18h16V2H2v16zm-2 2h20V0H0v20z" id="important_message-[#1449]-copy"/>
+	                  </g>
+	                </g>
+	              </g>
+	            </g>
+	          </g>
+	        </g>
+	      </svg>
+				<div>
+	      	<span data-theme-delete-failure-reason="theme-delete-failure-reason"></span> - {{i18n.get("product.message.error.delete_from_cart")}}
+				</div>
+	  	</div>
+
+		{% endif %}
+
+		{% if page.template_vars.store_message_style == "05" %}
+
+			<div data-cart-add-success="theme-cart-add-success" class="theme-cart-add-success-message theme-cart-message-collection">
+				<div class="theme-cart-add-success-message-inner">
+					<div data-cart-add-success-prod-name="theme-cart-add-success-prod-name"></div> - {{i18n.get("product.label.added_to_cart_success")}}
+				</div>
+				<div class="theme-cart-success-message-links">
+					<a href="javascript:;" class="theme-cart-success-to-cart zpbutton zpbutton-type-primary zpbutton-size-sm" data-zs-view-cart>{{i18n.get("product.label.view_cart")}}</a>
+					<a href="javascript:;" class="theme-cart-success-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-add-failure="theme-cart-add-failure" class="theme-cart-add-failure-message theme-cart-message-collection">
+				<div class="theme-cart-add-failure-message-inner">
+					<span data-theme-failure-reason="theme-failure-reason"></span>  - {{i18n.get("product.label.added_to_cart_failure")}}
+				</div>
+				<div class="theme-cart-failure-message-links">
+					<a href="javascript:;" class="theme-cart-failure-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-update-success="theme-cart-update-success" class="theme-cart-update-success-message">
+				<div data-cart-update-success-product-name="theme-cart-update-success-product-name"></div> - {{i18n.get("product.message.success.update_to_cart")}}
+			</div>
+			<div data-cart-update-failure="theme-cart-update-failure" class="theme-cart-update-failure-message">
+				<span data-theme-update-failure-reason="theme-update-failure-reason"></span> -
+				{{i18n.get("product.message.error.update_to_cart")}}
+			</div>
+			<div data-cart-delete-success="theme-cart-delete-success" class="theme-cart-delete-success-message">
+				{{i18n.get("product.message.success.delete_from_cart")}}
+			</div>
+			<div data-cart-delete-failure="theme-cart-delete-failure" class="theme-cart-delete-failure-message">
+				<span data-theme-delete-failure-reason="theme-delete-failure-reason"></span> -
+				{{i18n.get("product.message.error.delete_from_cart")}}
+			</div>
+
+		{% endif %}
+
+		{% if page.template_vars.store_message_style == "06" %}
+
+			<div data-cart-add-success="theme-cart-add-success" class="theme-cart-add-success-message theme-cart-message-collection">
+				{{i18n.get("product.message.success.add_to_cart")}}
+				<div class="theme-cart-success-message-links">
+					<a href="javascript:;" class="theme-cart-success-to-cart zpbutton zpbutton-type-primary zpbutton-size-sm" data-zs-view-cart>{{i18n.get("product.label.view_cart")}}</a>
+					<a href="javascript:;" class="theme-cart-success-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-add-failure="theme-cart-add-failure" class="theme-cart-add-failure-message theme-cart-message-collection">
+				<div class="theme-cart-add-failure-message-inner">
+					<span data-theme-failure-reason="theme-failure-reason"></span>  -  {{i18n.get("product.message.error.add_to_cart")}}
+				</div>
+				<div class="theme-cart-failure-message-links">
+					<a href="javascript:;" class="theme-cart-failure-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-update-success="theme-cart-update-success" class="theme-cart-update-success-message">
+				{{i18n.get("product.message.success.update_to_cart")}}
+			</div>
+			<div data-cart-update-failure="theme-cart-update-failure" class="theme-cart-update-failure-message">
+				<span data-theme-update-failure-reason="theme-update-failure-reason"></span> -
+				{{i18n.get("product.message.error.update_to_cart")}}
+			</div>
+			<div data-cart-delete-success="theme-cart-delete-success" class="theme-cart-delete-success-message">
+				{{i18n.get("product.message.success.delete_from_cart")}}
+			</div>
+			<div data-cart-delete-failure="theme-cart-delete-failure" class="theme-cart-delete-failure-message">
+				<span data-theme-delete-failure-reason="theme-delete-failure-reason"></span> -
+				{{i18n.get("product.message.error.delete_from_cart")}}
+			</div>
+
+		{% endif %}
+
+		{% if page.template_vars.store_message_style == "07" %}
+
+			<div data-cart-add-success="theme-cart-add-success" class="theme-cart-add-success-message theme-cart-message-collection">
+				{{i18n.get("product.message.success.add_to_cart")}}
+				<div class="theme-cart-success-message-links">
+					<a href="javascript:;" class="theme-cart-success-to-cart zpbutton zpbutton-type-primary zpbutton-size-sm" data-zs-view-cart>{{i18n.get("product.label.view_cart")}}</a>
+					<a href="javascript:;" class="theme-cart-success-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-add-failure="theme-cart-add-failure" class="theme-cart-add-failure-message theme-cart-message-collection">
+				<div class="theme-cart-add-failure-message-inner">
+					<span data-theme-failure-reason="theme-failure-reason"></span>  -  {{i18n.get("product.message.error.add_to_cart")}}
+				</div>
+				<div class="theme-cart-failure-message-links">
+					<a href="javascript:;" class="theme-cart-failure-close zpbutton zpbutton-type-primary zpbutton-size-sm zpbutton-outline" onclick="closemessage();">{{i18n.get("product.label.close")}}</a>
+				</div>
+			</div>
+			<div data-cart-update-success="theme-cart-update-success" class="theme-cart-update-success-message">
+				{{i18n.get("product.message.success.update_to_cart")}}
+			</div>
+			<div data-cart-update-failure="theme-cart-update-failure" class="theme-cart-update-failure-message">
+				<span data-theme-update-failure-reason="theme-update-failure-reason"></span> -
+				{{i18n.get("product.message.error.update_to_cart")}}
+			</div>
+			<div data-cart-delete-success="theme-cart-delete-success" class="theme-cart-delete-success-message">
+				{{i18n.get("product.message.success.delete_from_cart")}}
+			</div>
+			<div data-cart-delete-failure="theme-cart-delete-failure" class="theme-cart-delete-failure-message">
+				<span data-theme-delete-failure-reason="theme-delete-failure-reason"></span> -
+				{{i18n.get("product.message.error.delete_from_cart")}}
+			</div>
+
+		{% endif %}
+
+	{% endif %}
+
+	{% comment %} STORE MESSAGES END {% endcomment %}
+
+	{{page.footer_code}}
+</body>
+</html>

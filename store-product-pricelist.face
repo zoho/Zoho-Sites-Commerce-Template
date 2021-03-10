@@ -1,0 +1,79 @@
+{% if product.is_product_price_brackets_available %}
+    {% if (product.variants | size) > 0 %}
+    {% for variant in product.variants %}
+        {% assign price_brackets = variant.price_brackets %}
+        {% assign price_brackets_length = variant.price_brackets | size %}
+        {% if page.template_vars.product_details_style != "04" && price_brackets_length != 0 %}
+        <div data-zs-pricelist-variantid="{{variant.variant_id}}" class="theme-prod-pricelist {% if (product.variants | size) == 1 %}theme-prod-pricelist-active{% endif %}" {% if (product.variants | size) != 1 %}style="display: none;"{% endif %}>
+            <p class="theme-prod-pricelist-message">{{i18n.get("product.bulk_offer.message")}}</p>
+            {% if price_brackets_length <= 4 %}
+                <ul class="theme-prod-pricelist-list">
+                    {% for i in range(0, price_brackets_length) %}
+                        {% assign price_bracket = price_brackets[i] %}
+                        <li>
+                            {% assign price = price_bracket.pricebook_rate | currency(currency) %}
+                            {% capture price_span %}<span data-zs-pricelist-price="{{price_bracket.pricebook_rate}}">{{price}}</span>{% endcapture %}
+                            {% if price_bracket.end_quantity != 0 %}
+                                {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}            
+                            {% else %}
+                                {{i18n.get("product.quantity.above_range.offer.message",price_bracket.start_quantity,price_span)}}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <ul class="theme-prod-pricelist-list">
+                    {% for i in range(0, 4) %}
+                        {% assign price_bracket = price_brackets[i] %}
+                        <li>
+                            {% assign price = price_bracket.pricebook_rate | currency(currency) %}
+                            {% capture price_span %}<span data-zs-pricelist-price="{{price_bracket.pricebook_rate}}">{{price}}</span>{% endcapture %}
+                            {% if price_bracket.end_quantity != 0 %}
+                                {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}            
+                            {% else %}
+                                {{i18n.get("product.quantity.above_range.offer.message",price_bracket.start_quantity,price_span)}}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="theme-prod-pricelist-morelist-outter">
+                    <ul class="theme-prod-pricelist-list theme-prod-pricelist-morelist">
+                        {% for i in range(4, price_brackets_length) %}
+                            {% assign price_bracket = price_brackets[i] %}
+                            <li>
+                                {% assign price = price_bracket.pricebook_rate | currency(currency) %}
+                                {% capture price_span %}<span data-zs-pricelist-price="{{price_bracket.pricebook_rate}}">{{price}}</span>{% endcapture %}
+                                {% if price_bracket.end_quantity != 0 %}
+                                    {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}            
+                                {% else %}
+                                    {{i18n.get("product.quantity.above_range.offer.message",price_bracket.start_quantity,price_span)}}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <p class="theme-prod-pricelist-show-btn" onclick="showMoreToggle(this,'show')">{{ i18n.get('product_filters.show_more.label') }}</p>
+                <p style="display: none;" class="theme-prod-pricelist-hide-btn" onclick="showMoreToggle(this,'hide')">{{ i18n.get('product_filters.show_less.label') }}</p>
+            {% endif %}                
+        </div>
+        {% elif price_brackets_length != 0 %}
+        <div data-zs-pricelist-variantid="{{variant.variant_id}}" class="theme-prod-pricelist" {% if (product.variants | size) != 1 %}style="display: none;"{% endif %}>
+            <ul class="theme-prod-pricelist-list">
+            {% for i in range(0, price_brackets_length) %}
+                {% assign price_bracket = price_brackets[i] %}
+                <li>
+                    {% assign price = price_bracket.pricebook_rate | currency(currency) %}
+                    {% if price_bracket.end_quantity != 0 %}
+                        <span class="theme-prod-pricelist-title">{{price_bracket.start_quantity}}-{{price_bracket.end_quantity}} {{ i18n.get('product.label.pieces') }}</span>
+                    {% else %}
+                        <span class="theme-prod-pricelist-title">> {{price_bracket.start_quantity}} {{ i18n.get('product.label.pieces') }}</span>
+                    {% endif %}
+                    <span data-zs-pricelist-price="{{price_bracket.pricebook_rate}}" class="theme-prod-pricelist-price">{{price}}</span>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% endif %} 
+{% endif %}

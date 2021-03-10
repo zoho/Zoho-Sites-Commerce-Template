@@ -1,0 +1,68 @@
+<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}">
+  <div class="zpcontainer ">
+    <div class="theme-product-detail-container">
+      <div class="theme-product-detail-column theme-product-detail-image-container">
+        {% include '_store-product-image-seven' %}
+      </div>
+      <div class="theme-product-detail-column theme-product-detail-varients-container">
+
+        <div class="theme-product-name">
+
+          {% if product.is_product_review_enabled %}
+          <div class="theme-rating-review-container">
+            <div class="theme-rating-review" data-comments-summary = "rating-review-write-review"></div>
+          </div>
+          {% endif %}
+
+          <h1>{{ product.name }}</h1>
+
+          {% if !product.is_returnable %}
+              <div class="theme-prod-non-returnable">
+                {{i18n.get("product.label.non_returnable")}}
+              </div>
+          {% endif %}
+
+        </div>
+        {% include '_store-product-pricing-seven' %}
+
+        {% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
+          <div class="theme-product-stock-availability-details">
+            {% if product.has_variants %}
+              {% for variant in product.variants %}
+              <span class="theme-prod-stock-details" data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
+                  {{i18n.get("product.message.out_of_stock")}}
+              </span>
+              {% endfor %}
+            {% else %}
+              {% if product.is_out_of_stock == true %}
+                <span class="theme-prod-stock-details {% if product.is_out_of_stock == true %}theme-out-of-stock {% else %} theme-stock-background-color{% endif %}">
+                    {{i18n.get("product.message.out_of_stock")}}
+                </span>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if product.short_description %}
+        <div class="theme-short-desc-row">
+          <div class="theme-product-short-description">
+            {{ product.short_description }}
+          </div>
+        </div>
+        {% endif %}
+
+        {% if product.is_social_share_enabled %}
+          <div class="theme-product-social-share" data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
+        {% endif %}
+
+        <div class="theme-product-varients-area">
+          {% if product.has_variants %}
+            {% include "_store-product-variants-seven" %}
+          {% endif %}
+          {% include "_store-product-custom-field-seven" %}
+          {% include "_store-product-quantity-add-cart-seven" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
