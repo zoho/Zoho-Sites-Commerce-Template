@@ -2,24 +2,15 @@
 	<h2 class="theme-section-heading {% if page.template_vars.store_template_no == '05' %}theme-store-search-heading-temp-05{% endif %} {% if page.template_vars.store_template_no == '07' %}theme-section-heading-temp-07{% endif %}">
 		{{i18n.get("search.result.title", search.query)}}
 	</h2>
-	{% if filters.is_enabled && filters.has_filters && search.products | size > 1 %}
-	<div class="theme-product-filter-icon-mobile-container theme-product-filter-icon-mobile-container-search">
-		<div data-theme-product-filter-mobile-icon class="theme-product-filter-icon-mobile theme-product-filter-icon-mobile-search">
-			<svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard-Copy-10" stroke="none" stroke-width="1" fill-rule="evenodd"><path id="Path" d="M15.333 0H0l6.133 7.253v5.014L9.2 13.8V7.253z"/></g></svg>
-		</div>
-  {% endif %}
-		{% if page.is_sorting_enabled && search.products | size > 1 %}
-		<div class="theme-collection-sort-inner">
-			<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
-			<select data-sort-by-products>
-				{% for sort_by_option in search.sort_by_options %}
-					<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
-				{% endfor %}
-			</select>
-		</div>
-		{% endif %}
 
-	{% if filters.is_enabled && filters.has_filters && search.products | size > 1 %}
+	{% if page.is_sorting_enabled && search.products | size > 1 && !filters.is_enabled %}
+	<div class="theme-collection-sort-inner">
+		<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+		<select data-sort-by-products>
+			{% for sort_by_option in search.sort_by_options %}
+				<option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+			{% endfor %}
+		</select>
 	</div>
 	{% endif %}
 
@@ -49,7 +40,29 @@
       <div class="zprow theme-produt-category-list-row">
 			{% endif %}
 
-        {% include "_store-product-selected-filter" %}
+				<div class="theme-filter-sortby-container">
+
+        	{% include "_store-product-selected-filter" %}
+
+					{% if filters.is_enabled && filters.has_filters && search.products | size > 1 %}
+					<div class="theme-product-filter-icon-mobile-container theme-product-filter-icon-mobile-container-search">
+					  <div data-theme-product-filter-mobile-icon class="theme-product-filter-icon-mobile theme-product-filter-icon-mobile-search">
+					    <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard-Copy-10" stroke="none" stroke-width="1" fill-rule="evenodd"><path id="Path" d="M15.333 0H0l6.133 7.253v5.014L9.2 13.8V7.253z"/></g></svg>
+					  </div>
+					  {% if page.is_sorting_enabled && search.products | size > 1 %}
+					  <div class="theme-collection-sort-inner">
+					    <span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+					    <select data-sort-by-products>
+					      {% for sort_by_option in search.sort_by_options %}
+					        <option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+					      {% endfor %}
+					    </select>
+					  </div>
+					  {% endif %}
+					</div>
+					{% endif %}
+
+				</div>
 
 				{% if filters.is_enabled && filters.has_filters && search.products | size > 1 %}
         <div class="zpcol-md-12 zpcol-sm-12 {% if filters.is_enabled && filters.has_filters && search.products | size > 1 && page.template_vars.product_list_style == '04' %} theme-store-collection-colum-style-04 {% endif %}">

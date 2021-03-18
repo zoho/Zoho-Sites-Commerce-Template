@@ -19741,9 +19741,7 @@
 }
 
 .theme-productfilter-enable{
-  @include respond-to(mediumdevice){
-    padding-top: 50px;
-  }
+  padding-top: 0;
   &.theme-productfilter-enable-search{
     @include respond-to(mediumdevice){
       padding-top: 0px;
@@ -19876,6 +19874,40 @@
       @include respond-to(mediumdevice){
         padding-left: 15px;
         padding-right: 15px;
+      }
+    }
+    .theme-filter-sortby-container{
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      @include respond-to(mediumdevice){
+        margin-bottom: 30px;
+        flex-direction: row;
+      }
+      .theme-product-filter-selected-container{
+        @include respond-to(mediumdevice){
+          padding-bottom: 0;
+          flex:1 0 0;
+        }
+      }
+      .theme-product-filter-icon-mobile-container{
+        @include respond-to(mediumdevice){
+          margin-left: auto;
+          padding-left: 20px;
+        }
+      }
+      @if map-get($user_layout_vars,'product_list_style') == 03 or map-get($user_layout_vars,'product_list_style') == 04 or map-get($user_layout_vars,'product_list_style') == 05 or map-get($user_layout_vars,'product_list_style') == 07 {
+        .theme-product-filter-icon-mobile-container{
+          margin-bottom: 30px;
+          @include respond-to(mediumdevice){
+            margin-bottom: 0;
+          }
+        }
+      }
+      @if map-get($user_layout_vars,'product_list_style') == 06 or map-get($user_layout_vars,'product_list_style') == 08 or map-get($user_layout_vars,'product_list_style') == 09 {
+        @include respond-to(mediumdevice){
+          margin-bottom: 0;
+        }
       }
     }
   }
@@ -20629,9 +20661,17 @@
   &.theme-product-filter-icon-mobile-container-search{
     width: 100%;
     padding: 0;
+    margin-top: 20px;
+    @if map-get($user_layout_vars,'product_list_style') == 06 or map-get($user_layout_vars,'product_list_style') == 08 or map-get($user_layout_vars,'product_list_style') == 09{
+      margin-bottom: 30px;
+    }
     @include respond-to(mediumdevice){
       margin-left: auto;
       width: auto;
+      margin-top: 0;
+      @if map-get($user_layout_vars,'product_list_style') == 06 or map-get($user_layout_vars,'product_list_style') == 08 or map-get($user_layout_vars,'product_list_style') == 09{
+        margin-bottom: 0px;
+      }
     }
   }
   .theme-product-filter-icon-mobile{
@@ -20642,9 +20682,6 @@
     border-radius: 3px;
     color: map-get($base_vars,'color-primary');
     font-size: 14px;
-    &.theme-product-filter-icon-mobile-search{
-      margin-top: 20px;
-    }
     svg{
       fill:currentColor;
       width: 24px;

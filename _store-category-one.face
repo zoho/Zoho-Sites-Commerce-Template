@@ -1,0 +1,119 @@
+{% comment %} CATEGORY IMAGE AND DESCRIPTION {% endcomment %}
+
+<div class="theme-section">
+  <div class="zpcontainer {% if page.template_vars.header_style == "06" && page.is_sidebar_enabled && filters.is_enabled && filters.has_filters && category.products | size > 1 %}theme-filter-enable-container{% endif %}">
+    <div class="zprow">
+        <div class="{% if !category.images[0].is_placeholder_image %}zpcol-md-6{% else %}zpcol-md-12 theme-category-noimage-description{% endif %} theme-category-col theme-category-col-left">
+            <div class="{% if !category.images[0].is_placeholder_image %}zpdark-section{% endif %} theme-category-description">
+                <h1 class="{% if category.description %}theme-category-heading-with-des{% endif %}">{{ category.name }}</h1>
+                {% if category.description %}
+                  {{ category.description }}
+                {% endif %}
+            </div>
+        </div>
+        {% if !category.images[0].is_placeholder_image %}
+        <div class="zpcol-md-6 theme-category-col theme-category-col-right">
+            <img src="{{ category.images[0].url }}/500x500" alt="{{ category.images[0].alternate_text }}" title="{{ category.images[0].title }}" />
+        </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+{% comment %} CATEGORY IMAGE AND DESCRIPTION END {% endcomment %}
+
+{% comment %} CATEGORY SORTBY {% endcomment %}
+
+{% if page.is_sorting_enabled && category.products | size > 1 && !filters.is_enabled %}
+  <div class="theme-collection-sortby-section">
+    <div class="zpcontainer {% if page.template_vars.header_style == "06" && page.is_sidebar_enabled && filters.is_enabled && filters.has_filters && category.products | size > 1 %}theme-filter-enable-container{% endif %}">
+      <div class="zprow">
+        <div class="zpcol-md-12 zpcol-sm-12 theme-collection-sort">
+          <div class="theme-collection-sort-inner">
+            <span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+            <select data-sort-by-products>
+              {% for sort_by_option in category.sort_by_options %}
+                <option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% comment %} CATEGORY SORTBY END {% endcomment %}
+
+{% comment %} PRODUCTS LIST IN CATEGORY PAGE {% endcomment %}
+
+<div class="theme-collection-section {% if filters.is_enabled && filters.has_filters && category.products | size > 1 %}theme-productfilter-enable{% endif %}">
+  <div class="zpcontainer {% if page.template_vars.header_style == "06" && page.is_sidebar_enabled && filters.is_enabled && filters.has_filters && category.products | size > 1 %}theme-filter-enable-container{% endif %}">
+    {% if page.template_vars.product_list_style == '04' %}
+    <div class="theme-store-collection-container {% if filters.is_enabled && filters.has_filters && category.products | size > 1 %} theme-store-collection-container-filter {% endif %}">
+    {% endif %}
+      {% if category.products | size == 0 %}
+        <h2 class="theme-no-products-error">{{i18n.get("category.noproducts.message")}}</h2>
+      {% endif %}
+
+      {% comment %} PRODUCT FILTER STARTS {% endcomment %}
+      {% if filters.is_enabled && filters.has_filters && category.products | size > 1 %}
+        <div data-theme-product-filter-overlay class="theme-product-filter-mobile-overlay">
+          <svg viewBox="0 0 512 513.5" xmlns="http://www.w3.org/2000/svg">
+            <path d="M115.5 92.5l140.5 140.5 140.5-140.5 23 23-140.5 140.5 140.5 140.5-23 23-140.5-140.5-140.5 140.5-23-23 140.5-140.5-140.5-140.5z" />
+          </svg>
+        </div>
+        <div data-zs-filter-container class="theme-produt-filter-row">
+          {% include "store-product-filters" %}
+        </div>
+      {% endif %}
+      {% comment %} PRODUCT FILTER ENDS {% endcomment %}
+
+      <div class="zprow theme-produt-category-list-row">
+        <div class="theme-filter-sortby-container">
+        {% include "_store-product-selected-filter" %}
+
+        {% comment %} CATEGORY SORTBY {% endcomment %}
+
+        {% if filters.is_enabled && filters.has_filters && category.products | size > 1 %}
+        <div class="theme-product-filter-icon-mobile-container">
+          <div data-theme-product-filter-mobile-icon class="theme-product-filter-icon-mobile">
+            <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard-Copy-10" stroke="none" stroke-width="1" fill-rule="evenodd"><path id="Path" d="M15.333 0H0l6.133 7.253v5.014L9.2 13.8V7.253z"/></g></svg>
+          </div>
+          {% if page.is_sorting_enabled && category.products | size > 1 %}
+            <div class="theme-collection-sortby-section">
+              <div class="theme-collection-sort">
+                <div class="theme-collection-sort-inner">
+                  <span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
+                  <select data-sort-by-products>
+                    {% for sort_by_option in category.sort_by_options %}
+                      <option value="{{ sort_by_option.value }}" {% if sort_by_option.is_selected %} selected {% endif %}>{{ sort_by_option.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% comment %} CATEGORY SORTBY END {% endcomment %}
+
+        </div>
+
+        <div class="zpcol-md-12 zpcol-sm-12 {% if filters.is_enabled && filters.has_filters && category.products | size > 1 && page.template_vars.product_list_style == '04' %} theme-store-collection-colum-style-04 {% endif %}">
+          <div class="zprow theme-product-ratio {% if page.template_vars.product_list_style == '04' %}theme-blur-style-04{% endif %} {% if filters.is_enabled && filters.has_filters && category.products | size > 1 && (page.template_vars.product_list_style == '09' || page.template_vars.product_list_style == '08') %}theme-product-filter-addcart-spacing-08-09{% endif %} {% if filters.is_enabled && filters.has_filters && category.products | size > 1 && page.template_vars.product_list_style == '02' %}theme-product-box-filter-spacing-02{% endif %}" data-sort-by-products-target>
+            {% for product in category.products %}
+              {% include "store-product-list-view" %}
+            {% endfor %}
+            {% include "_store-pagination" %}
+          </div>
+        </div>
+      </div>
+    {% if page.template_vars.product_list_style == '04' %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% comment %} PRODUCTS LIST CATEGORY PAGE END {% endcomment %}

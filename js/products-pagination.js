@@ -213,6 +213,7 @@ function fnLazyLoad(lazy_load_element) {
     }
     api_requested = true
     lazy_load_count++;
+    params.send_facet = false;
     loadProducts(params, INSERT_TYPE.APPEND);
 }
 
@@ -232,6 +233,7 @@ function changeSortByProducts() {
     };
     setProductFilterParams(params, false, true);
 
+    params.send_facet = false;
     loadProducts(params, INSERT_TYPE.INNER_HTML);
 }
 
@@ -248,6 +250,8 @@ function clickSortByProducts(e) {
   })
   elem.setAttribute(DATA_SELECTED, 'true');
   addClass(elem, THEME_ACTIVE_SORT_BY);
+
+  params.send_facet = false;
   loadProducts(params, INSERT_TYPE.INNER_HTML);
 }
 
@@ -278,6 +282,7 @@ function loadMoreProduct() {
     }
     setProductFilterParams(params, false, false);
 
+    params.send_facet = false;
     loadProducts(params, INSERT_TYPE.APPEND);
 }
 
@@ -334,7 +339,7 @@ function getProductsResponse(e) {
           var isFilterOverlay = filterContainerOverlay.classList.contains('theme-mobile-filter-overlay-show');
         }
 
-        if(data.is_filters && filter_container) {
+        if(data.is_filters && data.is_facet_sent && filter_container) {
           /* Remove blur loading on filter container */
           if(typeof data.filters_content != "undefined") {
             setInnerHTMLForElement(filter_container, data.filters_content);
@@ -1326,6 +1331,7 @@ function getProductsBasedOnFilter() {
     blurEl = document.querySelector('[' + DATA_FILTER_CONTAINER+ ']');
     showBlurLoading(blurEl);
 
+    params.send_facet = true;
     loadProducts(params, INSERT_TYPE.INNER_HTML);
 }
 
