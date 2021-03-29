@@ -14,14 +14,14 @@
         {% endif %}
       </a>
       {% if page.is_store_enabled %}
-        <ul class="theme-username-dropdown-list">
-           <li>
+        <ul class="theme-username-dropdown-list" data-zs-portal-user-dropdown>
+           <li data-zs-portal-profile>
              <a href="/account/profile">{{i18n.get("portal.profile.title")}}</a>
            </li>
-           <li>
+           <li data-zs-portal-myorders>
              <a href="/account/orders">{{i18n.get("orders.title.myorders")}}</a>
            </li>
-           <li>
+           <li data-zs-portal-addressbook>
              <a href="/account/address">{{i18n.get("address.tab.title")}}</a>
            </li>
          </ul>

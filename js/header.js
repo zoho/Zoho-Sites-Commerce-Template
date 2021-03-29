@@ -401,6 +401,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // BANNER BASED HEADER TEXT COLOR END
 
+    // EVENT DISPATCH FOR DOM CONTENT LOADED
+
+    var event = new Event('zs:header:dom', {});
+    document.dispatchEvent(event);
+
 });
 
 
@@ -502,6 +507,11 @@ window.addEventListener('resize', function(event) {
     }
 
     // CURRENCY RESIZE END
+
+    // EVENT DISPATCH FOR RESIZING
+
+    var event = new Event('zs:header:resize', {});
+    document.dispatchEvent(event);
 });
 
 window.addEventListener('scroll', function(event) {
@@ -697,6 +707,12 @@ window.addEventListener('scroll', function(event) {
     // FULL WIDTH BANNER HEADER FIXED END
 
     LastScrollVal = offsetVal;
+
+    // EVENT DISPATCH FOR SCROLL
+
+    var event = new Event('zs:header:scroll', {});
+    document.dispatchEvent(event);
+
 });
 
 // 	ONSCROLL HEADER EFFECT END

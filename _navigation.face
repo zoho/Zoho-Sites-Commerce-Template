@@ -2,7 +2,7 @@
 {% macro navi(menu) %}
 	{% assign sub_menus=menu.menu_items %}
 	{% if sub_menus %}
-		<ul>
+		<ul data-zs-menu-container>
 			{% for sub_menu in sub_menus %}
 				{% assign count = 1 %}
 				{{ subnavi(sub_menu, count) }}
@@ -35,7 +35,7 @@
 				{% endif %}
 		</a>
 		{% if sub_menus && sub_menus | length > 0 %}
-		<ul class="theme-sub-menu" style="display:none;">
+		<ul class="theme-sub-menu" data-zs-submenu-container style="display:none;">
 			{% for sub_menu in sub_menus %}
 				{% assign temp_count = count+1 %}
 				{{ subnavi(sub_menu, temp_count) }}

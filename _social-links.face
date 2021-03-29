@@ -4,7 +4,7 @@
     {% assign socialUrl = page.social_icons_list[socialIcon] %}
     {% if socialUrl %}
     <li class="theme-socialicon-list">
-      <a href="{{socialUrl}}" target="_blank" class="{% if page.social_icons_list[socialIcon] %}theme-{{socialIcon}}-container{% endif %}">
+      <a href="{{socialUrl}}" target="_blank" class="{% if page.social_icons_list[socialIcon] %}theme-{{socialIcon}}-container{% endif %}" data-zs-social-profile-link>
         {% case socialIcon %}
         {% when "facebook" %}
         <svg viewBox="0 0 53 97" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

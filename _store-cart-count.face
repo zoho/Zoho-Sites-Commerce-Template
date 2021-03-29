@@ -1,6 +1,6 @@
-<div class="theme-mini-cart theme-search-and-mini-cart-group-item" data-zs-view-cart>
-  <span class="theme-minicart-icon">
-  {% if page.template_vars.header_style != "07" %}
+<div class="theme-mini-cart theme-search-and-mini-cart-group-item" data-zs-cart-iconcount-container data-zs-view-cart>
+  <span class="theme-minicart-icon" data-zs-cart-icon>
+    {% if page.template_vars.header_style != "07" %}
     <svg viewBox="0 0 24 21" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(0 -.036)" fill="transparent" fill-rule="evenodd">
         <path d="M2.818 2.676H23.31l-3.015 12.058H5.835L2.817 2.676z"/>

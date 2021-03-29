@@ -1,4 +1,4 @@
-<div class="theme-currency-label">{{i18n.get("currency.label")}} : </div>
+<div class="theme-currency-label" data-zs-currency-label>{{i18n.get("currency.label")}} : </div>
 <ul data-theme-currency-list-ul="mymenu1">
   {% for currency in currencies %}
     <li data-theme-currency-list onclick="currentCurrency(this)" data-zs-currency-code="{{ currency.currency_code }}" {% if currency.is_base_currency %}data-theme-base-currency{%endif %}>

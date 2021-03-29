@@ -1,7 +1,7 @@
 {% if page.is_logo_enabled || page.is_title_enabled || page.is_caption_enabled %}
-<div class="theme-branding-info {% if page.template_vars.header_style == "02" && !page.is_search_enabled && !page.is_store_enabled %}theme-brand-style-02{% endif %}" data-theme-branding-info="zptheme-branding-info">
+<div data-zs-branding class="theme-branding-info {% if page.template_vars.header_style == "02" && !page.is_search_enabled && !page.is_store_enabled %}theme-brand-style-02{% endif %}" data-theme-branding-info="zptheme-branding-info">
   {% if page.is_logo_enabled %}
-  <div class="theme-logo-parent {% if !page.template_vars.is_mobile_logo_enabled %}theme-disable-logo-mobile{% endif %}">
+  <div data-zs-logo-container class="theme-logo-parent {% if !page.template_vars.is_mobile_logo_enabled %}theme-disable-logo-mobile{% endif %}">
     <a href="/">
       <img data-zs-logo src="{% if page.logo.url %}{{ page.logo.url }}{% else %}{{ page.template_assets }}/images/logo.png{% endif %}" alt="{{page.site_title}}" style="height:{{page.logo.height}};width:{{page.logo.width}}" />
     </a>
@@ -12,14 +12,14 @@
   <div class="theme-site-name-caption {% if page.template_vars.is_mobile_logo_enabled && page.template_vars.is_mobile_site_title_enabled && page.is_logo_enabled || page.template_vars.is_mobile_logo_enabled && page.template_vars.is_mobile_site_caption_enabled && page.is_logo_enabled %}theme-site-title-caption-space{% endif %}">
     {% if page.is_title_enabled %}
     {% if page.site_title %}
-    <div class="theme-site-name {% if !page.template_vars.is_mobile_site_title_enabled %}theme-disable-sitename-mobile{% endif %}">
+    <div data-zs-sitename class="theme-site-name {% if !page.template_vars.is_mobile_site_title_enabled %}theme-disable-sitename-mobile{% endif %}">
       {{page.site_title}}
     </div>
     {% endif %}
     {% endif %}
     {% if page.is_caption_enabled %}
     {% if page.site_caption %}
-    <div class="theme-site-caption {% if !page.template_vars.is_mobile_site_caption_enabled %}theme-disable-sitecaption-mobile{% endif %}">
+    <div data-zs-sitecaption class="theme-site-caption {% if !page.template_vars.is_mobile_site_caption_enabled %}theme-disable-sitecaption-mobile{% endif %}">
       {{page.site_caption}}
     </div>
     {% endif %}
