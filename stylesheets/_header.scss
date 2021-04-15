@@ -1447,10 +1447,53 @@
               width:map-get($default_vars, "size-header7-cart-icon");
               fill:map-get($default_vars, 'color-7th-header-style-cart-icon');
               stroke:map-get($default_vars, 'color-7th-header-style-cart-icon');
+							path{
+								fill:map-get($default_vars, 'color-7th-header-style-cart-icon');
+							}
             }
             .theme-mini-cart-count {
               right:-11px;
             }
+						@if map-get($user_layout_vars,'store_carticon_style_header_07') == 16 or map-get($user_layout_vars,'store_carticon_style_header_07') == 18 or map-get($user_layout_vars,'store_carticon_style_header_07') == 19 {
+							&.theme-carticon-headerseven-style-16,
+							&.theme-carticon-headerseven-style-18,
+							&.theme-carticon-headerseven-style-19{
+								.theme-mini-cart-count {
+		              top: auto;
+									bottom: -3px;
+		            }
+							}
+						}
+						@if map-get($user_layout_vars,'store_carticon_style_header_07') == 17 {
+							&.theme-carticon-headerseven-style-17{
+	 						 svg{
+	 							 background: map-get($base_vars,'color-light');
+	 							 border-radius: 50px;
+	 						 }
+	 					  }
+						}
+						@if map-get($user_layout_vars,'store_carticon_style_header_07') == 13 or map-get($user_layout_vars,'store_carticon_style_header_07') == 15 {
+							&.theme-carticon-headerseven-style-13,
+							&.theme-carticon-headerseven-style-15{
+								display: flex;
+								align-items: center;
+								padding-right: 0;
+								.theme-mini-cart-count{
+									position: static;
+									margin-left: 3px;
+									border-radius: 3px;
+								}
+							}
+						}
+						@if map-get($user_layout_vars,'store_carticon_style') == 11 {
+							&.theme-carticon-headerseven-style-11{
+								.theme-mini-cart-count{
+									right: auto;
+									left: 4px;
+									top: -10px;
+								}
+							}
+						}
           }
         }
       }
@@ -1541,10 +1584,53 @@
              height:map-get($default_vars, 'size-header7-cart-icon');
              fill:map-get($default_vars, 'color-7th-header-style-cart-icon');
              stroke:map-get($default_vars, 'color-7th-header-style-cart-icon');
+						 path{
+							 fill:map-get($default_vars, 'color-7th-header-style-cart-icon');
+						 }
            }
            .theme-mini-cart-count {
              right:-7px;
            }
+					 @if map-get($user_layout_vars,'store_carticon_style_header_07') == 16 or map-get($user_layout_vars,'store_carticon_style_header_07') == 18 or map-get($user_layout_vars,'store_carticon_style_header_07') == 19 {
+						 &.theme-carticon-headerseven-style-16,
+						 &.theme-carticon-headerseven-style-18,
+						 &.theme-carticon-headerseven-style-19{
+							 .theme-mini-cart-count {
+								 top: auto;
+								 bottom: -3px;
+							 }
+						 }
+					 }
+					 @if map-get($user_layout_vars,'store_carticon_style_header_07') == 17 {
+						 &.theme-carticon-headerseven-style-17{
+							svg{
+								background: map-get($base_vars,'color-light');
+								border-radius: 50px;
+							}
+						 }
+					 }
+					 @if map-get($user_layout_vars,'store_carticon_style_header_07') == 13 or map-get($user_layout_vars,'store_carticon_style_header_07') == 15 {
+						 &.theme-carticon-headerseven-style-13,
+						 &.theme-carticon-headerseven-style-15{
+							 display: flex;
+							 align-items: center;
+							 padding-right: 0;
+							 .theme-mini-cart-count{
+								 position: static;
+								 margin-left: 3px;
+								 border-radius: 3px;
+							 }
+						 }
+					 }
+					 @if map-get($user_layout_vars,'store_carticon_style') == 11 {
+						 &.theme-carticon-headerseven-style-11{
+							 .theme-mini-cart-count{
+								 right: auto;
+								 left: 4px;
+								 top: -10px;
+							 }
+						 }
+					 }
          }
        }
      }
@@ -1661,6 +1747,12 @@
                svg {
                  fill:map-get($default_vars, 'darkbg-color-7th-header-style-cart-icon');
                  stroke:map-get($default_vars, 'darkbg-color-7th-header-style-cart-icon');
+								 path{
+									 fill:map-get($default_vars, 'darkbg-color-7th-header-style-cart-icon');
+								 }
+								 @if map-get($user_layout_vars,'store_carticon_style_header_07') == 17 {
+									 background: map-get($default_vars,'darkbg-color-7th-header-style-cart-icon-17-background');
+								 }
                }
              }
            }

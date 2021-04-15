@@ -735,13 +735,15 @@
 				line-height: 0;
 				display: block;
 				position: relative;
-				margin-top:1px;
 				cursor: pointer;
 				svg{
 					width:map-get($default_vars,'size-cart-icon');
 					height: map-get($default_vars,'size-cart-icon');
 					fill:map-get($default_vars, 'color-search-cart-icon');
 					stroke:map-get($default_vars, 'color-search-cart-icon');
+					path{
+						fill:map-get($default_vars, 'color-search-cart-icon');
+					}
 				}
 				.theme-mini-cart-count{
 					background: map-get($default_vars, 'color-cart-count-background');
@@ -756,6 +758,45 @@
 					text-align: center;
 					top:-7px;
 					visibility: hidden;
+				}
+				@if map-get($user_layout_vars,'store_carticon_style') == 16 or map-get($user_layout_vars,'store_carticon_style') == 18 or map-get($user_layout_vars,'store_carticon_style') == 19 {
+					&.theme-carticon-style-16,
+					&.theme-carticon-style-18,
+					&.theme-carticon-style-19{
+						.theme-mini-cart-count{
+							top: auto;
+							bottom: -3px;
+						}
+					}
+				}
+				@if map-get($user_layout_vars,'store_carticon_style') == 17 {
+					&.theme-carticon-style-17{
+						svg{
+							background: map-get($base_vars,'color-light');
+							border-radius: 50px;
+						}
+					}
+				}
+				@if map-get($user_layout_vars,'store_carticon_style') == 13 or map-get($user_layout_vars,'store_carticon_style') == 15 {
+					&.theme-carticon-style-13,
+					&.theme-carticon-style-15{
+						display: flex;
+						align-items: center;
+						padding-right: 0;
+						.theme-mini-cart-count{
+							position: static;
+							margin-left: 3px;
+							border-radius: 3px;
+						}
+					}
+				}
+				@if map-get($user_layout_vars,'store_carticon_style') == 11 {
+					&.theme-carticon-style-11{
+						.theme-mini-cart-count{
+							right: auto;
+							left: -5px;
+						}
+					}
 				}
 			}
 		}

@@ -979,6 +979,9 @@ color-hover-active-text-style-06-navigation : map-get($base_vars, 'color-primary
 
 color-search-cart-icon : map-get($base_vars, 'color-secondary'),
 darkbg-color-search-cart-icon : map-get($base_vars, 'color-default'),
+
+darkbg-color-search-cart-icon-17-background : darken(map-get($base_vars, 'color-secondary'),10%),
+
 size-search-icon : 17px,
 size-cart-icon : 24px,
 
@@ -1028,6 +1031,8 @@ size-header7-cart-icon:18px,
 
 darkbg-color-7th-header-style-cart-icon: map-get($base_vars, 'color-default'),
 darkbg-color-7th-header-style-cart-divider-border : map-get($base_vars, 'color-default'),
+
+darkbg-color-7th-header-style-cart-icon-17-background : darken(map-get($base_vars, 'color-secondary'),10%),
 
 
 

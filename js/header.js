@@ -116,14 +116,14 @@ function responsivechanges() {
         if (socialIconParent) {
             socialIconParent.appendChild(socialIconInnerParent);
         }
-        if (headerSearchCart) {
+        if (headerSearchCart && headerSearchCartPositionNonResponsive) {
             headerSearchCartPositionNonResponsive.appendChild(headerSearchCart);
         }
         if(responsiveSearchCartContainer && headerSearchCart){
           responsiveSearchCartContainer.innerHTML = "";
         }
         if(headerContainer.className.indexOf('zpheader-style-02') >= 0 || headerContainer.className.indexOf('zpheader-style-03') >= 0){
-          if(offsetValLoad < scrollTopVal && headerSearchCart){
+          if(offsetValLoad < scrollTopVal && headerSearchCart && headerSearchCartPositionNonResponsive){
             headerSearchCartPositionNonResponsive.appendChild(headerSearchCart);
           }
           else if(menuParent && offsetValLoad > scrollTopVal && headerSearchCart && searchCartScrollPosition){

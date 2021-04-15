@@ -697,6 +697,9 @@
       .theme-search-cart-non-res{
         &.theme-header-06-search-cart{
           margin-right: 0px;
+          .theme-search-and-mini-cart-group-item{
+            position: relative;
+          }
         }
       }
     }

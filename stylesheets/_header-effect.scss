@@ -1008,6 +1008,12 @@
             svg{
               fill:map-get($default_vars,'darkbg-color-search-cart-icon');
               stroke:map-get($default_vars,'darkbg-color-search-cart-icon');
+              path{
+                fill:map-get($default_vars,'darkbg-color-search-cart-icon');
+              }
+              @if map-get($user_layout_vars,'store_carticon_style') == 17 {
+                background: map-get($default_vars,'darkbg-color-search-cart-icon-17-background');
+              }
             }
           }
         }
