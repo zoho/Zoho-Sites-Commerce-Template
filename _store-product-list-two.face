@@ -28,7 +28,7 @@
         </noscript>
       {% endif %}
     </div>
-    <div class="theme-product-name">{{ product.name }}</div>
+    <div class="theme-product-name"><span>{{ product.name }}</span></div>
     {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
       <div class="theme-prod-coupons-code-container">
     {% endif %}  
