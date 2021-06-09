@@ -2,7 +2,7 @@
 {% if product.images | size < 2 %}
 
 <div class="theme-prod-detail-img-container">
-	<div class="theme-prod-detail-img">
+	<div class="theme-prod-detail-img" data-zs-product-img-container>
 		<div class="theme-prod-detail-img-inner" data-lightbox-container="prod_images_grid_{{product.product_id}}">
 			{% if product.images[0].is_placeholder_image %}
 			<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
@@ -16,7 +16,7 @@
 {% else %}
 
 <div class="theme-prod-detail-img-container">
-	<div class="theme-prod-detail-img">
+	<div class="theme-prod-detail-img" data-zs-product-img-container>
 		<div class="theme-image-overlay" data-theme-image-overlay="theme-image-overlay-{{product.product_id}}">
 			<div class="theme-image-loader"></div>
 		</div>
@@ -32,9 +32,9 @@
 		{% for image in product.images %}
 		<div class="theme-prod-detail-thumbnail" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}" data-lightbox-thumbnail>
 			{% if image.is_placeholder_image %}
-			<img alt="{{ image.alternate_text }}" title="{{image.title }}" data-image-resolution="{{ image.url }}" src="{{ image.url }}">
+			<img alt="{{ image.alternate_text }}" title="{{image.title }}" data-image-resolution="{{ image.url }}" data-zs-thumbnail-image src="{{ image.url }}">
 			{% else %}
-			<img alt="{{ image.alternate_text }}" title="{{image.title }}" data-image-resolution="{{ image.url }}/800x800" src="{{ image.url }}/200x200">
+			<img alt="{{ image.alternate_text }}" title="{{image.title }}" data-image-resolution="{{ image.url }}/800x800" data-zs-thumbnail-image src="{{ image.url }}/200x200">
 			{% endif %}
 		</div>
 		{% endfor %}

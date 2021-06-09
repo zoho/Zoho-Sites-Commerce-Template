@@ -5,7 +5,7 @@
 			{{i18n.get("product.message.choose_quantity")}}
 		</div>
 		<div class="theme-product-varient-quantity">
-			<div class="theme-product-quantity-spinner">
+			<div class="theme-product-quantity-spinner" data-zs-quantity-container>
 	      <input class="theme-quantity-decrease" onclick="decreaseCount(this)" type="button">
 	      <input name="qty" title="quantity" type="text" maxlength="999" onkeypress='return productQuantity(event);' value="1" data-quantity="{{ product.product_id }}" data-theme-quantity data-zs-quantity>
 	      <input class="theme-quantity-increase" onclick="increaseCount(this)" type="button">

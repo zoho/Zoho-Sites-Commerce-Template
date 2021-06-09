@@ -1,9 +1,9 @@
 {% if product.is_out_of_stock == false  %}
 <div class="theme-product-options" data-nostock-quantity>
 		<div class="theme-product-quantity">
-				<div class="theme-product-option-label">{{i18n.get("cart.quantity.label")}}</div>
+				<div class="theme-product-option-label" data-zs-quantity-label>{{i18n.get("cart.quantity.label")}}</div>
 				<div class="theme-product-quantity-select">
-						<div class="theme-box-qty">
+						<div class="theme-box-qty" data-zs-quantity-container>
 								<input type="text" name="qty" data-quantity="{{product.product_id}}" maxlength="999" title="quantity" value="1" onkeypress='return productQuantity(event);' data-theme-quantity data-zs-quantity>
 								<div class="theme-qty-arrows">
 									<span>

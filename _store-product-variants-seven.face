@@ -10,8 +10,8 @@
 
 {% for attribute in product.attributes %}
 <div class="theme-product-varients-row">
-		<div class="theme-product-variant">
-			<div class="theme-product-variant-label">
+		<div class="theme-product-variant" data-zs-product-variant-container="{{attribute.name}}" {% if attribute.type == 'Color' %}data-zs-product-color-variants{% endif %}>
+			<div class="theme-product-variant-label" data-zs-product-variant-label>
 				{{ attribute.name }}
 			</div>
 

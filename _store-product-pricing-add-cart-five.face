@@ -1,4 +1,5 @@
 <div class="theme-product-pricing-and-cart-button-area">
+  <div data-zs-pricing-container>
   <span class="theme-price-label">Price</span>
   {% if product.has_variants %}
   <div class="theme-product-pricing" data-zs-pricings data-zs-variant-id="-1">
@@ -52,7 +53,7 @@
   <div data-zs-pricelist class="theme-prod-pricelist-outter">
     {% include 'store-product-pricelist' %}
   </div>
-  
+  </div>
   {% if product.is_out_of_stock == false  %}
   <div class="theme-product-cart-button" data-nostock-cart-add="theme-nostock-cart-add">
     <a class="zpbutton zpbutton-type-primary zpbutton-size-lg" data-zs-add-to-cart data-zs-product-variant-id {% if !product.has_variants %} ="{{ product.variants[0].variant_id }}" {% endif %}>

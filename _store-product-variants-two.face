@@ -1,7 +1,7 @@
 {% for attribute in product.attributes %}
 		<div class="theme-product-options">
-				<div class="theme-product-sizes">
-						<div class="theme-product-option-label">{{ attribute.name }}</div>
+				<div class="theme-product-sizes" data-zs-product-variant-container="{{attribute.name}}" {% if attribute.type == 'Color' %}data-zs-product-color-variants{% endif %}>
+						<div class="theme-product-option-label" data-zs-product-variant-label>{{ attribute.name }}</div>
 						<div class="theme-product-size-select">
 								<span>
 									<svg width="8px" height="6px" viewBox="0 0 8 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

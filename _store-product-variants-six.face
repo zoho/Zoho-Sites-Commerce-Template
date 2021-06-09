@@ -1,9 +1,9 @@
 {% for attribute in product.attributes %}
 	{% if attribute.type == 'Color' %}
-		<div class="theme-product-variant-container">
+		<div class="theme-product-variant-container" data-zs-product-variant-container="{{attribute.name}}" data-zs-product-color-variants>
 			<div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">{{i18n.get("product.message.attribute_select",attribute.name)}}</div>
 			<div class="theme-product-color-variant-container">
-				<div class="theme-prod-variant-label">
+				<div class="theme-prod-variant-label" data-zs-product-variant-label>
 					{{ attribute.name }}
 				</div>
 				<div class="theme-product-color-variations" data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">
@@ -18,7 +18,7 @@
 			</div>
 		</div>
 	{% else %}
-		<div class="theme-product-variant-container">
+		<div class="theme-product-variant-container" data-zs-product-variant-container="{{attribute.name}}">
 			<div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">{{i18n.get("product.message.attribute_select",attribute.name)}}</div>
 			<div class="theme-product-size-varient">
 				<select data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">

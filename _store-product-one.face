@@ -1,11 +1,11 @@
-<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}">
+<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}" data-zs-product-details-primary-section>
   <div class="zpcontainer">
-    <div class="theme-prod-details-container">
+    <div class="theme-prod-details-container" data-zs-product-primary-details>
 
       {% include "_store-product-image-one" %}
       <div class="theme-prod-detail-entries zpdark-section">
         <div class="theme-prod-detail-entry-row theme-prod-name-review-entry zpdark-section">
-          <h1 class="theme-product-name">{{ product.name }}</h1>
+          <h1 class="theme-product-name" data-zs-product-name>{{ product.name }}</h1>
 
           {% if product.is_product_review_enabled %}
           <div class="theme-rating-review-container">
@@ -17,11 +17,11 @@
           {% endif %}
 
           {% if !product.is_returnable %}
-            <div class="theme-prod-non-returnable">{{i18n.get("product.label.non_returnable")}}</div>
+            <div class="theme-prod-non-returnable" data-zs-product-non-returnable>{{i18n.get("product.label.non_returnable")}}</div>
           {% endif %}
 
           {% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
-            <div class="theme-stock-info-container">
+            <div class="theme-stock-info-container" data-zs-product-outofstock>
                 {% if product.has_variants %}
                   {% for variant in product.variants %}
                   <span data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
@@ -63,14 +63,14 @@
 
         {% if  product.short_description %}
         <div class="theme-prod-detail-entry-row">
-          <div class="theme-product-short-description">
+          <div class="theme-product-short-description" data-zs-product-short-description>
             {{ product.short_description }}
           </div>
         </div>
         {% endif %}
 
         {% if product.is_social_share_enabled %}
-          <div class="theme-prod-detail-entry-row" data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
+          <div class="theme-prod-detail-entry-row" data-zs-product-socialshare data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
         {% endif %}
 
       </div>

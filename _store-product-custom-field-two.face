@@ -11,9 +11,9 @@
 			{% if is_valid_field %}
       <div class="theme-product-options-varient-container" data-variant-id="{{ variant.variant_id }}" {% if product.has_variants %}style="display:none"{% endif %}>
           <div class="theme-product-options">
-            <div class="theme-product-sizes theme-custom-field-container {% if custom_field.field_type == 'check_box' %}theme-custom-field-checkbox-container{% endif %}">
+            <div class="theme-product-sizes theme-custom-field-container {% if custom_field.field_type == 'check_box' %}theme-custom-field-checkbox-container{% endif %}" data-zs-customfield-container="{{custom_field.field_type}}{% if custom_field.edit_on_store == false %}-display{% endif %}">
               {% if custom_field.field_type != "check_box" %}
-              <div class="theme-product-option-label theme-custom-field-label">
+              <div class="theme-product-option-label theme-custom-field-label" data-zs-customfield-label>
                 {{ custom_field.label }}
                 {% if custom_field.edit_on_store && custom_field.is_mandatory %}
                     <span class="theme-custom-mandatory-field"> * </span>
@@ -25,10 +25,10 @@
                   <input type="checkbox" {% if custom_field.value == "true" %}checked{% endif %} disabled>
                   {% elif custom_field.field_type == "multiselect" %}
                     {% for value in  custom_field.values %}
-                      <span class="theme-custom-field-value theme-custom-field-value-multi-select">{{ value }}</span>
+                      <span class="theme-custom-field-value theme-custom-field-value-multi-select" data-zs-customfield-display-value>{{ value }}</span>
                     {% endfor %}
                   {% else %}
-                			<span class="theme-custom-field-value">
+                			<span class="theme-custom-field-value" data-zs-customfield-display-value>
                         {% if custom_field.field_type == "amount" || custom_field.field_type == "decimal" || custom_field.field_type == "number" %}
                           {{ custom_field.display_value }}
                         {% elif custom_field.field_type == "url" %}
@@ -39,7 +39,7 @@
                       </span>
                   {% endif %}
                   {% if custom_field.field_type == "check_box" %}
-                    <div class="theme-product-option-label theme-custom-field-label">
+                    <div class="theme-product-option-label theme-custom-field-label" data-zs-customfield-label>
                       {{ custom_field.label }}
                     </div>
                   {% endif %}
@@ -47,7 +47,7 @@
 
                   {% if custom_field.field_type == "check_box" %}
                       <input type="checkbox" data-default-value="{{ custom_field.value }}" data-field-type="{{ custom_field.field_type }}" data-label="{{ custom_field.label }}" data-custom-field-id="{{ custom_field.customfield_id }}" {% if custom_field.is_mandatory %}data-validate="required" {% endif %} value="{{ custom_field.value }}" {% if custom_field.value == "true" %}checked{% endif %} data-onchange-event>
-                      <div class="theme-product-option-label theme-custom-field-label">
+                      <div class="theme-product-option-label theme-custom-field-label" data-zs-customfield-label>
                         {{ custom_field.label }}
                         {% if custom_field.edit_on_store && custom_field.is_mandatory %}
                             <span class="theme-custom-mandatory-field"> * </span>

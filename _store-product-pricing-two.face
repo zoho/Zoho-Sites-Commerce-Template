@@ -1,3 +1,4 @@
+<div data-zs-pricing-container>
 {% if product.has_variants %}
 <div class="theme-prod-detail-entry-row theme-prod-total-price-container" data-zs-pricings data-zs-variant-id="-1">
 
@@ -50,3 +51,4 @@
 	{% endif %}
 </div>
 {% endif %}
+</div>

@@ -2,7 +2,7 @@
 {% if product.images | size < 2 %}
 
 <div class="theme-product-image-container">
-	<div class="theme-product-full-image" data-lightbox-container="prod_images_grid_{{product.product_id}}">
+	<div class="theme-product-full-image" data-zs-product-img-container data-lightbox-container="prod_images_grid_{{product.product_id}}">
 		{% if product.images[0].is_placeholder_image %}
 		<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
 		{% else %}
@@ -11,7 +11,7 @@
 	</div>
 
 	{% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
-		<div class="theme-product-availabilty">
+		<div class="theme-product-availabilty" data-zs-product-outofstock>
 			{% if product.has_variants %}
 				{% for variant in product.variants %}
 				<span class="theme-prod-stock-details" data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
@@ -33,7 +33,7 @@
 {% else %}
 
 <div class="theme-product-image-container">
-	<div class="theme-product-full-image">
+	<div class="theme-product-full-image" data-zs-product-img-container>
 		<div class="theme-image-overlay" data-theme-image-overlay="theme-image-overlay-{{product.product_id}}">
 			<div class="theme-image-loader"></div>
 		</div>
@@ -47,16 +47,16 @@
 		{% for image in product.images %}
 		<div class="theme-product-thumbnail-image" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}" data-lightbox-thumbnail>
 			{% if image.is_placeholder_image %}
-			<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" src="{{ image.url }}">
+			<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" data-zs-thumbnail-image src="{{ image.url }}">
 			{% else %}
-			<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/700x700" src="{{ image.url }}/500x500">
+			<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/700x700" data-zs-thumbnail-image src="{{ image.url }}/500x500">
 			{% endif %}
 		</div>
 		{% endfor %}
 	</div>
 
 	{% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
-		<div class="theme-product-availabilty">
+		<div class="theme-product-availabilty" data-zs-product-outofstock>
 			{% if product.has_variants %}
 				{% for variant in product.variants %}
 				<span class="theme-prod-stock-details" data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">

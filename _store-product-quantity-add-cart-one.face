@@ -1,10 +1,10 @@
 {% if product.is_out_of_stock == false  %}
 <div class="theme-prod-detail-entry-row">
-	<h4 class="theme-cal-detail-title {% if product.is_out_of_stock == true  %}theme-quantity-label-nostock{% endif %}" data-nostock-quantity>
+	<h4 class="theme-cal-detail-title {% if product.is_out_of_stock == true  %}theme-quantity-label-nostock{% endif %}" data-nostock-quantity data-zs-quantity-label>
 		{{i18n.get("product.message.choose_quantity")}}
 	</h4>
 	<div class="theme-prod-quantity-to-cart">
-		<div class="theme-quantity-spinner-container {% if product.is_out_of_stock == true  %}theme-quantity-nostock{% endif %}" data-nostock-quantity>
+		<div class="theme-quantity-spinner-container {% if product.is_out_of_stock == true  %}theme-quantity-nostock{% endif %}" data-nostock-quantity data-zs-quantity-container>
 			<input type="text" name="qty" data-quantity="{{product.product_id}}" maxlength="999" title="quantity" value="1" onkeypress='return productQuantity(event);' data-theme-quantity data-zs-quantity>
 			<div class="theme-quantity-arrows">
 				<input type="button" class="theme-quantity-increase" onclick="increaseCount(this)">

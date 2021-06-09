@@ -1,9 +1,9 @@
 {% if product.is_out_of_stock == false  %}
 <div class="theme-prod-variant theme-prod-detail-entry-row" data-nostock-quantity>
-		<div class="theme-prod-variant-label">
+		<div class="theme-prod-variant-label" data-zs-quantity-label>
 			{{i18n.get("product.message.choose_quantity")}}
 		</div>
-		<div class="theme-prod-quantity-to-cart">
+		<div class="theme-prod-quantity-to-cart" data-zs-quantity-container>
 			<div class="theme-quantity-spinner">
 				<input type="button" class="theme-quantity-decrease" onclick="decreaseCount(this)">
 			</div>
@@ -27,11 +27,11 @@
 
 		</span>
 		{% endif %}
-	
+
 	<div data-zs-pricelist class="theme-prod-pricelist-outter">
 		{% include 'store-product-pricelist' %}
 	</div>
-	
+
     {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
     <div class="theme-prod-coupons-outtercontainer" data-zs-app="product_coupons" data-zs-coupons-list></div>
     {% endif %}

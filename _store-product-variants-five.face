@@ -9,8 +9,8 @@
 </select>
 
 {% for attribute in product.attributes %}
-<li>
-	<div class="theme-product-varient-lable">
+<li data-zs-product-variant-container="{{attribute.name}}" {% if attribute.type == 'Color' %}data-zs-product-color-variants{% endif %}>
+	<div class="theme-product-varient-lable" data-zs-product-variant-label>
 		Select {{ attribute.name }}
 	</div>
 	<div class="theme-product-variant-container">

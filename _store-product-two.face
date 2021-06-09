@@ -1,10 +1,10 @@
-<div class="theme-section theme-product-image-container theme-product-details-page {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}">
+<div class="theme-section theme-product-image-container theme-product-details-page {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-id = "{{ product.product_id }}" data-zs-product-details-primary-section>
   <div class="zpcontainer">
-    <div class="theme-product-details-container">
+    <div class="theme-product-details-container" data-zs-product-primary-details>
       {% include "_store-product-image-two" %}
       <div class="theme-product-main-info-container">
         <div class="theme-product-info-content-row theme-product-info-header-area">
-          <h1 class="zpheading theme-product-details-heading">{{ product.name }}</h1>
+          <h1 class="zpheading theme-product-details-heading" data-zs-product-name>{{ product.name }}</h1>
 
           {% if product.is_product_review_enabled %}
           <div class="theme-rating-review-container">
@@ -16,7 +16,7 @@
           {% endif %}
 
           {% if !product.is_returnable %}
-            <div class="theme-prod-non-returnable">{{i18n.get("product.label.non_returnable")}}</div>
+            <div class="theme-prod-non-returnable" data-zs-product-non-returnable>{{i18n.get("product.label.non_returnable")}}</div>
           {% endif %}
         </div>
         <div class="theme-product-info-content-row theme-product-details-price-and-availability-container {% if product.short_description %}theme-short-desc-noborder{% endif %}">
@@ -25,7 +25,7 @@
           </div>
 
           {% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
-          <div class="theme-product-details-availability-status">
+          <div class="theme-product-details-availability-status" data-zs-product-outofstock>
             {% if product.has_variants %}
               {% for variant in product.variants %}
               <span data-variant-id-stock="{{ variant.variant_id }}" data-stock-avail="{{variant.is_out_of_stock}}" style="display:none;">
@@ -69,14 +69,14 @@
 
         {% if product.short_description %}
         <div class="theme-product-info-content-row theme-short-desc-row">
-          <div class="theme-product-short-description">
+          <div class="theme-product-short-description" data-zs-product-short-description>
             {{ product.short_description }}
           </div>
         </div>
         {% endif %}
 
         {% if product.is_social_share_enabled %}
-          <div class="theme-product-info-content-row theme-product-social-share" data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
+          <div class="theme-product-info-content-row theme-product-social-share" data-zs-product-socialshare data-zs-app="social_share" data-style="{{product.social_share_options.style}}" data-align="{{product.social_share_options.align}}" data-count="{{product.social_share_options.show_count}}"></div>
         {% endif %}
 
         <div class="theme-product-info-content-row theme-product-variants-area">

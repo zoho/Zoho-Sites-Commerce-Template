@@ -1,9 +1,9 @@
 {% if product.is_out_of_stock == false  %}
 <li class="{% if product.is_out_of_stock == true  %}theme-quantity-nostock{% endif %}" data-nostock-quantity>
-  <div class="theme-product-varient-lable">
+  <div class="theme-product-varient-lable" data-zs-quantity-label>
     {{i18n.get("cart.quantity.label")}}
   </div>
-  <div class="theme-product-varient-quantity">
+  <div class="theme-product-varient-quantity" data-zs-quantity-container>
     <div class="theme-product-quantity-spinner">
       <input class="theme-quantity-decrease" onclick="decreaseCount(this)" type="button">
       <input name="qty" title="quantity" type="text" maxlength="999" onkeypress='return productQuantity(event);' value="1" data-quantity="{{ product.product_id }}" data-theme-quantity data-zs-quantity>

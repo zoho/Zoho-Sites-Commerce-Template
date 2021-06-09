@@ -1,3 +1,4 @@
+<div data-zs-pricing-container>
 {% if product.has_variants %}
 <div class="theme-product-detail-price-area" data-zs-pricings data-zs-variant-id="-1">
 	{% if product.has_variant_price %}
@@ -48,6 +49,7 @@
 </div>
 
 {% endif %}
+</div>
 
 <div data-zs-pricelist class="theme-prod-pricelist-outter">
 	{% include 'store-product-pricelist' %}

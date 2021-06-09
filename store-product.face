@@ -94,12 +94,12 @@
 
 <div data-theme-content-container="theme-content-container" class="theme-content-area {% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled %}zpcontent-for-header-06{% endif %} {% if page.template_vars.header_style == "06" && page.is_sidebar_enabled %}zpcontent-for-productdetails-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
 		<div class="theme-content-container theme-product-details-style-{{page.template_vars.product_details_style}}">
-			<div class="theme-content-area-inner">
+			<div class="theme-content-area-inner" data-zs-product-details-section-container>
 
 				{% comment %} BREADCRUMB STARTS HERE {% endcomment %}
 
 				{% if page.template_vars.breadcrumb_style == '01' && page.is_breadcrumb_enabled %}
-				<div class="theme-section theme-breadcrumb-container">
+				<div class="theme-section theme-breadcrumb-container" data-zs-product-details-breadcrumb-section>
 					<div class="zpcontainer">
 						<div class="theme-breadcrumb">
 							{% for bread_crumb in page.breadcrumbs %}
@@ -114,7 +114,7 @@
 				{% endif %}
 
 				{% if page.template_vars.breadcrumb_style == '02' && page.is_breadcrumb_enabled %}
-	      <div class="theme-section theme-product-page-breadcrumb theme-product-page-breadcrumb-details {% if page.template_vars.product_details_style == '02' %}theme-breadcrumb-bottom-space{% endif %}">
+	      <div class="theme-section theme-product-page-breadcrumb theme-product-page-breadcrumb-details {% if page.template_vars.product_details_style == '02' %}theme-breadcrumb-bottom-space{% endif %}" data-zs-product-details-breadcrumb-section>
 	        <div class="zpcontainer">
 	          <div class="theme-porduct-bredcrumb">
 	            {% for bread_crumb in page.breadcrumbs %}
@@ -131,7 +131,7 @@
 	      {% endif %}
 
 				{% if page.template_vars.breadcrumb_style == '03' && page.is_breadcrumb_enabled %}
-				<div class="theme-section theme-breadcrumb-container">
+				<div class="theme-section theme-breadcrumb-container" data-zs-product-details-breadcrumb-section>
 					<div class="zpcontainer">
 						<div class="theme-breadcrumb">
 							{% for bread_crumb in page.breadcrumbs %}
@@ -154,7 +154,7 @@
 				{% endif %}
 
 				{% if page.template_vars.breadcrumb_style == '04' && page.is_breadcrumb_enabled %}
-				<div class="theme-section theme-breadcrumb-container">
+				<div class="theme-section theme-breadcrumb-container" data-zs-product-details-breadcrumb-section>
 					<div class="zpcontainer">
 						<div class="theme-breadcrumb">
 							{% for bread_crumb in page.breadcrumbs %}
@@ -171,7 +171,7 @@
 				{% endif %}
 
 				{% if page.template_vars.breadcrumb_style == '05' && page.is_breadcrumb_enabled %}
-				<div class="theme-section theme-breadcrumb-container">
+				<div class="theme-section theme-breadcrumb-container" data-zs-product-details-breadcrumb-section>
 						<div class="zpcontainer">
 								<div class="theme-porduct-breadcrumb">
 									{% for bread_crumb in page.breadcrumbs %}
@@ -186,7 +186,7 @@
 				{% endif %}
 
 				{% if page.template_vars.breadcrumb_style == '06' && page.is_breadcrumb_enabled %}
-	      <div class="theme-section theme-breadcrumb-container">
+	      <div class="theme-section theme-breadcrumb-container" data-zs-product-details-breadcrumb-section>
 	          <div class="zpcontainer">
 	            <div class="zpcol-md-12">
 								<div class="theme-porduct-breadcrumb">
@@ -203,7 +203,7 @@
 	      {% endif %}
 
 				{% if page.template_vars.breadcrumb_style == '07' && page.is_breadcrumb_enabled %}
-				<div class="theme-section theme-breadcrumb-container">
+				<div class="theme-section theme-breadcrumb-container" data-zs-product-details-breadcrumb-section>
 					<div class="zpcontainer">
 						<div class="theme-breadcrumb">
 							{% for bread_crumb in page.breadcrumbs %}
@@ -264,10 +264,10 @@
 				{% if page.template_vars.product_content_style == '01' %}
 
 					{% if product.description || ( page.is_specification_enabled && product.specification_group | size != 0 ) %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-tab-section>
 						<div class="zpcontainer">
-							<div class="theme-prod-detail-tab-tabcontent-container">
-								<div class="theme-prod-detail-tabs">
+							<div class="theme-prod-detail-tab-tabcontent-container" data-zs-detail-tabs-tabcontents-container>
+								<div class="theme-prod-detail-tabs" data-zs-detail-tabs-container>
 									{% if product.description %}
 									<div class="theme-prod-detail-tab theme-prod-detail-tab-active" data-detail-tab="theme-product-detail" onclick="detailtab(this)">
 										{{i18n.get("product.label.details")}}
@@ -279,7 +279,7 @@
 										</div>
 									{% endif %}
 								</div>
-								<div class="theme-prod-detail-tab-contents">
+								<div class="theme-prod-detail-tab-contents" data-zs-detail-tabs-content-container>
 									{% if product.description %}
 									<div class="theme-prod-detail-tab-content theme-prod-detail-tab-content-active" data-detail-tab-content="theme-product-detail-content">
 										<div class="theme-prod-detail-content-info-container">
@@ -310,9 +310,9 @@
 					{% comment %} COMMENT BOX STARTS HERE {% endcomment %}
 
 					{% if product.is_product_review_enabled %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-commentbox-section>
 						<div class="zpcontainer">
-								<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-app="commentbox">
+								<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-product-commentbox data-zs-app="commentbox">
 
 								</div>
 						</div>
@@ -322,7 +322,7 @@
 					{% comment %} COMMENT BOX ENDS HERE {% endcomment %}
 
 					{% comment %} RECOMMENDED PRODUCTS STARTS HERE {% endcomment %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-recommended-section>
 						<div class="zpcontainer">
 							<div class="zprow">
 								<div class="zpcol-md-12 zpcol-sm-12">
@@ -340,11 +340,11 @@
 				{% if page.template_vars.product_content_style == '02' %}
 
 					{% if product.description || ( page.is_specification_enabled && product.specification_group | size != 0 ) %}
-					<div class="theme-product-details-page theme-product-details-tab-container">
+					<div class="theme-product-details-page theme-product-details-tab-container" data-zs-product-details-tab-section>
 						<div class="zpcontainer">
 							<div class="theme-product-specification-tabs-container">
-								<div class="theme-product-specification-tabs">
-									<div class="theme-product-tabs-wrapper">
+								<div class="theme-product-specification-tabs" data-zs-detail-tabs-tabcontents-container>
+									<div class="theme-product-tabs-wrapper" data-zs-detail-tabs-container>
 										{% if product.description %}
 											<div class="theme-product-tab theme-prod-detail-tab-active" data-detail-tab="theme-product-detail" onclick="detailtab(this)">
 												{{i18n.get("product.label.details")}}
@@ -354,7 +354,7 @@
 											<div class="theme-product-tab{% if !product.description %} theme-prod-detail-tab-active{% endif %}" data-detail-tab="theme-product-specification" onclick="detailtab(this)">{{i18n.get("product.label.specifications")}}</div>
 										{% endif %}
 									</div>
-									<div class="theme-product-tab-content-container">
+									<div class="theme-product-tab-content-container" data-zs-detail-tabs-content-container>
 										{% if product.description %}
 										<div class="theme-product-tab-content theme-prod-detail-tab-content-active" data-detail-tab-content="theme-product-detail-content">
 											<div class="theme-product-info-content">
@@ -387,9 +387,9 @@
 					{% comment %} COMMENT BOX STARTS HERE {% endcomment %}
 
 					{% if product.is_product_review_enabled %}
-					<div class="theme-section theme-product-details-page">
+					<div class="theme-section theme-product-details-page" data-zs-product-details-commentbox-section>
 						<div class="zpcontainer">
-							<div class="zpcol-md-12 zpcol-sm-12" data-zs-app="commentbox">
+							<div class="zpcol-md-12 zpcol-sm-12" data-zs-product-commentbox data-zs-app="commentbox">
 
 							</div>
 						</div>
@@ -400,7 +400,7 @@
 
 
 					{% comment %} RECOMMENDED PRODUCTS STARTS HERE {% endcomment %}
-					<div class="theme-section theme-product-details-page">
+					<div class="theme-section theme-product-details-page" data-zs-product-details-recommended-section>
 						<div class="zpcontainer">
 							<div class="zprow">
 								<div class="zpcol-md-12 zpcol-sm-12">
@@ -418,11 +418,11 @@
 				{% if page.template_vars.product_content_style == '03' %}
 
 					{% if product.description || ( page.is_specification_enabled && product.specification_group | size != 0 ) %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-tab-section>
 						<div class="zpcontainer">
 
-							<div class="theme-prod-detail-tab-tabcontent-container">
-								<div class="theme-prod-detail-tabs">
+							<div class="theme-prod-detail-tab-tabcontent-container" data-zs-detail-tabs-tabcontents-container>
+								<div class="theme-prod-detail-tabs" data-zs-detail-tabs-container>
 									{% if product.description %}
 									<div class="theme-prod-detail-tab theme-prod-detail-tab-active" data-detail-tab="theme-product-detail" onclick="detailtab(this)">
 										{{i18n.get("product.label.details")}}
@@ -432,7 +432,7 @@
 										<div class="theme-prod-detail-tab{% if !product.description %} theme-prod-detail-tab-active{% endif %}" data-detail-tab="theme-product-specification" onclick="detailtab(this)">{{i18n.get("product.label.specifications")}}</div>
 									{% endif %}
 								</div>
-								<div class="theme-prod-detail-tab-contents">
+								<div class="theme-prod-detail-tab-contents" data-zs-detail-tabs-content-container>
 									{% if product.description %}
 									<div class="theme-prod-detail-tab-content theme-prod-detail-tab-content-active" data-detail-tab-content="theme-product-detail-content">
 										<div class="theme-prod-detail-content-info-container">
@@ -463,9 +463,9 @@
 					{% comment %} COMMENT BOX STARTS HERE {% endcomment %}
 
 					{% if product.is_product_review_enabled %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-commentbox-section>
 						<div class="zpcontainer">
-							<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-app="commentbox">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-product-commentbox data-zs-app="commentbox">
 
 							</div>
 						</div>
@@ -475,7 +475,7 @@
 					{% comment %} COMMENT BOX ENDS HERE {% endcomment %}
 
 					{% comment %} RECOMMENDED PRODUCTS STARTS HERE {% endcomment %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-recommended-section>
 						<div class="zpcontainer">
 							<div class="zprow">
 								<div class="zpcol-md-12 zpcol-sm-12">
@@ -493,11 +493,11 @@
 				{% if page.template_vars.product_content_style == '04' %}
 
 					{% if product.description || ( page.is_specification_enabled && product.specification_group | size != 0 ) %}
-					<div class="theme-section {% if page.template_vars.store_template_no == '04' %}theme-detail-tab-section-temp-04{% endif %}">
+					<div class="theme-section {% if page.template_vars.store_template_no == '04' %}theme-detail-tab-section-temp-04{% endif %}" data-zs-product-details-tab-section>
 						<div class="zpcontainer">
 
-							<div class="theme-prod-detail-tab-tabcontent-container">
-								<div class="theme-prod-detail-tabs">
+							<div class="theme-prod-detail-tab-tabcontent-container" data-zs-detail-tabs-tabcontents-container>
+								<div class="theme-prod-detail-tabs" data-zs-detail-tabs-container>
 									{% if product.description %}
 									<div class="theme-prod-detail-tab theme-prod-detail-tab-active" data-detail-tab="theme-product-detail" onclick="detailtab(this)">
 										{{i18n.get("product.label.details")}}
@@ -507,7 +507,7 @@
 										<div class="theme-prod-detail-tab{% if !product.description %} theme-prod-detail-tab-active{% endif %}" data-detail-tab="theme-product-specification" onclick="detailtab(this)">{{i18n.get("product.label.specifications")}}</div>
 									{% endif %}
 								</div>
-								<div class="theme-prod-detail-tab-contents">
+								<div class="theme-prod-detail-tab-contents" data-zs-detail-tabs-content-container>
 									{% if product.description %}
 									<div class="theme-prod-detail-tab-content theme-prod-detail-tab-content-active" data-detail-tab-content="theme-product-detail-content">
 										<div class="theme-prod-detail-content-info-container">
@@ -538,9 +538,9 @@
 					{% comment %} COMMENT BOX STARTS HERE {% endcomment %}
 
 					{% if product.is_product_review_enabled %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-commentbox-section>
 						<div class="zpcontainer">
-							<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-app="commentbox">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-product-commentbox data-zs-app="commentbox">
 
 							</div>
 						</div>
@@ -550,7 +550,7 @@
 					{% comment %} COMMENT BOX ENDS HERE {% endcomment %}
 
 					{% comment %} RECOMMENDED PRODUCTS STARTS HERE {% endcomment %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-recommended-section>
 						<div class="zpcontainer">
 							<div class="zprow">
 								<div class="zpcol-md-12 zpcol-sm-12">
@@ -568,10 +568,10 @@
 				{% if page.template_vars.product_content_style == '05' %}
 
 					{% if product.description || ( page.is_specification_enabled && product.specification_group | size != 0 ) %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-tab-section>
 						<div class="zpcontainer">
-							<div class="theme-product-details-tabs-and-content-container">
-								<div class="theme-product-specification-tabs-area">
+							<div class="theme-product-details-tabs-and-content-container" data-zs-detail-tabs-tabcontents-container>
+								<div class="theme-product-specification-tabs-area" data-zs-detail-tabs-container>
 									{% if product.description %}
 									<div class="theme-product-specification-tab theme-prod-detail-tab-active" data-detail-tab="theme-product-detail" onclick="detailtab(this)">
 										{{i18n.get("product.label.details")}}
@@ -581,7 +581,7 @@
 										<div class="theme-product-specification-tab {% if !product.description %} theme-prod-detail-tab-active{% endif %}" data-detail-tab="theme-product-specification" onclick="detailtab(this)">{{i18n.get("product.label.specifications")}}</div>
 									{% endif %}
 								</div>
-								<div class="theme-product-specification-tabs-content-area">
+								<div class="theme-product-specification-tabs-content-area" data-zs-detail-tabs-content-container>
 									{% if product.description %}
 									<div class="theme-product-specification-tab-content theme-prod-detail-tab-content-active" data-detail-tab-content="theme-product-detail-content">
 										{{ product.description }}
@@ -611,9 +611,9 @@
 					{% comment %} COMMENT BOX STARTS HERE {% endcomment %}
 
 					{% if product.is_product_review_enabled %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-commentbox-section>
 						<div class="zpcontainer">
-							<div class="zpcol-md-12 zpcol-sm-12 theme-store-details-feature" data-zs-app="commentbox">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-store-details-feature" data-zs-product-commentbox data-zs-app="commentbox">
 
 							</div>
 						</div>
@@ -623,7 +623,7 @@
 					{% comment %} COMMENT BOX ENDS HERE {% endcomment %}
 
 					{% comment %} RECOMMENDED PRODUCTS STARTS HERE {% endcomment %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-recommended-section>
 						<div class="zpcontainer">
 							<div class="zprow">
 								<div class="zpcol-md-12 zpcol-sm-12">
@@ -641,10 +641,10 @@
 				{% if page.template_vars.product_content_style == '06' %}
 
 					{% if product.description || ( page.is_specification_enabled && product.specification_group | size != 0 ) %}
-					<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}">
+					<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-details-tab-section>
 						<div class="zpcontainer">
-							<div class="theme-product-details-tabs-and-content-container {% if page.template_vars.store_template_no == '06' %}theme-product-details-temp-06{% endif %}">
-								<div class="theme-product-specification-tabs-area">
+							<div class="theme-product-details-tabs-and-content-container {% if page.template_vars.store_template_no == '06' %}theme-product-details-temp-06{% endif %}" data-zs-detail-tabs-tabcontents-container>
+								<div class="theme-product-specification-tabs-area" data-zs-detail-tabs-container>
 									{% if product.description %}
 									<div class="theme-product-specification-tab theme-prod-detail-tab-active" data-detail-tab="theme-product-detail" onclick="detailtab(this)">
 										{{i18n.get("product.label.details")}}
@@ -654,7 +654,7 @@
 										<div class="theme-product-specification-tab{% if !product.description %} theme-prod-detail-tab-active{% endif %}" data-detail-tab="theme-product-specification" onclick="detailtab(this)">{{i18n.get("product.label.specifications")}}</div>
 									{% endif %}
 								</div>
-								<div class="theme-product-specification-tabs-content-area">
+								<div class="theme-product-specification-tabs-content-area" data-zs-detail-tabs-content-container>
 									{% if product.description %}
 									<div class="theme-product-specification-tab-content theme-prod-detail-tab-content-active"  data-detail-tab-content="theme-product-detail-content">
 										{{ product.description }}
@@ -683,9 +683,9 @@
 					{% comment %} COMMENT BOX STARTS HERE {% endcomment %}
 
 					{% if product.is_product_review_enabled %}
-					<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}">
+					<div class="theme-section {% if page.template_vars.store_template_no == '06' %}theme-product-section-temp-06{% endif %}" data-zs-product-details-commentbox-section>
 						<div class="zpcontainer">
-							<div class="zpcol-md-12 zpcol-sm-12 theme-store-details-feature" data-zs-app="commentbox">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-store-details-feature" data-zs-product-commentbox data-zs-app="commentbox">
 
 							</div>
 						</div>
@@ -695,7 +695,7 @@
 					{% comment %} COMMENT BOX ENDS HERE {% endcomment %}
 
 					{% comment %} RECOMMENDED PRODUCTS STARTS HERE {% endcomment %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-recommended-section>
 						<div class="zpcontainer">
 							<div class="zprow">
 								<div class="zpcol-md-12 zpcol-sm-12">
@@ -713,10 +713,10 @@
 				{% if page.template_vars.product_content_style == '07' %}
 
 					{% if product.description || ( page.is_specification_enabled && product.specification_group | size != 0 ) %}
-					<div class="theme-section theme-product-specification-section {% if page.template_vars.store_template_no == '07' %}theme-product-section-temp-07{% endif %}">
+					<div class="theme-section theme-product-specification-section {% if page.template_vars.store_template_no == '07' %}theme-product-section-temp-07{% endif %}" data-zs-product-details-tab-section>
 						<div class="zpcontainer">
-							<div class="theme-product-detail-tab-tabcontent-container">
-								<div class="theme-product-detail-tabs">
+							<div class="theme-product-detail-tab-tabcontent-container" data-zs-detail-tabs-tabcontents-container>
+								<div class="theme-product-detail-tabs" data-zs-detail-tabs-container>
 									{% if product.description %}
 									<div class="theme-product-detail-tab theme-prod-detail-tab-active" data-detail-tab="theme-product-detail" onclick="detailtab(this)">
 										{{i18n.get("product.label.details")}}
@@ -726,7 +726,7 @@
 										<div class="theme-product-detail-tab {% if !product.description %} theme-prod-detail-tab-active{% endif %}" data-detail-tab="theme-product-specification" onclick="detailtab(this)">{{i18n.get("product.label.specifications")}}</div>
 									{% endif %}
 								</div>
-								<div class="theme-product-detail-tab-contents">
+								<div class="theme-product-detail-tab-contents" data-zs-detail-tabs-content-container>
 									{% if product.description %}
 									<div class="theme-product-detail-tab-content theme-prod-detail-tab-content-active" data-detail-tab-content="theme-product-detail-content">
 										<div class="theme-product-detail-content-info-container">
@@ -757,9 +757,9 @@
 					{% comment %} COMMENT BOX STARTS HERE {% endcomment %}
 
 					{% if product.is_product_review_enabled %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-commentbox-section>
 						<div class="zpcontainer">
-							<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-app="commentbox">
+							<div class="zpcol-md-12 zpcol-sm-12 theme-store-commentbox" data-zs-product-commentbox data-zs-app="commentbox">
 
 							</div>
 						</div>
@@ -769,7 +769,7 @@
 					{% comment %} COMMENT BOX ENDS HERE {% endcomment %}
 
 					{% comment %} RECOMMENDED PRODUCTS STARTS HERE {% endcomment %}
-					<div class="theme-section">
+					<div class="theme-section" data-zs-product-details-recommended-section>
 						<div class="zpcontainer">
 							<div class="zprow">
 								<div class="zpcol-md-12 zpcol-sm-12">

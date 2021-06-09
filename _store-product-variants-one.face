@@ -11,8 +11,8 @@
 {% for attribute in product.attributes %}
 <div class="theme-prod-detail-entry-row theme-prod-detail-attr-variants">
 	<div class="theme-prod-review-entry">
-		<div class="theme-prod-variant">
-			<div class="theme-prod-variant-label">
+		<div class="theme-prod-variant" data-zs-product-variant-container="{{attribute.name}}" {% if attribute.type == 'Color' %}data-zs-product-color-variants{% endif %}>
+			<div class="theme-prod-variant-label" data-zs-product-variant-label>
 				Select {{ attribute.name }}
 			</div>
 			{% if attribute.type == 'Color' %}

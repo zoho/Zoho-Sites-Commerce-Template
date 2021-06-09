@@ -2,14 +2,14 @@
 {% assign coupons_size = coupons_list | size %}
 {% if coupons_size > 0 %}
 
-    <div class="theme-prod-coupons-container" data-zs-discount-value="{{ coupons_list[0].discount_value }}" data-zs-discount-type="{{ coupons_list[0].discount_type }}">
+    <div class="theme-prod-coupons-container" data-zs-discount-value="{{ coupons_list[0].discount_value }}" data-zs-discount-type="{{ coupons_list[0].discount_type }}" data-zs-coupon-container>
         {% if coupons_list[0].description != '' %}
-        <div class="theme-prod-coupons-code-container">
+        <div class="theme-prod-coupons-code-container" data-zs-coupon-description>
             <span class="theme-prod-coupons-code">{{ coupons_list[0].description }}</span>
         </div>
         {% endif %}
         {% if coupons.is_claim_rate_enabled && coupons_list[0].claimed_percentage > coupons.min_claim_rate %}
-        <div class="theme-prod-coupons-claimed-container">
+        <div class="theme-prod-coupons-claimed-container" data-zs-coupon-claimed>
             <p class="theme-prod-coupons-claimed">{{ i18n.get('coupons.message.claimed', coupons_list[0].claimed_percentage) }}</p>
             <div class="theme-prod-coupons-claimed-progress">
                 <div style="width:{{ coupons_list[0].claimed_percentage }}%" class="theme-prod-coupons-claimed-progressbar"></div>
@@ -26,14 +26,14 @@
         <div class="theme-prod-coupons-container-toggleoutter">
             <div class="theme-prod-coupons-container-toggle" data-zs-more-coupons>
             {% for i in range(1, coupons_size) %}
-            <div class="theme-prod-coupons-container" data-zs-discount-value="{{ coupons_list[i].discount_value }}" data-zs-discount-type="{{ coupons_list[i].discount_type }}">
+            <div class="theme-prod-coupons-container" data-zs-discount-value="{{ coupons_list[i].discount_value }}" data-zs-discount-type="{{ coupons_list[i].discount_type }}" data-zs-coupon-container>
                 {% if coupons_list[i].description != '' %}
-                <div class="theme-prod-coupons-code-container">
+                <div class="theme-prod-coupons-code-container" data-zs-coupon-description>
                     <span class="theme-prod-coupons-code">{{ coupons_list[i].description }}</span>
                 </div>
                 {% endif %}
                 {% if coupons.is_claim_rate_enabled && coupons_list[i].claimed_percentage > coupons.min_claim_rate  %}
-                <div class="theme-prod-coupons-claimed-container">
+                <div class="theme-prod-coupons-claimed-container" data-zs-coupon-claimed>
                     <p class="theme-prod-coupons-claimed">{{ i18n.get('coupons.message.claimed',coupons_list[i].claimed_percentage) }}</p>
                     <div class="theme-prod-coupons-claimed-progress">
                         <div style="width:{{ coupons_list[i].claimed_percentage }}%" class="theme-prod-coupons-claimed-progressbar"></div>
