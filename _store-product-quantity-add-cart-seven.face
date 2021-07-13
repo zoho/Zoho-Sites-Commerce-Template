@@ -1,7 +1,7 @@
 {% if product.is_out_of_stock == false  %}
 <div class="theme-product-varients-row" data-nostock-cart-add="theme-nostock-cart-add">
 	<div class="theme-product-variant theme-product-quantity-cart-container">
-		<div class="theme-product-variant-label">
+		<div class="theme-product-variant-label" data-zs-quantity-label>
 			{{i18n.get("product.message.choose_quantity")}}
 		</div>
 		<div class="theme-product-varient-quantity">

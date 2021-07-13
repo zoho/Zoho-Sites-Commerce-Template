@@ -1,6 +1,6 @@
 <div class="theme-product-pricing-and-cart-button-area">
   <div data-zs-pricing-container>
-  <span class="theme-price-label">Price</span>
+  <span class="theme-price-label">{{i18n.get("orders.order.product.price")}}</span>
   {% if product.has_variants %}
   <div class="theme-product-pricing" data-zs-pricings data-zs-variant-id="-1">
     {% if product.has_variant_price %}
