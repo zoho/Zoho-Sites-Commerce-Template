@@ -1,11 +1,11 @@
 
-{% macro navi(menu) %}
+{% macro navi(menu, template_vars) %}
 	{% assign sub_menus=menu.menu_items %}
 	{% if sub_menus %}
 		<ul data-zs-menu-container>
 			{% for sub_menu in sub_menus %}
 				{% assign count = 1 %}
-				{{ subnavi(sub_menu, count) }}
+				{{ subnavi(sub_menu, count, template_vars) }}
 			{% endfor %}
 		</ul>
 	{% endif %}
@@ -16,29 +16,33 @@
   </div>
 
 {% endmacro %}
-{% macro subnavi(menu_item, count) %}
-	<li {% if menu_item.more_menu %}data-zp-more-menu="mymenu1"{% endif %}>
+{% macro subnavi(menu_item, count, template_vars) %}
+	<li {% if menu_item.linked_mega_menu %}data-megamenu="{{menu_item.linked_mega_menu}}"{% endif %} {% if menu_item.more_menu %}data-zp-more-menu="mymenu1"{% endif %}>
 		{% assign sub_menus=menu_item.menu_items %}
 		<a href="{% if menu_item.url %}{{menu_item.url}}{% else %}javascript:;{% endif %}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}>{{menu_item.item_name}}
-				{% if sub_menus && sub_menus | length > 0 %}
-					{% if count == 1 %}
-						<span class="theme-sub-li-menu theme-non-responsive-menu theme-submenu-down-arrow">
-						</span>
-						<span class="theme-sub-li-menu theme-responsive-menu theme-submenu-down-arrow">
-						</span>
-					{% else %}
-						<span class="theme-sub-li-menu theme-non-responsive-menu theme-submenu-right-arrow">
-						</span>
-						<span class="theme-sub-li-menu theme-responsive-menu theme-submenu-down-arrow">
-						</span>
-					{% endif %}
+			{% if sub_menus && sub_menus | length > 0 %}
+				{% if count == 1 %}
+					<span class="theme-sub-li-menu theme-non-responsive-menu theme-submenu-down-arrow">
+					</span>
+					<span class="theme-sub-li-menu theme-responsive-menu theme-submenu-down-arrow">
+					</span>
+				{% else %}
+					<span class="theme-sub-li-menu theme-non-responsive-menu theme-submenu-right-arrow">
+					</span>
+					<span class="theme-sub-li-menu theme-responsive-menu theme-submenu-down-arrow">
+					</span>
 				{% endif %}
+			{% endif %}
 		</a>
 		{% if sub_menus && sub_menus | length > 0 %}
 		<ul class="theme-sub-menu" data-zs-submenu-container style="display:none;">
 			{% for sub_menu in sub_menus %}
-				{% assign temp_count = count+1 %}
-				{{ subnavi(sub_menu, temp_count) }}
+            			{% if menu_item.linked_mega_menu %}
+					{{ constructMegaMenu(sub_menu, template_vars) }}
+				{% else %}
+                			{% assign temp_count = count+1 %}
+                    			{{ subnavi(sub_menu, temp_count, template_vars) }}
+            			{% endif %}
 			{% endfor %}
 		</ul>
 		{% endif %}

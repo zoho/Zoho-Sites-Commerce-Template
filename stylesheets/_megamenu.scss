@@ -1,0 +1,318 @@
+.zpmm{
+    @media (max-width: 992px){
+        .zpcontainer{
+            width:100%;
+        }
+    }
+    @include respond-to(mediumdevice){
+        display: none;
+        max-height: 500px;
+        overflow-y: auto;
+        position: absolute;
+        left:0px;
+        right:0px;
+        top:100%;
+        z-index: 255;
+        &.mmactive{
+            display: block;
+        }
+        &[data-megamenu-direction="right"]{
+            max-height: initial;
+        }
+    }
+    @if map-get($user_layout_vars,'megamenu_container_style') == 01 {
+        &.zpmm-container-style-01{
+            @include respond-to(mediumdevice){
+                width:992px;
+                left:50%;
+                right:auto;
+                transform: translateX(-50%);
+                &[data-megamenu-direction="right"]{
+                    transform: translateX(0px);
+                }
+            }
+            @include respond-to(largedevice){
+                width:1140px;
+            }
+            .zpcontainer{
+                .zpmm-inner{
+                    @include respond-to(mediumdevice){
+                        background: map-get($default_vars,'color-megamenu-background');
+                        border-top: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                        box-shadow: 0px 5px 8px -5px map-get($default_vars,'color-megamenu-boxshadow');
+                        padding:30px 15px;
+                        &[data-megamenu-direction="right"]{
+                            border-left: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @if map-get($user_layout_vars,'megamenu_container_style') == 02 {
+        &.zpmm-container-style-02{
+            @include respond-to(mediumdevice){
+                background: map-get($default_vars,'color-megamenu-background');
+                border-top: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                box-shadow: 0px 5px 8px -5px map-get($default_vars,'color-megamenu-boxshadow');
+                padding:30px 15px;
+                &[data-megamenu-direction="right"]{
+                    border-left: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                }
+            }
+        }
+    }
+    @if map-get($user_layout_vars,'megamenu_container_style') == 03 {
+        &.zpmm-container-style-03{
+            @include respond-to(mediumdevice){
+                background: map-get($default_vars,'color-megamenu-background');
+                border-top: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                box-shadow: 0px 5px 8px -5px map-get($default_vars,'color-megamenu-boxshadow');
+                padding:30px 15px;
+                &[data-megamenu-direction="right"]{
+                    border-left: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                }
+            }
+            .zpcontainer{
+                width: 100%;
+                @include respond-to(mediumdevice){
+                    padding-top: 0px !important;
+                    padding-bottom: 0px !important;
+                }
+            }
+            /*
+            .zpmm-inner{
+                margin: 0px -15px;
+            }*/
+        }
+    }
+    .zpcontainer{
+        @include respond-to(mediumdevice){
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+    }
+    .zpcontainer-fluid{
+        @include respond-to(mediumdevice){
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
+        .zpmm-inner{
+            margin: 0px -15px;
+        }
+    }
+    .zpmm-inner{
+        width:100%;
+        .zpelem-col{
+            @media (max-width: 992px){
+                padding: 0px;
+                &.seperator-divider{
+                    border-bottom:none;
+                }
+            }
+            &.seperator-divider{
+                border-right:1px solid map-get($default_vars,'color-megamenu-divider');
+                &:last-child{
+                    border-right:none;
+                }
+            }
+        }
+        @media (max-width: 992px){
+            &.seperator-divider{
+                .zpelem-col{
+                    border-bottom:1px solid map-get($default_vars,'color-megamenu-divider');
+                    &:last-child{
+                        border-bottom:none;
+                    }
+                    border:none;
+                }
+            }
+        }
+        .seperator-divider{
+            .zpelem-col{
+                border-right:1px solid map-get($default_vars,'color-megamenu-divider');
+                &:last-child{
+                    border-right:none;
+                }
+                @media (max-width: 992px){
+                    border:none;
+                }
+            }
+        }
+        .seperator-background{
+            @include respond-to(mediumdevice){
+                .zpelem-col{
+                    &:nth-child(odd){
+                        background-color: map-get($default_vars,'color-megamenu-background-odd');
+                    }
+                    &:nth-child(even){
+                        background-color: map-get($default_vars,'color-megamenu-background-even');
+                    }
+                }   
+            }
+        }
+        .zprow{
+            margin-top: 10px;
+            &:first-child{
+                margin-top: 0px;
+            }
+            @media (max-width: 992px){
+                margin:0px;
+            }
+        }
+        .zpmm-element{
+            margin-top: 5px;
+            @media (max-width: 992px){
+                margin:0px;
+                padding: 14px 48px 14px 40px;
+                border-bottom:1px solid map-get($default_vars,'color-submenu-border');
+            }    
+            &:first-child{
+                @media (max-width: 992px){
+                    border-top:1px solid map-get($default_vars,'color-submenu-border');
+                }
+            }
+            &:last-child{
+                margin-bottom: 5px;
+                @media (max-width: 992px){
+                    margin-bottom: 0px;
+                    border-bottom:none;
+                }
+            }
+            img{
+                display: none;
+            }
+            &.zpmm-image{
+                img{
+                    display: block;
+                }
+                .zpmm-element-textcontent{
+                    display: none;
+                }
+            }
+            &.zpmm-imagetext{
+                img{
+                    display: block;
+                    max-width: 50%;
+                    width: 100%;
+                }
+            }
+            &.zpmm-title{
+                a{
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+                    @media (max-width: 992px){
+                        padding: 0px;
+                    }
+                    @include respond-to(mediumdevice){
+                        color: map-get($default_vars, 'color-megamenu-heading');
+                        font-size: map-get($default_vars, 'font-size-megamenu-heading');
+                        font-family: map-get($default_vars,'font-family-megamenu-heading');
+                        font-weight: map-get($default_vars,'font-weight-megamenu-heading');
+                        text-transform: map-get($default_vars, 'font-transform-megamenu-heading');
+                        line-height: map-get($default_vars, 'font-line-height-megamenu-heading-normal');
+                        letter-spacing: map-get($default_vars, 'font-letter-spacing-megamenu-heading');                    
+                        &:hover{
+                            color: map-get($default_vars, 'color-megamenu-heading-hover-active-text');
+                        }
+                        &:not([href]){
+                            cursor: initial;
+                            &:hover{
+                                color: map-get($default_vars, 'color-megamenu-heading');
+                            }
+                        }
+                    }
+                }
+            }
+            &.zpmm-text{
+                a{
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+                    @media (max-width: 992px){
+                        padding: 0px;
+                    }
+                    @include respond-to(mediumdevice){
+                        color: map-get($default_vars, 'color-megamenu-text');                        
+                        font-size: map-get($default_vars, 'font-size-megamenu-text');
+                        font-family: map-get($default_vars,'font-family-megamenu-text');
+                        font-weight: map-get($default_vars,'font-weight-megamenu-text');
+                        text-transform: map-get($default_vars, 'font-transform-megamenu-text');
+                        line-height: map-get($default_vars, 'font-line-height-megamenu-text');
+                        letter-spacing: map-get($default_vars, 'font-letter-spacing-megamenu-text');
+                        &:hover{
+                            color: map-get($default_vars, 'color-megamenu-text-hover-active-text');
+                        }
+                        &:not([href]){
+                            cursor: initial;
+                            &:hover{
+                                color: map-get($default_vars, 'color-megamenu-text');
+                            }
+                        }
+                    }
+                }
+                .zpmm-element-textcontent{
+                    @include respond-to(mediumdevice){
+                        padding-left:map-get($default_vars, 'left-indent-megamenu-textcontent');
+                    }
+                }
+            }
+            a{
+                @include flexbox;
+                @include prefix(align-items,center);
+                cursor: pointer;
+            }
+        }
+        .zpmm-image{
+            img{
+                width:auto;
+                height:auto;
+                max-width: 100%;
+            }
+        }
+    }    
+}
+.zpmm-backdrop{
+    display: none;
+    width:0px;
+    height:0px;
+    @include respond-to(mediumdevice){
+        position: fixed;
+        top:0px;
+        left: 0px;
+        width:100vw;
+        height:100vh;
+        z-index: 240;
+        &.zpmm-backdrop-enabled{
+            background:map-get($default_vars, 'color-megamenu-backdrop-background');
+        }
+        &.zpmm-backdrop-disabled{
+            background: transparent;
+        }
+    }
+}
+div[class^="zpheader-style-"]{
+    @include respond-to(mediumdevice){
+        z-index: 250;
+    }
+}
+[data-zp-more-menu] [data-megamenu] .theme-non-responsive-menu{
+    display: none !important;
+}
+
+@if map-get($user_layout_vars,'header_style') == 02 {
+  .zpheader-style-02{
+    .theme-header{
+      &.theme-header-navigation-style{
+        .theme-sub-menu{
+          .zpmm-container-style-01,
+          .zpmm-container-style-02,
+          .zpmm-container-style-03{
+            .zpcontainer{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}

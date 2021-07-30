@@ -1611,6 +1611,34 @@ color-loader-text : map-get($base_vars,'color-text'),
 
 font-size-sorting-select : 15px,
 
+// MEGAMENU VARIABLES
+
+font-size-megamenu-heading : 15px,
+font-family-megamenu-heading : map-get($base_vars, 'font-family-base'),
+font-weight-megamenu-heading : normal,
+font-transform-megamenu-heading : none,
+font-line-height-megamenu-heading-normal : normal,
+font-letter-spacing-megamenu-heading : normal,
+color-megamenu-heading : map-get($base_vars, 'color-secondary'),
+color-megamenu-heading-hover-active-text : map-get($base_vars, 'color-primary'),
+
+font-size-megamenu-text : 12px,
+font-family-megamenu-text : map-get($base_vars,'font-family-base'),
+font-weight-megamenu-text : normal,
+font-transform-megamenu-text : none,
+font-line-height-megamenu-text : normal,
+font-letter-spacing-megamenu-text : normal,
+color-megamenu-text : RGBA(convertHexToRgb(map-get($base_vars, 'color-secondary')),0.95), 
+color-megamenu-text-hover-active-text : map-get($base_vars, 'color-primary'),
+color-megamenu-text-hover-active-arrow-text : map-get($base_vars, 'color-primary'),
+color-megamenu-background : map-get($base_vars, 'color-default'),
+color-megamenu-boxshadow : #e0e0e0,
+color-megamenu-background-odd : RGBA(convertHexToRgb(map-get($base_vars, 'color-primary')),0.12),
+color-megamenu-background-even : map-get($base_vars, 'color-light'),
+color-megamenu-divider : RGBA(convertHexToRgb(map-get($base_vars, 'color-border')),0.4),
+color-megamenu-backdrop-background : RGBA(convertHexToRgb(#fff),0.65),
+left-indent-megamenu-textcontent : 0px
+  
 );
 
 @import "_base-map";

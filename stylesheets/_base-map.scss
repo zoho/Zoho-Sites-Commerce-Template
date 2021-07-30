@@ -29,6 +29,46 @@ $header-color-array:(
 );
 
 $default_vars : color-header($default_vars,$header-color-array);
+  
+$menu-var-array:(
+  'font-size-navigation',
+  'color-navigation',
+  'color-navigation-hover-active-arrow-text',
+  'font-family-navigation',
+  'font-weight-navigation',
+  'font-transform-navigation',
+  'font-line-height-navigation-normal',
+  'font-letter-spacing-navigation',
+  'font-size-submenu',
+  'color-submenu',
+  'color-submenu-hover-active-text',
+  'font-family-submenu',
+  'font-weight-submenu',
+  'font-transform-submenu',
+  'font-line-height-submenu',
+  'font-letter-spacing-submenu'
+);
+
+$megamenu-var-array:(
+  'font-size-navigation':'font-size-megamenu-heading',
+  'color-navigation':'color-megamenu-heading',
+  'color-navigation-hover-active-arrow-text':'color-megamenu-heading-hover-active-text',
+  'font-family-navigation':'font-family-megamenu-heading',
+  'font-weight-navigation':'font-weight-megamenu-heading',
+  'font-transform-navigation':'font-transform-megamenu-heading',
+  'font-line-height-navigation-normal':'font-line-height-megamenu-heading-normal',
+  'font-letter-spacing-navigation':'font-letter-spacing-megamenu-heading',
+  'font-size-submenu':'font-size-megamenu-text',
+  'color-submenu':'color-megamenu-text',
+  'color-submenu-hover-active-text':'color-megamenu-text-hover-active-text',
+  'font-family-submenu':'font-family-megamenu-text',
+  'font-weight-submenu':'font-weight-megamenu-text',
+  'font-transform-submenu':'font-transform-megamenu-text',
+  'font-line-height-submenu':'font-line-height-megamenu-text',
+  'font-letter-spacing-submenu':'font-letter-spacing-megamenu-text'
+);
+
+$default_vars : megamenu($default_vars,$megamenu-var-array);
 
 @if variable-exists(need_css_vars) and $need_css_vars {
   :root{

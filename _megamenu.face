@@ -1,0 +1,60 @@
+{% macro constructMegaMenu(menu_item, template_vars) %}
+    <div  data-megamenu-content="{{ menu_item.menu_id }}" data-megamenu-direction="{% if template_vars.header_style == '06' %}right{% else %}below{% endif %}" class="zpmm zpmm-container-style-{{template_vars.megamenu_container_style}}">
+        <div class="zpcontainer">
+            <div class="zpmm-inner">
+                {% assign menuRows = menu_item.menu_items %}
+                {% for menuRow in menuRows %}
+                    {{ constructMegaMenuRow(menuRow, template_vars) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro constructMegaMenuRow(menu_item, template_vars) %}
+    <div class="zprow zpalign-items- zpjustify-content- seperator-{{template_vars.megamenu_column_seperator}}">
+        {% assign splitRatio = menu_item.menu_item_options.split_ratio | split(",") %}
+        {% assign menuColumns = menu_item.menu_items %}
+        {% for menuColumn in menuColumns %}
+            {{ constructMegaMenuColumn(menuColumn, splitRatio[loop.index0]) }}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro constructMegaMenuColumn(menu_item, splitValue) %}
+    <div class="zpelem-col zpcol-md-{{ splitValue | trim }} zpcol-sm-12 zpalign-self-">
+        {% assign items = menu_item.menu_items %}
+        {% for item in items %}
+            {{ constructMegaMenuItem(item) }}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro constructMegaMenuItem(menu_item) %}
+    {% if menu_item.render_type == 3 %}
+    <!-- image -->
+    <div class="zpmm-element zpmm-title zpmm-image">
+        <a class="zpmm-element-anchor" {% if menu_item.url %}href="{{menu_item.url}}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}{% endif %}>
+            <img class="zpmm-element-imagecontent" src="{{menu_item.image_url}}" alt=""/>
+        </a>
+    </div>
+    <!-- image end -->
+    {% elif menu_item.render_type == 2 || (menu_item.menu_item_options && menu_item.menu_item_options.is_heading) %}
+    <!-- title -->
+    <div class="zpmm-element zpmm-title">
+        <a class="zpmm-element-anchor" {% if menu_item.url %}href="{{menu_item.url}}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}{% endif %}>
+            <span class="zpmm-element-textcontent">{{ menu_item.item_name }}</span>
+        </a>
+    </div>
+    <!-- title end -->
+    {% else %}
+    <!-- text -->
+    <div class="zpmm-element zpmm-text">
+        <a class="zpmm-element-anchor" {% if menu_item.url %}href="{{menu_item.url}}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}{% endif %}>
+            <span class="zpmm-element-textcontent">{{ menu_item.item_name }}</span>
+        </a>
+    </div>
+    <!-- text end -->
+    {% endif %}
+{% endmacro %}
+<div class="zpmm-backdrop zpmm-backdrop-{% if template_vars.is_megamenu_backdrop_enabled %}enabled{% else %}disabled{% endif %}"></div>

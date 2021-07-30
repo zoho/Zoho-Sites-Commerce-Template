@@ -1689,13 +1689,12 @@
      }
    }
    &.theme-mobile-header-fixed{
-     position: fixed;
-     top: 0px;
-     z-index: 200;
-     right: 0px;
-     width: 100%;
-     @include respond-to(mediumdevice){
-       position: static;
+     @media all and (max-width:768px){
+       position: fixed;
+       top: 0px;
+       z-index: 200;
+       right: 0px;
+       width: 100%;
      }
      &.theme-header-fixed {
        @include respond-to(mediumdevice){

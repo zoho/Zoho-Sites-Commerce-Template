@@ -51,3 +51,12 @@
   }
    @return $default_vars;
 }
+
+@function megamenu($default_vars,$megamenu-var-array){
+  @each $menu-var, $megamenu-var in $megamenu-var-array{
+    @if not (variable-exists(user_default_vars) and map-has-key($user_default_vars,'#{$megamenu-var}')) {
+      $default_vars : map-merge($default_vars,('#{$megamenu-var}':map-get($default_vars,'#{$menu-var}') ));
+    }
+  }
+   @return $default_vars;
+}
