@@ -126,7 +126,7 @@ function responsivechanges() {
           if(offsetValLoad < scrollTopVal && headerSearchCart && headerSearchCartPositionNonResponsive){
             headerSearchCartPositionNonResponsive.appendChild(headerSearchCart);
           }
-          else if(menuParent && offsetValLoad > scrollTopVal && headerSearchCart && searchCartScrollPosition){
+          else if(menuParent && offsetValLoad > scrollTopVal && headerSearchCart && searchCartScrollPosition && header.className.indexOf('theme-header-animate') > -1){
             searchCartScrollPosition.appendChild(headerSearchCart);
           }
         }
@@ -569,7 +569,7 @@ window.addEventListener('scroll', function(event) {
         if(topBar && window.innerWidth > 992){
             topBar.style.opacity = '0';
       	}
-        if(menuParent && searchCartScrollPosition && window.innerWidth > 992){
+        if(menuParent && searchCartScrollPosition && window.innerWidth > 992 && header.className.indexOf('theme-header-animate') > -1){
           searchCartScrollPosition.appendChild(headerSearchCart);
         }
         if(menuParent && headerSearchCartPositionNonResponsive && searchCartScrollPosition && window.innerWidth > 992){

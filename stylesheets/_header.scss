@@ -514,6 +514,13 @@
 				@include respond-to(mediumdevice){
 					background: map-get($default_vars,'color-navigation-bar-background');
 				}
+				&.theme-header-animate{
+					&.theme-header-transparent{
+						@include respond-to(mediumdevice){
+							background: RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.9);
+						}
+					}
+				}
 			}
 			.zpcontainer {
 				.theme-branding-info{
@@ -619,9 +626,17 @@
 							@include prefix(justify-content,center);
 						}
 					}
-					&.theme-menu-align-left{
-						ul{
-							@include prefix(justify-content,flex-start);
+				}
+			}
+		}
+		.theme-header-animate{
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						&.theme-menu-align-left{
+							ul{
+								@include prefix(justify-content,flex-start);
+							}
 						}
 					}
 				}
