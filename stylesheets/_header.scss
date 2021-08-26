@@ -1,6 +1,6 @@
 	 // TOPBAR STYLE
 
-	.theme-header-topbar{  
+	.theme-header-topbar{
 		padding:13px 0;
 		background:map-get($default_vars, 'color-topbar-background');
 		font-family:map-get($default_vars, 'font-family-topbar');
@@ -1656,6 +1656,7 @@
        display: none;
        @include respond-to(mediumdevice){
          @include flexbox;
+ 				 background: map-get($default_vars,'color-navigation-bar-background');
        }
        .zpcontainer{
          display: none;
@@ -1683,6 +1684,11 @@
            }
          }
        }
+			 &.theme-header-transparent{
+				 @include respond-to(mediumdevice){
+					 background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.9);
+			 	 }
+			 }
      }
      &.theme-header-animate {
        padding:15px 0;
@@ -1716,21 +1722,14 @@
          position: fixed;
          box-shadow:none;
        }
-       .theme-header {
-         &.zpheader-style-navigation-07 {
-           background:transparent;
-         }
-       }
        &.theme-header-animate {
          .theme-header {
            &.zpheader-style-navigation-07 {
              padding:10px 0;
-             background:map-get($base_vars,'color-light');
            }
            &.zpdark-header-portion {
              &.zpheader-style-navigation-07 {
                padding:10px 0;
-               background:map-get($base_vars,'color-primary');
              }
            }
          }
@@ -1779,8 +1778,21 @@
      .theme-header {
        &.zpheader-style-navigation-07 {
          border-top:0px none;
+				 background:map-get($default_vars,'color-navigation-bar-overlap-background');
        }
      }
+		 &.theme-header-animate{
+			 .theme-header {
+	       &.zpheader-style-navigation-07 {
+					 background:map-get($default_vars,'color-navigation-bar-background');
+					 &.theme-header-transparent{
+						 @include respond-to(mediumdevice){
+							 background:RGBA(map-get($default_vars,'color-navigation-bar-background-rgba'),0.9);
+					 	 }
+					 }
+	       }
+	     }
+		 }
    }
 	 .theme-topbar-header-07{
 		 display: none;

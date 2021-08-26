@@ -9579,6 +9579,33 @@
             }
           }
         }
+        &.theme-product-count-xsm-03{
+          .theme-product-box-content{
+            .theme-product-details-area{
+              .theme-product-list-quantity-addcart{
+                .theme-product-list-quantity{
+                  width: 85px;
+                  @include respond-to(smalldevice){
+                    width: 112px;
+                  }
+                  .theme-product-list-quantity-field{
+                    width: 35px;
+                    @include respond-to(smalldevice){
+                      width: 50px;
+                    }
+                  }
+                  .theme-product-list-quantity-decrease,
+                  .theme-product-list-quantity-increase{
+                    width: 24px;
+                    @include respond-to(smalldevice){
+                      width: 30px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
     @if map-get($user_layout_vars,'store_product_list_count_md') == 04 or map-get($user_layout_vars,'store_product_list_count_md') == 05 or map-get($user_layout_vars,'store_product_list_count_md') == 06{

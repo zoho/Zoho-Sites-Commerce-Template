@@ -119,7 +119,7 @@
     .zpheader-style-02{
       .theme-header {
         &.theme-responsive-dark{
-          background:map-get($default_vars,'darkbg-color-navigation-background');
+          background:map-get($default_vars,'darkbg-color-header-background');
           .theme-responsive-menu-area{
             &.zpcontainer{
               .theme-responsive-menu-container{
