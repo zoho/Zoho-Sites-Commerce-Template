@@ -28,7 +28,7 @@
 
 {% comment %} CATEGORY SORTBY {% endcomment %}
 
-{% if page.is_sorting_enabled && category.products | size > 1 && !filters.is_enabled %}
+{% if page.is_sorting_enabled && category.products | size > 1 && (!filters.is_enabled || !filters.has_filters) %}
 <div class="theme-collection-sortby-section">
   <div class="zpcontainer {% if page.template_vars.header_style == "06" && page.is_sidebar_enabled && filters.is_enabled && filters.has_filters && category.products | size > 1 %}theme-filter-enable-container{% endif %}">
     <div class="zprow">
@@ -87,7 +87,7 @@
               <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard-Copy-10" stroke="none" stroke-width="1" fill-rule="evenodd"><path id="Path" d="M15.333 0H0l6.133 7.253v5.014L9.2 13.8V7.253z"/></g></svg>
             </div>
             {% if page.is_sorting_enabled && category.products | size > 1 %}
-              <div class="theme-collection-sortby-section">
+              <div class="theme-collection-sortby-section" data-theme-sortby-with-filter>
                 <div class="theme-collection-sort">
                   <div class="theme-collection-sort-inner">
                     <span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>

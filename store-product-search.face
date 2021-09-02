@@ -3,7 +3,7 @@
 		{{i18n.get("search.result.title", search.query)}}
 	</h2>
 
-	{% if page.is_sorting_enabled && search.products | size > 1 && !filters.is_enabled %}
+	{% if page.is_sorting_enabled && search.products | size > 1 && (!filters.is_enabled || !filters.has_filters) %}
 	<div class="theme-collection-sort-inner">
 		<span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
 		<select data-sort-by-products>
@@ -50,7 +50,7 @@
 					    <svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg"><g id="Artboard-Copy-10" stroke="none" stroke-width="1" fill-rule="evenodd"><path id="Path" d="M15.333 0H0l6.133 7.253v5.014L9.2 13.8V7.253z"/></g></svg>
 					  </div>
 					  {% if page.is_sorting_enabled && search.products | size > 1 %}
-					  <div class="theme-collection-sort-inner">
+					  <div class="theme-collection-sort-inner" data-theme-sortby-with-filter>
 					    <span class="theme-sortby-label">{{i18n.get("product.sort_by.label")}} : </span>
 					    <select data-sort-by-products>
 					      {% for sort_by_option in search.sort_by_options %}

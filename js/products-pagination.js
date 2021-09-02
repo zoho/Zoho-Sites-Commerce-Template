@@ -16,6 +16,7 @@ var DATA_CURRENCY_LIST = 'data-zs-currency-list';
 var DATA_THEME_CURRENCY_LIST = 'data-theme-currency-list';
 var DATA_CURRENCY_CODE = 'data-zs-currency-code';
 var SORT_BY_PLACEHOLDER = '[data-sort-by-products]';
+var SORT_BY_WITH_FILTER = '[data-theme-sortby-with-filter]';
 var SORT_BY_TARGET = '[data-sort-by-products-target]';
 var DATA_MORE_PRODUCT = 'data-has-more-products';
 var DATA_LAZY_LOAD = 'data-lazy-load-products';
@@ -324,6 +325,15 @@ function getProductsResponse(e) {
         }
     } else if(data.insert_type === INSERT_TYPE.INNER_HTML) {
         setInnerHTMLForElement(target, data.content);
+
+        /* Hiding Sortby when there is one or no products in the filter result */
+
+        var filteredProd = target.querySelectorAll('[data-zs-product-id]');
+        var sortbyWithFilter = document.querySelector(SORT_BY_WITH_FILTER);
+        if(sortbyWithFilter){
+          sortbyWithFilter.style.display = (filteredProd.length < 2)?"none":"flex";
+        }
+
         /* Remove blur loading on product list container */
         removeClass(target, THEME_BLUR_LOADING);
 
