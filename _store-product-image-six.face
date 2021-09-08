@@ -4,9 +4,13 @@
 <div class="theme-product-image-container">
 	<div class="theme-product-full-image" data-zs-product-img-container data-lightbox-container="prod_images_grid_{{product.product_id}}">
 		{% if product.images[0].is_placeholder_image %}
-		<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		<picture>
+			<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		</picture>
 		{% else %}
-		<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/700x700" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		<picture>
+			<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/700x700" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		</picture>
 		{% endif %}
 	</div>
 
@@ -38,18 +42,26 @@
 			<div class="theme-image-loader"></div>
 		</div>
 		{% if product.images[0].is_placeholder_image %}
-		<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		<picture>
+			<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		</picture>
 		{% else %}
-		<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/700x700" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		<picture>
+			<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/700x700" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+		</picture>
 		{% endif %}
 	</div>
 	<div class="theme-product-thumbnail-area" data-lightbox-container="prod_images_grid_{{product.product_id}}" data-theme-thumbnail-container="theme-thumbnail-container-{{product.product_id}}" data-thumbnail-prod-id="{{product.product_id}}">
 		{% for image in product.images %}
 		<div class="theme-product-thumbnail-image" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}" data-lightbox-thumbnail>
 			{% if image.is_placeholder_image %}
-			<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" data-zs-thumbnail-image src="{{ image.url }}">
+			<picture>
+				<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" data-zs-thumbnail-image src="{{ image.url }}">
+			</picture>
 			{% else %}
-			<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/700x700" data-zs-thumbnail-image src="{{ image.url }}/500x500">
+			<picture>
+				<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/700x700" data-zs-thumbnail-image src="{{ image.url }}/500x500">
+			</picture>
 			{% endif %}
 		</div>
 		{% endfor %}

@@ -81,9 +81,13 @@
 			<div class="theme-product-details-column theme-product-image-area-container">
 				<div class="theme-product-full-image">
 					{% if product.images[0].is_placeholder_image %}
-					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}">
+					<picture>
+						<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}">
+					</picture>
 					{% else %}
-					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/500x500" data-detail-image="theme-detail-image-{{product.product_id}}">
+					<picture>
+						<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/500x500" data-detail-image="theme-detail-image-{{product.product_id}}">
+					</picture>
 					{% endif %}
 				</div>
 			</div>
@@ -98,9 +102,13 @@
 					</div>
 
 					{% if product.images[0].is_placeholder_image %}
-					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}">
+					<picture>
+						<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}">
+					</picture>
 					{% else %}
-					<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/500x500" data-detail-image="theme-detail-image-{{product.product_id}}">
+					<picture>
+						<img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/500x500" data-detail-image="theme-detail-image-{{product.product_id}}">
+					</picture>
 					{% endif %}
 
 				</div>
@@ -108,9 +116,13 @@
 					{% for image in product.images %}
 					<div class="theme-product-thumbnail-image" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}"  data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}">
 						{% if image.is_placeholder_image %}
-						<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" src="{{ image.url }}">
+						<picture>
+							<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" src="{{ image.url }}">
+						</picture>
 						{% else %}
-						<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/500x500" src="{{ image.url }}/200x200">
+						<picture>
+							<img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/500x500" src="{{ image.url }}/200x200">
+						</picture>
 						{% endif %}
 					</div>
 					{% endfor %}

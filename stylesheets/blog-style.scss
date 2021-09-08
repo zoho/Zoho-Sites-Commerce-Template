@@ -961,12 +961,15 @@
             @include prefix(justify-content,center);
             height:200px;
             background-color: map-get($base_vars,'color-light');
-            img{
-              vertical-align: top;
-              max-width: 100%;
-              max-height: 100%;
-              @include prefix(flex,0 0 auto);
-              object-fit: scale-down;
+            picture{
+              @include picture-tag;
+              img{
+                vertical-align: top;
+                max-width: 100%;
+                max-height: 100%;
+                @include prefix(flex,0 0 auto);
+                object-fit: scale-down;
+              }
             }
           }
         }
@@ -1524,12 +1527,15 @@
           height: 330px;
           width: 100%;
           background-color: map-get($base_vars,'color-light');
-          img{
-            vertical-align: top;
-            max-width: 100%;
-            max-height: 100%;
-            @include prefix(flex,0 0 auto);
-            object-fit: scale-down;
+          picture{
+            @include picture-tag;
+            img{
+              vertical-align: top;
+              max-width: 100%;
+              max-height: 100%;
+              @include prefix(flex,0 0 auto);
+              object-fit: scale-down;
+            }
           }
         }
       }

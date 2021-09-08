@@ -4,9 +4,13 @@
 		<div class="theme-product-details-image-container" data-zs-product-img-container>
 				<div class="theme-product-image" data-lightbox-container="prod_images_grid_{{product.product_id}}">
 					{% if product.images[0].is_placeholder_image %}
+					<picture>
 						<img alt="{{ product.images[0].alternate_text }}" src="{{ product.images[0].url }}" title="{{product.images[0].title }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+					</picture>	
 					{% else %}
+					<picture>
 						<img alt="{{ product.images[0].alternate_text }}" src="{{ product.images[0].url }}/700x700" title="{{product.images[0].title}}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+					</picture>	
 					{% endif %}
 				</div>
 		</div>
@@ -21,9 +25,13 @@
 			</div>
 				<div class="theme-product-image">
 					{% if product.images[0].is_placeholder_image %}
+					<picture>
 						<img alt="{{ product.images[0].alternate_text }}" src="{{ product.images[0].url }}" title="{{product.images[0].title}}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+					</picture>	
 					{% else %}
+					<picture>
 						<img alt="{{ product.images[0].alternate_text }}" src="{{ product.images[0].url }}/700x700" title="{{product.images[0].title}}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+					</picture>
 					{% endif %}
 				</div>
 		</div>
@@ -32,11 +40,15 @@
 				<div class="theme-product-details-page-thumbnail" data-zs-image-id="{{ image.id }}" data-thumbnail-image>
           {% if image.is_placeholder_image %}
               <div class="theme-product-thubmnail" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-lightbox-thumbnail>
+              	<picture>
                   <img alt="{{ image.alternate_text }}" title="{{image.title }}" data-image-resolution="{{ image.url }}" data-zs-thumbnail-image src="{{ image.url }}">
+                </picture>
               </div>
           {% else %}
               <div class="theme-product-thubmnail" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-lightbox-thumbnail>
+              	<picture>
                   <img alt="{{ image.alternate_text }}" title="{{image.title }}" data-image-resolution="{{ image.url }}/700x700" data-zs-thumbnail-image src="{{ image.url }}/200x200">
+                </picture>
               </div>
           {% endif %}
 				</div>

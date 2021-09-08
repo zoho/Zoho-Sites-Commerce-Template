@@ -76,9 +76,13 @@
           {% for image in product.images %}
           <div class="theme-product-full-image" data-zs-product-img-container data-zs-image-id="{{ image.id }}" data-lightbox-container="prod_images_grid_{{product.product_id}}">
             {% if image.is_placeholder_image %}
+            <picture>
               <img alt="{{ image.alternate_text }}" data-detail-image="theme-detail-image-{{product.product_id}}" title="{{ image.title }}" src="{{ image.url }}" data-lightbox-detailImage>
+            </picture>
             {% else %}
+            <picture>
               <img alt="{{ image.alternate_text }}" data-detail-image="theme-detail-image-{{product.product_id}}" title="{{ image.title }}" src="{{ image.url }}/600x600" data-lightbox-detailImage>
+            </picture>
             {% endif %}
           </div>
           {% endfor %}
@@ -93,9 +97,13 @@
             </div>
 
             {% if product.images[0].is_placeholder_image %}
-            <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+            <picture>
+              <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+            </picture>
             {% else %}
-            <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/600x600" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+            <picture>
+              <img alt="{{ product.images[0].alternate_text }}" title="{{product.images[0].title}}" src="{{ product.images[0].url }}/600x600" data-detail-image="theme-detail-image-{{product.product_id}}" data-lightbox-detailImage>
+            </picture>
             {% endif %}
 
           </div>
@@ -103,9 +111,13 @@
             {% for image in product.images %}
             <div class="theme-product-thumbnail-image" onclick="showDetailImage(this)" data-thumbnail-active="{{ image.id }}" data-thumbnail="{{product.product_id}}" data-zs-image-id="{{ image.id }}" data-lightbox-thumbnail>
               {% if image.is_placeholder_image %}
-              <img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" data-zs-thumbnail-image src="{{ image.url }}">
+              <picture>
+                <img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}" data-zs-thumbnail-image src="{{ image.url }}">
+              </picture>
               {% else %}
-              <img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/600x600" data-zs-thumbnail-image src="{{ image.url }}/200x200">
+              <picture>
+                <img alt="{{ image.alternate_text }}" title="{{image.title}}" data-image-resolution="{{ image.url }}/600x600" data-zs-thumbnail-image src="{{ image.url }}/200x200">
+              </picture>
               {% endif %}
             </div>
             {% endfor %}

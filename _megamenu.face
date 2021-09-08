@@ -35,7 +35,9 @@
     <!-- image -->
     <div class="zpmm-element zpmm-title zpmm-image">
         <a class="zpmm-element-anchor" {% if menu_item.url %}href="{{menu_item.url}}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}{% endif %}>
-            <img class="zpmm-element-imagecontent" src="{{menu_item.image_url}}" alt=""/>
+            <picture>
+                <img class="zpmm-element-imagecontent" src="{{menu_item.image_url}}" alt=""/>
+            </picture>
         </a>
     </div>
     <!-- image end -->

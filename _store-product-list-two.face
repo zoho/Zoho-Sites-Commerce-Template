@@ -17,14 +17,22 @@
           {% endif %}
       </div>
       {% if product.images[0].is_placeholder_image %}
+      <picture>
         <img data-src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none">
+      </picture>
         <noscript>
-          <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+          <picture>
+            <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+          </picture>
         </noscript>
       {% else %}
+      <picture>
         <img data-src="{{ product.images[0].url }}/300x300" style="display:none" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+      </picture>
         <noscript>
-          <img src="{{ product.images[0].url }}/300x300" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+          <picture>
+            <img src="{{ product.images[0].url }}/300x300" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}">
+          </picture>
         </noscript>
       {% endif %}
     </div>

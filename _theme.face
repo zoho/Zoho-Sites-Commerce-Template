@@ -705,7 +705,9 @@
 						</div>
 						<div class="theme-cart-message-item theme-cart-message-prod-img">
 							<div class="theme-cart-message-prod-img-inner">
-								<img alt="" title="" src="" data-cart-add-success-prod-img="theme-cart-add-success-prod-img"/>
+								<picture>
+									<img alt="" title="" src="" data-cart-add-success-prod-img="theme-cart-add-success-prod-img"/>
+								</picture>
 							</div>
 						</div>
 						<div class="theme-cart-message-item theme-cart-message-buttons">

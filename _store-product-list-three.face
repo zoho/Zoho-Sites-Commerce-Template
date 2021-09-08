@@ -40,14 +40,22 @@
   <div class="theme-prod-box-content theme-prod-img theme-ribbon-prod-box">
     <div class="theme-prod-img-container">
       {% if product.images[0].is_placeholder_image %}
+      <picture>
         <img data-src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+      </picture>
         <noscript>
-          <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+          <picture>
+            <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+          </picture>
         </noscript>
       {% else %}
+      <picture>
         <img data-src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+      </picture>
         <noscript>
-          <img src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+          <picture>
+            <img src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+          </picture>
         </noscript>
       {% endif %}
     </div>

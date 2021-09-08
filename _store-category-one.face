@@ -13,7 +13,9 @@
         </div>
         {% if !category.images[0].is_placeholder_image %}
         <div class="zpcol-md-6 theme-category-col theme-category-col-right">
+          <picture>
             <img src="{{ category.images[0].url }}/500x500" alt="{{ category.images[0].alternate_text }}" title="{{ category.images[0].title }}" />
+          </picture>
         </div>
         {% endif %}
     </div>

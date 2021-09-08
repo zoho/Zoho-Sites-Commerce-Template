@@ -84,9 +84,13 @@
                     <div class="theme-cart-item-img">
                       <a href="{{cartItem.url}}">
                         {% if cartItem.images[0].is_placeholder_image %}
+                        <picture>
                           <img alt="{{cartItem.images[0].alternate_text}}" title="{{cartItem.images[0].title}}" src="{{cartItem.images[0].url}}">
+                        </picture>
                         {% else %}
+                        <picture>
                           <img alt="{{cartItem.images[0].alternate_text}}" title="{{cartItem.images[0].title}}" src="{{cartItem.images[0].url}}/200x200">
+                        </picture>
                         {% endif %}
                       </a>
                     </div>
