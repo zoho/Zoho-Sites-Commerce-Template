@@ -4405,6 +4405,7 @@
 			height:auto;
 			overflow:hidden;
 			z-index:280;
+			max-height: 0;
 			&.theme-change-zindex{
 				z-index:auto;
 			}
@@ -4452,6 +4453,7 @@
 				overflow:visible;
 				border-top:none;
 				@include box-shadow(0,0,0,transparent);
+				max-height: none;
 			}
 			.theme-close-li-menu{
 				display:none;

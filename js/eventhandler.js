@@ -232,12 +232,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       if(mainHeader){
           var mainHeaderHeight = mainHeader.clientHeight;
       }
-      if(window.innerWidth < 992 && mainHeader && mobileHeaderFix){
-          tempLoad.style.marginTop = (80+mainHeaderHeight)+'px';
-					if(verticalHeader){
-						tempLoad.style.marginTop = (80+verticalHeaderHeight)+'px';
-					}
-      }
 			if(headerSix && mainHeader && tempLoad && (contentContainer.parentNode.nodeName == 'BODY')){
 				addClass(tempLoad,'theme-temp-load-padding');
 			}
@@ -981,9 +975,6 @@ function showLoader(e){
   }
 	else if(mainHeader && headerSix){
   	loader.children[0].style.marginTop = (offsetVal+80)+'px'
-  }
-  if(window.innerWidth < 992 && mainHeader && offsetVal > mainHeaderHeight && mobileHeaderFix){
-  	loader.children[0].style.marginTop = (offsetVal+mainHeaderHeight)+'px';
   }
 }
 function hideLoader(e){

@@ -200,48 +200,10 @@ function responsivechanges() {
         if(themeSidebarContent && themeSidebarMobileContentContainer){
           themeSidebarMobileContentContainer.appendChild(themeSidebarContent);
         }
-        if(headerContainer.className.indexOf('theme-mobile-header-fixed') >= 0){
-          var headercontainerHeightRes = headerContainer.clientHeight;
-          if(themeHeaderSixRes){
-            themeHeaderSixResHeight = themeHeaderSixRes.clientHeight;
-          }
-          if(bannerThemecontainer && !themeHeaderSixRes){
-            bannerThemecontainer.style.marginTop = headercontainerHeightRes+'px';
-          }
-          if(!bannerThemecontainer && themeContentContainer && !themeHeaderSixRes){
-            themeContentContainer.style.marginTop = headercontainerHeightRes+'px';
-          }
-          if(themeHeaderSixRes && bannerThemecontainer){
-            bannerThemecontainer.style.marginTop = themeHeaderSixResHeight+'px';
-          }
-          if(themeHeaderSixRes && !bannerThemecontainer && themeContentContainer){
-            themeContentContainer.style.marginTop = themeHeaderSixResHeight+'px';
-          }
-        }
         var deviceWidth = document.documentElement.clientWidth/2;
         var deviceHeight = document.documentElement.clientHeight/2;
         if(themeLogo && themeLogoHeightSlice >= deviceHeight || themeLogo && themeLogoWidthSlice >= deviceWidth){
             addClass(themeLogo,'mobileLogoAuto');
-            if(headerContainer.className.indexOf('theme-mobile-header-fixed') >= 0){
-              themeLogo.onload = function(){
-              	var headercontainerHeightRes = headerContainer.clientHeight;
-                  if(themeHeaderSixRes){
-                    themeHeaderSixResHeight = themeHeaderSixRes.clientHeight;
-                  }
-                  if(bannerThemecontainer && !themeHeaderSixRes){
-                    bannerThemecontainer.style.marginTop = headercontainerHeightRes+'px';
-                  }
-                  if(!bannerThemecontainer && themeContentContainer && !themeHeaderSixRes){
-                    themeContentContainer.style.marginTop = headercontainerHeightRes+'px';
-                  }
-                  if(themeHeaderSixRes && bannerThemecontainer){
-                    bannerThemecontainer.style.marginTop = themeHeaderSixResHeight+'px';
-                  }
-                  if(themeHeaderSixRes && !bannerThemecontainer && themeContentContainer){
-                    themeContentContainer.style.marginTop = themeHeaderSixResHeight+'px';
-                  }
-              }
-            }
         }
         if(menuParent){
         	menuParent.style.maxHeight = "";

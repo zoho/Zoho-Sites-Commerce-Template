@@ -448,11 +448,9 @@
 		}
 		&.theme-cart-checkout-headersix{
 			&.theme-mobile-header-fixed{
-				position: fixed;
-				top: 0px;
-				z-index: 200;
-				right: 0px;
-				width: 100%;
+				position: sticky;
+				top: 0;
+				z-index: 250;
 				@include respond-to(mediumdevice){
 					position: static;
 				}
@@ -473,11 +471,9 @@
 	@media all and (max-width:768px){
 		.zpheader-style-01{
 			&.theme-mobile-header-fixed{
-				position: fixed;
-				top: 0px;
+				position: sticky;
+				top: 0;
 				z-index: 250;
-				right: 0px;
-				width: 100%;
 			}
 		}
 	}
@@ -669,11 +665,9 @@
 	@media all and (max-width:768px){
 		.zpheader-style-02{
 			&.theme-mobile-header-fixed{
-				position: fixed;
-				top: 0px;
+				position: sticky;
+				top: 0;
 				z-index: 250;
-				right: 0px;
-				width: 100%;
 			}
 		}
 	}
@@ -851,11 +845,9 @@
 	@media all and (max-width:768px){
 		.zpheader-style-03{
 			&.theme-mobile-header-fixed{
-				position: fixed;
-				top: 0px;
+				position: sticky;
+				top: 0;
 				z-index: 250;
-				right: 0px;
-				width: 100%;
 			}
 		}
 	}
@@ -932,11 +924,9 @@
 	@media all and (max-width:768px){
 		.zpheader-style-04{
 			&.theme-mobile-header-fixed{
-				position: fixed;
-				top: 0px;
+				position: sticky;
+				top: 0;
 				z-index: 250;
-				right: 0px;
-				width: 100%;
 			}
 		}
 	}
@@ -1105,11 +1095,9 @@
 	@media all and (max-width:768px){
 		.zpheader-style-05{
 			&.theme-mobile-header-fixed{
-				position: fixed;
-				top: 0px;
+				position: sticky;
+				top: 0;
 				z-index: 250;
-				right: 0px;
-				width: 100%;
 			}
 		}
 	}
@@ -1136,11 +1124,9 @@
 				width: 100%;
 			}
 			&.theme-mobile-header-fixed{
-				position: fixed;
-				top: 0px;
-				z-index: 200;
-				right: 0px;
-				width: 100%;
+				position: sticky;
+				top: 0;
+				z-index: 250;
 			}
 		}
 	}
@@ -1711,11 +1697,9 @@
    }
    &.theme-mobile-header-fixed{
      @media all and (max-width:768px){
-       position: fixed;
-       top: 0px;
-       z-index: 200;
-       right: 0px;
-       width: 100%;
+			 position: sticky;
+			 top: 0;
+			 z-index: 250;
      }
      &.theme-header-fixed {
        @include respond-to(mediumdevice){
@@ -1952,7 +1936,7 @@
 		@include flexbox;
     width:100%;
     height:100%;
-    z-index:200;
+    z-index:199;
     top:0;
     position:absolute;
     span{
