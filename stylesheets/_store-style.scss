@@ -621,11 +621,11 @@
     @include prefix(justify-content,center);
     picture{
       @include picture-tag;
-      img{
-        @include prefix(flex,0 0 auto);
-          display:block;
-          max-height:100%;
-      }
+    }
+    img{
+      @include prefix(flex,0 0 auto);
+        display:block;
+        max-height:100%;
     }
   }
   .theme-category-name-description{
@@ -1497,13 +1497,13 @@
         &.theme-prod-img{
           picture{
             @include picture-tag
-            img{
-              vertical-align: top;
-              max-width:100%;
-              max-height:100%;
-              @include prefix(flex,0 0 auto);
-              object-fit: scale-down;
-            }
+          }
+          img{
+            vertical-align: top;
+            max-width:100%;
+            max-height:100%;
+            @include prefix(flex,0 0 auto);
+            object-fit: scale-down;
           }
           margin-bottom:15px;
           @include prefix(box-shadow,0 0px 9px RGBA(0, 0, 0, 0.11));
@@ -2608,13 +2608,13 @@
           border-bottom:1px solid map-get($base_vars,'color-border');
           picture{
             @include picture-tag
-            img{
-              max-width:100%;
-              vertical-align: top;
-              @include prefix(flex,0 0 auto);
-              max-height:100%;
-              object-fit: scale-down;
-            }
+          }
+          img{
+            max-width:100%;
+            vertical-align: top;
+            @include prefix(flex,0 0 auto);
+            max-height:100%;
+            object-fit: scale-down;
           }
         }
         .theme-product-name{
@@ -3709,14 +3709,14 @@
          &.theme-prod-img{
           picture{
             @include picture-tag
-             img{
-               vertical-align: top;
-               max-width:100%;
-               max-height:100%;
-               @include prefix(flex,0 0 auto);
-               object-fit: scale-down;
-             }
-           }
+          }
+          img{
+            vertical-align: top;
+            max-width:100%;
+            max-height:100%;
+            @include prefix(flex,0 0 auto);
+            object-fit: scale-down;
+          }
            height:250px;
            position: relative;
            .theme-prod-img-container{
@@ -4807,14 +4807,14 @@
          &.theme-prod-img{
           picture{
             @include picture-tag
-             img{
-               vertical-align: top;
-               max-width:100%;
-               max-height:100%;
-               @include prefix(flex,0 0 auto);
-               object-fit: scale-down;
-             }
-           }
+          }
+          img{
+            vertical-align: top;
+            max-width:100%;
+            max-height:100%;
+            @include prefix(flex,0 0 auto);
+            object-fit: scale-down;
+          }
            height:250px;
            .theme-prod-img-container{
              @include prefix(align-items,center);
@@ -6034,12 +6034,12 @@
                   position: relative;
                   picture{
                     @include picture-tag
-                    img {
-                        max-height: 100%;
-                        max-width: 100%;
-                        @include prefix(flex, 0 0 auto);
-                        cursor: pointer;
-                    }
+                  }
+                  img {
+                      max-height: 100%;
+                      max-width: 100%;
+                      @include prefix(flex, 0 0 auto);
+                      cursor: pointer;
                   }
                   a {
                     position: absolute;
@@ -6794,12 +6794,12 @@
               cursor: pointer;
               picture{
                 @include picture-tag
-                img {
-                    max-height: 100%;
-                    max-width: 100%;
-                    @include prefix(flex, 0 0 auto);
-                    object-fit: scale-down;
-                }
+              }
+              img {
+                  max-height: 100%;
+                  max-width: 100%;
+                  @include prefix(flex, 0 0 auto);
+                  object-fit: scale-down;
               }
               .theme-out-of-stock-button,
               .theme-product-quick-view-button{
@@ -7864,13 +7864,13 @@
             margin: 15px 0;
             picture{
               @include picture-tag
-              img{
-                vertical-align: top;
-                max-width:100%;
-                max-height:100%;
-                @include prefix(flex,0 0 auto);
-                object-fit: scale-down;
-              }
+            }
+            img{
+              vertical-align: top;
+              max-width:100%;
+              max-height:100%;
+              @include prefix(flex,0 0 auto);
+              object-fit: scale-down;
             }
             .theme-product-image-and-ribbon-container{
               @include prefix(align-items,center);
@@ -8843,12 +8843,12 @@
               cursor: pointer;
               picture{
                 @include picture-tag
-                img {
-                    max-height: 100%;
-                    max-width: 100%;
-                    @include prefix(flex, 0 0 auto);
-                    object-fit: scale-down;
-                }
+              }
+              img {
+                  max-height: 100%;
+                  max-width: 100%;
+                  @include prefix(flex, 0 0 auto);
+                  object-fit: scale-down;
               }
               .theme-out-of-stock-button,
               .theme-product-quick-view-button{
@@ -9880,12 +9880,12 @@
               cursor: pointer;
               picture{
                 @include picture-tag
-                img {
-                    max-height: 100%;
-                    max-width: 100%;
-                    @include prefix(flex, 0 0 auto);
-                    object-fit: scale-down;
-                }
+              }
+              img {
+                  max-height: 100%;
+                  max-width: 100%;
+                  @include prefix(flex, 0 0 auto);
+                  object-fit: scale-down;
               }
               .theme-out-of-stock-button,
               .theme-product-quick-view-button{
@@ -10502,14 +10502,14 @@
             width:100%;
             picture{
               @include picture-tag;
-              img{
-                 max-width:100%;
-                 max-height:100%;
-                 vertical-align: top;
-                 object-fit:scale-down;
-                 @include prefix(flex,0 0 auto);
-                 cursor: pointer;
-              }
+            }
+            img{
+               max-width:100%;
+               max-height:100%;
+               vertical-align: top;
+               object-fit:scale-down;
+               @include prefix(flex,0 0 auto);
+               cursor: pointer;
             }
           }
           position: relative;
@@ -10579,13 +10579,13 @@
             }
             picture{
               @include picture-tag;
-              img{
-                max-width:100%;
-                max-height:100%;
-                vertical-align: top;
-                @include prefix(flex,0 0 auto);
-                object-fit: scale-down;
-              }
+            }
+            img{
+              max-width:100%;
+              max-height:100%;
+              vertical-align: top;
+              @include prefix(flex,0 0 auto);
+              object-fit: scale-down;
             }
           }
         }
@@ -11537,12 +11537,12 @@
             height: 100%;
             picture{
               @include picture-tag;
-              img {
-                max-height: 100%;
-                max-width: 100%;
-                @include prefix(flex,0 0 auto);
-                cursor: pointer;
-              }
+            }
+            img {
+              max-height: 100%;
+              max-width: 100%;
+              @include prefix(flex,0 0 auto);
+              cursor: pointer;
             }
           }
           position: relative;
@@ -11612,12 +11612,12 @@
                 opacity:0.7;
               }
               picture{
-              @include picture-tag;
-                img {
-                  @include prefix(flex,0 0 auto);
-                  max-height: 100%;
-                  max-width: 100%;
-                }
+                @include picture-tag;
+              }
+              img {
+                @include prefix(flex,0 0 auto);
+                max-height: 100%;
+                max-width: 100%;
               }
             &:hover,
             &.theme-active-thumbnail {
@@ -12481,14 +12481,14 @@
             width:100%;
             picture{
               @include picture-tag;
-              img{
-                 max-width:100%;
-                 max-height:100%;
-                 vertical-align: top;
-                 object-fit:scale-down;
-                 @include prefix(flex,0 0 auto);
-                 cursor: pointer;
-              }
+            }
+            img{
+               max-width:100%;
+               max-height:100%;
+               vertical-align: top;
+               object-fit:scale-down;
+               @include prefix(flex,0 0 auto);
+               cursor: pointer;
             }
           }
           position: relative;
@@ -12558,13 +12558,13 @@
             }
             picture{
               @include picture-tag;
-              img{
-                max-width:100%;
-                max-height:100%;
-                vertical-align: top;
-                @include prefix(flex,0 0 auto);
-                object-fit: scale-down;
-              }
+            }
+            img{
+              max-width:100%;
+              max-height:100%;
+              vertical-align: top;
+              @include prefix(flex,0 0 auto);
+              object-fit: scale-down;
             }
           }
         }
@@ -13342,14 +13342,14 @@
             width:100%;
             picture{
               @include picture-tag;
-              img{
-                 max-width:100%;
-                 max-height:100%;
-                 vertical-align: top;
-                 object-fit:scale-down;
-                 @include prefix(flex,0 0 auto);
-                 cursor: pointer;
-              }
+            }
+            img{
+               max-width:100%;
+               max-height:100%;
+               vertical-align: top;
+               object-fit:scale-down;
+               @include prefix(flex,0 0 auto);
+               cursor: pointer;
             }
           }
           position: relative;
@@ -13418,13 +13418,13 @@
             }
             picture{
               @include picture-tag;
-              img{
-                max-width:100%;
-                max-height:100%;
-                vertical-align: top;
-                @include prefix(flex,0 0 auto);
-                object-fit: scale-down;
-              }
+            }
+            img{
+              max-width:100%;
+              max-height:100%;
+              vertical-align: top;
+              @include prefix(flex,0 0 auto);
+              object-fit: scale-down;
             }
           }
         }
@@ -14968,12 +14968,12 @@
                   }
                   picture{
                     @include picture-tag;
-                    img {
-                      max-width: 100%;
-                      max-height:100%;
-                      @include prefix(flex,0 0 auto);
-                      cursor: pointer;
-                    }
+                  }
+                  img {
+                    max-width: 100%;
+                    max-height:100%;
+                    @include prefix(flex,0 0 auto);
+                    cursor: pointer;
                   }
                   &:last-child {
                     margin-bottom: 0px;
@@ -15056,11 +15056,11 @@
                     }
                     picture{
                       @include picture-tag;
-                      img {
-                          max-width: 100%;
-                          max-height: 100%;
-                          @include prefix(flex,0 0 auto);
-                      }
+                    }
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        @include prefix(flex,0 0 auto);
                     }
                     &:hover, &.theme-active-thumbnail {
                       @include prefix(box-shadow,0 0 0 2px map-get($base_vars,'color-primary'));
@@ -15827,13 +15827,13 @@
                     height: 300px;
                     picture{
                       @include picture-tag;
-                      img {
-                        @include prefix(flex,0 0 auto);
-                        object-fit: scale-down;
-                        max-width: 100%;
-                        max-height: 100%;
-                        cursor: pointer;
-                      }
+                    }
+                    img {
+                      @include prefix(flex,0 0 auto);
+                      object-fit: scale-down;
+                      max-width: 100%;
+                      max-height: 100%;
+                      cursor: pointer;
                     }
                     @include respond-to(mediumdevice) {
                        @include prefix(flex,0 1 85%);
@@ -15911,12 +15911,12 @@
                         }
                         picture{
                           @include picture-tag;
-                          img {
-                              max-width: 100%;
-                              max-height: 100%;
-                              @include prefix(flex,0 0 auto);
-                              object-fit: scale-down;
-                          }
+                        }
+                        img {
+                            max-width: 100%;
+                            max-height: 100%;
+                            @include prefix(flex,0 0 auto);
+                            object-fit: scale-down;
                         }
                         &.theme-active-thumbnail {
                           border-color:map-get($base_vars, 'color-primary');
@@ -16115,14 +16115,14 @@
             width:100%;
             picture{
               @include picture-tag;
-              img{
+            }
+            img{
                max-width:100%;
                max-height:100%;
                vertical-align: top;
                object-fit:scale-down;
                @include prefix(flex,0 0 auto);
                cursor: pointer;
-              }
             }
             position: relative;
             .theme-image-overlay{
@@ -16193,14 +16193,14 @@
             }
             picture{
               @include picture-tag;
-              img{
-                max-width:100%;
-                max-height:100%;
-                vertical-align: top;
-                @include prefix(flex,0 0 auto);
-                object-fit: scale-down;
-                opacity: 0.8;
-              }
+            }
+            img{
+              max-width:100%;
+              max-height:100%;
+              vertical-align: top;
+              @include prefix(flex,0 0 auto);
+              object-fit: scale-down;
+              opacity: 0.8;
             }
           }
         }
@@ -18575,13 +18575,13 @@
                     }
                     picture{
                       @include picture-tag;
-                      img {
-                        max-width: 100%;
-                        max-height: 100%;
-                        @include prefix(flex,0 0 auto);
-                        object-fit: scale-down;
-                        cursor: default;
-                      }
+                    }
+                    img {
+                      max-width: 100%;
+                      max-height: 100%;
+                      @include prefix(flex,0 0 auto);
+                      object-fit: scale-down;
+                      cursor: default;
                     }
                     position: relative;
                     .theme-image-overlay{
@@ -19564,13 +19564,13 @@
           }
           picture{
             @include picture-tag;
-            img{
-              @include prefix(flex,0 0 auto);
-              max-height: 100%;
-              max-width: 100%;
-              object-fit: scale-down;
-              vertical-align: top;
-            }
+          }
+          img{
+            @include prefix(flex,0 0 auto);
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: scale-down;
+            vertical-align: top;
           }
         }
       }
