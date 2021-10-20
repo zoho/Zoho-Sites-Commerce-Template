@@ -614,7 +614,6 @@
 
 @if map-get($user_layout_vars,'product_category_style') == 05 {
   .theme-category-image-conatainer{
-    height:230px;
     padding-bottom:30px;
     @include flexbox;
     @include prefix(align-items,center);
@@ -8129,7 +8128,7 @@
           &.theme-product-list-style-07{
             border: none;
             .theme-product-box-container{
-              border: 1px dashed map-get($base_vars,'color-border');
+              border: 1px solid map-get($base_vars,'color-border');
             }
           }
         }

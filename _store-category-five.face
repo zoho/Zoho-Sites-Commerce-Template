@@ -7,7 +7,7 @@
           <div class="zpcol-md-12">
               <div class="theme-category-image-conatainer">
                 <picture>
-                  <img src="{{ category.images[0].url }}/500x500" alt="{{ category.images[0].alternate_text }}" title="{{ category.images[0].title }}" />
+                  <img src="{{ category.images[0].url }}/1400x1400" alt="{{ category.images[0].alternate_text }}" title="{{ category.images[0].title }}" />
                 </picture>
               </div>
           </div>
