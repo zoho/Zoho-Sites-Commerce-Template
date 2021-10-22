@@ -807,6 +807,17 @@ color-selection-tick-style-07 : transparent,
 
 color-product-coupons-claimed-progress: #dddddd,
 
+// PRODUCT DETAILS FONT SIZES
+
+font-size-details-product-name: 24px,
+font-size-details-product-price: 22px,
+font-size-details-product-label-price: 16px,
+font-size-details-product-label-texts: 100%,
+font-size-details-product-links-info: 100%,
+font-size-details-product-addcart: 100%,
+font-size-details-product-popupmessage: 100%,
+font-size-details-product-popupmessage-button: 100%,
+
 // CHECKOUT VARIABLES
 
 color-checkout-tab-background:map-get($base_vars,'color-light'),
