@@ -536,10 +536,6 @@ color-nostock-details-background-style-07 : #EB4D5E,
 
 color-stock-detail-text-style-04:map-get($base_vars,'color-default'),
 
-font-size-product-detail-name-style-04:24px,
-
-font-size-product-detail-price-style-04:24px,
-
 font-size-product-detail-old-price-style-04:20px,
 
 color-stock-details-text-style-06 : map-get($base_vars,'color-default'),
@@ -677,8 +673,6 @@ color-rating-count-style-05 : map-get($base_vars,'color-secondary'),
 
 color-review-count-text-style-07 : map-get($base_vars,'color-secondary'),
 
-font-size-product-box-info-price-style-06:22px,
-
 color-add-cart-button-background:map-get($base_vars,'color-default'),
 color-add-cart-button-text:map-get($base_vars, 'color-secondary'),
 color-add-cart-button-border:map-get($base_vars, 'color-default'),
@@ -703,8 +697,6 @@ font-size-product-box-info-button:12px,
 color-product-box-info-button-hover-background:map-get($base_vars,'color-default'),
 color-product-box-info-button-hover-text:map-get($base_vars,'color-primary'),
 color-product-box-info-icon:map-get($base_vars,'color-default'),
-
-font-size-detail-cart-button-style-04:20px,
 
 color-product-box-info-background-style-02:map-get($base_vars,'color-secondary'),
 color-product-box-info-background-style-02-rgba:convertHexToRgb(map-get($base_vars,'color-secondary')),
