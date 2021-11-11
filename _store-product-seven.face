@@ -5,24 +5,20 @@
         {% include '_store-product-image-seven' %}
       </div>
       <div class="theme-product-detail-column theme-product-detail-varients-container">
-
-        <div class="theme-product-name">
-
-          {% if product.is_product_review_enabled %}
-          <div class="theme-rating-review-container">
-            <div class="theme-rating-review" data-comments-summary = "rating-review-write-review"></div>
-          </div>
-          {% endif %}
-
-          <h1 data-zs-product-name>{{ product.name }}</h1>
-
-          {% if !product.is_returnable %}
-              <div class="theme-prod-non-returnable" data-zs-product-non-returnable>
-                {{i18n.get("product.label.non_returnable")}}
-              </div>
-          {% endif %}
-
+        {% if product.is_product_review_enabled %}
+        <div class="theme-rating-review-container">
+          <div class="theme-rating-review" data-comments-summary = "rating-review-write-review"></div>
         </div>
+        {% endif %}
+        <div class="theme-product-name">
+          <h1 data-zs-product-name>{{ product.name }}</h1>
+        </div>
+        {% if !product.is_returnable %}
+            <div class="theme-prod-non-returnable" data-zs-product-non-returnable>
+              {{i18n.get("product.label.non_returnable")}}
+            </div>
+        {% endif %}
+        
         {% include '_store-product-pricing-seven' %}
 
         {% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
@@ -59,9 +55,9 @@
           {% if product.has_variants %}
             {% include "_store-product-variants-seven" %}
           {% endif %}
-          {% include "_store-product-custom-field-seven" %}
-          {% include "_store-product-quantity-add-cart-seven" %}
         </div>
+        {% include "_store-product-custom-field-seven" %}
+        {% include "_store-product-quantity-add-cart-seven" %}
       </div>
     </div>
   </div>

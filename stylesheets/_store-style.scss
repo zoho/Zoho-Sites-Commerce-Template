@@ -538,7 +538,6 @@
 @if map-get($user_layout_vars,'product_category_style') == 03 {
   .theme-category-col{
     .theme-category-description{
-        background:map-get($base_vars,'color-default');
         @include flexbox;
         padding: 20px;
         @include prefix(flex-direction,column);
@@ -15696,72 +15695,68 @@
             }
           }
         }
-
-        .theme-product-name {
-          margin-bottom: 23px;
-
-          .theme-rating-review-container{
-            @include flexbox;
-            @include prefix(align-items,center);
-            @include prefix(flex-wrap,wrap);
-            margin:0px 0px 20px 0px;
-            .theme-rating-review{
-              a{
-                font-size: map-get($default_vars,'font-size-details-product-links-info');
-              }
-              .svg-grad {
-                stop{
-                  stop-color : map-get($default_vars,'color-review-star-active-seven');
-                  + stop{
-                    stop-color : map-get($default_vars,'color-review-star-seven');
-                  }
+        .theme-rating-review-container{
+          @include flexbox;
+          @include prefix(align-items,center);
+          @include prefix(flex-wrap,wrap);
+          margin:0px 0px 20px 0px;
+          .theme-rating-review{
+            a{
+              font-size: map-get($default_vars,'font-size-details-product-links-info');
+            }
+            .svg-grad {
+              stop{
+                stop-color : map-get($default_vars,'color-review-star-active-seven');
+                + stop{
+                  stop-color : map-get($default_vars,'color-review-star-seven');
                 }
               }
-              .zpcomments-reviews-ratings{
-                .zpform-comment-rating-container{
-                  label{
+            }
+            .zpcomments-reviews-ratings{
+              .zpform-comment-rating-container{
+                label{
+                  width: 18px;
+                  height: 18px;
+                  cursor: default;
+                  svg{
                     width: 18px;
                     height: 18px;
-                    cursor: default;
-                    svg{
-                      width: 18px;
-                      height: 18px;
-                    }
                   }
-                  + .zpcomment-rating-vote-value{
-                    margin-left: 20px;
-                    a{
-                      color : map-get($default_vars,'color-review-count-text-style-07');
-                      font-size: map-get($default_vars,'font-size-details-product-links-info');
-                    }
+                }
+                + .zpcomment-rating-vote-value{
+                  margin-left: 20px;
+                  a{
+                    color : map-get($default_vars,'color-review-count-text-style-07');
+                    font-size: map-get($default_vars,'font-size-details-product-links-info');
                   }
                 }
               }
             }
           }
-
+        }
+        .theme-product-name {
           h1 {
             line-height: 1.4;
             word-wrap: break-word;
             word-break: break-word;
             font-size: map-get($default_vars,'font-size-details-product-name');
           }
-          .theme-prod-non-returnable{
-            background: map-get($base_vars,'color-primary');
-            color : map-get($default_vars,'color-non-returnable');
-            padding:5px 10px;
-            line-height: 1;
-            @include prefix(border-radius,10px);
-            display: inline-block;
-            font-size: map-get($default_vars,'font-size-details-product-links-info');
-            margin-top:10px;
-          }
         }
-
+        .theme-prod-non-returnable{
+          background: map-get($base_vars,'color-primary');
+          color : map-get($default_vars,'color-non-returnable');
+          padding:5px 10px;
+          line-height: 1;
+          @include prefix(border-radius,10px);
+          display: inline-block;
+          font-size: map-get($default_vars,'font-size-details-product-links-info');
+          margin-top:10px;
+        }
         .theme-product-detail-price-area {
           @include flexbox;
           @include prefix(align-items,baseline);
           margin-bottom: 30px;
+          margin-top: 23px;
           span {
             display: inline-block;
             &.theme-product-price {
@@ -15794,37 +15789,84 @@
           margin-bottom: 30px;
           line-height: 1.6;
         }
-        .theme-product-varients-area {
-          .theme-product-varients-row {
-            margin-bottom: 30px;
-            @include flexbox;
-            .theme-product-variant {
-              display: inline-block;
-              position: relative;
-              &:last-child{
-                margin-right:0;
+        .theme-product-varients-row {
+          margin-bottom: 30px;
+          @include flexbox;
+          .theme-product-variant {
+            display: inline-block;
+            position: relative;
+            &:last-child{
+              margin-right:0;
+              a{
+                font-size: 9px;
+                text-decoration: underline;
+              }
+              .theme-custom-field-value{
                 a{
-                  font-size: 9px;
-                	text-decoration: underline;
+                  font-size: map-get($default_vars,'font-size-text');
+                  text-decoration: none;
                 }
-                .theme-custom-field-value{
-                  a{
-                    font-size: map-get($default_vars,'font-size-text');
-                    text-decoration: none;
+              }
+            }
+            // THEME STORE COLOR VARIANT STYLE STARTS
+
+            .theme-product-color-variations {
+              position: relative;
+              span{
+                margin-left: 10px;
+                margin-bottom:3px;
+                &:first-of-type{
+                  margin-left: 0px;
+                }
+                &.theme-product-color{
+                  @include inline-flex;
+                  position: relative;
+                  align-items: center;
+                  input[type=radio] {
+                    display: none;
+                    width: 34px;
+                    height: 34px;
+                  }
+                  label {
+                    display: inline-block;
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                    position: relative;
+                    @include prefix(border-radius,50px);
+                    border:1px solid map-get($base_vars,'color-border');
+                    &.chekedLabel{
+                      border:0 none;
+                       &:after {
+                        position: absolute;
+                        content: '';
+                        width: 100%;
+                        height:100%;
+                        background:map-get($default_vars,'color-selection-tick-style-07');
+                        left: -4px;
+                        top:-4px;
+                        z-index: 0;
+                        border:1px solid map-get($default_vars,'color-selection-border-style-07');
+                        @include prefix(border-radius,50px);
+                        padding: 3px;
+                        box-sizing: content-box;
+                      }
+                    }
                   }
                 }
               }
-              // THEME STORE COLOR VARIANT STYLE STARTS
+            }
 
-              .theme-product-color-variations {
-                position: relative;
+            // THEME STORE COLOR VARIANT STYLE END
+            .theme-variant-select-container-main{
+              margin-bottom:15px;
+              .theme-variant-select-container{
+                @include flexbox;
+                @include prefix(flex-wrap,wrap);
+                @include prefix(justify-content,flex-start);
                 span{
-                  margin-left: 10px;
                   margin-bottom:3px;
-                  &:first-of-type{
-                    margin-left: 0px;
-                  }
-                  &.theme-product-color{
+                  &.theme-product-variant{
                     @include inline-flex;
                     position: relative;
                     align-items: center;
@@ -15835,393 +15877,341 @@
                     }
                     label {
                       display: inline-block;
-                      width: 24px;
-                      height: 24px;
                       cursor: pointer;
                       position: relative;
-                      @include prefix(border-radius,50px);
-                      border:1px solid map-get($base_vars,'color-border');
+                      border:1px solid map-get($default_vars,'color-textvariant-border-style-07');
+                      padding:10px 20px;
+                      margin-right: -1px;
                       &.chekedLabel{
-                        border:0 none;
-                         &:after {
-                          position: absolute;
-                          content: '';
-                          width: 100%;
-                          height:100%;
-                          background:map-get($default_vars,'color-selection-tick-style-07');
-                          left: -4px;
-                          top:-4px;
-                          z-index: 0;
-                          border:1px solid map-get($default_vars,'color-selection-border-style-07');
-                          @include prefix(border-radius,50px);
-                          padding: 3px;
-                          box-sizing: content-box;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-
-              // THEME STORE COLOR VARIANT STYLE END
-              .theme-variant-select-container-main{
-                margin-bottom:15px;
-                .theme-variant-select-container{
-                  @include flexbox;
-                  @include prefix(flex-wrap,wrap);
-                  @include prefix(justify-content,flex-start);
-                  span{
-                    margin-bottom:3px;
-                    &.theme-product-variant{
-                      @include inline-flex;
-                      position: relative;
-                      align-items: center;
-                      input[type=radio] {
-                        display: none;
-                        width: 34px;
-                        height: 34px;
-                      }
-                      label {
-                        display: inline-block;
-                        cursor: pointer;
+                        border :1px solid map-get($default_vars,'color-selection-border-style-07');
                         position: relative;
-                        border:1px solid map-get($default_vars,'color-textvariant-border-style-07');
-                        padding:10px 20px;
-                        margin-right: -1px;
-                        &.chekedLabel{
-                          border :1px solid map-get($default_vars,'color-selection-border-style-07');
-                          position: relative;
-                          z-index: 50;
+                        z-index: 50;
+                      }
+                    }
+                  }
+                  &:first-of-type{
+                    label{
+                      @include prefix(border-radius,3px 0 0 3px);
+                    }
+                  }
+                  &:last-of-type{
+                    label{
+                      @include prefix(border-radius,0px 3px 3px 0px);
+                    }
+                  }
+                }
+              }
+            }
+            .theme-product-variant-label{
+              font-size:map-get($default_vars,'font-size-details-product-label-texts');
+              margin-bottom:15px;
+              width:100%;
+            }
+            &.theme-product-quantity-cart-container{
+              width: 100%;
+            }
+            &.theme-custom-field-container{
+              width: 100%;
+              .theme-custom-field-value{
+                word-wrap: break-word;
+                word-break: break-word;
+                &.theme-custom-field-value-multi-select{
+                  display: block;
+                }
+              }
+              .theme-custom-field-label{
+                font-size: map-get($default_vars,'font-size-details-product-label-texts');
+                width: 250px;
+                word-wrap: break-word;
+                word-break: break-word;
+                .theme-custom-mandatory-field{
+                  font-size: 14px;
+                  color : map-get($default_vars,'color-form-error-message-text');
+                }
+              }
+              .theme-custom-field-input{
+                background: map-get($base_vars,'color-default');
+                border: 1px solid map-get($base_vars,'color-border');
+                color: map-get($base_vars,'color-text');
+                padding:5px 10px;
+                height: 35px;
+                @include respond-to(mediumdevice){
+                  width: 250px;
+                }
+                border-radius: 3px;
+                -webkit-appearance : none;
+                min-width: 1px;
+              }
+              .zpform-container{
+                ul,li{
+                  list-style: none;
+                  padding: 0px;
+                }
+                .zpform-outer{
+                  li{
+                    .zpform-field-container{
+                      &.zpform-datetime-formula{
+                        @include flexbox;
+                        width: 100%;
+                        @include respond-to(mediumdevice){
+                          width: 250px;
+                        }
+                        @include prefix(flex-wrap,wrap);
+                        .error_msg{
+                          border: 0 none;
+                          background: transparent;
+                          span{
+                            border : 0 none;
+                            background: transparent;
+                            padding: 0;
+                          }
+                        }
+                        input{
+                          height: 35px;
+                          border: 1px solid map-get($base_vars,'color-border');
+                          border-radius: 3px 0 0 3px;
+                          @include prefix(flex,1 1 0%);
+                          -webkit-appearance : none;
+                          min-width: 1px;
+                        }
+                        .zpform-icon-formula{
+                          @include flexbox;
+                          @include prefix(align-items,center);
+                          border: 1px solid map-get($base_vars,'color-border');
+                          border-left: 0;
+                          padding: 0 6px;
+                          position: static;
+                          @include prefix(transform,none);
+                          border-radius: 0 3px 3px 0;
+                          svg{
+                            rect{
+                              stroke : map-get($base_vars,'color-secondary');
+                            }
+                            path{
+                              fill : map-get($base_vars,'color-secondary');
+                            }
+                          }
                         }
                       }
                     }
-                    &:first-of-type{
-                      label{
-                        @include prefix(border-radius,3px 0 0 3px);
-                      }
-                    }
-                    &:last-of-type{
-                      label{
-                        @include prefix(border-radius,0px 3px 3px 0px);
-                      }
-                    }
                   }
                 }
               }
-              .theme-product-variant-label{
-                font-size:map-get($default_vars,'font-size-details-product-label-texts');
-                margin-bottom:15px;
-                width:100%;
-              }
-              &.theme-product-quantity-cart-container{
-                width: 100%;
-              }
-              &.theme-custom-field-container{
-                width: 100%;
-                .theme-custom-field-value{
-                  word-wrap: break-word;
-                  word-break: break-word;
-                  &.theme-custom-field-value-multi-select{
-                    display: block;
-                  }
-                }
-                .theme-custom-field-label{
-                  font-size: map-get($default_vars,'font-size-details-product-label-texts');
+              .theme-custom-field-percentage-container{
+                @include flexbox;
+                @include prefix(flex-wrap,wrap);
+                @include respond-to(mediumdevice){
                   width: 250px;
-                  word-wrap: break-word;
-                  word-break: break-word;
-                  .theme-custom-mandatory-field{
-                    font-size: 14px;
-                    color : map-get($default_vars,'color-form-error-message-text');
-                  }
                 }
                 .theme-custom-field-input{
-                  background: map-get($base_vars,'color-default');
-                  border: 1px solid map-get($base_vars,'color-border');
-                  color: map-get($base_vars,'color-text');
-                  padding:5px 10px;
-                  height: 35px;
-                  @include respond-to(mediumdevice){
-                    width: 250px;
-                  }
-                  border-radius: 3px;
+                  border-radius: 3px 0 0 3px;
+                  @include prefix(flex,1 1 0%);
                   -webkit-appearance : none;
-                  min-width: 1px;
                 }
-                .zpform-container{
-                  ul,li{
-                    list-style: none;
-                    padding: 0px;
-                  }
-                  .zpform-outer{
-                    li{
-                      .zpform-field-container{
-                        &.zpform-datetime-formula{
-                          @include flexbox;
-                          width: 100%;
-                          @include respond-to(mediumdevice){
-                            width: 250px;
-                          }
-                          @include prefix(flex-wrap,wrap);
-                          .error_msg{
-                            border: 0 none;
-                            background: transparent;
-                            span{
-                              border : 0 none;
-                              background: transparent;
-                              padding: 0;
-                            }
-                          }
-                          input{
-                            height: 35px;
-                            border: 1px solid map-get($base_vars,'color-border');
-                            border-radius: 3px 0 0 3px;
-                            @include prefix(flex,1 1 0%);
-                            -webkit-appearance : none;
-                            min-width: 1px;
-                          }
-                          .zpform-icon-formula{
-                            @include flexbox;
-                            @include prefix(align-items,center);
-                            border: 1px solid map-get($base_vars,'color-border');
-                            border-left: 0;
-    	                      padding: 0 6px;
-                            position: static;
-                            @include prefix(transform,none);
-                            border-radius: 0 3px 3px 0;
-                            svg{
-                              rect{
-                                stroke : map-get($base_vars,'color-secondary');
-                              }
-                              path{
-                                fill : map-get($base_vars,'color-secondary');
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                .theme-custom-field-percentage-container{
-                  @include flexbox;
-                  @include prefix(flex-wrap,wrap);
-                  @include respond-to(mediumdevice){
-                    width: 250px;
-                  }
-                  .theme-custom-field-input{
-                    border-radius: 3px 0 0 3px;
-                    @include prefix(flex,1 1 0%);
-                    -webkit-appearance : none;
-                  }
-                  .error_msg{
-                    border: 0 none;
-                    background: transparent;
-                    span{
-                      border : 0 none;
-                      background: transparent;
-                      padding: 0;
-                    }
-                  }
+                .error_msg{
+                  border: 0 none;
+                  background: transparent;
                   span{
-                    @include flexbox;
-                    @include prefix(align-items,center);
-                    border: 1px solid map-get($base_vars,'color-border');
-                    border-left: 0;
-                    padding: 0 6px;
-                    border-radius: 0 3px 3px 0;
-                    font-size: 14px;
-                  }
-                }
-                .theme-custom-field-select-container{
-                  position: relative;
-                  @include respond-to(mediumdevice){
-                    width: 250px;
-                  }
-                  &:after{
-                    content: "";
-                    height: 6px;
-                    width: 6px;
-                    position: absolute;
-                    right: 13px;
-                    top: 14px;
-                    z-index: 0;
+                    border : 0 none;
                     background: transparent;
-                    border-top: 2px solid map-get($base_vars,'color-secondary');
-                    border-right: 2px solid map-get($base_vars,'color-secondary');
-                    @include prefix(transform,rotate(135deg));
-                  }
-                  .theme-custom-field-select{
-                    background: map-get($base_vars,'color-default');
-                    -webkit-appearance: none;
-                    border-radius: 0;
-                    padding: 5px 10px;
-                    height: 35px;
-                    border: 1px solid map-get($base_vars,'color-border');
-                    border-radius: 3px;
+                    padding: 0;
                   }
                 }
-                &.theme-custom-field-checkbox-container{
+                span{
                   @include flexbox;
                   @include prefix(align-items,center);
-                  @include prefix(flex-wrap,wrap);
-                  .theme-custom-field-label{
-                    padding-bottom: 0;
-                  	margin-left: 5px;
-                  	font-size: map-get($default_vars,'font-size-details-product-label-texts');
-                  	line-height: 1;
-                    margin-bottom: 0px;
-                    width: auto;
-                  }
-                  .error_msg{
-                    order: 1;
-                    -webkit-order: 1;
-                  }
-                }
-                .theme-custom-field-amount-container{
-                  @include flexbox;
-                  @include prefix(flex-wrap,wrap);
-                  @include respond-to(mediumdevice){
-                    width: 250px;
-                  }
-                  .theme-custom-field-input{
-                    border-radius: 0 3px 3px 0;
-                    @include prefix(flex,1 1 0%);
-                    -webkit-appearance : none;
-                  }
-                  .error_msg{
-                    border: 0 none;
-                    background: transparent;
-                    span{
-                      border : 0 none;
-                      background: transparent;
-                      padding: 0;
-                    }
-                  }
-                  span{
-                    @include flexbox;
-                    @include prefix(align-items,center);
-                    padding: 0 6px;
-                    border: 1px solid map-get($base_vars,'color-border');
-                    border-right:0;
-                    border-radius: 3px 0 0 3px;
-                    font-size: 14px;
-                  }
-                }
-              }
-            }
-            .theme-product-varient-quantity {
-
-              .theme-product-quantity-spinner {
-                width:150px;
-                margin-bottom: 25px;
-                  @include prefix(flex,0 1 auto);
                   border: 1px solid map-get($base_vars,'color-border');
-                  @include prefix(border-radius,3px);
-                  @include flexbox;
-                  position: relative;
-                  overflow: hidden;
-                  height: 37px;
-                  input[type=button],
-                  input[type=text] {
-                      width: 50px;
-                      background: map-get($base_vars,'color-default');
-                      height: 35px;
-                      padding: 0 5px;
-                      border: 0;
-                      display: block;
-                      color: map-get($base_vars,'color-secondary');
-                      -webkit-appearance: none;
-                      -moz-appearance: none;
-                      appearance: none;
-                      border-radius: 0px;
-                  }
-                  input[type=text] {
-                      border-left: 1px solid map-get($base_vars,'color-border');
-                      border-right: 1px solid map-get($base_vars,'color-border');
-                      text-align: center;
-                      -webkit-appearance : none;
-                      border-radius: 0px;
-                  }
-
-                  &:before {
-                      top: 50%;
-                      @include respond-to(mediumdevice) {
-                        left: 25px;
-                      }
-                      left:19px;
-                      border: solid transparent;
-                      content: " ";
-                      height: 10px;
-                      width: 0;
-                      position: absolute;
-                      pointer-events: none;
-                      border-color: RGBA(0, 0, 0, 0);
-                      border-top-color: map-get($base_vars,'color-secondary');
-                      border-width: 4px;
-                      margin-left: -4px;
-                      margin-top: -2px;
-                  }
-
-                  &:after {
-                      bottom: 50%;
-                      @include respond-to(mediumdevice) {
-                        right: 25px;
-                      }
-                      right:19px;
-                      border: solid transparent;
-                      content: " ";
-                      height: 10px;
-                      width: 0;
-                      position: absolute;
-                      pointer-events: none;
-                      border-color: RGBA(0, 0, 0, 0);
-                      border-bottom-color: map-get($base_vars,'color-secondary');
-                      border-width: 4px;
-                      margin-right: -4px;
-                      margin-bottom: -2px;
-                  }
-              }
-              .theme-cart-button {
-                font-size: map-get($default_vars,'font-size-details-product-addcart');
-                @include prefix(border-radius,3px);
-                .theme-cart-button-loading-dots {
-                  display: inline-block;
-                  span {
-                    display: inline-block;
-                    background:map-get($base_vars,'color-default');
-                    width:4px;
-                    height: 4px;
-                    margin: 0 3px;
-                    @include prefix(border-radius,5px);
-                    letter-spacing: 3px;
-                    @include prefix(animation, wave 1s linear infinite);
-                    &:nth-child(2) {
-                      animation-delay: 0.8s;
-                    }
-                    &:nth-child(3) {
-                      animation-delay: 0.6s;
-                    }
-                  }
+                  border-left: 0;
+                  padding: 0 6px;
+                  border-radius: 0 3px 3px 0;
+                  font-size: 14px;
                 }
               }
-            }
-            &:last-child {
-              margin: 0px;
-            }
-            &.theme-cart-button-nostock{
-              display: none;
+              .theme-custom-field-select-container{
+                position: relative;
+                @include respond-to(mediumdevice){
+                  width: 250px;
+                }
+                &:after{
+                  content: "";
+                  height: 6px;
+                  width: 6px;
+                  position: absolute;
+                  right: 13px;
+                  top: 14px;
+                  z-index: 0;
+                  background: transparent;
+                  border-top: 2px solid map-get($base_vars,'color-secondary');
+                  border-right: 2px solid map-get($base_vars,'color-secondary');
+                  @include prefix(transform,rotate(135deg));
+                }
+                .theme-custom-field-select{
+                  background: map-get($base_vars,'color-default');
+                  -webkit-appearance: none;
+                  border-radius: 0;
+                  padding: 5px 10px;
+                  height: 35px;
+                  border: 1px solid map-get($base_vars,'color-border');
+                  border-radius: 3px;
+                }
+              }
+              &.theme-custom-field-checkbox-container{
+                @include flexbox;
+                @include prefix(align-items,center);
+                @include prefix(flex-wrap,wrap);
+                .theme-custom-field-label{
+                  padding-bottom: 0;
+                  margin-left: 5px;
+                  font-size: map-get($default_vars,'font-size-details-product-label-texts');
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  width: auto;
+                }
+                .error_msg{
+                  order: 1;
+                  -webkit-order: 1;
+                }
+              }
+              .theme-custom-field-amount-container{
+                @include flexbox;
+                @include prefix(flex-wrap,wrap);
+                @include respond-to(mediumdevice){
+                  width: 250px;
+                }
+                .theme-custom-field-input{
+                  border-radius: 0 3px 3px 0;
+                  @include prefix(flex,1 1 0%);
+                  -webkit-appearance : none;
+                }
+                .error_msg{
+                  border: 0 none;
+                  background: transparent;
+                  span{
+                    border : 0 none;
+                    background: transparent;
+                    padding: 0;
+                  }
+                }
+                span{
+                  @include flexbox;
+                  @include prefix(align-items,center);
+                  padding: 0 6px;
+                  border: 1px solid map-get($base_vars,'color-border');
+                  border-right:0;
+                  border-radius: 3px 0 0 3px;
+                  font-size: 14px;
+                }
+              }
             }
           }
-          .theme-custom-field-main-container{
-            padding-top: 30px;
-            margin-bottom: 30px;
-            border-top: 1px solid map-get($base_vars,'color-border');
-            border-bottom: 1px solid map-get($base_vars,'color-border');
-            .theme-product-varients-row{
-              &:last-child{
-                margin-bottom: 30px;
+          .theme-product-varient-quantity {
+
+            .theme-product-quantity-spinner {
+              width:150px;
+              margin-bottom: 25px;
+                @include prefix(flex,0 1 auto);
+                border: 1px solid map-get($base_vars,'color-border');
+                @include prefix(border-radius,3px);
+                @include flexbox;
+                position: relative;
+                overflow: hidden;
+                height: 37px;
+                input[type=button],
+                input[type=text] {
+                    width: 50px;
+                    background: map-get($base_vars,'color-default');
+                    height: 35px;
+                    padding: 0 5px;
+                    border: 0;
+                    display: block;
+                    color: map-get($base_vars,'color-secondary');
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    border-radius: 0px;
+                }
+                input[type=text] {
+                    border-left: 1px solid map-get($base_vars,'color-border');
+                    border-right: 1px solid map-get($base_vars,'color-border');
+                    text-align: center;
+                    -webkit-appearance : none;
+                    border-radius: 0px;
+                }
+
+                &:before {
+                    top: 50%;
+                    @include respond-to(mediumdevice) {
+                      left: 25px;
+                    }
+                    left:19px;
+                    border: solid transparent;
+                    content: " ";
+                    height: 10px;
+                    width: 0;
+                    position: absolute;
+                    pointer-events: none;
+                    border-color: RGBA(0, 0, 0, 0);
+                    border-top-color: map-get($base_vars,'color-secondary');
+                    border-width: 4px;
+                    margin-left: -4px;
+                    margin-top: -2px;
+                }
+
+                &:after {
+                    bottom: 50%;
+                    @include respond-to(mediumdevice) {
+                      right: 25px;
+                    }
+                    right:19px;
+                    border: solid transparent;
+                    content: " ";
+                    height: 10px;
+                    width: 0;
+                    position: absolute;
+                    pointer-events: none;
+                    border-color: RGBA(0, 0, 0, 0);
+                    border-bottom-color: map-get($base_vars,'color-secondary');
+                    border-width: 4px;
+                    margin-right: -4px;
+                    margin-bottom: -2px;
+                }
+            }
+            .theme-cart-button {
+              font-size: map-get($default_vars,'font-size-details-product-addcart');
+              @include prefix(border-radius,3px);
+              .theme-cart-button-loading-dots {
+                display: inline-block;
+                span {
+                  display: inline-block;
+                  background:map-get($base_vars,'color-default');
+                  width:4px;
+                  height: 4px;
+                  margin: 0 3px;
+                  @include prefix(border-radius,5px);
+                  letter-spacing: 3px;
+                  @include prefix(animation, wave 1s linear infinite);
+                  &:nth-child(2) {
+                    animation-delay: 0.8s;
+                  }
+                  &:nth-child(3) {
+                    animation-delay: 0.6s;
+                  }
+                }
               }
+            }
+          }
+          &.theme-cart-button-nostock{
+            display: none;
+          }
+        }
+        .theme-custom-field-main-container{
+          padding-top: 30px;
+          margin-bottom: 30px;
+          border-top: 1px solid map-get($base_vars,'color-border');
+          border-bottom: 1px solid map-get($base_vars,'color-border');
+          .theme-product-varients-row{
+            &:last-child{
+              margin-bottom: 30px;
             }
           }
         }
@@ -20865,8 +20855,10 @@
     overflow-y: auto;
     z-index: 300;
     width: 85%;
-    background: map-get($base_vars,'color-default');
     transition: 0.3s linear;
+    @media all and (max-width:768px){
+      background: map-get($base_vars,'color-default');
+    }
     &.theme-mobile-filter-show{
       left: 0;
     }
