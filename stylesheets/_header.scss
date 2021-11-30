@@ -98,12 +98,13 @@
 				li{
 					a {
 						margin-left:17px;
-						svg {
+						svg, img {
 							width:map-get($default_vars, 'size-social-icon');
 							height:map-get($default_vars, 'size-social-icon');
 							margin: 4px 0 0;
 							fill:map-get($default_vars, 'color-social-icon');
 							@include prefix(transition,0.15s linear);
+							vertical-align: initial;
 						}
 					}
 					&:first-child{
@@ -1831,10 +1832,11 @@
 				padding:15px;
 				@include flexbox;
 				@include prefix(align-items,center);
-				svg{
+				svg,img{
 					height:map-get($default_vars,'size-social-icon');
 					width:map-get($default_vars,'size-social-icon');
 					fill:#ffffff;
+					vertical-align: initial;
 				}
 			 &.theme-linkedin-container{
 				 background: #007bb5;
@@ -1869,7 +1871,9 @@
 			 &.theme-medium-container{
 				 background: #32c24d;
 			 }
-
+			 &.theme-csp-container{
+			 	background: #FFFFFF;
+			 }
 			}
 			&:last-child{
 				@include respond-to(mediumdevice){

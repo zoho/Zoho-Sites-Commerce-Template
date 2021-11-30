@@ -1186,16 +1186,15 @@
 							padding:10px 22px;
 							@include prefix(align-items,center);
 							li{
-								padding:0;
-								margin-left: 0px;
+								padding: 8px 0;
+						    margin: 0 4px;
 								border-bottom: 0 none;
 								a{
 									padding:0;
-									svg{
-										height:14px;
-										width:14px;
+									svg, img{
+										width:map-get($default_vars, 'size-social-icon');
+										height:map-get($default_vars, 'size-social-icon');
 										fill:map-get($default_vars, 'color-social-icon');
-										margin-right:10px;
 									}
 								}
 								&:last-child{
@@ -1228,8 +1227,8 @@
 									padding-left: 0px;
 									padding-right: 0px;
 									svg{
-										height:14px;
-										width:14px;
+										width:map-get($default_vars, 'font-size-contact-info');
+										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
 									}
 									.theme-topbar-info-icon-text{
@@ -1851,16 +1850,15 @@
 							padding:10px 22px;
 							@include prefix(align-items,center);
 							li{
-								padding:0;
-								margin-left: 0px;
+								padding: 8px 0;
+						    margin: 0 4px;
 								border-bottom: 0 none;
 								a{
 									padding:0;
-									svg{
-										height:14px;
-										width:14px;
+									svg, img{
+										width:map-get($default_vars, 'size-social-icon');
+										height:map-get($default_vars, 'size-social-icon');
 										fill:map-get($default_vars, 'color-social-icon');
-										margin-right:10px;
 									}
 								}
 								&:last-child{
@@ -1893,8 +1891,8 @@
 									padding-left: 0px;
 									padding-right: 0px;
 									svg{
-										height:14px;
-										width:14px;
+										width:map-get($default_vars, 'font-size-contact-info');
+										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
 									}
 									.theme-topbar-info-icon-text{
@@ -2466,16 +2464,15 @@
 							padding:10px 22px;
 							@include prefix(align-items,center);
 							li{
-								padding:0;
-								margin-left: 0px;
+								padding: 8px 0;
+						    margin: 0 4px;
 								border-bottom: 0 none;
 								a{
 									padding:0;
-									svg{
-										height:14px;
-										width:14px;
+									svg, img{
+										width:map-get($default_vars, 'size-social-icon');
+										height:map-get($default_vars, 'size-social-icon');
 										fill:map-get($default_vars, 'color-social-icon');
-										margin-right:10px;
 									}
 								}
 								&:last-child{
@@ -2511,8 +2508,8 @@
 									margin: 0;
 									span{
 										svg{
-											height:14px;
-											width:14px;
+											width:map-get($default_vars, 'font-size-contact-info');
+											height:map-get($default_vars, 'font-size-contact-info');
 											fill:map-get($default_vars, 'color-contact-info');
 										}
 									}
@@ -3031,16 +3028,15 @@
 							padding:10px 22px;
 							@include prefix(align-items,center);
 							li{
-								padding:0;
-								margin-left: 0px;
+								padding: 8px 0;
+						    margin: 0 4px;
 								border-bottom: 0 none;
 								a{
 									padding:0;
-									svg{
-										height:14px;
-										width:14px;
+									svg, img{
+										width:map-get($default_vars, 'size-social-icon');
+										height:map-get($default_vars, 'size-social-icon');
 										fill:map-get($default_vars, 'color-social-icon');
-										margin-right:10px;
 									}
 								}
 								&:last-child{
@@ -3073,8 +3069,8 @@
 									padding-left: 0px;
 									padding-right: 0px;
 									svg{
-										height:14px;
-										width:14px;
+										width:map-get($default_vars, 'font-size-contact-info');
+										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
 									}
 									span{
@@ -3582,14 +3578,14 @@
 							padding:10px 22px;
 							@include prefix(align-items,center);
 							li{
-								padding:0;
+								padding: 8px 0;
+						    margin: 0 4px;
 								a{
 									padding:0;
-									svg{
-										height:14px;
-										width:14px;
+									svg, img{
+										width:map-get($default_vars, 'size-social-icon');
+										height:map-get($default_vars, 'size-social-icon');
 										fill:map-get($default_vars, 'color-social-icon');
-										margin-right:10px;
 									}
 								}
 								&:last-child{
@@ -3622,8 +3618,8 @@
 									padding-left:0px;
 									padding-right:0px;
 									svg{
-										height:14px;
-										width:14px;
+										width:map-get($default_vars, 'font-size-contact-info');
+										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
 										margin-right:10px;
 									}
@@ -4163,14 +4159,14 @@
 							padding:10px 22px;
 							@include prefix(align-items,center);
 							li{
-								padding:0;
+								padding: 8px 0;
+						    margin: 0 4px;
 								a{
 									padding:0;
-									svg{
-										height:14px;
-										width:14px;
+									svg, img{
+										width:map-get($default_vars, 'size-social-icon');
+										height:map-get($default_vars, 'size-social-icon');
 										fill:map-get($default_vars, 'color-social-icon');
-										margin-right:10px;
 									}
 								}
 								&:last-child{
@@ -4202,8 +4198,8 @@
 									padding-left:0px;
 									padding-right:0px;
 									svg{
-										height:14px;
-										width:14px;
+										width:map-get($default_vars, 'font-size-contact-info');
+										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
 										margin-right:10px;
 									}

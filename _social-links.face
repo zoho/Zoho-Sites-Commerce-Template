@@ -1,6 +1,21 @@
 <div class="theme-socialicon-parent {% if !page.is_contact_information_enabled || !page.email_id && !page.phone_number %}theme-social-icon-space{% endif %}" data-socialicon-parent="zptheme-socialicon-parent">
-  <ul class="theme-scoialicon-inner-parent" data-socialicon-inner-parent="zptheme-socialicon-inner-parent">
+  <ul class="theme-scoialicon-inner-parent" data-socialicon-inner-parent="zptheme-socialicon-inner-parent" >
+    {% assign csp_arr = page.custom_social_profiles %}
     {% for socialIcon in page.social_icons_order %}
+      {% if socialIcon contains "_csp_" %}
+        {% for single_csp in csp_arr  %}
+          {% if single_csp.name == socialIcon %}
+      		{% assign name = single_csp.name %}
+            {% assign logo = single_csp.logo %}
+            {% assign url = single_csp.url %}
+      		<li class="theme-socialicon-list">
+                <a href="{{url}}" target="_blank" data-zs-social-profile-link>
+                  <img src="{{ logo }}" alt="{{ name }}" width="auto" height="auto"/>
+                </a>
+           </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
     {% assign socialUrl = page.social_icons_list[socialIcon] %}
     {% if socialUrl %}
     <li class="theme-socialicon-list">
@@ -58,6 +73,7 @@
         {% endcase %}
       </a>
     </li>
+      {% endif %}
     {% endif %}
     {% endfor %}
   </ul>
