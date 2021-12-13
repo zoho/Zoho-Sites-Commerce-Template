@@ -710,6 +710,7 @@ function imageOrder (e){
 
 function selectedVariant(e){
 	var currentStock = e.detail.variant_id;
+	var currentElementId = e.detail.productId;
 	var allStocks = document.querySelectorAll("[data-variant-id-stock]");
 	var stockCartAttribute = document.querySelectorAll('[data-nostock-cart-add="theme-nostock-cart-add"]');
 	var noStockQuantity = document.querySelectorAll("[data-nostock-quantity]");
@@ -761,18 +762,21 @@ function selectedVariant(e){
 	// END REMOVE CUSTOM FIELD ERRORS WHEN CLICK THE VARIANTS
 
 	// Start - To update additional offers on variant change
-		var additionalOfferContainer = $D.getAll('[data-zs-pricelist-variantid]');
-	    if(additionalOfferContainer){
-            for(i=0;i<additionalOfferContainer.length;i++){
-				additionalOfferContainer[i].style.display = "none";
-				additionalOfferContainer[i].classList.remove('theme-prod-pricelist-active');
-			}
-			var activeVariant = $D.get('[data-zs-pricelist-variantid ="' + e.detail.variant_id + '"]');
-			if(e.detail.variant_id != -1 && activeVariant){
-				activeVariant.style.display = "block";
-				activeVariant.classList.add('theme-prod-pricelist-active');
-			}
-        }
+		var currentContainer = $D.get('[data-zs-product-id="'+currentElementId+'"]');
+		if(currentContainer){
+			var additionalOfferContainer = currentContainer.querySelectorAll('[data-zs-pricelist-variantid]');
+		    if(additionalOfferContainer){
+	            for(i=0;i<additionalOfferContainer.length;i++){
+					additionalOfferContainer[i].style.display = "none";
+					additionalOfferContainer[i].classList.remove('theme-prod-pricelist-active');
+				}
+				var activeVariant = $D.get('[data-zs-pricelist-variantid ="' + e.detail.variant_id + '"]');
+				if(e.detail.variant_id != -1 && activeVariant){
+					activeVariant.style.display = "block";
+					activeVariant.classList.add('theme-prod-pricelist-active');
+				}
+	        }
+    	}
     // End - To update additional offers on variant change
 }
 
