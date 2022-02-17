@@ -1640,8 +1640,13 @@ color-megamenu-background-odd : RGBA(convertHexToRgb(map-get($base_vars, 'color-
 color-megamenu-background-even : map-get($base_vars, 'color-light'),
 color-megamenu-divider : RGBA(convertHexToRgb(map-get($base_vars, 'color-border')),0.4),
 color-megamenu-backdrop-background : RGBA(convertHexToRgb(#fff),0.65),
-left-indent-megamenu-textcontent : 0px
-  
+left-indent-megamenu-textcontent : 0px,
+
+//TAGS COLORS
+
+color-tags-overlay-background : lighten(map-get($base_vars, 'color-primary'), 15%),
+color-tags-overlay-background-others : map-get($base_vars, 'color-light'),
+color-tags-overlay-background-prodlayout-2 : darken(map-get($base_vars, 'color-light'), 10%)
 );
 
 @import "_base-map";

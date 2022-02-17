@@ -38,22 +38,22 @@
             </div>
           {% endif %}
         </div>
-        {% if product.tags | size != 0 %}
+        {% if template_vars.is_product_tags_enabled && product.tags | size != 0 %}
         <div class="theme-prod-detail-entry-row theme-prod-tag-sku-details zpdark-section">
-          {% if product.tags | size != 0 %}
-            <div class="theme-tag-sku-contianer">
-              <div class="theme-tag-sku-label">{{i18n.get("product.label.tags")}} </div>
+            <div class="theme-tag-contianer">
+              <div class="theme-tag-sku-label">{{i18n.get("product.label.tags")}}: </div>
               <div class="theme-tag-sku">
-                {% for tag in product.tags %}
-                  {% if loop.last %}
-                    <span class="theme-product-tag-name">{{ tag.name }}</span>
-                  {% else %}
-                    <span class="theme-product-tag-name">{{ tag.name }},&nbsp;</span>
-                  {% endif %}
-                {% endfor %}
+                <ul class="theme-tag-list-container">
+                  {% for tag in product.tags %}
+                    <li>
+                      <a class="theme-product-tag-url" href="{{ tag.url }}">
+                        <span class="theme-product-tag-name">{{ tag.name }}</span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
               </div>
             </div>
-          {% endif %}
         </div>
         {% endif %}
 

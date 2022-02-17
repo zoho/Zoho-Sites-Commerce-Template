@@ -19,7 +19,7 @@
             <div class="theme-prod-non-returnable" data-zs-product-non-returnable>{{i18n.get("product.label.non_returnable")}}</div>
           {% endif %}
         </div>
-        <div class="theme-product-info-content-row theme-product-details-price-and-availability-container {% if product.short_description %}theme-short-desc-noborder{% endif %}">
+        <div class="theme-product-info-content-row theme-product-details-price-and-availability-container {% if product.short_description || product.tags | size != 0   %}theme-short-desc-noborder{% endif %}">
           <div class="theme-product-details-price">
             {% include '_store-product-pricing-two' %}
           </div>
@@ -42,36 +42,31 @@
           </div>
           {% endif %}
 
-          {% if product.tags | size != 0 %}
-          <div class="theme-product-details-tags-code">
-            <ul>
-              {% if product.tags | size != 0 %}
-              <li class="theme-product-details-tags">
-                {{i18n.get("product.label.tags")}} : &nbsp;
-                {% for tag in product.tags %}
-                  {% if loop.last %}
-                    <span>
-                      {{ tag.name }}
-                    </span>
-                  {% else %}
-                    <span>
-                      {{ tag.name }},&nbsp;
-                    </span>
-                  {% endif %}
-                {% endfor %}
-              </li>
-              {% endif %}
-            </ul>
-          </div>
-          {% endif %}
-
         </div>
 
-        {% if product.short_description %}
+        {% if product.short_description || product.tags | size != 0 %}
         <div class="theme-product-info-content-row theme-short-desc-row">
+          {% if template_vars.is_product_tags_enabled && product.tags | size != 0 %}
+            <div class="theme-tag-contianer">
+              <div class="theme-tag-sku-label">{{i18n.get("product.label.tags")}}: </div>
+              <div class="theme-tag-sku">
+                <ul class="theme-tag-list-container">
+                  {% for tag in product.tags %}
+                    <li>
+                      <a class="theme-product-tag-url" href="{{ tag.url }}">
+                        <span class="theme-product-tag-name">{{ tag.name }}</span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+          {% if product.short_description %}
           <div class="theme-product-short-description" data-zs-product-short-description>
             {{ product.short_description }}
           </div>
+          {% endif %}
         </div>
         {% endif %}
 

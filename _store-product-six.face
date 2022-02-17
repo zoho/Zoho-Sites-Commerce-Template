@@ -21,11 +21,29 @@
             {% endif %}
           </div>
 
-          {% if product.short_description %}
+          {% if product.short_description || product.tags | size != 0 %}
           <div class="theme-short-desc-row">
-            <div class="theme-product-short-description" data-zs-product-short-description>
-              {{ product.short_description }}
-            </div>
+            {% if product.short_description %}
+              <div class="theme-product-short-description" data-zs-product-short-description>
+                {{ product.short_description }}
+              </div>
+            {% endif %}
+            {% if template_vars.is_product_tags_enabled && product.tags | size != 0 %}
+              <div class="theme-tag-contianer">
+                <div class="theme-tag-sku-label">{{i18n.get("product.label.tags")}}: </div>
+                <div class="theme-tag-sku">
+                  <ul class="theme-tag-list-container">
+                    {% for tag in product.tags %}
+                      <li>
+                        <a class="theme-product-tag-url" href="{{ tag.url }}">
+                          <span class="theme-product-tag-name">{{ tag.name }}</span>
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            {% endif %}
           </div>
           {% endif %}
 

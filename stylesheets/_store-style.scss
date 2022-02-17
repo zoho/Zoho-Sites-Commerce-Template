@@ -9919,7 +9919,9 @@
   }
 
 }
-
+.theme-tag-sku-label{
+  white-space: nowrap;
+}
 // STYLE FOR DETAILS PAGE
 
 // PRODUCT PAGE STYLE - 01
@@ -21663,3 +21665,79 @@
 }
 
 // STORE FULL STRETCH END
+// Tags design starts here //
+@if map-get($user_layout_vars,'producttags_style') == 01 {
+  .theme-tag-list-container {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+  }
+  .theme-tag-list-container li {
+    display: inline-flex;
+    margin: 0 8px 0 0;
+    padding: 0 0 8px;
+    line-height: normal;
+    &:last-child{
+      margin-right:0;
+    }
+  }
+  .theme-tag-list-container .theme-product-tag-url {
+    padding:4px 8px;
+    @if map-get($user_layout_vars,'product_details_style') == 01 {
+     background:map-get($default_vars,'color-tags-overlay-background');
+    } @else if map-get($user_layout_vars,'product_details_style') == 02{
+      background:map-get($default_vars,'color-tags-overlay-background-prodlayout-2')
+    } @else {
+      background:map-get($default_vars,'color-tags-overlay-background-others')
+    }
+  }
+  @if map-get($user_layout_vars,'product_details_style') == 04 or map-get($user_layout_vars,'product_details_style') == 06{
+    .theme-tag-list-container{
+      margin-top: 0;
+      margin-left:8px;
+    }
+  }
+}
+
+@if map-get($user_layout_vars,'producttags_style') == 02 {
+  .theme-tag-list-container {
+    list-style: none;
+    padding: 0;
+  }
+  .theme-tag-list-container li {
+    display: inline-flex;
+    margin: 0;
+    padding: 0 2px 8px 8px;
+    line-height: normal;
+    &::after{
+      content: '|';
+      opacity: 0.3;
+    }
+    &:last-child::after{
+      content:'';
+    }
+    &:last-child{
+      .theme-product-tag-url{
+        margin-right: 0;
+      }
+    }
+  }
+  .theme-tag-list-container .theme-product-tag-url {
+    margin-right: 8px;
+    
+  }
+}
+.theme-tag-contianer + .theme-product-short-description {
+  padding-top: 20px;
+}
+.theme-product-short-description + .theme-tag-contianer {
+  padding-top: 20px;
+}
+@if map-get($user_layout_vars,'product_details_style') == 04 or map-get($user_layout_vars,'product_details_style') == 06 {
+  .theme-tag-contianer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+// Tags design end here //
