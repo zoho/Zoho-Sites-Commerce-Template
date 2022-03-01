@@ -300,6 +300,8 @@ color-form-warning-message-text : #FFC82C,
 color-form-success-message-text : #13CE66,
 color-form-info-message-text : #1FB6FF,
 
+color-form-error-message-text-rgba : convertHexToRgb(#FF4949),
+
 // IMAGE ELEMENT VARIABLES
 
 color-image-overlay-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-primary')),0.80),
