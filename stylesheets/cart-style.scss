@@ -134,6 +134,7 @@
         span {
           @include flexbox;
           width:150px;
+          flex-wrap: wrap;
           &.theme-qty-head {
             padding-bottom: 15px;
             @include respond-to(mediumdevice) {
@@ -144,476 +145,77 @@
         input[type=text] {
           display: inline-block;
           padding: 5px;
-          height: 24px;
+          height: 28px;
           width:44px;
           text-align:center;
+          border:none;
         }
-        @if map-get($user_layout_vars,'product_details_style') == 01 {
-          .theme-quantity-field-button{
-            display: block;
-            .theme-cart-update-button,
-            .theme-cart-update-loading-button {
-              border:0px;
-              padding:3px 10px;
-              @include prefix(transition,0.5s ease-in-out);
-              display: none;
-              margin-top:5px;
-              &.theme-cart-updating{
-                display: none;
-                + .theme-cart-update-loading-button{
-                  display: block;
-                  position: relative;
-                  padding: 12px 23px;
-                  width: 30px;
-                  .theme-cart-update-loading-dots{
-                    position: absolute;
-                    top: 35%;
-                    display: block;
-                    left: 50%;
-                    @include prefix(transform,translate(-50%,-35%));
-                    width: 100%;
-                    line-height: 0;
-                    letter-spacing: 1px;
-                    font-size: 16px;
-                    @include prefix(animation,LoadingStartOne 1s ease-out infinite alternate);
-                    opacity: 1;
-                  }
-                }
-              }
-            }
+        .theme-quantity-field-button {
+          .theme-product-list-quantity {
+            width: 106px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            border:1px solid map-get($base_vars,'color-border');
           }
-        }
-        @if map-get($user_layout_vars,'product_details_style') == 02 {
-          .theme-quantity-field-button{
-            display: block;
-            .theme-cart-update-button,
-            .theme-cart-update-loading-button {
-              border:0px;
-              padding:3px 10px;
-              margin-top: 5px;
-              display: none;
-              @include prefix(transition,0.5s ease-in-out);
-              &.theme-cart-updating{
-                display: none;
-                + .theme-cart-update-loading-button{
-                  @include flexbox;
-                  @include prefix(align-items,center);
-                  @include prefix(justify-content,center);
-                  position: relative;
-                  padding: 4px 15px;
-                  width: 58px;
-                  svg{
-                    height:16px;
-                    width:16px;
-                    fill:currentColor;
-                    @include prefix(animation,LoadingStartTwo 1.3s linear infinite);
-                  }
-                }
-              }
-            }
-          }
-        }
-        @if map-get($user_layout_vars,'product_details_style') == 03 {
-          .theme-quantity-field-button{
-            display: block;
-            .theme-cart-update-button,
-            .theme-cart-update-loading-button {
-              border:0px;
-              padding:3px 10px;
-              margin-top: 5px;
-              @include prefix(transition,0.5s ease-in-out);
-              display: none;
-              &.theme-cart-updating{
-                display: none;
-                + .theme-cart-update-loading-button{
-                  display: block;
-                  position: relative;
-                  padding: 12px 23px;
-                  width:30px;
-                  .theme-cart-update-loading-dots{
-                    position: absolute;
-                    top: 35%;
-                    display: block;
-                    left: 50%;
-                    @include prefix(transform,translate(-50%,-35%));
-                    width: 100%;
-                    line-height: 0;
-                    letter-spacing: 1px;
-                    font-size: 16px;
-                    @include prefix(animation,LoadingStartThree 1s ease-out infinite alternate);
-                    opacity: 1;
-                  }
-                }
-              }
-            }
-          }
-        }
-        @if map-get($user_layout_vars,'product_details_style') == 04 {
-          .theme-quantity-field-button{
-            display: block;
-            .theme-cart-update-button,
-            .theme-cart-update-loading-button {
-              border:0px;
-              padding:3px 10px;
-              margin-top: 5px;
-              display: none;
-              @include prefix(transition,0.5s ease-in-out);
-              &.theme-cart-updating{
-                display: none;
-                + .theme-cart-update-loading-button{
-                  @include flexbox;
-                  @include prefix(align-items,center);
-                  @include prefix(justify-content,center);
-                  position: relative;
-                  padding: 4px 12px;
-                  width:58px;
-                  svg{
-                    height:16px;
-                    width:16px;
-                    fill:currentColor;
-                    @include prefix(animation,LoadingStartFour 1.3s linear infinite);
-                  }
-                }
-              }
-            }
-          }
-        }
-        @if map-get($user_layout_vars,'product_details_style') == 05 {
-          .theme-quantity-field-button{
-            display: block;
-            .theme-cart-qty-change,
-            .theme-cart-update-loading-button {
-              border:0px;
-              padding:3px 10px;
-              margin-top: 10px;
-              display: none;
-              @include prefix(transition,0.5s ease-in-out);
-              margin-left: 0px;
-              background-color: map-get($base_vars,'color-primary');
-              &.theme-cart-updating {
-                + .theme-cart-update-loading-button {
-                  @include flexbox;
-                  @include prefix(align-items,center);
-                  position: relative;
-                  padding: 5px 23px;
-                  width:60px;
-                  .theme-cart-button-loading-container {
-                    display: inline-block;
-                    width:auto;
-                    @include prefix(animation, LoadingRotate 1.4s linear infinite);
-                  }
-                }
-              }
-            }
-          }
-        }
-        @if map-get($user_layout_vars,'product_details_style') == 06 {
-          .theme-quantity-field-button{
-            display: block;
-            .theme-cart-qty-change,
-            .theme-cart-update-loading-button {
-              border:0px;
-              padding:3px 10px;
-              margin-top: 10px;
-              display: none;
-              @include prefix(transition,0.5s ease-in-out);
-              margin-left: 0px;
-              background-color: map-get($base_vars,'color-primary');
-              &.theme-cart-updating {
-                + .theme-cart-update-loading-button {
-                  @include flexbox;
-                  @include prefix(align-items,center);
-                  position: relative;
-                  padding: 5px 23px;
-                  width:60px;
-                  .theme-cart-button-loading-container {
-                    display: inline-block;
-                    width:auto;
-                    @include prefix(animation, LoadingRotate 1.4s linear infinite);
-                  }
-                }
-              }
-            }
-          }
-        }
-        @if map-get($user_layout_vars,'product_details_style') == 07 {
-          .theme-quantity-field-button{
-            display: block;
-            .theme-cart-qty-change,
-            .theme-cart-update-loading-button {
-              border:0px;
-              padding:3px 10px;
-              margin-top: 10px;
-              display: none;
-              @include prefix(transition,0.5s ease-in-out);
-              margin-left: 0px;
-              background-color: map-get($base_vars,'color-primary');
-              &.theme-cart-updating{
-                + .theme-cart-update-loading-button {
-                  @include flexbox;
-                  @include prefix(align-items,center);
-                  position: relative;
-                  padding: 5px 10px;
-                  width:65px;
-                  @include prefix(justify-content,center);
-                  .theme-cart-button-loading-container {
-                    display: inline-block;
-                    width:auto;
-                    .theme-cart-button-loading-dots {
-                      display: inline-block;
-                      span {
-                        display: inline-block;
-                        background:map-get($base_vars,'color-default');
-                        width:4px;
-                        height: 4px;
-                        margin: 0 3px;
-                        @include prefix(border-radius,5px);
-                        letter-spacing: 3px;
-                        @include prefix(animation, wave 1s linear infinite);
-                        &:nth-child(2) {
-                          animation-delay: 0.8s;
-                        }
-                        &:nth-child(3) {
-                          animation-delay: 0.6s;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      @if map-get($user_layout_vars,'product_details_style') == 01 {
-        &.theme-cart-item-remove {
-          @include prefix(justify-content,flex-end);
-          @include respond-to(smalldevice) {
-            width:100px;
-            @include prefix(justify-content,center);
-          }
-          .theme-cart-remove-icon {
-            width: 14px;
-            height: 14px;
-            fill: map-get($default_vars,'color-form-error-message-text');
-          }
-          .theme-cart-remove-loading{
-            color: map-get($default_vars,'color-form-error-message-text');
-            font-size: 18px;
-            display: none;
-          }
-          .theme-cart-item-removing{
-            .theme-cart-remove-icon {
-              display: none;
-            }
-            .theme-cart-remove-loading{
-              display: block;
-              @include prefix(animation,LoadingDeleteStartOne 1s ease-out infinite alternate);
-              opacity: 1;
-              letter-spacing: 0;
-            }
-          }
-        }
-      }
-      @if map-get($user_layout_vars,'product_details_style') == 02 {
-        &.theme-cart-item-remove {
-          @include prefix(justify-content,flex-end);
-          @include respond-to(smalldevice) {
-            width:100px;
-            @include prefix(justify-content,center);
-          }
-          .theme-cart-remove-icon {
-            width: 14px;
-            height: 14px;
-            fill: map-get($default_vars,'color-form-error-message-text');
-          }
-          .theme-cart-remove-loading{
-            fill: map-get($default_vars,'color-form-error-message-text');
-            height: 16px;
-            width: 16px;
-            display: none;
-          }
-          .theme-cart-item-removing{
-            .theme-cart-remove-icon {
-              display: none;
-            }
-            .theme-cart-remove-loading{
-              display: block;
-              @include prefix(animation,LoadingDeleteStartTwo 1.3s linear infinite);
-            }
-          }
-        }
-      }
-      @if map-get($user_layout_vars,'product_details_style') == 03 {
-        &.theme-cart-item-remove {
-          @include prefix(justify-content,flex-end);
-          @include respond-to(smalldevice) {
-            width:100px;
-            @include prefix(justify-content,center);
-          }
-          .theme-cart-remove-icon {
-            width: 14px;
-            height: 14px;
-            fill: map-get($default_vars,'color-form-error-message-text');
-          }
-          .theme-cart-remove-loading{
-            color: map-get($default_vars,'color-form-error-message-text');
-            font-size: 18px;
-            display: none;
-          }
-          .theme-cart-item-removing{
-            .theme-cart-remove-icon {
-              display: none;
-            }
-            .theme-cart-remove-loading{
-              display: block;
-              @include prefix(animation,LoadingDeleteStartThree 1s ease-out infinite alternate);
-              opacity: 1;
-              letter-spacing: 0px;
-            }
-          }
-        }
-      }
-      @if map-get($user_layout_vars,'product_details_style') == 04 {
-        &.theme-cart-item-remove {
-          @include prefix(justify-content,flex-end);
-          @include respond-to(smalldevice) {
-            width:100px;
-            @include prefix(justify-content,center);
-          }
-          .theme-cart-remove-icon {
-            width: 14px;
-            height: 14px;
-            fill: map-get($default_vars,'color-form-error-message-text');
-          }
-          .theme-cart-remove-loading{
-            fill: map-get($default_vars,'color-form-error-message-text');
-            height: 16px;
-            width: 16px;
-            display: none;
-          }
-          .theme-cart-item-removing{
-            .theme-cart-remove-icon {
-              display: none;
-            }
-            .theme-cart-remove-loading{
-              display: block;
-              @include prefix(animation,LoadingDeleteStartFour 1.3s linear infinite);
-            }
-          }
-        }
-      }
-      @if map-get($user_layout_vars,'product_details_style') == 05 {
-        &.theme-cart-item-remove {
-          @include prefix(justify-content,flex-end);
-          @include respond-to(smalldevice) {
-            width:100px;
-            @include prefix(justify-content,center);
-          }
-          .theme-remove-icon {
-              width: 14px;
-              height: 14px;
-              fill: map-get($default_vars,'color-form-error-message-text');
-          }
-          .theme-cart-remove-loading{
-            display: none;
-            padding: 0px 3px;
+          .theme-cart-qty-inc-dec {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
             background: transparent;
-            fill: map-get($default_vars,'color-form-error-message-text');
-            @include prefix(animation, LoadingRotate 1.4s linear infinite);
           }
-          .theme-cart-item-removing{
-            .theme-remove-icon {
-              display: none;
-            }
-            .theme-cart-remove-loading{
-              display: block;
-              g {
-                fill: map-get($default_vars,'color-form-error-message-text');
-              }
-            }
+          .theme-product-list-quantity-field {
+            width: 50px;
+            height: 100%;
+            border-top: 0 none;
+            border-bottom: 0 none;
+            border-radius: 0px;
+            text-align: center;
+            padding: 0px 2px;
           }
         }
-      }
-      @if map-get($user_layout_vars,'product_details_style') == 06 {
-        &.theme-cart-item-remove {
-          @include prefix(justify-content,flex-end);
-          @include respond-to(smalldevice) {
-            width:100px;
-            @include prefix(justify-content,center);
-          }
-          .theme-remove-icon {
-            width: 14px;
-            height: 14px;
-            fill: map-get($default_vars,'color-form-error-message-text');
-          }
-          .theme-cart-remove-loading{
-            display: none;
-            padding: 0px 3px;
-            background: transparent;
-            fill: map-get($default_vars,'color-form-error-message-text');
-            @include prefix(animation, LoadingRotate 1.4s linear infinite);
-            height:20px;
-            width:20px;
-          }
-          .theme-cart-item-removing{
-              .theme-remove-icon {
-              display: none;
-            }
-            .theme-cart-remove-loading{
-              display: block;
-              g {
-                fill: map-get($default_vars,'color-form-error-message-text');
-              }
-            }
-          }
+        .theme-quantity-field-button  .theme-product-list-quantity-decrease,
+        .theme-quantity-field-button  .theme-product-list-quantity-increase {
+          width: 30px;
+          height: 100%;
+          position: relative;
+          text-align: center;
         }
+        .theme-quantity-field-button  .theme-product-list-quantity-decrease svg,
+        .theme-quantity-field-button  .theme-product-list-quantity-increase svg {
+          fill: #000;
+          height: 28px;
+          width: 26px;
+        }
+        
       }
-      @if map-get($user_layout_vars,'product_details_style') == 07 {
-        &.theme-cart-item-remove {
-          @include prefix(justify-content,flex-end);
-          @include respond-to(smalldevice) {
-            width:100px;
-            @include prefix(justify-content,center);
-          }
-          .theme-remove-icon {
-            width: 14px;
-            height: 14px;
-            fill: map-get($default_vars,'color-form-error-message-text');
+      &.theme-cart-item-remove {
+        @include prefix(justify-content,flex-end);
+        @include respond-to(smalldevice) {
+          width:100px;
+          @include prefix(justify-content,center);
+        }
+        .theme-cart-remove-icon {
+          width: 14px;
+          height: 14px;
+          fill: map-get($default_vars,'color-form-error-message-text');
+        }
+        .theme-cart-remove-loading{
+          fill: map-get($default_vars,'color-form-error-message-text');
+          height: 16px;
+          width: 16px;
+          display: none;
+        }
+        .theme-cart-item-removing{
+          .theme-cart-remove-icon {
+            display: none;
           }
           .theme-cart-remove-loading{
-            display: none;
-            padding: 0px 3px;
-            background: transparent;
-            .theme-cart-button-loading-dots {
-              display: inline-block;
-              span {
-                display: inline-block;
-                background:RGBA(map-get($default_vars,'color-form-error-message-text-rgba'),0.5);
-                width:5px;
-                height:5px;
-                margin: 0 3px;
-                @include prefix(border-radius,8px);
-                letter-spacing: 3px;
-                @include prefix(animation, wave 1s linear infinite);
-                &:nth-child(2) {
-                  animation-delay: 0.8s;
-                  background:RGBA(map-get($default_vars,'color-form-error-message-text-rgba'),0.7);
-                }
-                &:nth-child(3) {
-                  animation-delay: 0.6s;
-                  background:RGBA(map-get($default_vars,'color-form-error-message-text-rgba'),0.9);
-                }
-              }
-            }
-          }
-          .theme-cart-item-removing{
-            .theme-remove-icon {
-              display: none;
-            }
-            .theme-cart-remove-loading{
-              display: block;
-            }
+            display: block;
+            animation: rotation 2s infinite linear;
           }
         }
       }
@@ -710,77 +312,14 @@
 }
 
 // UPDATE AND DELETE CART LOADING KEYFRAMES STARTS
-
-@include keyframe(LoadingStartOne){
-  from{
-    letter-spacing: -7px;
-    opacity:0;
-  }
-}
-@include keyframe(LoadingStartTwo){
-  from{
-    @include prefix(transform,rotate(-360deg));
-  }
-}
-
-@include keyframe(LoadingStartThree){
-  from{
-    letter-spacing: -7px;
-    opacity:0;
-  }
-}
-
-@include keyframe(LoadingStartFour){
-  from{
-    @include prefix(transform,rotate(-360deg));
-  }
-}
-
-@include keyframe(LoadingRotate) {
+@keyframes rotation {
   from {
-    transform:rotate(-360deg);
+    transform: rotate(0deg);
   }
   to {
-    transform:rotate(0deg);
+    transform: rotate(359deg);
   }
 }
-
-@include keyframe(wave) {
-    0%, 66%, 100% {
-        @include prefix(transform, initial);
-    }
-
-    33% {
-        @include prefix(transform, translateY(-5px));
-    }
-}
-
-@include keyframe(LoadingDeleteStartOne){
-  from{
-    letter-spacing: -7px;
-    opacity:0;
-  }
-}
-
-@include keyframe(LoadingDeleteStartTwo){
-  from{
-    @include prefix(transform,rotate(-360deg));
-  }
-}
-
-@include keyframe(LoadingDeleteStartThree){
-  from{
-    letter-spacing: -7px;
-    opacity:0;
-  }
-}
-
-@include keyframe(LoadingDeleteStartFour){
-  from{
-    @include prefix(transform,rotate(-360deg));
-  }
-}
-
 // UPDATE AND DELETE CART LOADING KEYFRAMES END
 
 

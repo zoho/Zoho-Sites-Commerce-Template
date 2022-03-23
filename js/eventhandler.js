@@ -281,11 +281,16 @@ function closeFailureMessage() {
 	}
 }
 function updateToCartSuccess (e) {
+	var cartupdateloading = document.querySelector("[data-theme-loader]");
 	var cartUpdateSuccess = document.querySelectorAll('[data-cart-update-success="theme-cart-update-success"]')[0];
 	var cartMsgFour = document.querySelectorAll('[data-theme-message-four]')[0];
 	var cartNameContainer = document.querySelectorAll('[data-cart-update-success-product-name="theme-cart-update-success-product-name"]')[0];
 	var updateCartButton = e.detail.target;
+	if(updateCartButton.hasAttribute("data-zs-update")){
 	removeClass(updateCartButton,'theme-cart-updating');
+	}else if(cartupdateloading){
+		hideLoader()
+	}
 	addClass(cartUpdateSuccess,'theme-cart-success');
 	removeClass(cartUpdateSuccess,'theme-cart-success-remove');
 	if(cartMsgFour){
@@ -327,6 +332,7 @@ function showUpdate(cartitem){
 	updateButton.style.display = 'block';
 }
 function updateToCartFailure (e) {
+	var cartupdateloading = document.querySelector("[data-theme-loader]");
 	var cartUpdateFailure = document.querySelectorAll('[data-cart-update-failure="theme-cart-update-failure"]')[0];
 	var cartMsgFour = document.querySelectorAll('[data-theme-message-four]')[0];
 	var updateCartButton = e.detail.target;
@@ -335,7 +341,11 @@ function updateToCartFailure (e) {
 	var cartFailureDetail = document.querySelectorAll('[data-theme-update-failure-reason="theme-update-failure-reason"]')[0];
   cartFailureDetail.innerHTML = cartResponse;
 
+  if(updateCartButton.hasAttribute("data-zs-update")){
 	removeClass(updateCartButton,'theme-cart-updating');
+  }else if(cartupdateloading){
+	  hideLoader()
+  }
 	addClass(cartUpdateFailure,'theme-cart-failure');
 	removeClass(cartUpdateFailure,'theme-cart-failure-remove');
 
@@ -351,7 +361,9 @@ function updateToCartFailure (e) {
 			addClass(cartUpdateFailure,'theme-cart-page-failure-remove');
 		}
 	}, 3000);
-	updateCartButton.style.display = 'block';
+	if(updateCartButton.hasAttribute("data-zs-update")){
+		updateCartButton.style.display = 'block';
+	}
 }
 
 function deleteFromCartSuccess (e) {
@@ -647,8 +659,13 @@ function addToCartLoading (e) {
 }
 function updateToCartLoading (e) {
 	var updateCartButton = e.detail.target;
-	addClass(updateCartButton,'theme-cart-updating');
-	updateCartButton.style.display = 'none';
+	var cartupdateloading = document.querySelector("[data-theme-loader]");
+	if(updateCartButton.hasAttribute("data-zs-update")){
+		addClass(updateCartButton,'theme-cart-updating');
+		updateCartButton.style.display = 'none';
+	}else if(cartupdateloading){
+		showLoader()
+	}
 }
 
 function deleteFromCartLoading (e) {
@@ -945,15 +962,9 @@ function customFieldValidation(e) {
     }
 }
 
-function showLoader(e){
-	var loader = $D.get('[data-theme-loader]');
+function showSearchLoader(e){
   var resultTarget = e.detail.element;
-  var body = document.getElementsByTagName("body")[0];
-  var offsetVal = window.pageYOffset;
-  var header = $D.get('[data-header]');
   var mainHeader = $D.get('[data-headercontainer]');
-  var headerAni = header.classList.contains('theme-header-animate');
-  var headerSix = mainHeader.classList.contains('zpheader-style-06');
   var mobileHeaderFix = mainHeader.classList.contains('theme-mobile-header-fixed');
 	var searchButton = e.detail.submitElem;
 	var searchDots = $D.get('[data-theme-search-loader-dots]');
@@ -961,27 +972,15 @@ function showLoader(e){
 		addClass(searchDots,'theme-show-search-loader-dots');
     searchButton.style.display = "none";
 	}
-  if(loader){
-      addClass(loader,'theme-loader-show');
-      addClass(body,'theme-loader-body-hidden');
-  }
+	showLoader()
   if(resultTarget){
       addClass(resultTarget,'theme-searching-opacity');
-  }
-  if(header){
-      var headerHeight = header.clientHeight;
   }
   if(mainHeader){
   	var mainHeaderHeight = mainHeader.clientHeight;
   }
-  if(header && offsetVal > headerHeight && headerAni && !headerSix){
-      loader.children[0].style.marginTop = (offsetVal+headerHeight)+'px';
-  }
-	else if(mainHeader && headerSix){
-  	loader.children[0].style.marginTop = (offsetVal+80)+'px'
-  }
 }
-function hideLoader(e){
+function hideSearchLoader(e){
 	var loader = $D.get('[data-theme-loader]');
   var tempLoad = $D.get('[data-theme-temp-load]');
 	var searchButton = e.detail.submitElem;
@@ -993,17 +992,45 @@ function hideLoader(e){
   if(tempLoad){
   	tempLoad.parentNode.removeChild(tempLoad);
   }
-	var body = document.getElementsByTagName("body")[0];
     var resultTarget = e.detail.element;
-	if(loader){
-		removeClass(loader,'theme-loader-show');
-		removeClass(body,'theme-loader-body-hidden');
-	}
+	hideLoader();
 	if(resultTarget){
 		removeClass(resultTarget,'theme-searching-opacity');
 	}
 	window.scrollTo({top:0, behaviour:'smooth'});
 	mobileFilter();
+}
+
+function showLoader(){
+	var loader = $D.get('[data-theme-loader]');
+	var body = document.getElementsByTagName("body")[0];
+	var offsetVal = window.pageYOffset;
+	var header = $D.get('[data-header]');
+	var mainHeader = $D.get('[data-headercontainer]');
+	var headerAni = header.classList.contains('theme-header-animate');
+	var headerSix = mainHeader.classList.contains('zpheader-style-06');
+	if(loader){
+		addClass(loader,'theme-loader-show');
+		addClass(body,'theme-loader-body-hidden');
+	}
+	if(header){
+		var headerHeight = header.clientHeight;
+	}
+	if(header && offsetVal > headerHeight && headerAni && !headerSix){
+		loader.children[0].style.marginTop = (offsetVal+headerHeight)+'px';
+	}
+	  else if(mainHeader && headerSix){
+		loader.children[0].style.marginTop = (offsetVal+80)+'px'
+	}
+}
+
+function hideLoader(){
+	var loader = $D.get('[data-theme-loader]');
+	  var body = document.getElementsByTagName("body")[0];
+	  if(loader){
+		  removeClass(loader,'theme-loader-show');
+		  removeClass(body,'theme-loader-body-hidden');
+	  }
 }
 
 document.addEventListener("zp-event-add-to-cart-success", addToCartSuccess, false);
@@ -1031,6 +1058,6 @@ document.addEventListener("zp-event-multi-currency-value-reset", resetMultiCurre
 
 document.addEventListener("zs-event-custom-field-validation-error", customFieldValidation, false);
 
-document.addEventListener("zp-event-search-pending",showLoader, false);
+document.addEventListener("zp-event-search-pending",showSearchLoader, false);
 
-document.addEventListener("zp-event-search-success",hideLoader, false);
+document.addEventListener("zp-event-search-success",hideSearchLoader, false);
