@@ -6,7 +6,7 @@
     }
     @include respond-to(mediumdevice){
         display: none;
-        max-height: 500px;
+        max-block-size:500px;
         overflow-y: auto;
         position: absolute;
         left:0px;
@@ -17,7 +17,7 @@
             display: block;
         }
         &[data-megamenu-direction="right"]{
-            max-height: initial;
+            max-block-size:initial;
         }
     }
     @if map-get($user_layout_vars,'megamenu_container_style') == 01 {
@@ -38,11 +38,14 @@
                 .zpmm-inner{
                     @include respond-to(mediumdevice){
                         background: map-get($default_vars,'color-megamenu-background');
-                        border-top: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                        border-block-start:1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
                         box-shadow: 0px 5px 8px -5px map-get($default_vars,'color-megamenu-boxshadow');
-                        padding:30px 15px;
+                        padding-block-start:30px;
+                        padding-block-end:30px;
+                        padding-inline-start:15px;
+                        padding-inline-end:15px;
                         &[data-megamenu-direction="right"]{
-                            border-left: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                            border-inline-start:1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
                         }
                     }
                 }
@@ -53,11 +56,14 @@
         &.zpmm-container-style-02{
             @include respond-to(mediumdevice){
                 background: map-get($default_vars,'color-megamenu-background');
-                border-top: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                border-block-start:1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
                 box-shadow: 0px 5px 8px -5px map-get($default_vars,'color-megamenu-boxshadow');
-                padding:30px 15px;
+                padding-block-start:30px;
+                padding-block-end:30px;
+                padding-inline-start:15px;
+                padding-inline-end:15px;
                 &[data-megamenu-direction="right"]{
-                    border-left: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                  border-inline-start:1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
                 }
             }
         }
@@ -66,35 +72,42 @@
         &.zpmm-container-style-03{
             @include respond-to(mediumdevice){
                 background: map-get($default_vars,'color-megamenu-background');
-                border-top: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                border-block-start:1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
                 box-shadow: 0px 5px 8px -5px map-get($default_vars,'color-megamenu-boxshadow');
-                padding:30px 15px;
+                padding-block-start:30px;
+                padding-block-end:30px;
+                padding-inline-start:15px;
+                padding-inline-end:15px;
                 &[data-megamenu-direction="right"]{
-                    border-left: 1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
+                  border-inline-start:1px solid RGBA(map-get($default_vars,'color-border-rgba'),0.5);
                 }
             }
             .zpcontainer{
                 width: 100%;
                 @include respond-to(mediumdevice){
-                    padding-top: 0px !important;
-                    padding-bottom: 0px !important;
+                  padding-block-start:0px !important;
+                  padding-block-end:0px !important;
                 }
             }
         }
     }
     .zpcontainer{
         @include respond-to(mediumdevice){
-            padding-top: 0px !important;
-            padding-bottom: 0px !important;
+          padding-block-start:0px !important;
+          padding-block-end:0px !important;
         }
     }
     .zpcontainer-fluid{
         @include respond-to(mediumdevice){
-            padding-top: 0px !important;
-            padding-bottom: 0px !important;
+          padding-block-start:0px !important;
+          padding-block-end:0px !important;
         }
         .zpmm-inner{
-            margin: 0px -15px;
+            margin-block-start:0px;
+            margin-block-end:0px;
+            margin-inline-start:-15px;
+            margin-inline-end:-15px;
+
         }
     }
     .zpmm-inner{
@@ -103,22 +116,22 @@
             @media (max-width: 992px){
                 padding: 0px;
                 &.seperator-divider{
-                    border-bottom:none;
+                  border-block-end:none;
                 }
             }
             &.seperator-divider{
-                border-right:1px solid map-get($default_vars,'color-megamenu-divider');
+              border-inline-end:1px solid map-get($default_vars,'color-megamenu-divider');
                 &:last-child{
-                    border-right:none;
+                  border-inline-end:none;
                 }
             }
         }
         @media (max-width: 992px){
             &.seperator-divider{
                 .zpelem-col{
-                    border-bottom:1px solid map-get($default_vars,'color-megamenu-divider');
+                  border-block-end:1px solid map-get($default_vars,'color-megamenu-divider');
                     &:last-child{
-                        border-bottom:none;
+                      border-block-end:none;
                     }
                     border:none;
                 }
@@ -126,9 +139,9 @@
         }
         .seperator-divider{
             .zpelem-col{
-                border-right:1px solid map-get($default_vars,'color-megamenu-divider');
+              border-inline-end:1px solid map-get($default_vars,'color-megamenu-divider');
                 &:last-child{
-                    border-right:none;
+                  border-inline-end:none;
                 }
                 @media (max-width: 992px){
                     border:none;
@@ -144,35 +157,38 @@
                     &:nth-child(even){
                         background-color: map-get($default_vars,'color-megamenu-background-even');
                     }
-                }   
+                }
             }
         }
         .zprow{
-            margin-top: 10px;
+            margin-block-start:10px;
             &:first-child{
-                margin-top: 0px;
+              margin-block-start:0px;
             }
             @media (max-width: 992px){
                 margin:0px;
             }
         }
         .zpmm-element{
-            margin-top: 5px;
+            margin-block-start:5px;
             @media (max-width: 992px){
                 margin:0px;
-                padding: 14px 48px 14px 40px;
-                border-bottom:1px solid map-get($default_vars,'color-submenu-border');
-            }    
+                padding-block-start:14px;
+                padding-block-end:14px;
+                padding-inline-start:40px;
+                padding-inline-end:48px;
+                border-block-end:1px solid map-get($default_vars,'color-submenu-border');
+            }
             &:first-child{
                 @media (max-width: 992px){
-                    border-top:1px solid map-get($default_vars,'color-submenu-border');
+                  border-block-start:1px solid map-get($default_vars,'color-submenu-border');
                 }
             }
             &:last-child{
-                margin-bottom: 5px;
+                margin-block-end:5px;
                 @media (max-width: 992px){
-                    margin-bottom: 0px;
-                    border-bottom:none;
+                    margin-block-end:0px;
+                    border-block-end:none;
                 }
             }
             img{
@@ -189,14 +205,14 @@
             &.zpmm-imagetext{
                 img{
                     display: block;
-                    max-width: 50%;
+                    max-inline-size:50%;
                     width: 100%;
                 }
             }
             &.zpmm-title{
                 a{
-                    padding-top: 4px;
-                    padding-bottom: 4px;
+                    padding-block-start:4px;
+                    padding-block-end:4px;
                     @media (max-width: 992px){
                         padding: 0px;
                     }
@@ -222,8 +238,8 @@
             }
             &.zpmm-text{
                 a{
-                    padding-top: 4px;
-                    padding-bottom: 4px;
+                    padding-block-start:4px;
+                    padding-block-end:4px;
                     @media (max-width: 992px){
                         padding: 0px;
                     }
@@ -248,7 +264,7 @@
                 }
                 .zpmm-element-textcontent{
                     @include respond-to(mediumdevice){
-                        padding-left:map-get($default_vars, 'left-indent-megamenu-textcontent');
+                      padding-inline-start:map-get($default_vars, 'left-indent-megamenu-textcontent');
                     }
                 }
             }
@@ -262,7 +278,7 @@
             img{
                 width:auto;
                 height:auto;
-                max-width: 100%;
+                max-inline-size:100%;
             }
         }
     }    

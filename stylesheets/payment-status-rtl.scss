@@ -1,0 +1,18 @@
+html[dir="rtl"] {
+  .theme-payment-content-area{
+    .zpcontainer{
+      .theme-payment-success-message{
+        .theme-payment-message-box {
+          .theme-payment-message-lists {
+            .theme-payment-message-list {
+              &:before {
+               right:-20px;
+               left:auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

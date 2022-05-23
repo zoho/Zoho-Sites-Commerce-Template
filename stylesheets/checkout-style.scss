@@ -8,7 +8,7 @@
 }
 .theme-shopping-cart-table-container {
   .theme-cart-table-row {
-    border-bottom:1px solid map-get($base_vars,'color-border');
+    border-block-end:1px solid map-get($base_vars,'color-border');
     .theme-cart-table-data {
       .theme-cart-item-info {
         @include respond-to(smalldevice) {
@@ -72,7 +72,7 @@
         }
         .user-login {
           @include respond-to(mediumdevice) {
-            border-left: 1px solid map-get($base_vars,'color-border');
+            border-inline-start: 1px solid map-get($base_vars,'color-border');
           }
         }
       }
@@ -94,7 +94,7 @@
             }
             &:last-child {
               @include respond-to(smalldevice){
-                border-left:1px solid map-get($base_vars,'color-border');
+                border-inline-start: 1px solid map-get($base_vars,'color-border');
               }
             }
           }
@@ -107,7 +107,7 @@
         .theme-checkout-user-address-box {
           border: 1px solid map-get($base_vars,'color-border');
           .user-address-header {
-            border-bottom:1px dashed map-get($base_vars,'color-border');
+            border-block-end: 1px dashed map-get($base_vars,'color-border');
             color:map-get($base_vars,'color-primary');
             input[type=radio] {
               &:checked + label {
@@ -134,7 +134,7 @@
             }
           }
           .delete-address {
-            border-left:1px solid map-get($base_vars,'color-border');
+            border-inline-start: 1px solid map-get($base_vars,'color-border');
           }
         }
       }
@@ -143,7 +143,7 @@
     }
     .theme-checkout-form-area {
       .theme-chekcout-form-head {
-        border-bottom: 1px dashed map-get($base_vars,'color-border');
+        border-block-end: 1px dashed map-get($base_vars,'color-border');
       }
       ul.theme-checkout-form-container {
         li.form-field-container {
@@ -195,7 +195,7 @@
             }
           }
           .shipping-price {
-            border-top:1px solid map-get($base_vars,'color-border');
+            border-block-start:1px solid map-get($base_vars,'color-border');
             color:map-get($base_vars,'color-primary');
             span {
               color:map-get($default_vars,'color-text');
@@ -208,13 +208,13 @@
       .theme-order-review-address-area {
         .order-review-address {
           .order-review-address-head {
-            border-bottom:1px dashed map-get($base_vars,'color-border');
+            border-block-end:1px dashed map-get($base_vars,'color-border');
           }
         }
       }
       .theme-checkout-order-summary-container {
         .theme-order-summary-footer {
-          border-bottom:1px dashed map-get($base_vars,'color-border');
+          border-block-end:1px dashed map-get($base_vars,'color-border');
           .price-label {
             color:map-get($base_vars,'color-primary');
           }
@@ -224,7 +224,7 @@
         .theme-shopping-cart-table-container {
           .theme-cart-table-row {
             &:last-child {
-              border-bottom:1px solid map-get($base_vars,'color-border');
+              border-block-end:1px solid map-get($base_vars,'color-border');
             }
           }
         }
@@ -236,10 +236,10 @@
   .theme-chekout-ordersummar {
     border: 1px solid map-get($base_vars,'color-border');
     .theme-order-summary-head {
-      border-bottom: 1px dashed map-get($base_vars,'color-border');
+      border-block-end:1px dashed map-get($base_vars,'color-border');
     }
     ul.theme-order-summary-list {
-      border-bottom: 1px dashed map-get($base_vars,'color-border');
+      border-block-end:1px dashed map-get($base_vars,'color-border');
     }
     .theme-order-summary-footer {
       .price-label {
@@ -272,6 +272,6 @@
 
 .theme-checkout-additional-information{
   p{
-    margin-bottom: 10px;
+    margin-block-end:10px;
   }
 }

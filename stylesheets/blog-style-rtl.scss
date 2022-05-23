@@ -1,0 +1,40 @@
+/* #EXCLUDEOUTPUTSTARTS */
+@import "_base-variable";
+/* #EXCLUDEOUTPUTENDS */
+@import "_mixin";
+
+// RTL STYLES
+
+html[dir="rtl"] {
+  @if map-get($user_layout_vars,'blog_list_style') == 03{
+    .theme-blog-category-column{
+      .theme-blog-category-container{
+        .theme-blog-category-list{
+          ul{
+            li{
+              &:after{
+                left: auto;
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @if map-get($user_layout_vars,'blog_post_style') == 04{
+    .theme-single-post{
+      .theme-single-blog-social-cat-tag-group{
+        .single-post-category-tag{
+          .singlepost-category-tag-heading{
+            &:after{
+              right: auto;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

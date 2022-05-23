@@ -44,8 +44,8 @@ input[type=button] {
 	}
 	&.zpbutton-type-link{
 		background: transparent;
-		padding-left:0;
-		padding-right:0;
+		padding-inline-start:0px;
+		padding-inline-end:0px;
 		border : 0 none;
 		font-family: map-get($default_vars, 'font-family-button-link');
 		text-transform: map-get($default_vars, 'font-transform-button-link');

@@ -90,7 +90,7 @@
 			&.zptab-type-02{
 				.zptab{
 					color: map-get($default_vars, '#{$section-bg}color-tab-style-two');
-					border-bottom-color:map-get($default_vars, '#{$section-bg}color-tab-style-two');
+					border-block-end-color:map-get($default_vars, '#{$section-bg}color-tab-style-two');
 					&.zptab-active{
 						color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
 						border-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
@@ -104,19 +104,19 @@
 				}
 				.zptabs-content-container {
 					.zptab-content{
-						border-top-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-border');
+						border-block-start-color:map-get($default_vars, '#{$section-bg}color-tab-style-two-border');
 					}
 				}
 			}
 			&.zptab-type-03{
 				.zptab{
 					color: map-get($default_vars, '#{$section-bg}color-tab-style-two');
-					border-bottom-color:map-get($default_vars, '#{$section-bg}color-tab-style-two');
+					border-block-end-color:map-get($default_vars, '#{$section-bg}color-tab-style-two');
 					&.zptab-active{
 						color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
 						border-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
 						&:after{
-							border-top-color: map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
+							border-block-start-color:map-get($default_vars, '#{$section-bg}color-tab-style-two-active');
 						}
 					}
 					&:hover{
@@ -125,7 +125,7 @@
 				}
 				.zptabs-content-container {
 					.zptab-content{
-						border-top-color:map-get($default_vars, '#{$section-bg}color-tab-style-two-border');
+						border-block-start-color:map-get($default_vars, '#{$section-bg}color-tab-style-two-border');
 					}
 				}
 			}

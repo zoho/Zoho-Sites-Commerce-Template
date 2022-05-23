@@ -1,0 +1,200 @@
+html[dir="rtl"] {
+  .zphero {
+ 		.zsslider-arrows-container {
+ 			.zsslider-arrow-left{
+ 				left:10px;
+ 				right: auto;
+ 			}
+ 			.zsslider-arrow-right{
+ 				right:10px;
+ 				left: auto;
+ 			}
+ 		}
+ 	}
+ .theme-header-topbar {
+	 .theme-portal-login{
+		 .theme-portal-container{
+			 .theme-portal-content{
+         float: right;
+				 &.theme-portal-username-content{
+					 .theme-username-dropdown-list{
+						 left: auto;
+						 right:0px;
+					 }
+           .theme-user-name-dropdown {
+             .theme-user-profile-down-arrow {
+               transform: rotate(-135deg);
+             }
+           }
+				 }
+			 }
+		 }
+	 }
+	 .theme-search-minicart-responsive{
+		 .theme-search-and-mini-cart-group{
+			 .theme-search{
+				 .theme-search-field-container{
+					 left:auto;
+					 right:0px;
+				 }
+			 }
+		 }
+	 }
+ }
+
+	@if map-get($user_layout_vars,'header_style') == 01 {
+		.zpheader-style-01{
+			&.theme-cart-checkout-headersix{
+				&.theme-mobile-header-fixed{
+					right: auto;
+					left: 0px;
+				}
+			}
+		}
+	}
+
+	@if map-get($user_layout_vars,'header_style') == 06 {
+		.zpheader-style-06{
+			+ .theme-vertical-navigation-resposnive{
+				@include respond-to(mediumdevice){
+					left: 0px;
+					right: auto;
+				}
+			}
+		}
+		.theme-vertical-navigation-container{
+			.theme-header{
+				@include respond-to(mediumdevice){
+					left: auto;
+					right: 0;
+				}
+				.zpcontainer{
+					.theme-vertical-navigation-search-cart-container{
+						.theme-search-and-mini-cart-group{
+							.theme-search{
+								.theme-search-field-container{
+									right:0;
+									left:auto;
+								}
+							}
+						}
+					}
+					&.theme-vertical-navigation-contact-social-container{
+						right:0;
+						left:auto;
+					}
+				}
+			}
+		}
+		.zpbanner-for-header-06{
+			.zphero {
+				.zsslider-arrows-container {
+					.zsslider-arrow-left{
+						left:50px;
+					}
+				}
+			}
+			.zphero {
+				.zsslider-arrows-container {
+					.zsslider-arrow-right{
+						right:50px;
+					}
+				}
+			}
+		}
+	}
+
+	@if map-get($user_layout_vars,'header_style') == 07 {
+		.zpheader-style-07{
+			.theme-header{
+				.zpcontainer{
+					.theme-navigation-and-icons{
+						.theme-search-and-mini-cart-group{
+							.theme-search {
+								&.theme-search-and-mini-cart-group-item {
+									.theme-search-field-container-07  {
+										form {
+											.theme-search-go-input {
+												right:auto;
+												left:6px;
+											}
+										}
+									}
+								}
+							}
+						}
+						.theme-search-and-mini-cart-group{
+							.theme-mini-cart{
+								.theme-minicart-icon{
+									.theme-mini-cart-count{
+										@include respond-to(mediumdevice){
+											right: auto;
+											left: -11px;
+										}
+									}
+									@if map-get($user_layout_vars,'store_carticon_style') == 11 {
+										&.theme-carticon-headerseven-style-11{
+											.theme-mini-cart-count{
+												left: auto;
+												right: 4px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.theme-search-minicart-responsive {
+		      .theme-search-and-mini-cart-group {
+		        .theme-search {
+		          &.theme-search-and-mini-cart-group-item {
+		            .theme-search-field-container-07  {
+		              form {
+		                .theme-search-go-input {
+		                  left:6px;
+											right:auto;
+		                }
+		              }
+		            }
+		          }
+		        }
+		        .theme-mini-cart {
+		          .theme-minicart-icon {
+		 					 @if map-get($user_layout_vars,'store_carticon_style') == 11 {
+		 						 &.theme-carticon-headerseven-style-11{
+		 							 .theme-mini-cart-count{
+		 								 right: 4px;
+		 								 left: auto;
+		 							 }
+		 						 }
+		 					 }
+		          }
+		        }
+		      }
+		    }
+
+			}
+		}
+	}
+
+	.theme-search-loader-dots{
+		&.theme-show-search-loader-dots{
+			right: auto;
+			left: 0;
+		}
+		span{
+			right: 50%;
+			left: auto;
+			&:after,
+			&:before{
+				right:-7px;
+				left: auto;
+			}
+			&:after{
+				right:7px;
+				left: auto;
+			}
+		}
+	}
+}

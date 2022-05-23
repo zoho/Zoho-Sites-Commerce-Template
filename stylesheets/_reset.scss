@@ -81,7 +81,11 @@ input,
 textarea,
 select{
   border: 1px solid #ccc;
-  padding:10px 5px;
+  padding-block-start:10px;
+  padding-block-end:10px;
+  padding-inline-start:5px;
+  padding-inline-end:5px;
+  //padding:10px 5px;
   width:100%;
   font-family: inherit;
   font-size:inherit;
@@ -102,12 +106,14 @@ input[type='checkbox']{
 select{
   background:#fff;
   height:39px;
-  padding-right:0;
+  padding-inline-end:0;
 }
 select[multiple]{
   height:75px;
-  padding:10px 5px;
-  padding-right:0;
+  padding-block-start:10px;
+  padding-block-end:10px;
+  padding-inline-start:5px;
+  padding-inline-end:0;
 }
 
 // INPUT AND FORM RESET END

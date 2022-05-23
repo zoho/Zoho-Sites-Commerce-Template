@@ -19,8 +19,8 @@
     table{
       border-color:map-get($default_vars,'#{$section-bg}color-table-border');
       td,th{
-        border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
-        border-right-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+        border-block-end-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+        border-inline-end-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
         color:map-get($default_vars,'#{$section-bg}color-header-transparent-text');
       }
       td{
@@ -33,8 +33,8 @@
           th{
             background: map-get($default_vars,'#{$section-bg}color-header-dark-background');
             color:map-get($default_vars,'#{$section-bg}color-header-dark-background-text');
-            border-right-color:map-get($default_vars,'#{$section-bg}color-table-headerdark-border');
-            border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-headerdark-border');
+            border-block-end-color:map-get($default_vars,'#{$section-bg}color-table-headerdark-border');
+            border-inline-end-color:map-get($default_vars,'#{$section-bg}color-table-headerdark-border');
           }
         }
       }
@@ -45,8 +45,8 @@
           th{
             background:map-get($default_vars,'#{$section-bg}color-header-light-background');
             color:map-get($default_vars,'#{$section-bg}color-header-light-background-text');
-            border-right-color:map-get($default_vars,'#{$section-bg}color-table-header-border');
-            border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-header-border');
+            border-block-end-color:map-get($default_vars,'#{$section-bg}color-table-header-border');
+            border-inline-end-color:map-get($default_vars,'#{$section-bg}color-table-header-border');
           }
         }
       }
@@ -56,8 +56,8 @@
         tr{
           th{
             color:map-get($default_vars,'#{$section-bg}color-header-transparent-text');
-            border-right-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
-            border-bottom-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+            border-block-end-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
+            border-inline-end-color:map-get($default_vars,'#{$section-bg}color-table-cell-border');
           }
         }
       }

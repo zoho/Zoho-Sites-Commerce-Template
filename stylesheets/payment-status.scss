@@ -8,7 +8,10 @@
     @include flexbox;
     @include prefix(flex-direction,column);
     @include prefix(align-items,center);
-    padding:50px 15px;
+    padding-block-start:50px;
+    padding-block-end:50px;
+    padding-inline-start:15px;
+    padding-inline-end:15px;
     .theme-payment-success-indicator{
       @include flexbox;
       svg{
@@ -17,7 +20,10 @@
       }
     }
     .theme-payment-success-message{
-      padding:30px 0;
+      padding-block-start:30px;
+      padding-block-end:30px;
+      padding-inline-start:0;
+      padding-inline-end:0;
 
       .theme-payment-message-header {
         @include flexbox;
@@ -25,7 +31,7 @@
         @include prefix(align-items,center);
         @include prefix(justify-content,center);
         .theme-payment-fail-icon {
-          margin-right:15px;
+          margin-inline-end:15px;
           .theme-payment-fail-svg {
             width: 40px;
             height: 40px;
@@ -41,18 +47,21 @@
         border:1px solid map-get($base_vars, 'color-border');
         border-radius:4px;
         padding:25px;
-        margin-top:15px;
+        margin-block-start:15px;
         h5 {
-          margin-bottom:10px;
+          margin-block-end:10px;
         }
         .theme-payment-message-lists {
           padding:0px;
-          margin-left:35px;
+          margin-inline-start:35px;
           list-style:none;
           .theme-payment-message-list {
-            padding:10px 0 0;
+            padding-block-start:10px;
+            padding-block-end:0;
+            padding-inline-start:0;
+            padding-inline-end:0;
             position:relative;
-            padding-left:5px;
+            padding-inline-start:5px;
             &:before {
              content:'';
              width:8px;
@@ -76,13 +85,13 @@
       @include prefix(flex-direction,column);
       @include prefix(align-items,center);
       @include respond-to(smalldevice){
-        min-width:365px;
+        min-inline-size:365px;
       }
       .theme-payment-info-list{
         @include prefix(flex,1 0 0px);
-        margin-bottom:10px;
+        margin-block-end:10px;
         &:last-child{
-          margin-bottom:0;
+          margin-block-end:0px;
         }
         span{
           font-weight:bold;
@@ -90,15 +99,24 @@
       }
     }
     .theme-payment-thank-message{
-      padding:23px 0;
+      padding-block-start:23px;
+      padding-block-end:23px;
+      padding-inline-start:0;
+      padding-inline-end:0;
     }
     .theme-payment-button{
       text-align: center;
       .zpbutton{
-        margin:0 10px;
+        margin-block-start:0;
+        margin-block-end:0;
+        margin-inline-start:10px;
+        margin-inline-end:10px;
       }
       .theme-payment-bottom-message {
-        margin: 15px 0;
+        margin-block-start:15px;
+        margin-block-end:15px;
+        margin-inline-start:0px;
+        margin-inline-end:0px;
         text-align: center;
         font-size:110%;
       }
@@ -110,7 +128,10 @@
 @media only screen and (min-width : 992px){
 	.theme-payment-success-message{
       width:800px;
-      margin:0 auto;
+      margin-block-start:0;
+      margin-block-end:0;
+      margin-inline-start:auto;
+      margin-inline-end:auto;
     }
 }
 
@@ -154,3 +175,4 @@
     }
   }
 }
+

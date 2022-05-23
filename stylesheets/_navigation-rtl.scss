@@ -1,0 +1,1534 @@
+html[dir="rtl"] {
+
+.theme-navigation-and-icons{
+.theme-search-and-mini-cart-group{
+		.theme-search{
+			.theme-search-field-container{
+				left: auto;
+				right: 0;
+				@include respond-to(mediumdevice){
+					left: 15px;
+					right:auto;
+				}
+				input[type="text"]{
+					padding:5px 20px 5px 60px;
+				}
+				.theme-search-go{
+					right:auto;
+					left: 0px;
+				}
+			}
+		}
+	}
+}
+
+	@if map-get($user_layout_vars,'header_style') == 03 {
+		.zpheader-style-03{
+			.zpcontainer{
+				.theme-navigation-and-icons{
+					.theme-menu-area {
+					 .theme-menu{
+						 > ul{
+							 > li{
+								 &:hover, &.theme-menu-selected{
+									 &:after{
+										 right:0;
+										 left: auto;
+									 }
+								 }
+							 }
+						 }
+					 }
+					}
+				}
+			}
+		}
+	}
+
+	@if map-get($user_layout_vars,'header_style') == 06 {
+
+		.theme-vertical-navigation-container{
+			.theme-header{
+				.zpcontainer{
+					.theme-navigation-and-icons{
+						.theme-menu-area{
+							.theme-menu{
+								> ul{
+									> li{
+										.theme-sub-li-menu{
+											&.theme-non-responsive-menu{
+												right:auto;
+												left: 0px;
+											}
+										}
+										> ul{
+											right:100%;
+											left: auto;
+											> li{
+												.theme-sub-li-menu{
+													&.theme-non-responsive-menu{
+														right:auto;
+														left:15px;
+													}
+												}
+												&.menu-highlight-primary, &.menu-highlight-secondary{
+													.theme-sub-li-menu{
+														&.theme-non-responsive-menu{
+															left:10px;
+															right: auto;
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+.theme-navigation-and-icons{
+	.theme-search-and-mini-cart-group{
+			.theme-search{
+				.theme-search-field-container{
+					left:15px;
+					right:auto;
+					.theme-search-go{
+						left:0px;
+						right:auto;
+					}
+				}
+			}
+			.theme-mini-cart{
+				.theme-minicart-icon{
+					.theme-mini-cart-count{
+						left:5px;
+						right:auto;
+					}
+					@if map-get($user_layout_vars,'store_carticon_style') == 11 {
+						&.theme-carticon-style-11{
+							.theme-mini-cart-count{
+								left: auto;
+								right: -5px;
+							}
+						}
+					}
+				}
+			}
+			.theme-search-and-mini-cart-group-item{
+				&:only-child{
+					.theme-search-field-container{
+						left:0px;
+						right:auto;
+					}
+				}
+			}
+		}
+	}
+
+	// SUBMENU STYLES
+
+	@if map-get($user_layout_vars,'submenu_style') == 01 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							right: auto;
+							left:10px;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+                					transform: rotate(-135deg);
+								&:after{
+									left:auto;
+									right:5px;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										left:auto;
+										right:0px;
+										&.theme-sub-menu-position-change{
+											left:0;
+											right:auto;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+                        transform:rotate(-45deg) translate(0, -50%);
+												@include respond-to(mediumdevice){
+													right:auto;
+													left:10px;
+												}
+											}
+										}
+									}
+									ul{
+										right:100%;
+										left: auto;
+										&.theme-sub-menu-position-change{
+											left:auto;
+											right:-100%;
+										}
+									}
+								}
+							}
+						}
+						.theme-sub-menu{
+								.theme-sub-li-menu{
+										left:15px;
+										right:auto;
+								}
+								.menu-highlight-primary, .menu-highlight-secondary{
+										.theme-sub-li-menu{
+												left:10px;
+												right:auto;
+										}
+								}
+						}
+					}
+				}
+			}
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    left:auto;
+								right:0px;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+			.theme-navigation-and-icons{
+			  .theme-menu-area{
+			    .theme-menu{
+			      .theme-currency-option-container{
+			        .theme-currency-label{
+			          left:auto;
+								right: 0px;
+			        }
+			        &.theme-currency-style-01,
+			        &.theme-currency-style-02,
+			        &.theme-currency-style-03{
+			          ul{
+			            &.theme-currency-open{
+			              left: auto;
+										right:0px;
+			            }
+			          }
+			        }
+			      }
+			    }
+			  }
+			}
+		}
+
+	@if map-get($user_layout_vars,'submenu_style') == 02 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							right: auto;
+							left: 10px;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+                					transform: rotate(-135deg);
+								&:after{
+									left:auto;
+									right:5px;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										left:auto;
+										right:0px;
+										&.theme-sub-menu-position-change{
+											left:0;
+											right:auto;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+                        transform:rotate(-45deg) translate(0, -50%);
+												@include respond-to(mediumdevice){
+													left:10px;
+													right: auto;
+												}
+											}
+										}
+										&:hover > a,
+										&.theme-menu-selected > a{
+											&:after{
+												@include respond-to(mediumdevice){
+													left:auto;
+													right: 0px;
+												}
+											}
+										}
+										&:first-child{
+											&:after{
+												@include respond-to(mediumdevice){
+													right:28px;
+													left: auto;
+												}
+											}
+											&:hover {
+												&:before{
+													@include respond-to(mediumdevice){
+														right:28px;
+														left:auto;
+													}
+												}
+											}
+										}
+									}
+									ul{
+										@include respond-to(mediumdevice){
+											right:100%;
+											left: auto;
+										}
+										&.theme-sub-menu-position-change{
+											right:-100%;
+											left: auto;
+										}
+									}
+									&.theme-sub-menu-position-change{
+										li{
+											&:first-child{
+												&:after{
+													right: 28px;
+													left: auto;
+                          transform: rotate(45deg);
+												}
+												&:hover {
+													&:before{
+														right: 28px;
+														left: auto;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						.theme-sub-menu{
+							.theme-sub-li-menu{
+								left:15px;
+								right:auto;
+							}
+							.menu-highlight-primary, .menu-highlight-secondary{
+								.theme-sub-li-menu{
+									left:10px;
+									right:auto;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,
+							&:after{
+						    left: auto;
+								right: 0px;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          left: auto;
+									right:0;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              left: auto;
+											right: 0px;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+
+		}
+
+	@if map-get($user_layout_vars,'submenu_style') == 03 {
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						ul{
+							li{
+								ul{
+									left: auto;
+									right: 0;
+									li{
+										ul{
+											right: 100%;
+											&.theme-sub-menu-position-change{
+												right: auto;
+												left: 100%;
+											}
+										}
+									}
+								}
+							}
+						}
+						.theme-sub-li-menu{
+							&.theme-submenu-right-arrow{
+								left: 15px;
+								right: auto;
+                transform:rotate(-45deg) translate(0, -50%);
+							}
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								right: auto;
+								left:20px;
+							}
+						}
+						.theme-sub-menu{
+							.theme-sub-li-menu{
+								left:15px;
+								right: auto;
+							}
+							.menu-highlight-primary, .menu-highlight-secondary{
+								.theme-sub-li-menu{
+									left:10px;
+									right:auto;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    left:auto;
+								right: 0px;
+							}
+						}
+					}
+				}
+				&.theme-navigation-and-icons{
+					.theme-menu-area{
+						&.theme-responsive-menu{
+							.theme-menu{
+								> ul{
+									>li{
+										&.menu-highlight-primary, &.menu-highlight-secondary{
+											>a{
+                        .theme-sub-li-menu{
+                            left:10px;
+														right:auto;
+                        }
+											}
+										}
+									}
+								}
+								.theme-sub-li-menu.theme-responsive-menu{
+									left:15px;
+									right:auto;
+								}
+								.menu-highlight-primary, .menu-highlight-secondary{
+									>a{
+                    .theme-sub-li-menu{
+                        left:10px;
+												right:auto;
+                    }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+									right:0;
+				          left: auto;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              left: auto;
+											right:0px;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+
+		}
+
+	@if map-get($user_layout_vars,'submenu_style') == 04 {
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								right:auto;
+								left: 20px;
+                transform: rotate(-135deg);
+								&:after,
+								&:before{
+									left:auto;
+									right:50%;
+								}
+								&:after{
+									right:39px;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										left:auto;
+										right:0px;
+										&.theme-sub-menu-position-change{
+											left:0;
+											right:auto;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													right:auto;
+													left:10px;
+                          transform:rotate(-45deg) translate(0, -50%);
+												}
+											}
+										}
+										&:hover > a,
+										&.theme-menu-selected > a{
+											&:after{
+													@include respond-to(mediumdevice){
+													left:auto;
+													right: 0px;
+												}
+											}
+										}
+									}
+									ul{
+										right:100%;
+										left: auto;
+										&.theme-sub-menu-position-change{
+											right:-100%;
+										}
+									}
+								}
+							}
+						}
+						.theme-sub-menu{
+							.theme-sub-li-menu{
+								left:15px;
+								right:auto;
+							}
+							.menu-highlight-primary, .menu-highlight-secondary{
+								.theme-sub-li-menu{
+									left:10px;
+									right:auto;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    right: 0;
+								left: auto;
+							}
+						}
+					}
+				}
+				&.theme-navigation-and-icons{
+					.theme-menu-area{
+						&.theme-responsive-menu{
+							.theme-menu{
+								> ul{
+									>li{
+										&.menu-highlight-primary, &.menu-highlight-secondary{
+											>a{
+                        .theme-sub-li-menu{
+                          left:10px;
+													right:auto;
+                        }
+											}
+										}
+									}
+								}
+								.theme-sub-li-menu.theme-responsive-menu{
+									left:15px;
+									right:auto;
+								}
+								.menu-highlight-primary, .menu-highlight-secondary{
+									>a{
+                    .theme-sub-li-menu{
+                      left:10px;
+											right:auto;
+                    }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          left: auto;
+									right:0px;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+
+				            &.theme-currency-open{
+				              left: auto;
+											right:0px;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+
+		}
+
+	@if map-get($user_layout_vars,'submenu_style') == 05 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							right: auto;
+							left:10px;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								&:after{
+									left:auto;
+									right:5px;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										left:auto;
+										right:0px;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left: 0px;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+												}
+											}
+										}
+									}
+
+									ul{
+										right:100%;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left: 100%;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    left: 0;
+								right:0px;
+							}
+						}
+					}
+				}
+				&.theme-navigation-and-icons{
+
+					.theme-menu-area{
+						&.theme-responsive-menu{
+							.theme-menu{
+								> ul{
+									>li{
+										&.menu-highlight-primary, &.menu-highlight-secondary{
+											>a{
+												.theme-sub-li-menu{
+													left:10px;
+													right:auto;
+												}
+											}
+										}
+									}
+								}
+								.theme-sub-li-menu.theme-responsive-menu{
+									left:15px;
+									right:auto;
+								}
+								.menu-highlight-primary, .menu-highlight-secondary{
+									>a{
+										.theme-sub-li-menu{
+												left:10px;
+												right:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          left: auto;
+									right:0px;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+
+				            &.theme-currency-open{
+											right:0px;
+				              left: auto;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+		}
+
+  @if map-get($user_layout_vars,'submenu_style') == 06 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							right: auto;
+							left: 10px;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								&:after{
+									left:auto;
+									right:5px;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										left:auto;
+										right:0;
+										&.theme-sub-menu-position-change{
+											right: auto;
+											left: 0px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    left: auto;
+								right: 0px;
+							}
+						}
+					}
+				}
+				&.theme-navigation-and-icons{
+					.theme-menu-area{
+		        &.theme-responsive-menu{
+							.theme-menu{
+								> ul{
+									>li{
+										&.menu-highlight-primary, &.menu-highlight-secondary{
+											>a{
+                        .theme-sub-li-menu{
+                            left:10px;
+														right:auto;
+                        }
+											}
+										}
+									}
+								}
+								.theme-sub-li-menu.theme-responsive-menu{
+									left:15px;
+									right:auto;
+								}
+								.menu-highlight-primary, .menu-highlight-secondary{
+									>a{
+                    .theme-sub-li-menu{
+                        left:10px;
+												right:auto;
+                    }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          left: auto;
+									right:0px;
+				        }
+				      }
+				    }
+				  }
+				}
+
+		}
+
+
+		//  SUB MENU STYLE - 01
+
+		@if map-get($user_layout_vars,'submenu_style') == 01 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							left: 10px;
+							right:auto;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								&:after{
+									right:5px;
+									left:auto;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										right:0;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left: 0px;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+												}
+											}
+										}
+									}
+									ul{
+										left:auto;
+										right:100%;
+										&.theme-sub-menu-position-change{
+											right:-100%;
+											left:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    right: 0;
+								left:auto;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          right: 0;
+									left:auto;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              right: 0px;
+											left:auto;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+		}
+
+		//  SUB MENU STYLE - 02
+
+		@if map-get($user_layout_vars,'submenu_style') == 02 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							left: 10px;
+							right:auto;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+                transform:rotate(-135deg);
+								&:after{
+									left:auto;
+									right:5px;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										right:0;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left:0;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+												}
+											}
+										}
+										&:hover > a,
+										&.theme-menu-selected > a{
+											&:after{
+												@include respond-to(mediumdevice){
+													right:0px;
+													left:auto;
+												}
+											}
+										}
+										&:first-child{
+											&:after{
+												@include respond-to(mediumdevice){
+													right:28px;
+													left: auto;
+                          transform:rotate(45deg);
+												}
+											}
+											&:hover {
+												&:before{
+													@include respond-to(mediumdevice){
+														right:28px;
+														left:auto;
+													}
+												}
+											}
+										}
+									}
+									ul{
+										@include respond-to(mediumdevice){
+											right:100%;
+											left:auto;
+										}
+										&.theme-sub-menu-position-change{
+											right:-100%;
+											left:auto;
+										}
+									}
+									&.theme-sub-menu-position-change{
+										li{
+											&:first-child{
+												&:after{
+													left: 28px;
+													right: auto;
+												}
+												&:hover {
+													&:before{
+														left: 28px;
+														right: auto;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,
+							&:after{
+						    right: 0;
+								left:auto;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          right:0;
+									left:auto;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              right: 0px;
+											left:auto;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+		}
+
+		//  SUB MENU STYLE - 03
+
+		@if map-get($user_layout_vars,'submenu_style') == 03 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								left:20px;
+								right:auto;
+                transform:rotate(-135deg);
+								&:after,
+								&:before{
+									right:0px;
+									left:auto;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										right:0;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left:0;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+												}
+											}
+										}
+									}
+									ul{
+										right:100%;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											left:-100%;
+											right:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    right: 0;
+								left: auto;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          right: 0;
+									left:auto;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              right: 0px;
+											left:auto;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+		}
+
+		//  SUB MENU STYLE - 04
+
+		@if map-get($user_layout_vars,'submenu_style') == 04 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								left:0;
+								right:auto;
+                transform:rotate(-135deg);
+							}
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+								&:after{
+									left: 24px;
+									right: auto;
+								}
+								&:before{
+									left: 20px;
+									right: auto;
+								}
+							}
+							&.theme-submenu-up-arrow{
+								&:after{
+									left: 24px;
+									right:auto;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										left:auto;
+										right:0;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left: 0px;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+												}
+											}
+										}
+										&:hover > a,
+										&.theme-menu-selected > a{
+											&:after{
+													@include respond-to(mediumdevice){
+													right:0px;
+													left:auto;
+												}
+											}
+										}
+									}
+									ul{
+										left:auto;
+										right:100%;
+										&.theme-sub-menu-position-change{
+											right:-100%;
+											left:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    right: 0;
+								left:auto;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          right: 0;
+									left: auto;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              right: 0px;
+											left:auto;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+		}
+
+		//  SUB MENU STYLE - 05
+
+		@if map-get($user_layout_vars,'submenu_style') == 05 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							left: 10px;
+							right: auto;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+                transform:rotate(-135deg);
+								&:after{
+									right:5px;
+									left:auto;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										right:0;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left: 0px;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+                          transform:rotate(-45deg) translate(0, -50%);
+												}
+											}
+										}
+									}
+
+									ul{
+										left:auto;
+										right:100%;
+										&.theme-sub-menu-position-change{
+											right:-100%;
+											left:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    right: 0;
+								left: auto;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+				          right: 0;
+									left:auto;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              right: 0px;
+											left:auto;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+
+		}
+
+		//  SUB MENU STYLE - 06
+
+		@if map-get($user_layout_vars,'submenu_style') == 06 {
+
+			.theme-navigation-and-icons{
+				.theme-menu-area{
+					.theme-menu{
+						.theme-sub-li-menu{
+							left: 10px;
+							right:auto;
+							&.theme-submenu-down-arrow,
+							&.theme-submenu-up-arrow{
+                transform:rotate(-135deg);
+								&:after{
+									right:5px;
+									left:auto;
+								}
+							}
+						}
+						ul{
+							li{
+								ul{
+									@include respond-to(mediumdevice){
+										right:0;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left:0;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+                          transform: rotate(-45deg) translate(0, -50%);
+												}
+											}
+										}
+									}
+									ul{
+										left:auto;
+										right:100%;
+										&.theme-sub-menu-position-change{
+											right:-100%;
+											left:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.theme-responsive-menu-area{
+				&.zpcontainer{
+					.theme-responsive-menu-container{
+						.theme-burger-icon{
+							&:before,&:after{
+						    right: 0;
+								left:auto;
+							}
+						}
+					}
+				}
+			}
+
+				// CURRENCY IN RESPONSIVE
+
+				.theme-navigation-and-icons{
+				  .theme-menu-area{
+				    .theme-menu{
+				      .theme-currency-option-container{
+				        .theme-currency-label{
+									right:0;
+				          left: auto;
+				        }
+				        &.theme-currency-style-01,
+				        &.theme-currency-style-02,
+				        &.theme-currency-style-03{
+				          ul{
+				            &.theme-currency-open{
+				              right: 0px;
+				              left: auto;
+				            }
+				          }
+				        }
+				      }
+				    }
+				  }
+				}
+
+		}
+
+		.theme-navigation-and-icons{
+			.theme-menu-area{
+				.theme-menu{
+					right:0;
+					left:auto;
+					.theme-close-menu {
+						left: 13px;
+						right:auto;
+					}
+					.theme-close-menu:before,
+					.theme-close-menu:after {
+						left: auto;
+						right:8px;
+					}
+				}
+			}
+		}
+
+}

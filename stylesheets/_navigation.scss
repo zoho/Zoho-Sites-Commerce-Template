@@ -84,12 +84,15 @@
 					 > ul{
 						 > li{
 							 @include prefix(align-self,stretch);
-							 margin:-20px 30px;
+							 margin-block-start:-20px;
+							 margin-block-end:-20px;
+							 margin-inline-start:30px;
+							 margin-inline-end:30px;
 							 &:first-child{
-								 margin-left:0;
+								 margin-inline-start:0;
 							 }
 							 &:last-child{
-								 margin-right:0;
+								 margin-inline-end:0;
 							 }
 							 &:hover{
 								 &:after{
@@ -104,7 +107,10 @@
 								 }
 							 }
 							 a{
-								 padding:20px 0;
+								 padding-block-start:20px;
+								 padding-block-end:20px;
+								 padding-inline-start:0px;
+								 padding-inline-end:0px;
 								 line-height: map-get($default_vars,'font-line-height-navigation-normal');
 							 }
 							 &:hover{
@@ -131,12 +137,15 @@
 							 }
 							 ul{
 								 @include respond-to(mediumdevice){
-									 padding-top:0px;
+									 padding-block-start:0px;
 								 }
 								 li{
 									 margin:0;
 									 a{
-										 padding: 10px 20px;
+										 padding-block-start:10px;
+										 padding-block-end:10px;
+										 padding-inline-start:20px;
+										 padding-inline-end:20px;
 									 }
 									 &:hover{
 										 > a{
@@ -301,12 +310,15 @@
 					 > ul{
 						 > li{
 							 @include prefix(align-self,stretch);
-							 margin:-20px 30px;
+							 margin-block-start:-20px;
+							 margin-block-end:-20px;
+							 margin-inline-start:30px;
+							 margin-inline-end:30px;
 							 &:first-child{
-								 margin-left:0;
+								 margin-inline-start:0px;
 							 }
 							 &:last-child{
-								 margin-right:0;
+								 margin-inline-end:0px;
 							 }
 							 &:hover{
 								 &:after{
@@ -321,7 +333,10 @@
 								 }
 							 }
 							 a{
-								 padding:20px 0;
+								 padding-block-start:20px;
+								 padding-block-end:20px;
+								 padding-inline-start:0px;
+								 padding-inline-end:0px;
 								 line-height: map-get($default_vars,'font-line-height-navigation-normal');
 								 margin: 0;
 							 }
@@ -349,12 +364,15 @@
 							 }
 							 ul{
 								 @include respond-to(mediumdevice){
-									 padding-top:0px;
+									 padding-block-start:0px;
 								 }
 								 li{
 									 margin:0;
 									 a{
-										 padding: 10px 20px;
+										 padding-block-start:10px;
+										 padding-block-end:10px;
+										 padding-inline-start:20px;
+										 padding-inline-end:20px;
 									 }
 									 &:hover{
 										 > a{
@@ -494,7 +512,7 @@
 				 .theme-menu{
 					 ul{
 						 @include respond-to(mediumdevice){
-							 margin-left:25px;
+							 margin-inline-start:25px;
 						 }
 						 li{
 							 a{
@@ -503,7 +521,7 @@
 						 }
 						 ul{
 							 @include respond-to(mediumdevice){
-								 margin-left:0px;
+								 margin-inline-start:0px;
 							 }
 						 }
 					 }
@@ -550,11 +568,11 @@
 						li{
 							ul{
 								@include respond-to(mediumdevice){
-									padding-top:20px;
+									padding-block-start:20px;
 								}
 								ul{
 									@include respond-to(mediumdevice){
-										padding-top:0px;
+										padding-block-start:0px;
 									}
 								}
 							}
@@ -578,16 +596,19 @@
 							> ul{
 								display: block;
 								> li{
-									margin-left:0;
-									margin-top:25px;
-									margin-right: -30px;
-									padding-right: 30px;
+									margin-inline-start:0px;
+									margin-block-start:25px;
+									margin-inline-end:-30px;
+									padding-inline-end:30px;
 									word-break: break-word;
 									word-wrap: break-word;
 									> a{
-										padding: 0px 10px 0px 0px;
+										padding-block-start:0px;
+										padding-block-end:0px;
+										padding-inline-start:0px;
+										padding-inline-end:10px;
 										position: relative;
-										text-align: left;
+										text-align: start;
 										line-height: map-get($default_vars,'font-line-height-navigation-normal');
 										@include respond-to(mediumdevice){
 											display: block;
@@ -602,18 +623,18 @@
 									}
 									.theme-sub-li-menu{
 										&.theme-non-responsive-menu{
-											right:0px;
+											right: 10px;
 											position: absolute;
 											@include prefix(transform,rotate(45deg) translate(0px,-50%));
 											@include respond-to(mediumdevice){
-												margin-left: auto;
+												margin-inline-start:auto;
 											}
 										}
 									}
 									> ul{
 										top:0;
 										left:100%;
-										padding-top: 0px;
+										padding-block-start:0px;
 										> li{
 											.theme-sub-li-menu{
 												&.theme-non-responsive-menu{
@@ -640,8 +661,8 @@
 	@include prefix(align-self,stretch);
 	@include respond-to(mediumdevice){
 		@include prefix(flex,1 0 0px);
-		max-width:100%;
-		margin-left: auto;
+		max-inline-size:100%;
+		margin-inline-start:auto;
 	}
 
 	// THEME SEARCH AND CART ICON STYLE STARTS HERE
@@ -653,16 +674,18 @@
 			@include respond-to(mediumdevice){
 				@include flexbox;
 				@include prefix(align-self,stretch);
-				margin-bottom: -32px;
-	 			margin-top: -32px;
+				margin-block-start:-32px;
+				margin-block-end:-32px;
 				position: relative;
 			}
-			padding-top:0;
+			padding-block-start:0;
 			@include prefix(align-self,center);
 			.theme-search-icon{
 					border:0 none;
-					padding-left: 0;
-					padding:0 15px;
+					padding-block-start:0px;
+					padding-block-end:0px;
+					padding-inline-start:15px;
+					padding-inline-end:15px;
 					line-height: 0;
 					display: block;
 					@include prefix(align-self,center);
@@ -674,7 +697,7 @@
 				}
 			}
 			.theme-search-field-container{
-				border-top:3px solid map-get($default_vars, 'color-search-field-border');
+				border-block-start:3px solid map-get($default_vars, 'color-search-field-border');
 				@include box-shadow(0,5px,21px,RGBA(0,0,0,0.2));
 				display:none;
 				position: absolute;
@@ -693,7 +716,10 @@
 						width:474px;
 						font-size:map-get($default_vars,'font-size-search-field');
 					}
-					padding:5px 60px 5px 20px;
+					padding-block-start:5px;
+					padding-block-end:5px;
+					padding-inline-start:20px;
+					padding-inline-end:60px;
 					height:50px;
 					border:0 none;
 					background:map-get($default_vars, 'color-search-field-background');
@@ -731,7 +757,10 @@
 		.theme-mini-cart{
 			@include prefix(align-self,center);
 			.theme-minicart-icon{
-				padding: 0 15px 0px 0px;
+				padding-block-start:0px;
+				padding-block-end:0px;
+				padding-inline-start:0px;
+				padding-inline-end:15px;
 				line-height: 0;
 				display: block;
 				position: relative;
@@ -782,10 +811,10 @@
 					&.theme-carticon-style-15{
 						display: flex;
 						align-items: center;
-						padding-right: 0;
+						padding-inline-end:0;
 						.theme-mini-cart-count{
 							position: static;
-							margin-left: 3px;
+							margin-inline-start:3px;
 							border-radius: 3px;
 						}
 					}
@@ -803,23 +832,23 @@
 		.theme-search-and-mini-cart-group-item{
 			&:first-child{
 				.theme-search-icon{
-					border-right:1px dotted map-get($default_vars, 'color-search-cart-icon');
+					border-inline-end:1px dotted map-get($default_vars, 'color-search-cart-icon');
 					@include prefix(align-items,center);
-					margin-right:15px;
+					margin-inline-end:15px;
 				}
 			}
 			&:only-child{
 				.theme-search-icon{
-					padding-right:0;
-					border-right:0 none;
-					margin-right: 0px;
+					padding-inline-end:0;
+					border-inline-end:0 none;
+					margin-inline-end:0px;
 				}
 				.theme-search-field-container{
 					right:0px;
 				}
-				margin-left: 0;
+				margin-inline-start:0px;
 				@include respond-to(mediumdevice){
-					margin-left: 20px;
+					margin-inline-start:20px;
 				}
 			}
 			.theme-search-hide-overlay{
@@ -842,7 +871,7 @@
 	.theme-navigation-and-icons{
 		.theme-menu-area{
 			.theme-menu{
-				border-top:3px solid map-get($default_vars, 'color-submenu-border-arrow');
+				border-block-start:3px solid map-get($default_vars, 'color-submenu-border-arrow');
 				.theme-sub-li-menu{
 					cursor: pointer;
 					display: inline;
@@ -856,7 +885,7 @@
 					background: map-get($default_vars,'color-submenu-background');
 					@include prefix(transform,translate(0px,-50%));
 					@include respond-to(mediumdevice){
-						margin-left:5px;
+						margin-inline-start:5px;
 						position: static;
 						@include prefix(transform,translate(0px,0px));
 						background: transparent;
@@ -871,11 +900,11 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
+							margin-inline-start:10px;
 							content:"";
 							left:5px;
 							top:40%;
@@ -888,12 +917,12 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
-							padding-left: 5px;
+							margin-inline-start:10px;
+							padding-inline-start:5px;
 						}
 						&:after{
 							@include respond-to(mediumdevice){
@@ -912,7 +941,7 @@
 					}
 					&.theme-submenu-right-arrow{
 						@include prefix(transform,rotate(45deg) translate(0,-50%));
-						margin-left:auto;
+						margin-inline-start:auto;
 					}
 					&.theme-responsive-menu{
 						display:inline;
@@ -933,8 +962,8 @@
 				}
 				ul{
 					li{
-						border-bottom:1px solid map-get($default_vars,'color-submenu-border');
-						padding: 0px 0px 0px 0px;
+						border-block-end:1px solid map-get($default_vars,'color-submenu-border');
+						padding: 0px;
 						a{
 							@include flexbox;
 							@include prefix(align-items,center);
@@ -946,8 +975,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding:14px 20px;
-							padding-right:48px;
+							padding-block-start:14px;
+							padding-block-end:14px;
+							padding-inline-start:20px;
+							padding-inline-end:48px;
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
@@ -973,57 +1004,60 @@
 						ul{
 							position:static;
 							background:none;
-							padding-bottom:0;
+							padding-block-end:0px;
+							padding-inline-end:0px;
 							display:none;
-							padding-right:0;
-							max-height:none;
+							max-block-size:none;
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
 								display:none;
 								background:none;
 								z-index: 280;
-								padding-top:43px;
+								padding-block-start:43px;
 								top:100%;
 								&.theme-sub-menu-position-change{
 									left:auto;
-									padding-left: 0px;
-									min-width: 228px;
-									padding-right:3px;
 									right: 0px;
+									padding-inline-start:0px;
+									padding-inline-end:3px;
+									min-inline-size:228px;
 									> li{
-										min-width: 0px;
+										min-inline-size:0px;
 									}
 								}
 							}
 							li{
-								margin-left:0;
-								text-align: left;
+								margin-inline-start:0;
+								text-align: start;
 								word-break: break-word;
 								word-wrap: break-word;
-								padding-right: 0px;
-								padding-left: 20px;
+								padding-inline-end:0;
+								padding-inline-start:20px;
 								&:first-child{
-									border-top:1px solid map-get($default_vars,'color-submenu-border');
+									border-block-start:1px solid map-get($default_vars,'color-submenu-border');
 								}
 								@include respond-to(mediumdevice){
-									min-width:228px;
+									min-inline-size:228px;
 									width: 100%;
-									margin-top: 0;
+									margin-block-start:0px;
 									background:map-get($default_vars, 'color-submenu-background');
 									@include box-shadow(0,3px,3px,RGBA(0,0,0,0.1));
-									border-bottom:1px solid map-get($default_vars,'color-submenu-border');
-									padding-left: 0px;
+									border-block-end:1px solid map-get($default_vars,'color-submenu-border');
+									padding-inline-start: 0px;
 								}
 								&:first-of-type{
 									@include respond-to(mediumdevice){
-										border-top:3px solid map-get($default_vars, 'color-submenu-border-arrow');
+										border-block-start:3px solid map-get($default_vars, 'color-submenu-border-arrow');
 									}
 								}
 								a{
-									padding:14px 0px 14px 20px;
+									padding-block-start:14px;
+									padding-block-end:14px;
+									padding-inline-start:20px;
+									padding-inline-end:0px;
 									display:block;
-									padding-right:48px;
+									padding-inline-end:48px;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
 									font-size:map-get($default_vars,'font-size-submenu');
@@ -1046,15 +1080,18 @@
 										line-height: map-get($default_vars,'font-line-height-submenu');
 										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding:14px 20px;
+										padding-block-start:14px;
+										padding-block-end:14px;
+										padding-inline-start:20px;
+										padding-inline-end:20px;
 										-webkit-text-size-adjust: auto;
 									}
 									.theme-sub-li-menu{
 										@include respond-to(mediumdevice){
 											right:10px;
-											margin-left: auto;
-											position: absolute;
 											top:50%;
+											margin-inline-start:auto;
+											position: absolute;
 										}
 									}
 								}
@@ -1070,19 +1107,19 @@
 							ul{
 								top:0;
 								left:100%;
-								padding-top:0;
-								padding-left:0;
+								padding-block-start:0px;
+								padding-inline-start:0px;
 								@include respond-to(mediumdevice){
-									padding-left:3px;
+									padding-inline-start:3px;
 								}
 								&.theme-sub-menu-position-change{
 									left:-100%;
-									padding-left: 0px;
+									padding-inline-start:0px;
 								}
 								li{
-									padding-left: 20px;
+									padding-inline-start:20px;
 									@include respond-to(mediumdevice){
-										padding-left: 0px;
+										padding-inline-start:0px;
 									}
 								}
 							}
@@ -1112,7 +1149,7 @@
 				.theme-search-and-mini-cart-group-item{
 					&:only-child{
 						@include respond-to(mediumdevice){
-							margin-left: 0px;
+							margin-inline-start:0px;
 						}
 					}
 				}
@@ -1123,10 +1160,10 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-top: 20px;
-			padding-bottom:20px;
+			padding-block-start:20px;
+			padding-block-end:20px;
 			@include prefix(flex,0 1 auto);
-			margin-left: auto;
+			margin-inline-start:auto;
 			@include prefix(align-self,center);
 			@include respond-to(mediumdevice){
 				display: none ;
@@ -1135,22 +1172,24 @@
 				cursor:pointer;
 				height:20px;
 				width: 23px;
-				margin:0 auto;
+				margin-block-start:-13px;
+				margin-block-end:0px;
+				margin-inline-start:auto;
+				margin-inline-end:auto;
 				position: relative;
-				margin-top:-13px;
 				.theme-burger-icon{
 					display:block;
 					width:100%;
 					height:2px;
 					background:map-get($default_vars, 'color-mobile-burger-icon');
 					position:relative;
-					margin-top:15px;
+					margin-block-start:15px;
 					&:before,&:after{
 						background:map-get($default_vars, 'color-mobile-burger-icon');
 				    content: "";
 				    height: 3px;
 				    left: 0;
-				    margin-bottom: 5px;
+						margin-block-end:15px;
 				    position: absolute;
 				    top: 8px;
 						width:100%;
@@ -1164,7 +1203,7 @@
 						background: transparent;
 						&:before{
 							@include prefix(transform,rotate(45deg));
-							top:10px
+							top:10px;
 						}
 						&:after{
 							@include prefix(transform,rotate(-45deg));
@@ -1183,12 +1222,21 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding:10px 22px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:22px;
+							padding-inline-end:22px;
 							@include prefix(align-items,center);
 							li{
-								padding: 8px 0;
-						    margin: 0 4px;
-								border-bottom: 0 none;
+								padding-block-start:8px;
+								padding-block-end:8px;
+								padding-inline-start:0;
+								padding-inline-end:0;
+								margin-block-start:0px;
+								margin-block-end:0px;
+								margin-inline-start:4px;
+								margin-inline-end:4px;
+								border-block-end:0 none;
 								a{
 									padding:0;
 									svg, img{
@@ -1200,7 +1248,7 @@
 								&:last-child{
 									a{
 										svg{
-											margin-right:10px;
+											margin-inline-end:10px;
 										}
 									}
 								}
@@ -1208,7 +1256,7 @@
 						}
 					}
 					> ul{
-						border-bottom:1px solid map-get($default_vars, 'color-submenu');
+						border-block-end:1px solid map-get($default_vars, 'color-submenu');
 					}
 				}
 
@@ -1217,15 +1265,15 @@
 					@include prefix(flex-direction,row-reverse);
 					ul{
 						@include flexbox;
-						margin-left: auto;
+						margin-inline-start:auto;
 						&:first-child{
 							li{
 								padding:0px;
-								margin-left: 0px;
-								margin-right:20px;
+								margin-inline-start:0px;
+								margin-inline-end:20px;
 								a{
-									padding-left: 0px;
-									padding-right: 0px;
+									padding-inline-start:0px;
+									padding-inline-end:0px;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
@@ -1253,11 +1301,11 @@
 
 					&.theme-toggle-animate{
 						visibility:visible;
-						max-height:50vh;
+						max-block-size:50vh;
 						overflow:auto;
 					}
 					&.theme-toggle-animate-end{
-						max-height:0;
+						max-block-size:0;
 					}
 
 					// CLASSES WHICH NEED TO BE ADD FOR RESPONSIVE MENU - NORMAL TOGGLE ANIMATION END
@@ -1272,7 +1320,7 @@
 		  .theme-menu-area{
 		    .theme-menu{
 		      .theme-currency-res{
-		        border-bottom: 1px solid map-get($default_vars, 'color-currency-option-border');
+			border-block-end:1px solid map-get($default_vars, 'color-currency-option-border');
 		        @include flexbox;
 		        @include respond-to(mediumdevice){
 		          display: none;
@@ -1283,9 +1331,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-		        padding:15px 20px;
+			padding-block-start:15px;
+			padding-block-end:15px;
+			padding-inline-start:20px;
+			padding-inline-end:20px;
 		        .theme-currency-label{
-		          margin-right: auto;
+			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
 		          font-size: map-get($default_vars,'font-size-base');
 		          font-family: map-get($default_vars,'font-family-navigation');
@@ -1295,17 +1346,20 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-		          padding-left: 20px;
+			padding-inline-start:20px;
 		          z-index: 310;
 		        }
 		        ul{
-		          margin-left: auto;
+		margin-inline-start:auto;
 		          li{
-		            border-bottom: 0 none;
+								border-block-end:0 none;
 		            padding: 5px;
 		            color : map-get($default_vars,'color-currency-option');
 		            &:first-child{
-		              padding: 0 0 0 5px;
+				padding-block-start:0px;
+				padding-block-end:0px;
+				padding-inline-end:0px;
+				padding-inline-start:5px;
 		            }
 		          }
 		        }
@@ -1332,7 +1386,7 @@
 		              width: 100%;
 		              height: 100%;
 		              padding: 20px;
-		              padding-top: 60px;
+				padding-block-start:60px;
 		              z-index: 350;
 		              box-shadow: none;
 		              li{
@@ -1340,7 +1394,7 @@
 		                font-size: map-get($default_vars,'font-size-currency-option');
 		                &:first-child,
 		                &:last-child{
-		                  border-top: 0 none;
+				border-block-start:0 none;
 		                  &:after{
 		                    display: none;
 		                    @include respond-to(mediumdevice){
@@ -1351,12 +1405,12 @@
 		                &:first-child{
 		                  color: map-get($default_vars,'color-currency-option-hover');
 		                }
-		                border-left: 0 none;
-		                border-right: 0 none;
-		                padding: 10px 10px;
+				border-inline-start:0 none;
+				border-inline-end:0 none;
+				padding:10px;
 		                box-shadow: none;
 		                &:nth-child(2){
-		                  border-top: 0 none;
+				border-block-start:0 none;
 		                }
 		              }
 		            }
@@ -1378,8 +1432,8 @@
 									ul{
 										li{
 											a{
-												padding-top: 14px;
-												padding-bottom: 14px;
+												padding-block-end:14px;
+												padding-block-start:14px;
 											}
 										}
 									}
@@ -1392,12 +1446,12 @@
 	}
 	@include keyframe(toggleAnimate){
 		from{
-			max-height:0;
+			max-block-size:0;
 		}
 	}
 	@include keyframe(toggleAnimateEnd){
 		from{
-			max-height:100vh;
+			max-block-size:100vh;
 			visibility: visible;
 		}
 	}
@@ -1410,7 +1464,7 @@
 	.theme-navigation-and-icons{
 		.theme-menu-area{
 			.theme-menu{
-				border-top:3px solid map-get($default_vars, 'color-submenu-border-arrow');
+				border-block-start:3px solid map-get($default_vars, 'color-submenu-border-arrow');
 				.theme-sub-li-menu{
 					cursor: pointer;
 					display: inline;
@@ -1424,7 +1478,7 @@
 					background: map-get($default_vars,'color-submenu-background');
 					@include prefix(transform,translate(0px,-50%));
 					@include respond-to(mediumdevice){
-						margin-left:5px;
+						margin-inline-start:5px;
 						position: static;
 						@include prefix(transform,translate(0px,0px));
 						background: transparent;
@@ -1439,11 +1493,11 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
+							margin-inline-start:10px;
 							content:"";
 							left:5px;
 							top:40%;
@@ -1456,12 +1510,12 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
-							padding-left: 5px;
+							margin-inline-start:10px;
+							padding-inline-start:5px;
 						}
 						&:after{
 							@include respond-to(mediumdevice){
@@ -1480,7 +1534,7 @@
 					}
 					&.theme-submenu-right-arrow{
 						@include prefix(transform,rotate(45deg) translate(0,-50%));
-						margin-left:auto;
+						margin-inline-start:auto;
 					}
 					&.theme-responsive-menu{
 						display:inline;
@@ -1511,8 +1565,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding:14px 20px;
-							padding-right:48px;
+							padding-block-start:14px;
+							padding-block-end:14px;
+							padding-inline-start:20px;
+							padding-inline-end:48px;
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
@@ -1541,10 +1597,10 @@
 						ul{
 							position:static;
 							background:none;
-							padding-bottom:0;
+							padding-block-end:0;
 							display:none;
-							padding-right:0;
-							max-height:none;
+							padding-inline-end:0;
+							max-block-size:none;
 							position: relative;
 							@include respond-to(mediumdevice){
 								position:absolute;
@@ -1552,40 +1608,42 @@
 								display:none;
 								background:none;
 								z-index: 280;
-								padding-top:43px;
+								padding-block-start:43px;
 								top:100%;
-								min-width:228px;
+								min-inline-size:228px;
 								border-radius: 3px;
 								&.theme-sub-menu-position-change{
 									left:auto;
-									padding-left: 0px;
-									min-width: 228px;
-									padding-right:3px;
+									padding-inline-start:0px;
+									min-inline-size: 228px;
+									padding-inline-end:3px;
 									right: 0px;
 									> li{
-										min-width: 0px;
+										min-inline-size: 0px;
 									}
 								}
 							}
 							li{
-								margin-left:0;
-								text-align: left;
+								margin-inline-start:0px;
+								text-align: start;
 								word-break: break-word;
 								word-wrap:break-word;
-								padding-right: 0px;
-								padding-left:20px;
+								padding-inline-start:20px;
+								padding-inline-end:0px;
 								@include respond-to(mediumdevice){
 									width: 100%;
-									margin-top: 0;
+									margin-block-start:0;
 									background:map-get($default_vars, 'color-submenu-background');
-									border-left: 1px solid map-get($default_vars,'color-submenu-border');
-									border-right: 1px solid map-get($default_vars,'color-submenu-border');
-									padding-left: 0px;
+									border-inline-start:1px solid map-get($default_vars,'color-submenu-border');
+									border-inline-end:1px solid map-get($default_vars,'color-submenu-border');
+									padding-inline-start:0px;
 								}
 								a{
-									padding:14px 0px 14px 20px;
+									padding-block-start:14px;
+									padding-block-end:14px;
+									padding-inline-start:20px;
+									padding-inline-end:48px;
 									display:block;
-									padding-right:48px;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
 									font-size:map-get($default_vars,'font-size-submenu');
@@ -1604,13 +1662,16 @@
 										font-weight: map-get($default_vars,'font-weight-submenu');
 										text-transform: map-get($default_vars,'font-transform-submenu');
 										width:100%;
-										padding:10px 20px;
+										padding-block-start:10px;
+										padding-block-end:10px;
+										padding-inline-start:20px;
+										padding-block-end:20px;
 										-webkit-text-size-adjust : auto;
 									}
 									.theme-sub-li-menu{
 										@include respond-to(mediumdevice){
 											right:10px;
-											margin-left: auto;
+											margin-inline-start:auto;
 											position: absolute;
 											top:50%;
 										}
@@ -1640,8 +1701,12 @@
 								&:first-child{
 									@include respond-to(mediumdevice){
 										border-radius:3px 3px 0px 0px;
-										padding-top:15px;
-										border-top: 1px solid map-get($default_vars,'color-submenu-border');
+										border-start-start-radius:3px;
+										border-start-end-radius:3px;
+										border-end-start-radius:0px;
+										border-end-end-radius:0px;
+										padding-block-start:15px;
+										border-block-start:1px solid map-get($default_vars,'color-submenu-border');
 									}
 									&:after{
 										@include respond-to(mediumdevice){
@@ -1651,8 +1716,8 @@
 											display: block;
 											position: absolute;
 											background:map-get($default_vars, 'color-submenu-background');
-											border-top:1px solid map-get($default_vars,'color-submenu-border');
-											border-right:1px solid map-get($default_vars,'color-submenu-border');
+											border-block-start:1px solid map-get($default_vars,'color-submenu-border');
+											border-inline-end:1px solid map-get($default_vars,'color-submenu-border');
 											position: absolute;
 											left:28px;
 											top:-6px;
@@ -1669,8 +1734,8 @@
 												display: block;
 												position: absolute;
 												background:map-get($default_vars, 'color-submenu-background');
-												border-top:1px solid map-get($default_vars,'color-submenu-border');
-												border-right:1px solid map-get($default_vars,'color-submenu-border');
+												border-block-start:1px solid map-get($default_vars,'color-submenu-border');
+												border-inline-end:1px solid map-get($default_vars,'color-submenu-border');
 												position: absolute;
 												left:28px;
 												top:-6px;
@@ -1683,26 +1748,30 @@
 								&:last-child{
 									@include respond-to(mediumdevice){
 										border-radius:0px 0px 3px 3px;
-										padding-bottom:15px;
-										border-bottom: 1px solid map-get($default_vars,'color-submenu-border');
+										border-start-start-radius:0px;
+										border-start-end-radius:0px;
+										border-end-start-radius:3px;
+										border-end-end-radius:3px;
+										padding-block-end:15px;
+										border-block-end: 1px solid map-get($default_vars,'color-submenu-border');
 									}
 								}
 							}
 							ul{
 								top:0;
-								padding-top:0;
-								padding-left:0;
+								padding-block-start:0;
+								padding-inline-start:0;
 								@include respond-to(mediumdevice){
 									left:100%;
 								}
 								&.theme-sub-menu-position-change{
 									left:-100%;
-									padding-left: 0px;
+									padding-inline-start:0px;
 								}
 								li{
-									padding-left: 20px;
+									padding-inline-start:20px;
 									@include respond-to(mediumdevice){
-										padding-left: 0px;
+										padding-inline-start:0px;
 									}
 									&:first-child{
 										&:after, &:before{
@@ -1754,7 +1823,7 @@
 				.theme-search-and-mini-cart-group-item{
 					&:only-child{
 						@include respond-to(mediumdevice){
-							margin-left: 0px;
+							margin-inline-start:0px;
 						}
 					}
 				}
@@ -1786,10 +1855,10 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-top: 20px;
-			padding-bottom:20px;
+			padding-block-start:20px;
+			padding-block-end:20px;
 			@include prefix(flex,0 1 auto);
-			margin-left: auto;
+			margin-inline-start:auto;
 			@include prefix(align-self,center);
 			@include respond-to(mediumdevice){
 				display: none ;
@@ -1798,23 +1867,26 @@
 				cursor:pointer;
 				height:20px;
 				width: 23px;
-				margin:0 auto;
+				margin-block-start:0px;
+				margin-block-end:0px;
+				margin-inline-start:auto;
+				margin-inline-end:auto;
 				position: relative;
-				margin-top:-13px;
+				margin-block-start:-13px;
 				.theme-burger-icon{
 					display:block;
 					width:100%;
 					height:2px;
 					background:map-get($default_vars, 'color-mobile-burger-icon');
 					position:relative;
-					margin-top:15px;
+					margin-block-start:15px;
 					&:before,
 					&:after{
 						background:map-get($default_vars, 'color-mobile-burger-icon');
 				    content: "";
 				    height: 3px;
 				    left: 0;
-				    margin-bottom: 5px;
+						margin-block-end:5px;
 				    position: absolute;
 				    top: 8px;
 						width:100%;
@@ -1828,7 +1900,7 @@
 						background: transparent;
 						&:before{
 							@include prefix(transform,rotate(45deg));
-							top:10px
+							top:10px;
 						}
 						&:after{
 							@include prefix(transform,rotate(-45deg));
@@ -1847,12 +1919,21 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding:10px 22px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:22px;
+							padding-inline-end:22px;
 							@include prefix(align-items,center);
 							li{
-								padding: 8px 0;
-						    margin: 0 4px;
-								border-bottom: 0 none;
+							padding-block-start:8px;
+							padding-block-end:8px;
+							padding-inline-start:0;
+							padding-inline-end:0;
+							margin-block-start:0;
+							margin-block-end:0;
+							margin-inline-start:4px;
+							margin-inline-end:4px;
+							border-block-end:0 none;
 								a{
 									padding:0;
 									svg, img{
@@ -1864,7 +1945,7 @@
 								&:last-child{
 									a{
 										svg{
-											margin-right:10px;
+											margin-inline-end:10px;
 										}
 									}
 								}
@@ -1872,7 +1953,7 @@
 						}
 					}
 					> ul{
-						border-bottom:1px solid map-get($default_vars, 'color-submenu');
+						border-block-end:1px solid map-get($default_vars, 'color-submenu');
 					}
 				}
 
@@ -1881,15 +1962,15 @@
 					@include prefix(flex-direction,row-reverse);
 					ul{
 						@include flexbox;
-						margin-left: auto;
+						margin-inline-start:auto;
 						&:first-child{
 							li{
 								padding:0px;
-								margin-left: 0px;
-								margin-right:20px;
+								margin-inline-start:0px;
+								margin-inline-end:20px;
 								a{
-									padding-left: 0px;
-									padding-right: 0px;
+									padding-inline-start:0px;
+									padding-inline-end:0px;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
@@ -1917,11 +1998,11 @@
 
 					&.theme-toggle-animate{
 						visibility:visible;
-						max-height:50vh;
+						max-block-size:50vh;
 						overflow:auto;
 					}
 					&.theme-toggle-animate-end{
-						max-height:0;
+						max-block-size:0;
 					}
 
 					// CLASSES WHICH NEED TO BE ADD FOR RESPONSIVE MENU - NORMAL TOGGLE ANIMATION END
@@ -1939,7 +2020,7 @@
 								ul{
 									li{
 										&:first-of-type{
-											border-top-color:map-get($base_vars,'color-submenu-border');
+											border-block-start-color:map-get($base_vars,'color-submenu-border');
 										}
 									}
 								}
@@ -1957,7 +2038,7 @@
 		  .theme-menu-area{
 		    .theme-menu{
 		      .theme-currency-res{
-		        border-bottom: 1px solid map-get($default_vars, 'color-currency-option-border');
+			border-block-end: 1px solid map-get($default_vars, 'color-currency-option-border');
 		        @include flexbox;
 		        @include respond-to(mediumdevice){
 		          display: none;
@@ -1968,9 +2049,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-		        padding:15px 20px;
+			padding-block-start:15px;
+			padding-block-end:15px;
+			padding-inline-start:20px;
+			padding-inline-end:20px;
 		        .theme-currency-label{
-		          margin-right: auto;
+			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
 		          font-size: map-get($default_vars,'font-size-base');
 		          font-family: map-get($default_vars,'font-family-navigation');
@@ -1980,17 +2064,20 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-		          padding-left: 20px;
+			padding-inline-start:20px;
 		          z-index: 310;
 		        }
 		        ul{
-		          margin-left: auto;
+				margin-inline-start:auto;
 		          li{
-		            border-bottom: 0 none;
+				border-block-end: 0 none;
 		            padding: 5px;
 		            color : map-get($default_vars,'color-currency-option');
 		            &:first-child{
-		              padding: 0 0 0 5px;
+				padding-block-start:0;
+				padding-block-end:0;
+				padding-inline-start:5px;
+				padding-inline-end:0;
 		            }
 		          }
 		        }
@@ -2016,8 +2103,10 @@
 		              left: 0px;
 		              width: 100%;
 		              height: 100%;
-		              padding: 20px;
-		              padding-top: 60px;
+				padding-block-start:60px;
+				padding-block-end:20px;
+				padding-inline-start:20px;
+				padding-inline-end:20px;
 		              z-index: 350;
 		              box-shadow: none;
 		              li{
@@ -2025,7 +2114,7 @@
 		                font-size: map-get($default_vars,'font-size-currency-option');
 		                &:first-child,
 		                &:last-child{
-		                  border-top: 0 none;
+				border-block-start: 0 none;
 		                  &:after{
 		                    display: none;
 		                    @include respond-to(mediumdevice){
@@ -2036,12 +2125,12 @@
 		                &:first-child{
 		                  color: map-get($default_vars,'color-currency-option-hover');
 		                }
-		                border-left: 0 none;
-		                border-right: 0 none;
-		                padding: 10px 10px;
+				border-inline-start: 0 none;
+				border-inline-end: 0 none;
+		                padding: 10px;
 		                box-shadow: none;
 		                &:nth-child(2){
-		                  border-top: 0 none;
+				border-block-start: 0 none;
 		                }
 		              }
 		            }
@@ -2084,7 +2173,7 @@
 										ul{
 											li{
 												&:first-of-type{
-													border-top-color:map-get($default_vars, 'color-submenu-border');
+													border-block-start-color:map-get($default_vars, 'color-submenu-border');
 												}
 											}
 										}
@@ -2098,17 +2187,16 @@
 		}
 		@include keyframe(toggleAnimate){
 			from{
-				max-height:0;
+				max-block-size:0;
 			}
 		}
 		@include keyframe(toggleAnimateEnd){
 			from{
-				max-height:100vh;
+				max-block-size:100vh;
 				visibility: visible;
 			}
 		}
 }
-
 
 //  SUB MENU STYLE - 03
 
@@ -2117,10 +2205,10 @@
 	.theme-navigation-and-icons{
 		.theme-menu-area{
 			.theme-menu{
-				border-top:3px solid map-get($default_vars, 'color-submenu-border-arrow');
+				border-block-start:3px solid map-get($default_vars, 'color-submenu-border-arrow');
 				.theme-sub-li-menu{
 					@include respond-to(mediumdevice){
-						margin-left:5px;
+						margin-inline-start:5px;
 						position: static;
 						@include prefix(transform,translate(0px,0px));
 						background: transparent;
@@ -2130,30 +2218,27 @@
 						position: absolute;
 						width:18px;
 						height: 15px;
-						border-top:3px solid map-get($default_vars, 'color-submenu');
-						border-bottom:3px solid map-get($default_vars, 'color-submenu');
+						border-block-start:3px solid currentColor;
+						border-block-end:3px solid currentColor;
 						right:20px;
 						cursor: pointer;
 						top:50%;
 						@include prefix(transform,translate(0%,-50%));
 						@include respond-to(mediumdevice){
-							border-top:3px solid map-get($default_vars, 'color-navigation');
-							border-bottom:3px solid map-get($default_vars, 'color-navigation');
+							border-block-start:3px solid map-get($default_vars, 'color-navigation');
+							border-block-end:3px solid map-get($default_vars, 'color-navigation');
 						}
 						&:after,
 						&:before{
 							content: "";
 							height:3px;
 							width:100%;
-							background: map-get($default_vars, 'color-submenu');
+							background: currentColor;
 							top:50%;
 							left:0px;
 							@include prefix(transform,translate(0%,-50%));
 							display: block;
 							position: absolute;
-							@include respond-to(mediumdevice){
-								background: map-get($default_vars, 'color-navigation');
-							}
 						}
 						&:before{
 							display: none;
@@ -2165,14 +2250,14 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
+							margin-inline-start:10px;
 							position: static;
-							border-bottom:0 none;
-							padding-left: 5px;
+							border-block-end:0 none;
+							padding-inline-start:5px;
 						}
 						&:after{
 							@include respond-to(mediumdevice){
@@ -2181,8 +2266,8 @@
 						}
 					}
 					&.theme-submenu-up-arrow{
-						border-bottom:0 none;
-						border-top:0 none;
+						border-block-end:0 none;
+						border-block-start:0 none;
 						&:after{
 							@include prefix(transform,rotate(-45deg));
 							top:47%;
@@ -2201,14 +2286,11 @@
 					}
 					&.theme-submenu-right-arrow{
 						@include prefix(transform,rotate(45deg) translate(0,-50%));
-						margin-left:auto;
+						margin-inline-start:auto;
 						position: absolute;
 					}
 					&.theme-responsive-menu{
 						display:inline;
-						&.theme-submenu-down-arrow{
-
-						}
 						@include respond-to(mediumdevice){
 							display:none;
 						}
@@ -2226,7 +2308,10 @@
 				}
 				ul{
 					li{
-						padding: 0px 0px 0px 20px;
+						padding-block-start:0px;
+						padding-block-end:0px;
+						padding-inline-start:20px;
+						padding-inline-end:0px;
 						a{
 							@include flexbox;
 							@include prefix(align-items,center);
@@ -2238,14 +2323,17 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding:0px 0px;
-							margin:14px 0px;
+							padding:0px;
+							margin-block-start:14px;
+							margin-block-end:14px;
+							margin-inline-start:0px;
+							margin-inline-end:0px;
 							border-radius:3px;
-							padding-right:45px;
+							padding-inline-end:45px;
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
-								margin:0px 0px;
+								margin: 0px;
 								color:map-get($default_vars, 'color-navigation');
 								text-transform: map-get($default_vars, 'font-transform-navigation');
 								font-weight: map-get($default_vars, 'font-weight-navigation');
@@ -2274,10 +2362,10 @@
 						ul{
 							position:static;
 							background:none;
-							padding-bottom:0;
+							padding-block-end:0px;
 							display:none;
-							padding-right:0;
-							max-height:none;
+							padding-inline-end:0px;
+							max-block-size:none;
 							@if map-get($user_layout_vars,'store_template_no') == 03 {
 								background-color:map-get($base_vars,'color-light');
 							}
@@ -2287,36 +2375,42 @@
 								display:none;
 								background:none;
 								z-index: 280;
-								padding-top:10px;
+								padding-block-start:10px;
 								top:100%;
 								&.theme-sub-menu-position-change{
 									left:auto;
-									padding-left: 0px;
-									min-width: 228px;
+									padding-inline-start:0px;
+									min-inline-size:228px;
 									right: 0px;
 									> li{
-										min-width: 0px;
+										min-inline-size:0px;
 									}
 								}
 							}
 							li{
-								margin-left:0;
-								text-align: left;
+								margin-inline-start:0;
+								text-align: start;
 								word-wrap: break-word;
 								word-break: break-word;
-								padding-right: 0px;
-								padding: 0px 0px 0px 10px;
+								padding-block-start:0;
+								padding-block-end:0;
+								padding-inline-end:0;
+								padding-inline-start:10px;
 								@include respond-to(mediumdevice){
-									min-width:228px;
+									min-inline-size:228px;
 									width: 100%;
-									margin-top: 0;
+									margin-block-start:0px;
 									@include box-shadow(0,3px,3px,RGBA(0,0,0,0.1));
-									padding: 0px 0px 0px 0px;
+									padding: 0px;
+									background: map-get($default_vars, 'color-submenu-background');
 								}
 								a{
 									padding:0;
-									padding-right:45px;
-									margin:14px 0px;
+									padding-inline-end:48px;
+									margin-block-start:14px;
+									margin-block-end:14px;
+									margin-inline-start:0px;
+									margin-inline-end:0px;
 									display:block;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
@@ -2340,14 +2434,17 @@
 										line-height: map-get($default_vars,'font-line-height-submenu');
 										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding:10px 20px;
+										padding-block-start:10px;
+										padding-block-end:10px;
+										padding-inline-start:20px;
+										padding-inline-end:20px;
 										margin:0px;
 										-webkit-text-size-adjust: auto;
 									}
 									.theme-sub-li-menu{
 										@include respond-to(mediumdevice){
 											right:10px;
-											margin-left: auto;
+											margin-inline-start:auto;
 											position: absolute;
 											top: 50%;
 										}
@@ -2366,11 +2463,11 @@
 							ul{
 								top:0;
 								left:100%;
-								padding-top:0;
-								padding-left:0;
+								padding-block-start:0;
+								padding-inline-start:0;
 								&.theme-sub-menu-position-change{
 									left:-100%;
-									padding-left: 0px;
+									padding-inline-start:0px;
 								}
 							}
 						}
@@ -2391,7 +2488,7 @@
 				.theme-search-and-mini-cart-group-item{
 					&:only-child{
 						@include respond-to(mediumdevice){
-							margin-left: 0px;
+							margin-inline-start:0px;
 						}
 					}
 				}
@@ -2401,10 +2498,10 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-top: 20px;
-			padding-bottom:20px;
+			padding-block-start:20px;
+			padding-block-end:20px;
 			@include prefix(flex,0 1 auto);
-			margin-left: auto;
+			margin-inline-start:auto;
 			@include prefix(align-self,center);
 			@include respond-to(mediumdevice){
 				display: none ;
@@ -2413,22 +2510,24 @@
 				cursor:pointer;
 				height:20px;
 				width: 23px;
-				margin:0 auto;
 				position: relative;
-				margin-top:-13px;
+				margin-block-start:-13px;
+				margin-block-end:0;
+				margin-inline-start:auto;
+				margin-inline-end:auto;
 				.theme-burger-icon{
 					display:block;
 					width:100%;
 					height:2px;
 					background:map-get($default_vars, 'color-mobile-burger-icon');
 					position:relative;
-					margin-top:15px;
+					margin-block-start:15px;
 					&:before,&:after{
 						background:map-get($default_vars, 'color-mobile-burger-icon');
 				    content: "";
 				    height: 3px;
 				    left: 0;
-				    margin-bottom: 5px;
+						margin-block-end:5px;
 				    position: absolute;
 				    top: 8px;
 						width:100%;
@@ -2442,7 +2541,7 @@
 						background: transparent;
 						&:before{
 							@include prefix(transform,rotate(45deg));
-							top:10px
+							top:10px;
 						}
 						&:after{
 							@include prefix(transform,rotate(-45deg));
@@ -2461,12 +2560,21 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding:10px 22px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:22px;
+							padding-inline-end:22px;
 							@include prefix(align-items,center);
 							li{
-								padding: 8px 0;
-						    margin: 0 4px;
-								border-bottom: 0 none;
+							padding-block-start:8px;
+							padding-block-end:8px;
+							padding-inline-start:0;
+							padding-inline-end:0;
+							margin-block-start:0;
+							margin-block-end:0;
+							margin-inline-start:4px;
+							margin-inline-end:4px;
+							border-block-end: 0 none;
 								a{
 									padding:0;
 									svg, img{
@@ -2478,7 +2586,7 @@
 								&:last-child{
 									a{
 										svg{
-											margin-right:10px;
+											margin-inline-end:10px;
 										}
 									}
 								}
@@ -2486,7 +2594,7 @@
 						}
 					}
 					> ul{
-						border-bottom:1px solid map-get($default_vars, 'color-submenu');
+						border-block-end:1px solid map-get($default_vars, 'color-submenu');
 					}
 				}
 
@@ -2495,14 +2603,17 @@
 					@include prefix(flex-direction,row-reverse);
 					ul{
 						@include flexbox;
-						margin-left: auto;
+						margin-inline-start:auto;
 						&:first-child{
 							li{
 								padding:0px;
-								margin-left: 0px;
-								margin-right:20px;
+								margin-inline-start:0px;
+								margin-inline-end:20px;
 								a{
-									padding: 10px 0px 10px 0px;
+									padding-block-start:10px;
+									padding-block-end:10px;
+									padding-inline-start:0px;
+									padding-inline-end:0px;
 									@include flexbox;
 									height: 100%;
 									margin: 0;
@@ -2535,11 +2646,11 @@
 
 					&.theme-toggle-animate{
 						visibility:visible;
-						max-height:50vh;
+						max-block-size:50vh;
 						overflow:auto;
 					}
 					&.theme-toggle-animate-end{
-						max-height:0;
+						max-block-size:0;
 					}
 
 					// CLASSES WHICH NEED TO BE ADD FOR RESPONSIVE MENU - NORMAL TOGGLE ANIMATION END
@@ -2554,7 +2665,7 @@
 		  .theme-menu-area{
 		    .theme-menu{
 		      .theme-currency-res{
-		        border-bottom: 1px solid map-get($base_vars, 'color-currency-option-border');
+						border-block-end: 1px solid map-get($base_vars, 'color-currency-option-border');
 		        @include flexbox;
 		        @include respond-to(mediumdevice){
 		          display: none;
@@ -2565,9 +2676,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-		        padding:15px 20px;
+			padding-block-start:15px;
+			padding-block-end:15px;
+			padding-inline-start:20px;
+			padding-inline-end:20px;
 		        .theme-currency-label{
-		          margin-right: auto;
+			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
 		          font-size: map-get($default_vars,'font-size-base');
 		          font-family: map-get($default_vars,'font-family-navigation');
@@ -2577,17 +2691,20 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-		          padding-left: 20px;
+			padding-inline-start:20px;
 		          z-index: 310;
 		        }
 		        ul{
-		          margin-left: auto;
+			margin-inline-start:auto;
 		          li{
-		            border-bottom: 0 none;
+			border-block-end: 0 none;
 		            padding: 5px;
 		            color : map-get($default_vars,'color-currency-option');
 		            &:first-child{
-		              padding: 0 0 0 5px;
+				padding-block-start:0;
+				padding-block-end:0;
+				padding-inline-start:5px;
+				padding-inline-end:0;
 		            }
 		          }
 		        }
@@ -2613,8 +2730,10 @@
 		              left: 0px;
 		              width: 100%;
 		              height: 100%;
-		              padding: 20px;
-		              padding-top: 60px;
+				padding-block-start:60px;
+				padding-block-end:20px;
+				padding-inline-start:20px;
+				padding-inline-end:20px;
 		              z-index: 350;
 		              box-shadow: none;
 		              li{
@@ -2622,7 +2741,7 @@
 		                font-size: map-get($default_vars,'font-size-currency-option');
 		                &:first-child,
 		                &:last-child{
-		                  border-top: 0 none;
+		                  border-block-start: 0 none;
 		                  &:after{
 		                    display: none;
 		                    @include respond-to(mediumdevice){
@@ -2633,12 +2752,12 @@
 		                &:first-child{
 		                  color: map-get($default_vars,'color-currency-option-hover');
 		                }
-		                border-left: 0 none;
-		                border-right: 0 none;
-		                padding: 10px 10px;
+				border-inline-start: 0 none;
+				border-inline-end: 0 none;
+		                padding: 10px;
 		                box-shadow: none;
 		                &:nth-child(2){
-		                  border-top: 0 none;
+				border-block-start: 0 none;
 		                }
 		              }
 		            }
@@ -2650,12 +2769,12 @@
 		}
 		@include keyframe(toggleAnimate){
 			from{
-				max-height:0;
+				max-block-size:0;
 			}
 		}
 		@include keyframe(toggleAnimateEnd){
 			from{
-				max-height:100vh;
+				max-block-size:100vh;
 				visibility: visible;
 			}
 		}
@@ -2668,10 +2787,10 @@
 	.theme-navigation-and-icons{
 		.theme-menu-area{
 			.theme-menu{
-				border-top:3px solid map-get($default_vars, 'color-submenu-border-arrow');
+				border-block-start:3px solid map-get($default_vars, 'color-submenu-border-arrow');
 				.theme-sub-li-menu{
 					@include respond-to(mediumdevice){
-						margin-left:5px;
+						margin-inline-start:5px;
 						position: static;
 						@include prefix(transform,translate(0px,0px));
 						background: transparent;
@@ -2695,7 +2814,7 @@
 							position: absolute;
 							right: 24px;
 							top: 13px;
-							color:map-get($default_vars, 'color-submenu');
+							color:currentColor;
 							display: inline-block;
 							font-family: none;
 							line-height: 0;
@@ -2709,7 +2828,7 @@
 							position: absolute;
 							right: 20px;
 							top: 50%;
-							border:1px solid map-get($default_vars, 'color-submenu');
+							border:1px solid currentColor;
 							@include prefix(transform,translateY(-50%));
 							width: 20px;
 							height: 20px;
@@ -2724,7 +2843,7 @@
 							content:"";
 							right: 24px;
 							height: 1px;
-							background: map-get($default_vars, 'color-submenu');
+							background: currentColor;
 							width: 12px;
 							top: 12px;
 						}
@@ -2735,15 +2854,15 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
-							border-left:0px none;
+							border-inline-start:0px none;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
 							position: static;
-							border-bottom:0 none;
-							padding-left: 5px;
+							border-block-end:0 none;
+							margin-inline-start:10px;
+							padding-inline-start:5px;
 						}
 						&:after{
 							@include respond-to(mediumdevice){
@@ -2760,7 +2879,7 @@
 					}
 					&.theme-submenu-right-arrow{
 						@include prefix(transform,rotate(45deg) translate(0,-50%));
-						margin-left:auto;
+						margin-inline-start:auto;
 						position: absolute;
 					}
 					&.theme-responsive-menu{
@@ -2781,7 +2900,10 @@
 				}
 				ul{
 					li{
-						padding: 0px 0px 0px 20px;
+						padding-block-start:0px;
+						padding-block-end:0px;
+						padding-inline-start:20px;
+						padding-inline-end:0px;
 						a{
 							@include flexbox;
 							@include prefix(align-items,center);
@@ -2793,14 +2915,17 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding:0px 0px;
-							margin:14px 0px;
+							padding:0px;
+							margin-block-start:14px;
+							margin-block-end:14px;
+							margin-inline-start:0px;
+							margin-inline-end:0px;
 							border-radius:3px;
-							padding-right:45px;
+							padding-inline-end:45px;
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
-								margin:0px 0px;
+								margin:0px;
 								color:map-get($default_vars, 'color-navigation');
 								text-transform: map-get($default_vars, 'font-transform-navigation');
 								font-weight: map-get($default_vars, 'font-weight-navigation');
@@ -2826,55 +2951,60 @@
 						ul{
 							position:static;
 							background:none;
-							padding-bottom:0;
+							padding-block-end:0;
 							display:none;
-							padding-right:0;
-							max-height:none;
-							min-width:228px;
-							border-top:0 none;
+							padding-inline-end:0;
+							max-block-size:none;
+							min-inline-size:228px;
+							border-block-start:0 none;
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
 								display:none;
 								background:none;
 								z-index: 280;
-								padding-top:10px;
+								padding-block-start:10px;
 								top:100%;
 								&.theme-sub-menu-position-change{
 									left:auto;
-									padding-left: 0px;
-									min-width: 228px;
+									padding-inline-start:0px;
+									min-inline-size:228px;
 									right: 0px;
 									> li{
-										min-width: 0px;
+										min-inline-size:0px;
 									}
 								}
 							}
 							li{
-								margin-left:0;
-								text-align: left;
+								margin-inline-start:0px;
+								text-align: start;
 								word-wrap: break-word;
 								word-break: break-word;
-								padding-right: 0px;
-								padding: 0px 0px 0px 10px;
+								padding-block-start:0px;
+								padding-block-end:0px;
+								padding-inline-start:10px;
+								padding-inline-end:0px;
 								background: map-get($default_vars, 'color-submenu-background');
 								@include respond-to(mediumdevice){
 									width: 100%;
-									margin-top: 0;
-									padding: 0px 0px 0px 0px;
-									border-right: 1px solid map-get($default_vars,'color-submenu-border');
-									border-left: 1px solid map-get($default_vars,'color-submenu-border');
+									margin-block-start:0px;
+									padding: 0px;
+									border-inline-end:1px solid map-get($default_vars,'color-submenu-border');
+									border-inline-start:1px solid map-get($default_vars,'color-submenu-border');
 									&:first-child{
-										border-top: 1px solid map-get($default_vars,'color-submenu-border');
+										border-block-start: 1px solid map-get($default_vars,'color-submenu-border');
 									}
 									&:last-child{
-										border-bottom: 1px solid map-get($default_vars,'color-submenu-border');
+										border-block-end: 1px solid map-get($default_vars,'color-submenu-border');
 									}
 								}
 								a{
 									padding:0;
-									padding-right:45px;
-									margin:14px 0px;
+									padding-inline-end:45px;
+									margin-block-start:14px;
+									margin-block-end:14px;
+									margin-inline-start:0px;
+									margin-inline-end:0px;
 									display:block;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
@@ -2893,14 +3023,17 @@
 										font-weight: map-get($default_vars,'font-weight-submenu');
 										text-transform: map-get($default_vars,'font-transform-submenu');
 										width:100%;
-										padding:10px 20px;
+										padding-block-start:10px;
+										padding-block-end:10px;
+										padding-inline-start:20px;
+										padding-inline-end:20px;
 										margin:0px;
 										-webkit-text-size-adjust : auto;
 									}
 									.theme-sub-li-menu{
 										@include respond-to(mediumdevice){
 											right:10px;
-											margin-left: auto;
+											margin-inline-start:auto;
 											top:50%;
 										}
 									}
@@ -2930,11 +3063,11 @@
 							ul{
 								top:0;
 								left:100%;
-								padding-top:0;
-								padding-left:0;
+								padding-block-start:0;
+								padding-inline-start:0;
 								&.theme-sub-menu-position-change{
 									left:-100%;
-									padding-left: 0px;
+									padding-inline-start:0px;
 								}
 							}
 						}
@@ -2955,7 +3088,7 @@
 				.theme-search-and-mini-cart-group-item{
 					&:only-child{
 						@include respond-to(mediumdevice){
-							margin-left: 0px;
+							margin-inline-start:0px;
 						}
 					}
 				}
@@ -2965,10 +3098,10 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-top: 20px;
-			padding-bottom:20px;
+			padding-block-start:20px;
+			padding-block-end:20px;
 			@include prefix(flex,0 1 auto);
-			margin-left: auto;
+			margin-inline-start:auto;
 			@include prefix(align-self,center);
 			@include respond-to(mediumdevice){
 				display: none ;
@@ -2977,22 +3110,24 @@
 				cursor:pointer;
 				height:20px;
 				width: 23px;
-				margin:0 auto;
+				margin-block-start:-13px;
+				margin-block-end:0;
+				margin-inline-start:auto;
+				margin-inline-end:auto;
 				position: relative;
-				margin-top:-13px;
 				.theme-burger-icon{
 					display:block;
 					width:100%;
 					height:2px;
 					background:map-get($default_vars, 'color-mobile-burger-icon');
 					position:relative;
-					margin-top:15px;
+					margin-block-start:15px;
 					&:before,&:after{
 						background:map-get($default_vars, 'color-mobile-burger-icon');
 				    content: "";
 				    height: 3px;
 				    left: 0;
-				    margin-bottom: 5px;
+						margin-block-end:5px;
 				    position: absolute;
 				    top: 8px;
 						width:100%;
@@ -3006,7 +3141,7 @@
 						background: transparent;
 						&:before{
 							@include prefix(transform,rotate(45deg));
-							top:10px
+							top:10px;
 						}
 						&:after{
 							@include prefix(transform,rotate(-45deg));
@@ -3025,12 +3160,21 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding:10px 22px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:22px;
+							padding-inline-end:22px;
 							@include prefix(align-items,center);
 							li{
-								padding: 8px 0;
-						    margin: 0 4px;
-								border-bottom: 0 none;
+								padding-block-start:8px;
+								padding-block-end:8px;
+								padding-inline-start:0;
+								padding-inline-end:0;
+								margin-block-start:0;
+								margin-block-end:0;
+								margin-inline-start:4px;
+								margin-inline-end:4px;
+								border-block-end:0 none;
 								a{
 									padding:0;
 									svg, img{
@@ -3042,7 +3186,7 @@
 								&:last-child{
 									a{
 										svg{
-											margin-right:10px;
+											margin-inline-end:10px;
 										}
 									}
 								}
@@ -3058,16 +3202,16 @@
 					background: map-get($base_vars,'color-light');
 					ul{
 						@include flexbox;
-						margin-left: auto;
+						margin-inline-start:auto;
 						@include prefix(align-items,center);
 						&:first-child{
 							li{
 								padding:0px;
-								margin-left: 0px;
-								margin-right:20px;
+								margin-inline-start:0px;
+								margin-inline-end:20px;
 								a{
-									padding-left: 0px;
-									padding-right: 0px;
+									padding-inline-start:0px;
+									padding-inline-end:0px;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
@@ -3098,11 +3242,11 @@
 
 					&.theme-toggle-animate{
 						visibility:visible;
-						max-height:50vh;
+						max-block-size:50vh;
 						overflow:auto;
 					}
 					&.theme-toggle-animate-end{
-						max-height:0;
+						max-block-size:0;
 					}
 
 					// CLASSES WHICH NEED TO BE ADD FOR RESPONSIVE MENU - NORMAL TOGGLE ANIMATION END
@@ -3117,7 +3261,10 @@
 		  .theme-menu-area{
 		    .theme-menu{
 		      .theme-currency-res{
-		        padding:10px 20px;
+			padding-block-start:10px;
+			padding-block-end:10px;
+			padding-inline-start:20px;
+			padding-inline-end:20px;
 		        background-color: map-get($base_vars,'color-light');
 		        @include flexbox;
 		        margin: 15px;
@@ -3132,7 +3279,7 @@
 		        @include prefix(align-items,center);
 		        padding:0px;
 		        .theme-currency-label{
-		          margin-right: auto;
+			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
 		          font-size: map-get($default_vars,'font-size-base');
 		          font-family: map-get($default_vars,'font-family-navigation');
@@ -3145,13 +3292,16 @@
 		          z-index: 310;
 		        }
 		        ul{
-		          margin-left: auto;
+			margin-inline-start:auto;
 		          li{
-		            border-bottom: 0 none;
+			border-block-end:0 none;
 		            padding: 5px;
 		            color : map-get($default_vars,'color-currency-option');
 		            &:first-child{
-		              padding: 0 0 0 5px;
+			padding-block-start:0;
+			padding-block-end:0;
+			padding-inline-start:5px;
+			padding-inline-end:0;
 		            }
 		          }
 		        }
@@ -3178,7 +3328,7 @@
 		              width: 100%;
 		              height: 100%;
 		              padding: 20px;
-		              padding-top: 60px;
+				padding-block-start:60px;
 		              z-index: 350;
 		              box-shadow: none;
 		              li{
@@ -3186,7 +3336,7 @@
 		                font-size: map-get($default_vars,'font-size-currency-option');
 		                &:first-child,
 		                &:last-child{
-		                  border-top: 0 none;
+				border-block-start:0 none;
 		                  &:after{
 		                    display: none;
 		                    @include respond-to(mediumdevice){
@@ -3197,12 +3347,12 @@
 		                &:first-child{
 		                  color: map-get($default_vars,'color-currency-option-hover');
 		                }
-		                border-left: 0 none;
-		                border-right: 0 none;
-		                padding: 10px 10px;
+				border-inline-start:0 none;
+				border-inline-end:0 none;
+		                padding: 10px;
 		                box-shadow: none;
 		                &:nth-child(2){
-		                  border-top: 0 none;
+				border-block-start:0 none;
 		                }
 		              }
 		            }
@@ -3224,7 +3374,7 @@
 											ul{
 												li{
 													&:first-of-type{
-														border-top-color: map-get($default_vars,'color-submenu-border');
+														border-block-start-color:map-get($default_vars,'color-submenu-border');
 													}
 												}
 											}
@@ -3238,12 +3388,12 @@
 		}
 		@include keyframe(toggleAnimate){
 			from{
-				max-height:0;
+				max-block-size:0;
 			}
 		}
 		@include keyframe(toggleAnimateEnd){
 			from{
-				max-height:100vh;
+				max-block-size:100vh;
 				visibility: visible;
 			}
 		}
@@ -3256,7 +3406,7 @@
 	.theme-navigation-and-icons{
 		.theme-menu-area{
 			.theme-menu{
-				border-top:3px solid map-get($default_vars, 'color-submenu-border-arrow');
+				border-block-start:3px solid map-get($default_vars, 'color-submenu-border-arrow');
 				.theme-sub-li-menu{
 					cursor: pointer;
 					display: inline;
@@ -3270,7 +3420,7 @@
 					background: map-get($default_vars,'color-submenu-background');
 					@include prefix(transform,translate(0px,-50%));
 					@include respond-to(mediumdevice){
-						margin-left:5px;
+						margin-inline-start:5px;
 						position: static;
 						@include prefix(transform,translate(0px,0px));
 						background: transparent;
@@ -3285,11 +3435,11 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
+							margin-inline-start:10px;
 							content:"";
 							left:5px;
 							top:40%;
@@ -3302,11 +3452,11 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
+							margin-inline-start:10px;
 						}
 						&:after{
 							@include respond-to(mediumdevice){
@@ -3325,7 +3475,7 @@
 					}
 					&.theme-submenu-right-arrow{
 						@include prefix(transform,rotate(45deg) translate(0,-50%));
-						margin-left:auto;
+						margin-inline-start:auto;
 						position: absolute;
 					}
 					&.theme-responsive-menu{
@@ -3359,7 +3509,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding:10px 40px 10px 20px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:20px;
+							padding-inline-end:40px;
 							word-wrap:break-word;
 							word-break: break-word;
 							@include prefix(transition,0.15s linear);
@@ -3377,10 +3530,10 @@
 						ul{
 							position:static;
 							background:none;
-							padding-bottom:0;
+							padding-block-end:0;
 							display:none;
-							padding-right:0;
-							max-height:none;
+							padding-inline-end:0;
+							max-block-size:none;
 							@include prefix(border-radius,4px);
 							@include respond-to(mediumdevice){
 								position:absolute;
@@ -3388,34 +3541,37 @@
 								display:none;
 								background:none;
 								z-index: 280;
-								padding-top:43px;
+								padding-block-start:43px;
 								top:100%;
 								&.theme-sub-menu-position-change{
 									left:auto;
-									padding-left: 0px;
-									min-width: 228px;
-									padding-right:3px;
+									padding-inline-start:0px;
+									padding-inline-end:3px;
+									min-inline-size:228px;
 									right: 0px;
 									> li{
-										min-width: 0px;
+										min-inline-size:0px;
 									}
 								}
 							}
 							li{
-								border-bottom:0;
-								margin-left:0;
-								text-align: left;
-								padding-left: 20px;
+								border-block-end:0;
+								margin-inline-start:0px;
+								text-align: start;
+								padding-inline-start:20px;
 								@include respond-to(mediumdevice){
-									min-width:250px;
+									min-inline-size:250px;
 									width: 100%;
-									margin-top: 0;
+									margin-block-start:0px;
 									background:map-get($default_vars, 'color-submenu-background');
 									@include box-shadow(0,3px,3px,RGBA(0,0,0,0.1));
 									padding: 5px;
 								}
 								a{
-									padding:8px 40px 8px 10px;
+									padding-block-start:8px;
+									padding-block-end:8px;
+									padding-inline-start:10px;
+									padding-inline-end:40px;
 									display:block;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
@@ -3438,16 +3594,18 @@
 										line-height: map-get($default_vars,'font-line-height-submenu');
 										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding:8px 10px;
-										padding-right:20px;
+										padding-block-start:8px;
+										padding-block-end:8px;
+										padding-inline-start:10px;
+										padding-inline-end:20px;
 										@include prefix(justify-content,space-between);
 										-webkit-text-size-adjust : auto;
 									}
 									.theme-sub-li-menu{
 										@include respond-to(mediumdevice){
 											right:10px;
-											margin-left: auto;
 											top:50%;
+											margin-inline-start:auto;
 										}
 									}
 								}
@@ -3461,11 +3619,11 @@
 								}
 								@include respond-to(mediumdevice){
 									&:first-child {
-										padding-top: 10px;
+										padding-block-start:10px;
 										@include prefix(box-shadow, 0px 0px 3px RGBA(0,0,0,0.1));
 									}
 									&:last-child {
-										padding-bottom: 10px;
+										padding-block-end:10px;
 									}
 								}
 							}
@@ -3473,10 +3631,10 @@
 							ul{
 								top:0;
 								left:100%;
-								padding-top:0;
+								padding-block-start:0px;
 								&.theme-sub-menu-position-change{
 									left:-100%;
-									padding-left: 0px;
+									padding-inline-start:0px;
 								}
 							}
 						}
@@ -3505,7 +3663,7 @@
 				.theme-search-and-mini-cart-group-item{
 					&:only-child{
 						@include respond-to(mediumdevice){
-							margin-left: 0px;
+							margin-inline-start:0px;
 						}
 					}
 				}
@@ -3515,10 +3673,10 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-top: 20px;
-			padding-bottom:20px;
+			padding-block-start:20px;
+			padding-block-end:20px;
 			@include prefix(flex,0 1 auto);
-			margin-left: auto;
+			margin-inline-start:auto;
 			@include prefix(align-self,center);
 			@include respond-to(mediumdevice){
 				display: none ;
@@ -3527,22 +3685,24 @@
 				cursor:pointer;
 				height:20px;
 				width: 23px;
-				margin:0 auto;
+				margin-block-start:-10px;
+				margin-block-end:0;
+				margin-inline-start:auto;
+				margin-inline-end:auto;
 				position: relative;
-				margin-top:-10px;
 				.theme-burger-icon{
 					display:block;
 					width:100%;
 					height:2px;
 					background:map-get($default_vars, 'color-mobile-burger-icon');
 					position:relative;
-					margin-top:15px;
+					margin-block-start:15px;
 					&:before,&:after{
 						background:map-get($default_vars, 'color-mobile-burger-icon');
 				    content: "";
 				    height: 3px;
 				    left: 0;
-				    margin-bottom: 5px;
+					margin-block-end:5px;
 				    position: absolute;
 				    top: 8px;
 						width:100%;
@@ -3556,7 +3716,7 @@
 						background: transparent;
 						&:before{
 							@include prefix(transform,rotate(45deg));
-							top:10px
+							top:10px;
 						}
 						&:after{
 							@include prefix(transform,rotate(-45deg));
@@ -3575,11 +3735,20 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding:10px 22px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:22px;
+							padding-inline-end:22px;
 							@include prefix(align-items,center);
 							li{
-								padding: 8px 0;
-						    margin: 0 4px;
+								padding-block-start:8px;
+								padding-block-end:8px;
+								padding-inline-start:0;
+								padding-inline-end:0;
+								margin-block-start:0;
+								margin-block-end:0;
+								margin-inline-start:4px;
+								margin-inline-end:4px;
 								a{
 									padding:0;
 									svg, img{
@@ -3591,7 +3760,7 @@
 								&:last-child{
 									a{
 										svg{
-											margin-right:10px;
+											margin-inline-end:10px;
 										}
 									}
 								}
@@ -3599,7 +3768,7 @@
 						}
 					}
 					> ul{
-						border-bottom:1px solid map-get($default_vars, 'color-submenu');
+						border-block-end:1px solid map-get($default_vars, 'color-submenu');
 					}
 				}
 
@@ -3608,20 +3777,20 @@
 					@include prefix(flex-direction,row-reverse);
 					ul{
 						@include flexbox;
-						margin-left: auto;
-						margin-right: 15px;
+						margin-inline-start:auto;
+						margin-inline-end:15px;
 						&:first-child{
 							li{
 								padding:0;
 
 								a{
-									padding-left:0px;
-									padding-right:0px;
+									padding-inline-start:0px;
+									padding-inline-end:0px;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
-										margin-right:10px;
+										margin-inline-end:10px;
 									}
 									.theme-topbar-info-icon-text{
 										display: none;
@@ -3645,11 +3814,11 @@
 
 					&.theme-toggle-animate{
 						visibility:visible;
-						max-height:50vh;
+						max-block-size:50vh;
 						overflow:auto;
 					}
 					&.theme-toggle-animate-end{
-						max-height:0;
+						max-block-size:0;
 					}
 
 					// CLASSES WHICH NEED TO BE ADD FOR RESPONSIVE MENU - NORMAL TOGGLE ANIMATION END
@@ -3665,7 +3834,7 @@
 		    .theme-menu{
 		      .theme-currency-res{
 		        padding:0px;
-		        border-bottom: 1px solid map-get($default_vars, 'color-currency-option-border');
+			border-block-end: 1px solid map-get($default_vars, 'color-currency-option-border');
 		        @include flexbox;
 		        @include respond-to(mediumdevice){
 		          display: none;
@@ -3676,9 +3845,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-		        padding:10px 20px;
+			padding-block-start:10px;
+			padding-block-end:10px;
+			padding-inline-start:20px;
+			padding-inline-end:20px;
 		        .theme-currency-label{
-		          margin-right: auto;
+			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
 		          font-size: map-get($default_vars,'font-size-base');
 		          font-family: map-get($default_vars,'font-family-navigation');
@@ -3688,17 +3860,20 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-		          padding-left: 22px;
+			padding-inline-start:22px;
 		          z-index: 310;
 		        }
 		        ul{
-		          margin-left: auto;
+			margin-inline-start:auto;
 		          li{
-		            border-bottom: 0 none;
+			border-block-end: 0 none;
 		            padding: 5px;
 		            color : map-get($default_vars,'color-currency-option');
 		            &:first-child{
-		              padding: 0 0 0 5px;
+				padding-block-start:0;
+				padding-block-end:0;
+				padding-inline-start:5px;
+				padding-inline-end:0;
 		            }
 		          }
 		        }
@@ -3725,7 +3900,7 @@
 		              width: 100%;
 		              height: 100%;
 		              padding: 20px;
-		              padding-top: 60px;
+				padding-block-start:60px;
 		              z-index: 350;
 		              box-shadow: none;
 		              li{
@@ -3733,7 +3908,7 @@
 		                font-size: map-get($default_vars,'font-size-currency-option');
 		                &:first-child,
 		                &:last-child{
-		                  border-top: 0 none;
+				border-block-start:0 none;
 		                  &:after{
 		                    display: none;
 		                    @include respond-to(mediumdevice){
@@ -3744,12 +3919,12 @@
 		                &:first-child{
 		                  color: map-get($default_vars,'color-currency-option-hover');
 		                }
-		                border-left: 0 none;
-		                border-right: 0 none;
-		                padding: 10px 10px;
+				border-inline-start:0 none;
+				border-inline-end:0 none;
+		                padding: 10px;
 		                box-shadow: none;
 		                &:nth-child(2){
-		                  border-top: 0 none;
+				border-block-start: 0 none;
 		                }
 		              }
 		            }
@@ -3788,12 +3963,12 @@
 		}
 		@include keyframe(toggleAnimate){
 			from{
-				max-height:0;
+				max-block-size:0;
 			}
 		}
 		@include keyframe(toggleAnimateEnd){
 			from{
-				max-height:100vh;
+				max-block-size:100vh;
 				visibility: visible;
 			}
 		}
@@ -3806,7 +3981,7 @@
 	.theme-navigation-and-icons{
 		.theme-menu-area{
 			.theme-menu{
-				border-top:3px solid map-get($default_vars, 'color-submenu-border-arrow');
+				border-block-start:3px solid map-get($default_vars, 'color-submenu-border-arrow');
 				.theme-sub-li-menu{
 					cursor: pointer;
 					display: inline;
@@ -3820,7 +3995,7 @@
 					background: map-get($default_vars,'color-submenu-background');
 					@include prefix(transform,translate(0px,-50%));
 					@include respond-to(mediumdevice){
-						margin-left:5px;
+						margin-inline-start:5px;
 						position: static;
 						@include prefix(transform,translate(0px,0px));
 						background: transparent;
@@ -3835,11 +4010,11 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
+							margin-inline-start: 10px;
 							content:"";
 							left:5px;
 							top:40%;
@@ -3852,11 +4027,11 @@
 							display: block;
 							height:6px;
 							width:6px;
-							border-right:1px solid;
-							border-top:1px solid;
+							border-inline-end:1px solid;
+							border-block-start:1px solid;
 							background: transparent;
 							@include prefix(transform,rotate(135deg));
-							margin-left: 10px;
+							margin-inline-start:10px;
 						}
 						&:after{
 							@include respond-to(mediumdevice){
@@ -3875,7 +4050,7 @@
 					}
 					&.theme-submenu-right-arrow{
 						@include prefix(transform,rotate(45deg) translate(0,-50%));
-						margin-left:auto;
+						margin-inline-start:auto;
 						position: absolute;
 					}
 					&.theme-responsive-menu{
@@ -3908,7 +4083,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding:10px 45px 10px 15px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:15px;
+							padding-inline-end:45px;
 							word-wrap:break-word;
 							word-break: break-word;
 							@include prefix(transition,0.15s linear);
@@ -3926,41 +4104,43 @@
 						ul{
 							position:static;
 							background:none;
-							padding-bottom:0;
+							padding-block-end:0;
 							display:none;
-							padding-right:0;
-							max-height:none;
-							// background:map-get($base_vars,'color-light');
+							padding-inline-end:0;
+							max-block-size:none;
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
 								display:none;
 								background:none;
 								z-index: 280;
-								padding-top:25px;
+								padding-block-start:25px;
 								top:100%;
 								&.theme-sub-menu-position-change{
 									left:auto;
-									padding-left: 0px;
-									min-width: 260px;
-									padding-right:3px;
+									padding-inline-start:0px;
+									padding-inline-end:3px;
+									min-inline-size:260px;
 									right: 0px;
 									> li{
-										min-width: 0px;
+										min-inline-size:0px;
 									}
 								}
 							}
 							li{
-								border-bottom:0;
-								margin-left:0;
-								text-align: left;
-								padding-left: 15px;
+								border-block-end:0px;
+								margin-inline-start:0px;
+								text-align: start;
+								padding-inline-start:15px;
 								@include respond-to(mediumdevice){
-									min-width:260px;
+									min-inline-size:260px;
 									width: 100%;
-									margin-top: 0;
+									margin-block-start:0px;
 									background:map-get($default_vars, 'color-submenu-background');
-									padding:5px 10px;
+									padding-block-start:5px;
+									padding-block-end:5px;
+									padding-inline-start:10px;
+									padding-inline-end:10px;
 									@include prefix(box-shadow,0px 4px 4px RGBA(0,0,0,0.1));
 								}
 								&:only-of-type {
@@ -3972,21 +4152,29 @@
 								}
 								&:first-child {
 									@include respond-to(mediumdevice){
-										padding-top: 10px;
+										padding-block-start:10px;
 										@include prefix(border-radius,5px 5px 0 0);
+										border-start-start-radius:5px;
+										border-start-end-radius:5px;
+										border-end-start-radius:0;
+										border-end-end-radius:0;
 										@include prefix(box-shadow,0px -1px 4px RGBA(0,0,0,0.1));
 									}
 								}
 								&:last-child{
 									@include respond-to(mediumdevice){
 										@include prefix(border-radius,0 0 5px 5px);
+										border-start-start-radius:0;
+										border-start-end-radius:0;
+										border-end-start-radius:5px;
+										border-end-end-radius:5px;
 										@include prefix(box-shadow,0 2px 3px RGBA(0,0,0,0.1));
-										padding-bottom: 10px;
+										padding-block-end:10px;
 									}
 								}
 								a{
 									padding:10px;
-									padding-right:45px;
+									padding-block-end:10px;
 									display:block;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
@@ -4009,8 +4197,10 @@
 										line-height: map-get($default_vars,'font-line-height-submenu');
 										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding:8px 10px;
-										padding-right:25px;
+										padding-block-start:8px;
+										padding-block-end:8px;
+										padding-inline-start:10px;
+										padding-inline-end:25px;
 										@include prefix(justify-content,space-between);
 										-webkit-text-size-adjust : auto;
 									}
@@ -4039,11 +4229,11 @@
 							ul{
 								top:0;
 								left:100%;
-								padding-top:0;
-								padding-left:0;
+								padding-block-start:0px;
+								padding-inline-start:0;
 								&.theme-sub-menu-position-change{
 									left:-100%;
-									padding-left: 0px;
+									padding-inline-start:0;
 								}
 							}
 						}
@@ -4086,7 +4276,7 @@
 				.theme-search-and-mini-cart-group-item{
 					&:only-child{
 						@include respond-to(mediumdevice){
-							margin-left: 0px;
+							margin-inline-start:0px;
 						}
 					}
 				}
@@ -4096,10 +4286,10 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-top: 20px;
-			padding-bottom:20px;
+			padding-block-start:20px;
+			padding-block-end:20px;
 			@include prefix(flex,0 1 auto);
-			margin-left: auto;
+			margin-inline-start:auto;
 			@include prefix(align-self,center);
 			@include respond-to(mediumdevice){
 				display: none ;
@@ -4108,22 +4298,24 @@
 				cursor:pointer;
 				height:20px;
 				width: 23px;
-				margin:0 auto;
+				margin-block-start:-13px;
+				margin-block-end:0;
+				margin-inline-start:auto;
+				margin-inline-end:auto;
 				position: relative;
-				margin-top:-13px;
 				.theme-burger-icon{
 					display:block;
 					width:100%;
 					height:2px;
 					background:map-get($default_vars, 'color-mobile-burger-icon');
 					position:relative;
-					margin-top:15px;
+					margin-block-start:15px;
 					&:before,&:after{
 						background:map-get($default_vars, 'color-mobile-burger-icon');
 				    content: "";
 				    height: 3px;
 				    left: 0;
-				    margin-bottom: 5px;
+						margin-block-end:5px;
 				    position: absolute;
 				    top: 8px;
 						width:100%;
@@ -4137,7 +4329,7 @@
 						background: transparent;
 						&:before{
 							@include prefix(transform,rotate(45deg));
-							top:10px
+							top:10px;
 						}
 						&:after{
 							@include prefix(transform,rotate(-45deg));
@@ -4156,11 +4348,20 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding:10px 22px;
+							padding-block-start:10px;
+							padding-block-end:10px;
+							padding-inline-start:22px;
+							padding-inline-end:22px;
 							@include prefix(align-items,center);
 							li{
-								padding: 8px 0;
-						    margin: 0 4px;
+								padding-block-start:8px;
+								padding-block-end:8px;
+								padding-inline-start:0;
+								padding-inline-end:0;
+								margin-block-start:0;
+								margin-block-end:0;
+								margin-inline-start:4px;
+								margin-inline-end:4px;
 								a{
 									padding:0;
 									svg, img{
@@ -4172,7 +4373,7 @@
 								&:last-child{
 									a{
 										svg{
-											margin-right:10px;
+											margin-inline-end:10px;
 										}
 									}
 								}
@@ -4180,7 +4381,7 @@
 						}
 					}
 					> ul{
-						border-bottom:1px solid map-get($default_vars, 'color-submenu');
+						border-block-end:1px solid map-get($default_vars, 'color-submenu');
 					}
 				}
 
@@ -4189,19 +4390,19 @@
 					@include prefix(flex-direction,row-reverse);
 					ul{
 						@include flexbox;
-						margin-left: auto;
+						margin-inline-start:auto;
 						&:first-child{
 							li{
 								padding:0;
-								margin-right: 20px;
+								margin-inline-end:20px;
 								a{
-									padding-left:0px;
-									padding-right:0px;
+									padding-inline-start:0px;
+									padding-inline-end:0px;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
-										margin-right:10px;
+										margin-inline-end:10px;
 									}
 									.theme-topbar-info-icon-text{
 										display: none;
@@ -4225,11 +4426,11 @@
 
 					&.theme-toggle-animate{
 						visibility:visible;
-						max-height:50vh;
+						max-block-size:50vh;
 						overflow:auto;
 					}
 					&.theme-toggle-animate-end{
-						max-height:0;
+						max-block-size:0;
 					}
 
 					// CLASSES WHICH NEED TO BE ADD FOR RESPONSIVE MENU - NORMAL TOGGLE ANIMATION END
@@ -4245,7 +4446,7 @@
 		    .theme-menu{
 		      .theme-currency-res{
 		        padding:0;
-		        border-bottom: 1px solid map-get($default_vars, 'color-currency-option-border');
+			border-block-end: 1px solid map-get($default_vars, 'color-currency-option-border');
 		        @include flexbox;
 		        @include respond-to(mediumdevice){
 		          display: none;
@@ -4256,9 +4457,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-		        padding:10px 20px;
+			padding-block-start:10px;
+			padding-block-end:10px;
+			padding-inline-start:20px;
+			padding-inline-end:20px;
 		        .theme-currency-label{
-		          margin-right: auto;
+			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
 		          font-size: map-get($default_vars,'font-size-base');
 		          font-family: map-get($default_vars,'font-family-navigation');
@@ -4268,17 +4472,20 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-		          padding-left: 20px;
+			padding-inline-start:20px;
 		          z-index: 310;
 		        }
 		        ul{
-		          margin-left: auto;
+			margin-inline-start:auto;
 		          li{
-		            border-bottom: 0 none;
+			border-block-end: 0 none;
 		            padding: 5px;
 		            color : map-get($default_vars,'color-currency-option');
 		            &:first-child{
-		              padding: 0 0 0 5px;
+				padding-block-start:0px;
+				padding-block-end:0px;
+				padding-inline-start:5px;
+				padding-inline-end:0px;
 		            }
 		          }
 		        }
@@ -4305,7 +4512,7 @@
 		              width: 100%;
 		              height: 100%;
 		              padding: 20px;
-		              padding-top: 60px;
+				padding-block-start:60px;
 		              z-index: 350;
 		              box-shadow: none;
 		              li{
@@ -4313,7 +4520,7 @@
 		                font-size: map-get($default_vars,'font-size-currency-option');
 		                &:first-child,
 		                &:last-child{
-		                  border-top: 0 none;
+				border-block-start: 0 none;
 		                  &:after{
 		                    display: none;
 		                    @include respond-to(mediumdevice){
@@ -4324,12 +4531,12 @@
 		                &:first-child{
 		                  color: map-get($default_vars,'color-currency-option-hover');
 		                }
-		                border-left: 0 none;
-		                border-right: 0 none;
-		                padding: 10px 10px;
+				border-inline-start: 0 none;
+				border-inline-end: 0 none;
+		                padding: 10px;
 		                box-shadow: none;
 		                &:nth-child(2){
-		                  border-top: 0 none;
+				border-block-start: 0 none;
 		                }
 		              }
 		            }
@@ -4368,12 +4575,12 @@
 		}
 		@include keyframe(toggleAnimate){
 			from{
-				max-height:0;
+				max-block-size:0px;
 			}
 		}
 		@include keyframe(toggleAnimateEnd){
 			from{
-				max-height:100vh;
+				max-block-size:100vh;
 				visibility: visible;
 			}
 		}
@@ -4401,7 +4608,7 @@
 			height:auto;
 			overflow:hidden;
 			z-index:280;
-			max-height: 0;
+			max-block-size:0;
 			&.theme-change-zindex{
 				z-index:auto;
 			}
@@ -4441,15 +4648,15 @@
 				position:static;
 				background:none;
 				width:auto;
-				max-width:100%;
+				max-inline-size:100%;
 				@include prefix(flex,1 0 0px);
-				padding-top:0;
+				padding-block-start:0px;
 				visibility:visible;
 				height:100%;
 				overflow:visible;
-				border-top:none;
+				border-block-start:none;
 				@include box-shadow(0,0,0,transparent);
-				max-height: none;
+				max-block-size:none;
 			}
 			.theme-close-li-menu{
 				display:none;
@@ -4458,13 +4665,13 @@
 				overflow:auto;
 				padding:0;
 				@include respond-to(mediumdevice){
-					max-height:none;
+					max-block-size:none;
 					overflow:visible;
-					text-align:right;
-					padding-left:0;
+					text-align:end;
+					padding-inline-start:0;
 					@include flexbox;
 					@include prefix(flex-wrap,wrap);
-					max-width:100%;
+					max-inline-size:100%;
 					@include prefix(flex-direction,row);
 					@include prefix(justify-content,flex-end);
 				}
@@ -4474,27 +4681,33 @@
 					// border-bottom:1px solid rgba(map-get($base_vars,'color-border'),0.4);
 					word-break: break-word;
 					word-wrap: break-word;
-					padding-top: 0px;
-					padding-bottom: 0px;
+					padding-block-start:0px;
+					padding-block-end:0px;
+					@include respond-to(mediumdevice) {
+						display: flex;
+						align-items: center;
+					}
 					&:last-of-type{
-						border-bottom:none;
+						border-block-end:none;
 					}
 					&:first-of-type{
 						@include respond-to(mediumdevice){
-							margin-left:0;
+							margin-inline-start:0px;
 						}
 					}
 					@include respond-to(mediumdevice){
-						padding:0px 0px;
-						border-bottom:0 none;
+						padding: 0px;
+						border-block-end:0 none;
 					}
 					a{
 						@include respond-to(mediumdevice){
 							padding:0;
-							border-bottom:none;
+							border-block-end:0 none;
 							position:relative;
-							height:100%;
-							padding: 8px 16px;
+							padding-block-start:8px;
+							padding-block-end:8px;
+							padding-inline-start:16px;
+							padding-inline-end:16px;
 							border-radius:3px;
 							line-height: map-get($default_vars,'font-line-height-navigation-one');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-navigation');
@@ -4505,6 +4718,7 @@
 							font-family:map-get($default_vars, 'font-family-navigation');
 							font-size:map-get($default_vars, 'font-size-navigation');
 							-webkit-text-size-adjust: auto;
+                            width:100%;
 						}
 					}
 					&.theme-menu-selected{
@@ -4518,7 +4732,7 @@
 						}
 					}
 					@include respond-to(mediumdevice){
-						margin-left:25px;
+						margin-inline-start:25px;
 					}
 					&:hover > a{
 						// background:map-get($default_vars, 'color-submenu-hover-background');

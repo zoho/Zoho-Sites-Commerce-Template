@@ -37,7 +37,7 @@
           background: transparent;
           @include respond-to(mediumdevice){
             background: map-get($default_vars,'darkbg-color-navigation-bar-background');
-            border-top:0 none;
+            border-block-start:0px none;
           }
           &.theme-header-transparent{
             background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
@@ -222,7 +222,7 @@
           .theme-navigation-and-icons{
             &.theme-search-mini-cart-style-03{
               .theme-search-icon{
-                border-left-color: map-get($default_vars,'darkbg-color-search-cart-icon');
+                border-inline-start-color:map-get($default_vars,'darkbg-color-search-cart-icon');
               }
             }
           }
@@ -233,7 +233,7 @@
       &.theme-header{
         &.zpheader-style-navigation-03{
           background: map-get($default_vars,'darkbg-color-navigation-bar-background');
-          border-top:0 none;
+          border-block-start:0 none;
           &.theme-header-transparent{
             background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
           }
@@ -304,7 +304,7 @@
       .theme-header{
         .theme-responsive-menu-area-style-03{
           &.theme-only-menu-in-mobile{
-            margin-left: auto;
+            margin-inline-start:auto;
           }
         }
       }
@@ -323,7 +323,7 @@
       &.theme-header-topbar{
         .theme-portal-login{
           &.theme-portal-space{
-            border-left-color: map-get($default_vars,'darkbg-color-portal');
+            border-inline-start-color:map-get($default_vars,'darkbg-color-portal');
             @include prefix(transition,0.15s linear);
           }
         }
@@ -340,7 +340,7 @@
           background: transparent;
           @include respond-to(mediumdevice){
             background: map-get($default_vars,'darkbg-color-navigation-bar-style-05-background');
-            border-top:0 none;
+            border-block-start:0px none;
           }
           &.theme-header-transparent{
             background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-style-05-background-rgba'),0.8);
@@ -385,7 +385,7 @@
       &.theme-header{
         .theme-portal-login{
           &.theme-portal-space{
-            border-left-color: map-get($default_vars,'darkbg-color-portal');
+            border-inline-start-color:map-get($default_vars,'darkbg-color-portal');
             @include prefix(transition,0.15s linear);
           }
         }
@@ -430,11 +430,11 @@
             }
           }
           .theme-vertical-navigation-search-cart-container{
-            border-top:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
-    				border-bottom:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
+            border-block-start:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
+            border-block-end:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
           }
           .theme-vertical-navigation-contact-social{
-            border-top:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
+            border-block-start:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.2);
           }
         }
         .theme-portal-login {
@@ -445,7 +445,7 @@
                 @include prefix(transition,0.15s linear);
               }
               &:last-child{
-                border-left-color: map-get($default_vars,'color-portal');
+                border-inline-start-color: map-get($default_vars,'color-portal');
                 @include prefix(transition,0.15s linear);
               }
             }
@@ -459,7 +459,7 @@
                 @include prefix(transition,0.15s linear);
               }
               &:last-child{
-                border-left-color: map-get($default_vars,'darkbg-color-portal');
+                border-inline-start-color: map-get($default_vars,'darkbg-color-portal');
                 @include prefix(transition,0.15s linear);
               }
             }
@@ -474,11 +474,11 @@
         li{
           &.zphero-slide{
             .zphero-slider-container{
-              padding-left: 15px;
-              padding-right: 15px;
+              padding-inline-start:15px;
+              padding-inline-end:15px;
               @include respond-to(mediumdevice){
-                padding-left: 60px;
-                padding-right: 60px;
+                padding-inline-start:60px;
+                padding-inline-end:60px;
               }
             }
           }
@@ -490,20 +490,20 @@
     &.zpbanner-for-header-06{
       &.zpcontainer{
         width:100%;
-        padding-right:15px;
-        padding-left: 15px;
+        padding-inline-start:15px;
+        padding-inline-end:15px;
         @include respond-to(mediumdevice){
-          padding-left: 300px;
-          padding-right: 0px;
+          padding-inline-start:300px;
+          padding-inline-end:0px;
         }
         .zpcontent-container{
           &.hero-container{
             width:100%;
-            padding-right:0px;
-            padding-left: 0px;
+            padding-inline-start:0px;
+            padding-inline-end:0px;
             @include respond-to(mediumdevice){
-              padding-left:50px;
-              padding-right:50px;
+              padding-inline-start:50px;
+              padding-inline-end:50px;
             }
           }
         }
@@ -518,7 +518,10 @@
           .zpcontent-container{
             &.hero-container{
               width:1100px;
-              margin:0 auto;
+              margin-inline-start:auto;
+              margin-inline-end:auto;
+              margin-block-start:0px;
+              margin-block-end:0px;
             }
           }
         }
@@ -574,21 +577,21 @@
           .theme-navigation-and-icons{
             &.theme-search-mini-cart-style-03{
               .theme-search-icon{
-                border-left-color: map-get($default_vars,'darkbg-color-7th-header-style-cart-divider-border');
+                border-inline-start-color:map-get($default_vars,'darkbg-color-7th-header-style-cart-divider-border');
               }
             }
           }
         }
       }
       &.zpheader-style-navigation-07 {
-        border-top: 1px solid map-get($base_vars,'color-border');
+        border-block-start: 1px solid map-get($base_vars,'color-border');
       }
     }
     .zpdark-header-portion{
       &.theme-header{
         &.zpheader-style-navigation-07{
           background: map-get($default_vars,'darkbg-color-navigation-bar-background');
-          border-top:0px none;
+          border-block-start: 0px none;
           &.theme-header-transparent{
             background:RGBA(map-get($default_vars,'darkbg-color-navigation-bar-background-rgba'),0.8);
           }
@@ -660,7 +663,7 @@
       .theme-header{
         .theme-responsive-menu-area-style-03{
           &.theme-only-menu-in-mobile{
-            margin-left: auto;
+            margin-inline-start: auto;
           }
         }
       }
@@ -816,7 +819,7 @@
 .zphero{
    .zpflex-align-self-end{
      @include respond-to(mediumdevice){
-       padding-bottom:80px !important;
+       padding-block-end:80px !important;
     }
   }
   .zphero-slides,
@@ -846,11 +849,11 @@
       li{
         &.zphero-slide{
           .zphero-slider-container{
-            padding-left: 15px;
-            padding-right: 15px;
+            padding-inline-start:15px;
+            padding-inline-end:15px;
             @include respond-to(mediumdevice){
-              padding-left: 60px;
-              padding-right: 60px;
+              padding-inline-start:60px;
+              padding-inline-end:60px;
             }
           }
         }
@@ -859,7 +862,7 @@
   }
 }
 .zphero-boxed{
-  padding-top:50px;
+  padding-block-start:50px;
 }
 
 // DARK HEADER STYLES
@@ -875,14 +878,14 @@
             @include prefix(transition,0.15s linear);
           }
           &:last-child{
-            border-left-color: map-get($default_vars,'darkbg-color-contact-info');
+            border-inline-start-color:map-get($default_vars,'darkbg-color-contact-info');
             @include prefix(transition,0.15s linear);
           }
         }
       }
     }
     .theme-socialicon-parent{
-      border-left-color: map-get($default_vars,'darkbg-color-contact-info');
+      border-inline-start-color:map-get($default_vars,'darkbg-color-contact-info');
       @include prefix(transition,0.15s linear);
       ul{
         li{
@@ -903,7 +906,7 @@
             @include prefix(transition,0.15s linear);
           }
           &:last-child{
-            border-left-color: map-get($default_vars,'darkbg-color-portal');
+            border-inline-start-color: map-get($default_vars,'darkbg-color-portal');
             @include prefix(transition,0.15s linear);
           }
         }
@@ -1020,7 +1023,7 @@
         .theme-search-and-mini-cart-group-item{
           &:first-child {
             .theme-search-icon{
-              border-right-color: map-get($default_vars,'darkbg-color-search-cart-icon');
+              border-inline-end-color: map-get($default_vars,'darkbg-color-search-cart-icon');
             }
           }
         }
