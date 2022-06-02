@@ -4,8 +4,8 @@ html[dir="rtl"] {
 .theme-search-and-mini-cart-group{
 		.theme-search{
 			.theme-search-field-container{
-				left: auto;
-				right: 0;
+				left:0;
+				right:auto;
 				@include respond-to(mediumdevice){
 					left: 15px;
 					right:auto;
@@ -95,8 +95,10 @@ html[dir="rtl"] {
 	.theme-search-and-mini-cart-group{
 			.theme-search{
 				.theme-search-field-container{
-					left:15px;
-					right:auto;
+					@include respond-to(mediumdevice) {
+						left:15px;
+						right:auto;
+					}
 					.theme-search-go{
 						left:0px;
 						right:auto;
@@ -142,10 +144,12 @@ html[dir="rtl"] {
 							left:10px;
 							&.theme-submenu-down-arrow,
 							&.theme-submenu-up-arrow{
-                					transform: rotate(-135deg);
-								&:after{
-									left:auto;
-									right:5px;
+								@include respond-to(mediumdevice) {
+									transform: rotate(-135deg);
+									&:after{
+										left:auto;
+										right:5px;
+									}
 								}
 							}
 						}
@@ -208,6 +212,29 @@ html[dir="rtl"] {
 						}
 					}
 				}
+				&.theme-navigation-and-icons {
+					.theme-menu-area {
+						.theme-menu {
+							.theme-sub-li-menu {
+								&.theme-submenu-down-arrow,
+								&.theme-submenu-up-arrow {
+									transform:rotate(0deg);
+									right: auto;
+									left: 15px;
+									top: 6px;
+									&:after {
+										transform:rotate(-135deg);
+									}
+								}
+								&.theme-submenu-up-arrow {
+									&:after {
+										transform:rotate(45deg);
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 
 				// CURRENCY IN RESPONSIVE
@@ -246,10 +273,12 @@ html[dir="rtl"] {
 							left: 10px;
 							&.theme-submenu-down-arrow,
 							&.theme-submenu-up-arrow{
-                					transform: rotate(-135deg);
-								&:after{
-									left:auto;
-									right:5px;
+								@include respond-to(mediumdevice) {
+									transform: rotate(-135deg);
+									&:after{
+										left:auto;
+										right:5px;
+									}
 								}
 							}
 						}
@@ -358,6 +387,29 @@ html[dir="rtl"] {
 						}
 					}
 				}
+				&.theme-navigation-and-icons {
+					.theme-menu-area {
+						.theme-menu {
+							.theme-sub-li-menu {
+								&.theme-submenu-down-arrow,
+								&.theme-submenu-up-arrow {
+									transform:rotate(0deg);
+									right: auto;
+									left: 15px;
+									top: 6px;
+									&:after {
+										transform:rotate(-135deg);
+									}
+								}
+								&.theme-submenu-up-arrow {
+									&:after {
+										transform:rotate(45deg);
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 
 				// CURRENCY IN RESPONSIVE
@@ -435,7 +487,6 @@ html[dir="rtl"] {
 					}
 				}
 			}
-
 			.theme-responsive-menu-area{
 				&.zpcontainer{
 					.theme-responsive-menu-container{
@@ -584,7 +635,6 @@ html[dir="rtl"] {
 					}
 				}
 			}
-
 			.theme-responsive-menu-area{
 				&.zpcontainer{
 					.theme-responsive-menu-container{
@@ -592,6 +642,26 @@ html[dir="rtl"] {
 							&:before,&:after{
 						    right: 0;
 								left: auto;
+							}
+						}
+					}
+				}
+				&.theme-navigation-and-icons {
+					.theme-menu-area {
+						.theme-menu {
+							.theme-sub-li-menu {
+								&.theme-submenu-down-arrow,
+								&.theme-submenu-up-arrow {
+									transform:rotate(0deg);
+									right: auto;
+									left: 15px;
+									top: auto;
+								}
+								&.theme-submenu-up-arrow {
+									&:after {
+										//transform:rotate(45deg);
+									}
+								}
 							}
 						}
 					}
@@ -607,6 +677,7 @@ html[dir="rtl"] {
                         .theme-sub-li-menu{
                           left:10px;
 													right:auto;
+													top:8px;
                         }
 											}
 										}
@@ -621,6 +692,7 @@ html[dir="rtl"] {
                     .theme-sub-li-menu{
                       left:10px;
 											right:auto;
+											top:8px;
                     }
 									}
 								}
@@ -668,10 +740,16 @@ html[dir="rtl"] {
 							left:10px;
 							&.theme-submenu-down-arrow,
 							&.theme-submenu-up-arrow{
-								&:after{
-									left:auto;
-									right:5px;
+								@include respond-to(mediumdevice) {
+									@include prefix(transform,rotate(-135deg));
+									&:after{
+										left:auto;
+										right:5px;
+									}
 								}
+							}
+							&.theme-submenu-right-arrow{
+                						transform:rotate(-45deg) translate(0, -50%);
 							}
 						}
 						ul{
@@ -722,8 +800,28 @@ html[dir="rtl"] {
 						}
 					}
 				}
+				&.theme-navigation-and-icons {
+					.theme-menu-area {
+						.theme-menu {
+							.theme-sub-li-menu {
+								&.theme-submenu-down-arrow,
+								&.theme-submenu-up-arrow {
+									right: auto;
+									left: 15px;
+									&:after {
+										transform:rotate(-135deg);
+									}
+								}
+								&.theme-submenu-up-arrow {
+									&:after {
+										transform:rotate(45deg);
+									}
+								}
+							}
+						}
+					}
+				}
 				&.theme-navigation-and-icons{
-
 					.theme-menu-area{
 						&.theme-responsive-menu{
 							.theme-menu{
@@ -771,9 +869,8 @@ html[dir="rtl"] {
 				        &.theme-currency-style-02,
 				        &.theme-currency-style-03{
 				          ul{
-
 				            &.theme-currency-open{
-											right:0px;
+						right:0px;
 				              left: auto;
 				            }
 				          }
@@ -785,7 +882,6 @@ html[dir="rtl"] {
 		}
 
   @if map-get($user_layout_vars,'submenu_style') == 06 {
-
 			.theme-navigation-and-icons{
 				.theme-menu-area{
 					.theme-menu{
@@ -794,10 +890,14 @@ html[dir="rtl"] {
 							left: 10px;
 							&.theme-submenu-down-arrow,
 							&.theme-submenu-up-arrow{
+								@include prefix(transform,rotate(-135deg));
 								&:after{
 									left:auto;
 									right:5px;
 								}
+							}
+							&.theme-submenu-right-arrow{
+                transform:rotate(-45deg) translate(0, -50%);
 							}
 						}
 						ul{
@@ -808,7 +908,25 @@ html[dir="rtl"] {
 										right:0;
 										&.theme-sub-menu-position-change{
 											right: auto;
-											left: 0px;
+											left:0px;
+										}
+									}
+									li{
+										a{
+											.theme-sub-li-menu{
+												@include respond-to(mediumdevice){
+													left:10px;
+													right:auto;
+												}
+											}
+										}
+									}
+									ul{
+										right:100%;
+										left:auto;
+										&.theme-sub-menu-position-change{
+											right:auto;
+											left: 100%;
 										}
 									}
 								}
@@ -824,6 +942,29 @@ html[dir="rtl"] {
 							&:before,&:after{
 						    left: auto;
 								right: 0px;
+							}
+						}
+					}
+				}
+				&.theme-navigation-and-icons {
+					.theme-menu-area {
+						.theme-menu {
+							.theme-sub-li-menu {
+								&.theme-submenu-down-arrow,
+								&.theme-submenu-up-arrow {
+									transform:rotate(0deg);
+									right: auto;
+									left: 15px;
+									top: 6px;
+									&:after {
+										transform:rotate(-135deg);
+									}
+								}
+								&.theme-submenu-up-arrow {
+									&:after {
+										transform:rotate(45deg);
+									}
+								}
 							}
 						}
 					}
@@ -876,641 +1017,6 @@ html[dir="rtl"] {
 				    }
 				  }
 				}
-
-		}
-
-
-		//  SUB MENU STYLE - 01
-
-		@if map-get($user_layout_vars,'submenu_style') == 01 {
-
-			.theme-navigation-and-icons{
-				.theme-menu-area{
-					.theme-menu{
-						.theme-sub-li-menu{
-							left: 10px;
-							right:auto;
-							&.theme-submenu-down-arrow,
-							&.theme-submenu-up-arrow{
-								&:after{
-									right:5px;
-									left:auto;
-								}
-							}
-						}
-						ul{
-							li{
-								ul{
-									@include respond-to(mediumdevice){
-										right:0;
-										left:auto;
-										&.theme-sub-menu-position-change{
-											right:auto;
-											left: 0px;
-										}
-									}
-									li{
-										a{
-											.theme-sub-li-menu{
-												@include respond-to(mediumdevice){
-													left:10px;
-													right:auto;
-												}
-											}
-										}
-									}
-									ul{
-										left:auto;
-										right:100%;
-										&.theme-sub-menu-position-change{
-											right:-100%;
-											left:auto;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			.theme-responsive-menu-area{
-				&.zpcontainer{
-					.theme-responsive-menu-container{
-						.theme-burger-icon{
-							&:before,&:after{
-						    right: 0;
-								left:auto;
-							}
-						}
-					}
-				}
-			}
-
-				// CURRENCY IN RESPONSIVE
-
-				.theme-navigation-and-icons{
-				  .theme-menu-area{
-				    .theme-menu{
-				      .theme-currency-option-container{
-				        .theme-currency-label{
-				          right: 0;
-									left:auto;
-				        }
-				        &.theme-currency-style-01,
-				        &.theme-currency-style-02,
-				        &.theme-currency-style-03{
-				          ul{
-				            &.theme-currency-open{
-				              right: 0px;
-											left:auto;
-				            }
-				          }
-				        }
-				      }
-				    }
-				  }
-				}
-		}
-
-		//  SUB MENU STYLE - 02
-
-		@if map-get($user_layout_vars,'submenu_style') == 02 {
-
-			.theme-navigation-and-icons{
-				.theme-menu-area{
-					.theme-menu{
-						.theme-sub-li-menu{
-							left: 10px;
-							right:auto;
-							&.theme-submenu-down-arrow,
-							&.theme-submenu-up-arrow{
-                transform:rotate(-135deg);
-								&:after{
-									left:auto;
-									right:5px;
-								}
-							}
-						}
-						ul{
-							li{
-								ul{
-									@include respond-to(mediumdevice){
-										right:0;
-										left:auto;
-										&.theme-sub-menu-position-change{
-											right:auto;
-											left:0;
-										}
-									}
-									li{
-										a{
-											.theme-sub-li-menu{
-												@include respond-to(mediumdevice){
-													left:10px;
-													right:auto;
-												}
-											}
-										}
-										&:hover > a,
-										&.theme-menu-selected > a{
-											&:after{
-												@include respond-to(mediumdevice){
-													right:0px;
-													left:auto;
-												}
-											}
-										}
-										&:first-child{
-											&:after{
-												@include respond-to(mediumdevice){
-													right:28px;
-													left: auto;
-                          transform:rotate(45deg);
-												}
-											}
-											&:hover {
-												&:before{
-													@include respond-to(mediumdevice){
-														right:28px;
-														left:auto;
-													}
-												}
-											}
-										}
-									}
-									ul{
-										@include respond-to(mediumdevice){
-											right:100%;
-											left:auto;
-										}
-										&.theme-sub-menu-position-change{
-											right:-100%;
-											left:auto;
-										}
-									}
-									&.theme-sub-menu-position-change{
-										li{
-											&:first-child{
-												&:after{
-													left: 28px;
-													right: auto;
-												}
-												&:hover {
-													&:before{
-														left: 28px;
-														right: auto;
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.theme-responsive-menu-area{
-				&.zpcontainer{
-					.theme-responsive-menu-container{
-						.theme-burger-icon{
-							&:before,
-							&:after{
-						    right: 0;
-								left:auto;
-							}
-						}
-					}
-				}
-			}
-
-				// CURRENCY IN RESPONSIVE
-
-				.theme-navigation-and-icons{
-				  .theme-menu-area{
-				    .theme-menu{
-				      .theme-currency-option-container{
-				        .theme-currency-label{
-				          right:0;
-									left:auto;
-				        }
-				        &.theme-currency-style-01,
-				        &.theme-currency-style-02,
-				        &.theme-currency-style-03{
-				          ul{
-				            &.theme-currency-open{
-				              right: 0px;
-											left:auto;
-				            }
-				          }
-				        }
-				      }
-				    }
-				  }
-				}
-		}
-
-		//  SUB MENU STYLE - 03
-
-		@if map-get($user_layout_vars,'submenu_style') == 03 {
-
-			.theme-navigation-and-icons{
-				.theme-menu-area{
-					.theme-menu{
-						.theme-sub-li-menu{
-							&.theme-submenu-down-arrow,
-							&.theme-submenu-up-arrow{
-								left:20px;
-								right:auto;
-                transform:rotate(-135deg);
-								&:after,
-								&:before{
-									right:0px;
-									left:auto;
-								}
-							}
-						}
-						ul{
-							li{
-								ul{
-									@include respond-to(mediumdevice){
-										right:0;
-										left:auto;
-										&.theme-sub-menu-position-change{
-											right:auto;
-											left:0;
-										}
-									}
-									li{
-										a{
-											.theme-sub-li-menu{
-												@include respond-to(mediumdevice){
-													left:10px;
-													right:auto;
-												}
-											}
-										}
-									}
-									ul{
-										right:100%;
-										left:auto;
-										&.theme-sub-menu-position-change{
-											left:-100%;
-											right:auto;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			.theme-responsive-menu-area{
-				&.zpcontainer{
-					.theme-responsive-menu-container{
-						.theme-burger-icon{
-							&:before,&:after{
-						    right: 0;
-								left: auto;
-							}
-						}
-					}
-				}
-			}
-
-				// CURRENCY IN RESPONSIVE
-
-				.theme-navigation-and-icons{
-				  .theme-menu-area{
-				    .theme-menu{
-				      .theme-currency-option-container{
-				        .theme-currency-label{
-				          right: 0;
-									left:auto;
-				        }
-				        &.theme-currency-style-01,
-				        &.theme-currency-style-02,
-				        &.theme-currency-style-03{
-				          ul{
-				            &.theme-currency-open{
-				              right: 0px;
-											left:auto;
-				            }
-				          }
-				        }
-				      }
-				    }
-				  }
-				}
-		}
-
-		//  SUB MENU STYLE - 04
-
-		@if map-get($user_layout_vars,'submenu_style') == 04 {
-
-			.theme-navigation-and-icons{
-				.theme-menu-area{
-					.theme-menu{
-						.theme-sub-li-menu{
-							&.theme-submenu-down-arrow,
-							&.theme-submenu-up-arrow{
-								left:0;
-								right:auto;
-                transform:rotate(-135deg);
-							}
-							&.theme-submenu-down-arrow,
-							&.theme-submenu-up-arrow{
-								&:after{
-									left: 24px;
-									right: auto;
-								}
-								&:before{
-									left: 20px;
-									right: auto;
-								}
-							}
-							&.theme-submenu-up-arrow{
-								&:after{
-									left: 24px;
-									right:auto;
-								}
-							}
-						}
-						ul{
-							li{
-								ul{
-									@include respond-to(mediumdevice){
-										left:auto;
-										right:0;
-										&.theme-sub-menu-position-change{
-											right:auto;
-											left: 0px;
-										}
-									}
-									li{
-										a{
-											.theme-sub-li-menu{
-												@include respond-to(mediumdevice){
-													left:10px;
-													right:auto;
-												}
-											}
-										}
-										&:hover > a,
-										&.theme-menu-selected > a{
-											&:after{
-													@include respond-to(mediumdevice){
-													right:0px;
-													left:auto;
-												}
-											}
-										}
-									}
-									ul{
-										left:auto;
-										right:100%;
-										&.theme-sub-menu-position-change{
-											right:-100%;
-											left:auto;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.theme-responsive-menu-area{
-				&.zpcontainer{
-					.theme-responsive-menu-container{
-						.theme-burger-icon{
-							&:before,&:after{
-						    right: 0;
-								left:auto;
-							}
-						}
-					}
-				}
-			}
-
-				// CURRENCY IN RESPONSIVE
-
-				.theme-navigation-and-icons{
-				  .theme-menu-area{
-				    .theme-menu{
-				      .theme-currency-option-container{
-				        .theme-currency-label{
-				          right: 0;
-									left: auto;
-				        }
-				        &.theme-currency-style-01,
-				        &.theme-currency-style-02,
-				        &.theme-currency-style-03{
-				          ul{
-				            &.theme-currency-open{
-				              right: 0px;
-											left:auto;
-				            }
-				          }
-				        }
-				      }
-				    }
-				  }
-				}
-		}
-
-		//  SUB MENU STYLE - 05
-
-		@if map-get($user_layout_vars,'submenu_style') == 05 {
-
-			.theme-navigation-and-icons{
-				.theme-menu-area{
-					.theme-menu{
-						.theme-sub-li-menu{
-							left: 10px;
-							right: auto;
-							&.theme-submenu-down-arrow,
-							&.theme-submenu-up-arrow{
-                transform:rotate(-135deg);
-								&:after{
-									right:5px;
-									left:auto;
-								}
-							}
-						}
-						ul{
-							li{
-								ul{
-									@include respond-to(mediumdevice){
-										right:0;
-										left:auto;
-										&.theme-sub-menu-position-change{
-											right:auto;
-											left: 0px;
-										}
-									}
-									li{
-										a{
-											.theme-sub-li-menu{
-												@include respond-to(mediumdevice){
-													left:10px;
-													right:auto;
-                          transform:rotate(-45deg) translate(0, -50%);
-												}
-											}
-										}
-									}
-
-									ul{
-										left:auto;
-										right:100%;
-										&.theme-sub-menu-position-change{
-											right:-100%;
-											left:auto;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			.theme-responsive-menu-area{
-				&.zpcontainer{
-					.theme-responsive-menu-container{
-						.theme-burger-icon{
-							&:before,&:after{
-						    right: 0;
-								left: auto;
-							}
-						}
-					}
-				}
-			}
-
-				// CURRENCY IN RESPONSIVE
-
-				.theme-navigation-and-icons{
-				  .theme-menu-area{
-				    .theme-menu{
-				      .theme-currency-option-container{
-				        .theme-currency-label{
-				          right: 0;
-									left:auto;
-				        }
-				        &.theme-currency-style-01,
-				        &.theme-currency-style-02,
-				        &.theme-currency-style-03{
-				          ul{
-				            &.theme-currency-open{
-				              right: 0px;
-											left:auto;
-				            }
-				          }
-				        }
-				      }
-				    }
-				  }
-				}
-
-		}
-
-		//  SUB MENU STYLE - 06
-
-		@if map-get($user_layout_vars,'submenu_style') == 06 {
-
-			.theme-navigation-and-icons{
-				.theme-menu-area{
-					.theme-menu{
-						.theme-sub-li-menu{
-							left: 10px;
-							right:auto;
-							&.theme-submenu-down-arrow,
-							&.theme-submenu-up-arrow{
-                transform:rotate(-135deg);
-								&:after{
-									right:5px;
-									left:auto;
-								}
-							}
-						}
-						ul{
-							li{
-								ul{
-									@include respond-to(mediumdevice){
-										right:0;
-										left:auto;
-										&.theme-sub-menu-position-change{
-											right:auto;
-											left:0;
-										}
-									}
-									li{
-										a{
-											.theme-sub-li-menu{
-												@include respond-to(mediumdevice){
-													left:10px;
-													right:auto;
-                          transform: rotate(-45deg) translate(0, -50%);
-												}
-											}
-										}
-									}
-									ul{
-										left:auto;
-										right:100%;
-										&.theme-sub-menu-position-change{
-											right:-100%;
-											left:auto;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			.theme-responsive-menu-area{
-				&.zpcontainer{
-					.theme-responsive-menu-container{
-						.theme-burger-icon{
-							&:before,&:after{
-						    right: 0;
-								left:auto;
-							}
-						}
-					}
-				}
-			}
-
-				// CURRENCY IN RESPONSIVE
-
-				.theme-navigation-and-icons{
-				  .theme-menu-area{
-				    .theme-menu{
-				      .theme-currency-option-container{
-				        .theme-currency-label{
-									right:0;
-				          left: auto;
-				        }
-				        &.theme-currency-style-01,
-				        &.theme-currency-style-02,
-				        &.theme-currency-style-03{
-				          ul{
-				            &.theme-currency-open{
-				              right: 0px;
-				              left: auto;
-				            }
-				          }
-				        }
-				      }
-				    }
-				  }
-				}
-
 		}
 
 		.theme-navigation-and-icons{

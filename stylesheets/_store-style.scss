@@ -5079,6 +5079,8 @@
           line-height: map-get($default_vars,'font-line-height-text');
         }
         .zpform-comment-rating-container{
+          padding-inline-end:5px;
+          padding-inline-start:5px;
           @include respond-to(mediumdevice){
             margin-block-end:10px;
           }
@@ -13856,6 +13858,8 @@
                 }
               }
               .zpcomments-reviews-ratings{
+                padding-inline-start:8px;
+                padding-inline-end:8px;
                 a{
                   font-size: map-get($default_vars,'font-size-details-product-links-info');
                 }
@@ -18322,7 +18326,7 @@
   .theme-product-specification-section {
     padding-block-start:0px;
     border-block-start:1px solid map-get($base_vars,'color-border');
-    margin-block-start:50px
+    margin-block-start:50px;
   }
 
   .theme-product-detail-tab-tabcontent-container {

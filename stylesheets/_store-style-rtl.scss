@@ -273,6 +273,10 @@ html[dir="rtl"] {
           }
         }
       }
+      .theme-product-ribbon-and-button-area {
+        left:auto;
+        right:10px;
+      }
     }
 
   }
@@ -443,6 +447,18 @@ html[dir="rtl"] {
             }
           }
         }
+        .theme-prod-coupons-outtercontainer {
+          .theme-prod-coupons-container {
+            .theme-prod-coupons-claimed-container {
+              .theme-prod-coupons-claimed-progress {
+                .theme-prod-coupons-claimed-progressbar {
+                  right:0px;
+                  left: auto;
+                }
+              }
+            }
+          }
+        }
       }
     }
 
@@ -502,6 +518,18 @@ html[dir="rtl"] {
                       }
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+        .theme-prod-coupons-outtercontainer {
+          .theme-prod-coupons-container {
+            .theme-prod-coupons-claimed-container {
+              .theme-prod-coupons-claimed-progress {
+                .theme-prod-coupons-claimed-progressbar {
+                  right:0px;
+                  left: auto;
                 }
               }
             }
@@ -717,7 +745,6 @@ html[dir="rtl"] {
           }
       }
     }
-
   }
 
   // PRODUCT PAGE STYLE - 06

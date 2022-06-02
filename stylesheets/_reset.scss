@@ -6,7 +6,7 @@
 	-webkit-box-sizing: border-box;
 }
 img{
-  max-width : 100%;
+  max-inline-size : 100%;
   border: 0 none;
   vertical-align: middle;
 }
@@ -31,7 +31,7 @@ button,
 input[type='submit'],
 input[type='reset'],
 input[type='button']{
-  margin-bottom: 0;
+  margin-block-end: 0;
   font-size: inherit;
   font-weight: normal;
   text-align: center;
