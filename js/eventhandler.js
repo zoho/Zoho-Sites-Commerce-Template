@@ -387,16 +387,18 @@ function deleteFromCartSuccess (e) {
 	}, 3000);
 	var lineItemCount = parseInt(document.querySelectorAll('[data-zs-view-cart-count]')[0].textContent);
 	var cartTableHead = document.querySelectorAll('[data-cart-table]');
-	var cartNotEmptyMessage = document.querySelectorAll('[data-cart-empty-message]');
+	var cartNotEmptyMessage = document.querySelectorAll('[data-zs-cart-empty-message]');
 	var cartEmptyShoppingButton = document.querySelectorAll('[data-cart-empty-shopping-button]');
 	var cartEmptyCheckoutButton = document.querySelectorAll('[data-cart-empty-checkout-button]');
+	var cartEmptyContinueLink = document.querySelectorAll('[data-zs-continue-shopping]');
 
 	if (lineItemCount == 0) {
-		addClass(cartTableHead[0],'theme-cart-empty')
+		addClass(cartTableHead[0],'theme-cart-empty');
 		removeClass(cartNotEmptyMessage[0],'theme-cart-error-message-not-empty');
 		addClass(cartNotEmptyMessage[0],'theme-cart-error-empty-message');
 		addClass(cartEmptyShoppingButton[0],'theme-cart-empty-shopping-button');
 		addClass(cartEmptyCheckoutButton[0],'theme-cart-empty-checkout-buton');
+		addClass(cartEmptyContinueLink[0],'theme-continue-link');
 	}
 }
 
