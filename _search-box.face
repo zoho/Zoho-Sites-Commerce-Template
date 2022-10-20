@@ -1,7 +1,7 @@
 <div class="theme-search theme-search-and-mini-cart-group-item" data-zs-search-container>
   <div class="theme-search-field-container {% if page.template_vars.header_style == "07" %}theme-search-field-container-07{% endif %}" data-search="zptheme-search-container">
     <form method="get" action="{{ page.search_url }}">
-      <input type="text" name="q" placeholder="{{i18n.get("search.page.title")}}" autofocus data-search-input="zptheme-search-input" data-zs-search-input />
+      <input type="text" name="q" placeholder="{{i18n.get("search.page.title")}}" data-search-input="zptheme-search-input" data-zs-search-input />
       {% if page.template_vars.header_style != "07" %}
       <input type="submit" name="" class="theme-search-go" value="{{i18n.get("search.button.label")}}" data-zs-search="{{page.primary_search}}" />
       {% endif %}

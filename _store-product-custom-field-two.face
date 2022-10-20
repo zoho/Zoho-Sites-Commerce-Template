@@ -1,4 +1,4 @@
-{% if product.is_out_of_stock == false  %}
+
     {% if product.is_product_custom_fields_enabled %}
     <div class="theme-custom-field-main-container {% if product.has_variants %}theme-custom-field-main-container-top-space{% endif %}" data-custom-field-main-container {% if product.has_variants %}style="display:none"{% endif %}>
     {% endif %}
@@ -11,7 +11,7 @@
 			{% if is_valid_field %}
       <div class="theme-product-options-varient-container" data-variant-id="{{ variant.variant_id }}" {% if product.has_variants %}style="display:none"{% endif %}>
           <div class="theme-product-options">
-            <div class="theme-product-sizes theme-custom-field-container {% if custom_field.field_type == 'check_box' %}theme-custom-field-checkbox-container{% endif %}" data-zs-customfield-container="{{custom_field.field_type}}{% if custom_field.edit_on_store == false %}-display{% endif %}">
+            <div class="theme-product-sizes theme-custom-field-container {% if custom_field.field_type == 'check_box' %}theme-custom-field-checkbox-container{% endif %}" {% if custom_field.edit_on_store == false %}data-zs-custom-field-display-id="{{ custom_field.customfield_id }}"{% endif %} data-zs-customfield-container="{{custom_field.field_type}}{% if custom_field.edit_on_store == false %}-display{% endif %}">
               {% if custom_field.field_type != "check_box" %}
               <div class="theme-product-option-label theme-custom-field-label" data-zs-customfield-label>
                 {{ custom_field.label }}
@@ -124,4 +124,3 @@
     {% if product.is_product_custom_fields_enabled %}
     </div>
     {% endif %}
-{% endif %}

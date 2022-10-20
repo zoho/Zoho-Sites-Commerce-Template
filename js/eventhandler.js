@@ -734,6 +734,7 @@ function selectedVariant(e){
 	var stockCartAttribute = document.querySelectorAll('[data-nostock-cart-add="theme-nostock-cart-add"]');
 	var noStockQuantity = document.querySelectorAll("[data-nostock-quantity]");
 	_hideCustomFieldsOfVariants(e.detail.productId);
+	_displayCustomFieldOfVariant(currentStock, e.detail.productId);
 	for(var i=0; i < allStocks.length; i++){
 		stocks = allStocks[i];
 		stock = stocks.getAttribute("data-variant-id-stock");
@@ -752,7 +753,6 @@ function selectedVariant(e){
 				addClass(stocks,'theme-out-of-stock');
 			}
 			else{
-				_displayCustomFieldOfVariant(currentStock, e.detail.productId);
 				stocks.style.display = "none";
 				for (sa=0;sa<stockCartAttribute.length;sa++){
 					stockCartAttribute[sa].style.display = 'flex';
