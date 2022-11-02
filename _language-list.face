@@ -1,0 +1,15 @@
+<div class="theme-lang-container" data-theme-lang-container>
+    <div class="theme-lang-label" data-theme-lang-code="{{ page.language }}" data-theme-lang-label>{{ page.language_name }}</div>
+    <div class="theme-lang-close">
+        <div class="theme-lang-close-label">{{i18n.get("language.common.label")}}</div>
+        <div onclick="hideLang()" class="theme-lang-close-icon" data-theme-lang-hide-mobile></div>
+    </div>
+    <ul class="theme-lang-dropdown" data-theme-lang-list-container>
+        {% for language in page.language_list %}
+        <li data-theme-lang-list data-theme-lang-status="{{ language.is_default }}" data-theme-lang-code="{{ language.language_code}}" data-theme-lang-path="{{ language.path}}">
+            <span data-theme-lang-name>{{ language.language }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="theme-lang-hide-overlay" data-theme-lang-hide-overlay onclick="hideLang()"></div>
+</div>

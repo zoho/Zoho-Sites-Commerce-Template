@@ -1,0 +1,257 @@
+// STYLE FOR LANGUAGE OPTION
+.theme-navigation-and-icons{
+    .theme-menu-area{
+        .theme-menu{
+            .theme-lang-container{
+                ul{
+                    li{
+                        border: none;
+                        span{
+                            padding-block-start: 14px;
+                            padding-block-end: 14px;
+                            padding-inline-start: 30px;
+                            padding-inline-end: 30px;
+                            line-height: initial;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.theme-lang-hide-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 285;
+    display: none;
+}
+.theme-lang-container-res{
+    display: none;
+    @media(max-width:991px){
+        display: flex;
+        z-index: 300;
+        .theme-lang-container{
+            &.theme-lang-dropdown-open{
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100vh;
+                overflow: auto;
+                background: map-get($default_vars,'color-currency-background');
+                z-index: 300;
+                .theme-lang-label{
+                    display: none;
+                }
+                .theme-lang-close{
+                    display: flex;
+                    padding-block-start: 20px;
+                    padding-block-end: 20px;
+                    padding-inline-start: 30px;
+                    padding-inline-end: 30px;
+                    align-items: center;
+                    justify-content: space-between;
+                    .theme-lang-close-label{
+                        line-height: normal;
+                        font-size: 16px;
+                        color: map-get($default_vars,'color-currency-option');
+                    }
+                    .theme-lang-close-icon{
+                        cursor: pointer;
+                        height: 23px;
+                        width: 23px;
+                        position: relative;
+                        &:after,
+                        &:before{
+                          background: map-get($default_vars,'color-mobile-burger-icon');
+                          content: "";
+                          height: 2px;
+                          left: 0;
+                          position: absolute;
+                          width: 100%;
+                          @include prefix(transform,rotate(-45deg));
+                          top: 10px;
+                        }
+                        &:before{
+                          @include prefix(transform,rotate(45deg));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.theme-lang-container{
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    color : map-get($default_vars,'color-currency-option');
+    margin-inline-start: auto;
+    margin-inline-end: 0px;
+    @media(max-width:991px){
+        display: flex;
+        flex: 1;
+        color: initial;
+        margin: 0px;
+        border-block-end: 1px solid map-get($default_vars,'color-currency-option-border');
+    }
+    .theme-lang-close{
+        display: none;
+    }
+    &.theme-lang-dropdown-open{
+        .theme-lang-hide-overlay{
+            display:block;
+            @media(max-width:991px){
+                display: none;
+            }
+        }
+        .theme-lang-label{
+            &:before {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+        .theme-lang-dropdown{
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-20px);
+            @media(max-width:991px){
+                display: flex;
+                transform: none;
+            }
+        }
+    }
+    .theme-lang-label{
+        cursor: pointer;
+        line-height: normal;
+        color : map-get($default_vars,'color-currency-option');
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-inline-start: 4px solid transparent;
+            border-inline-end: 4px solid transparent;
+            border-block-start: 6px solid map-get($default_vars,'color-currency-option');
+            position: absolute;
+            right: 0px;
+            margin: auto;
+            top: 50%;
+            transform: translateY(-50%);
+            @media(max-width:991px){
+                right: 25px;
+            }
+        }
+        @include respond-to(mediumdevice){
+          padding-block-start: 0px;
+          padding-block-end: 0px;
+          padding-inline-start: 5px;
+          padding-inline-end: 15px;
+          position: relative;
+        };
+        @media(max-width:991px){
+            padding-block-start: 14px;
+            padding-block-end: 14px;
+            padding-inline-start: 20px;
+            padding-inline-end: 20px;
+            font-family: map-get($default_vars,'font-family-currency-option');
+            font-size: map-get($default_vars,'font-size-base');
+            font-weight: map-get($default_vars,'font-weight-currency-option');
+            text-transform: map-get($default_vars,'font-transform-currency-option');
+            color : map-get($default_vars,'color-currency-option');
+            line-height: map-get($default_vars,'font-line-height-currency-option');
+            letter-spacing: map-get($default_vars,'font-letter-spacing-currency-option');
+            &:hover{
+              color : map-get($default_vars,'color-currency-option-hover');
+            }
+            border-block-end: 1px solid map-get($default_vars,'color-currency-option-border');
+        }
+    }
+    .theme-lang-dropdown{
+        cursor: pointer;
+        display: inline-flex;
+        flex-direction: column;
+        @include prefix(box-shadow,0 10px 14px RGBA(map-get($default_vars,'color-currency-shadow-rgba'),0.1));
+        border: 1px solid map-get($default_vars,'color-currency-option-border');
+        list-style: none;
+        padding: 0px;
+        min-inline-size: 120px;
+        position: absolute;
+        white-space: nowrap;
+        top: calc(100% + 30px);
+        right: 0px;
+        background: map-get($default_vars,'color-currency-background');
+        z-index: 300;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: transform .3s ease-in-out,opacity .3s ease-in-out;
+        @media(max-width:991px){
+            flex: 1;
+            position: static;
+            transform: none;
+            border: none;
+            box-shadow: none;
+            display: none;
+        }
+        li {
+            margin: 0px;
+            padding: 0px;
+            line-height: normal;
+            display: flex;
+            span {
+                flex: 1;
+                padding-block-start: 5px;
+                padding-block-end: 5px;
+                padding-inline-start: 10px;
+                padding-inline-end: 10px;
+                @include prefix(align-items,center);
+                font-family: map-get($default_vars,'font-family-currency-option');
+                font-size: map-get($default_vars,'font-size-currency-option');
+                font-weight: map-get($default_vars,'font-weight-currency-option');
+                text-transform: map-get($default_vars,'font-transform-currency-option');
+                color : map-get($default_vars,'color-currency-option');
+                line-height: map-get($default_vars,'font-line-height-currency-option');
+                letter-spacing: map-get($default_vars,'font-letter-spacing-currency-option');
+                &:hover{
+                  color : map-get($default_vars,'color-currency-option-hover');
+                }
+                @media(max-width:991px){
+                    padding-block-start: 10px;
+                    padding-block-end: 10px;
+                    padding-inline-start: 30px;
+                    padding-inline-end: 30px;
+                }
+            }
+        }
+    }
+}
+.zpdark-header-portion{
+    .theme-lang-container{
+        color: map-get($default_vars,'darkbg-color-currency-option');
+        .theme-lang-label{
+            color: map-get($default_vars,'darkbg-color-currency-option');
+            &:before {
+                border-block-start-color: map-get($default_vars,'darkbg-color-currency-option');
+            }
+        }
+    }
+    .theme-currency-option-container{
+        &.theme-lang-label{
+            color: map-get($default_vars,'darkbg-color-currency-option');
+            &:after{
+                @include respond-to(mediumdevice){
+                    border-color: map-get($default_vars,'darkbg-color-currency-option');
+                }
+            }
+        }
+    }
+}
+@if map-get($user_layout_vars,'header_style') == 06 {
+    .theme-lang-container{
+        @include respond-to(mediumdevice){
+            margin-inline-end: 15px;
+        }
+    }
+}
