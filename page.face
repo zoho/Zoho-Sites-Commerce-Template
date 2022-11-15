@@ -10,12 +10,12 @@
   <div class="theme-vertical-navigation-sidebar-container">
 {% endif %}
 
-  {% if page.template_vars.header_style == "06" && page.is_portal_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_multi_currency_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_menu_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_search_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_store_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_logo_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_title_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_caption_enabled && page.is_sidebar_enabled  %}
+  {% if page.template_vars.header_style == "06" && page.is_portal_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_multi_currency_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_menu_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_search_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_store_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_logo_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_title_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_caption_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_delivery_location_enabled && page.is_sidebar_enabled  %}
 
   <div class="theme-vertical-navigation-container {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %} {% if page.is_sidebar_enabled %} theme-veritical-nav-with-sidebar {% endif %}" data-theme-vertical-menu="zptheme-vertical-menu">
     <div data-megamenu-content-container class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %} {% if page.template_vars.header_background == "dark" && page.is_sidebar_enabled %}zpdark-section{% endif %}" data-banner-base-header="theme-banner-base-header">
       <div class="zpcontainer">
-        {% if page.is_portal_enabled || page.is_multi_currency_enabled %}
+        {% if page.is_portal_enabled || page.is_multi_currency_enabled || page.is_delivery_location_enabled %}
         <div class="theme-header-topbar theme-vertical-navigation-portal {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %}" data-banner-base-header="theme-banner-base-header">
           {% if page.is_portal_enabled %}
           <div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
@@ -27,6 +27,10 @@
           <div data-theme-currency-placeholder-non-res class="theme-currency-container-style-06-non-res">
             {% include '_store-currency-target' %}
           </div>
+          {% endif %}
+
+          {% if page.is_delivery_location_enabled %}
+            {% include '_store-select-location' %}
           {% endif %}
 
         </div>
@@ -45,10 +49,17 @@
         {% if page.is_menu_enabled %}
         <div class="theme-navigation-and-icons">
           <div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
-            <div class="theme-menu" data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem: {{page.template_vars.maxmenuitem}};position: theme-sub-menu-position-change; orientation: vertical; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
+            <div class="theme-menu {% if template_vars.navigation_menu_icon_position == "02" %} theme-menu-icon-top{% endif %} {% if template_vars.sub_menu_icon_position == "02"%} theme-submenu-icon-top{% endif %}" data-nav-menu-icon-width={{template_vars.size_nav_menu_icon_width | remove("px") }} data-nav-menu-icon-height={{template_vars.size_nav_menu_icon_height | remove("px") }} data-sub-menu-icon-height={{template_vars.size_sub_menu_icon_height | remove("px") }} data-sub-menu-icon-width={{template_vars.size_sub_menu_icon_width | remove("px") }} data-mega-menu-icon-width={{template_vars.size_mega_menu_icon_width | remove("px") }} data-mega-menu-icon-height={{template_vars.size_mega_menu_icon_height | remove("px") }} data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem: {{page.template_vars.maxmenuitem}};position: theme-sub-menu-position-change; orientation: vertical; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
               {{navi(menu, template_vars)}}
               <div data-theme-currency-placeholder-res class="theme-currency-res">
               </div>
+
+              {% if page.is_delivery_location_enabled %}
+                <div class="theme-delivery-location-mobile-container">
+                {% include '_store-select-location' %}
+                </div>
+              {% endif %}
+
               <div class="theme-close-mobile-currency" data-theme-currency-open-top>
                 <div class="theme-currency-open-label">
                   {{i18n.get("currency.label")}}

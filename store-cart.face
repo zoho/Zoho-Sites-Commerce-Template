@@ -12,7 +12,7 @@
 
 <div data-theme-header-six-res="theme-header-six-res" data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-01 theme-cart-checkout-headersix {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
 
-  {% if page.is_contact_information_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled %}
+  {% if page.is_contact_information_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled || page.is_delivery_location_enabled %}
 
   <div class="theme-header-topbar {% if !page.is_portal_enabled %}theme-headersix-hide-topbar{% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}">
     <div class="zpcontainer">
@@ -24,6 +24,10 @@
 
         {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
         		{% include '_social-links' %}
+        {% endif %}
+
+        {% if page.is_delivery_location_enabled %}
+          {% include '_store-select-location' %}
         {% endif %}
 
         {% if page.is_portal_enabled %}
@@ -62,8 +66,16 @@
       <div class="zpcontainer">
         <div class="zprow">
           <div class="zpcol-md-12">
-
+            
             <div class="theme-cart-area-container theme-cart-body {% if cart.items | size == 0 %}theme-cart-empty{% endif %}" data-cart-table>
+			  {% if page.is_delivery_location_enabled %}
+                <div data-zs-cart-delivery-availability-common-error-message class="theme-delivery-location-cart-details" style="display:none;">
+                  <p class="theme-cart-delivery-location-message">{{i18n.get("delivery_location_availability.cart.important_message.label")}}:</p>
+                  <p>{{i18n.get("delivery_location_availability.cart.notdeliverable.message")}}</p>
+                  <ol data-zs-cart-non-deliverable-items class="theme-cart-non-deliverable-products">
+                  </ol>
+                </div>
+              {% endif %}
 
               <div class="theme-shopping-cart-table-container theme-cart-details-container" data-cart-items>
                 <div class="theme-cart-table-row theme-cart-head" >
@@ -165,6 +177,9 @@
                       </button>
                     </span>
                   </div>
+		              {% if page.is_delivery_location_enabled %}
+                    <div data-zs-cartitem-non-deliverable-error-message class="theme-cartitem-non-deliverable-message">{{i18n.get("delivery_location_availability.cart.items.nondeliverable.message")}}</div>
+                  {% endif %}
                 </div>
                 {% endfor %}
               </div>
@@ -285,13 +300,13 @@
                               </g>
                           </g>
                       </svg>
-                    {% endif %}
+                    {% endif %} 
                     {% if page.template_vars.cartemptyimage != "" %}
                       <img src="{{page.template_vars.cartemptyimage}}" width="auto" height="auto">
                     {% endif %}
                     {{i18n.get("cart.message.empty_cart")}}
                   </div>
-
+                  
                   <div class="theme-cart-table-row theme-checkout-button-area" data-cart-summary-button>
                       <div class="theme-cart-table-data {% if cart.items | size == 0 %}theme-cart-empty-checkout-buton{% endif %}" data-cart-empty-checkout-button>
                         <button class="zpbutton zpbutton-type-primary zpbutton-size-md zpbutton-full-width theme-checkout-button" data-zs-checkout>{{i18n.get("cart.action.checkout")}}</button>
@@ -303,7 +318,7 @@
                 </div>
               </div>
             </div>
-
+            
             {% include "_loader" %}
           </div>
         </div>

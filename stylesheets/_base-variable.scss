@@ -1633,7 +1633,7 @@ font-weight-megamenu-text : normal,
 font-transform-megamenu-text : none,
 font-line-height-megamenu-text : normal,
 font-letter-spacing-megamenu-text : normal,
-color-megamenu-text : RGBA(convertHexToRgb(map-get($base_vars, 'color-secondary')),0.95), 
+color-megamenu-text : RGBA(convertHexToRgb(map-get($base_vars, 'color-secondary')),0.95),
 color-megamenu-text-hover-active-text : map-get($base_vars, 'color-primary'),
 color-megamenu-text-hover-active-arrow-text : map-get($base_vars, 'color-primary'),
 color-megamenu-background : map-get($base_vars, 'color-default'),
@@ -1648,7 +1648,52 @@ left-indent-megamenu-textcontent : 0px,
 
 color-tags-overlay-background : lighten(map-get($base_vars, 'color-primary'), 15%),
 color-tags-overlay-background-others : map-get($base_vars, 'color-light'),
-color-tags-overlay-background-prodlayout-2 : darken(map-get($base_vars, 'color-light'), 10%)
+color-tags-overlay-background-prodlayout-2 : darken(map-get($base_vars, 'color-light'), 10%),
+
+// MENU HIGHLIGHT PRIMARY
+color-highlight-primary : map-get($base_vars, 'color-default'),
+color-highlight-primary-hover-active-text : map-get($base_vars, 'color-default'),
+color-highlight-primary-background : map-get($base_vars, 'color-primary'),
+color-highlight-primary-hover-background : map-get($base_vars, 'color-primary'),
+size-menu-highlight-primary-border : 0,
+size-menu-highlight-primary-border-radius : 3px,
+style-menu-highlight-primary-border : none,
+color-highlight-primary-border : transparent,
+color-highlight-primary-hover-border : transparent,
+font-family-highlight-primary : map-get($base_vars,'font-family-base'),
+font-weight-highlight-primary : normal,
+font-transform-highlight-primary : none,
+font-line-height-highlight-primary : 1,
+font-letter-spacing-highlight-primary : normal,
+font-size-highlight-primary:15px,
+
+// MENU HIGHLIGHT SECONDARY
+color-highlight-secondary : map-get($base_vars, 'color-default'),
+color-highlight-secondary-hover-active-text : map-get($base_vars, 'color-default'),
+color-highlight-secondary-background : map-get($base_vars, 'color-secondary'),
+color-highlight-secondary-hover-background :  map-get($base_vars, 'color-secondary'),
+size-menu-highlight-secondary-border : 0,
+size-menu-highlight-secondary-border-radius : 3px,
+style-menu-highlight-secondary-border : solid,
+color-highlight-secondary-border : transparent,
+color-highlight-secondary-hover-border :  transparent,
+font-family-highlight-secondary : map-get($base_vars,'font-family-base'),
+font-weight-highlight-secondary : normal,
+font-transform-highlight-secondary : none,
+font-line-height-highlight-secondary : 1,
+font-letter-spacing-highlight-secondary : normal,
+font-size-highlight-secondary:15px,
+
+// DELIVERY LOCATION VARIABLE
+
+color-delivery-location-non-deliverable : #FF4949,
+color-delivery-location-unavailable: #1FB6FF,
+
+color-select-delivery-location: map-get($base_vars, 'color-secondary'),
+darkbg-color-select-delivery-location : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.8),
+
+color-delivery-location-loader: map-get($base_vars,'color-default'),
+color-delivery-location-loader-rgba: convertHexToRgb(map-get($base_vars, 'color-default'))
 );
 
 @import "_base-map";

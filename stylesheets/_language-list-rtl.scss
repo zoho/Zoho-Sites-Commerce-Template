@@ -23,13 +23,13 @@ html[dir="rtl"] {
     .theme-lang-container{
         &.theme-lang-dropdown-open{
             .theme-lang-label{
-                &:before {
+                &:after {
                     transform: translateY(-50%) rotate(-180deg);
                 }
             }
         }
         .theme-lang-label{
-            &:before {
+            &:after {
                 left: 0px;
                 right: auto;
                 @media(max-width:991px){

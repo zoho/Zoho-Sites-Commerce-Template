@@ -423,6 +423,18 @@
                         color:map-get($default_vars,'darkbg-color-hover-active-text-style-06-navigation');
                         background: transparent;
                       }
+                      &.menu-highlight-primary{
+                        >a{
+                          color:map-get($default_vars, 'color-highlight-primary-hover-active-text');
+                          background:map-get($default_vars, 'color-highlight-primary-hover-background');
+                        }
+                      }
+                      &.menu-highlight-secondary{
+                        >a{
+                          color:map-get($default_vars, 'color-highlight-secondary-hover-active-text');
+                          background:map-get($default_vars, 'color-highlight-secondary-hover-background');
+                        }
+                      }
                     }
                   }
                 }
@@ -729,6 +741,18 @@
                  color:map-get($default_vars,'color-navigation-hover-active-arrow-text');
                }
              }
+             &.menu-highlight-primary{
+              >a{
+                color:map-get($default_vars, 'color-highlight-primary-hover-active-text');
+                background:map-get($default_vars, 'color-highlight-primary-hover-background');
+              }
+            }
+            &.menu-highlight-secondary{
+              >a{
+                color:map-get($default_vars, 'color-highlight-secondary-hover-active-text');
+                background:map-get($default_vars, 'color-highlight-secondary-hover-background');
+              }
+            }
            }
           }
         }
@@ -746,6 +770,16 @@
                    @include prefix(transition,0.15s linear);
                  }
                }
+               &.menu-highlight-primary{
+                >a{
+                    color:map-get($default_vars, 'color-highlight-primary');
+                }
+              }
+              &.menu-highlight-secondary{
+                >a{
+                  color:map-get($default_vars, 'color-highlight-secondary');
+                }
+              }
                &:hover,
                &.theme-menu-selected{
                  > a{
@@ -754,6 +788,18 @@
                      color:map-get($default_vars,'darkbg-color-navigation-hover-active-arrow-text');
                    }
                  }
+                 &.menu-highlight-primary{
+                  >a{
+                    color:map-get($default_vars, 'color-highlight-primary-hover-active-text');
+                    background:map-get($default_vars, 'color-highlight-primary-hover-background');
+                  }
+                }
+                &.menu-highlight-secondary{
+                  >a{
+                    color:map-get($default_vars, 'color-highlight-secondary-hover-active-text');
+                    background:map-get($default_vars, 'color-highlight-secondary-hover-background');
+                  }
+                }
                }
                ul{
                   li{
@@ -765,6 +811,28 @@
                       > a{
                         @include respond-to(mediumdevice){
                           color:map-get($default_vars, 'color-submenu-hover-active-text');
+                        }
+                      }
+                    }
+                    &.menu-highlight-primary{
+                      >a{
+                        color:map-get($default_vars, 'color-highlight-primary');
+                      }
+                      &:hover,
+                      &.theme-menu-selected{
+                        > a{
+                            color:map-get($default_vars, 'color-highlight-primary-hover-active-text');
+                        }
+                      }
+                    }
+                    &.menu-highlight-secondary{
+                      >a{
+                        color:map-get($default_vars, 'color-highlight-secondary');
+                      }
+                      &:hover,
+                      &.theme-menu-selected{
+                        > a{
+                          color:map-get($default_vars, 'color-highlight-secondary-hover-active-text');
                         }
                       }
                     }
@@ -942,19 +1010,33 @@
                   color:map-get($default_vars,'darkbg-color-navigation');
                 }
               }
-              &:hover{
+              &.menu-highlight-primary{
+                >a{
+                  color:map-get($default_vars, 'color-highlight-primary');
+                }
+              }
+              &.menu-highlight-secondary{
+                >a{
+                  color:map-get($default_vars, 'color-highlight-secondary');
+                }
+              }
+              &:hover, &.theme-menu-selected{
                 >a{
                   @include respond-to(mediumdevice){
                     background:map-get($default_vars,'darkbg-color-navigation-hover-active-arrow-background');
                     color:map-get($default_vars,'darkbg-color-navigation-hover-active-text-arrow');
                   }
                 }
-              }
-              &.theme-menu-selected{
-                > a{
-                  @include respond-to(mediumdevice){
-                    background:map-get($default_vars,'darkbg-color-navigation-hover-active-arrow-background');
-                    color : map-get($default_vars,'darkbg-color-navigation-hover-active-text-arrow');
+                &.menu-highlight-primary{
+                  >a{
+                    color:map-get($default_vars, 'color-highlight-primary-hover-active-text');
+                    background:map-get($default_vars, 'color-highlight-primary-hover-background');
+                  }
+                }
+                &.menu-highlight-secondary{
+                  >a{
+                    color:map-get($default_vars, 'color-highlight-secondary-hover-active-text');
+                    background:map-get($default_vars, 'color-highlight-secondary-hover-background');
                   }
                 }
               }

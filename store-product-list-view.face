@@ -1,4 +1,4 @@
-<div class="theme-prod-box theme-product-list-style-{{page.template_vars.product_list_style}} theme-product-count-xsm-{{page.template_vars.store_product_list_count_xsm}} theme-product-count-sm-{{page.template_vars.store_product_list_count_sm}} theme-product-count-md-{{page.template_vars.store_product_list_count_md}}" data-zs-product-id = "{{ product.product_id }}">
+<div class="theme-prod-box theme-product-list-style-{{page.template_vars.product_list_style}} theme-product-count-xsm-{{page.template_vars.store_product_list_count_xsm}} theme-product-count-sm-{{page.template_vars.store_product_list_count_sm}} theme-product-count-md-{{page.template_vars.store_product_list_count_md}}" data-zs-product-id = "{{ product.product_id }}" {% if page.is_delivery_location_enabled && !product.is_deliverable %}data-zs-not-deliverable{% endif %}>
 
 	{% if page.template_vars.product_list_style == '01' %}
 

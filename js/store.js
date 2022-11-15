@@ -127,6 +127,7 @@ function selectVariant(currentVariant,selectedAttribute){
 function viewProductQuickLook (span) {
   var productLookUpUrl = span.getAttribute("data-zs-product-url");
   var xhttp = new XMLHttpRequest();
+  var qvInputTargetId = document.getElementById('product_quick_look');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       setInnerHTMLForId("product_quick_look", this.responseText);
@@ -153,6 +154,10 @@ function viewProductQuickLook (span) {
 			}
 			product_list_coupon.handleQuickViewCoupons(document.getElementById("product_quick_look"));
 			multi_currency.convertCurrencyPrice();
+
+      deliveryLocationPinInput = qvInputTargetId.querySelector('[data-zs-delivery-location-postalcode]');
+    	deliveryLocationPinError = qvInputTargetId.querySelector('[data-zs-delivery-availability-product-details-error-message]');
+    	deliveryLocationPinValidate(deliveryLocationPinInput,deliveryLocationPinError);
     }
   };
   xhttp.open("GET", productLookUpUrl, true);

@@ -5,13 +5,18 @@
             .theme-lang-container{
                 ul{
                     li{
-                        border: none;
+                        @media(max-width:991px){
+                            border: none;
+                            padding-inline-start: 0px;
+                        }
                         span{
-                            padding-block-start: 14px;
-                            padding-block-end: 14px;
-                            padding-inline-start: 30px;
-                            padding-inline-end: 30px;
-                            line-height: initial;
+                            @media(max-width:991px){
+                                padding-block-start: 14px;
+                                padding-block-end: 14px;
+                                padding-inline-start: 30px;
+                                padding-inline-end: 30px;
+                                line-height: initial;
+                            }
                         }
                     }
                 }
@@ -27,6 +32,21 @@
     top: 0px;
     z-index: 285;
     display: none;
+}
+.theme-lang-container-non-res{
+    display: none;
+    @include respond-to(mediumdevice){
+        display: flex;
+        margin-inline-start: auto;
+        margin-inline-end: 0px;
+    }
+    &.theme-lang-option-left-space {
+        @include respond-to(mediumdevice) {
+            margin-inline-start:13px;
+            padding-inline-start:8px;
+            border-inline-start:1px dotted map-get($default_vars, 'color-currency-option');
+        }
+    }
 }
 .theme-lang-container-res{
     display: none;
@@ -85,17 +105,14 @@
     }
 }
 .theme-lang-container{
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     position: relative;
     color : map-get($default_vars,'color-currency-option');
-    margin-inline-start: auto;
-    margin-inline-end: 0px;
     @media(max-width:991px){
         display: flex;
         flex: 1;
         color: initial;
-        margin: 0px;
         border-block-end: 1px solid map-get($default_vars,'color-currency-option-border');
     }
     .theme-lang-close{
@@ -109,7 +126,7 @@
             }
         }
         .theme-lang-label{
-            &:before {
+            &:after {
                 transform: translateY(-50%) rotate(180deg);
             }
         }
@@ -125,9 +142,33 @@
     }
     .theme-lang-label{
         cursor: pointer;
-        line-height: normal;
-        color : map-get($default_vars,'color-currency-option');
-        &:before {
+        @include respond-to(mediumdevice){
+            font-family: map-get($default_vars,'font-family-currency-option');
+            font-size: map-get($default_vars,'font-size-base');
+            font-weight: map-get($default_vars,'font-weight-currency-option');
+            text-transform: map-get($default_vars,'font-transform-currency-option');
+            color : map-get($default_vars,'color-currency-option');
+            line-height: map-get($default_vars,'font-line-height-currency-option');
+            letter-spacing: map-get($default_vars,'font-letter-spacing-currency-option');
+            padding-block-start: 0px;
+            padding-block-end: 0px;
+            padding-inline-start: 10px;
+            padding-inline-end: 15px;
+            position: relative;
+            &:hover{
+              color : map-get($default_vars,'color-currency-option-hover');
+            }
+        };
+        @media(max-width:991px){
+            color:map-get($default_vars, 'color-currency-option');
+            font-size: map-get($default_vars,'font-size-base');
+            font-family: map-get($default_vars,'font-family-navigation');
+            padding-block-start: 14px;
+            padding-block-end: 14px;
+            padding-inline-start: 20px;
+            padding-inline-end: 20px;
+        }
+        &:after {
             content: '';
             width: 0;
             height: 0;
@@ -143,33 +184,8 @@
                 right: 25px;
             }
         }
-        @include respond-to(mediumdevice){
-          padding-block-start: 0px;
-          padding-block-end: 0px;
-          padding-inline-start: 5px;
-          padding-inline-end: 15px;
-          position: relative;
-        };
-        @media(max-width:991px){
-            padding-block-start: 14px;
-            padding-block-end: 14px;
-            padding-inline-start: 20px;
-            padding-inline-end: 20px;
-            font-family: map-get($default_vars,'font-family-currency-option');
-            font-size: map-get($default_vars,'font-size-base');
-            font-weight: map-get($default_vars,'font-weight-currency-option');
-            text-transform: map-get($default_vars,'font-transform-currency-option');
-            color : map-get($default_vars,'color-currency-option');
-            line-height: map-get($default_vars,'font-line-height-currency-option');
-            letter-spacing: map-get($default_vars,'font-letter-spacing-currency-option');
-            &:hover{
-              color : map-get($default_vars,'color-currency-option-hover');
-            }
-            border-block-end: 1px solid map-get($default_vars,'color-currency-option-border');
-        }
     }
     .theme-lang-dropdown{
-        cursor: pointer;
         display: inline-flex;
         flex-direction: column;
         @include prefix(box-shadow,0 10px 14px RGBA(map-get($default_vars,'color-currency-shadow-rgba'),0.1));
@@ -187,6 +203,9 @@
         visibility: hidden;
         transform: translateY(10px);
         transition: transform .3s ease-in-out,opacity .3s ease-in-out;
+        @include respond-to(mediumdevice){
+            cursor: pointer;
+        }
         @media(max-width:991px){
             flex: 1;
             position: static;
@@ -214,6 +233,7 @@
                 color : map-get($default_vars,'color-currency-option');
                 line-height: map-get($default_vars,'font-line-height-currency-option');
                 letter-spacing: map-get($default_vars,'font-letter-spacing-currency-option');
+                cursor: pointer;
                 &:hover{
                   color : map-get($default_vars,'color-currency-option-hover');
                 }
@@ -228,21 +248,24 @@
     }
 }
 .zpdark-header-portion{
-    .theme-lang-container{
-        color: map-get($default_vars,'darkbg-color-currency-option');
-        .theme-lang-label{
-            color: map-get($default_vars,'darkbg-color-currency-option');
-            &:before {
-                border-block-start-color: map-get($default_vars,'darkbg-color-currency-option');
+    .theme-lang-container-non-res{
+        &.theme-lang-option-left-space{    
+            @include respond-to(mediumdevice){
+                border-inline-start-color: map-get($default_vars,'darkbg-color-currency-option');
             }
         }
     }
-    .theme-currency-option-container{
-        &.theme-lang-label{
+    .theme-lang-container{
+        @include respond-to(mediumdevice){
             color: map-get($default_vars,'darkbg-color-currency-option');
-            &:after{
+        }
+        .theme-lang-label{
+            @include respond-to(mediumdevice){
+                color: map-get($default_vars,'darkbg-color-currency-option');
+            }
+            &:after {
                 @include respond-to(mediumdevice){
-                    border-color: map-get($default_vars,'darkbg-color-currency-option');
+                    border-block-start-color: map-get($default_vars,'darkbg-color-currency-option');
                 }
             }
         }

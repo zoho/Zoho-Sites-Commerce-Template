@@ -82,6 +82,11 @@
   <div class="theme-prod-box-content theme-prod-name">
     <a href="{{ product.url }}">{{ product.name }}</a>
   </div>
+  {% if page.is_delivery_location_enabled %}
+  <div class="theme-prod-box-content theme-delivery-location-non-deliverable" data-zs-not-deliverable-message>
+     {{i18n.get("delivery_location_availability.product.not_deliverable.message")}}
+  </div>
+  {% endif %}
   <div class="theme-prod-box-content theme-prod-price">
     {% if product.has_variant_price %}
       <span data-zs-selling-price="{{ product.starts_with }}"> {{ product.starts_with | currency(currency) }} </span> - <span data-zs-selling-price="{{ product.ends_with }}"> {{ product.ends_with | currency(currency) }} </span>

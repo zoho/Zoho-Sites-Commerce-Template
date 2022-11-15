@@ -14,7 +14,7 @@
                             {% assign price = price_bracket.pricebook_rate | currency(currency) %}
                             {% capture price_span %}<span data-zs-pricelist-price="{{price_bracket.pricebook_rate}}">{{price}}</span>{% endcapture %}
                             {% if price_bracket.end_quantity != 0 %}
-                                {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}            
+                                {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}
                             {% else %}
                                 {{i18n.get("product.quantity.above_range.offer.message",price_bracket.start_quantity,price_span)}}
                             {% endif %}
@@ -29,7 +29,7 @@
                             {% assign price = price_bracket.pricebook_rate | currency(currency) %}
                             {% capture price_span %}<span data-zs-pricelist-price="{{price_bracket.pricebook_rate}}">{{price}}</span>{% endcapture %}
                             {% if price_bracket.end_quantity != 0 %}
-                                {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}            
+                                {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}
                             {% else %}
                                 {{i18n.get("product.quantity.above_range.offer.message",price_bracket.start_quantity,price_span)}}
                             {% endif %}
@@ -44,7 +44,7 @@
                                 {% assign price = price_bracket.pricebook_rate | currency(currency) %}
                                 {% capture price_span %}<span data-zs-pricelist-price="{{price_bracket.pricebook_rate}}">{{price}}</span>{% endcapture %}
                                 {% if price_bracket.end_quantity != 0 %}
-                                    {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}            
+                                    {{i18n.get("product.quantity.from_and_to_range.offer.message",price_bracket.start_quantity,price_bracket.end_quantity,price_span)}}
                                 {% else %}
                                     {{i18n.get("product.quantity.above_range.offer.message",price_bracket.start_quantity,price_span)}}
                                 {% endif %}
@@ -54,7 +54,7 @@
                 </div>
                 <p class="theme-prod-pricelist-show-btn" onclick="showMoreToggle(this,'show')">{{ i18n.get('product_filters.show_more.label') }}</p>
                 <p style="display: none;" class="theme-prod-pricelist-hide-btn" onclick="showMoreToggle(this,'hide')">{{ i18n.get('product_filters.show_less.label') }}</p>
-            {% endif %}                
+            {% endif %}
         </div>
         {% elif price_brackets_length != 0 %}
         <div data-zs-pricelist-variantid="{{variant.variant_id}}" class="theme-prod-pricelist" {% if (product.variants | size) != 1 %}style="display: none;"{% endif %}>
@@ -75,5 +75,5 @@
         </div>
         {% endif %}
     {% endfor %}
-    {% endif %} 
+    {% endif %}
 {% endif %}

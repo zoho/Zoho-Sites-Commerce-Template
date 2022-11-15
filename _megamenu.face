@@ -16,21 +16,24 @@
         {% assign splitRatio = menu_item.menu_item_options.split_ratio | split(",") %}
         {% assign menuColumns = menu_item.menu_items %}
         {% for menuColumn in menuColumns %}
-            {{ constructMegaMenuColumn(menuColumn, splitRatio[loop.index0]) }}
+            {{ constructMegaMenuColumn(menuColumn, splitRatio[loop.index0], template_vars) }}
         {% endfor %}
     </div>
 {% endmacro %}
 
-{% macro constructMegaMenuColumn(menu_item, splitValue) %}
+{% macro constructMegaMenuColumn(menu_item, splitValue, template_vars) %}
     <div class="zpelem-col zpcol-md-{{ splitValue | trim }} zpcol-sm-12 zpalign-self-">
         {% assign items = menu_item.menu_items %}
         {% for item in items %}
-            {{ constructMegaMenuItem(item) }}
+            {{ constructMegaMenuItem(item, template_vars) }}
         {% endfor %}
     </div>
 {% endmacro %}
 
-{% macro constructMegaMenuItem(menu_item) %}
+{% macro constructMegaMenuItem(menu_item, template_vars) %}
+    {% assign icon_enabled = menu_item.menu_icon_info && menu_item.menu_icon_info.icon_enabled %}
+	{% assign icon_top = (template_vars.mega_menu_icon_position == "02") && icon_enabled %}
+	{% assign highlight_menu = menu_item.highlight_info %}
     {% if menu_item.render_type == 3 %}
     <!-- image -->
     <div class="zpmm-element zpmm-title zpmm-image">
@@ -43,17 +46,27 @@
     <!-- image end -->
     {% elif menu_item.render_type == 2 || (menu_item.menu_item_options && menu_item.menu_item_options.is_heading) %}
     <!-- title -->
-    <div class="zpmm-element zpmm-title">
+    <div class="zpmm-element zpmm-title {% if highlight_menu && highlight_menu.highlight_enabled %} {% if highlight_menu.highlight_style == "1" %} menu-highlight-primary {% elif highlight_menu.highlight_style == "2"%} menu-highlight-secondary {% endif%}{% endif %}">
         <a class="zpmm-element-anchor" {% if menu_item.url %}href="{{menu_item.url}}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}{% endif %}>
-            <span class="zpmm-element-textcontent">{{ menu_item.item_name }}</span>
+            <span class="zpmm-element-menu-content {% if icon_top %} zpmm-element-menu-icon-top{% endif %}">
+            	{% if icon_enabled %}
+                    <span class="zpmm-element-menu-icon" data-theme-megamenu-icon="{{menu_item.menu_icon_info.icon_id}}" >{{ menu_item.icon_svg}}</span>
+                {% endif %}
+                <span class="zpmm-element-textcontent">{{ menu_item.item_name }}</span>
+            </span>
         </a>
     </div>
     <!-- title end -->
     {% else %}
     <!-- text -->
-    <div class="zpmm-element zpmm-text">
+    <div class="zpmm-element zpmm-text {% if highlight_menu && highlight_menu.highlight_enabled %} {% if highlight_menu.highlight_style == "1" %} menu-highlight-primary {% elif highlight_menu.highlight_style == "2"%} menu-highlight-secondary {% endif%}{% endif %}">
         <a class="zpmm-element-anchor" {% if menu_item.url %}href="{{menu_item.url}}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}{% endif %}>
-            <span class="zpmm-element-textcontent">{{ menu_item.item_name }}</span>
+            <span class="zpmm-element-menu-content {% if icon_top %} zpmm-element-menu-icon-top{% endif %}">
+            	{% if icon_enabled %}
+                    <span class="zpmm-element-menu-icon" data-theme-megamenu-icon="{{menu_item.menu_icon_info.icon_id}}" >{{ menu_item.icon_svg}}</span>
+                {% endif %}
+                <span class="zpmm-element-textcontent">{{ menu_item.item_name }}</span>
+            </span>
         </a>
     </div>
     <!-- text end -->

@@ -3,7 +3,7 @@ var h = 0;
 var ct = 0;
 var b = 0;
 var header, headerContainer, headerSearchCart, topBar, body, headerHeight, LastScrollVal, headerVal, contactInfo, socialIconInnerParent, socialIconParent, headerSearchCartPositionResponsive, headerSearchCartPositionNonResponsive, topbBarInfoPosition, menuParent, portal, brandingInfo, portalResponsive, portalNonResponsive;
-var scrollTopVal, headercontainerHeight, bannerLi, bannerBaseHeader, bannerArrowClass,darkHeader,responsiveSearchCartContainer,bannerThemecontainer,themeContentContainer,themeHeaderSixRes,themeHeaderSixResHeight,themeLogo,themeLogoHeight,themeLogoWidth,themeLogoHeightSlice,themeLogoWidthSlice,themeCurrencyList,themeCurrencyRes,themeCurrencyNonRes,themeSidebarContent,themeSidebarContentContainer,themeSidebarMobileContentContainer,hasHeaderSeven;
+var scrollTopVal, headercontainerHeight, bannerLi, bannerBaseHeader, bannerArrowClass,darkHeader,responsiveSearchCartContainer,bannerThemecontainer,themeContentContainer,themeHeaderSixRes,themeHeaderSixResHeight,themeLogo,themeLogoHeight,themeLogoWidth,themeLogoHeightSlice,themeLogoWidthSlice,themeCurrencyList,themeCurrencyRes,themeCurrencyNonRes,themeSidebarContent,themeSidebarContentContainer,themeSidebarMobileContentContainer,hasHeaderSeven, langContainer, langNonResContainer, langResContainer;
 
 function removeClass(element, className) {
     element && (element.className = element.className.replace(new RegExp(className, 'g'), ''));
@@ -35,6 +35,10 @@ function VariableInit() {
     themeCurrencyList = document.querySelectorAll('[data-theme-currency-list-container]')[0];
     themeCurrencyRes = document.querySelectorAll('[data-theme-currency-placeholder-res]')[0];
     themeCurrencyNonRes = document.querySelectorAll('[data-theme-currency-placeholder-non-res]')[0];
+
+    langContainer = $D.get('[data-theme-lang-container]');
+    langNonResContainer = $D.get('[data-theme-lang-container-non-res]');
+    langResContainer = $D.get('[data-theme-lang-container-res]');
 
     body = document.getElementsByTagName("body")[0];
     header = document.querySelectorAll('[data-header="zptheme-data-header"]')[0] || document.querySelectorAll('[data-header="zptheme-data-header-transparent"]')[0] || document.querySelectorAll('[data-header="none"]')[0];
@@ -104,6 +108,9 @@ function responsivechanges() {
     var offsetValLoad = window.pageYOffset;
 
     if (document.documentElement.clientWidth > 992) {
+        if (topBar && langContainer && (!headerSearchCart && !portal)) {
+            topBar.removeAttribute('style');
+        }
         if (headerSearchCartPositionResponsive) {
             headerSearchCartPositionResponsive.innerHTML = '';
         }
@@ -162,6 +169,9 @@ function responsivechanges() {
         }
         removeClass(body,'theme-body-overflowhidden');
     } else {
+        if (topBar && (!headerSearchCart && !portal)) {
+            topBar.setAttribute('style', 'display:none');
+        }
         if ((topBar && headerSearchCart && (headerSearchCart.parentElement !== headerSearchCartPositionResponsive)) || (headerSearchCart && verticalMmenu && (headerSearchCart.parentElement !== headerSearchCartPositionResponsive)) || (hasHeaderSeven && headerSearchCart && (headerSearchCart.parentElement !== headerSearchCartPositionResponsive))) {
             headerSearchCartPositionResponsive.appendChild(headerSearchCart);
         }
@@ -184,9 +194,6 @@ function responsivechanges() {
         }
         if (headerSearchCartPositionNonResponsive && topBar || headerSearchCartPositionNonResponsive && verticalMmenu) {
             headerSearchCartPositionNonResponsive.innerHTML = '';
-        }
-        if (topBar && (!headerSearchCart && !portal)) {
-            topBar.setAttribute('style', 'display:none');
         }
         if (!menuParent && !brandingInfo && headerSearchCart) {
             header.setAttribute('style', 'display:none');

@@ -1806,6 +1806,17 @@
            }
          }
        }
+	   .theme-lang-container-non-res{
+		   margin-inline-start:0px;
+		   align-self: flex-end;
+		   &.theme-lang-option-left-space {
+			   @include respond-to(mediumdevice) {
+				   margin-inline-start:13px;
+				   padding-inline-start:8px;
+				   border-inline-start:1px dotted map-get($default_vars, 'color-currency-option');
+			   }
+		   }
+	   }
      }
    }
    .theme-header {

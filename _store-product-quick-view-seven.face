@@ -10,20 +10,17 @@
 			<div class="theme-product-detail-column theme-product-detail-varients-container">
 				<div class="theme-product-name">
 					<h3>{{ product.name }}</h3>
-
-					{% if product.is_product_review_enabled %}
-					<div class="theme-rating-review-container">
-						<div class="theme-rating-review" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
-					</div>
-					{% endif %}
-
-					{% if !product.is_returnable %}
-							<div class="theme-prod-non-returnable">
-								{{i18n.get("product.label.non_returnable")}}
-							</div>
-					{% endif %}
-
 				</div>
+				{% if product.is_product_review_enabled %}
+				<div class="theme-rating-review-container">
+					<div class="theme-rating-review" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+				</div>
+				{% endif %}
+				{% if !product.is_returnable %}
+					<div class="theme-prod-non-returnable">
+						{{i18n.get("product.label.non_returnable")}}
+					</div>
+				{% endif %}
 				{% include '_store-product-pricing-seven' %}
 
 				{% if product.is_out_of_stock == true || product.is_out_of_stock == false || product.variants.is_out_of_stock == true || product.variants.is_out_of_stock == false %}
@@ -47,13 +44,31 @@
 				<div class="theme-product-details-page-link">
 					<a href="{{ product.url }}">{{i18n.get("product.label.view_full")}}</a>
 				</div>
+
+				{% if product.has_variants %}
 				<div class="theme-product-varients-area">
-					{% if product.has_variants %}
 						{% include "_store-product-variants-seven" %}
-					{% endif %}
-					{% include "_store-product-custom-field-seven" %}
-					{% include "_store-product-quantity-add-cart-seven" %}
 				</div>
+				{% endif %}
+
+				{% include "_store-product-custom-field-seven" %}
+
+				{% if page.is_delivery_location_enabled %}
+				<div class="theme-product-details-delivery-location-row">
+          <p class="theme-product-details-delivery-location-input-label">{{i18n.get("delivery_location_availability.label.delivery")}}</p>
+          <input class="theme-product-details-delivery-location-postalcode" type="text" maxlength="6" id="delivery_location_postalcode" data-zs-delivery-location-postalcode="" placeholder="{{i18n.get("delivery_location_availability.label.postal_code.enter")}}">
+          <p data-zs-delivery-availability-product-details-error-message class="theme-delivery-location-error" style="display:none;">{{i18n.get("delivery_location_availability.label.error.invalid.postal_code")}}</p>
+          <div class="theme-product-delivery-location-deliverable-details">
+						{% for variant in product.variants %}
+							<span class="theme-product-details-delivery-location-message" data-zs-delivery-availability-variant-id="{{ variant.variant_id }}" data-zs-delivery-availability data-zs-delivery-stock-availability-status style="display:none;">
+							</span>
+						{% endfor %}
+            <a id="delivery-availability-apply-postalcode" data-zs-product-details-delivery-availablity href="javascript:;">{{i18n.get("delivery_location_availability.label.delivery.location.select")}}</a>
+          </div>
+        </div>
+				{% endif %}
+
+				{% include "_store-product-quantity-add-cart-seven" %}
 			</div>
 			<button onclick="closeProductQuickLook(this)" class="theme-quickview-close">
 				{% include "_close-icon-seven" %}

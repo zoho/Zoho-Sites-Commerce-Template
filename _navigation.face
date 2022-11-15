@@ -17,9 +17,17 @@
 
 {% endmacro %}
 {% macro subnavi(menu_item, count, template_vars) %}
-	<li {% if menu_item.linked_mega_menu %}data-megamenu="{{menu_item.linked_mega_menu}}"{% endif %} {% if menu_item.more_menu %}data-zp-more-menu="mymenu1"{% endif %}>
+	{% assign menu_icon_enabled = menu_item.menu_icon_info && menu_item.menu_icon_info.icon_enabled %}
+	{% assign highlight_menu = menu_item.highlight_info %}
+	<li {% if highlight_menu && highlight_menu.highlight_enabled %} {% if highlight_menu.highlight_style == "1" %} class="menu-highlight-primary" {% elif highlight_menu.highlight_style == "2"%} class="menu-highlight-secondary" {% endif%}{% endif %} {% if menu_item.linked_mega_menu %}data-megamenu="{{menu_item.linked_mega_menu}}"{% endif %} {% if menu_item.more_menu %}data-zp-more-menu="mymenu1"{% endif %}>
 		{% assign sub_menus=menu_item.menu_items %}
-		<a href="{% if menu_item.url %}{{menu_item.url}}{% else %}javascript:;{% endif %}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}>{{menu_item.item_name}}
+		<a href="{% if menu_item.url %}{{menu_item.url}}{% else %}javascript:;{% endif %}" {% if menu_item.target %}target="_blank" {% else %}target="_self" {% endif %}>
+			<span class="theme-menu-content {% if menu_icon_enabled %} theme-menu-icon-enabled {% endif %}">
+            	{% if menu_icon_enabled %}
+                    <span class="theme-menu-icon" data-theme-menu-icon="{{menu_item.menu_icon_info.icon_id}}" >{{ menu_item.icon_svg}}</span>
+                {% endif %}
+                <span class="theme-menu-name" data-theme-menu-name="{{menu_item.item_name}}" >{{menu_item.item_name}}</span> 
+            </span>
 			{% if sub_menus && sub_menus | length > 0 %}
 				{% if count == 1 %}
 					<span class="theme-sub-li-menu theme-non-responsive-menu theme-submenu-down-arrow">

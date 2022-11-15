@@ -56,6 +56,23 @@
           </div>
           {% endif %}
           {% include "_store-product-custom-field-six" %}
+
+          {% if page.is_delivery_location_enabled %}
+          <div class="theme-product-details-delivery-location-row">
+            <div class="theme-delivery-location-details-06-input-error">
+              <input class="theme-product-details-delivery-location-postalcode" type="text" maxlength="6" id="delivery_location_postalcode" data-zs-delivery-location-postalcode="" placeholder="{{i18n.get("delivery_location_availability.label.postal_code.enter")}}">
+              <p data-zs-delivery-availability-product-details-error-message class="theme-delivery-location-error" style="display:none;">{{i18n.get("delivery_location_availability.label.error.invalid.postal_code")}}</p>
+            </div>
+            <div class="theme-product-delivery-location-deliverable-details">
+              {% for variant in product.variants %}
+                <span class="theme-product-details-delivery-location-message" data-zs-delivery-availability-variant-id="{{ variant.variant_id }}" data-zs-delivery-availability data-zs-delivery-stock-availability-status style="display:none;">
+                </span>
+              {% endfor %}
+              <a id="delivery-availability-apply-postalcode" data-zs-product-details-delivery-availablity href="javascript:;">{{i18n.get("delivery_location_availability.label.delivery.location.select")}}</a>
+            </div>
+          </div>
+          {% endif %}
+
           {% if product.is_out_of_stock == false  %}
           <div class="theme-product-properties-area theme-product-properties-area-quantitycart {% if !product.is_product_custom_fields_enabled && !product.has_variants %}theme-quantity-top-space{% endif %}">
             {% include "_store-product-quantity-add-cart-six" %}

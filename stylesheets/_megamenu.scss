@@ -213,6 +213,15 @@
                 a{
                     padding-block-start:4px;
                     padding-block-end:4px;
+                    .zpmm-element-menu-icon{
+                        margin-inline-end:5px;
+                        display:flex;
+                        align-items:center;
+                        svg{
+                            fill:currentcolor;
+                        }
+                    }
+
                     @media (max-width: 992px){
                         padding: 0px;
                     }
@@ -223,7 +232,7 @@
                         font-weight: map-get($default_vars,'font-weight-megamenu-heading');
                         text-transform: map-get($default_vars, 'font-transform-megamenu-heading');
                         line-height: map-get($default_vars, 'font-line-height-megamenu-heading-normal');
-                        letter-spacing: map-get($default_vars, 'font-letter-spacing-megamenu-heading');                    
+                        letter-spacing: map-get($default_vars, 'font-letter-spacing-megamenu-heading');
                         &:hover{
                             color: map-get($default_vars, 'color-megamenu-heading-hover-active-text');
                         }
@@ -234,17 +243,66 @@
                             }
                         }
                     }
+                    .zpmm-element-menu-content{
+                        display:flex;
+                        align-items:center;
+                        &.zpmm-element-menu-icon-top{
+                            flex-flow:column;
+                            align-items:flex-start;
+                            .zpmm-element-textcontent{
+                                padding-block-start:5px;
+                            }
+                        }
+                    }
+                }
+                &.menu-highlight-primary{
+                    a{
+                        @extend %primary-highlight;
+                        width:100%;
+                        @include respond-to(mediumdevice){
+                        	width:max-content;
+                        }
+                    }
+                    &:hover, &.theme-menu-selected {
+                        a{
+                            @extend %primary-highlight-hover;
+                        }
+                    }
+                }
+                &.menu-highlight-secondary{
+                    a{
+                        @extend %secondary-highlight;
+                        width:100%;
+                        @include respond-to(mediumdevice){
+                        	width:max-content;
+                        }
+                    }
+                    &:hover, &.theme-menu-selected {
+                        a{
+                            @extend %secondary-highlight-hover;
+                        }
+                    }
                 }
             }
             &.zpmm-text{
                 a{
                     padding-block-start:4px;
                     padding-block-end:4px;
+
+                    .zpmm-element-menu-icon{
+                        margin-inline-end:5px;
+                        display:flex;
+                        align-items:center;
+                        svg{
+                            fill:currentcolor;
+                        }
+                    }
+
                     @media (max-width: 992px){
                         padding: 0px;
                     }
                     @include respond-to(mediumdevice){
-                        color: map-get($default_vars, 'color-megamenu-text');                        
+                        color: map-get($default_vars, 'color-megamenu-text');
                         font-size: map-get($default_vars, 'font-size-megamenu-text');
                         font-family: map-get($default_vars,'font-family-megamenu-text');
                         font-weight: map-get($default_vars,'font-weight-megamenu-text');
@@ -261,10 +319,50 @@
                             }
                         }
                     }
+                    .zpmm-element-menu-content{
+                        display:flex;
+                        align-items:center;
+                        &.zpmm-element-menu-icon-top{
+                            flex-flow:column;
+                            align-items:flex-start;
+                            .zpmm-element-textcontent{
+                                padding-block-start:5px;
+                            }
+                        }
+                    }
                 }
                 .zpmm-element-textcontent{
                     @include respond-to(mediumdevice){
                       padding-inline-start:map-get($default_vars, 'left-indent-megamenu-textcontent');
+                    }
+                }
+                &.menu-highlight-primary{
+                    a{
+                        @extend %primary-highlight;
+                        width:100%;
+                        @include respond-to(mediumdevice){
+                        	width:max-content;
+                        }
+                    }
+                    &:hover, &.theme-menu-selected {
+                        a{
+                            @extend %primary-highlight-hover;
+                        }
+                    }
+                }
+                &.menu-highlight-secondary{
+                    a{
+                        @extend %secondary-highlight;
+                        width:100%;
+
+                        @include respond-to(mediumdevice){
+                        	width:max-content;
+                        }
+                    }
+                    &:hover, &.theme-menu-selected {
+                        a{
+                            @extend %secondary-highlight-hover;
+                        }
                     }
                 }
             }
@@ -272,6 +370,9 @@
                 @include flexbox;
                 @include prefix(align-items,center);
                 cursor: pointer;
+            }
+            &.menu-highlight-primary, &.menu-highlight-secondary{
+                display: flex;
             }
         }
         .zpmm-image{
@@ -281,7 +382,28 @@
                 max-inline-size:100%;
             }
         }
-    }    
+    }
+}
+.theme-responsive-menu-area{
+    .theme-responsive-menu{
+        .theme-menu {
+            ul {
+                li {
+                    .theme-sub-menu{
+                        .zpmm{
+                            .menu-highlight-primary, .menu-highlight-secondary{
+                                padding-inline-end:5px;
+                                >a{
+                                    margin:0;
+                                    width:100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 .zpmm-backdrop{
     display: none;

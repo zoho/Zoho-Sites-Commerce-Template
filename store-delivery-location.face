@@ -1,0 +1,52 @@
+{% assign addresses = delivery_availability_popup.addresses %}
+{% assign is_portal_user = delivery_availability_popup.is_portal_user %}
+{% assign address_size = addresses | size %}
+{% assign is_portal_enabled = delivery_availability_popup.is_portal_enabled %}
+{% assign postal_code = delivery_availability_popup.postal_code %}
+<div class="theme-delivery-location-popup-container" data-zs-delivery-availability-popup>
+  <div class="theme-delivery-location-popup">
+    <h4 class="theme-delivery-location-popup-heading" data-zs-delivery-location-popup-heading>{% if (!postal_code || postal_code == "") %}{{i18n.get("delivery_location_availability.label.delivery.location.select")}}{% else %}{{i18n.get("delivery_location_availability.label.delivery.location.change")}}{% endif %}</h4>
+    <button class="theme-delivery-location-close-button" aria-label="Dismiss alert" type="button" data-zs-delivery-availability-close="">
+      <span aria-hidden="true">
+        <svg viewBox="0 0 512 513.5" xmlns="http://www.w3.org/2000/svg">
+        	<path d="M115.5 92.5l140.5 140.5 140.5-140.5 23 23-140.5 140.5 140.5 140.5-23 23-140.5-140.5-140.5 140.5-23-23 140.5-140.5-140.5-140.5z" />
+        </svg>
+      </span>
+    </button>
+    {% if !is_portal_user %}
+    <p class="theme-delivery-location-select-message">{{i18n.get("delivery_location_availability.label.popup.message")}}</p>
+    {% endif %}
+    {% if address_size > 0 %}
+      {% for address in addresses %}
+      <div class="theme-delivery-location-popup-address-container {% if loop.last %}theme-delivery-location-popup-address-last{% endif %}">
+          <div class="theme-delivery-location-radio-button-container">
+              <input id="zs-shipping-address-selection-{{ loop.index }}" class="theme-delivery-location-popup-select-address" name="delivery-availability-address" type="radio" value={{ address.id }} data-zs-address-delivery-postalcode={{ address.postal_code }} {% if address.id == delivery_availability_popup.address_id %} checked="true" {% endif %}>
+              <span class="theme-delivery-location-popup-custom-radio-btn"></span>
+          </div>
+          <div class="theme-delivery-location-popup-address">
+              <label for="zs-shipping-address-selection-{{ loop.index }}" class="theme-delivery-location-popup-address-name">{{ address.full_name }}</label>
+              <p>
+                {{ address.address }},
+                {{ address.city }},
+                {% if address.state_name != "" %}{{ address.state_name }},{% endif %}
+                 {{ address.postal_code }}, {{ address.country_name }}.
+               </p>
+              <p class="theme-text-color-light">{{ address.telephone }}</p>
+          </div>
+      </div>
+      {% endfor %}
+    {% elif !is_portal_user && is_portal_enabled %}
+        <a href="/signin" class="zpbutton-wrapper zpbutton zpbutton-type-primary zpbutton-size-md zpbutton-style-roundcorner zpbutton-full-width">{{i18n.get("delivery_location_availability.label.popup.portaluser.signin")}}</a>
+    {% endif %}
+    {% if address_size > 0 || (!is_portal_user && is_portal_enabled) %}
+      <div class="zpdivider-container zpdivider-text zpdivider-align-center zpdivider-width100 zpdivider-line-style-solid zpdivider-style-none">
+        <div class="zpdivider-common">{{i18n.get("delivery_location_availability.label.or")}} {{i18n.get("delivery_location_availability.label.postal_code.enter")}}</div>
+      </div>
+    {% endif %}
+    <div class="theme-wrarehouse-popup-postalcode-apply">
+      <input class="theme-delivery-location-popup-postalcode" type="text" maxlength="6" id="delivery_location_postalcode" data-zs-delivery-location-postalcode data-theme-popup-postalcode placeholder="{{i18n.get("delivery_location_availability.label.postal_code.enter")}}" value="{{ postal_code }}">
+      <a href="javascript:;" class="zpbutton-wrapper zpbutton zpbutton-type-secondary zpbutton-size-sm zpbutton-style-roundcorner" id="delivery-availability-apply-postalcode" data-zs-delivery-location-apply-postalcode>{{i18n.get("delivery_location_availability.label.delivery.location.apply")}}</a>
+      <p data-zs-delivery-availability-popup-error-message class="theme-delivery-location-error" style="display:none;">{{i18n.get("delivery_location_availability.label.error.invalid.postal_code")}}</p>
+    </div>
+  </div>
+</div>

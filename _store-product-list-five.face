@@ -2,6 +2,11 @@
   <div class="theme-product-name">
     <a href="{{ product.url }}">{{ product.name }}</a>
   </div>
+  {% if page.is_delivery_location_enabled %}
+  <div class="theme-delivery-location-non-deliverable" data-zs-not-deliverable-message>
+     {{i18n.get("delivery_location_availability.product.not_deliverable.message")}}
+  </div>
+  {% endif %}
   <div class="theme-product-pricing-area">
     <div class="theme-product-lable-price">
       {% if product.has_variant_price %}

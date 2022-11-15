@@ -138,7 +138,35 @@ function addToCartSuccess (e) {
       }
 			else if(fieldType == 'dropdown' && fieldValue == "" ){
 				field.selectedIndex = 0;
-			}
+
+			} else if(fieldType == "attachment"){
+                var customfieldId = field.getAttribute("data-custom-field-id");
+                var variantElement =  field.closest('[data-variant-id]')
+
+                if(variantElement) {
+                    field.setAttribute("data-value", "")
+                    var attachmentClickElem = $D.get('[data-zs-attachment-upload-custom-field-id="' + customfieldId+ '"]', variantElement);
+                    if(attachmentClickElem) {
+                        var attachmentClickLabel = $D.get('[data-zs-attachment-label]', attachmentClickElem);
+                        if(attachmentClickLabel) {
+                            attachmentClickLabel.innerText = i18n.get("product.custom_field.attachment.change_file");
+                        }
+                    }
+
+                    var nameContainer = $D.get('[data-zs-attachment-name-container="'+ customfieldId +'"]', variantElement);
+                    if(nameContainer) {
+                        var fileName = $D.get('[data-attachment-file-name]', nameContainer);
+                        if(fileName) {
+                            fileName.innerText = "";
+                        }
+
+                        nameContainer.style.display = "none";
+                    }
+
+                }
+
+            }
+
 			else {
           field.value = fieldValue;
       }
@@ -196,8 +224,30 @@ function resetSelect(targetContainer){
 		dataResetQuantity[qr].value = 1 ;
 	}
 }
+
+var deliveryLocationLoader,deliveryLocationPinInput,deliveryLocationPinError;
+
+function deliveryLocationPinValidate(inputEl,pinErrorMsg){
+	if(inputEl && pinErrorMsg){
+		var inpPattern = /[^0-9a-zA-Z?*-]+/;
+		inputEl.addEventListener('keyup',function(){
+			var isPattern = inpPattern.test(this.value);
+			pinErrorMsg.innerText = i18n.get('delivery_location_availability.label.error.invalid.postal_code');
+			isPattern ? pinErrorMsg.style.display = "block" : pinErrorMsg.style.display ="none"
+		});
+	}
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
 	resetSelect(document);
+
+	deliveryLocationLoader = document.querySelector('[data-theme-delivery-location-loader]');
+
+	deliveryLocationPinInput = document.querySelector('[data-zs-delivery-location-postalcode]');
+	deliveryLocationPinError = document.querySelector('[data-zs-delivery-availability-product-details-error-message]');
+	deliveryLocationPinValidate(deliveryLocationPinInput,deliveryLocationPinError);
+
+
 	var loader = $D.get('[data-theme-loader]');
 	var body = document.getElementsByTagName("body")[0];
 	var contentContainer = $D.get('[data-theme-content-container]');
@@ -391,6 +441,25 @@ function deleteFromCartSuccess (e) {
 	var cartEmptyShoppingButton = document.querySelectorAll('[data-cart-empty-shopping-button]');
 	var cartEmptyCheckoutButton = document.querySelectorAll('[data-cart-empty-checkout-button]');
 	var cartEmptyContinueLink = document.querySelectorAll('[data-zs-continue-shopping]');
+	// NON DELIVERABLE PRODUCT LIST
+
+	var commonNonDeliCont = document.querySelector('[data-zs-cart-delivery-availability-common-error-message]');
+	var nonDeliverProdListCont = document.querySelector('[data-zs-cart-non-deliverable-items]');
+	var deletedProdId = deleteButtonElem.getAttribute('data-zs-product-variant-id');
+	if(nonDeliverProdListCont){
+		var deletedNonDeliProd = nonDeliverProdListCont.querySelector('[data-zs-delivery-availability-cart-item-id="'+deletedProdId+'"]');
+		var nonDeliverProdList = nonDeliverProdListCont.children;
+	}
+	if(deletedNonDeliProd){
+		deletedNonDeliProd.remove();
+	}
+	if(commonNonDeliCont && nonDeliverProdList && nonDeliverProdList.length == 0){
+		commonNonDeliCont.style.display = 'none';
+		var checkout_button = cartEmptyCheckoutButton[0].querySelector("[data-zs-checkout]");
+		if(checkout_button){
+			checkout_button.removeAttribute("disabled");
+		}
+	}
 
 	if (lineItemCount == 0) {
 		addClass(cartTableHead[0],'theme-cart-empty');
@@ -399,6 +468,9 @@ function deleteFromCartSuccess (e) {
 		addClass(cartEmptyShoppingButton[0],'theme-cart-empty-shopping-button');
 		addClass(cartEmptyCheckoutButton[0],'theme-cart-empty-checkout-buton');
 		addClass(cartEmptyContinueLink[0],'theme-continue-link');
+		if(commonNonDeliCont){
+			commonNonDeliCont.style.display = 'none';
+		}
 	}
 }
 
@@ -938,13 +1010,7 @@ function customFieldValidation(e) {
     var detail = e.detail;
     if(detail.custom_fields) {
     	detail.custom_fields.forEach( function (field) {
-            var customField_id = field.getAttribute('data-custom-field-id');
-            if(customField_id) {
-                var error_element = $D.get('[data-error-custom-id="'+ customField_id +'"]');
-                if(error_element) {
-                    $D.css(error_element, 'display', 'none');
-                }
-            }
+            _removeErrorElement(field);
         });
     }
 
@@ -1035,6 +1101,87 @@ function hideLoader(){
 	  }
 }
 
+function uploadAttachmentCustomFieldsSuccess(e) {
+    var data = e.detail;
+    var attachment_element = e.detail.field;
+    var variantElement = data.variant_element;
+
+    var customfieldId = attachment_element.getAttribute("data-custom-field-id");
+
+    attachment_element.setAttribute("data-value", data.document_id)
+
+    var attachmentClickElem = $D.get('[data-zs-attachment-upload-custom-field-id="' + customfieldId+ '"]', variantElement);
+    if(attachmentClickElem) {
+        var attachmentClickLabel = $D.get('[data-zs-attachment-label]', attachmentClickElem);
+        if(attachmentClickLabel) {
+            attachmentClickLabel.innerText = i18n.get("product.custom_field.attachment.change_file");
+        }
+    }
+
+    var nameContainer = $D.get('[data-zs-attachment-name-container="'+ customfieldId +'"]', variantElement);
+    if(nameContainer) {
+        var fileName = $D.get('[data-attachment-file-name]', nameContainer);
+        if(fileName) {
+            fileName.innerText = data.attachment_file_name;
+        }
+
+        $D.css(nameContainer, 'display', '');
+
+        var remove = $D.get('[data-zs-remove-attachment]', nameContainer);
+        remove.addEventListener("click", function(e) {
+            attachment_element.setAttribute("data-value", "")
+            $D.css(nameContainer, 'display', 'none');
+
+            var attachmentClickLabel = $D.get('[data-zs-attachment-label]', attachmentClickElem);
+            if(attachmentClickLabel) {
+                attachmentClickLabel.innerText = i18n.get("product.custom_field.attachment.choose_file");
+            }
+
+        });
+
+    }
+
+    //remove attachment error element
+    _removeErrorElement(attachment_element)
+}
+
+function elementLoader(e) {
+    var targetElement = e.detail.element;
+    var displayOption = e.detail.display;
+
+    if(targetElement) {
+        if(displayOption == "none") {
+            targetElement.removeAttribute("disabled");
+        } else {
+            targetElement.setAttribute("disabled", true);
+
+        }
+
+        var svgElement = $D.getByTag('svg', targetElement)[0];
+        if(svgElement) {
+            $D.css(svgElement, 'display', displayOption);
+
+        }
+    }
+
+}
+
+// Delivery location popup loader
+
+function showPopupLoader(e){
+	if(deliveryLocationLoader){
+		deliveryLocationLoader.style.display = 'flex';
+	}
+}
+function hidePopupLoader(e){
+	if(deliveryLocationLoader){
+		deliveryLocationLoader.style.display = 'none';
+	}
+	deliveryLocationPinInput = document.querySelector('[data-theme-popup-postalcode]');
+	deliveryLocationPinError = document.querySelector('[data-zs-delivery-availability-popup-error-message]');
+	deliveryLocationPinValidate(deliveryLocationPinInput,deliveryLocationPinError);
+}
+
 document.addEventListener("zp-event-add-to-cart-success", addToCartSuccess, false);
 document.addEventListener("zp-event-add-to-cart-failure", addToCartFailure, false);
 document.addEventListener("zp-event-update-to-cart-success", updateToCartSuccess, false);
@@ -1063,3 +1210,12 @@ document.addEventListener("zs-event-custom-field-validation-error", customFieldV
 document.addEventListener("zp-event-search-pending",showSearchLoader, false);
 
 document.addEventListener("zp-event-search-success",hideSearchLoader, false);
+
+document.addEventListener("zs-event-custom-field-attachment-success",uploadAttachmentCustomFieldsSuccess, false);
+document.addEventListener("zs-event-button-loader",elementLoader, false);
+
+document.addEventListener("zp-event-delivery-availability-popup-on-load",showPopupLoader, false);
+document.addEventListener("zp-event-delivery-availability-popup-loaded",hidePopupLoader, false);
+document.addEventListener("zp-event-check-delivery-availability-loading",showPopupLoader, false);
+document.addEventListener("zp-event-check-delivery-availability-success",hidePopupLoader, false);
+document.addEventListener("zp-event-check-delivery-availability-failure",hidePopupLoader, false);
