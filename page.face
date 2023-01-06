@@ -4,18 +4,31 @@
 
 {% comment %} THEME BANNER AREA START {% endcomment %}
 
+{% block header_area %}
+    
+    
+
+    {% if page.template_vars.header_style == "02" %}
+			{% capture header_block %} data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-{{ page.template_vars.header_style }} {% if page.is_banner_enabled && page.template_vars.banner_style == 'full-screen'|| page.is_banner_enabled && page.template_vars.banner_style == 'full-width-header-overlaped' %}theme-header-fixed{% endif %} {% if page.template_vars.header_background == "dark" %}theme-header-style-02-responsive-dark-background{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %} theme-mobile-header-style-{{ page.template_vars.mobile_header_style }}" {% endcapture %}
+    {% else %}
+      {% capture header_block %} data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-{{ page.template_vars.header_style }} {% if page.is_banner_enabled && page.template_vars.banner_style == 'full-screen'|| page.is_banner_enabled && page.template_vars.banner_style == 'full-width-header-overlaped' %}theme-header-fixed{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %} theme-mobile-header-style-{{ page.template_vars.mobile_header_style }}" {% endcapture %}
+    {% endif %}
+
+    {% include '_header' %}
+
+{% endblock %}
+
 {% block content_area %}
 
 {% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
   <div class="theme-vertical-navigation-sidebar-container">
 {% endif %}
 
-  {% if page.template_vars.header_style == "06" && page.is_portal_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_multi_currency_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_menu_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_search_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_store_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_logo_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_title_enabled && page.is_sidebar_enabled  || page.template_vars.header_style == "06" && page.is_caption_enabled && page.is_sidebar_enabled || page.template_vars.header_style == "06" && page.is_delivery_location_enabled && page.is_sidebar_enabled  %}
-
+{% if page.template_vars.header_style == "06" && page.is_sidebar_enabled && (page.is_portal_enabled || page.is_multi_currency_enabled || LANGUAGE_LIST_ENABLED || page.is_contact_information_enabled || page.is_menu_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || !hide_search_in_cart_checkout || !hide_carticon_in_cart_checkout || page.is_logo_enabled || page.is_title_enabled || page.is_caption_enabled || page.is_delivery_location_enabled) %}
   <div class="theme-vertical-navigation-container {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %} {% if page.is_sidebar_enabled %} theme-veritical-nav-with-sidebar {% endif %}" data-theme-vertical-menu="zptheme-vertical-menu">
     <div data-megamenu-content-container class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %} {% if page.template_vars.header_background == "dark" && page.is_sidebar_enabled %}zpdark-section{% endif %}" data-banner-base-header="theme-banner-base-header">
       <div class="zpcontainer">
-        {% if page.is_portal_enabled || page.is_multi_currency_enabled || page.is_delivery_location_enabled %}
+        {% if page.is_portal_enabled || page.is_multi_currency_enabled || LANGUAGE_LIST_ENABLED || page.is_delivery_location_enabled %}
         <div class="theme-header-topbar theme-vertical-navigation-portal {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion theme-dark-part-applied{% endif %}" data-banner-base-header="theme-banner-base-header">
           {% if page.is_portal_enabled %}
           <div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
@@ -28,6 +41,12 @@
             {% include '_store-currency-target' %}
           </div>
           {% endif %}
+          
+          {% if LANGUAGE_LIST_ENABLED %}
+              <div class="theme-lang-container-non-res {% if page.is_portal_enabled %}theme-lang-option-left-space{% endif %}" data-theme-lang-container-non-res>
+                  {% include '_language-list' %}
+              </div>
+          {% endif %}
 
           {% if page.is_delivery_location_enabled %}
             {% include '_store-select-location' %}
@@ -38,7 +57,7 @@
 
         {% include '_branding' %}
 
-        {% if page.is_search_enabled || page.is_store_enabled %}
+        {% if !hide_search_in_cart_checkout || !hide_carticon_in_cart_checkout %}
         <div class="theme-navigation-and-icons theme-vertical-navigation-search-cart-container">
           <div data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive" class="theme-search-cart-non-res">
             {% include '_search-store-cart-count' %}
@@ -51,6 +70,9 @@
           <div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
             <div class="theme-menu {% if template_vars.navigation_menu_icon_position == "02" %} theme-menu-icon-top{% endif %} {% if template_vars.sub_menu_icon_position == "02"%} theme-submenu-icon-top{% endif %}" data-nav-menu-icon-width={{template_vars.size_nav_menu_icon_width | remove("px") }} data-nav-menu-icon-height={{template_vars.size_nav_menu_icon_height | remove("px") }} data-sub-menu-icon-height={{template_vars.size_sub_menu_icon_height | remove("px") }} data-sub-menu-icon-width={{template_vars.size_sub_menu_icon_width | remove("px") }} data-mega-menu-icon-width={{template_vars.size_mega_menu_icon_width | remove("px") }} data-mega-menu-icon-height={{template_vars.size_mega_menu_icon_height | remove("px") }} data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem: {{page.template_vars.maxmenuitem}};position: theme-sub-menu-position-change; orientation: vertical; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
               {{navi(menu, template_vars)}}
+              {% if page.template_vars.mobile_header_style == "02" && page.is_portal_enabled %}
+                <div data-theme-portal-responsive="zptheme-portal-responsive" class="theme-portal-style"></div>
+              {% endif %}
               <div data-theme-currency-placeholder-res class="theme-currency-res">
               </div>
 
@@ -99,7 +121,7 @@
 
     </div>
   </div>
-  {% endif %}
+{% endif %}
 
   {% if page.template_vars.header_style == '06' && page.is_sidebar_enabled %}
     <div class="theme-vertical-header-sidebar-banner-content-container">

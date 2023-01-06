@@ -128,14 +128,15 @@ function bindSortByProducts() {
     if(sortByDD.length == 0){
       return;
     }
-
-    if(sortByDD[0] && sortByDD[0].tagName === TAG_NAME.SELECT) {
-      sortByDD[0].addEventListener(EVENT_TYPE.CHANGE, changeSortByProducts, false);
-    } else {
-        sortByDD.forEach(function(sort_by) {
-          sort_by.addEventListener(EVENT_TYPE.CLICK, clickSortByProducts, false);
-        });
-    }
+    sortByDD.forEach(function(sortByDDItem){
+      if(sortByDDItem && sortByDDItem.tagName === TAG_NAME.SELECT) {
+        sortByDDItem.addEventListener(EVENT_TYPE.CHANGE, changeSortByProducts, false);
+      } else {
+          sortByDDItem.forEach(function(sort_by) {
+            sort_by.addEventListener(EVENT_TYPE.CLICK, clickSortByProducts, false);
+          });
+      }
+    });
 }
 
 function bindPagination() {

@@ -11,8 +11,6 @@
     border-block-end:1px solid map-get($base_vars,'color-border');
     .theme-cart-table-data {
       .theme-cart-item-info {
-        @include respond-to(smalldevice) {
-        }
         ul {
           li {
             &:after {
@@ -274,4 +272,142 @@
   p{
     margin-block-end:10px;
   }
+}
+@media (max-width: 991px) {
+  .theme-hide-res-topbar-checkout{
+    display: none;
+  }
+  .theme-checkout-signin-wrap{
+    .theme-icon {
+      display: none;
+    }
+    .zpbutton{
+      margin-block-start: 10px;
+    }
+    .theme-checkout-signin:last-child{
+      margin-block-start: 30px;
+    }
+  }
+}
+@if map-get($user_layout_vars,'mobile_header_style') == 01 {
+  .theme-mobile-header-style-01{
+    &.theme-mobile-header-fixed{
+      @media(max-width: 991px){
+        position: relative !important;
+        top: initial;
+      }
+    }
+  }
+}
+@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+  .theme-mobile-header-style-02{
+    &.theme-mobile-header-fixed{
+      @media(max-width: 991px){
+        position: relative !important;
+        top: initial;
+      }
+    }
+  }
+  .theme-mobile-content-wrap{
+    @media(max-width: 991px){
+      overflow-y: scroll;
+      height: calc(100vh - 70px);
+    }
+  }
+  .zpheader-style-01{
+    &.theme-mobile-header-style-02{
+      @media(max-width: 991px){
+        height: 70px;
+      }
+    }
+  }
+}
+@if map-get($user_layout_vars,'header_style') == 02 {
+  .zpheader-style-02{
+    .theme-header{
+      .zpcontainer{
+        .theme-branding-info {
+          @include respond-to(mediumdevice) {
+            margin-inline-end: auto;
+          }
+        }
+      }
+    }
+  }
+	@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+		@media(max-width: 991px){
+			.theme-mobile-content-wrap{
+				overflow-y: scroll;
+				height: calc(100vh - 80px);
+			}
+      .zpheader-style-02{
+        &.theme-mobile-header-style-02{
+          height: 80px;
+          .theme-header-navigation-style {
+            display: none;
+          }
+        }
+      }
+		}
+	}
+}
+@if map-get($user_layout_vars,'header_style') == 03 {
+	@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+		@media(max-width: 991px){
+			.theme-mobile-content-wrap{
+				overflow-y: scroll;
+				height: calc(100vh - 70px);
+			}
+      .zpheader-style-03{
+        &.theme-mobile-header-style-02{
+          height: 70px;
+        }
+      }
+		}
+	}
+}
+@if map-get($user_layout_vars,'header_style') == 04 {
+	@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+		@media(max-width: 991px){
+			.theme-mobile-content-wrap{
+				overflow-y: scroll;
+				height: calc(100vh - 70px);
+			}
+      .zpheader-style-04{
+        &.theme-mobile-header-style-02{
+          height: 70px;
+        }
+      }
+		}
+	}
+}
+@if map-get($user_layout_vars,'header_style') == 05 {
+	@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+		@media(max-width: 991px){
+			.theme-mobile-content-wrap{
+				overflow-y: scroll;
+				height: calc(100vh - 70px);
+			}
+      .zpheader-style-05{
+        &.theme-mobile-header-style-02{
+          height: 70px;
+        }
+      }
+		}
+	}
+}
+@if map-get($user_layout_vars,'header_style') == 07 {
+	@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+		@media(max-width: 991px){
+			.theme-mobile-content-wrap{
+				overflow-y: scroll;
+				height: calc(100vh - 70px);
+			}
+      .zpheader-style-07{
+        &.theme-mobile-header-style-02{
+          height: 70px;
+        }
+      }
+		}
+	}
 }

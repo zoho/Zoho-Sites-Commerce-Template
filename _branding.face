@@ -1,9 +1,11 @@
 {% if page.is_logo_enabled || page.is_title_enabled || page.is_caption_enabled %}
 <div data-zs-branding class="theme-branding-info {% if page.template_vars.header_style == "02" && !page.is_search_enabled && !page.is_store_enabled %}theme-brand-style-02{% endif %}" data-theme-branding-info="zptheme-branding-info">
   {% if page.is_logo_enabled %}
-  <div data-zs-logo-container class="theme-logo-parent {% if !page.template_vars.is_mobile_logo_enabled %}theme-disable-logo-mobile{% endif %}">
+  <div data-zs-logo-container class="theme-logo-parent {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
     <a href="/">
-      <img data-zs-logo src="{% if page.logo.url %}{{ page.logo.url }}{% else %}{{ page.template_assets }}/images/logo.png{% endif %}" alt="{{page.site_title}}" style="height:{{page.logo.height}};width:{{page.logo.width}}" />
+      <picture>
+        <img data-zs-logo src="{% if page.logo.url %}{{ page.logo.url }}{% else %}{{ page.template_assets }}/images/logo.png{% endif %}" alt="{{page.site_title}}" style="height:{{page.logo.height}};width:{{page.logo.width}}" />
+      </picture>
     </a>
   </div>
   {% endif %}

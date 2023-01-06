@@ -1693,7 +1693,29 @@ color-select-delivery-location: map-get($base_vars, 'color-secondary'),
 darkbg-color-select-delivery-location : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.8),
 
 color-delivery-location-loader: map-get($base_vars,'color-default'),
-color-delivery-location-loader-rgba: convertHexToRgb(map-get($base_vars, 'color-default'))
+color-delivery-location-loader-rgba: convertHexToRgb(map-get($base_vars, 'color-default')),
+
+// MOBILE HEADER
+darkbg-color-mobileheader-icon : map-get($base_vars,'color-default'),
+color-mobileheader-icon : #424242,
+color-mobileheader-refine-wrapper-background : #f7f7f7,
+color-mobileheader-slide-background : map-get($base_vars, 'color-default'),
+color-mobileheader-sortby-arrow : #000000,
+color-mobileheader-search-field-border : #efefef,
+color-mobileheader-search-field-background : map-get($base_vars, 'color-default'),
+darkbg-color-mobileheader-search-field-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.1),
+color-mobileheader-search-button-background : map-get($base_vars, 'color-primary'),
+color-mobileheader-search-icon : #424242,
+darkbg-color-mobileheader-search-icon : map-get($base_vars, 'color-default'),
+size-mobileheader-search-icon : 24px,
+color-mobileheader-search-field : map-get($base_vars, 'color-text'),
+darkbg-color-mobileheader-search-field : map-get($base_vars, 'color-default'),
+font-family-mobileheader-search-field : map-get($base_vars,'font-family-base'),
+font-size-mobileheader-search-field : 14px,
+font-weight-mobileheader-search-field : normal,
+font-transform-mobileheader-search-field : none,
+font-line-height-mobileheader-search-field : normal,
+font-letter-spacing-mobileheader-search-field : normal
 );
 
 @import "_base-map";

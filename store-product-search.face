@@ -1,3 +1,8 @@
+{% comment %} COLLECTION SORTBY AND FILTER MOBILE FLOATING STYLE START {% endcomment %}
+	{% if page.template_vars.mobile_header_style == '03' %}
+		{% include "_mobileapp-refine-wrapper" %}
+	{% endif %}
+{% comment %} COLLECTION SORTBY AND FILTER MOBILE FLOATING STYLE END {% endcomment %}
 <div class="theme-collection-heading-view-all theme-collection-heading-view-all-search {% if page.template_vars.store_template_no == '03' %}theme-store-search-heading-temp-03{% endif %} {% if filters.is_enabled && filters.has_filters && search.products | size > 1 %}theme-filter-search-result-heading{% endif %}">
 	<h2 class="theme-section-heading {% if page.template_vars.store_template_no == '05' %}theme-store-search-heading-temp-05{% endif %} {% if page.template_vars.store_template_no == '07' %}theme-section-heading-temp-07{% endif %}">
 		{{i18n.get("search.result.title", search.query)}}

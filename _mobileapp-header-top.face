@@ -1,0 +1,57 @@
+<div data-zs-mobile-header-three-top class="theme-mobile-header-style-{{ page.template_vars.mobile_header_style }} theme-mobile-header-top {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
+    <div class="theme-mobile-header-nav-wrapper {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
+        {% if page.is_logo_enabled %}
+        <span data-zs-mobile-header-logo data-zs-logo-container class="theme-mobile-header-logo {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
+            <a href="/">
+                <picture>
+                    <img src="{% if page.logo.url %}{{ page.logo.url }}{% else %}{{ page.template_assets }}/images/logo.png{% endif %}" alt="{{page.site_title}}" />
+                </picture>
+            </a>
+        </span>
+        {% endif %}
+        {% if (page.is_title_enabled || page.is_caption_enabled) && (page.site_title || page.site_caption) %}
+        <span data-zs-mobile-header-sitename-caption class="theme-mobile-header-site-name-caption">
+            {% if page.is_title_enabled && page.site_title %}
+            <div data-zs-sitename class="theme-mobile-header-site-name {% if !page.template_vars.is_mobile_site_title_enabled %}theme-mobile-header-disable-sitename-mobile{% endif %}">
+                {{page.site_title}}
+            </div>
+            {% endif %}
+            {% if page.is_caption_enabled && page.site_caption %}
+            <div data-zs-sitecaption class="theme-mobile-header-site-caption {% if !page.template_vars.is_mobile_site_caption_enabled %}theme-mobile-header-disable-sitecaption-mobile{% endif %}">
+                {{page.site_caption}}
+            </div>
+            {% endif %}
+        </span>
+        {% endif %}
+        <span data-zs-mobile-header-nav class="theme-mobile-header-nav" style="display:none">
+            <span class="theme-mobile-header-goback">
+                <a href="javascript:;" onclick="history.go(-1);">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24"><path fillrule="evenodd" d="M20.25 11.25H5.555l6.977-6.976a.748.748 0 000-1.056.749.749 0 00-1.056 0L3.262 11.43A.745.745 0 003 12a.745.745 0 00.262.57l8.214 8.212a.75.75 0 001.056 0 .748.748 0 000-1.056L5.555 12.75H20.25a.75.75 0 000-1.5"></path></svg>
+                </a>
+            </span>
+            <span class="theme-mobile-header-pagename">{{ page.page_name }}</span>
+        </span>
+        {% if page.is_search_enabled %}
+            <span data-zs-mobile-header-search class="theme-mobile-header-search">
+                <span data-zs-mobile-header-search-icon class="theme-mobile-header-search-icon-wrapper">
+                    <svg class="theme-mobile-header-search-icon" width="24px" height="24px" viewBox="0 0 24 24"><path fillrule="evenodd" d="M3.438 9.754a6.415 6.415 0 016.408-6.409 6.415 6.415 0 016.409 6.409 6.416 6.416 0 01-6.409 6.408 6.416 6.416 0 01-6.408-6.408M21.816 20.87l-5.974-6.02a7.839 7.839 0 001.88-5.097c0-4.343-3.534-7.875-7.876-7.875-4.342 0-7.875 3.532-7.875 7.875 0 4.342 3.533 7.875 7.875 7.875a7.837 7.837 0 004.946-1.753l5.983 6.029a.73.73 0 001.037.004.733.733 0 00.004-1.038"></path></svg>
+                </span>
+                <div class="theme-search-field-container" data-search="zptheme-search-container">
+                    <span data-zs-mobile-header-search-back class="theme-mobile-header-search-back">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24"><path fillrule="evenodd" d="M20.25 11.25H5.555l6.977-6.976a.748.748 0 000-1.056.749.749 0 00-1.056 0L3.262 11.43A.745.745 0 003 12a.745.745 0 00.262.57l8.214 8.212a.75.75 0 001.056 0 .748.748 0 000-1.056L5.555 12.75H20.25a.75.75 0 000-1.5"></path></svg>
+                    </span>
+                    <form method="get" action="{{ page.search_url }}">
+                        <input type="text" name="q" placeholder="{{i18n.get("search.page.title")}}" autofocus data-search-input="zptheme-search-input" data-zs-search-input />
+                        <input type="submit" name="" class="theme-search-go" value="{{i18n.get("search.button.label")}}" data-zs-search="{{page.primary_search}}" />
+                        <span data-zs-mobile-header-search-clear class="theme-mobile-header-search-clear"></span>
+                    </form>
+                </div>
+            </span>
+        {% endif %}
+    </div>
+    {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
+    <div class="theme-delivery-location-mobile-container">
+        {% include '_store-select-location' %}
+    </div>
+    {% endif %}
+</div>

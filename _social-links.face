@@ -1,5 +1,5 @@
-<div class="theme-socialicon-parent {% if !page.is_contact_information_enabled || !page.email_id && !page.phone_number %}theme-social-icon-space{% endif %}" data-socialicon-parent="zptheme-socialicon-parent">
-  <ul class="theme-scoialicon-inner-parent" data-socialicon-inner-parent="zptheme-socialicon-inner-parent" >
+<div class="theme-socialicon-parent {% if !page.is_contact_information_enabled || !page.email_id && !page.phone_number %}theme-social-icon-space{% endif %}" {% if page.template_vars.mobile_header_style != "03" %}data-socialicon-parent="zptheme-socialicon-parent"{% endif %}>
+  <ul class="theme-scoialicon-inner-parent" {% if page.template_vars.mobile_header_style != "03" %}data-socialicon-inner-parent="zptheme-socialicon-inner-parent" {% endif %}>
     {% assign csp_arr = page.custom_social_profiles %}
     {% for socialIcon in page.social_icons_order %}
       {% if socialIcon contains "_csp_" %}

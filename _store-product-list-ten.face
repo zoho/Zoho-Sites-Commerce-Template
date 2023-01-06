@@ -1,0 +1,140 @@
+<select style="display: none;position:absolute;width:0px;height:0px" data-zs-variants>
+    {% for variant in product.variants %}
+      {% assign variant_options = variant.options %}
+      {% assign variant_option_identifiers = variant_options | map(attr="id") %}
+      {% assign variant_images = variant.images %}
+      {% assign variant_image_identifiers = variant_images | map(attr="id") %}
+      <option value='{{ variant.variant_id }}' data-zs-attributes='{{ variant_option_identifiers | json }}' data-zs-images='{{ variant_image_identifiers | json }}'></option>
+    {% endfor %}
+  </select>
+  <div class="theme-product-box-content">
+    <div class="theme-product-image-area">
+      <div class="theme-product-ribbon-area">
+        {% if product.on_sale %}
+          <div class="theme-product-sale-ribbon">{{i18n.get("product.message.sale")}}</div>
+        {% endif %}
+        {% if product.is_out_of_stock == true %}
+          <div class="theme-ribbon-stock">{{i18n.get("product.message.out_of_stock")}}</div>
+        {% endif %}
+      </div>
+      {% if product.images[0].is_placeholder_image %}
+      <picture>
+        <img data-src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+      </picture>
+        <noscript>
+          <picture>
+            <img src="{{ product.images[0].url }}" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+          </picture>
+        </noscript>
+      {% else %}
+      <picture>
+        <img data-src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" style="display:none;" />
+      </picture>
+        <noscript>
+          <picture>
+            <img src="{{ product.images[0].url }}/400x400" alt="{{product.images[0].alternate_text}}" title="{{product.images[0].title}}" />
+          </picture>
+        </noscript>
+      {% endif %}
+  
+      {% if product.is_out_of_stock == false %}
+      <div class="theme-product-quick-view-button" onclick="javascript:viewProductQuickLook(this)" data-zs-product-url="{{ product.quick_look_url }}">
+        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 6.967h3v2.005H9v3.008H7V8.972H4V6.967h3V3.96h2v3.007zm11 11.615L18.586 20l-4.243-4.254 1.414-1.417L20 18.582zM8 14.035c-3.308 0-6-2.698-6-6.015 0-3.316 2.692-6.015 6-6.015s6 2.699 6 6.015c0 3.317-2.692 6.015-6 6.015zM8 0C3.582 0 0 3.591 0 8.02c0 4.43 3.582 8.02 8 8.02s8-3.59 8-8.02C16 3.591 12.418 0 8 0z"/>
+        </svg>
+      </div>
+    {% else %}
+      <a href="{{ product.url }}" class="theme-out-of-stock-button">{{i18n.get("product.message.out_of_stock")}}</a>
+    {% endif %}
+      <a href="{{ product.url }}" class="theme-product-overlay-link {% if product.is_out_of_stock %}theme-out-of-stock-overlay{% endif %}"></a>
+    </div>
+    <div class="theme-product-details-area">
+      <div class="theme-product-name-rating-price">
+        <div class="theme-product-name">
+          <a href="{{ product.url }}">{{ product.name }}</a>
+        </div>
+      {% if page.is_delivery_location_enabled %}
+        <div class="theme-delivery-location-non-deliverable" data-zs-not-deliverable-message>
+           {{i18n.get("delivery_location_availability.product.not_deliverable.message")}}
+        </div>
+      {% endif %}
+        {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+        <div class="theme-prod-coupons-code-container">
+        {% endif %}
+        {% if product.is_product_review_enabled %}
+        <div class="theme-rating" data-zs-review-id = "{{ product.review_id }}" data-zs-review-type = "star-rating"></div>
+        {% endif %}
+        {% if page.is_coupon_enabled && product.is_out_of_stock == false %}
+          <span class="theme-prod-coupons-code" data-list-coupon-code style="display:none"></span>
+        </div>
+        <div class="theme-prod-coupons-container" data-zs-coupon-product-id = "{{ product.product_id }}"></div>
+        {% endif %}
+            <div class="theme-product-price">
+              {% include '_store-product-pricing-six' %}
+            </div>
+        </div>
+  
+        {% if product.has_variants && product.is_out_of_stock == false && !product.is_input_custom_field_available %}
+          <div class="theme-product-list-variants">
+          {% for attribute in product.attributes %}
+            {% if attribute.type == 'Color' %}
+              <div class="theme-product-list-variant-option">
+                <div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">{{i18n.get("product.message.attribute_select",attribute.name)}}</div>
+                <div class="theme-product-color-variant-container">
+                  <div class="theme-product-color-variations" data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">
+                      {% for coloroption in attribute.options %}
+                      <span class="theme-product-color">
+                        <label data-theme-color-label style="background:{{coloroption.color_code}}" onclick="selectcolor(this,'{{ attribute.name }}')">
+                          <input type="radio" name="{{ attribute.id }}" data-zs-attribute-option value="{{ coloroption.id }}" data-text="{{ coloroption.value }}">
+                        </label>
+                      </span>
+                      {% endfor %}
+                  </div>
+                </div>
+              </div>
+            {% else %}
+            <div class="theme-product-list-variant-option-select-container">
+              <div data-error-select-flag="{{product.product_id}}" data-error-select="{{attribute.name}}{{product.product_id}}" data-variant-error="theme-data-error-{{attribute.name}}" class="theme-variant-error" style="display:none;">{{i18n.get("product.message.attribute_select",attribute.name)}}</div>
+              <div class="theme-product-list-variant-option theme-product-list-variant-option-select">
+                <div class="theme-product-size-varient">
+                  <select data-zs-attribute-select data-zs-attribute-name="{{ attribute.name }}">
+                    <option value="-1">
+                      {{i18n.get("product.message.attribute_select",attribute.name)}}
+                    </option>
+                    {% for option in attribute.options %}
+                    <option data-zs-attribute-option value="{{ option.id }}">
+                      {{ option.value }}
+                    </option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+          <div data-theme-error="theme-error-message-{{product.product_id}}" style="display:none;"></div>
+          </div>
+        {% endif %}
+        <div class="theme-product-list-quantity-addcart">
+          {% if product.is_out_of_stock == false && !product.is_input_custom_field_available %}
+          <div class="theme-product-list-quantity">
+            <input type="text" name="qty" data-quantity="{{product.product_id}}" maxlength="999" title="quantity" value="1" onkeypress='return productQuantity(event);' data-theme-quantity data-zs-quantity class="theme-product-list-quantity-field">
+          </div>
+          <div class="theme-product-button-area">
+            <a href="javascript:;" data-zs-add-to-cart data-zs-product-variant-id="{{ product.variants[0].variant_id }}" class="zpbutton zpbutton-type-primary zpbutton-style-roundcorner zpbutton-size-sm">
+              <span data-theme-cart-button-text="theme-cart-button-text">{{i18n.get("product.action.add_to_cart")}}</span>
+              <span class="theme-cart-button-loading-container" data-theme-cart-button-loading="theme-cart-button-loading" style="display:none;">
+                <div class="theme-cart-button-loading-dots"><span></span><span></span><span></span></div>
+              </span>
+            </a>
+          </div>
+          {% elif (product.is_product_custom_fields_enabled && product.is_input_custom_field_available) || product.has_variants   %}
+          <div class="theme-product-button-area theme-product-button-details">
+            <a href="{{product.url}}" class="zpbutton zpbutton-type-primary zpbutton-style-roundcorner zpbutton-size-sm">{{i18n.get("product.label.view_details")}}</a>
+          </div>
+          {% endif %}
+          <div data-theme-error="theme-error-message-list-{{product.product_id}}" style="display:none;"></div>
+        </div>
+    </div>
+  </div>
+  

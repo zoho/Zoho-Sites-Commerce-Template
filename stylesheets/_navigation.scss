@@ -1,4 +1,4 @@
-%primary-highlight{
+@mixin primary-highlight($excludemediaquery){
 	line-height: map-get($default_vars,'font-line-height-highlight-primary');
 	letter-spacing: map-get($default_vars,'font-letter-spacing-highlight-primary');
 	color:map-get($default_vars, 'color-highlight-primary');
@@ -14,12 +14,16 @@
 	padding-block-start:10px;
 	padding-block-end:10px;
 	padding-inline-start:20px;
-	padding-inline-end:20px;
-	@media all and (max-width:768px){
-        padding-inline-end:45px;
-    }
+	@if $excludemediaquery == false {
+		padding-inline-end:20px;
+		@media all and (max-width:768px){
+			padding-inline-end:45px;
+		}
+	}@else {
+	    padding-inline-end:45px;
+	}
 }
-%secondary-highlight{
+@mixin secondary-highlight($excludemediaquery){
 	line-height: map-get($default_vars,'font-line-height-highlight-secondary');
 	letter-spacing: map-get($default_vars,'font-letter-spacing-highlight-secondary');
 	color:map-get($default_vars, 'color-highlight-secondary');
@@ -35,17 +39,21 @@
 	padding-block-start:10px;
 	padding-block-end:10px;
 	padding-inline-start:20px;
-	padding-inline-end:20px;
-	@media all and (max-width:768px){
-        padding-inline-end:45px;
-    }
+	@if $excludemediaquery == false {
+		padding-inline-end:20px;
+		@media all and (max-width:768px){
+			padding-inline-end:45px;
+		}
+	}@else {
+	    padding-inline-end:45px;
+	}
 }
-%primary-highlight-hover{
+@mixin primary-highlight-hover(){
 	color:map-get($default_vars, 'color-highlight-primary-hover-active-text');
 	border-color:map-get($default_vars, 'color-highlight-primary-hover-border');
 	background:map-get($default_vars, 'color-highlight-primary-hover-background');
 }
-%secondary-highlight-hover{
+@mixin secondary-highlight-hover(){
 	color:map-get($default_vars, 'color-highlight-secondary-hover-active-text');
 	border-color:map-get($default_vars, 'color-highlight-secondary-hover-border');
 	background:map-get($default_vars, 'color-highlight-secondary-hover-background');
@@ -148,29 +156,37 @@
 								}
 							 }
 							 &:first-child{
-								 margin-inline-start:0;
+								 @include respond-to(mediumdevice){
+									 margin-inline-start:0;
+								 }
 							 }
 							 &:last-child{
-								 margin-inline-end:0;
+								 @include respond-to(mediumdevice){
+									 margin-inline-end:0;
+								 }
 							 }
 							 &:hover{
 								 &:after{
-									 content:"";
-									 display: inline-block;
-									 height:3px;
-									 position: absolute;
-									 background: map-get($default_vars, 'color-navigation-hover-active-effect');
-									 top:-2px;
-									 left:0;
-									 width:100%;
+									 @include respond-to(mediumdevice){
+										 content:"";
+										 display: inline-block;
+										 height:3px;
+										 position: absolute;
+										 background: map-get($default_vars, 'color-navigation-hover-active-effect');
+										 top:-2px;
+										 left:0;
+										 width:100%;
+									 }
 								 }
 							 }
 							 a{
-								 padding-block-start:20px;
-								 padding-block-end:20px;
-								 padding-inline-start:0px;
-								 padding-inline-end:0px;
-								 line-height: map-get($default_vars,'font-line-height-navigation-normal');
+								 @include respond-to(mediumdevice){
+									 padding-block-start:20px;
+									 padding-block-end:20px;
+									 padding-inline-start:0px;
+									 padding-inline-end:0px;
+									 line-height: map-get($default_vars,'font-line-height-navigation-normal');
+								 }
 							 }
 							 &:hover{
 								 > a{
@@ -182,7 +198,9 @@
 								 ul{
 									 li{
 										 a{
-											 color:map-get($default_vars, 'color-submenu');
+											 @include respond-to(mediumdevice){
+												 color:map-get($default_vars, 'color-submenu');
+											 }
 										 }
 										 &:hover {
 											 > a{
@@ -199,21 +217,29 @@
 									 padding-block-start:0px;
 								 }
 								 li{
-									 margin:0;
+									 @include respond-to(mediumdevice){
+										 margin:0;
+									 }
 									 a{
-										 padding-block-start:10px;
-										 padding-block-end:10px;
-										 padding-inline-start:20px;
-										 padding-inline-end:20px;
+										 @include respond-to(mediumdevice){
+											 padding-block-start:10px;
+											 padding-block-end:10px;
+											 padding-inline-start:20px;
+											 padding-inline-end:20px;
+										 }
 									 }
 									 &:hover{
 										 > a{
-											 color:map-get($default_vars, 'color-submenu-hover-active-text');
+											 @include respond-to(mediumdevice){
+												 color:map-get($default_vars, 'color-submenu-hover-active-text');
+											 }
 										 }
 									 }
 									 &:hover{
 										 &:after{
-											 display: none;
+											 @include respond-to(mediumdevice){
+												 display: none;
+											 }
 										 }
 									 }
 									 &.theme-menu-selected{
@@ -224,25 +250,31 @@
 										 }
 										 &:after,
 										 &:before{
-											 display: none;
+											 @include respond-to(mediumdevice){
+												 display: none;
+											 }
 										 }
 									 }
 								 }
 							 }
 							 &.theme-menu-selected{
 								 > a{
-									 background: transparent;
-									 color:map-get($default_vars, 'color-hover-active-text-style-02-03-navigation');
+									 @include respond-to(mediumdevice){
+										 background: transparent;
+										 color:map-get($default_vars, 'color-hover-active-text-style-02-03-navigation');
+									 }
 								 }
 								 &:after{
-									 content:"";
-									 display: inline-block;
-									 height:3px;
-									 position: absolute;
-									 background: map-get($default_vars, 'color-navigation-hover-active-effect');
-									 top:-2px;
-									 left:0;
-									 width:100%;
+									 @include respond-to(mediumdevice){
+										 content:"";
+										 display: inline-block;
+										 height:3px;
+										 position: absolute;
+										 background: map-get($default_vars, 'color-navigation-hover-active-effect');
+										 top:-2px;
+										 left:0;
+										 width:100%;
+									 }
 								 }
 							 }
 						 }
@@ -315,11 +347,11 @@
 						> li{
 							&.menu-highlight-primary{
 								>a{
-									@extend %primary-highlight;
+									@include primary-highlight(false);
 								}
 								&:hover, &.theme-menu-selected {
 									>a{
-										@extend %primary-highlight-hover;
+										@include primary-highlight-hover();
 									}
 									&:after{
 										background: transparent;
@@ -329,21 +361,21 @@
 									li{
 										&.menu-highlight-primary{
 											>a{
-												@extend %primary-highlight;
+												@include primary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %primary-highlight-hover;
+													@include primary-highlight-hover();
 												}
 											}
 										}
 										&.menu-highlight-secondary{
 											>a{
-												@extend %secondary-highlight;
+												@include secondary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %secondary-highlight-hover;
+													@include secondary-highlight-hover();
 												}
 											}
 										}
@@ -352,11 +384,11 @@
 							}
 							&.menu-highlight-secondary{
 								>a{
-									@extend %secondary-highlight;
+									@include secondary-highlight(false);
 								}
 								&:hover, &.theme-menu-selected {
 									>a{
-										@extend %secondary-highlight-hover;
+										@include secondary-highlight-hover();
 									}
 									&:after{
 										background: transparent;
@@ -366,21 +398,21 @@
 									li{
 										&.menu-highlight-primary{
 											>a{
-												@extend %primary-highlight;
+												@include primary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %primary-highlight-hover;
+													@include primary-highlight-hover();
 												}
 											}
 										}
 										&.menu-highlight-secondary{
 											>a{
-												@extend %secondary-highlight;
+												@include secondary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %secondary-highlight;
+													@include secondary-highlight(false);
 												}
 											}
 										}
@@ -391,21 +423,21 @@
 								li{
 									&.menu-highlight-primary{
 										>a{
-											@extend %primary-highlight;
+											@include primary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %primary-highlight-hover;
+												@include primary-highlight-hover();
 											}
 										}
 									}
 									&.menu-highlight-secondary{
 										>a{
-											@extend %secondary-highlight;
+											@include secondary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %secondary-highlight-hover;
+												@include secondary-highlight-hover();
 											}
 										}
 									}
@@ -414,33 +446,33 @@
 							&:hover,&.theme-menu-selected{
 								&.menu-highlight-primary{
 									>a{
-										@extend %primary-highlight;
+										@include primary-highlight(false);
 									}
 								}
 								&.menu-highlight-secondary{
 									>a{
-										@extend %secondary-highlight;
+										@include secondary-highlight(false);
 									}
 								}
 								ul{
 									li{
 										&.menu-highlight-primary{
 											>a{
-												@extend %primary-highlight;
+												@include primary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %primary-highlight-hover;
+													@include primary-highlight-hover();
 												}
 											}
 										}
 										&.menu-highlight-secondary{
 											>a{
-												@extend %secondary-highlight;
+												@include secondary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %secondary-highlight-hover;
+													@include secondary-highlight-hover();
 												}
 											}
 										}
@@ -524,6 +556,7 @@
 				 .theme-menu{
 					 > ul{
 						 > li{
+							@include respond-to(mediumdevice){
 							 @include prefix(align-self,stretch);
 							 margin-block-start:-20px;
 							 margin-block-end:-20px;
@@ -636,6 +669,7 @@
 									 width:100%;
 								 }
 							 }
+							}
 						 }
 					 }
 				 }
@@ -663,7 +697,9 @@
 					.theme-menu-area {
 						 .theme-menu{
 							 ul{
-								 @include prefix(justify-content,flex-start);
+								 @include respond-to(mediumdevice){
+									 @include prefix(justify-content,flex-start);
+								 }
 								 li{
 								   &:hover{
 								     &:after{
@@ -714,11 +750,11 @@
 						> li{
 							&.menu-highlight-primary{
 								>a{
-									@extend %primary-highlight;
+									@include primary-highlight(false);
 								}
 								&:hover, &.theme-menu-selected {
 									>a{
-										@extend %primary-highlight-hover;
+										@include primary-highlight-hover();
 									}
 									&:after{
 										background: transparent;
@@ -728,21 +764,21 @@
 									li{
 										&.menu-highlight-primary{
 											>a{
-												@extend %primary-highlight;
+												@include primary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %primary-highlight-hover;
+													@include primary-highlight-hover();
 												}
 											}
 										}
 										&.menu-highlight-secondary{
 											>a{
-												@extend %secondary-highlight;
+												@include secondary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %secondary-highlight-hover;
+													@include secondary-highlight-hover();
 												}
 											}
 										}
@@ -752,11 +788,11 @@
 							}
 							&.menu-highlight-secondary{
 								>a{
-									@extend %secondary-highlight;
+									@include secondary-highlight(false);
 								}
 								&:hover, &.theme-menu-selected {
 									>a{
-										@extend %secondary-highlight-hover;
+										@include secondary-highlight-hover();
 									}
 									&:after{
 										background: transparent;
@@ -766,21 +802,21 @@
 									li{
 										&.menu-highlight-primary{
 											>a{
-												@extend %primary-highlight;
+												@include primary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %primary-highlight-hover;
+													@include primary-highlight-hover();
 												}
 											}
 										}
 										&.menu-highlight-secondary{
 											>a{
-												@extend %secondary-highlight;
+												@include secondary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %secondary-highlight-hover;
+													@include secondary-highlight-hover();
 												}
 											}
 										}
@@ -791,21 +827,21 @@
 								li{
 									&.menu-highlight-primary{
 										>a{
-											@extend %primary-highlight;
+											@include primary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %primary-highlight-hover;
+												@include primary-highlight-hover();
 											}
 										}
 									}
 									&.menu-highlight-secondary{
 										>a{
-											@extend %secondary-highlight;
+											@include secondary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %secondary-highlight-hover;
+												@include secondary-highlight-hover();
 											}
 										}
 									}
@@ -814,33 +850,33 @@
 							&:hover,&.theme-menu-selected{
 								&.menu-highlight-primary{
 									>a{
-										@extend %primary-highlight;
+										@include primary-highlight(false);
 									}
 								}
 								&.menu-highlight-secondary{
 									>a{
-										@extend %secondary-highlight;
+										@include secondary-highlight(false);
 									}
 								}
 								ul{
 									li{
 										&.menu-highlight-primary{
 											>a{
-												@extend %primary-highlight;
+												@include primary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %primary-highlight-hover;
+													@include primary-highlight-hover();
 												}
 											}
 										}
 										&.menu-highlight-secondary{
 											>a{
-												@extend %secondary-highlight;
+												@include secondary-highlight(false);
 											}
 											&:hover, &.theme-menu-selected {
 												>a{
-													@extend %secondary-highlight-hover;
+													@include secondary-highlight-hover();
 												}
 											}
 										}
@@ -886,18 +922,22 @@
 						 }
 						 li{
 							 a{
-								 margin: 0px;
+								@include respond-to(mediumdevice){
+									margin: 0px;
+								}
 							 }
 						 }
 						 ul{
 							 @include respond-to(mediumdevice){
 								 margin-inline-start:0px;
 							 }
-               .menu-highlight-primary, .menu-highlight-secondary {
-                   > a{
-                       margin: 5px;
-                   }
-               }
+							.menu-highlight-primary, .menu-highlight-secondary {
+								> a{
+									@include respond-to(mediumdevice){
+										margin: 5px;
+									}
+								}
+							}
 						 }
 					 }
 				 }
@@ -1041,11 +1081,11 @@
 					> li{
 						&.menu-highlight-primary{
 							>a{
-								@extend %primary-highlight;
+								@include primary-highlight(false);
 							}
 							&:hover, &.theme-menu-selected {
 								>a{
-									@extend %primary-highlight-hover;
+									@include primary-highlight-hover();
 								}
 								&:after{
 									background: transparent;
@@ -1055,11 +1095,11 @@
 								li{
 									&.menu-highlight-primary{
 										>a{
-											@extend %primary-highlight;
+											@include primary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %primary-highlight-hover;
+												@include primary-highlight-hover();
 											}
 											&:after{
 												background: transparent;
@@ -1068,11 +1108,11 @@
 									}
 									&.menu-highlight-secondary{
 										>a{
-											@extend %secondary-highlight;
+											@include secondary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %secondary-highlight-hover;
+												@include secondary-highlight-hover();
 											}
 											&:after{
 												background: transparent;
@@ -1085,11 +1125,11 @@
 						}
 						&.menu-highlight-secondary{
 							>a{
-								@extend %secondary-highlight;
+								@include secondary-highlight(false);
 							}
 							&:hover, &.theme-menu-selected {
 								>a{
-									@extend %secondary-highlight-hover;
+									@include secondary-highlight-hover();
 								}
 								&:after{
 									background: transparent;
@@ -1099,11 +1139,11 @@
 								li{
 									&.menu-highlight-primary{
 										>a{
-											@extend %primary-highlight;
+											@include primary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %primary-highlight-hover;
+												@include primary-highlight-hover();
 											}
 											&:after{
 												background: transparent;
@@ -1112,11 +1152,11 @@
 									}
 									&.menu-highlight-secondary{
 										>a{
-											@extend %secondary-highlight;
+											@include secondary-highlight(false);
 										}
 										&:hover, &.theme-menu-selected {
 											>a{
-												@extend %secondary-highlight-hover;
+												@include secondary-highlight-hover();
 											}
 											&:after{
 												background: transparent;
@@ -1130,11 +1170,11 @@
 							li{
 								&.menu-highlight-primary{
 									>a{
-										@extend %primary-highlight;
+										@include primary-highlight(false);
 									}
 									&:hover, &.theme-menu-selected {
 										>a{
-											@extend %primary-highlight-hover;
+											@include primary-highlight-hover();
 										}
 										&:after{
 											background: transparent;
@@ -1143,11 +1183,11 @@
 								}
 								&.menu-highlight-secondary{
 									>a{
-										@extend %secondary-highlight;
+										@include secondary-highlight(false);
 									}
 									&:hover, &.theme-menu-selected {
 										>a{
-											@extend %secondary-highlight-hover;
+											@include secondary-highlight-hover();
 										}
 										&:after{
 											background: transparent;
@@ -1984,7 +2024,9 @@
 									li{
 										&.menu-highlight-primary, &.menu-highlight-secondary{
 											>a{
-												margin:5px;
+												@include respond-to(mediumdevice){
+													margin:5px;
+												}
 											}
 										}
 									}
@@ -2769,7 +2811,9 @@
 										li{
 											&.menu-highlight-primary, &.menu-highlight-secondary{
 												>a{
-													margin:5px;
+													@include respond-to(mediumdevice){
+														margin:5px;
+													}
 												}
 											}
 										}
@@ -3284,14 +3328,14 @@
 										margin-inline-start:0px;
 										margin-inline-end:5px;
                                         .theme-sub-li-menu{
-                                            right:10px;
+                                            right:15px;
                                         }
 									}
 								}
 							}
 						}
 						.theme-sub-li-menu.theme-responsive-menu{
-							right:15px;
+							right:20px;
 						}
 						.menu-highlight-primary, .menu-highlight-secondary{
 							>a{
@@ -3301,7 +3345,7 @@
 								margin-inline-start:0px;
 								margin-inline-end:5px;
                                 .theme-sub-li-menu{
-                                    right:10px;
+                                    right:15px;
                                 }
 							}
 						}
@@ -3431,7 +3475,9 @@
 										li{
 											&.menu-highlight-primary, &.menu-highlight-secondary{
 												>a{
-													margin:5px;
+													@include respond-to(mediumdevice){
+														margin:5px;
+													}
 												}
 											}
 										}
@@ -3958,14 +4004,14 @@
 										margin-inline-start:0px;
 										margin-inline-end:5px;
                                         .theme-sub-li-menu{
-                                            right:10px;
+                                            right:0px;
                                         }
 									}
 								}
 							}
 						}
 						.theme-sub-li-menu.theme-responsive-menu{
-							right:15px;
+							right:5px;
 						}
 						.menu-highlight-primary, .menu-highlight-secondary{
 							>a{
@@ -3975,7 +4021,7 @@
 								margin-inline-start:0px;
 								margin-inline-end:5px;
                                 .theme-sub-li-menu{
-                                    right:10px;
+                                    right:0px;
                                 }
 							}
 						}
@@ -4128,7 +4174,9 @@
 										li{
 											&.menu-highlight-primary, &.menu-highlight-secondary{
 												>a{
-													margin:5px;
+													@include respond-to(mediumdevice){
+														margin:5px;
+													}
 												}
 											}
 										}
@@ -4760,7 +4808,9 @@
                                 ul{
                                     .menu-highlight-primary, .menu-highlight-secondary {
                                         > a{
-                                            margin: 0;
+											@include respond-to(mediumdevice){
+                                            	margin: 0;
+											}
                                         }
                                     }
                                 }
@@ -5448,7 +5498,9 @@
                                 ul{
                                     .menu-highlight-primary, .menu-highlight-secondary {
                                         > a{
-                                            margin: 0;
+											@include respond-to(mediumdevice){
+                                            	margin: 0;
+											}
                                         }
                                     }
                                 }
@@ -5635,11 +5687,11 @@
 					}
 					&.menu-highlight-primary{
 						>a{
-							@extend %primary-highlight;
+							@include primary-highlight(false);
 						}
 						&:hover, &.theme-menu-selected {
 							>a{
-								@extend %primary-highlight-hover;
+								@include primary-highlight-hover();
 								&:after{
 									background: transparent;
 								}
@@ -5651,11 +5703,11 @@
 					}
 					&.menu-highlight-secondary{
 						>a{
-							@extend %secondary-highlight;
+							@include secondary-highlight(false);
 						}
 						&:hover, &.theme-menu-selected {
 							>a{
-								@extend %secondary-highlight-hover;
+								@include secondary-highlight-hover();
 								&:after{
 									background: transparent;
 								}

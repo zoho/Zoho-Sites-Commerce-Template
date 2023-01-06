@@ -1,0 +1,103 @@
+<div data-zs-mobile-header-three-bottom class="theme-mobile-header-style-{{ page.template_vars.mobile_header_style }} theme-mobile-header-bottom {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
+    <div class="theme-mobile-header-icon-wrapper">
+        <span class="theme-mobile-header-icon">
+            <a href="/">
+                <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path d="M 12 2.0996094 L 1 12 L 4 12 L 4 21 L 11 21 L 11 15 L 13 15 L 13 21 L 20 21 L 20 12 L 23 12 L 12 2.0996094 z M 12 4.7910156 L 18 10.191406 L 18 11 L 18 19 L 15 19 L 15 13 L 9 13 L 9 19 L 6 19 L 6 10.191406 L 12 4.7910156 z"/></svg>
+            </a>
+        </span>
+        {% if (page.is_menu_enabled && (page.type != PAGE_TYPE.CHECKOUT && page.type != PAGE_TYPE.CART)) || page.is_social_icon_enabled || page.is_contact_information_enabled || page.is_multi_currency_enabled || LANGUAGE_LIST_ENABLED %}
+        <span data-zs-mobile-header-slide-open data-zs-drawer-open-button="navigation" class="theme-mobile-header-icon theme-mobile-header-slide-open">
+            <svg width="24px" height="24px" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg>
+        </span>
+        {% endif %}
+        {% if !hide_carticon_in_cart_checkout %}
+        <span class="theme-mobile-header-icon" data-zs-cart-iconcount-container data-zs-view-cart>
+            <div data-zs-cart-icon>
+                {% if page.template_vars.store_carticon_style == "01" %}
+                    {% include '_store-carticon-01' %}
+                {% elif page.template_vars.store_carticon_style == "02" %}
+                    {% include '_store-carticon-02' %}
+                {% elif page.template_vars.store_carticon_style == "03" %}
+                    {% include '_store-carticon-03' %}
+                {% elif page.template_vars.store_carticon_style == "04" %}
+                    {% include '_store-carticon-04' %}
+                {% elif page.template_vars.store_carticon_style == "05" %}
+                    {% include '_store-carticon-05' %}
+                {% elif page.template_vars.store_carticon_style == "06" %}
+                    {% include '_store-carticon-06' %}
+                {% elif page.template_vars.store_carticon_style == "07" %}
+                    {% include '_store-carticon-07' %}
+                {% elif page.template_vars.store_carticon_style == "08" %}
+                    {% include '_store-carticon-08' %}
+                {% elif page.template_vars.store_carticon_style == "09" %}
+                    {% include '_store-carticon-09' %}
+                {% elif page.template_vars.store_carticon_style == "10" %}
+                    {% include '_store-carticon-10' %}
+                {% elif page.template_vars.store_carticon_style == "11" %}
+                    {% include '_store-carticon-11' %}
+                {% elif page.template_vars.store_carticon_style == "12" %}
+                    {% include '_store-carticon-12' %}
+                {% elif page.template_vars.store_carticon_style == "13" %}
+                    {% include '_store-carticon-13' %}
+                {% elif page.template_vars.store_carticon_style == "14" %}
+                    {% include '_store-carticon-14' %}
+                {% elif page.template_vars.store_carticon_style == "15" %}
+                    {% include '_store-carticon-15' %}
+                {% elif page.template_vars.store_carticon_style == "16" %}
+                    {% include '_store-carticon-16' %}
+                {% elif page.template_vars.store_carticon_style == "17" %}
+                    {% include '_store-carticon-17' %}
+                {% elif page.template_vars.store_carticon_style == "18" %}
+                    {% include '_store-carticon-18' %}
+                {% elif page.template_vars.store_carticon_style == "19" %}
+                    {% include '_store-carticon-19' %}
+                {% endif %}
+                <span class="theme-mini-cart-count" data-zs-view-cart-count>0</span>
+            </div>            
+        </span>
+        {% endif %}
+        {% if page.is_portal_enabled %}
+        <span data-zs-drawer-open-button="portal" class="theme-mobile-header-icon">
+            <svg width="24px" height="24px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 16a7 7 0 1 0-7-7 7 7 0 0 0 7 7Zm0-12a5 5 0 1 1-5 5 5 5 0 0 1 5-5ZM17 18h-2A11 11 0 0 0 4 29a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1 11 11 0 0 0-11-11ZM6.06 28A9 9 0 0 1 15 20h2a9 9 0 0 1 8.94 8Z"/></svg>
+        </span>
+        {% endif %}
+    </div>
+</div>
+
+{% if (page.is_menu_enabled && (page.type != PAGE_TYPE.CHECKOUT && page.type != PAGE_TYPE.CART)) || page.is_social_icon_enabled || page.is_contact_information_enabled || page.is_multi_currency_enabled || LANGUAGE_LIST_ENABLED || page.is_portal_enabled %}
+<div data-zs-mobile-header-slide-wrapper data-zs-drawer class="theme-mobile-header-style-{{ page.template_vars.mobile_header_style }} theme-mobile-header-slidewrapper {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
+    <div class="theme-mobile-header-slide">
+        <div class="theme-mobile-header-slide-header">
+            {% if page.is_logo_enabled %}
+            <span data-zs-mobile-header-logo class="theme-mobile-header-logo {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
+                <a href="/">
+                    <picture>
+                        <img src="{% if page.logo.url %}{{ page.logo.url }}{% else %}{{ page.template_assets }}/images/logo.png{% endif %}" alt="{{page.site_title}}" />
+                    </picture>
+                </a>
+            </span>
+            {% endif %}
+            <span data-zs-drawer-close-button class="theme-mobile-header-slide-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M4.707 3.293 3.293 4.707 10.586 12l-7.293 7.293 1.414 1.414L12 13.414l7.293 7.293 1.414-1.414L13.414 12l7.293-7.293-1.414-1.414L12 10.586 4.707 3.293z"/></svg>
+            </span>
+        </div>
+        <div data-zs-drawer-content="navigation" class="theme-mobile-header-slide-content">
+            {% if page.is_menu_enabled || page.is_social_icon_enabled || page.is_contact_information_enabled || page.is_multi_currency_enabled || LANGUAGE_LIST_ENABLED %}
+            <div data-zs-responsive-menu-area class="theme-mobile-header-slide-box theme-mobile-header-navigation theme-responsive-menu-area theme-navigation-and-icons">
+                <div class="theme-responsive-menu theme-menu-area" data-zp-responsive-container="mymenu1"></div>
+            </div>
+            {% endif %}
+            {% if page.is_social_icon_enabled %}
+            <div class="theme-mobile-header-sociallinks">
+                {% include '_social-links' %}
+            </div>
+            {% endif %}
+        </div>
+        <div data-zs-drawer-content="portal" class="theme-mobile-header-slide-content">
+            {% if page.is_portal_enabled %}
+                <div class="theme-portal-style" data-theme-portal-responsive="zptheme-portal-responsive"></div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}

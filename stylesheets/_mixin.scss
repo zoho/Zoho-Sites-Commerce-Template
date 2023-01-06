@@ -21,7 +21,7 @@
 
 @mixin respond-to($media){
 	@if $media == smalldevice{
-		@media all and(min-width: 768px){ @content;}
+		@media all and (min-width: 768px){ @content;}
 	}
 	@else if $media == mediumdevice{
 		@media all and (min-width: 992px){@content}

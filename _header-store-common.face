@@ -1,0 +1,56 @@
+{% if page.template_vars.mobile_header_style == "03" %}
+	{% include '_mobileapp-header-top' %}
+{% endif %}
+
+{% if page.template_vars.header_style == "01" %}
+	{% capture topbar_remove_checkout_block %}
+		{% if page.template_vars.mobile_header_style == "01" && (!page.is_contact_information_enabled && !hide_carticon_in_cart_checkout || !page.is_contact_information_enabled && !hide_search_in_cart_checkout || !page.is_portal_enabled && !hide_carticon_in_cart_checkout || !page.is_portal_enabled && !hide_search_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_carticon_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_search_in_cart_checkout ) %}
+		<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
+			<div class="zpcontainer">
+				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart></div>
+			</div>
+		</div>
+		{% endif %}
+	{% endcapture %}
+
+	{% include '_header-one' %}
+{% endif %}
+{% if page.template_vars.header_style == "02" %}
+
+	{% capture topbar_remove_checkout_block %}
+		{% if !page.is_contact_information_enabled && !hide_carticon_in_cart_checkout || !page.is_contact_information_enabled && !hide_search_in_cart_checkout || !page.is_portal_enabled && !hide_carticon_in_cart_checkout || !page.is_portal_enabled && !hide_search_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_carticon_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_search_in_cart_checkout %}
+		<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
+			<div class="zpcontainer">
+				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart></div>
+			</div>
+		</div>
+		{% endif %}
+	{% endcapture %}
+
+	{% include '_header-two' %}
+{% endif %}
+{% if page.template_vars.header_style == "03" %}
+	{% include '_header-three' %}
+{% endif %}
+{% if page.template_vars.header_style == "04" %}
+	{% capture topbar_remove_checkout_block %}
+		{% if !page.is_contact_information_enabled && !hide_carticon_in_cart_checkout || !page.is_contact_information_enabled && !hide_search_in_cart_checkout || !page.is_portal_enabled && !hide_carticon_in_cart_checkout || !page.is_portal_enabled && !hide_search_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_carticon_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_search_in_cart_checkout %}
+			<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
+				<div class="zpcontainer">
+					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endcapture %}
+	{% include '_header-four' %}
+{% endif %}
+{% if page.template_vars.header_style == "05" %}
+	{% include '_header-five' %}
+{% endif %}
+{% if page.template_vars.header_style == "06" %}
+	{% include '_header-six' %}
+{% endif %}
+{% if page.template_vars.header_style == "07" %}
+	{% include '_header-seven' %}
+{% endif %}

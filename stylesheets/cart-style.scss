@@ -350,39 +350,6 @@
 
 // HIDE BURGER ICON IN SMALL DEVICES FOR CART PAGE
 
-@media all and (max-width : 768px){
-  .theme-responsive-menu-area{
-    &.theme-hide-burgericon-cart-mobile{
-      display: none;
-    }
-  }
-  .zpheader-style-02{
-    .theme-header{
-      &.theme-header-navigation-style{
-        .zpcontainer{
-          &.theme-responsive-menu-area{
-            &.theme-hide-burgericon-cart-mobile{
-              display: none;
-            }
-          }
-        }
-      }
-    }
-  }
-  .zpheader-style-05{
-    .theme-header{
-      &.theme-header-navigation-style{
-        .zpcontainer{
-          &.theme-responsive-menu-area{
-            &.theme-hide-burgericon-cart-mobile{
-              display: none;
-            }
-          }
-        }
-      }
-    }
-  }
-}
 .theme-cart-summary-inner-container {
   position: static;
   padding-block-start: 24px;
@@ -410,7 +377,7 @@
     flex-wrap: wrap;
     .theme-cart-details-container {
         flex: 1 1;
-        border-inline-end: 1px solid map-get($base_vars,'color-border');;
+        border-inline-end: 1px solid map-get($base_vars,'color-border');
     }
     .theme-cart-summary-container {
         flex: 0 0 350px;
@@ -547,5 +514,61 @@
         margin-block-end:0
       }
     }
+  }
+}
+@if map-get($user_layout_vars,'header_style') == 02 {
+  .zpheader-style-02{
+    .theme-header{
+      .zpcontainer{
+        .theme-branding-info {
+          @include respond-to(mediumdevice) {
+            margin-inline-end: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+// MOBILE HEADER STYLE
+
+@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+  .theme-mobile-header-style-02{
+    @media(max-width:991px) {
+      .theme-header{
+        .theme-navigation-and-icons{
+          &.theme-search-openstyle-cart{
+            display: none;
+          }
+          &.theme-search-openstyle-searchbox{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+  .theme-mobile-header-style-03{
+    &.theme-mobile-header-top{
+      .theme-mobile-header-nav-wrapper{
+        .theme-mobile-header-search {
+          display: none;
+        }
+      }
+    }
+    &.theme-mobile-header-bottom{
+      .theme-mobile-header-icon-wrapper{
+        .theme-mobile-header-icon{
+          &[data-zs-view-cart]{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .theme-cart-mobile-summary-container{
+    bottom: 56px;
+    z-index: 250;
   }
 }

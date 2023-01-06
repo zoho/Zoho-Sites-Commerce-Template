@@ -15,444 +15,45 @@
 <body>
 	{{page.after_body_scripts}}
 	{% assign template_vars = page.template_vars %}
-
-	{% assign PAGE_TYPE = {"CHECKOUT":112} %}
-
+	{% assign PAGE_TYPE = {"CHECKOUT":112,"CART":111} %}
+	{% if page.type == PAGE_TYPE.CHECKOUT || page.type == PAGE_TYPE.CART %}
+		{% assign hide_carticon_in_cart_checkout = true %}
+		{% assign hide_search_in_cart_checkout = true %}
+	{% else %}
+		{% if !page.is_store_enabled %}
+			{% assign hide_carticon_in_cart_checkout = true %}
+		{% else %}
+			{% assign hide_carticon_in_cart_checkout = false %}
+		{% endif %}
+		{% if !page.is_search_enabled %}
+			{% assign hide_search_in_cart_checkout = true %}
+		{% else %}
+			{% assign hide_carticon_in_cart_checkout = false %}
+		{% endif %}
+	{% endif %}
 	{% if page.language_list && (page.language_list | size > 1) %}
 		{% assign LANGUAGE_LIST_ENABLED = true %}
 	{% endif %}
-	
+	{% assign mobile_header = {"two":{"is_disabled":true},"three":{"is_top_disabled":true,"is_bottom_disabled":true}} %}
+	{% if page.is_logo_enabled || page.is_title_enabled || page.is_caption_enabled || !hide_search_in_cart_checkout || page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
+		{% assign mobile_header.three.is_top_disabled = false %}
+	{% endif %}
+	{% if page.is_menu_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled || page.is_multi_currency_enabled || LANGUAGE_LIST_ENABLED || !hide_carticon_in_cart_checkout || page.is_portal_enabled %}
+		{% assign mobile_header.three.is_bottom_disabled = false %}
+	{% endif %}
+	{% if page.is_logo_enabled || page.is_title_enabled || page.is_caption_enabled || !hide_search_in_cart_checkout || page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT || !hide_carticon_in_cart_checkout || page.is_portal_enabled %}
+		{% assign mobile_header.two.is_disabled = false %}
+	{% endif %}
 
-	<div	{% block header_block %} data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-{{ page.template_vars.header_style }} {% if page.is_banner_enabled && page.template_vars.banner_style == 'full-screen'|| page.is_banner_enabled && page.template_vars.banner_style == 'full-width-header-overlaped' %}theme-header-fixed{% endif %} {% if page.template_vars.header_style == "02" && page.template_vars.header_background == "dark" %}theme-header-style-02-responsive-dark-background{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}" {% endblock %} data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-{{ page.template_vars.header_style }} {% if page.template_vars.header_style == "02" && page.template_vars.header_background == "dark" %}theme-header-style-02-responsive-dark-background{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
-
-		{% comment %} THEME TOPBAR STARTS HERE {% endcomment %}
-
-		{% if page.template_vars.header_style == "05" %}
-			<div class="theme-header-topbar theme-header-topbar-05 {% if !page.is_portal_enabled && !page.is_search_enabled && !page.show_cart_icon %} theme-checkout-topbar {% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-topbar="zptheme-topbar">
-				<div class="zpcontainer">
-					{% if page.is_search_enabled || page.is_store_enabled %}
-					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
-
-					</div>
-					{% endif %}
-					{% if page.is_portal_enabled %}
-						<div data-theme-portal-responsive="zptheme-portal-responsive" class="theme-portal-responsive-style-05">
-
-						</div>
-					{% endif %}
-
-				</div>
-			</div>
-		{% endif %}
-
-		{% if  page.template_vars.header_style == "01" && page.is_contact_information_enabled || page.template_vars.header_style == "01" && page.is_delivery_location_enabled || page.template_vars.header_style == "01" && page.is_multi_currency_enabled || page.template_vars.header_style == "04" && page.is_contact_information_enabled || page.template_vars.header_style == "04" && page.is_multi_currency_enabled || page.template_vars.header_style == "02" && page.is_contact_information_enabled || page.template_vars.header_style == "02" && page.is_multi_currency_enabled || page.template_vars.header_style == "02" && page.is_portal_enabled || page.template_vars.header_style == "02" && page.is_delivery_location_enabled || page.template_vars.header_style == "01" && page.is_portal_enabled || page.template_vars.header_style == "04" && page.is_portal_enabled || page.template_vars.header_style == "04" && page.is_delivery_location_enabled || page.template_vars.header_style == "01" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "02" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "03" && page.is_contact_information_enabled || page.template_vars.header_style == "07" && page.is_contact_information_enabled || page.template_vars.header_style == "03" && page.is_portal_enabled || page.template_vars.header_style == "03" && page.is_delivery_location_enabled || page.template_vars.header_style == "07" && page.is_portal_enabled || page.template_vars.header_style == "07" && page.is_delivery_location_enabled || page.template_vars.header_style == "03" && page.is_search_enabled || page.template_vars.header_style == "03" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "07" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "03" && page.is_multi_currency_enabled || page.template_vars.header_style == "07" && page.is_multi_currency_enabled || (page.template_vars.header_style == "01" || page.template_vars.header_style == "02" || page.template_vars.header_style == "03" || page.template_vars.header_style == "04" || page.template_vars.header_style == "07") && LANGUAGE_LIST_ENABLED %}
-
-		<div class="theme-header-topbar {% if page.template_vars.header_style == "07" && !page.is_portal_enabled %}theme-topbar-header-07{% endif %} {% if !page.is_portal_enabled %}theme-hide-res-topbar-checkout{% endif %} {% if page.template_vars.header_style == "01" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "02" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "03" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "07" && !page.is_contact_information_enabled && !page.is_portal_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_multi_currency_enabled || page.template_vars.header_style == "04" && !page.is_contact_information_enabled && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !page.is_portal_enabled && page.is_multi_currency_enabled %}theme-hide-currency-checkout{% endif %} {% if page.template_vars.header_style == "03" && !page.is_delivery_location_enabled && !page.is_contact_information_enabled && !page.is_social_icon_enabled && !page.is_multi_currency_enabled && !LANGUAGE_LIST_ENABLED || page.template_vars.header_style == "07" && !page.is_contact_information_enabled && !page.is_social_icon_enabled && !page.is_multi_currency_enabled && !LANGUAGE_LIST_ENABLED || page.template_vars.header_style == "03" && !page.is_delivery_location_enabled && !page.is_contact_information_enabled && !page.is_multi_currency_enabled && !LANGUAGE_LIST_ENABLED && page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "07" && !page.is_contact_information_enabled && !page.is_multi_currency_enabled && !LANGUAGE_LIST_ENABLED && page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled %}theme-topbar-in-none-responsive-header-03{% endif %} {% if page.template_vars.header_style == "03" && !page.is_portal_enabled && !page.is_search_enabled && !page.show_cart_icon ||  page.template_vars.header_style == "07" && !page.is_portal_enabled && !page.is_search_enabled && !page.show_cart_icon %} theme-checkout-topbar {% endif %} {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-topbar="zptheme-topbar">
-			<div class="zpcontainer">
-				{% if page.is_contact_information_enabled %}
-				 <div data-topbarinfo-position="zptheme-topbarinfo-position">
-					{% include '_contacts' %}
-				 </div>
-				{% endif %}
-
-				{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
-				{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "02" || page.template_vars.header_style == "03" || page.template_vars.header_style == "07" ||
-				page.template_vars.header_style == "04" %}
-
-					{% include '_social-links' %}
-
-				{% endif %}
-				{% endif %}
-
-
-				{% if page.template_vars.header_style != "07" %}
-				{% if page.is_search_enabled || page.is_store_enabled %}
-				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
-
-				</div>
-				{% endif %}
-				{% endif %}
-
-				{% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
-					{% include '_store-select-location' %}
-				{% endif %}
-
-				{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "02" || page.template_vars.header_style == "04" || page.template_vars.header_style == "07" %}
-					{% if page.is_portal_enabled %}
-						{% include '_member-portal' %}
-					{% endif %}
-				{% endif %}
-
-					{% if page.template_vars.header_style == "03" %}
-					{% if page.is_search_enabled || page.is_store_enabled %}
-					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
-
-					</div>
-					{% endif %}
-					{% if page.is_portal_enabled %}
-						<div class="theme-portal-style-03" data-theme-portal-responsive="zptheme-portal-responsive">
-
-						</div>
-					{% endif %}
-				{% endif %}
-
-				{% if page.is_multi_currency_enabled %}
-					<div data-theme-currency-placeholder-non-res class="theme-currency-non-res {% if page.template_vars.header_style == "01" && page.is_portal_enabled || page.template_vars.header_style == "02" && page.is_portal_enabled || page.template_vars.header_style == "03" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "07" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "04" && page.is_portal_enabled %}theme-curency-option-left-space{% endif %}">
-						{% include '_store-currency-target' %}
-					</div>
-				{% endif %}
-
-				{% if LANGUAGE_LIST_ENABLED %}
-					<div class="theme-lang-container-non-res {% if page.template_vars.header_style == "01" && page.is_portal_enabled || page.template_vars.header_style == "02" && page.is_portal_enabled || page.template_vars.header_style == "03" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "07" && (page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled || page.is_contact_information_enabled) || page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "04" && page.is_portal_enabled %}theme-lang-option-left-space{% endif %}" data-theme-lang-container-non-res>
-						{% include '_language-list' %}
-					</div>
-				{% endif %}
-			</div>
-		</div>
-
-		{% endif %}
-
-		{% block topbar_remove_checkout_block %}
-
-		{% if page.template_vars.header_style == "01" && !page.is_contact_information_enabled && page.is_store_enabled || page.template_vars.header_style == "01" && !page.is_contact_information_enabled && page.is_search_enabled || page.template_vars.header_style == "04" && !page.is_contact_information_enabled && page.is_store_enabled || page.template_vars.header_style == "04" && !page.is_contact_information_enabled && page.is_search_enabled || page.template_vars.header_style == "02" && !page.is_contact_information_enabled && page.is_store_enabled || page.template_vars.header_style == "02" && !page.is_contact_information_enabled && page.is_search_enabled || page.template_vars.header_style == "02" && !page.is_portal_enabled && page.is_store_enabled || page.template_vars.header_style == "02" && !page.is_portal_enabled && page.is_search_enabled || page.template_vars.header_style == "01" && !page.is_portal_enabled && page.is_store_enabled || page.template_vars.header_style == "01" && !page.is_portal_enabled && page.is_search_enabled || page.template_vars.header_style == "04" && !page.is_portal_enabled && page.is_store_enabled || page.template_vars.header_style == "04" && !page.is_portal_enabled && page.is_search_enabled || page.template_vars.header_style == "01" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_store_enabled || page.template_vars.header_style == "01" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_search_enabled || page.template_vars.header_style == "04" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_store_enabled || page.template_vars.header_style == "04" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_search_enabled || page.template_vars.header_style == "02" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_store_enabled || page.template_vars.header_style == "02" && !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && page.is_search_enabled %}
-
-		<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
-			<div class="zpcontainer">
-				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart>
-				</div>
-			</div>
-		</div>
-
-		{% endif %}
+	{% comment %} THEME HEADER AREA START {% endcomment %}
+		{% block header_area %}
 
 		{% endblock %}
-
-		{% comment %} THEME TOPBAR ENDS HERE {% endcomment %}
-
-		{% comment %} THEME MAIN HEADER STARTS HERE {% endcomment %}
-
-		{% if page.template_vars.header_style == "02" || page.template_vars.header_style == "03" || page.template_vars.header_style == "05" || page.template_vars.header_style == "07" %}
-
-		<div class="theme-header {% if page.template_vars.header_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "05" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.header_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "05" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
-
-			{% if page.is_title_enabled  || page.is_caption_enabled || page.is_logo_enabled || page.template_vars.header_style == "02" && page.is_search_enabled || page.template_vars.header_style == "02" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_portal_enabled || page.template_vars.header_style == "07" && page.is_portal_enabled || page.template_vars.header_style == "03" && page.is_search_enabled || page.template_vars.header_style == "07" && page.is_search_enabled || page.template_vars.header_style == "03" && page.is_store_enabled || page.template_vars.header_style == "07" && page.is_store_enabled || page.template_vars.header_style == "04" || page.template_vars.header_style == "05" && page.is_contact_information_enabled || page.template_vars.header_style == "05" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_portal_enabled  || page.template_vars.header_style == "05" && LANGUAGE_LIST_ENABLED %}
-
-			<div class="zpcontainer">
-
-				 {% include '_branding' %}
-
-				 {% if page.template_vars.header_style == "03" %}
-					 {% if page.is_portal_enabled %}
-						 <div class="theme-header-topbar theme-portal-non-responsive" data-theme-portal-non-responsive="zptheme-portal-non-responsive">
-							 {% include '_member-portal' %}
-						 </div>
-					 {% endif %}
-				 {% endif %}
-
-				 {% if page.template_vars.header_style == "02" && page.is_search_enabled || page.template_vars.header_style == "02" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_search_enabled || page.template_vars.header_style == "07" && page.is_search_enabled || page.template_vars.header_style == "07" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_store_enabled %}
-				 <div class="theme-navigation-and-icons {% if page.template_vars.header_style == '02' %}theme-search-mini-cart-style-02{% endif %} {% if page.template_vars.header_style == '03' && page.is_portal_enabled %}theme-search-mini-cart-style-03{% endif %}" data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive">
-					 {% include '_search-store-cart-count' %}
-				 </div>
-				 {% endif %}
-
-				{% if page.template_vars.header_style == "05" %}
-					<div class="theme-header-topbar">
-
-						{% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
-							{% include '_store-select-location' %}
-						{% endif %}
-
-						{% if page.is_contact_information_enabled %}
-							<div data-topbarinfo-position="zptheme-topbarinfo-position">
-		 						{% include '_contacts' %}
-							</div>
-		 				{% endif %}
-
-		 				{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
-
-		 					{% include '_social-links' %}
-
-		 				{% endif %}
-
-						{% if page.is_multi_currency_enabled %}
-							<div data-theme-currency-placeholder-non-res class="theme-currency-container-style-05-non-res {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled %} theme-curency-option-left-space {% endif %}">
-								{% include '_store-currency-target' %}
-							</div>
-						{% endif %}
-						
-						{% if LANGUAGE_LIST_ENABLED %}
-							<div class="theme-lang-container-non-res {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled %} theme-lang-option-left-space {% endif %}" data-theme-lang-container-non-res>
-								{% include '_language-list' %}
-							</div>
-						{% endif %}
-
-	 					{% if page.is_portal_enabled %}
-						<div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
-	 						{% include '_member-portal' %}
-						</div>
-	 					{% endif %}
-					</div>
-				{% endif %}
-
-			</div>
-			{% endif %}
-
-			{% if page.template_vars.header_style == '03' || page.template_vars.header_style == '07' ||  page.template_vars.header_style == '05' %}
-				{% if page.is_menu_enabled %}
-				<div class="theme-responsive-menu-area theme-navigation-and-icons theme-responsive-menu-area-style-03 zpcontainer {% if page.template_vars.header_style == "03" && !page.is_title_enabled && !page.is_logo_enabled && !page.is_caption_enabled || page.template_vars.header_style == "07" && !page.is_title_enabled && !page.is_logo_enabled && !page.is_caption_enabled %}theme-only-menu-in-mobile{% endif %} theme-hide-burgericon-cart-mobile">
-					<div class="theme-responsive-menu-container" data-zp-burger-clickable-area="mymenu1">
-						<span class="theme-burger-icon" data-zp-theme-burger-icon="mymenu1"></span>
-					</div>
-					<div class="theme-responsive-menu theme-menu-area" data-zp-responsive-container="mymenu1">
-					</div>
-				</div>
-				{% endif %}
-			{% endif %}
-
-			{% if page.template_vars.header_style == "07" %}
-			{% if page.is_search_enabled || page.is_store_enabled %}
-			<div class="theme-responsive-search-cart-style-07">
-				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
-
-				</div>
-			</div>
-			{% endif %}
-			{% endif %}
-
-		</div>
-
-		{% endif %}
-
-		{% comment %} THEME MAIN HEADER ENDS HERE {% endcomment %}
-
-		{% comment %} THEME MAIN HEADER STARTS HERE {% endcomment %}
-
-		<div {% if page.template_vars.header_style != "06" %}data-megamenu-content-container{% endif %} class="theme-header {% if page.template_vars.header_style == "02" && page.template_vars.navigation_background == "dark" && page.template_vars.header_background != "dark" %}theme-dark-nav-mobile-02{% endif %} {% if page.template_vars.header_style == "02" && page.template_vars.header_background == "dark" %}theme-responsive-dark{% endif %} {% if page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "05" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "01" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "04" %}zpdark-header-portion{% endif %} {% if page.template_vars.header_style == '03' %}zpheader-style-navigation-03{% endif %} {% if page.template_vars.header_style == '07' %}zpheader-style-navigation-07{% endif %} {% if page.template_vars.header_style == '05' %} zpheader-style-navigation-05 {% endif %}{% if page.template_vars.header_style == '02' || page.template_vars.header_style == '05' %}theme-header-navigation-style{% endif %}"  data-header="{% if page.template_vars.header_effect == 'header-animated' %}zptheme-data-header{% endif %}{% if page.template_vars.header_effect == 'header-transparent-animated' %}zptheme-data-header-transparent{% endif %}{% if page.template_vars.header_effect == 'none' %}none{% endif %}" data-dark-part-applied="{% if page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "02" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "03" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "07" || page.template_vars.navigation_background == "dark" && page.template_vars.header_style == "05" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "01" || page.template_vars.header_background == "dark" && page.template_vars.header_style == "04" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
-
-			{% if page.template_vars.header_style == "02" && page.is_menu_enabled || page.template_vars.header_style == "03" && page.is_menu_enabled || page.template_vars.header_style == "07" && page.is_menu_enabled || page.template_vars.header_style == "01" && page.is_menu_enabled || page.template_vars.header_style == "01" && page.is_search_enabled || page.template_vars.header_style == "01" && page.is_store_enabled || page.template_vars.header_style == "01" && page.is_title_enabled || page.template_vars.header_style == "01" && page.is_logo_enabled || page.template_vars.header_style == "01" && page.is_caption_enabled || page.template_vars.header_style == "04" && page.is_search_enabled || page.template_vars.header_style == "04" && page.is_menu_enabled || page.template_vars.header_style == "04" && page.is_store_enabled || page.template_vars.header_style == "04" && page.is_title_enabled || page.template_vars.header_style == "04" && page.is_logo_enabled || page.template_vars.header_style == "04" && page.is_caption_enabled || page.template_vars.header_style == "05" && page.is_menu_enabled || page.template_vars.header_style == "05" && page.is_search_enabled || page.template_vars.header_style == "05" && page.is_store_enabled  || page.template_vars.header_style != "06" && LANGUAGE_LIST_ENABLED %}
-
-			<div class="zpcontainer">
-					{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "04" %}
-							{% include '_branding' %}
-					{% endif %}
-					{% if page.template_vars.header_style == "01" || page.template_vars.header_style == "02" || page.template_vars.header_style == "03" || page.template_vars.header_style == "07" || page.template_vars.header_style == "04" || page.template_vars.header_style == "05" %}
-					{% if page.is_menu_enabled || page.is_search_enabled || page.is_store_enabled  || LANGUAGE_LIST_ENABLED %}
-					<div class="theme-navigation-and-icons">
-						{% if page.is_menu_enabled %}
-						<div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
-							<div class="theme-menu {% if template_vars.navigation_menu_icon_position == "02"%} theme-menu-icon-top{% endif %} {% if template_vars.sub_menu_icon_position == "02"%} theme-submenu-icon-top{% endif %}" data-nav-menu-icon-width={{template_vars.size_nav_menu_icon_width | remove("px") }} data-nav-menu-icon-height={{template_vars.size_nav_menu_icon_height | remove("px") }} data-sub-menu-icon-height={{template_vars.size_sub_menu_icon_height | remove("px") }} data-sub-menu-icon-width={{template_vars.size_sub_menu_icon_width | remove("px") }} data-mega-menu-icon-width={{template_vars.size_mega_menu_icon_width | remove("px") }} data-mega-menu-icon-height={{template_vars.size_mega_menu_icon_height | remove("px") }}  data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem:5;position: theme-sub-menu-position-change; orientation: horizontal; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
-								{{navi(menu, template_vars)}}
-								{% if page.is_multi_currency_enabled %}
-									<div data-theme-currency-placeholder-res class="theme-currency-res">
-									</div>
-									<div class="theme-close-mobile-currency" data-theme-currency-open-top>
-										<div class="theme-currency-open-label">
-											{{i18n.get("currency.label")}}
-										</div>
-										<div onclick="closeCurrencyMobile()" class="theme-currency-close-icon-container" data-theme-currency-hide-mobile>
-										</div>
-									</div>
-								{% endif %}
-								{% if LANGUAGE_LIST_ENABLED %}
-									<div class="theme-lang-container-res" data-theme-lang-container-res></div>
-								{% endif %}
-							</div>
-						</div>
-						{% endif %}
-						{% if page.template_vars.header_style == "01" && page.is_search_enabled || page.template_vars.header_style == "01" && page.is_store_enabled || page.template_vars.header_style == "04" && page.is_search_enabled || page.template_vars.header_style == "04" && page.is_store_enabled || page.template_vars.header_style == "05" && page.is_search_enabled || page.template_vars.header_style == "05" && page.is_store_enabled %}
-						 <div data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive" class="theme-search-cart-non-res">
-							{% include '_search-store-cart-count' %}
-						 </div>
-						{% endif %}
-
-						{% if page.template_vars.header_style == "02" && page.is_store_enabled || page.template_vars.header_style == "03" && page.is_store_enabled || page.template_vars.header_style == "07" && page.is_store_enabled %}
-							<div data-search-cart-scrollposition-non-responsive="zptheme-search-cart-scrollposition-non-responsive" class="theme-search-cart-non-res theme-search-cart-scrollposition-non-responsive">
-							</div>
-						{% endif %}
-
-					</div>
-					{% endif %}
-					{% endif %}
-			</div>
-			{% endif %}
-			{% if page.is_menu_enabled && page.template_vars.header_style == '01' || page.is_menu_enabled && page.template_vars.header_style == '02' || page.is_menu_enabled && page.template_vars.header_style == '04' %}
-			<div class="theme-responsive-menu-area theme-navigation-and-icons zpcontainer theme-hide-burgericon-cart-mobile">
-				<div class="theme-responsive-menu-container" data-zp-burger-clickable-area="mymenu1">
-					<span class="theme-burger-icon" data-zp-theme-burger-icon="mymenu1"></span>
-				</div>
-				<div class="theme-responsive-menu theme-menu-area" data-zp-responsive-container="mymenu1">
-				</div>
-			</div>
-			{% endif %}
-		</div>
-
-		{% comment %} THEME FLOATER SOCIAL ICON STARTS HERE {% endcomment %}
-
-		{% if page.template_vars.is_social_icon_floater_enabled && page.is_social_icon_enabled %}
-		<div class="zpsocialicon-floater">
-			{% include "_social-links" %}
-		</div>
-		{% endif %}
-
-		{% comment %} THEME FLOATER SOCIAL ICON END HERE {% endcomment %}
-
-		{% if page.is_delivery_location_enabled && page.template_vars.header_style != "06" && page.type != PAGE_TYPE.CHECKOUT %}
-		<div class="theme-delivery-location-mobile-container">
-			{% include '_store-select-location' %}
-		</div>
-		{% endif %}
-
-	</div>
-
-	{% block cart_checkout_remove_block %}
-
-	{% if page.template_vars.header_style == "06" %}
-	<div class="theme-vertical-navigation-resposnive {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %} {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %}" data-theme-header-six-res="theme-header-six-res">
-		{% if page.is_search_enabled || page.is_store_enabled || page.is_portal_enabled || page.is_multi_currency_enabled %}
-		<div class="theme-header-topbar {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
-			{% if page.is_search_enabled || page.is_store_enabled || page.is_portal_enabled || page.is_multi_currency_enabled  %}
-			<div class="zpcontainer">
-				{% if page.is_search_enabled || page.is_store_enabled %}
-					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-search-cart-position-responsive="zptheme-search-cart-position-responsive">
-
-					</div>
-				{% endif %}
-				{% if page.is_portal_enabled %}
-					<div data-theme-portal-responsive="zptheme-portal-responsive" class="theme-portal-style-06">
-
-					</div>
-				{% endif %}
-			</div>
-			{% endif %}
-		</div>
-		{% endif %}
-		{% if page.is_title_enabled || page.is_logo_enabled || page.is_caption_enabled || page.is_menu_enabled  %}
-		<div class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.header_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
-			<div class="zpcontainer">
-				{% include '_branding' %}
-
-				{% if page.is_menu_enabled %}
-				<div class="theme-responsive-menu-area theme-navigation-and-icons zpcontainer theme-hide-burgericon-cart-mobile">
-					<div class="theme-responsive-menu-container" data-zp-burger-clickable-area="mymenu1">
-						<span class="theme-burger-icon" data-zp-theme-burger-icon="mymenu1"></span>
-					</div>
-					<div class="theme-responsive-menu theme-menu-area" data-zp-responsive-container="mymenu1">
-					</div>
-				</div>
-				{% endif %}
-
-			</div>
-		</div>
-		{% endif %}
-
-		{% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
-		<div class="theme-delivery-location-mobile-container">
-			{% include '_store-select-location' %}
-		</div>
-		{% endif %}
-
-	</div>
+	{% comment %} THEME HEADER AREA END {% endcomment %}
+	
+	{% if page.template_vars.mobile_header_style == "02" || page.template_vars.mobile_header_style == "03" %}	
+	<div data-zs-mobile-content-wrap class="theme-mobile-content-wrap {% if hide_search_in_cart_checkout %}theme-search-disabled{% endif %} {% if mobile_header.three.is_top_disabled %}theme-mobile-header-top-disabled{% endif %} {% if mobile_header.two.is_disabled %}theme-mobile-header-two-disabled{% endif %}">
 	{% endif %}
-
-	{% endblock %}
-
-	{% block cart_checkout_block %}
-
-	{% if page.template_vars.header_style == '06' && !page.is_sidebar_enabled  %}
-
-		{% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_multi_currency_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled || page.template_vars.header_style == "06" && page.is_delivery_location_enabled  || page.template_vars.header_style == "06" && LANGUAGE_LIST_ENABLED  %}
-
-		<div class="theme-vertical-navigation-container {% if page.is_multi_currency_enabled %}theme-currency-enable-vertical{% endif %}" data-theme-vertical-menu="zptheme-vertical-menu">
-			<div data-megamenu-content-container class="theme-header {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.header_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
-				<div class="zpcontainer">
-					{% if page.is_portal_enabled || page.is_multi_currency_enabled || page.is_delivery_location_enabled  || LANGUAGE_LIST_ENABLED %}
-					<div class="theme-header-topbar theme-vertical-navigation-portal {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-banner-base-header="theme-banner-base-header">
-						{% if page.is_portal_enabled %}
-							<div data-theme-portal-non-responsive="zptheme-portal-non-responsive">
-								{% include '_member-portal' %}
-							</div>
-						{% endif %}
-
-						{% if page.is_multi_currency_enabled %}
-							<div data-theme-currency-placeholder-non-res class="theme-currency-container-style-06-non-res">
-								{% include '_store-currency-target' %}
-							</div>
-						{% endif %}
-						
-						{% if LANGUAGE_LIST_ENABLED %}
-							<div class="theme-lang-container-non-res" data-theme-lang-container-non-res>
-								{% include '_language-list' %}
-							</div>
-						{% endif %}
-
-						{% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
-							{% include '_store-select-location' %}
-						{% endif %}
-
-					</div>
-					{% endif %}
-
-					{% include '_branding' %}
-
-					{% if page.is_search_enabled || page.is_store_enabled %}
-					<div class="theme-navigation-and-icons theme-vertical-navigation-search-cart-container">
-						<div data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive" class="theme-search-cart-non-res">
-							{% include '_search-store-cart-count' %}
-						</div>
-					</div>
-					{% endif %}
-
-					{% if page.is_menu_enabled %}
-					<div class="theme-navigation-and-icons">
-						<div class="theme-menu-area" data-zp-nonresponsive-container="mymenu1">
-							<div class="theme-menu {% if template_vars.navigation_menu_icon_position == "02" %} theme-menu-icon-top{% endif %} {% if template_vars.sub_menu_icon_position == "02"%} theme-submenu-icon-top{% endif %}" data-nav-menu-icon-width={{template_vars.size_nav_menu_icon_width | remove("px") }} data-nav-menu-icon-height={{template_vars.size_nav_menu_icon_height | remove("px") }} data-sub-menu-icon-height={{template_vars.size_sub_menu_icon_height | remove("px") }} data-sub-menu-icon-width={{template_vars.size_sub_menu_icon_width | remove("px") }} data-mega-menu-icon-width={{template_vars.size_mega_menu_icon_width | remove("px") }} data-mega-menu-icon-height={{template_vars.size_mega_menu_icon_height | remove("px") }} data-non-res-menu='zptheme-menu-non-res' data-zp-theme-menu="id: mymenu1 ;active: theme-menu-selected; maxitem:{{page.template_vars.maxmenuitem}};position: theme-sub-menu-position-change; orientation: vertical; submenu: theme-sub-menu; moretext: {{i18n.get('menu.more.text')}}; nonresponsive-icon-el: theme-non-responsive-menu; responsive-icon-el: theme-responsive-menu; burger-close-icon: theme-close-icon; animate-open: theme-toggle-animate; animate-close: theme-toggle-animate-end;open-icon: theme-submenu-down-arrow; close-icon: theme-submenu-up-arrow; root-icon: theme-submenu-down-arrow; subtree-icon: theme-submenu-right-arrow;">
-								{{navi(menu, template_vars)}}
-
-								{% if page.is_multi_currency_enabled %}
-									<div data-theme-currency-placeholder-res class="theme-currency-res">
-									</div>
-									<div class="theme-close-mobile-currency" data-theme-currency-open-top>
-										<div class="theme-currency-open-label">
-											{{i18n.get("currency.label")}}
-										</div>
-										<div onclick="closeCurrencyMobile()" class="theme-currency-close-icon-container" data-theme-currency-hide-mobile>
-										</div>
-									</div>
-								{% endif %}
-
-								{% if LANGUAGE_LIST_ENABLED %}
-									<div class="theme-lang-container-res" data-theme-lang-container-res></div>
-								{% endif %}
-							</div>
-						</div>
-					</div>
-					{% endif %}
-
-				</div>
-
-				{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled %}
-				<div class="zpcontainer theme-vertical-navigation-contact-social-container">
-					<div class="theme-vertical-navigation-contact-social">
-						<div class="theme-header-topbar">
-							{% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}
-								{% include '_social-links' %}
-							{% endif %}
-							{% if page.is_contact_information_enabled %}
-							<div data-topbarinfo-position="zptheme-topbarinfo-position">
-								{% include '_contacts' %}
-							</div>
-							{% endif %}
-						</div>
-					</div>
-				</div>
-				{% endif %}
-
-			</div>
-		</div>
-		{% endif %}
-	{% endif %}
-
-	{% endblock %}
 
 	{% comment %} THEME CONTENT AREA START {% endcomment %}
 
@@ -993,5 +594,11 @@
 	{{page.footer_code}}
 
 	{% include '_megamenu' %}
+{% if page.template_vars.mobile_header_style == "02" || page.template_vars.mobile_header_style == "03" %}	
+</div>
+{% endif %}
+{% if page.template_vars.mobile_header_style == "03" %}
+	{% include '_mobileapp-header-bottom' %}
+{% endif %}
 </body>
 </html>

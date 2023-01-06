@@ -1,29 +1,47 @@
+{% if page.template_vars.header_style == "07" %}
 <div class="theme-search theme-search-and-mini-cart-group-item" data-zs-search-container>
-  <div class="theme-search-field-container {% if page.template_vars.header_style == "07" %}theme-search-field-container-07{% endif %}" data-search="zptheme-search-container">
+  <div class="theme-search-field-container theme-search-field-container-07" data-search="zptheme-search-container">
     <form method="get" action="{{ page.search_url }}">
       <input type="text" name="q" placeholder="{{i18n.get("search.page.title")}}" data-search-input="zptheme-search-input" data-zs-search-input />
-      {% if page.template_vars.header_style != "07" %}
+      {% if page.template_vars.mobile_header_style == "02" %}
       <input type="submit" name="" class="theme-search-go" value="{{i18n.get("search.button.label")}}" data-zs-search="{{page.primary_search}}" />
       {% endif %}
-      {% if page.template_vars.header_style == "07" %}
         <input class="theme-search-go-input" type="submit" name="" class="theme-search-go" data-zs-search="{{page.primary_search}}" value="" />
        <span class="theme-search-go-icon" data-zs-search-icon>
          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
          <path d="M8.111.5a7.611 7.611 0 015.724 12.628l3.385 3.385a.5.5 0 01-.638.765l-.069-.058-3.385-3.385A7.611 7.611 0 118.11.5zm0 1a6.611 6.611 0 104.393 11.552.499.499 0 01.548-.55A6.611 6.611 0 008.112 1.5z" fill-rule="nonzero"/>
          </svg>
        </span>
-      {% endif %}
       <div class="theme-search-loader-dots" data-theme-search-loader-dots>
         <span></span>
       </div>
     </form>
   </div>
-  {% if page.template_vars.header_style != "07" %}
+  {% if page.template_vars.mobile_header_style == "02" %}
   <div class="theme-search-hide-overlay" data-theme-search-overlay="theme-search-overlay" style="display:none;"></div>
-  <span class="theme-search-icon" onclick="toggleSearch()" data-zs-search-icon>
+  <span class="theme-search-icon" onclick="toggleSearch(this)" data-zs-search-icon>
     <svg viewBox="0 9 17 18" xmlns="http://www.w3.org/2000/svg">
       <path d="M6.11998304,9 C9.49467136,9 12.2401638,11.7792946 12.2401638,15.1954945 C12.2401638,16.6310021 11.7542814,17.9528473 10.9418418,19.0044723 L16.7453489,24.8898164 C17.0883131,25.2377224 17.0843596,25.7977325 16.7364536,26.1406967 C16.5642797,26.3106962 16.3399198,26.3953006 16.11556,26.3953006 C15.8872467,26.3953006 15.6589333,26.3075334 15.485771,26.131999 L9.6721825,20.2361782 C8.6697783,20.9620366 7.44380495,21.3911866 6.11998304,21.3911866 C2.74529472,21.3911866 0,18.611892 0,15.1954945 C0,11.7792946 2.74529472,9 6.11998304,9 Z M6.11998304,19.8186909 C8.62787144,19.8186909 10.6678658,17.7446967 10.6678658,15.1954945 C10.6678658,12.6464899 8.62787144,10.5724956 6.11998304,10.5724956 C3.61248999,10.5724956 1.57229797,12.6464899 1.57229797,15.1954945 C1.57229797,17.7446967 3.61248999,19.8186909 6.11998304,19.8186909 Z M4.50063869,16.7758971 C4.64592899,16.6284323 4.85052144,16.5440256 5.05669529,16.5440256 C5.26306681,16.5440256 5.46548485,16.6284323 5.61294956,16.7758971 C5.75843753,16.921385 5.84284427,17.1238031 5.84284427,17.3301746 C5.84284427,17.5385228 5.75843753,17.7409409 5.61294956,17.8864289 C5.46548485,18.0338936 5.26306681,18.1163236 5.05669529,18.1163236 C4.85052144,18.1163236 4.64592899,18.0338936 4.50063869,17.8864289 C4.35515072,17.7409409 4.2705463,17.5385228 4.2705463,17.3301746 C4.2705463,17.1238031 4.35515072,16.921385 4.50063869,16.7758971 Z M3.05228224,15.2674477 C2.77810858,13.2116395 4.82640523,12.2782235 4.91377708,12.2394794 C5.25970635,12.0864798 5.66236803,12.2416538 5.81773969,12.5865947 C5.97311135,12.9315356 5.81912341,13.3381508 5.47517087,13.4956968 C5.42614775,13.518034 4.27865093,14.0561023 4.4158366,15.0855878 C4.46604576,15.4623542 4.20155812,15.8082835 3.8249894,15.8584926 C3.79415228,15.8626438 3.76351283,15.8646205 3.73326872,15.8646205 C3.39366501,15.8646205 3.09834025,15.6131793 3.05228224,15.2674477 Z" stroke="none" fill-rule="evenodd"></path>
     </svg>
   </span>
   {% endif %}
 </div>
+{% else %}
+<div class="theme-search theme-search-and-mini-cart-group-item" data-zs-search-container>
+  <div class="theme-search-field-container" data-search="zptheme-search-container">
+    <form method="get" action="{{ page.search_url }}">
+      <input type="text" name="q" placeholder="{{i18n.get("search.page.title")}}" data-search-input="zptheme-search-input" data-zs-search-input />
+      <input type="submit" name="" class="theme-search-go" value="{{i18n.get("search.button.label")}}" data-zs-search="{{page.primary_search}}" />
+      <div class="theme-search-loader-dots" data-theme-search-loader-dots>
+        <span></span>
+      </div>
+    </form>
+  </div>
+  <div class="theme-search-hide-overlay" data-theme-search-overlay="theme-search-overlay" style="display:none;"></div>
+  <span class="theme-search-icon" onclick="toggleSearch(this)" data-zs-search-icon>
+    <svg viewBox="0 9 17 18" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.11998304,9 C9.49467136,9 12.2401638,11.7792946 12.2401638,15.1954945 C12.2401638,16.6310021 11.7542814,17.9528473 10.9418418,19.0044723 L16.7453489,24.8898164 C17.0883131,25.2377224 17.0843596,25.7977325 16.7364536,26.1406967 C16.5642797,26.3106962 16.3399198,26.3953006 16.11556,26.3953006 C15.8872467,26.3953006 15.6589333,26.3075334 15.485771,26.131999 L9.6721825,20.2361782 C8.6697783,20.9620366 7.44380495,21.3911866 6.11998304,21.3911866 C2.74529472,21.3911866 0,18.611892 0,15.1954945 C0,11.7792946 2.74529472,9 6.11998304,9 Z M6.11998304,19.8186909 C8.62787144,19.8186909 10.6678658,17.7446967 10.6678658,15.1954945 C10.6678658,12.6464899 8.62787144,10.5724956 6.11998304,10.5724956 C3.61248999,10.5724956 1.57229797,12.6464899 1.57229797,15.1954945 C1.57229797,17.7446967 3.61248999,19.8186909 6.11998304,19.8186909 Z M4.50063869,16.7758971 C4.64592899,16.6284323 4.85052144,16.5440256 5.05669529,16.5440256 C5.26306681,16.5440256 5.46548485,16.6284323 5.61294956,16.7758971 C5.75843753,16.921385 5.84284427,17.1238031 5.84284427,17.3301746 C5.84284427,17.5385228 5.75843753,17.7409409 5.61294956,17.8864289 C5.46548485,18.0338936 5.26306681,18.1163236 5.05669529,18.1163236 C4.85052144,18.1163236 4.64592899,18.0338936 4.50063869,17.8864289 C4.35515072,17.7409409 4.2705463,17.5385228 4.2705463,17.3301746 C4.2705463,17.1238031 4.35515072,16.921385 4.50063869,16.7758971 Z M3.05228224,15.2674477 C2.77810858,13.2116395 4.82640523,12.2782235 4.91377708,12.2394794 C5.25970635,12.0864798 5.66236803,12.2416538 5.81773969,12.5865947 C5.97311135,12.9315356 5.81912341,13.3381508 5.47517087,13.4956968 C5.42614775,13.518034 4.27865093,14.0561023 4.4158366,15.0855878 C4.46604576,15.4623542 4.20155812,15.8082835 3.8249894,15.8584926 C3.79415228,15.8626438 3.76351283,15.8646205 3.73326872,15.8646205 C3.39366501,15.8646205 3.09834025,15.6131793 3.05228224,15.2674477 Z" stroke="none" fill-rule="evenodd"></path>
+    </svg>
+  </span>
+</div>
+{% endif %}

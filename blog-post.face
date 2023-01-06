@@ -1,6 +1,9 @@
 {% extends "_theme" %}
 
-{% block header_block %}
+{% block header_area %}
+
+	{% include '_header' %}
+
 {% endblock %}
 
 {% block content_area %}

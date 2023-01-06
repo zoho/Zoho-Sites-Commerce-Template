@@ -1,0 +1,810 @@
+html[dir="rtl"] {
+	@if map-get($user_layout_vars,'header_style') == 01 {
+		.zpheader-style-01{
+			@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+				&.theme-mobile-header-style-02{
+					.theme-header{
+						.theme-navigation-and-icons {
+							&.theme-search-minicart-responsive{
+								@media (max-width: 991px){
+									.theme-search-and-mini-cart-group {
+										.theme-search {
+											.theme-search-field-container{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/** Header Style **/
+		@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+			.theme-mobile-header-style-03{
+				&.theme-mobile-header-top{
+					.theme-mobile-header-nav-wrapper{
+						.theme-mobile-header-search{
+							&.theme-mobile-header-search-open{
+								.theme-search-field-container{
+									transform: translateX(0%) scale(1);
+								}
+							}
+							@media (max-width: 991px){
+								.theme-search-field-container{
+									left: auto;
+									right:0px;
+									transform: translateX(-100%) scale(0);
+									.theme-mobile-header-search-back{
+										a{
+											svg {
+												transform: rotate(-180deg);
+											}
+										}
+									}
+									form{
+										.theme-mobile-header-search-clear{
+											right: auto;
+											left:5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-bottom{
+					.theme-mobile-header-icon-wrapper{
+						.theme-mobile-header-icon{
+							@media (max-width: 991px){
+								[data-zs-cart-icon]{
+									[data-zs-view-cart-count]{
+										right:auto;
+										left: -10px;
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-slidewrapper{
+					@media (max-width: 991px){
+						left:auto;
+						right:0;
+						transform: translate(100%, 0);
+						&.active{
+							transform: translate(0, 0);
+						}
+						.theme-mobile-header-slide{
+							.theme-mobile-header-slide-content{
+								.theme-mobile-header-navigation{
+									.theme-menu{
+										.theme-sub-li-menu{
+											&.theme-submenu-down-arrow, &.theme-submenu-up-arrow{
+												left: 0px;
+												right:auto;
+											}
+										}
+									}
+									.theme-currency-option-container{
+										&:after {
+											right: 0px;
+											left:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-mobile-header-refine-wrapper{
+				@media (max-width: 991px){
+					.theme-mobile-header-sortby{
+						&::after{
+							transform: rotate(45deg);
+							left: 8px;
+							right: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+	@if map-get($user_layout_vars,'header_style') == 02 {
+		/** Header Style **/
+		@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+			.theme-mobile-header-style-03{
+				&.theme-mobile-header-top{
+					.theme-mobile-header-nav-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-search{
+								&.theme-mobile-header-search-open{
+									.theme-search-field-container{
+										transform: translateX(0%) scale(1);
+									}
+								}
+								.theme-search-field-container{
+									left: auto;
+									right:0px;
+									transform: translateX(-100%) scale(0);
+									.theme-mobile-header-search-back{
+										a{
+											svg {
+												transform: rotate(-180deg);
+											}
+										}
+									}
+									form{
+										.theme-mobile-header-search-clear{
+											right: auto;
+											left:5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-bottom{
+					.theme-mobile-header-icon-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-icon{
+								[data-zs-cart-icon]{
+									[data-zs-view-cart-count]{
+										right:auto;
+										left:-10px;
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-slidewrapper{
+					@media (max-width: 991px){
+						left:auto;
+						right:0px;
+						transform: translate(100%, 0);
+						&.active{
+							transform: translate(0, 0);
+						}
+						.theme-mobile-header-slide{
+							.theme-mobile-header-slide-content{
+								.theme-mobile-header-navigation{
+									.theme-menu{
+										.theme-sub-li-menu{
+											&.theme-submenu-down-arrow, &.theme-submenu-up-arrow{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+									.theme-currency-option-container{
+										&:after {
+											left: auto;
+											right:0px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-mobile-header-refine-wrapper{
+				@media (max-width: 991px){
+					&.hide-refine-wrapper{
+						transform: translateY(100%);
+					}
+					.theme-mobile-header-sortby{
+						&::after{
+							left: 8px;
+							right:auto;
+						}
+					}
+				}
+			}
+		}
+	}
+	@if map-get($user_layout_vars,'header_style') == 03 {
+
+		.zpheader-style-03{
+			@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+				&.theme-mobile-header-style-02{
+					.theme-header{
+						.theme-navigation-and-icons {
+							&.theme-search-minicart-responsive{
+								@media (max-width: 991px){
+									.theme-search-and-mini-cart-group {
+										.theme-search {
+											.theme-search-field-container{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/** Header Style **/
+		@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+			.theme-mobile-header-style-03{
+				&.theme-mobile-header-top{
+					.theme-mobile-header-nav-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-search{
+								&.theme-mobile-header-search-open{
+									.theme-search-field-container{
+										transform: translateX(0%) scale(1);
+									}
+								}
+								.theme-search-field-container{
+									left: auto;
+									right:0;
+									transform: translateX(-100%) scale(0);
+									.theme-mobile-header-search-back{
+										a{
+											svg {
+												transform: rotate(-180deg);
+											}
+										}
+									}
+									form{
+										.theme-mobile-header-search-clear{
+											right: auto;
+											left:5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-bottom{
+					.theme-mobile-header-icon-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-icon{
+								[data-zs-cart-icon]{
+									[data-zs-view-cart-count]{
+										right:auto;
+										left:-10px;
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-slidewrapper{
+					@media (max-width: 991px){
+						left:auto;
+						right:0px;
+						transform: translate(100%, 0);
+						&.active{
+							transform: translate(0, 0);
+						}
+						.theme-mobile-header-slide{
+							.theme-mobile-header-slide-content{
+								.theme-mobile-header-navigation{
+									.theme-menu{
+										.theme-sub-li-menu{
+											&.theme-submenu-down-arrow, &.theme-submenu-up-arrow{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+									.theme-currency-option-container{
+										&:after {
+											left: auto;
+											right:0px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-mobile-header-refine-wrapper{
+				@media (max-width: 991px){
+					&.hide-refine-wrapper{
+						transform: translateY(100%);
+					}
+					.theme-mobile-header-sortby{
+						&::after{
+							right: auto;
+							left:8px;
+						}
+					}
+				}
+			}
+		}
+	}
+	@if map-get($user_layout_vars,'header_style') == 04 {
+		.zpheader-style-04{
+			@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+				&.theme-mobile-header-style-02{
+					.theme-header{
+						.theme-navigation-and-icons {
+							&.theme-search-minicart-responsive{
+								@media (max-width: 991px){
+									.theme-search-and-mini-cart-group {
+										.theme-search {
+											.theme-search-field-container{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/** Header Style **/
+		@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+			.theme-mobile-header-style-03{
+				&.theme-mobile-header-top{
+					.theme-mobile-header-nav-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-search{
+								&.theme-mobile-header-search-open{
+									.theme-search-field-container{
+										transform: translateX(0%) scale(1);
+									}
+								}
+								.theme-search-field-container{
+									left: auto;
+									right:0px;
+									transform: translateX(-100%) scale(0);
+									.theme-mobile-header-search-back{
+										a{
+											svg {
+												transform: rotate(-180deg);
+											}
+										}
+									}
+									form{
+										.theme-mobile-header-search-clear{
+											left: 5px;
+											right:auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-bottom{
+					.theme-mobile-header-icon-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-icon{
+								[data-zs-cart-icon]{
+									[data-zs-view-cart-count]{
+										left: -10px;
+										right:auto;
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-slidewrapper{
+					left: auto;
+					right:0;
+					transform: translate(100%, 0);
+					&.active{
+						transform: translate(0, 0);
+					}
+					.theme-mobile-header-slide{
+						@media (max-width: 991px){
+							.theme-mobile-header-slide-content{
+								.theme-mobile-header-navigation{
+									.theme-menu{
+										.theme-sub-li-menu{
+											&.theme-submenu-down-arrow, &.theme-submenu-up-arrow{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+									.theme-currency-option-container{
+										&:after {
+											left: auto;
+											right: 0px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-mobile-header-refine-wrapper{
+				@media (max-width: 991px){
+					&.hide-refine-wrapper{
+						transform: translateY(100%);
+					}
+					.theme-mobile-header-sortby{
+						&::after{
+							left:8px;
+							right: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+	@if map-get($user_layout_vars,'header_style') == 05 {
+		.zpheader-style-05{
+			@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+				&.theme-mobile-header-style-02{
+					.theme-header{
+						.theme-navigation-and-icons {
+							&.theme-search-minicart-responsive{
+								@media (max-width: 991px){
+									.theme-search-and-mini-cart-group {
+										.theme-search {
+											.theme-search-field-container{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/** Header Style **/
+		@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+			.theme-mobile-header-style-03{
+				&.theme-mobile-header-top{
+					.theme-mobile-header-nav-wrapper{
+						.theme-mobile-header-search{
+							&.theme-mobile-header-search-open{
+								.theme-search-field-container{
+									transform: translateX(0%) scale(1);
+								}
+							}
+							.theme-search-field-container{
+								right: 0;
+								left:auto;
+								transform: translateX(-100%) scale(0);
+								.theme-mobile-header-search-back{
+									a{
+										svg {
+											transform: rotate(-180deg);
+										}
+									}
+								}
+								form{
+									.theme-mobile-header-search-clear{
+										left: 5px;
+										right: auto;
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-bottom{
+					.theme-mobile-header-icon-wrapper{
+						.theme-mobile-header-icon{
+							[data-zs-cart-icon]{
+								[data-zs-view-cart-count]{
+									left:-10px;
+									right: auto;
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-slidewrapper{
+					left: auto;
+					right:0px;
+					transform: translate(100%, 0);
+					&.active{
+						transform: translate(0, 0);
+					}
+					.theme-mobile-header-slide{
+						.theme-mobile-header-slide-content{
+							.theme-mobile-header-navigation{
+								.theme-menu{
+									.theme-sub-li-menu{
+										&.theme-submenu-down-arrow, &.theme-submenu-up-arrow{
+											right: auto;
+											left:0px;
+										}
+									}
+								}
+								.theme-currency-option-container{
+									&:after {
+										left: auto;
+										right: 0px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-mobile-header-refine-wrapper{
+				@media (max-width: 991px){
+					&.hide-refine-wrapper{
+						transform: translateY(100%);
+					}
+					.theme-mobile-header-sortby{
+						&::after{
+							right: auto;
+							left:8px;
+						}
+					}
+				}
+			}
+		}
+	}
+	@if map-get($user_layout_vars,'header_style') == 06 {
+		.zpheader-style-06{
+			@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+				&.theme-mobile-header-style-02{
+					& + [data-theme-header-six-res]{
+						.theme-header{
+							.zpcontainer{
+								& + .theme-navigation-and-icons {
+									&.theme-search-minicart-responsive{
+										@media (max-width: 991px){
+											.theme-search-and-mini-cart-group {
+												.theme-search {
+													.theme-search-field-container{
+														right: auto;
+														left:0px;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/** Header Style **/
+		@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+			.theme-mobile-header-style-03{
+				&.theme-mobile-header-top{
+					.theme-mobile-header-nav-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-search{
+								&.theme-mobile-header-search-open{
+									.theme-search-field-container{
+										transform: translateX(0%) scale(1);
+									}
+								}
+								.theme-search-field-container{
+									left: auto;
+									right:0;
+									transform: translateX(-100%) scale(0);
+									.theme-mobile-header-search-back{
+										a{
+											svg {
+												transform: rotate(-180deg);
+											}
+										}
+									}
+									form{
+										.theme-mobile-header-search-clear{
+											right: auto;
+											left:5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-bottom{
+					.theme-mobile-header-icon-wrapper{
+						@media (max-width: 991px){
+							.theme-mobile-header-icon{
+								[data-zs-cart-icon]{
+									[data-zs-view-cart-count]{
+										right: auto;
+										left:-10px;
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-slidewrapper{
+					@media (max-width: 991px){
+						left: auto;
+						right:0px;
+						transform: translate(100%, 0);
+						&.active{
+							transform: translate(0, 0);
+						}
+						.theme-mobile-header-slide{
+							.theme-mobile-header-slide-content{
+								.theme-mobile-header-navigation{
+									.theme-menu{
+										.theme-sub-li-menu{
+											&.theme-submenu-down-arrow, &.theme-submenu-up-arrow{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+									.theme-currency-option-container{
+										&:after {
+											left: auto;
+											right: 0px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-mobile-header-refine-wrapper{
+				@media (max-width: 991px){
+					&.hide-refine-wrapper{
+						transform: translateY(100%);
+					}
+					.theme-mobile-header-sortby{
+						&::after{
+							left:8px;
+							right: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+	@if map-get($user_layout_vars,'header_style') == 07 {
+		.zpheader-style-07{
+			@if map-get($user_layout_vars,'mobile_header_style') == 02 {
+				&.theme-mobile-header-style-02{
+					.theme-header{
+						.theme-navigation-and-icons {
+							&.theme-search-minicart-responsive{
+								@media (max-width: 991px){
+									.theme-search-and-mini-cart-group {
+										.theme-search {
+											.theme-search-field-container{
+												left: 0px;
+												right: auto;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.theme-search-minicart-responsive {
+					.theme-search-and-mini-cart-group {
+						.theme-mini-cart {
+							.theme-minicart-icon {
+								.theme-mini-cart-count {
+									right:auto;
+									left:5px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		/** Header Style **/
+		@if map-get($user_layout_vars,'mobile_header_style') == 03 {
+
+			.theme-mobile-header-style-03{
+				&.theme-mobile-header-top{
+					.theme-mobile-header-nav-wrapper{
+						@media(max-width: 991px){
+							.theme-mobile-header-search{
+								&.theme-mobile-header-search-open{
+									.theme-search-field-container{
+										transform: translateX(0%) scale(1);
+									}
+								}
+								.theme-search-field-container{
+									left: auto;
+									right:0px;
+									transform: translateX(-100%) scale(0);
+									.theme-mobile-header-search-back{
+										a{
+											svg {
+												transform: rotate(-180deg);
+											}
+										}
+									}
+									form{
+										.theme-mobile-header-search-clear{
+											right: auto;
+											left: 5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-bottom{
+					.theme-mobile-header-icon-wrapper{
+						@media(max-width: 991px){
+							.theme-mobile-header-icon{
+								[data-zs-cart-icon]{
+									[data-zs-view-cart-count]{
+										left:-10px;
+										right: auto;
+									}
+								}
+							}
+						}
+					}
+				}
+				&.theme-mobile-header-slidewrapper{
+					@media(max-width: 991px){
+						left: auto;
+						right:0px;
+						transform: translate(100%, 0);
+						&.active{
+							transform: translate(0, 0);
+						}
+						.theme-mobile-header-slide{
+							.theme-mobile-header-slide-content{
+								.theme-mobile-header-navigation{
+									.theme-menu{
+										.theme-sub-li-menu{
+											&.theme-submenu-down-arrow, &.theme-submenu-up-arrow{
+												right: auto;
+												left:0px;
+											}
+										}
+									}
+									.theme-currency-option-container{
+										&:after {
+											right:0px;
+											left: auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.theme-mobile-header-refine-wrapper{
+				@media(max-width: 991px){
+					&.hide-refine-wrapper{
+						transform: translateY(100%);
+						transition: transform ease 0.15s;
+					}
+					.theme-mobile-header-sortby{
+						&::after{
+							left:8px;
+							right: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+}

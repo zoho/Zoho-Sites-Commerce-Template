@@ -69,6 +69,7 @@ $megamenu-var-array:(
 );
 
 $default_vars : megamenu($default_vars,$megamenu-var-array);
+$default_vars : mobileheader-default-value($default_vars);
 
 @if variable-exists(need_css_vars) and $need_css_vars {
   :root{

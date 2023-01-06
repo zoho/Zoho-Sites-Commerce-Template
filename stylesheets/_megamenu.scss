@@ -1,5 +1,5 @@
 .zpmm{
-    @media (max-width: 992px){
+    @media (max-width: 991px){
         .zpcontainer{
             width:100%;
         }
@@ -113,7 +113,7 @@
     .zpmm-inner{
         width:100%;
         .zpelem-col{
-            @media (max-width: 992px){
+            @media (max-width: 991px){
                 padding: 0px;
                 &.seperator-divider{
                   border-block-end:none;
@@ -126,7 +126,7 @@
                 }
             }
         }
-        @media (max-width: 992px){
+        @media (max-width: 991px){
             &.seperator-divider{
                 .zpelem-col{
                   border-block-end:1px solid map-get($default_vars,'color-megamenu-divider');
@@ -143,7 +143,7 @@
                 &:last-child{
                   border-inline-end:none;
                 }
-                @media (max-width: 992px){
+                @media (max-width: 991px){
                     border:none;
                 }
             }
@@ -165,13 +165,13 @@
             &:first-child{
               margin-block-start:0px;
             }
-            @media (max-width: 992px){
+            @media (max-width: 991px){
                 margin:0px;
             }
         }
         .zpmm-element{
             margin-block-start:5px;
-            @media (max-width: 992px){
+            @media (max-width: 991px){
                 margin:0px;
                 padding-block-start:14px;
                 padding-block-end:14px;
@@ -180,13 +180,13 @@
                 border-block-end:1px solid map-get($default_vars,'color-submenu-border');
             }
             &:first-child{
-                @media (max-width: 992px){
+                @media (max-width: 991px){
                   border-block-start:1px solid map-get($default_vars,'color-submenu-border');
                 }
             }
             &:last-child{
                 margin-block-end:5px;
-                @media (max-width: 992px){
+                @media (max-width: 991px){
                     margin-block-end:0px;
                     border-block-end:none;
                 }
@@ -222,7 +222,7 @@
                         }
                     }
 
-                    @media (max-width: 992px){
+                    @media (max-width: 991px){
                         padding: 0px;
                     }
                     @include respond-to(mediumdevice){
@@ -257,7 +257,7 @@
                 }
                 &.menu-highlight-primary{
                     a{
-                        @extend %primary-highlight;
+                        @include primary-highlight(false);
                         width:100%;
                         @include respond-to(mediumdevice){
                         	width:max-content;
@@ -265,13 +265,13 @@
                     }
                     &:hover, &.theme-menu-selected {
                         a{
-                            @extend %primary-highlight-hover;
+                            @include primary-highlight-hover();
                         }
                     }
                 }
                 &.menu-highlight-secondary{
                     a{
-                        @extend %secondary-highlight;
+                        @include secondary-highlight(false);
                         width:100%;
                         @include respond-to(mediumdevice){
                         	width:max-content;
@@ -279,7 +279,7 @@
                     }
                     &:hover, &.theme-menu-selected {
                         a{
-                            @extend %secondary-highlight-hover;
+                            @include secondary-highlight-hover();
                         }
                     }
                 }
@@ -298,7 +298,7 @@
                         }
                     }
 
-                    @media (max-width: 992px){
+                    @media (max-width: 991px){
                         padding: 0px;
                     }
                     @include respond-to(mediumdevice){
@@ -338,7 +338,7 @@
                 }
                 &.menu-highlight-primary{
                     a{
-                        @extend %primary-highlight;
+                        @include primary-highlight(false);
                         width:100%;
                         @include respond-to(mediumdevice){
                         	width:max-content;
@@ -346,13 +346,13 @@
                     }
                     &:hover, &.theme-menu-selected {
                         a{
-                            @extend %primary-highlight-hover;
+                            @include primary-highlight-hover();
                         }
                     }
                 }
                 &.menu-highlight-secondary{
                     a{
-                        @extend %secondary-highlight;
+                        @include secondary-highlight(false);
                         width:100%;
 
                         @include respond-to(mediumdevice){
@@ -361,7 +361,7 @@
                     }
                     &:hover, &.theme-menu-selected {
                         a{
-                            @extend %secondary-highlight-hover;
+                            @include secondary-highlight-hover();
                         }
                     }
                 }

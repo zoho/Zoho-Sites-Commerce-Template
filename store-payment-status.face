@@ -1,16 +1,10 @@
 {% extends "_theme" %}
 
-{% block header_block %}
-{% endblock %}
-
-{% block cart_checkout_remove_block %}
-{% endblock %}
-
-{% block cart_checkout_block %}
-
+{% block header_area %}
 {% if page.template_vars.header_style == "06" %}
+{% capture cart_checkout_block %}
 
-<div data-theme-header-six-res="theme-header-six-res" data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-01 theme-cart-checkout-headersix {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %}">
+<div data-theme-header-six-res="theme-header-six-res" data-headercontainer="zptheme-data-headercontainer" class="zpheader-style-01 theme-cart-checkout-headersix {% if page.template_vars.is_mobile_header_fixed %}theme-mobile-header-fixed{% endif %} {% if page.template_vars.mobile_header_style == '03' %}theme-hide-on-small-device{% endif %}">
 
   {% if page.is_contact_information_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled %}
 
@@ -82,8 +76,16 @@
 
 </div>
 
-{% endif %}
+{% endcapture %}
 
+{% endif %}
+{% include '_header-store-common.face' %}
+{% endblock %}
+
+{% block header_block %}
+{% endblock %}
+
+{% block cart_checkout_remove_block %}
 {% endblock %}
 
 {% block content_area %}

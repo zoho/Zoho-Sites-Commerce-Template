@@ -2,14 +2,14 @@
 
   {% comment %} SEARCH STARTS {% endcomment %}
 
-  {% if page.is_search_enabled %}
+  {% if !hide_search_in_cart_checkout %}
     {% include '_search-box' %}
   {% endif %}
   {% comment %} SEARCH ENDS {% endcomment %}
 
   {% comment %} MINI-CART START {% endcomment %}
 
-  {% if page.is_store_enabled && page.show_cart_icon %}
+  {% if !hide_carticon_in_cart_checkout %}
     {% include '_store-cart-count' %}
   {% endif %}
 

@@ -5,6 +5,36 @@ html[dir="rtl"] {
       right:auto;
     }
   }
+  .theme-produt-filter-row{
+    left: auto;
+    right: -100%;
+    &.theme-mobile-filter-show{
+      left: auto;
+      right:0;
+    }
+    @include respond-to(mediumdevice){
+      left: 0;
+      right:auto;
+    }
+    &.theme-blur-loading{
+      &:after{
+        left: auto;
+        right:0;
+      }
+    }
+  }
+  .theme-product-filter-mobile-overlay{
+    right: -100%;
+    left:auto;
+    &.theme-mobile-filter-overlay-show{
+      right: 0;
+      left:auto;
+    }
+    svg{
+      left: 15px;
+      right:auto;
+    }
+  }
 
 // **** PRODUCT LIST STYLE START **** //
 
@@ -403,6 +433,56 @@ html[dir="rtl"] {
             .theme-prod-coupons-claimed-progressbar{
               right: 0px;
               left: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // PRODCUT LIST STYLE - 10
+
+  @if map-get($user_layout_vars,'product_list_style') == 10 {
+    .theme-product-list-style-10{
+      .theme-out-of-stock-button,
+      .theme-product-quick-view-button{
+        left: auto;
+        right:50%;
+        transform:translate(50%,0%);
+      }
+      .theme-product-ribbon-area {
+        left: auto;
+        right: 14px;
+      }
+      .theme-product-list-variant-option-select{
+        &:before,
+        &:after{
+          right: auto;
+          left: 3%;
+        }
+      }
+      .theme-product-list-variant-option{
+        .theme-product-color{
+          label{
+            &.chekedLabel{
+               &:after {
+                right: -3px;
+                left:auto;
+              }
+            }
+          }
+        }
+      }
+      .theme-cart-qty-inc-dec{
+        right: 0px;
+        left:auto;
+      }
+      .theme-prod-coupons-container{
+        .theme-prod-coupons-claimed-container{
+          .theme-prod-coupons-claimed-progress{
+            .theme-prod-coupons-claimed-progressbar{
+              left:auto;
+              right: 0px;
             }
           }
         }

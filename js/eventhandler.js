@@ -1035,7 +1035,9 @@ function showSearchLoader(e){
   var mainHeader = $D.get('[data-headercontainer]');
   var mobileHeaderFix = mainHeader.classList.contains('theme-mobile-header-fixed');
 	var searchButton = e.detail.submitElem;
-	var searchDots = $D.get('[data-theme-search-loader-dots]');
+	if(searchButton){
+		var searchDots = searchButton.parentNode.querySelector('[data-theme-search-loader-dots]');
+	}
 	if(searchButton && searchDots){
 		addClass(searchDots,'theme-show-search-loader-dots');
     searchButton.style.display = "none";
@@ -1052,7 +1054,9 @@ function hideSearchLoader(e){
 	var loader = $D.get('[data-theme-loader]');
   var tempLoad = $D.get('[data-theme-temp-load]');
 	var searchButton = e.detail.submitElem;
-	var searchDots = $D.get('[data-theme-search-loader-dots]');
+	if(searchButton){
+		var searchDots = searchButton.parentNode.querySelector('[data-theme-search-loader-dots]');
+	}
 	if(searchButton && searchDots){
 		removeClass(searchDots,'theme-show-search-loader-dots');
           searchButton.style.display = "block";

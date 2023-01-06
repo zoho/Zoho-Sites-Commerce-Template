@@ -54,4 +54,10 @@
 
 	{% endif %}
 
+	{% if page.template_vars.product_list_style == '10' %}
+
+		{% include '_store-product-list-ten' %}
+
+	{% endif %}
+
 </div>

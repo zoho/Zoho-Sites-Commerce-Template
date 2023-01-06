@@ -60,3 +60,12 @@
   }
    @return $default_vars;
 }
+
+@function mobileheader-default-value($default_vars){
+  @if not (variable-exists(user_default_vars) and map-has-key($user_default_vars,'color-mobileheader-search-field-background')) {
+    @if map-get($user_layout_vars,'mobile_header_style') == 03 {
+      $default_vars : map-merge($default_vars,('color-mobileheader-search-field-background': #f5f5f5));
+    }
+  }
+  @return $default_vars;
+}

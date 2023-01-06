@@ -1,3 +1,9 @@
+var scrollPosition, refineWrapper, stickyPosition,
+    mobileFilterContainer = document.querySelector('[data-zs-mobile-header-filterby]'),
+    selectedFiltersContainer = document.querySelector('[data-zs-selected-filters-conatainer]'),
+    mobileHeaderStyle = document.querySelector('[data-zs-mobile-headerstyle]').getAttribute("data-zs-mobile-headerstyle"),
+    mobilecontentWrap = document.querySelector('[data-zs-mobile-content-wrap]');
+
 function detailtab(currTab){
   var allTabs = document.querySelectorAll('[data-detail-tab]');
   var allCont = document.querySelectorAll('[data-detail-tab-content]');
@@ -60,6 +66,9 @@ function mobileFilter(){
 document.addEventListener("DOMContentLoaded", function(event) {
 	activeThumbnail();
 	mobileFilter();
+  if(mobileHeaderStyle == '03'){
+    mobileheaderThreeFilterSearch();
+  }
 });
 function productQuantity(event) {
   var key = event.which || event.keyCode;
@@ -233,7 +242,9 @@ function closeCurrencyMobile(){
 		currencyListContainer.firstChild.style.display = "flex";
 		removeClass(currencyListContainer,'theme-currency-open');
 	}
-	menuClose.click();
+  if(mobileHeaderStyle != '03'){
+	  menuClose.click();
+  }
 	currencyHideMobile.style.display = "none";
 	currencyMobileOpenTop.style.display = "none";
 	removeClass(resMenu,'theme-change-zindex');
@@ -250,7 +261,7 @@ function currentCurrency(currentList){
 		currencyListContainer.insertBefore(currentList,currencyListContainer.childNodes[0]);
 		multi_currency.change(currentList.innerText);
 	}
-	if(currenyOpen == true){
+	if(currenyOpen == true && mobileHeaderStyle != '03'){
 		menuClose.click();
 	}
   currencyMobileOpenTop.style.display = "none";
@@ -441,4 +452,84 @@ function replaceClassInElement(element, existing_class_name, to_be_replaced_clas
   }
 }
 
+function currencyContainerCheck(){
+  var currencyContainerButton = document.querySelector('[data-theme-currency-list-container]');
+  var currencyContainer = currencyContainerButton.querySelector('[data-theme-currency-list-ul]');
+  var isCurrencyContainerOpen;
+  if(currencyContainerButton){
+      var observerCurrencyContainerChanged = new MutationObserver(function(){
+          isCurrencyContainerOpen = currencyContainer.classList.contains('theme-currency-open');
+          if(!isCurrencyContainerOpen){
+              currencyContainerButton.addEventListener('click',isOpenCurrency);
+          }
+      });
+      observerCurrencyContainerChanged.observe(currencyContainer, { attributes: true, childList: true, subtree: true });
+  }
+}
+
+function isOpenCurrency(){
+  var currencyContainerButton = document.querySelector('[data-theme-currency-list-container]');
+  currencyContainerButton.addEventListener('click',openCurrency);
+}
+
+function scrollPositionCheck() {
+  var positionY = mobilecontentWrap.scrollTop;
+  if(positionY > stickyPosition){
+      if (positionY > scrollPosition) {
+          refineWrapper.classList.add('hide-refine-wrapper');
+      }
+      else {
+          refineWrapper.classList.remove('hide-refine-wrapper');
+      }
+      scrollPosition = positionY;
+  }
+}
+
+function newFilterUpdated(){
+  var selectedFilters = selectedFiltersContainer.querySelectorAll('[data-zs-selected-filter]');
+  var selectedFiltersCount = mobileFilterContainer.querySelector('[data-zs-mobile-header-filter-selectedcount]');
+  if(selectedFilters.length > 0){
+      selectedFiltersCount.innerHTML = "("+selectedFilters.length+")";
+      if(!selectedFiltersCount.classList.contains('filter-selectedcount-active')){
+          selectedFiltersCount.classList.add('filter-selectedcount-active');
+      }
+  }else{
+      selectedFiltersCount.classList.remove('filter-selectedcount-active');
+  }
+}
+
 /* END: Common Methods */
+
+/* START: Mobile Header style three filter and search */
+
+function mobileheaderThreeFilterSearch(){
+  var headerTop = document.querySelector('[data-zs-mobile-header-three-top]');
+  refineWrapper = document.querySelector('[data-zs-mobile-header-refine-wrapper]');
+  if(headerTop && refineWrapper){
+      stickyPosition = headerTop.clientHeight+refineWrapper.clientHeight;
+      refineWrapper.style.top = headerTop.clientHeight;
+      scrollPosition = stickyPosition;
+      if(mobilecontentWrap){
+          mobilecontentWrap.addEventListener('scroll', scrollPositionCheck);
+      }
+  }else if(refineWrapper){
+      scrollPosition = refineWrapper.clientHeight;
+  }
+  if(mobileFilterContainer && selectedFiltersContainer){
+      newFilterUpdated();
+      var observerNewFilterUpdated = new MutationObserver(newFilterUpdated);
+      observerNewFilterUpdated.observe(selectedFiltersContainer, { attributes: true, childList: true, subtree: true });
+  }
+  var currencyContainerButton = document.querySelector('[data-theme-currency-list-container]');
+  if(currencyContainerButton){
+      var observerCurrencyLoaded = new MutationObserver(currencyContainerCheck);
+      observerCurrencyLoaded.observe(currencyContainerButton, { attributes: true, childList: true, subtree: true });
+  }
+  document.addEventListener("zp-event-search-success",function(e){
+      document.querySelector('[data-zs-mobile-header-search] [data-zs-search-input]').value = e.detail.searchTerm;
+  }, false);
+  document.addEventListener("zp-event-search-pending",function(){
+      document.querySelector('[data-zs-mobile-header-search] [data-zs-search-input]').blur();
+  }, false);
+}
+/* END: Mobile Header style three filter and search */
