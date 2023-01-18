@@ -148,13 +148,20 @@
               <h3 class="theme-payment-message-heading">{{i18n.get("sales.message.transaction_failed")}}</h3>
             </div>
             <div class="theme-payment-message-box">
-              <h5>{{i18n.get("sales.message.possible_reasons")}}:</h5>
-              <ul class="theme-payment-message-lists">
-                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.authentication_error")}}</li>
-                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.insufficient_balance")}}</li>
-                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.network_error")}}</li>
-                <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.payment_cancelled")}}</li>
-              </ul>
+              {% if payment_status.error.message != null && payment_status.error.message != "" && payment_status.error.code != "100" && payment_status.error.code != "1002"%}
+                <h5>{{i18n.get("sales.message.possible_reasons",1)}}:</h5>
+                <ul class="theme-payment-message-lists">
+                  <li class="theme-payment-message-list">{{ payment_status.error.message }}</li>
+                </ul>
+              {% else %}
+                <h5>{{i18n.get("sales.message.possible_reasons",4)}}:</h5>
+                <ul class="theme-payment-message-lists">
+                  <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.authentication_error")}}</li>
+                  <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.insufficient_balance")}}</li>
+                  <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.network_error")}}</li>
+                  <li class="theme-payment-message-list">{{i18n.get("sales.message.reason.payment_cancelled")}}</li>
+                </ul>
+              {% endif %}
             </div>
           {% endif %}
       {% endif %}
