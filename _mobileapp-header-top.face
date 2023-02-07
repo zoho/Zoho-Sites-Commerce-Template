@@ -9,7 +9,7 @@
             </a>
         </span>
         {% endif %}
-        {% if (page.is_title_enabled || page.is_caption_enabled) && (page.site_title || page.site_caption) %}
+        {% if (page.site_title && page.is_title_enabled) || (page.site_caption && page.is_caption_enabled) %}
         <span data-zs-mobile-header-sitename-caption class="theme-mobile-header-site-name-caption">
             {% if page.is_title_enabled && page.site_title %}
             <div data-zs-sitename class="theme-mobile-header-site-name {% if !page.template_vars.is_mobile_site_title_enabled %}theme-mobile-header-disable-sitename-mobile{% endif %}">

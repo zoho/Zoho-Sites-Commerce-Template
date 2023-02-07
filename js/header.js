@@ -746,9 +746,14 @@ function mobileheader(){
             var ishome = window.location.pathname === "/" ? true : false;
             var mobileHeaderTop = document.querySelector('[data-zs-mobile-header-three-top]'),
                 mobileContentWrap = document.querySelector('[data-zs-mobile-content-wrap]'),
+                mobileHeaderNavWrap = mobileHeaderTop ? mobileHeaderTop.querySelector('.theme-mobile-header-nav-wrapper') : false,
                 mobileHeaderLogo = document.querySelector('[data-zs-mobile-header-logo]'),
                 mobileHeaderLogoDisabled = mobileHeaderLogo ? mobileHeaderLogo.classList.contains('theme-disable-logo-mobile') : true,
                 mobileHeaderSitenameCaption = document.querySelector('[data-zs-mobile-header-sitename-caption]'),
+                mobileHeaderSitename = document.querySelector('[data-zs-sitename]'),
+                mobileHeaderSitenameDisabled = mobileHeaderSitename ? mobileHeaderSitename.classList.contains('theme-mobile-header-disable-sitename-mobile') : true,
+                mobileHeaderSitecaption = document.querySelector('[data-zs-sitecaption]'),
+                mobileHeaderSitecaptionDisabled = mobileHeaderSitecaption ? mobileHeaderSitecaption.classList.contains('theme-mobile-header-disable-sitecaption-mobile') : true,
                 mobileHeaderNav = document.querySelector('[data-zs-mobile-header-nav]'),
                 mobileHeaderSearchInput = document.querySelector('[data-zs-mobile-header-search] [data-zs-search-input]'),
                 mobileHeaderSearchIcon = document.querySelector('[data-zs-mobile-header-search-icon]'),
@@ -771,12 +776,21 @@ function mobileheader(){
                 if(mobileHeaderNav){
                     mobileHeaderNav.style.display = 'none';
                 }
-                if(!mobileHeaderLogo && !mobileHeaderSearchInput && !mobileHeaderDeliveryPostalcode && mobileHeaderLogoDisabled){
-                    if(mobileHeaderTop){
-                        mobileHeaderTop.style.display = 'none';
-                    }
-                    if(mobileContentWrap){
-                        mobileContentWrap.classList.add('theme-mobile-header-top-disabled');
+                if(mobileHeaderLogoDisabled && mobileHeaderSitenameDisabled && mobileHeaderSitecaptionDisabled && !mobileHeaderSearchInput){
+                    if(!mobileHeaderDeliveryPostalcode){
+                        if(mobileHeaderTop){
+                            mobileHeaderTop.style.display = 'none';
+                        }
+                        if(mobileContentWrap){
+                            mobileContentWrap.classList.add('theme-mobile-header-top-disabled');
+                        }
+                    }else{
+                        if(mobileHeaderNavWrap){
+                            mobileHeaderNavWrap.style.display = 'none';
+                        }
+                        if(mobileContentWrap){
+                            mobileContentWrap.classList.add('theme-mobile-header-delivery-location-only-enabled');
+                        }
                     }
                 }
             }else{
@@ -787,7 +801,7 @@ function mobileheader(){
                     mobileHeaderSitenameCaption.style.display = 'none';
                 }
                 if(mobileContentWrap){
-                    mobileContentWrap.classList.remove('theme-mobile-header-top-disabled');
+                    mobileContentWrap.classList.remove('theme-mobile-header-top-disabled','theme-mobile-header-delivery-location-only-enabled');
                 }
                 if(mobileHeaderNav){
                     mobileHeaderNav.style.display = 'flex';

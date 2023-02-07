@@ -6,7 +6,7 @@
 {% endif %}
 
 {% if (page.is_sorting_enabled || filters.is_enabled) && collection_obj.products | size > 1 %}
-    <div data-zs-mobile-header-refine-wrapper class="theme-mobile-header-refine-wrapper">
+    <div data-zs-mobile-header-refine-wrapper class="theme-mobile-header-refine-wrapper {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-mobile-header-delivery-location-enabled{% endif %}">
         {% if page.is_sorting_enabled %}
         <div class="theme-mobile-header-sortby">
             {% comment %} CATEGORY SORTBY {% endcomment %}

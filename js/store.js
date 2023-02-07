@@ -1,8 +1,12 @@
-var scrollPosition, refineWrapper, stickyPosition,
+var scrollPosition, refineWrapper, stickyPosition, mobileHeaderStyle,
     mobileFilterContainer = document.querySelector('[data-zs-mobile-header-filterby]'),
     selectedFiltersContainer = document.querySelector('[data-zs-selected-filters-conatainer]'),
-    mobileHeaderStyle = document.querySelector('[data-zs-mobile-headerstyle]').getAttribute("data-zs-mobile-headerstyle"),
+    mobileHeaderStyleIdentifier = document.querySelector('[data-zs-mobile-headerstyle]'),
     mobilecontentWrap = document.querySelector('[data-zs-mobile-content-wrap]');
+
+    if(mobileHeaderStyleIdentifier){
+      mobileHeaderStyle = mobileHeaderStyleIdentifier.getAttribute("data-zs-mobile-headerstyle");
+    }
 
 function detailtab(currTab){
   var allTabs = document.querySelectorAll('[data-detail-tab]');

@@ -68,7 +68,7 @@
 <div data-zs-mobile-header-slide-wrapper data-zs-drawer class="theme-mobile-header-style-{{ page.template_vars.mobile_header_style }} theme-mobile-header-slidewrapper {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
     <div class="theme-mobile-header-slide">
         <div class="theme-mobile-header-slide-header">
-            {% if page.is_logo_enabled %}
+            {% if page.is_logo_enabled && page.template_vars.is_mobile_logo_enabled %}
             <span data-zs-mobile-header-logo class="theme-mobile-header-logo {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
                 <a href="/">
                     <picture>
@@ -76,6 +76,14 @@
                     </picture>
                 </a>
             </span>
+            {% elif page.type != PAGE_TYPE.CHECKOUT && page.site_title && page.is_title_enabled && page.template_vars.is_mobile_site_title_enabled %}
+                <span data-zs-mobile-header-sitename-caption class="theme-mobile-header-site-name-caption">
+                    {% if page.is_title_enabled && page.site_title %}
+                    <div data-zs-sitename class="theme-mobile-header-site-name">
+                        {{page.site_title}}
+                    </div>
+                    {% endif %}
+                </span>
             {% endif %}
             <span data-zs-drawer-close-button class="theme-mobile-header-slide-close">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M4.707 3.293 3.293 4.707 10.586 12l-7.293 7.293 1.414 1.414L12 13.414l7.293 7.293 1.414-1.414L13.414 12l7.293-7.293-1.414-1.414L12 10.586 4.707 3.293z"/></svg>

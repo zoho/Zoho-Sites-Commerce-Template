@@ -52,7 +52,7 @@
 	{% comment %} THEME HEADER AREA END {% endcomment %}
 	
 	{% if page.template_vars.mobile_header_style == "02" || page.template_vars.mobile_header_style == "03" %}	
-	<div data-zs-mobile-content-wrap class="theme-mobile-content-wrap {% if hide_search_in_cart_checkout %}theme-search-disabled{% endif %} {% if mobile_header.three.is_top_disabled %}theme-mobile-header-top-disabled{% endif %} {% if mobile_header.two.is_disabled %}theme-mobile-header-two-disabled{% endif %}">
+	<div data-zs-mobile-content-wrap class="theme-mobile-content-wrap {% if hide_search_in_cart_checkout %}theme-search-disabled{% endif %} {% if mobile_header.three.is_top_disabled %}theme-mobile-header-top-disabled{% endif %} {% if mobile_header.two.is_disabled %}theme-mobile-header-two-disabled{% endif %} {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-mobile-header-delivery-location-enabled{% endif %}">
 	{% endif %}
 
 	{% comment %} THEME CONTENT AREA START {% endcomment %}
