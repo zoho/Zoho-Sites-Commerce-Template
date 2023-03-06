@@ -57,9 +57,11 @@
     {% for post in blog_posts %}
     {% if post.post_image %}
     <div class="theme-blog-post-cover-image-container">
-      <picture>
-        <img src="{{ post.post_image }}" class="theme-blog-post-cover-image" alt="{{post.post_title}}">
-      </picture>
+      <a href="{{post.post_url}}">
+        <picture>
+          <img src="{{ post.post_image }}" class="theme-blog-post-cover-image" alt="{{post.post_title}}">
+        </picture>
+      </a>
     </div>
     {% endif %}
     <div class="theme-blog-container">

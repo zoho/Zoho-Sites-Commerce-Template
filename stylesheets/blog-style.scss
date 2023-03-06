@@ -990,6 +990,11 @@
             @include prefix(justify-content,center);
             height:200px;
             background-color: map-get($base_vars,'color-light');
+            a{
+              display: flex;
+              width: 100%;
+              height: 100%;
+            }
             picture{
               @include picture-tag;
             }
@@ -1572,6 +1577,11 @@
           height: 330px;
           width: 100%;
           background-color: map-get($base_vars,'color-light');
+          a{
+            display: flex;
+            width: 100%;
+            height: 100%;
+          }
           picture{
             @include picture-tag;
           }

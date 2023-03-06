@@ -1452,9 +1452,7 @@
 				.theme-search-and-mini-cart-group-item{
 					@include prefix(flex,1 0 auto);
 					.theme-minicart-icon {
-					padding-inline-end:0px;
-					padding-inline-start:10px;
-					border-inline-start:1px dotted map-get($default_vars,'color-7th-header-style-cart-divider-border');
+						padding-inline-end:0px;
 					}
 				}
 				.theme-search-and-mini-cart-group {
@@ -1832,6 +1830,11 @@
      }
    }
    .theme-header-topbar {
+	 &.theme-topbar-hide-non-res{
+		@include respond-to(mediumdevice) {
+			display: none;
+		}
+	 }
      .zpcontainer {
        .theme-currency-non-res {
 	 margin-inline-start:0px;
@@ -1862,7 +1865,6 @@
          .theme-navigation-and-icons {
            .theme-search-and-mini-cart-group-item{
              .theme-minicart-icon {
-		border-inline-start: 1px dotted map-get($default_vars,'darkbg-color-7th-header-style-cart-divider-border');
                svg {
                  fill:map-get($default_vars, 'darkbg-color-7th-header-style-cart-icon');
                  stroke:map-get($default_vars, 'darkbg-color-7th-header-style-cart-icon');

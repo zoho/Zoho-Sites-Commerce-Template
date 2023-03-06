@@ -115,6 +115,11 @@ function responsivechanges() {
         if (topBar && langContainer && (!headerSearchCart && !portal)) {
             topBar.removeAttribute('style');
         }
+        if(hasHeaderSeven && topBar && portal && headerSearchCart){
+            if (portal.classList.contains('theme-portal-icon-enabled')) {
+                headerSearchCart.prepend(portal);
+            }
+        }
         if (headerSearchCartPositionResponsive) {
             headerSearchCartPositionResponsive.innerHTML = '';
         }
@@ -175,6 +180,11 @@ function responsivechanges() {
     } else {
         if (topBar && (!headerSearchCart && !portal)) {
             topBar.setAttribute('style', 'display:none');
+        }
+        if(hasHeaderSeven && topBar && portal){
+            if (topBar.querySelector('.zpcontainer') && portal.classList.contains('theme-portal-icon-enabled')) {
+                topBar.querySelector('.zpcontainer').appendChild(portal);
+            }
         }
         if ((topBar && headerSearchCart && headerSearchCartPositionResponsive && (headerSearchCart.parentElement !== headerSearchCartPositionResponsive)) || (headerSearchCart && verticalMmenu && headerSearchCartPositionResponsive && (headerSearchCart.parentElement !== headerSearchCartPositionResponsive)) || (hasHeaderSeven && headerSearchCart && headerSearchCartPositionResponsive && (headerSearchCart.parentElement !== headerSearchCartPositionResponsive))) {
             headerSearchCartPositionResponsive.appendChild(headerSearchCart);

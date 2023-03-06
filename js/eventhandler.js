@@ -979,7 +979,7 @@ function _displayCustomFieldOfVariant(variantId, productId) {
 		});
 
 		if(customFieldQuickview){
-			$D.css(customFieldQuickview, 'padding-top', '29px');
+			$D.css(customFieldQuickview, 'padding-block-start', '29px');
 		}
 }
 
@@ -1001,7 +1001,7 @@ function _hideCustomFieldsOfVariants(productId) {
 		});
 
 		if(customFieldQuickview){
-			$D.css(customFieldQuickview, 'padding-top', '0');
+			$D.css(customFieldQuickview, 'padding-block-start', '0');
 		}
 }
 

@@ -44,6 +44,19 @@
 	{% if page.is_logo_enabled || page.is_title_enabled || page.is_caption_enabled || !hide_search_in_cart_checkout || page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT || !hide_carticon_in_cart_checkout || page.is_portal_enabled %}
 		{% assign mobile_header.two.is_disabled = false %}
 	{% endif %}
+	{% if page.is_portal_enabled %}
+		{% if page.template_vars.portal_position == "01" %}
+			{% assign portal_position = "01" %}
+		{% elif page.template_vars.portal_position == "02" %}
+			{% if page.type != PAGE_TYPE.CHECKOUT && page.type != PAGE_TYPE.CART %}
+				{% assign portal_position = "02" %}
+			{% else %}
+				{% assign portal_position = false %}
+			{% endif %}
+		{% endif %}
+	{% else %}
+		{% assign portal_position = false %}
+	{% endif %}
 
 	{% comment %} THEME HEADER AREA START {% endcomment %}
 		{% block header_area %}

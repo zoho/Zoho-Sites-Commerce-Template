@@ -1098,7 +1098,10 @@ font-letter-spacing-portal : normal,
 
 darkbg-color-portal : RGBA(convertHexToRgb(map-get($base_vars, 'color-default')),0.8),
 
-  // FORM ELEMENT
+color-portal-icon : map-get($base_vars, 'color-secondary'),
+darkbg-color-portal-icon : map-get($base_vars, 'color-default'),
+
+// FORM ELEMENT
 
 color-form-heading : map-get($base_vars, 'color-secondary'),
 font-family-form-heading : map-get($base_vars, 'font-family-heading'),

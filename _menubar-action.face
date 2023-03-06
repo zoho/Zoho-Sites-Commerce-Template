@@ -1,0 +1,27 @@
+<div class="theme-search-and-mini-cart-group" data-theme-search-cart-group="zptheme-search-cart-group">
+
+    {% comment %} SEARCH STARTS {% endcomment %}
+  
+    {% if !hide_search_in_cart_checkout %}
+      {% include '_search-box' %}
+    {% endif %}
+    
+    {% comment %} SEARCH ENDS {% endcomment %}
+    
+    {% comment %} PORTAL STARTS {% endcomment %}
+  
+    {% if portal_position == "02" %}
+      {% include '_member-portal' %}
+    {% endif %}
+  
+    {% comment %} PORTAL ENDS {% endcomment %}
+  
+    {% comment %} MINI-CART START {% endcomment %}
+  
+    {% if !hide_carticon_in_cart_checkout %}
+      {% include '_store-cart-count' %}
+    {% endif %}
+  
+    {% comment %} MINI-CART END {% endcomment %}
+  
+</div>  

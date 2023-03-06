@@ -585,15 +585,6 @@
             }
           }
         }
-        .zpcontainer {
-          .theme-navigation-and-icons{
-            &.theme-search-mini-cart-style-03{
-              .theme-search-icon{
-                border-inline-start-color:map-get($default_vars,'darkbg-color-7th-header-style-cart-divider-border');
-              }
-            }
-          }
-        }
       }
       &.zpheader-style-navigation-07 {
         border-block-start: 1px solid map-get($base_vars,'color-border');

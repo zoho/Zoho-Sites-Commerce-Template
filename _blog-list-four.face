@@ -18,9 +18,11 @@
           {% if post.post_image %}
           <div class="theme-blog-cover-img-container">
             <div class="theme-blog-cover-img-container-inner">
-            <picture>
-              <img src="{{post.post_image}}" class="theme-blog-cover-img" alt="{{post.post_title}}"/>
-            </picture>
+            <a href="{{post.post_url}}">
+              <picture>
+                <img src="{{post.post_image}}" class="theme-blog-cover-img" alt="{{post.post_title}}"/>
+              </picture>
+            </a>
             </div>
           </div>
           {% endif %}
