@@ -424,11 +424,18 @@
 				@include respond-to(mediumdevice){
 					min-inline-size:1%;
 				}
-				.theme-search-cart-non-res{
-					@include flexbox;
-					@include prefix(align-self,stretch);
-					margin-inline-end:10px;
+				&.theme-search-cart-non-res{
+					display: none;
 					@include respond-to(mediumdevice){
+						@include flexbox;
+					}
+				}
+				.theme-search-cart-non-res{
+					display: none;
+					@include respond-to(mediumdevice){
+						@include flexbox;
+						@include prefix(align-self,stretch);
+						margin-inline-end:10px;
 						margin-inline-end:0px;
 					}
 					&.theme-search-cart-scrollposition-non-responsive{

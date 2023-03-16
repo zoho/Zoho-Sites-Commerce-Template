@@ -4,7 +4,7 @@
 
 {% if page.template_vars.header_style == "01" %}
 	{% capture topbar_remove_checkout_block %}
-		{% if page.template_vars.mobile_header_style == "01" && (!page.is_contact_information_enabled && !hide_carticon_in_cart_checkout || !page.is_contact_information_enabled && !hide_search_in_cart_checkout || !page.is_portal_enabled && !hide_carticon_in_cart_checkout || !page.is_portal_enabled && !hide_search_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_carticon_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_search_in_cart_checkout ) %}
+		{% if (page.template_vars.mobile_header_style == "01" && (!hide_carticon_in_cart_checkout || !hide_search_in_cart_checkout)) && (!page.is_contact_information_enabled && !page.is_multi_currency_enabled && !LANGUAGE_LIST_ENABLED && !page.is_portal_enabled && !page.is_delivery_location_enabled) && (!page.is_social_icon_enabled || (page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled)) %}
 		<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
 			<div class="zpcontainer">
 				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart></div>
@@ -18,7 +18,7 @@
 {% if page.template_vars.header_style == "02" %}
 
 	{% capture topbar_remove_checkout_block %}
-		{% if !page.is_contact_information_enabled && !hide_carticon_in_cart_checkout || !page.is_contact_information_enabled && !hide_search_in_cart_checkout || !page.is_portal_enabled && !hide_carticon_in_cart_checkout || !page.is_portal_enabled && !hide_search_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_carticon_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_search_in_cart_checkout %}
+		{% if (page.template_vars.mobile_header_style == "01" && (!hide_carticon_in_cart_checkout || !hide_search_in_cart_checkout)) && (!page.is_contact_information_enabled && !page.is_multi_currency_enabled && !LANGUAGE_LIST_ENABLED && !page.is_portal_enabled && !page.is_delivery_location_enabled) && (!page.is_social_icon_enabled || (page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled)) %}
 		<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
 			<div class="zpcontainer">
 				<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart></div>
@@ -34,7 +34,7 @@
 {% endif %}
 {% if page.template_vars.header_style == "04" %}
 	{% capture topbar_remove_checkout_block %}
-		{% if !page.is_contact_information_enabled && !hide_carticon_in_cart_checkout || !page.is_contact_information_enabled && !hide_search_in_cart_checkout || !page.is_portal_enabled && !hide_carticon_in_cart_checkout || !page.is_portal_enabled && !hide_search_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_carticon_in_cart_checkout || !page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled && !hide_search_in_cart_checkout %}
+		{% if (page.template_vars.mobile_header_style == "01" && (!hide_carticon_in_cart_checkout || !hide_search_in_cart_checkout)) && (!page.is_contact_information_enabled && !page.is_multi_currency_enabled && !LANGUAGE_LIST_ENABLED && !page.is_portal_enabled && !page.is_delivery_location_enabled) && (!page.is_social_icon_enabled || (page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled)) %}
 			<div class="theme-header-topbar theme-header-topbar-responsive {% if page.template_vars.topbar_background == "dark" %}zpdark-header-portion{% endif %}" data-dark-part-applied="{% if page.template_vars.topbar_background == "dark" %}true{% else %}false{% endif %}" data-theme-responsive-search-cart-topbar>
 				<div class="zpcontainer">
 					<div class="theme-navigation-and-icons theme-search-minicart-responsive" data-theme-responsive-search-cart>

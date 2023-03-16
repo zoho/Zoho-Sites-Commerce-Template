@@ -188,7 +188,7 @@
                           <span data-zs-cart-label-price class="theme-cart-label-price">{{ cartItem.label_price | currency(currency) }}</span>
                           {% assign prod_discount_value = 0 %}
                           {% prod_discount_value = ((cartItem.label_price - cartItem.selling_price)/ cartItem.label_price) * 100 %}
-                          <span>{{prod_discount_value}}% {{i18n.get("product.label.off")}}</span>
+                          <span data-zs-product-discount-{{cartItem.variant_id}}>{{prod_discount_value}}% {{i18n.get("product.label.off")}}</span>
                         {% endif %}
                       </div>
                     </div>
