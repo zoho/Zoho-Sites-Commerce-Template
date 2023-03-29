@@ -184,12 +184,17 @@
                       <div data-zs-cartitem-price-{{cartItem.variant_id}} class="item-price">
                         {{i18n.get("orders.order.product.price")}}:
                         <span data-zs-cart-selling-price-{{cartItem.variant_id}} class="theme-cart-selling-price">{{ cartItem.selling_price | currency(currency) }}</span>
+                        {% assign prod_discount_text = "" %}
+                        {% assign label_price_formatted_text = "" %}
                         {% if cartItem.label_price != 0 && (cartItem.label_price > cartItem.selling_price) %}
-                          <span data-zs-cart-label-price class="theme-cart-label-price">{{ cartItem.label_price | currency(currency) }}</span>
+                          {% label_price_formatted_text = cartItem.label_price | currency(currency) %}
                           {% assign prod_discount_value = 0 %}
                           {% prod_discount_value = ((cartItem.label_price - cartItem.selling_price)/ cartItem.label_price) * 100 %}
-                          <span data-zs-product-discount-{{cartItem.variant_id}}>{{prod_discount_value}}% {{i18n.get("product.label.off")}}</span>
+                          {% assign discount_label_i18n_text = i18n.get("product.label.off") %}
+                          {% prod_discount_text = prod_discount_value + "% " + discount_label_i18n_text %}
                         {% endif %}
+                        <span data-zs-cart-label-price-{{cartItem.variant_id}} class="theme-cart-label-price">{{ label_price_formatted_text }}</span>
+                        <span data-zs-product-discount-{{cartItem.variant_id}}>{{ prod_discount_text }}</span>
                       </div>
                     </div>
                   </div>

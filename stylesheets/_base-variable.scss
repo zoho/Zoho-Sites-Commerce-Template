@@ -38,7 +38,9 @@ color-border-rgba : convertHexToRgb(map-get($base_vars, 'color-border')),
 
 dark-secion-bg : map-get($base_vars,'color-primary'),
 light-secion-bg : map-get($base_vars,'color-light'),
-
+dark-footer-section-bg : map-get($base_vars,'color-secondary'),
+light-footer-section-bg : map-get($base_vars,'color-light'),
+default-footer-section-bg: map-get($base_vars,'color-default'),
 // THEME HEADER VARIABLES
 
 color-header-background : map-get($base_vars, 'color-default'),

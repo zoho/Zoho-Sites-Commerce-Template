@@ -2004,6 +2004,42 @@
 			 &.theme-csp-container{
 			 	background: #FFFFFF;
 			 }
+			 &.theme-snapchat-container  {
+			background:#fdff00;
+			}
+			&.theme-messenger-container  {
+				background:#0a93ff;
+			}
+			&.theme-telegram-container  {
+				background:#24a0dc;
+			}
+			&.theme-reddit-container  {
+				background:#FF4500;
+			}
+			&.theme-whatsapp-container  {
+				background:#26d266;
+			}
+			&.theme-viber-container  {
+				background:#7a57fb;
+			}
+			&.theme-skype-container  {
+				background:#0277de;
+			} 
+			&.theme-vimeo-container  {
+				background:#00b9ef;
+			}
+			&.theme-tiktok-container  {
+				background:#000000;
+			}
+			&.theme-googlemap-container  {
+				background:#05ac47;
+			}
+			&.theme-quora-container  {
+				background:#b82c27;
+			}
+			&.theme-websiteurl-container  {
+				background:#00a1e2;
+			}
 			}
 			&:last-child{
 				@include respond-to(mediumdevice){

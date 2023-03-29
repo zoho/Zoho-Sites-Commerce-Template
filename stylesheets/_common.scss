@@ -5,5 +5,13 @@
   background-color:map-get($default_vars,'light-secion-bg');
 }
 .theme-footer-area{
-  background-color: map-get($base_vars,'color-secondary');
+  @if map-get($user_layout_vars,'footer_background') == 01 {
+    background-color: map-get($default_vars,'default-footer-section-bg');
+  }
+  @if map-get($user_layout_vars,'footer_background') == 02 {
+    background-color: map-get($default_vars,'light-footer-section-bg');
+  }
+  @if map-get($user_layout_vars,'footer_background') == 03 {
+    background-color: map-get($default_vars,'dark-footer-section-bg');
+  }
 }
