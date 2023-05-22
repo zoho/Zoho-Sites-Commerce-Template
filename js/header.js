@@ -131,6 +131,10 @@ function responsivechanges() {
         }
         if (socialIconParent) {
             socialIconParent.appendChild(socialIconInnerParent);
+            var socialIconMoreBtn = document.querySelectorAll('[data-more-socialicon-parent]')[0];
+            if (socialIconMoreBtn) {
+                $D.append(socialIconParent, socialIconMoreBtn);
+            }
         }
         if (headerSearchCart && headerSearchCartPositionNonResponsive) {
             headerSearchCartPositionNonResponsive.appendChild(headerSearchCart);

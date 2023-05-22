@@ -11,6 +11,7 @@
 
 <div data-theme-content-container="theme-content-container" class="zpsection {% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled %}zpcontent-for-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
 	<div class="zpcontainer" data-zs-app="blogs">
+		<h1 class="theme-blog-h1">{{page.page_name}}</h1>
 			{% if page.template_vars.blog_list_style == '01' %}
 				{% include '_blog-list-one' %}
 			{% endif %}
