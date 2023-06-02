@@ -3,7 +3,7 @@ var h = 0;
 var ct = 0;
 var b = 0;
 var header, headerContainer, headerSearchCart, topBar, body, headerHeight, LastScrollVal, headerVal, contactInfo, socialIconInnerParent, socialIconParent, headerSearchCartPositionResponsive, headerSearchCartPositionNonResponsive, topbBarInfoPosition, menuParent, portal, brandingInfo, portalResponsive, portalNonResponsive, mobileHeaderStyle;
-var scrollTopVal, headercontainerHeight, bannerLi, bannerBaseHeader, bannerArrowClass,darkHeader,responsiveSearchCartContainer,bannerThemecontainer,themeContentContainer,themeHeaderSixRes,themeHeaderSixResHeight,themeLogo,themeLogoHeight,themeLogoWidth,themeLogoHeightSlice,themeLogoWidthSlice,themeCurrencyList,themeCurrencyRes,themeCurrencyNonRes,themeSidebarContent,themeSidebarContentContainer,themeSidebarMobileContentContainer,hasHeaderSeven,langContainer,langNonResContainer,langResContainer;
+var scrollTopVal, headercontainerHeight, bannerLi, bannerBaseHeader, bannerArrowClass,darkHeader,responsiveSearchCartContainer,bannerThemecontainer,themeContentContainer,themeHeaderSixRes,themeHeaderSixResHeight,themeLogo,themeLogoHeight,themeLogoWidth,themeLogoHeightSlice,themeLogoWidthSlice,themeCurrencyList,themeCurrencyRes,themeCurrencyNonRes,themeSidebarContent,themeSidebarContentContainer,themeSidebarMobileContentContainer,hasHeaderSeven,langContainer,langNonResContainer,langResContainer,displayMode;
 
 function removeClass(element, className) {
     element && (element.className = element.className.replace(new RegExp(className, 'g'), ''));
@@ -237,6 +237,10 @@ function responsivechanges() {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    displayMode = displayMode();
+    if(displayMode.isWebView){
+        document.body.setAttribute('data-zs-display-mode','webview');
+    }
     responsivechanges();
     if(!headerContainer){
       return;
@@ -757,24 +761,11 @@ var templateUti = {
 function mobileheader(){
     if (document.documentElement.clientWidth < 992) {
         if(mobileHeaderStyle == '03'){
-            var ishome = window.location.pathname === "/" ? true : false;
-            var mobileHeaderTop = document.querySelector('[data-zs-mobile-header-three-top]'),
-                mobileContentWrap = document.querySelector('[data-zs-mobile-content-wrap]'),
-                mobileHeaderNavWrap = mobileHeaderTop ? mobileHeaderTop.querySelector('.theme-mobile-header-nav-wrapper') : false,
-                mobileHeaderLogo = document.querySelector('[data-zs-mobile-header-logo]'),
-                mobileHeaderLogoDisabled = mobileHeaderLogo ? mobileHeaderLogo.classList.contains('theme-disable-logo-mobile') : true,
-                mobileHeaderSitenameCaption = document.querySelector('[data-zs-mobile-header-sitename-caption]'),
-                mobileHeaderSitename = document.querySelector('[data-zs-sitename]'),
-                mobileHeaderSitenameDisabled = mobileHeaderSitename ? mobileHeaderSitename.classList.contains('theme-mobile-header-disable-sitename-mobile') : true,
-                mobileHeaderSitecaption = document.querySelector('[data-zs-sitecaption]'),
-                mobileHeaderSitecaptionDisabled = mobileHeaderSitecaption ? mobileHeaderSitecaption.classList.contains('theme-mobile-header-disable-sitecaption-mobile') : true,
-                mobileHeaderNav = document.querySelector('[data-zs-mobile-header-nav]'),
-                mobileHeaderSearchInput = document.querySelector('[data-zs-mobile-header-search] [data-zs-search-input]'),
+            var mobileHeaderSearchInput = document.querySelector('[data-zs-mobile-header-search] [data-zs-search-input]'),
                 mobileHeaderSearchIcon = document.querySelector('[data-zs-mobile-header-search-icon]'),
                 mobileHeaderSearchBackButton = document.querySelector('[data-zs-mobile-header-search-back]'),
                 mobileHeaderSearchClearButton = document.querySelector('[data-zs-mobile-header-search-clear]'),
-                mobileHeaderClearSearchInput = '',
-                mobileHeaderDeliveryPostalcode = document.querySelector('[data-zs-delivery-postalcode]');
+                mobileHeaderClearSearchInput = '';
             if(window.location.href.indexOf("search-products") > -1){
                 var mobileHeaderSearch = document.querySelector('[data-zs-mobile-header-search]');
                 if(mobileHeaderSearch){
@@ -784,41 +775,6 @@ function mobileheader(){
                     mobileHeaderSearchBackButton.addEventListener('click',function(){
                         history.go(-1);
                     });
-                }
-            }
-            if(ishome){
-                if(mobileHeaderNav){
-                    mobileHeaderNav.style.display = 'none';
-                }
-                if(mobileHeaderLogoDisabled && mobileHeaderSitenameDisabled && mobileHeaderSitecaptionDisabled && !mobileHeaderSearchInput){
-                    if(!mobileHeaderDeliveryPostalcode){
-                        if(mobileHeaderTop){
-                            mobileHeaderTop.style.display = 'none';
-                        }
-                        if(mobileContentWrap){
-                            mobileContentWrap.classList.add('theme-mobile-header-top-disabled');
-                        }
-                    }else{
-                        if(mobileHeaderNavWrap){
-                            mobileHeaderNavWrap.style.display = 'none';
-                        }
-                        if(mobileContentWrap){
-                            mobileContentWrap.classList.add('theme-mobile-header-delivery-location-only-enabled');
-                        }
-                    }
-                }
-            }else{
-                if(mobileHeaderLogo){
-                    mobileHeaderLogo.style.display = 'none';
-                }
-                if(mobileHeaderSitenameCaption){
-                    mobileHeaderSitenameCaption.style.display = 'none';
-                }
-                if(mobileContentWrap){
-                    mobileContentWrap.classList.remove('theme-mobile-header-top-disabled','theme-mobile-header-delivery-location-only-enabled');
-                }
-                if(mobileHeaderNav){
-                    mobileHeaderNav.style.display = 'flex';
                 }
             }
             if(mobileHeaderSearchInput){
@@ -870,7 +826,7 @@ function mobileheader(){
             ios = /iphone|ipod|ipad/.test(userAgent);
             if (ios && !standalone && !safari) {    //iOS webview check
                 var ishome = window.location.pathname === "/" ? true : false;
-                var mobileHeaderResponsiveGoBack = document.querySelector('[data-zs-mobile-header-responsive-goback ]'),
+                var mobileHeaderResponsiveGoBack = document.querySelector('[data-zs-mobile-header-responsive-goback]'),
                     mobileHeaderBranding = document.querySelector('[data-zs-branding]'),
                     mobileHeaderResponsiveMenuArea = document.querySelector('[data-zs-responsive-menu-area]');
                 if(ishome){
@@ -936,4 +892,19 @@ function drawerPlugin(){
         document.getElementsByTagName("body")[0].classList.remove('theme-body-overflowhidden');
     }
     drawerPlugin.init();
+}
+
+function displayMode(){
+    var standalone = window.navigator.standalone || (window.matchMedia('(display-mode: standalone)').matches),
+        userAgent = window.navigator.userAgent.toLowerCase(),
+        android = /android/.test(userAgent);
+        safari = /safari/.test(userAgent),
+        ios = /iphone|ipod|ipad/.test(userAgent) || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1,
+        webview = (android && /; wv\)/.test(userAgent)) || (ios && !standalone && !safari),
+        displayMode = {
+            "standalone" : standalone,
+            "isWebView" : webview,
+            "platform" : ios ? 'ios' : android ? 'android' : 'other'
+        };
+        return displayMode;
 }

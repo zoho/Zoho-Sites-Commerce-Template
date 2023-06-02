@@ -1,36 +1,40 @@
 <div data-zs-mobile-header-three-top class="theme-mobile-header-style-{{ page.template_vars.mobile_header_style }} theme-mobile-header-top {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
+    {% if !mobile_header.three.is_delivery_location_only_enabled %}
     <div class="theme-mobile-header-nav-wrapper {% if page.template_vars.header_background == "dark" %}zpdark-header-portion{% endif %}">
-        {% if page.is_logo_enabled %}
-        <span data-zs-mobile-header-logo data-zs-logo-container class="theme-mobile-header-logo {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
-            <a href="/">
-                <picture>
-                    <img src="{% if page.logo.url %}{{ page.logo.url }}{% else %}{{ page.template_assets }}/images/logo.png{% endif %}" alt="{{page.site_title}}" />
-                </picture>
-            </a>
-        </span>
-        {% endif %}
-        {% if (page.site_title && page.is_title_enabled) || (page.site_caption && page.is_caption_enabled) %}
-        <span data-zs-mobile-header-sitename-caption class="theme-mobile-header-site-name-caption">
-            {% if page.is_title_enabled && page.site_title %}
-            <div data-zs-sitename class="theme-mobile-header-site-name {% if !page.template_vars.is_mobile_site_title_enabled %}theme-mobile-header-disable-sitename-mobile{% endif %}">
-                {{page.site_title}}
-            </div>
-            {% endif %}
-            {% if page.is_caption_enabled && page.site_caption %}
-            <div data-zs-sitecaption class="theme-mobile-header-site-caption {% if !page.template_vars.is_mobile_site_caption_enabled %}theme-mobile-header-disable-sitecaption-mobile{% endif %}">
-                {{page.site_caption}}
-            </div>
-            {% endif %}
-        </span>
-        {% endif %}
-        <span data-zs-mobile-header-nav class="theme-mobile-header-nav" style="display:none">
-            <span class="theme-mobile-header-goback">
-                <a href="javascript:;" onclick="history.go(-1);">
-                    <svg width="24px" height="24px" viewBox="0 0 24 24"><path fillrule="evenodd" d="M20.25 11.25H5.555l6.977-6.976a.748.748 0 000-1.056.749.749 0 00-1.056 0L3.262 11.43A.745.745 0 003 12a.745.745 0 00.262.57l8.214 8.212a.75.75 0 001.056 0 .748.748 0 000-1.056L5.555 12.75H20.25a.75.75 0 000-1.5"></path></svg>
+        {% if page.is_home_page %}
+            {% if page.is_logo_enabled %}
+            <span data-zs-mobile-header-logo data-zs-logo-container class="theme-mobile-header-logo {% if !page.template_vars.is_mobile_logo_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-disable-logo-mobile{% endif %}">
+                <a href="/">
+                    <picture>
+                        <img src="{% if page.logo.url %}{{ page.logo.url }}{% else %}{{ page.template_assets }}/images/logo.png{% endif %}" alt="{{page.site_title}}" />
+                    </picture>
                 </a>
             </span>
-            <span class="theme-mobile-header-pagename">{{ page.page_name }}</span>
-        </span>
+            {% endif %}
+            {% if (page.site_title && page.is_title_enabled) || (page.site_caption && page.is_caption_enabled) %}
+            <span data-zs-mobile-header-sitename-caption class="theme-mobile-header-site-name-caption">
+                {% if page.is_title_enabled && page.site_title %}
+                <div data-zs-sitename class="theme-mobile-header-site-name {% if !page.template_vars.is_mobile_site_title_enabled %}theme-mobile-header-disable-sitename-mobile{% endif %}">
+                    {{page.site_title}}
+                </div>
+                {% endif %}
+                {% if page.is_caption_enabled && page.site_caption %}
+                <div data-zs-sitecaption class="theme-mobile-header-site-caption {% if !page.template_vars.is_mobile_site_caption_enabled %}theme-mobile-header-disable-sitecaption-mobile{% endif %}">
+                    {{page.site_caption}}
+                </div>
+                {% endif %}
+            </span>
+            {% endif %}
+        {% else %}
+            <span data-zs-mobile-header-nav class="theme-mobile-header-nav">
+                <span class="theme-mobile-header-goback">
+                    <a href="javascript:;" onclick="history.go(-1);">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24"><path fillrule="evenodd" d="M20.25 11.25H5.555l6.977-6.976a.748.748 0 000-1.056.749.749 0 00-1.056 0L3.262 11.43A.745.745 0 003 12a.745.745 0 00.262.57l8.214 8.212a.75.75 0 001.056 0 .748.748 0 000-1.056L5.555 12.75H20.25a.75.75 0 000-1.5"></path></svg>
+                    </a>
+                </span>
+                <span class="theme-mobile-header-pagename">{{ page.page_name }}</span>
+            </span>
+        {% endif %}
         {% if page.is_search_enabled %}
             <span data-zs-mobile-header-search class="theme-mobile-header-search">
                 <span data-zs-mobile-header-search-icon class="theme-mobile-header-search-icon-wrapper">
@@ -49,6 +53,7 @@
             </span>
         {% endif %}
     </div>
+    {% endif %}
     {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
     <div class="theme-delivery-location-mobile-container">
         {% include '_store-select-location' %}

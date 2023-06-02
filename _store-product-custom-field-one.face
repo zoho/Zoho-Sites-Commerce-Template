@@ -31,7 +31,7 @@
                                     {% endfor %}
                                 {% else %}
                                     <span class="theme-custom-field-value" data-zs-customfield-display-value>
-                                        {% if custom_field.field_type == "amount" || custom_field.field_type == "decimal" || custom_field.field_type == "number" %}
+                                        {% if custom_field.field_type == "amount" || custom_field.field_type == "decimal" || custom_field.field_type == "number" || custom_field.field_type == "date" %}
                                         {{ custom_field.display_value }}
                                         {% elif custom_field.field_type == "url" %}
                                         <a href="{{ custom_field.value }}">{{ custom_field.value }}</a>

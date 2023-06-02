@@ -12,7 +12,7 @@
 
 {{page.header_code}}
 </head>
-<body>
+<body data-zs-home="{{!page.is_home_page}}" data-zs-subsite="{{page.is_sub_site}}" data-zs-display-mode="default">
 	{{page.after_body_scripts}}
 	{% assign template_vars = page.template_vars %}
 	{% assign PAGE_TYPE = {"CHECKOUT":112,"CART":111} %}
@@ -34,9 +34,21 @@
 	{% if page.language_list && (page.language_list | size > 1) %}
 		{% assign LANGUAGE_LIST_ENABLED = true %}
 	{% endif %}
-	{% assign mobile_header = {"two":{"is_disabled":true},"three":{"is_top_disabled":true,"is_bottom_disabled":true}} %}
+	{% assign mobile_header = {"two":{"is_disabled":true},"three":{"is_top_disabled":true,"is_bottom_disabled":true,"is_delivery_location_only_enabled":false}} %}
 	{% if page.is_logo_enabled || page.is_title_enabled || page.is_caption_enabled || !hide_search_in_cart_checkout || page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
 		{% assign mobile_header.three.is_top_disabled = false %}
+	{% endif %}
+	{% if page.is_home_page %}
+		{% if (!page.is_logo_enabled || page.is_logo_enabled && !page.template_vars.is_mobile_logo_enabled) && (!page.is_title_enabled || page.is_title_enabled && !page.template_vars.is_mobile_site_title_enabled) && (!page.is_caption_enabled || page.is_caption_enabled && !page.template_vars.is_mobile_site_caption_enabled) && !page.is_search_enabled %}
+			{% if !page.is_delivery_location_enabled %}
+				{% assign mobile_header.three.is_top_disabled = true %}
+			{% else %}
+				{% assign mobile_header.three.is_delivery_location_only_enabled = true %}
+			{% endif %}
+		{% endif %}
+	{% else %}
+		{% assign mobile_header.three.is_top_disabled = false %}
+		{% assign mobile_header.three.is_delivery_location_only_enabled = false %}
 	{% endif %}
 	{% if page.is_menu_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_contact_information_enabled || page.is_multi_currency_enabled || LANGUAGE_LIST_ENABLED || !hide_carticon_in_cart_checkout || page.is_portal_enabled %}
 		{% assign mobile_header.three.is_bottom_disabled = false %}
@@ -65,7 +77,7 @@
 	{% comment %} THEME HEADER AREA END {% endcomment %}
 	
 	{% if page.template_vars.mobile_header_style == "02" || page.template_vars.mobile_header_style == "03" %}	
-	<div data-zs-mobile-content-wrap class="theme-mobile-content-wrap {% if hide_search_in_cart_checkout %}theme-search-disabled{% endif %} {% if mobile_header.three.is_top_disabled %}theme-mobile-header-top-disabled{% endif %} {% if mobile_header.two.is_disabled %}theme-mobile-header-two-disabled{% endif %} {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-mobile-header-delivery-location-enabled{% endif %}">
+	<div data-zs-mobile-content-wrap class="theme-mobile-content-wrap {% if hide_search_in_cart_checkout %}theme-search-disabled{% endif %} {% if mobile_header.three.is_top_disabled && page.is_home_page %}theme-mobile-header-top-disabled{% endif %} {% if mobile_header.three.is_delivery_location_only_enabled && page.is_home_page %}theme-mobile-header-delivery-location-only-enabled{% endif %} {% if mobile_header.two.is_disabled %}theme-mobile-header-two-disabled{% endif %} {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}theme-mobile-header-delivery-location-enabled{% endif %}">
 	{% endif %}
 
 	{% comment %} THEME CONTENT AREA START {% endcomment %}

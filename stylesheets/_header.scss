@@ -365,6 +365,24 @@
 		@include respond-to(mediumdevice){
 			padding:0;
 		}
+		.theme-responsive-goback{
+			display: none;
+			margin-inline-start: -2px;
+			order: -2;
+			padding-block-start: 16px;
+			padding-block-end: 16px;
+			padding-inline-start: 0px;
+			padding-inline-end: 16px;
+			align-self: center;
+			a{
+				display: flex;
+				svg{
+					width: 24px;
+					height: 24px;
+					fill: map-get($default_vars, 'color-mobileheader-icon');
+				}
+			}
+		}
 		.zpcontainer{
 			padding:0;
 			@include prefix(flex,1 0 auto);

@@ -6,6 +6,19 @@ $header_style_06_selector2: "";
 	$header_style_06_selector2: ".zpcontainer +";
 }
 
+/* COMMON MOBILE HEADER STYLE START */
+	[data-zs-display-mode="webview"]{
+		.theme-header{
+			.theme-responsive-goback{
+				display: flex;		
+			}
+		}
+	}
+	[data-zs-home="true"] [data-zs-mobile-header-nav]{
+		display: none;
+	}
+/* COMMON MOBILE HEADER STYLE END */
+
 /* COMMON MOBILE HEADER STYLE 2 START */
 	@if map-get($user_layout_vars,'mobile_header_style') == 02 {
 		@media(max-width: 991px){
@@ -1416,6 +1429,15 @@ $header_style_06_selector2: "";
 	}
 }
 @if map-get($user_layout_vars,'header_style') == 05 {
+	@if map-get($user_layout_vars,'mobile_header_style') == 01 {
+		[data-zs-display-mode="webview"]{
+			.theme-header{
+				.zpcontainer{
+					flex-direction: row;
+				}
+			}
+		}
+	}
 	@if map-get($user_layout_vars,'mobile_header_style') == 02 {
 		.zpheader-style-05{
 			&.theme-mobile-header-style-02{

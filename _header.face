@@ -1,4 +1,4 @@
-{% if page.template_vars.mobile_header_style == "03" %}
+{% if page.template_vars.mobile_header_style == "03" && !mobile_header.three.is_top_disabled %}
 	{% include '_mobileapp-header-top' %}
 {% endif %}
 {% if page.template_vars.header_style == "01" %}
