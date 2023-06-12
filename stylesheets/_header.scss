@@ -219,6 +219,14 @@
 				.theme-portal-content{
 					float: left;
 					text-transform: capitalize;
+					&:last-child,&:first-child{
+						&:only-child{
+							@include respond-to(mediumdevice){
+								padding-inline-start: 0;
+								padding-inline-end: 0;
+							}
+						}
+					}
 					&.theme-portal-username-content{
 						position: relative;
 						.theme-username-dropdown-list{
@@ -272,6 +280,11 @@
 									@include prefix(transform,rotate(135deg));
 									margin-inline-start:10px;
 									margin-block-start:-1px;
+									+ .theme-portal-content{
+										@include respond-to(mediumdevice){
+											margin-inline-start:10px;
+										}
+									}
 								}
 							}
 						}
@@ -547,6 +560,14 @@
 					}
 				}
 			}
+		}
+	}
+
+	.theme-nonresponsive-portal-position-two{
+		display: flex;
+		@media all and (max-width: 991px){
+			order: 3;
+			margin-inline-start: auto;
 		}
 	}
 
@@ -1038,18 +1059,25 @@
 				padding-inline-start:0;
 				border-inline-start:0 none;
 			}
-			.theme-portal-login{
-				margin-inline-start:15px;
-				padding-inline-start:15px;
-				&.theme-portal-space{
-					margin-inline-start:auto;
-					@include respond-to(mediumdevice){
-						border-inline-start:1px dotted map-get($default_vars, 'color-portal');
-						margin-inline-start:15px;
-					}
-				}
+			.theme-portal-login-header-04{
+				display: flex;
+				align-items: center;
 				&.theme-portal-space-style-04{
 					margin-inline-start:auto;
+				}
+				.theme-portal-login{
+					margin-inline-start:15px;
+					padding-inline-start:15px;
+					&.theme-portal-space{
+						margin-inline-start:auto;
+						@include respond-to(mediumdevice){
+							border-inline-start:1px dotted map-get($default_vars, 'color-portal');
+							margin-inline-start:15px;
+						}
+					}
+				}
+				@media all and (max-width:991px){
+					margin-inline-start: auto;
 				}
 			}
 		}
@@ -2121,7 +2149,7 @@
 			}
 			&.theme-skype-container  {
 				background:#0277de;
-			} 
+			}
 			&.theme-vimeo-container  {
 				background:#00b9ef;
 			}

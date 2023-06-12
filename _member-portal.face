@@ -1,4 +1,4 @@
-<div data-theme-portal="zptheme-portal" class="theme-portal-login {% if page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_contact_information_enabled %}theme-portal-space{% endif %}{% if page.template_vars.header_style == "04" && !page.is_social_icon_enabled || page.template_vars.header_style == "04" && page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled %}theme-portal-space-style-04{% endif %} {% if portal_position == "02" %}theme-portal-icon-enabled{% endif %}">
+<div data-theme-portal="zptheme-portal" class="theme-portal-login {% if page.template_vars.header_style == "04" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "05" && page.is_contact_information_enabled %}theme-portal-space{% endif %} {% if portal_position == "02" %}theme-portal-icon-enabled{% endif %}">
   {% if portal_position == "02" %}
   <svg class="theme-portal-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 27"><path fill-rule="evenodd" d="M19 7c0 3.87-3.13 7-7 7s-7-3.13-7-7 3.13-7 7-7 7 3.13 7 7Zm-2 0c0 2.76-2.24 5-5 5S7 9.76 7 7s2.24-5 5-5 5 2.24 5 5Zm7 19c0-6.08-4.92-11-11-11h-2C4.92 15 0 19.92 0 26c0 .55.45 1 1 1h22c.55 0 1-.45 1-1ZM2.06 25c.51-4.55 4.36-8 8.94-8h2c4.58 0 8.43 3.45 8.94 8H2.06Z"/></svg>
   <div class="theme-portal-container-dropdown">
@@ -10,8 +10,8 @@
       {% endif %}
     </div>
     <div class="theme-portal-container" data-portal-loggedin style="display:none">
-      <div class="theme-portal-content {% if page.is_store_enabled %}theme-portal-username-content{% endif %}">
-        <a class="{% if page.is_store_enabled %}theme-user-name-dropdown{% endif %}" data-portal-profile href="javascript:;">
+      <div class="theme-portal-content {% if page.is_store_enabled %}theme-portal-username-content {% else %} theme-portal-content-loggedin-site {% endif %}">
+        <a href="javascript:;" class="{% if page.is_store_enabled %}theme-user-name-dropdown{% endif %}" data-portal-profile>
           <span class="theme-portal-username" data-portal-user-name></span>
           {% if page.is_store_enabled %}
             <span class="theme-user-profile-down-arrow"></span>

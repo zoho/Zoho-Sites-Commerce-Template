@@ -10,7 +10,7 @@ $header_style_06_selector2: "";
 	[data-zs-display-mode="webview"]{
 		.theme-header{
 			.theme-responsive-goback{
-				display: flex;		
+				display: flex;
 			}
 		}
 	}
@@ -907,6 +907,18 @@ $header_style_06_selector2: "";
 											font-size: 90%;
 											margin-block-start: 4px;
 											color: map-get($base_vars,'color-link');
+										}
+									}
+									&.theme-portal-content-loggedin-site{
+										[data-portal-profile]{
+											display: block;
+										}
+										.theme-portal-content{
+											padding-block-start: 12px;
+										}
+										[data-portal-logout]{
+											padding: 0;
+											display: inline;
 										}
 									}
 								}

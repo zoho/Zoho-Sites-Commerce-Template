@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 function hideLang(){
     var activeLangDropdown = document.querySelector('.theme-lang-dropdown-open');
-    activeLangDropdown.classList.remove('theme-lang-dropdown-open');
+    activeLangDropdown && activeLangDropdown.classList.remove('theme-lang-dropdown-open');
 }
 function toggleLangDropdown(e){
     e.target.parentNode.classList.toggle('theme-lang-dropdown-open');

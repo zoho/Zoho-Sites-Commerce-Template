@@ -58,6 +58,7 @@ function VariableInit() {
 
     bannerBaseHeader = document.querySelectorAll('[data-banner-base-header="theme-banner-base-header"]');
     bannerLi = document.querySelectorAll('[data-element-type="heroslide"]');
+    hero = document.querySelector('.zphero')
 
     // VARIABLE FOR BANNER BASE HEADER TEXT COLOR END
 
@@ -112,8 +113,8 @@ function responsivechanges() {
     var offsetValLoad = window.pageYOffset;
 
     if (document.documentElement.clientWidth > 992) {
-        if (topBar && langContainer && (!headerSearchCart && !portal)) {
-            topBar.removeAttribute('style');
+        if (topBar) {
+          topBar.removeAttribute('style');
         }
         if(hasHeaderSeven && topBar && portal && headerSearchCart){
             if (portal.classList.contains('theme-portal-icon-enabled')) {
@@ -236,15 +237,8 @@ function responsivechanges() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    displayMode = displayMode();
-    if(displayMode.isWebView){
-        document.body.setAttribute('data-zs-display-mode','webview');
-    }
-    responsivechanges();
-    if(!headerContainer){
-      return;
-    }
+function fullBannerHeaderColor(){
+  if(hero){
     bannerBaseHeaderLength = bannerBaseHeader.length;
     bannerLiLength = bannerLi.length;
     var hasHeaderSix = headerContainer.classList.contains('zpheader-style-06');
@@ -275,14 +269,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
        for(asv=0;asv<arrowSvg.length;asv++){
            for (blsvg = 0; blsvg < bannerLiLength; blsvg++) {
                if (bannerLi[blsvg].className.indexOf('zpdefault-section') > -1 && bannerLi[blsvg].className.indexOf('curslide') > -1 || bannerLi[blsvg].className.indexOf('zplight-section') > -1 && bannerLi[blsvg].className.indexOf('curslide') > -1) {
-               	arrowSvg[asv].style.fill = '#404040';
+                arrowSvg[asv].style.fill = '#404040';
                }
                if (bannerLi[blsvg].className.indexOf('zpdark-section') > -1 && bannerLi[blsvg].className.indexOf('curslide') > -1){
-               	arrowSvg[asv].style.fill = '#fff';
+                arrowSvg[asv].style.fill = '#fff';
                }
            }
        }
-   }
+     }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    displayMode = displayMode();
+    if(displayMode.isWebView){
+        document.body.setAttribute('data-zs-display-mode','webview');
+    }
+    responsivechanges();
+    if(!headerContainer){
+      return;
+    }
+
+    fullBannerHeaderColor();
 
    // MENU EVENT LISTENER
 
@@ -337,7 +345,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // BANNER BASED HEADER TEXT COLOR STARTS
 
-    var hero = document.querySelector('.zphero')
     if (hero) {
         hero.addEventListener('sliderActive:changed', function(e) {
             var data = e.detail;
@@ -503,6 +510,10 @@ window.addEventListener('resize', function(event) {
 
     var event = new Event('zs:header:resize', {});
     document.dispatchEvent(event);
+    drawerPlugin();
+    fullBannerHeaderColor();
+    hideLang();
+    mobileheader();
 });
 
 window.addEventListener('scroll', function(event) {
@@ -861,7 +872,7 @@ function drawerPlugin(){
         drawerPlugin.drawerWrapper = document.querySelector("[data-zs-drawer]");
         drawerPlugin.drawerOpenButton = document.querySelectorAll("[data-zs-drawer-open-button]");
         drawerPlugin.drawerCloseButton = document.querySelector("[data-zs-drawer-close-button]");
-        
+
         if(drawerPlugin.drawerOpenButton){
             drawerPlugin.drawerOpenButton.forEach(function(drawerOpenButton){
                 drawerOpenButton.addEventListener("click", function(){

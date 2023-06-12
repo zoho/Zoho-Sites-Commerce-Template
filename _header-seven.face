@@ -16,7 +16,9 @@
 					{% include '_store-select-location' %}
 				{% endif %}
                 {% if portal_position == "01" %}
+                  <div data-theme-portal-non-responsive="zptheme-portal-non-responsive" class="theme-portal-login">
                     {% include '_member-portal' %}
+                  </div>
                 {% endif %}
                 {% if page.is_multi_currency_enabled %}
                     <div data-theme-currency-placeholder-non-res class="theme-currency-non-res {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}theme-curency-option-left-space{% endif %}">
@@ -142,7 +144,7 @@
     {% endif %}
 
     {% comment %} THEME FLOATER SOCIAL ICON END HERE {% endcomment %}
-    
+
     {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
     <div class="theme-delivery-location-mobile-container">
         {% include '_store-select-location' %}

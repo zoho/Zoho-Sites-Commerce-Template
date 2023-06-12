@@ -18,7 +18,9 @@
 					{% include '_store-select-location' %}
 				{% endif %}
                 {% if portal_position == "01" %}
+                  <div data-theme-portal-non-responsive="zptheme-portal-non-responsive" class="theme-portal-login-header-04 {% if page.template_vars.header_style == "04" && !page.is_social_icon_enabled || page.template_vars.header_style == "04" && page.is_social_icon_enabled && page.template_vars.is_social_icon_floater_enabled %}theme-portal-space-style-04{% endif %}">
                     {% include '_member-portal' %}
+                  </div>
                 {% endif %}
 				{% if page.is_multi_currency_enabled %}
 					<div data-theme-currency-placeholder-non-res class="theme-currency-non-res {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled %}theme-curency-option-left-space{% endif %}">
@@ -29,6 +31,9 @@
                 <div class="theme-lang-container-non-res {% if page.is_portal_enabled || page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled %}theme-lang-option-left-space{% endif %}" data-theme-lang-container-non-res>
                     {% include '_language-list' %}
                 </div>
+                {% endif %}
+                {% if page.template_vars.mobile_header_style == "01" && page.is_portal_enabled && portal_position == "02" && !page.is_store_enabled %}
+                    <div data-theme-portal-responsive="zptheme-portal-responsive" class="theme-nonresponsive-portal-position-two"></div>
                 {% endif %}
             </div>
         </div>
@@ -126,7 +131,7 @@
     </div>
     {% endif %}
     {% comment %} THEME FLOATER SOCIAL ICON END HERE {% endcomment %}
-    
+
     {% if page.is_delivery_location_enabled && page.type != PAGE_TYPE.CHECKOUT %}
     <div class="theme-delivery-location-mobile-container">
         {% include '_store-select-location' %}

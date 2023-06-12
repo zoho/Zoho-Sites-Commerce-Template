@@ -87,7 +87,7 @@
 										{% include '_store-currency-target' %}
 									</div>
 								{% endif %}
-						
+
 								{% if LANGUAGE_LIST_ENABLED %}
 									<div class="theme-lang-container-non-res" data-theme-lang-container-non-res>
 										{% include '_language-list' %}
@@ -102,7 +102,7 @@
 						{% include '_branding' %}
 						{% if !hide_search_in_cart_checkout || !hide_carticon_in_cart_checkout || portal_position == "02" %}
 							<div class="theme-navigation-and-icons theme-vertical-navigation-search-cart-container">
-								<div class="theme-search-cart-non-res">
+								<div class="theme-search-cart-non-res" data-search-cart-position-non-responsive="zptheme-search-cart-position-non-responsive">
 									{% include '_search-store-cart-count' %}
 								</div>
 							</div>
