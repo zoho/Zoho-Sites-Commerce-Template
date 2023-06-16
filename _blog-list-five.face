@@ -44,6 +44,7 @@
   </div>
   <div class="zpcol-md-7 zpcol-sm-12 theme-blog-container-column">
     {% if page.blog_author.name || page.blog_category.name || page.blog_tag.name %}
+      {% include '_blog-author-profile' %}
       <h1 class="theme-blog-list-seo">
         {% if page.blog_author.name %}
           {{i18n.get("blog.post.listing.author",page.blog_author.name)}}

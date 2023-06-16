@@ -22,6 +22,7 @@
         {{blog_post.content}}
       </div>
 
+      {% include '_blog-author-profile' %}
 
       <div class="theme-category-social-container">
         <div class="theme-blog-part theme-single-post-category-tag">

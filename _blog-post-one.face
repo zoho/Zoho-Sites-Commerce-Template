@@ -20,6 +20,8 @@
         {{blog_post.content}}
       </div>
 
+      {% include '_blog-author-profile' %}
+
       <div class="theme-single-blog-social-cat-tag-group">
 
         {% comment %}  SOCIAL SHARE STARTS HERE {% endcomment %}

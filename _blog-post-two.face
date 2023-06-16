@@ -25,6 +25,9 @@
       <div class="theme-blog-part theme-blog-post-content">
         {{blog_post.content}}
       </div>
+
+      {% include '_blog-author-profile' %}
+
       {% comment %}  SOCIAL SHARE STARTS HERE {% endcomment %}
 
       {% if blog_post.is_social_share_enabled %}

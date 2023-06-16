@@ -17,6 +17,9 @@
       <div class="theme-blog-part theme-blog-single-post-content">
         {{blog_post.content}}
       </div>
+
+      {% include '_blog-author-profile' %}
+
         <div class="theme-blog-part theme-blog-single-post-footer">
           <div class="theme-single-blog-post-footer-content ">
             <div class="theme-single-blog-category">

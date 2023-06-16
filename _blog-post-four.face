@@ -22,6 +22,9 @@
       <div class="theme-blog-part">
         {{blog_post.content}}
       </div>
+
+      {% include '_blog-author-profile' %}
+
       <div class="theme-single-blog-social-cat-tag-group">
 
         <div class="theme-blog-part single-post-category-tag">

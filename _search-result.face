@@ -1,0 +1,27 @@
+<div class="theme-searchresult-container">
+    <h3>Search result for <b>"Product"</b></h3>
+    <div class="theme-searchresult">
+        <div class="theme-searchresult-content">
+            <a href="#" class="theme-searchresult-heading">
+                <h4>This is sample product</h4>
+                <span class="theme-searchresult-url">https://www.zylker.com/product/items</span>
+            </a>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue dapibus porta. Proin nisl ante, tempor ut
+                elementum quis, egestas vitae nisi. Fusce eget dui non felis posuere blandit vulputate volutpat leo. Vivamus
+                efficitur vitae dolor at ullamcorper. Vivamus efficitur velit at arcu laciniaLorem ipsum dolor sit amet, consectetur
+                adipiscing elit. Mauris congue dapibus porta. Proin nisl ante, tempor ut elementum quis, egestas vitae nisi. Fusce
+                eget dui non felis posuere blandit vulputate volutpat leo. Vivamus efficitur vitae dolor at ullamcorper. Vivamus
+                efficitur velit at arcu lacinia
+            </p>
+        </div>
+    </div>
+    <div class="theme-searchresult-pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">...</a>
+        <a href="#">10</a>
+    </div>
+</div>

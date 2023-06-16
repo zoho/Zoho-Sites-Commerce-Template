@@ -1720,7 +1720,13 @@ font-size-mobileheader-search-field : 14px,
 font-weight-mobileheader-search-field : normal,
 font-transform-mobileheader-search-field : none,
 font-line-height-mobileheader-search-field : normal,
-font-letter-spacing-mobileheader-search-field : normal
+font-letter-spacing-mobileheader-search-field : normal,
+
+// SEARCH RESULT VARIABLE
+
+color-searchresult-pagination-border : map-get($base_vars, 'color-border'),
+color-searchresult-pagination-border-hover : darken(map-get($base_vars, 'color-border'), 10%),
+color-searchresult-pagination-background : map-get($base_vars, 'color-default')
 );
 
 @import "_base-map";

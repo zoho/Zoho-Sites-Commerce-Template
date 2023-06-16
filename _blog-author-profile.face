@@ -1,0 +1,59 @@
+{% if page.blog_view_type == "author_view" && page.template_vars.is_author_in_blog_list_view_enabled %}
+  <div class="theme-blog-author-cont {% if template_vars.blog_list_style == '02' %}theme-blog-list-style-02{% elif template_vars.blog_list_style == '05' %}theme-blog-list-style-05{% endif %}">
+    <div class="theme-blog-author-detail">
+      <div class="theme-blog-author-img">
+        {% if page.blog_author_info.thumbnail_image_path %}
+          <img src="{{page.blog_author_info.thumbnail_image_path}}" width="auto" height="auto">
+        {% else %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+            <path fill="#D0E5F7" fill-rule="nonzero"
+              d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 2C15.431 2 2 15.431 2 32a29.866 29.866 0 0 0 5.85 17.801l-.025.113C9.876 40.638 14.21 36 20.829 36c7.461 6.425 15.213 6.492 23.255.201 6.842 1.063 10.946 5.479 12.312 13.246a28.58 28.58 0 0 1-.524.725l.064-.084A29.868 29.868 0 0 0 62 32C62 15.431 48.569 2 32 2Zm.5 10.7c7.453 0 13.5 6.047 13.5 13.5s-6.047 13.5-13.5 13.5S19 33.653 19 26.2s6.047-13.5 13.5-13.5Z" />
+          </svg>
+        {% endif %}
+      </div>
+      <div>
+        <h4 class="theme-blog-author-name">
+          {{page.blog_author.name}}
+        </h4>
+        <div class="theme-blog-author-designation">
+          {{page.blog_author_info.job_title}} {{page.blog_author_info.company}}
+        </div>
+        <a href="{{blog_post.author.website_url}}" class="theme-blog-author-website">
+          {{page.blog_author_info.website_url}}
+        </a>
+      </div>
+    </div>
+    <p class="theme-blog-author-content">
+      {{page.blog_author_info.biography}}
+    </p>
+  </div>
+{% elif page.blog_view_type == "post_view" && page.template_vars.is_author_in_blog_post_view_enabled %}
+  <div class="theme-blog-author-cont {% if template_vars.blog_post_style == '02' %}theme-blog-post-style-02{% endif %}">
+    <div class="theme-blog-author-detail">
+      <div class="theme-blog-author-img">
+        {% if blog_post.author.thumbnail_image_path %}
+          <img src="{{blog_post.author.thumbnail_image_path}}" width="auto" height="auto">
+        {% else %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+            <path fill="#D0E5F7" fill-rule="nonzero"
+              d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 2C15.431 2 2 15.431 2 32a29.866 29.866 0 0 0 5.85 17.801l-.025.113C9.876 40.638 14.21 36 20.829 36c7.461 6.425 15.213 6.492 23.255.201 6.842 1.063 10.946 5.479 12.312 13.246a28.58 28.58 0 0 1-.524.725l.064-.084A29.868 29.868 0 0 0 62 32C62 15.431 48.569 2 32 2Zm.5 10.7c7.453 0 13.5 6.047 13.5 13.5s-6.047 13.5-13.5 13.5S19 33.653 19 26.2s6.047-13.5 13.5-13.5Z" />
+          </svg>
+        {% endif %}
+      </div>
+      <div>
+        <h4 class="theme-blog-author-name">
+          {{blog_post.author.author_name}}
+        </h4>
+        <div class="theme-blog-author-designation">
+          {{blog_post.author.job_title}} {{blog_post.author.company}}
+        </div>
+        <a href="{{blog_post.author.website_url}}" class="theme-blog-author-website">
+          {{blog_post.author.website_url}}
+        </a>
+      </div>
+    </div>
+    <p class="theme-blog-author-content">
+      {{blog_post.author.biography}}
+    </p>
+  </div>
+{% endif %}
