@@ -10,7 +10,7 @@ $header_style_06_selector2: "";
 	[data-zs-display-mode="webview"]{
 		.theme-header{
 			.theme-responsive-goback{
-				display: flex;
+				display: flex;		
 			}
 		}
 	}
@@ -746,10 +746,57 @@ $header_style_06_selector2: "";
 											border-block-end: 0px;
 											border-block-start: 0px;
 											margin: 0px;
-											a{
-												border-block-end: 0px;
-												padding-block-start: 12px;
-												padding-block-end: 12px;
+											&:not([class^="menu-highlight"]){
+												> a{
+													border-block-end: 0px;
+													@if map-get($user_layout_vars,'submenu_style') == 01 or map-get($user_layout_vars,'submenu_style') == 02 {
+														padding-block-start: map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-01-02-padding-top-sm');
+														padding-block-end: map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-01-02-padding-bottom-sm');
+														padding-inline-start: map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-01-02-padding-left-sm');
+														padding-inline-end: map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-01-02-padding-right-sm');
+													}
+												}
+											}
+											&.menu-highlight-primary,
+											&.menu-highlight-secondary{
+												> a{
+													padding-block-start:12px;
+													padding-block-end:12px;
+													@if map-get($user_layout_vars,'submenu_style') == 01 or map-get($user_layout_vars,'submenu_style') == 02 {
+														margin-block-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-top-sm');
+														margin-block-end::map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-bottom-sm');
+														margin-inline-start::map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-left-sm');
+														margin-inline-end::map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-right-sm');
+													}
+												}
+											}
+											ul{
+												li{
+													@if map-get($user_layout_vars,'submenu_style') == 01 or map-get($user_layout_vars,'submenu_style') == 02 {
+														padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-01-02-indent-sm');
+														&:not([class^="menu-highlight"]){
+															a{
+																padding-block-start: map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-01-02-padding-top-sm');
+																padding-block-end: map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-01-02-padding-bottom-sm');
+																padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-01-02-padding-left-sm');
+																padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-01-02-padding-right-sm');
+															}
+														}
+													}
+													@if map-get($user_layout_vars,'submenu_style') == 01 or map-get($user_layout_vars,'submenu_style') == 02 {
+														&.menu-highlight-primary,
+														&.menu-highlight-secondary{
+															a{
+																padding-block-start:12px;
+																padding-block-end:12px;
+																margin-block-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-top-sm');
+																margin-block-end::map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-bottom-sm');
+																margin-inline-start::map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-left-sm');
+																margin-inline-end::map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-right-sm');
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -764,15 +811,38 @@ $header_style_06_selector2: "";
 										}
 										.zpmm-inner .zpmm-element{
 											border-block-end: none;
-											padding-block-start:12px;
-											padding-block-end:12px;
-											padding-inline-start:40px;
-											padding-inline-end:45px;
+											@if map-get($user_layout_vars,'submenu_style') == 01 or map-get($user_layout_vars,'submenu_style') == 02 {
+												padding-block-start:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-01-02-padding-top-sm');
+												padding-block-end:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-01-02-padding-bottom-sm');
+												padding-inline-start:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-01-02-padding-left-sm');
+												padding-inline-end:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-01-02-padding-right-sm');
+											}
+											@if map-get($user_layout_vars,'submenu_style') == 01 or map-get($user_layout_vars,'submenu_style') == 02 {
+												&.menu-highlight-primary,
+												&.menu-highlight-secondary{
+													padding-block-start:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-top-sm');
+													padding-block-end:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-bottom-sm');
+													padding-inline-start: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-left-sm');
+													padding-inline-end: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-right-sm');
+												}
+											}
 											&:first-child{
 												border-block-start: none;
 											}
-											a{
-												padding: 0px;
+											&:not([class*="menu-highlight"]){
+												a{
+													padding: 0px;
+												}
+											}
+											&.zpmm-title,
+											&.zpmm-text{
+												&.menu-highlight-secondary,
+												&.menu-highlight-primary{
+													a{
+														padding-block-start:12px;
+														padding-block-end:12px;
+													}
+												}
 											}
 										}
 									}
@@ -813,6 +883,11 @@ $header_style_06_selector2: "";
 										}
 									}
 								}
+								@if map-get($user_layout_vars,'submenu_style') == 04 {
+									.theme-currency-res{
+										padding: 0;
+									}
+								}
 								.theme-currency-option-container{
 									color:map-get($default_vars, 'color-navigation');
 									font-family:map-get($default_vars, 'font-family-navigation');
@@ -821,8 +896,17 @@ $header_style_06_selector2: "";
 									text-transform: map-get($default_vars,'font-transform-navigation');
 									line-height: map-get($default_vars,'font-line-height-navigation-normal');
 									letter-spacing: map-get($default_vars,'font-letter-spacing-navigation');
-									padding-block-start: 12px;
-									padding-block-end: 12px;
+									@if map-get($user_layout_vars,'submenu_style') != 04 {
+										padding-block-start: map-get($default_vars,'spacing-currency-mobile-header-03-padding-top');
+										padding-block-end: map-get($default_vars,'spacing-currency-mobile-header-03-padding-bottom');
+										padding-inline-start: map-get($default_vars,'spacing-currency-mobile-header-03-padding-left');
+										padding-inline-end: map-get($default_vars,'spacing-currency-mobile-header-03-padding-right');
+									}@else {
+										padding-block-start: map-get($default_vars,'spacing-currency-mobile-header-03-submenu-04-padding-top');
+										padding-block-end: map-get($default_vars,'spacing-currency-mobile-header-03-submenu-04-padding-bottom');
+										padding-inline-start: map-get($default_vars,'spacing-currency-mobile-header-03-submenu-04-padding-left');
+										padding-inline-end: map-get($default_vars,'spacing-currency-mobile-header-03-submenu-04-padding-right');
+									}
 									&:after {
 										content: "";
 										position: absolute;
@@ -858,6 +942,34 @@ $header_style_06_selector2: "";
 									border-block-end: 1px solid map-get($base_vars,'color-border');
 									li:not(:last-child){
 										border-block-end: 1px solid map-get($base_vars,'color-border');
+									}
+									.theme-topbar-info{
+										@if map-get($user_layout_vars,'submenu_style') == 03 or map-get($user_layout_vars,'submenu_style') == 04 {
+											padding-inline-start:0;
+										}
+										a{
+											@if map-get($user_layout_vars,'submenu_style') == 03 or map-get($user_layout_vars,'submenu_style') == 04 {
+												margin: 0;
+											}
+											@if map-get($user_layout_vars,'submenu_style') != 05 and map-get($user_layout_vars,'submenu_style') != 06 {
+												padding-block-start: map-get($default_vars,'spacing-contact-mobile-header-03-padding-top');
+												padding-block-end: map-get($default_vars,'spacing-contact-mobile-header-03-padding-bottom');
+												padding-inline-start: map-get($default_vars,'spacing-contact-mobile-header-03-padding-left');
+												padding-inline-end: map-get($default_vars,'spacing-contact-mobile-header-03-padding-right');
+											}
+											@if map-get($user_layout_vars,'submenu_style') == 05{
+												padding-block-start: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-05-padding-top');
+												padding-block-end: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-05-padding-bottom');
+												padding-inline-start: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-05-padding-left');
+												padding-inline-end: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-05-padding-right');
+											}
+											@if map-get($user_layout_vars,'submenu_style') == 06{
+												padding-block-start: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-06-padding-top');
+												padding-block-end: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-06-padding-bottom');
+												padding-inline-start: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-06-padding-left');
+												padding-inline-end: map-get($default_vars,'spacing-contact-mobile-header-03-submenu-06-padding-right');
+											}
+										}
 									}
 									.theme-topbar-info-icon{
 										display: flex;
@@ -933,10 +1045,10 @@ $header_style_06_selector2: "";
 						.theme-scoialicon-inner-parent{
 							display: flex;
 							align-items: center;
-							padding-block-start:8px;
-							padding-block-end:8px;
-							padding-inline-start:20px;
-							padding-inline-end:20px;
+							padding-block-start:map-get($default_vars,'spacing-social-mobile-header-03-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-social-mobile-header-03-padding-bottom');
+							padding-inline-start:map-get($default_vars,'spacing-social-mobile-header-03-padding-left');
+							padding-inline-end:map-get($default_vars,'spacing-social-mobile-header-03-padding-right');
 							list-style: none;
 							border-block-end:1px solid map-get($base_vars,'color-border');
 							.theme-socialicon-list{
@@ -944,7 +1056,8 @@ $header_style_06_selector2: "";
 								padding: 0;
 								a{
 									display: flex;
-									padding: 8px;
+									padding-inline-start: 8px;
+									padding-inline-end: 8px;
 									&:first-child{
 										padding-inline-start: 0px;
 									}
@@ -1170,23 +1283,73 @@ $header_style_06_selector2: "";
 									.theme-menu{
 										& > ul{
 											li{
-												a{
+												padding-inline-start: map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-left-sm');
+												> a{
 													margin: 0;
 												}
-											}
-										}
-										.menu-highlight-primary, .menu-highlight-secondary{
-											& > a{
-												margin-block-start: 5px;
-												margin-block-end: 5px;
-												margin-inline-start: 0px;
-												margin-inline-end: 5px;
+												&:not([class^="menu-highlight"]){
+													> a{
+														padding-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-bottom-sm');
+														padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-right-sm');
+														&:not(.zpmm-element-anchor){
+															padding-inline-start:0;
+														}
+													}
+												}
+												&.menu-highlight-primary,
+												&.menu-highlight-secondary{
+													padding-inline-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-padding-left-sm');
+													& > a{
+														margin-block-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-top-sm');
+														margin-block-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-bottom-sm');
+														margin-inline-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-left-sm');
+														margin-inline-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-right-sm');
+													}
+												}
+												ul{
+													li{
+														padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-left-sm');
+														&:not([class^="menu-highlight"]){
+															> a{
+																padding-block-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-top-sm');
+																padding-block-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-bottom-sm');
+																padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-right-sm');
+															}
+														}
+														&.menu-highlight-primary,
+														&.menu-highlight-secondary{
+															padding-inline-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-padding-left-sm');
+															a{
+																margin-block-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-top-sm');
+																margin-block-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-bottom-sm');
+																margin-inline-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-left-sm');
+																margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-right-sm');
+															}
+														}
+													}
+												}
 											}
 										}
 										.zpmm{
 											.zpmm-inner {
 												.zpmm-element{
-													padding-inline-start: 10px;
+													a{
+														margin: 0;
+													}
+													&:not([class^="menu-highlight"]){
+														padding-block-start:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-bottom-sm');
+														padding-inline-start:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-left-sm');
+														padding-inline-end:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-right-sm');
+													}
+													&.menu-highlight-primary,
+													&.menu-highlight-secondary{
+														padding-block-start:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-bottom-sm');
+														padding-inline-start:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-left-sm');
+														padding-inline-end:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-right-sm');
+													}
 												}
 											}
 										}
@@ -1209,23 +1372,73 @@ $header_style_06_selector2: "";
 									.theme-menu{
 										& > ul{
 											li{
-												a{
+												padding-inline-start: map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-left-sm');
+												> a{
 													margin: 0;
 												}
-											}
-										}
-										.menu-highlight-primary, .menu-highlight-secondary{
-											& > a{
-												margin-block-start: 5px;
-												margin-block-end: 5px;
-												margin-inline-start: 0px;
-												margin-inline-end: 5px;
+												&:not([class^="menu-highlight"]){
+													> a{
+														padding-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-bottom-sm');
+														padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-03-04-padding-right-sm');
+														&:not(.zpmm-element-anchor){
+															padding-inline-start:0;
+														}
+													}
+												}
+												&.menu-highlight-primary,
+												&.menu-highlight-secondary{
+													padding-inline-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-padding-left-sm');
+													& > a{
+														margin-block-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-top-sm');
+														margin-block-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-bottom-sm');
+														margin-inline-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-left-sm');
+														margin-inline-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-right-sm');
+													}
+												}
+												ul{
+													li{
+														padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-left-sm');
+														&:not([class^="menu-highlight"]){
+															> a{
+																padding-block-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-top-sm');
+																padding-block-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-bottom-sm');
+																padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-03-04-padding-right-sm');
+															}
+														}
+														&.menu-highlight-primary,
+														&.menu-highlight-secondary{
+															padding-inline-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-padding-left-sm');
+															a{
+																margin-block-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-top-sm');
+																margin-block-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-bottom-sm');
+																margin-inline-start: 0;
+																margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-right-sm');
+															}
+														}
+													}
+												}
 											}
 										}
 										.zpmm{
 											.zpmm-inner {
 												.zpmm-element{
-													padding-inline-start:10px;
+													a{
+														margin: 0;
+													}
+													&:not([class^="menu-highlight"]){
+														padding-block-start:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-bottom-sm');
+														padding-inline-start:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-left-sm');
+														padding-inline-end:map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-03-04-padding-right-sm');
+													}
+													&.menu-highlight-primary,
+													&.menu-highlight-secondary{
+														padding-block-start:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-bottom-sm');
+														padding-inline-start:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-left-sm');
+														padding-inline-end:map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-right-sm');
+													}
 												}
 											}
 										}
@@ -1246,10 +1459,63 @@ $header_style_06_selector2: "";
 							.theme-mobile-header-slide-content{
 								.theme-mobile-header-navigation{
 									.theme-menu{
+										& > ul{
+											li{
+												&:not([class^="menu-highlight"]){
+													> a{
+														padding-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-05-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-05-padding-bottom-sm');
+														padding-inline-start:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-05-padding-left-sm');
+														padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-05-padding-right-sm');
+													}
+												}
+												&.menu-highlight-primary,
+												&.menu-highlight-secondary{
+													& > a{
+														margin-block-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-top-sm');
+														margin-block-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-bottom-sm');
+														margin-inline-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-left-sm');
+														margin-inline-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-right-sm');
+													}
+												}
+												ul{
+													li{
+														padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-05-indent-sm');
+														&:not([class^="menu-highlight"]){
+															> a{
+																padding-block-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-05-padding-top-sm');
+																padding-block-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-05-padding-bottom-sm');
+																padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-05-padding-left-sm');
+																padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-05-padding-right-sm');
+															}
+														}
+														&.menu-highlight-primary,
+														&.menu-highlight-secondary{
+															a{
+																margin-block-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-05-margin-top-sm');
+																margin-block-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-05-margin-bottom-sm');
+																margin-inline-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-05-margin-left-sm');
+																margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-05-margin-right-sm');
+															}
+														}
+													}
+												}
+											}
+										}
 										.zpmm{
 											.zpmm-inner {
 												.zpmm-element{
-													padding-inline-start: 30px;
+													padding-block-start: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-05-padding-top-sm');
+													padding-block-end: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-05-padding-bottom-sm');
+													padding-inline-start: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-05-padding-left-sm');
+													padding-inline-end: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-05-padding-right-sm');
+													&.menu-highlight-primary,
+													&.menu-highlight-secondary{
+														padding-block-start: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-top-sm');
+														padding-block-end: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-bottom-sm');
+														padding-inline-start: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-left-sm');
+														padding-inline-end: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-right-sm');
+													}
 												}
 											}
 										}
@@ -1270,10 +1536,63 @@ $header_style_06_selector2: "";
 							.theme-mobile-header-slide-content{
 								.theme-mobile-header-navigation{
 									.theme-menu{
+										& > ul{
+											li{
+												&:not([class^="menu-highlight"]){
+													> a{
+														padding-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-06-padding-top-sm');
+														padding-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-06-padding-bottom-sm');
+														padding-inline-start:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-06-padding-left-sm');
+														padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-03-submenu-06-padding-right-sm');
+													}
+												}
+												&.menu-highlight-primary,
+												&.menu-highlight-secondary{
+													& > a{
+														margin-block-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-top-sm');
+														margin-block-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-bottom-sm');
+														margin-inline-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-left-sm');
+														margin-inline-end: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-right-sm');
+													}
+												}
+												ul{
+													li{
+														padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-06-indent-sm');
+														&:not([class^="menu-highlight"]){
+															> a{
+																padding-block-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-06-padding-top-sm');
+																padding-block-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-06-padding-bottom-sm');
+																padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-06-padding-left-sm');
+																padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-03-submenu-06-padding-right-sm');
+															}
+														}
+														&.menu-highlight-primary,
+														&.menu-highlight-secondary{
+															a{
+																margin-block-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-06-margin-top-sm');
+																margin-block-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-06-margin-bottom-sm');
+																margin-inline-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-06-margin-left-sm');
+																margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-mobile-header-03-submenu-06-margin-right-sm');
+															}
+														}
+													}
+												}
+											}
+										}
 										.zpmm{
 											.zpmm-inner {
 												.zpmm-element{
-													padding-inline-start:25px;
+													padding-block-start: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-06-padding-top-sm');
+													padding-block-end: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-06-padding-bototm-sm');
+													padding-inline-start: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-06-padding-left-sm');
+													padding-inline-end: map-get($default_vars,'spacing-megamenu-mobile-header-03-submenu-06-padding-right-sm');
+													&.menu-highlight-primary,
+													&.menu-highlight-secondary{
+														padding-block-start: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-top-sm');
+														padding-block-end: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-bottom-sm');
+														padding-inline-start: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-left-sm');
+														padding-inline-end: map-get($default_vars,'spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-right-sm');
+													}
 												}
 											}
 										}

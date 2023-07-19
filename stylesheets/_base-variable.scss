@@ -236,7 +236,6 @@ color-carousel-indicator-background : transparent,
 color-carousel-indicator-and-arrow-border : darken(map-get($base_vars, 'color-border'),15%),
 color-carousel-indicator-active-background : darken(map-get($base_vars, 'color-border'),15%),
 color-carousel-arrow :RGBA(convertHexToRgb(map-get($base_vars, 'color-text')),0.8),
-// color-carousel-arrow-background : RGBA(convertHexToRgb(map-get($base_vars, 'color-text')),0.8),
 color-carousel-arrow-background : darken(map-get($base_vars, 'color-default'),8%),
 
 
@@ -1015,8 +1014,6 @@ font-transform-search-button : none,
 font-line-height-search-button : normal,
 font-letter-spacing-search-button : 1.42857143,
 color-search-button-background : map-get($base_vars, 'color-primary'),
-// color-search-button-text : map-get($base_vars, 'color-default'),
-// color-search-button-text-rgba : convertHexToRgb(map-get($base_vars, 'color-default')),
 
 
 // SEVENTH HEADER SEARCH BOX VARIABLES
@@ -1726,7 +1723,452 @@ font-letter-spacing-mobileheader-search-field : normal,
 
 color-searchresult-pagination-border : map-get($base_vars, 'color-border'),
 color-searchresult-pagination-border-hover : darken(map-get($base_vars, 'color-border'), 10%),
-color-searchresult-pagination-background : map-get($base_vars, 'color-default')
+color-searchresult-pagination-background : map-get($base_vars, 'color-default'),
+
+  // HEADER SPACING
+  spacing-header-padding-top:32px,
+  spacing-header-padding-bottom:32px,
+
+  spacing-header-padding-top-06:20px,
+  spacing-header-padding-bottom-06:20px,
+
+  // TOP BAR SPACING
+
+  spacing-topbar-padding-top:13px,
+  spacing-topbar-padding-bottom:13px,
+
+  // NAVIGATION BAR SPACING
+  spacing-navbar-padding-top-05:20px,
+  spacing-navbar-padding-bottom-05:20px,
+
+  spacing-navbar-padding-top-07:10px,
+  spacing-navbar-padding-bottom-07:10px,
+
+  spacing-cart-search-padding-top-06:15px,
+  spacing-cart-search-padding-bottom-06:15px,
+
+  // MAIN MENU SPACING
+
+  spacing-menu-margin-left: 0px,
+  spacing-menu-margin-right: 25px,
+
+  spacing-menu-margin-top-06 : 25px,
+  spacing-menu-margin-bottom-06 : 0px,
+
+  spacing-menu-margin-left-02-03 : 30px,
+  spacing-menu-margin-right-02-03 : 30px,
+
+  spacing-menu-padding-top:8px,
+  spacing-menu-padding-bottom:8px,
+  spacing-menu-padding-left:16px,
+  spacing-menu-padding-right:16px,
+
+  spacing-menu-padding-left-06 : 30px,
+  spacing-menu-padding-right-06 : 30px,
+
+  spacing-menu-padding-top-02-03:20px,
+  spacing-menu-padding-bottom-02-03:20px,
+  spacing-menu-padding-left-02-03:0px,
+  spacing-menu-padding-right-02-03:0px,
+
+  // ICON SPACING
+
+  spacing-menu-icon:5px,
+  spacing-submenu-icon:5px,
+  spacing-megamenu-icon:5px,
+
+  // MAIN MENU BORDER RADIUS
+
+  size-main-menu-border-radius:3px,
+
+  // HIGHLIGHT MENU SPACING
+
+  spacing-menu-highlight-top-padding:10px,
+  spacing-menu-highlight-bottom-padding:10px,
+  spacing-menu-highlight-left-padding:20px,
+  spacing-menu-highlight-right-padding:20px,
+
+  // SUB MENU SPACING
+
+  spacing-main-submenu-padding-top:7px,
+
+  spacing-submenu-padding-top-01:14px,
+  spacing-submenu-padding-bottom-01:14px,
+  spacing-submenu-padding-left-01:20px,
+  spacing-submenu-padding-right-01:20px,
+
+  spacing-submenu-padding-top-02:10px,
+  spacing-submenu-padding-bottom-02:20px,
+  spacing-submenu-padding-left-02:20px,
+  spacing-submenu-padding-right-02:20px,
+
+  spacing-submenu-padding-top-03:10px,
+  spacing-submenu-padding-bottom-03:10px,
+  spacing-submenu-padding-left-03:20px,
+  spacing-submenu-padding-right-03:20px,
+
+  spacing-submenu-padding-top-04:10px,
+  spacing-submenu-padding-bottom-04:10px,
+  spacing-submenu-padding-left-04:20px,
+  spacing-submenu-padding-right-04:20px,
+
+  spacing-submenu-padding-top-05:8px,
+  spacing-submenu-padding-bottom-05:8px,
+  spacing-submenu-padding-left-05:10px,
+  spacing-submenu-padding-right-05:20px,
+
+  spacing-submenu-margin-top-05:5px,
+  spacing-submenu-margin-bottom-05:5px,
+  spacing-submenu-margin-left-05:5px,
+  spacing-submenu-margin-right-05:5px,
+
+  spacing-submenu-padding-top-06:8px,
+  spacing-submenu-padding-bottom-06:8px,
+  spacing-submenu-padding-left-06:10px,
+  spacing-submenu-padding-right-06:20px,
+
+  spacing-submenu-margin-top-06:5px,
+  spacing-submenu-margin-bottom-06:5px,
+  spacing-submenu-margin-left-06:10px,
+  spacing-submenu-margin-right-06:10px,
+
+  spacing-submenu-highlight-margin-top:5px,
+  spacing-submenu-highlight-margin-bottom:5px,
+  spacing-submenu-highlight-margin-left:5px,
+  spacing-submenu-highlight-margin-right:5px,
+
+  spacing-submenu-highlight-margin-left-06:10px,
+  spacing-submenu-highlight-margin-right-06:10px,
+
+ // SPACING IN SMALL DEVICES
+
+    // TOP BAR
+
+  spacing-topbar-padding-top-sm: 13px,
+  spacing-topbar-padding-bottom-sm: 13px,
+
+    // HEADER
+
+  spacing-header-padding-top-sm:20px,
+  spacing-header-padding-bottom-sm:20px,
+
+    // HEADER 07 SEARCH CART SPACE
+
+  spacing-header-search-cart-padding-top-sm:15px,
+  spacing-header-search-cart-padding-bottom-sm:15px,
+
+    // MENU SPACING
+
+    // MOBILE HEADER 01
+
+  spacing-main-menu-submenu-01-02-padding-top-sm:14px,
+  spacing-main-menu-submenu-01-02-padding-bottom-sm:14px,
+  spacing-main-menu-submenu-01-02-padding-left-sm:20px,
+  spacing-main-menu-submenu-01-02-padding-right-sm:48px,
+
+  spacing-submenu-submenu-01-02-indent-sm:20px,
+  spacing-submenu-submenu-01-02-padding-top-sm:14px,
+  spacing-submenu-submenu-01-02-padding-bottom-sm:14px,
+  spacing-submenu-submenu-01-02-padding-left-sm:20px,
+  spacing-submenu-submenu-01-02-padding-right-sm:48px,
+
+  spacing-megamenu-padding-top-sm:14px,
+  spacing-megamenu-padding-bottom-sm:14px,
+  spacing-megamenu-padding-left-sm:40px,
+  spacing-megamenu-padding-right-sm:48px,
+
+  spacing-main-menu-highlight-submenu-01-02-margin-top-sm:10px,
+  spacing-main-menu-highlight-submenu-01-02-margin-bottom-sm:10px,
+  spacing-main-menu-highlight-submenu-01-02-margin-left-sm:20px,
+  spacing-main-menu-highlight-submenu-01-02-margin-right-sm:5px,
+
+  spacing-submenu-highlight-submenu-01-02-margin-top-sm:5px,
+  spacing-submenu-highlight-submenu-01-02-margin-bottom-sm:5px,
+  spacing-submenu-highlight-submenu-01-02-margin-left-sm:20px,
+  spacing-submenu-highlight-submenu-01-02-margin-right-sm:5px,
+
+  spacing-megamenu-highlight-padding-top-sm:14px,
+  spacing-megamenu-highlight-padding-bottom-sm:14px,
+  spacing-megamenu-highlight-padding-left-sm:40px,
+  spacing-megamenu-highlight-padding-right-sm:5px,
+
+  spacing-currency-mobile-header-01-submenu-01-02-03-padding-top:15px,
+  spacing-currency-mobile-header-01-submenu-01-02-03-padding-bottom:15px,
+  spacing-currency-mobile-header-01-submenu-01-02-03-padding-left:20px,
+  spacing-currency-mobile-header-01-submenu-01-02-03-padding-right:20px,
+
+  spacing-social-contact-mobile-header-01-submenu-01-02-padding-top:18px,
+  spacing-social-contact-mobile-header-01-submenu-01-02-padding-bottom:18px,
+  spacing-social-contact-mobile-header-01-submenu-01-02-padding-left:22px,
+  spacing-social-contact-mobile-header-01-submenu-01-02-padding-right:20px,
+
+  spacing-main-menu-mobile-header-01-indent-submenu-03-04-sm:20px,
+  spacing-main-menu-mobile-header-01-submenu-03-04-margin-top:14px,
+  spacing-main-menu-mobile-header-01-submenu-03-04-margin-bottom:14px,
+  spacing-main-menu-mobile-header-01-submenu-03-04-padding-right:45px,
+
+  spacing-submenu-mobile-header-01-indent-submenu-03-04-sm:10px,
+  spacing-submenu-mobile-header-01-submenu-03-04-margin-top:14px,
+  spacing-submenu-mobile-header-01-submenu-03-04-margin-bottom:14px,
+  spacing-submenu-mobile-header-01-submenu-03-04-padding-right:48px,
+
+  spacing-megamenu-mobile-header-01-submenu-03-linktext-margin-top-sm:14px,
+  spacing-megamenu-mobile-header-01-submenu-03-linktext-margin-bottom-sm:14px,
+
+  spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-top-sm:5px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-bottom-sm:5px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-03-04-padding-left-sm:20px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-right-sm:5px,
+
+  spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-top-sm:5px,
+  spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-bottom-sm:5px,
+  spacing-submenu-highlight-mobile-header-01-submenu-03-04-padding-left-sm:10px,
+  spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-right-sm:5px,
+
+  spacing-social-contact-mobile-header-01-submenu-03-padding-top:32px,
+  spacing-social-contact-mobile-header-01-submenu-03-padding-bottom:32px,
+  spacing-social-contact-mobile-header-01-submenu-03-padding-left:22px,
+  spacing-social-contact-mobile-header-01-submenu-03-padding-right:20px,
+
+  spacing-currency-mobile-header-01-submenu-04-padding-top:10px,
+  spacing-currency-mobile-header-01-submenu-04-padding-bottom:10px,
+  spacing-currency-mobile-header-01-submenu-04-padding-left:20px,
+  spacing-currency-mobile-header-01-submenu-04-padding-right:20px,
+
+  spacing-currency-mobile-header-01-submenu-04-margin-top:15px,
+  spacing-currency-mobile-header-01-submenu-04-margin-bottom:15px,
+  spacing-currency-mobile-header-01-submenu-04-margin-left:15px,
+  spacing-currency-mobile-header-01-submenu-04-margin-right:15px,
+
+  spacing-social-contact-mobile-header-01-submenu-04-padding-top:32px,
+  spacing-social-contact-mobile-header-01-submenu-04-padding-bottom:32px,
+  spacing-social-contact-mobile-header-01-submenu-04-padding-left:22px,
+  spacing-social-contact-mobile-header-01-submenu-04-padding-right:20px,
+
+  spacing-social-contact-mobile-header-01-submenu-04-margin-top:15px,
+  spacing-social-contact-mobile-header-01-submenu-04-margin-bottom:15px,
+  spacing-social-contact-mobile-header-01-submenu-04-margin-left:15px,
+  spacing-social-contact-mobile-header-01-submenu-04-margin-right:15px,
+
+  spacing-main-menu-mobile-header-01-submenu-05-padding-top-sm:10px,
+  spacing-main-menu-mobile-header-01-submenu-05-padding-bottom-sm:10px,
+  spacing-main-menu-mobile-header-01-submenu-05-padding-left-sm:20px,
+  spacing-main-menu-mobile-header-01-submenu-05-padding-right-sm:40px,
+
+  spacing-submenu-mobile-header-01-submenu-05-indent-sm:20px,
+  spacing-submenu-mobile-header-01-submenu-05-padding-top-sm:8px,
+  spacing-submenu-mobile-header-01-submenu-05-padding-bottom-sm:8px,
+  spacing-submenu-mobile-header-01-submenu-05-padding-left-sm:10px,
+  spacing-submenu-mobile-header-01-submenu-05-padding-right-sm:40px,
+
+  spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-top-sm:5px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-bottom-sm:5px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-left-sm:20px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-right-sm:5px,
+
+  spacing-submenu-highlight-mobile-header-01-submenu-05-margin-top-sm:10px,
+  spacing-submenu-highlight-mobile-header-01-submenu-05-margin-bottom-sm:10px,
+  spacing-submenu-highlight-mobile-header-01-submenu-05-margin-left-sm:10px,
+  spacing-submenu-highlight-mobile-header-01-submenu-05-margin-right-sm:5px,
+
+  spacing-currency-mobile-header-01-submenu-05-padding-top:10px,
+  spacing-currency-mobile-header-01-submenu-05-padding-bottom:10px,
+  spacing-currency-mobile-header-01-submenu-05-padding-left:22px,
+  spacing-currency-mobile-header-01-submenu-05-padding-right:20px,
+
+  spacing-social-contact-mobile-header-01-submenu-05-padding-top:18px,
+  spacing-social-contact-mobile-header-01-submenu-05-padding-bottom:18px,
+  spacing-social-contact-mobile-header-01-submenu-05-padding-left:22px,
+  spacing-social-contact-mobile-header-01-submenu-05-padding-right:25px,
+
+  spacing-main-menu-mobile-header-01-submenu-06-padding-top-sm:10px,
+  spacing-main-menu-mobile-header-01-submenu-06-padding-bottom-sm:10px,
+  spacing-main-menu-mobile-header-01-submenu-06-padding-left-sm:15px,
+  spacing-main-menu-mobile-header-01-submenu-06-padding-right-sm:45px,
+
+  spacing-submenu-mobile-header-01-submenu-06-indent-sm:15px,
+  spacing-submenu-mobile-header-01-submenu-06-padding-top-sm:10px,
+  spacing-submenu-mobile-header-01-submenu-06-padding-bottom-sm:10px,
+  spacing-submenu-mobile-header-01-submenu-06-padding-left-sm:10px,
+  spacing-submenu-mobile-header-01-submenu-06-padding-right-sm:10px,
+
+  spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-top-sm:5px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-bottom-sm:5px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-left-sm:15px,
+  spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-right-sm:5px,
+
+  spacing-submenu-highlight-mobile-header-01-submenu-06-margin-top-sm:10px,
+  spacing-submenu-highlight-mobile-header-01-submenu-06-margin-bottom-sm:10px,
+  spacing-submenu-highlight-mobile-header-01-submenu-06-margin-left-sm:10px,
+  spacing-submenu-highlight-mobile-header-01-submenu-06-margin-right-sm:5px,
+
+  spacing-currency-mobile-header-01-submenu-06-padding-top:10px,
+  spacing-currency-mobile-header-01-submenu-06-padding-bottom:10px,
+  spacing-currency-mobile-header-01-submenu-06-padding-left:20px,
+  spacing-currency-mobile-header-01-submenu-06-padding-right:20px,
+
+  spacing-social-contact-mobile-header-01-submenu-06-padding-top:18px,
+  spacing-social-contact-mobile-header-01-submenu-06-padding-bottom:18px,
+  spacing-social-contact-mobile-header-01-submenu-06-padding-left:22px,
+  spacing-social-contact-mobile-header-01-submenu-06-padding-right:30px,
+
+    // MOBILE HEADER 03
+
+  spacing-main-menu-mobile-header-03-submenu-01-02-padding-top-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-01-02-padding-bottom-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-01-02-padding-left-sm:20px,
+  spacing-main-menu-mobile-header-03-submenu-01-02-padding-right-sm:48px,
+
+  spacing-submenu-mobile-header-03-submenu-01-02-indent-sm:20px,
+  spacing-submenu-mobile-header-03-submenu-01-02-padding-top-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-01-02-padding-bottom-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-01-02-padding-left-sm:20px,
+  spacing-submenu-mobile-header-03-submenu-01-02-padding-right-sm:48px,
+
+  spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-top-sm:10px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-bottom-sm:10px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-left-sm:20px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-01-02-margin-right-sm:5px,
+
+  spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-top-sm:5px,
+  spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-bottom-sm:5px,
+  spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-left-sm:20px,
+  spacing-submenu-highlight-mobile-header-03-submenu-01-02-margin-right-sm:5px,
+
+  spacing-megamenu-mobile-header-03-submenu-01-02-padding-top-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-01-02-padding-bottom-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-01-02-padding-left-sm:40px,
+  spacing-megamenu-mobile-header-03-submenu-01-02-padding-right-sm:45px,
+
+  spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-top-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-bottom-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-left-sm:40px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-01-02-padding-right-sm:45px,
+
+  spacing-currency-mobile-header-03-padding-top:12px,
+  spacing-currency-mobile-header-03-padding-bottom:12px,
+  spacing-currency-mobile-header-03-padding-left:20px,
+  spacing-currency-mobile-header-03-padding-right:20px,
+
+  spacing-contact-mobile-header-03-padding-top:14px,
+  spacing-contact-mobile-header-03-padding-bottom:14px,
+  spacing-contact-mobile-header-03-padding-left:20px,
+  spacing-contact-mobile-header-03-padding-right:48px,
+
+  spacing-social-mobile-header-03-padding-top:16px,
+  spacing-social-mobile-header-03-padding-bottom:16px,
+  spacing-social-mobile-header-03-padding-left:20px,
+  spacing-social-mobile-header-03-padding-right:20px,
+
+
+  spacing-main-menu-mobile-header-03-submenu-03-04-padding-top-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-03-04-padding-bottom-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-03-04-padding-left-sm:20px,
+  spacing-main-menu-mobile-header-03-submenu-03-04-padding-right-sm:45px,
+
+  spacing-submenu-mobile-header-03-submenu-03-04-padding-top-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-03-04-padding-bottom-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-03-04-padding-left-sm:10px,
+  spacing-submenu-mobile-header-03-submenu-03-04-padding-right-sm:48px,
+
+  spacing-main-menu-highlight-mobile-header-03-submenu-03-04-padding-left-sm:20px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-top-sm:5px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-bottom-sm:5px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-left-sm:0px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-03-04-margin-right-sm:5px,
+
+  spacing-submenu-highlight-mobile-header-03-submenu-03-04-padding-left-sm:10px,
+  spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-top-sm:5px,
+  spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-bottom-sm:5px,
+  spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-left-sm:0px,
+  spacing-submenu-highlight-mobile-header-03-submenu-03-04-margin-right-sm:5px,
+
+  spacing-megamenu-mobile-header-03-submenu-03-04-padding-top-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-03-04-padding-bottom-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-03-04-padding-left-sm:10px,
+  spacing-megamenu-mobile-header-03-submenu-03-04-padding-right-sm:45px,
+
+  spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-top-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-bottom-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-left-sm:10px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-03-04-padding-right-sm:45px,
+
+  spacing-currency-mobile-header-03-submenu-04-padding-top:22px,
+  spacing-currency-mobile-header-03-submenu-04-padding-bottom:22px,
+  spacing-currency-mobile-header-03-submenu-04-padding-left:20px,
+  spacing-currency-mobile-header-03-submenu-04-padding-right:20px,
+
+  spacing-main-menu-mobile-header-03-submenu-05-padding-top-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-05-padding-bottom-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-05-padding-left-sm:20px,
+  spacing-main-menu-mobile-header-03-submenu-05-padding-right-sm:40px,
+
+  spacing-submenu-mobile-header-03-submenu-05-indent-sm:20px,
+  spacing-submenu-mobile-header-03-submenu-05-padding-top-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-05-padding-bottom-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-05-padding-left-sm:10px,
+  spacing-submenu-mobile-header-03-submenu-05-padding-right-sm:40px,
+
+  spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-top-sm:5px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-bottom-sm:5px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-left-sm:20px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-05-margin-right-sm:5px,
+
+  spacing-submenu-highlight-mobile-header-03-submenu-05-margin-top-sm:10px,
+  spacing-submenu-highlight-mobile-header-03-submenu-05-margin-bottom-sm:10px,
+  spacing-submenu-highlight-mobile-header-03-submenu-05-margin-left-sm:10px,
+  spacing-submenu-highlight-mobile-header-03-submenu-05-margin-right-sm:5px,
+
+  spacing-megamenu-mobile-header-03-submenu-05-padding-top-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-05-padding-bottom-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-05-padding-left-sm:30px,
+  spacing-megamenu-mobile-header-03-submenu-05-padding-right-sm:45px,
+
+  spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-top-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-bottom-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-left-sm:30px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-05-padding-right-sm:45px,
+
+  spacing-contact-mobile-header-03-submenu-05-padding-top:10px,
+  spacing-contact-mobile-header-03-submenu-05-padding-bottom:10px,
+  spacing-contact-mobile-header-03-submenu-05-padding-left:20px,
+  spacing-contact-mobile-header-03-submenu-05-padding-right:48px,
+
+  spacing-main-menu-mobile-header-03-submenu-06-padding-top-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-06-padding-bottom-sm:12px,
+  spacing-main-menu-mobile-header-03-submenu-06-padding-left-sm:15px,
+  spacing-main-menu-mobile-header-03-submenu-06-padding-right-sm:40px,
+
+  spacing-submenu-mobile-header-03-submenu-06-indent-sm:15px,
+  spacing-submenu-mobile-header-03-submenu-06-padding-top-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-06-padding-bottom-sm:12px,
+  spacing-submenu-mobile-header-03-submenu-06-padding-left-sm:10px,
+  spacing-submenu-mobile-header-03-submenu-06-padding-right-sm:10px,
+
+  spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-top-sm:5px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-bottom-sm:5px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-left-sm:15px,
+  spacing-main-menu-highlight-mobile-header-03-submenu-06-margin-right-sm:5px,
+
+  spacing-submenu-highlight-mobile-header-03-submenu-06-margin-top-sm:10px,
+  spacing-submenu-highlight-mobile-header-03-submenu-06-margin-bottom-sm:10px,
+  spacing-submenu-highlight-mobile-header-03-submenu-06-margin-left-sm:10px,
+  spacing-submenu-highlight-mobile-header-03-submenu-06-margin-right-sm:5px,
+
+  spacing-megamenu-mobile-header-03-submenu-06-padding-top-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-06-padding-bottom-sm:12px,
+  spacing-megamenu-mobile-header-03-submenu-06-padding-left-sm:25px,
+  spacing-megamenu-mobile-header-03-submenu-06-padding-right-sm:45px,
+
+  spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-top-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-bottom-sm:12px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-left-sm:25px,
+  spacing-megamenu-highlight-mobile-header-03-submenu-06-padding-right-sm:45px,
+
+  spacing-contact-mobile-header-03-submenu-06-padding-top:10px,
+  spacing-contact-mobile-header-03-submenu-06-padding-bottom:10px,
+  spacing-contact-mobile-header-03-submenu-06-padding-left:15px,
+  spacing-contact-mobile-header-03-submenu-06-padding-right:48px
 );
 
 @import "_base-map";

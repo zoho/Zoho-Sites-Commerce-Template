@@ -173,10 +173,10 @@
             margin-block-start:5px;
             @media (max-width: 991px){
                 margin:0px;
-                padding-block-start:14px;
-                padding-block-end:14px;
-                padding-inline-start:40px;
-                padding-inline-end:48px;
+                padding-block-start:map-get($default_vars,'spacing-megamenu-padding-top-sm');
+                padding-block-end:map-get($default_vars,'spacing-megamenu-padding-bottom-sm');
+                padding-inline-start:map-get($default_vars,'spacing-megamenu-padding-left-sm');
+                padding-inline-end:map-get($default_vars,'spacing-megamenu-padding-right-sm');
                 border-block-end:1px solid map-get($default_vars,'color-submenu-border');
             }
             &:first-child{
@@ -213,8 +213,18 @@
                 a{
                     padding-block-start:4px;
                     padding-block-end:4px;
+                    @if map-get($user_layout_vars,'submenu_style') == 03 or map-get($user_layout_vars,'submenu_style') == 04 {
+                      @media (max-width: 991px){
+                        margin-block-start:map-get($default_vars,'spacing-megamenu-mobile-header-01-submenu-03-linktext-margin-top-sm');
+                        margin-block-end:map-get($default_vars,'spacing-megamenu-mobile-header-01-submenu-03-linktext-margin-bottom-sm');
+                      }
+                    }
                     .zpmm-element-menu-icon{
-                        margin-inline-end:5px;
+                        margin-inline-end: 5px;
+                        margin-block-end:0;
+                        @include respond-to(mediumdevice){
+                            margin-inline-end: map-get($default_vars, 'spacing-megamenu-icon');
+                        }
                         display:flex;
                         align-items:center;
                         svg{
@@ -249,8 +259,12 @@
                         &.zpmm-element-menu-icon-top{
                             flex-flow:column;
                             align-items:flex-start;
-                            .zpmm-element-textcontent{
-                                padding-block-start:5px;
+                            .zpmm-element-menu-icon{
+                                margin-block-end: 5px;
+                                margin-inline-end:0;
+                                @include respond-to(mediumdevice){
+                                    margin-block-end: map-get($default_vars, 'spacing-megamenu-icon');
+                                }
                             }
                         }
                     }
@@ -261,6 +275,11 @@
                         width:100%;
                         @include respond-to(mediumdevice){
                         	width:max-content;
+                        }
+                        &:not([href]){
+                            &:hover{
+                                @include primary-highlight-hover();
+                            }
                         }
                     }
                     &:hover, &.theme-menu-selected {
@@ -276,6 +295,11 @@
                         @include respond-to(mediumdevice){
                         	width:max-content;
                         }
+                        &:not([href]){
+                            &:hover{
+                                @include secondary-highlight-hover();
+                            }
+                        }
                     }
                     &:hover, &.theme-menu-selected {
                         a{
@@ -288,9 +312,19 @@
                 a{
                     padding-block-start:4px;
                     padding-block-end:4px;
-
+                    @if map-get($user_layout_vars,'submenu_style') == 03 or map-get($user_layout_vars,'submenu_style') == 04 {
+                      @media (max-width: 991px){
+                        margin-block-start:map-get($default_vars,'spacing-megamenu-mobile-header-01-submenu-03-linktext-margin-top-sm');
+                        margin-block-end:map-get($default_vars,'spacing-megamenu-mobile-header-01-submenu-03-linktext-margin-bottom-sm');
+                      }
+                    }
                     .zpmm-element-menu-icon{
+
                         margin-inline-end:5px;
+                        margin-block-end:0;
+                        @include respond-to(mediumdevice){
+                            margin-inline-end: map-get($default_vars, 'spacing-megamenu-icon');
+                        }
                         display:flex;
                         align-items:center;
                         svg{
@@ -325,8 +359,12 @@
                         &.zpmm-element-menu-icon-top{
                             flex-flow:column;
                             align-items:flex-start;
-                            .zpmm-element-textcontent{
-                                padding-block-start:5px;
+                            .zpmm-element-menu-icon{
+                                margin-block-end:5px;
+                                margin-inline-end:0;
+                                @include respond-to(mediumdevice){
+                                    margin-block-end: map-get($default_vars, 'spacing-megamenu-icon');
+                                }
                             }
                         }
                     }
@@ -343,6 +381,11 @@
                         @include respond-to(mediumdevice){
                         	width:max-content;
                         }
+                        &:not([href]){
+                            &:hover{
+                                @include primary-highlight-hover();
+                            }
+                        }
                     }
                     &:hover, &.theme-menu-selected {
                         a{
@@ -357,6 +400,11 @@
 
                         @include respond-to(mediumdevice){
                         	width:max-content;
+                        }
+                        &:not([href]){
+                            &:hover{
+                                @include secondary-highlight-hover();
+                            }
                         }
                     }
                     &:hover, &.theme-menu-selected {
@@ -392,7 +440,10 @@
                     .theme-sub-menu{
                         .zpmm{
                             .menu-highlight-primary, .menu-highlight-secondary{
-                                padding-inline-end:5px;
+                                padding-block-start:map-get($default_vars,'spacing-megamenu-highlight-padding-top-sm');
+                                padding-block-end:map-get($default_vars,'spacing-megamenu-highlight-padding-bottom-sm');
+                                padding-inline-start:map-get($default_vars,'spacing-megamenu-highlight-padding-left-sm');
+                                padding-inline-end:map-get($default_vars,'spacing-megamenu-highlight-padding-right-sm');
                                 >a{
                                     margin:0;
                                     width:100%;

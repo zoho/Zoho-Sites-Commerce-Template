@@ -1,8 +1,9 @@
 // TOPBAR STYLE
 
 	.theme-header-topbar{
-		padding-block-start:13px;
-		padding-block-end:13px;
+		padding-block-start:map-get($default_vars,'spacing-topbar-padding-top-sm');
+		padding-block-end:map-get($default_vars,'spacing-topbar-padding-bottom-sm');
+		transition: 0.2s linear;
 		padding-inline-start:0;
 		padding-inline-end:0;
 		background:map-get($default_vars, 'color-topbar-background');
@@ -400,15 +401,10 @@
 			padding:0;
 			@include prefix(flex,1 0 auto);
 			@include respond-to(mediumdevice){
-				padding: 15px;
-			}
-			@include respond-to(mediumdevice){
 				@include prefix(flex,0 1 auto);
 			}
 			@include respond-to(largedevice){
 				position: relative;
-				padding-block-start:32px;
-				padding-block-end:32px;
 				padding-inline-start:15px;
 				padding-inline-end:15px;
 			}
@@ -426,8 +422,9 @@
 					margin-inline-end:auto;
 					@include prefix(flex-wrap,wrap);
 					min-inline-size:1%;
-					padding-block-start:20px;
-					padding-block-end:20px;
+					padding-block-start:map-get($default_vars,'spacing-header-padding-top-sm');
+					padding-block-end:map-get($default_vars,'spacing-header-padding-bottom-sm');
+					transition: 0.2s linear;
 					padding-inline-start:0;
 					padding-inline-end:0;
 					@include respond-to(mediumdevice){
@@ -552,8 +549,8 @@
 						.theme-search-and-mini-cart-group{
 							.theme-search{
 								@include respond-to(mediumdevice){
-									margin-block-start:-20px;
-									margin-block-end:-20px;
+									margin-block-start:0px;
+									margin-block-end:0px;
 								}
 							}
 						}
@@ -577,11 +574,22 @@
 	.zpheader-style-01{
 		@include box-shadow(0,3px,5px,RGBA(0, 0, 0, 0.05));
 		position: relative;
+		>.theme-header-topbar{
+			@include respond-to(mediumdevice){
+				padding-block-start: map-get($default_vars, 'spacing-topbar-padding-top');
+				padding-block-end: map-get($default_vars, 'spacing-topbar-padding-bottom');
+			}
+		}
+
 		.theme-header {
 			.zpcontainer{
 				@include prefix(flex-wrap,wrap);
 				.theme-branding-info{
 					padding-inline-end:15px;
+				}
+				@include respond-to(mediumdevice){
+					padding-block-start: map-get($default_vars, 'spacing-header-padding-top');
+					padding-block-end: map-get($default_vars, 'spacing-header-padding-bottom');
 				}
 			}
 		}
@@ -622,11 +630,21 @@
 	.zpheader-style-02{
 		@include box-shadow(0,3px,5px,RGBA(0, 0, 0, 0.05));
 		position: relative;
+		>.theme-header-topbar{
+			@include respond-to(mediumdevice){
+				padding-block-start: map-get($default_vars, 'spacing-topbar-padding-top');
+				padding-block-end: map-get($default_vars, 'spacing-topbar-padding-bottom');
+			}
+		}
 		.theme-header {
 			.zpcontainer{
 				@include prefix(flex-wrap,wrap);
 				.theme-branding-info{
 					padding-inline-end:15px;
+				}
+				@include respond-to(mediumdevice){
+					padding-block-start: map-get($default_vars, 'spacing-header-padding-top');
+					padding-block-end: map-get($default_vars, 'spacing-header-padding-bottom');
 				}
 			}
 		}
@@ -739,10 +757,6 @@
 					.theme-navigation-and-icons{
 						@include respond-to(mediumdevice){
 							@include prefix(justify-content,center);
-							padding-block-end:20px;
-							padding-block-start:20px;
-							padding-inline-end:0;
-							padding-inline-start:0;
 							width:100%;
 						}
 					}
@@ -819,6 +833,12 @@
 	.zpheader-style-03{
 		@include box-shadow(0,3px,5px,RGBA(0, 0, 0, 0.05));
 		position: relative;
+		>.theme-header-topbar{
+			@include respond-to(mediumdevice){
+				padding-block-start: map-get($default_vars, 'spacing-topbar-padding-top');
+				padding-block-end: map-get($default_vars, 'spacing-topbar-padding-bottom');
+			}
+		}
 		.theme-header {
 			.zpcontainer{
 				@include prefix(flex-wrap,wrap);
@@ -863,10 +883,10 @@
 			.zpcontainer{
 				@include respond-to(mediumdevice){
 					@include prefix(flex-direction,row);
+					 padding-block-start: map-get($default_vars, 'spacing-header-padding-top');
+				     padding-block-end: map-get($default_vars, 'spacing-header-padding-bottom');
 				}
 				@include respond-to(largedevice){
-					padding-block-start:32px;
-					padding-block-end:32px;
 					padding-inline-start:15px;
 					padding-inline-end:15px;
 				}
@@ -877,12 +897,6 @@
 					}
 				}
 				.theme-navigation-and-icons{
-					@include respond-to(mediumdevice){
-						padding-block-start:20px;
-						padding-block-end:20px;
-						padding-inline-start:0;
-						padding-inline-end:0;
-					}
 					&.theme-search-mini-cart-style-03{
 						width:auto;
 						@include prefix(flex,0 1 auto);
@@ -1037,11 +1051,21 @@
 	.zpheader-style-04{
 		@include box-shadow(0,3px,5px,RGBA(0, 0, 0, 0.05));
 		position: relative;
+		>.theme-header-topbar{
+			@include respond-to(mediumdevice){
+				padding-block-start: map-get($default_vars, 'spacing-topbar-padding-top');
+				padding-block-end: map-get($default_vars, 'spacing-topbar-padding-bottom');
+			}
+		}
 		.theme-header {
 			.zpcontainer{
 				@include prefix(flex-wrap,wrap);
 				.theme-branding-info{
 					padding-inline-end:15px;
+				}
+				@include respond-to(mediumdevice){
+					padding-block-start: map-get($default_vars, 'spacing-header-padding-top');
+				    padding-block-end: map-get($default_vars, 'spacing-header-padding-bottom');
 				}
 			}
 		}
@@ -1103,6 +1127,10 @@
 				.theme-branding-info{
 					padding-inline-end:15px;
 				}
+				@include respond-to(mediumdevice){
+					padding-block-start: map-get($default_vars, 'spacing-header-padding-top');
+					padding-block-end: map-get($default_vars, 'spacing-header-padding-bottom');
+				}
 			}
 		}
 		.theme-header{
@@ -1126,16 +1154,12 @@
 
 					}
 					@include respond-to(mediumdevice){
-						padding-block-start:0;
-						padding-block-end:0;
+						padding-block-start: map-get($default_vars, 'spacing-navbar-padding-top-05');
+						padding-block-end: map-get($default_vars, 'spacing-navbar-padding-bottom-05');
 					}
 					.theme-navigation-and-icons{
 						@include respond-to(mediumdevice){
 							@include prefix(justify-content,center);
-							padding-block-start:20px;
-							padding-block-end:20px;
-							padding-inline-start:0px;
-							padding-inline-end:0px;
 							width:100%;
 						}
 					}
@@ -1213,14 +1237,6 @@
 					@include respond-to(mediumdevice){
 						background:RGBA(map-get($default_vars, 'color-navigation-bar-style-05-background-rgba'),0.85);
 					}
-				}
-			}
-		}
-		.theme-navigation-and-icons {
-			.theme-search-and-mini-cart-group{
-				.theme-search{
-					margin-block-start:-20px;
-					margin-block-end:-20px;
 				}
 			}
 		}
@@ -1306,7 +1322,6 @@
 			top:0;
 			width:300px;
 			height: 100vh;
-			padding: 30px;
 			@include prefix(box-shadow,0 2px 15px RGBA(0,0,0,0.1));
 			z-index:250;
 			.zpcontainer{
@@ -1336,23 +1351,30 @@
 						padding-inline-end:0px;
 					}
 					width:100%;
+					@include respond-to(mediumdevice){
+						margin-block-start: map-get($default_vars, 'spacing-header-padding-top-06');
+						margin-block-end: map-get($default_vars, 'spacing-header-padding-bottom-06');
+					}
 				}
 				.theme-vertical-navigation-search-cart-container{
 					@include prefix(justify-content,center);
-					padding-block-start:15px;
-					padding-block-end:15px;
+					@include respond-to(mediumdevice){
+						padding-block-start: map-get($default_vars, 'spacing-cart-search-padding-top-06');
+						padding-block-end: map-get($default_vars, 'spacing-cart-search-padding-bottom-06');
+						margin-block-start:0;
+						margin-block-end:0;
+						margin-inline-start:15px;
+						margin-inline-end:15px;
+					}
 					padding-inline-start:0px;
 					padding-inline-end:0px;
 					border-block-start:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.7);
 					border-block-end:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.7);
-					margin-block-start:25px;
 					position: relative;
 					@include flexbox;
 					.theme-search-and-mini-cart-group{
 						.theme-search{
 							position: static;
-							margin-block-start:-15px;
-							margin-block-end:-15px;
 							.theme-search-field-container{
 								left:0;
 								@include respond-to(mediumdevice){
@@ -1374,7 +1396,7 @@
 					}
 				}
 				.theme-vertical-navigation-contact-social{
-					padding-block-start:30px;
+					padding:30px;
 					border-block-start:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.7);
 					.theme-header-topbar{
 						padding: 0px;
@@ -1418,21 +1440,11 @@
 					position: absolute;
 					bottom:0px;
 					width:100%;
-					padding: 30px;
 					left:0;
 				}
 				.theme-vertical-navigation-portal{
-					margin-block-start:-30px;
-					margin-block-end:15px;
-					margin-inline-start:-30px;
-					margin-inline-end:-30px;
-					@include respond-to(largedevice){
-						margin-block-start:-30px;
-						margin-block-end:30px;
-						margin-inline-start:-30px;
-						margin-inline-end:-30px;
-					}
 					@include flexbox;
+					align-items: center;
 					.theme-portal-login {
 						.theme-portal-container{
 							padding-block-start:0px;
@@ -1441,6 +1453,13 @@
 							padding-inline-end:30px;
 						}
 					}
+				}
+				>.theme-header-topbar{
+					@include respond-to(mediumdevice){
+						padding-block-start: map-get($default_vars, 'spacing-topbar-padding-top');
+						padding-block-end: map-get($default_vars, 'spacing-topbar-padding-bottom');
+					}
+
 				}
 			}
 		}
@@ -1466,11 +1485,12 @@
 				height: auto;
 				@include prefix(box-shadow,none);
 				width: 300px;
-				padding: 30px;
 			}
 			.theme-sidebar-area{
 				padding-block-start:50px;
 				padding-block-end:180px;
+				padding-inline-start:30px;
+				padding-inline-end:30px;
 			}
 		}
 	}
@@ -1578,6 +1598,12 @@
 @if map-get($user_layout_vars,'header_style') == 07 {
   .zpheader-style-07{
    position: relative;
+   >.theme-header-topbar{
+		@include respond-to(mediumdevice){
+			padding-block-start: map-get($default_vars, 'spacing-topbar-padding-top');
+			padding-block-end: map-get($default_vars, 'spacing-topbar-padding-bottom');
+		}
+	}
    .zpcontainer{
      .theme-navigation-and-icons{
 			 @include respond-to(mediumdevice) {
@@ -1725,16 +1751,18 @@
    }
    .theme-responsive-search-cart-style-07 {
      width:100%;
-	padding-block-start:15px;
+	padding-block-start:map-get($default_vars,'spacing-header-search-cart-padding-top-sm');
+	padding-block-end:map-get($default_vars,'spacing-header-search-cart-padding-bottom-sm');
+	transition: 0.2s linear;
 	border-block-start:1px solid RGBA(map-get($default_vars, 'color-border-rgba'),0.5);
      @include respond-to(mediumdevice){
        width:auto;
        border:0px;
 	padding-block-start:0px;
+	padding-block-end:0;
      }
    }
    .theme-search-minicart-responsive {
-	 padding-block-end:15px;
 	 margin-block-start:0;
 	 margin-block-end:0;
 	 margin-inline-start:auto;
@@ -1861,6 +1889,12 @@
    }
    .theme-header{
      flex-wrap: wrap;
+	 .zpcontainer{
+		@include respond-to(mediumdevice){
+			padding-block-start:map-get($default_vars, 'spacing-header-padding-top');
+			padding-block-end:map-get($default_vars, 'spacing-header-padding-bottom');
+		}
+	}
      &.zpheader-style-navigation-07{
        display: none;
        @include respond-to(mediumdevice){
@@ -1877,20 +1911,14 @@
            }
          }
          @include respond-to(mediumdevice){
-		 padding-block-start:0px;
-		padding-block-end:0px;
-		padding-inline-start:15px;
-		padding-inline-end:15px;
+			padding-block-start:map-get($default_vars, 'spacing-navbar-padding-top-07');
+			padding-block-end:map-get($default_vars, 'spacing-navbar-padding-bottom-07');
+			padding-inline-start:15px;
+			padding-inline-end:15px;
            display: block;
          }
          .theme-navigation-and-icons {
            .theme-menu-area {
-             @include respond-to(mediumdevice) {
-		 padding-block-start:10px;
-		padding-block-end:10px;
-		padding-inline-start:0px;
-		padding-inline-end:0px;
-             }
              .theme-menu {
                ul {
                  justify-content: flex-start;

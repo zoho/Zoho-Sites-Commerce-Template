@@ -11,11 +11,17 @@
 	border-width:map-get($default_vars, 'size-menu-highlight-primary-border');
 	background:map-get($default_vars, 'color-highlight-primary-background');
 	border-radius:map-get($default_vars, 'size-menu-highlight-primary-border-radius');
+	@include respond-to(mediumdevice){
+		padding-block-start: map-get($default_vars, 'spacing-menu-highlight-top-padding');
+		padding-block-end: map-get($default_vars, 'spacing-menu-highlight-bottom-padding');
+		padding-inline-start: map-get($default_vars, 'spacing-menu-highlight-left-padding');
+		padding-inline-end: map-get($default_vars, 'spacing-menu-highlight-right-padding');
+	}
 	padding-block-start:10px;
 	padding-block-end:10px;
 	padding-inline-start:20px;
 	@if $excludemediaquery == false {
-		padding-inline-end:20px;
+		padding-inline-end:map-get($default_vars, 'spacing-menu-highlight-right-padding');
 		@media all and (max-width:768px){
 			padding-inline-end:45px;
 		}
@@ -36,11 +42,17 @@
 	border-width:map-get($default_vars, 'size-menu-highlight-secondary-border');
 	background:map-get($default_vars, 'color-highlight-secondary-background');
 	border-radius:map-get($default_vars, 'size-menu-highlight-secondary-border-radius');
+	@include respond-to(mediumdevice){
+		padding-block-start: map-get($default_vars, 'spacing-menu-highlight-top-padding');
+		padding-block-end: map-get($default_vars, 'spacing-menu-highlight-bottom-padding');
+		padding-inline-start: map-get($default_vars, 'spacing-menu-highlight-left-padding');
+		padding-inline-end: map-get($default_vars, 'spacing-menu-highlight-right-padding');
+	}
 	padding-block-start:10px;
 	padding-block-end:10px;
 	padding-inline-start:20px;
 	@if $excludemediaquery == false {
-		padding-inline-end:20px;
+		padding-inline-end: map-get($default_vars, 'spacing-menu-highlight-right-padding');
 		@media all and (max-width:768px){
 			padding-inline-end:45px;
 		}
@@ -71,6 +83,28 @@
 						li{
 							a{
 								@include prefix(transition,0.15s linear);
+							}
+						}
+					}
+				}
+			}
+		}
+		.zpcontainer{
+			.theme-navigation-and-icons{
+				.theme-menu-area {
+					.theme-menu{
+						>ul{
+							>li{
+								@include respond-to(mediumdevice){
+									margin-inline-start: map-get($default_vars,'spacing-menu-margin-left');
+									margin-inline-end: map-get($default_vars,'spacing-menu-margin-right');
+									&:last-of-type{
+										margin-inline-end:0px;
+									}
+									&:first-of-type{
+										margin-inline-start:0px;
+									}
+								}
 							}
 						}
 					}
@@ -143,10 +177,10 @@
 					 > ul{
 						 > li{
 							 @include prefix(align-self,stretch);
-							 margin-block-start:-20px;
-							 margin-block-end:-20px;
-							 margin-inline-start:30px;
-							 margin-inline-end:30px;
+							 margin-block-start: 0px;
+							 margin-block-end: 0px;
+							 margin-inline-start: map-get($default_vars,'spacing-menu-margin-left-02-03');
+							 margin-inline-end: map-get($default_vars,'spacing-menu-margin-right-02-03');
 							 @include respond-to(mediumdevice){
 								&.menu-highlight-primary,&.menu-highlight-secondary{
 									padding-block-start:5px;
@@ -181,10 +215,10 @@
 							 }
 							 a{
 								 @include respond-to(mediumdevice){
-									 padding-block-start:20px;
-									 padding-block-end:20px;
-									 padding-inline-start:0px;
-									 padding-inline-end:0px;
+									 padding-block-start:map-get($default_vars,"spacing-menu-padding-top-02-03");
+									 padding-block-end:map-get($default_vars,"spacing-menu-padding-bottom-02-03");
+									 padding-inline-start:map-get($default_vars,"spacing-menu-padding-left-02-03");
+									 padding-inline-end:map-get($default_vars,"spacing-menu-padding-right-02-03");
 									 line-height: map-get($default_vars,'font-line-height-navigation-normal');
 								 }
 							 }
@@ -214,7 +248,10 @@
 							 }
 							 ul{
 								 @include respond-to(mediumdevice){
-									 padding-block-start:0px;
+									padding-block-start:map-get($default_vars,"spacing-main-submenu-padding-top");
+									ul{
+										padding-block-start:0px;
+									}
 								 }
 								 li{
 									 @include respond-to(mediumdevice){
@@ -558,10 +595,11 @@
 						 > li{
 							@include respond-to(mediumdevice){
 							 @include prefix(align-self,stretch);
-							 margin-block-start:-20px;
-							 margin-block-end:-20px;
-							 margin-inline-start:30px;
-							 margin-inline-end:30px;
+
+							 margin-block-start: 0px;
+							 margin-block-end: 0px;
+							 margin-inline-start: map-get($default_vars,'spacing-menu-margin-left-02-03');
+							 margin-inline-end: map-get($default_vars,'spacing-menu-margin-right-02-03');
 							 @include respond-to(mediumdevice){
 								&.menu-highlight-primary,&.menu-highlight-secondary{
 									padding-block-start:5px;
@@ -589,12 +627,12 @@
 								 }
 							 }
 							 a{
-								 padding-block-start:20px;
-								 padding-block-end:20px;
-								 padding-inline-start:0px;
-								 padding-inline-end:0px;
-								 line-height: map-get($default_vars,'font-line-height-navigation-normal');
-								 margin: 0;
+								padding-block-start: map-get($default_vars,"spacing-menu-padding-top-02-03");
+								padding-block-end: map-get($default_vars,"spacing-menu-padding-bottom-02-03");
+								padding-inline-start: map-get($default_vars,"spacing-menu-padding-left-02-03");
+								padding-inline-end: map-get($default_vars,"spacing-menu-padding-right-02-03");
+								line-height: map-get($default_vars,'font-line-height-navigation-normal');
+								margin: 0;
 							 }
 							 &:hover{
 								 > a{
@@ -620,7 +658,10 @@
 							 }
 							 ul{
 								 @include respond-to(mediumdevice){
-									 padding-block-start:0px;
+									 padding-block-start:map-get($default_vars,"spacing-main-submenu-padding-top");
+									 ul{
+										padding-block-start:0px;
+									 }
 								 }
 								 li{
 									 margin:0;
@@ -916,30 +957,28 @@
 			.theme-navigation-and-icons{
 				.theme-menu-area {
 				 .theme-menu{
-					 ul{
+					 > ul{
 						 @include respond-to(mediumdevice){
 							 margin-inline-start:25px;
 						 }
-						 li{
-							 a{
+						 > li{
+							 > a{
+								 margin: 0px;
+							 }
+							 ul{
 								@include respond-to(mediumdevice){
-									margin: 0px;
-								}
-							 }
-						 }
-						 ul{
-							 @include respond-to(mediumdevice){
-								 margin-inline-start:0px;
-							 }
-							.menu-highlight-primary, .menu-highlight-secondary {
-								> a{
-									@include respond-to(mediumdevice){
-										margin: 5px;
-									}
+								   margin-inline-start:0px;
 								}
 							}
 						 }
+
 					 }
+					 >ul{
+						>li{
+							margin-inline-start: map-get($default_vars,'spacing-menu-margin-left');
+							margin-inline-end: map-get($default_vars,'spacing-menu-margin-right');
+						}
+					}
 				 }
 			 }
 		 }
@@ -979,17 +1018,11 @@
 		.theme-navigation-and-icons {
 			.theme-menu-area{
 				.theme-menu {
-					ul{
-						li{
-							ul{
-								@include respond-to(mediumdevice){
-									padding-block-start:20px;
-								}
-								ul{
-									@include respond-to(mediumdevice){
-										padding-block-start:0px;
-									}
-								}
+					>ul{
+						>li{
+							@include respond-to(mediumdevice){
+								margin-inline-start: map-get($default_vars,'spacing-menu-margin-left');
+								margin-inline-end: map-get($default_vars,'spacing-menu-margin-right');
 							}
 						}
 					}
@@ -1011,10 +1044,10 @@
 							> ul{
 								display: block;
 								> li{
-									margin-inline-start:0px;
-									margin-block-start:25px;
-									margin-inline-end:-30px;
-									padding-inline-end:30px;
+									margin-block-start: map-get($default_vars,'spacing-menu-margin-top-06');
+									margin-block-end: map-get($default_vars,'spacing-menu-margin-bottom-06');
+									padding-inline-start: map-get($default_vars,'spacing-menu-padding-left-06');
+									padding-inline-end: map-get($default_vars,'spacing-menu-padding-right-06');
 									word-break: break-word;
 									word-wrap: break-word;
 									> a{
@@ -1203,6 +1236,24 @@
 	}
 }
 }
+@if map-get($user_layout_vars,'header_style') == 07 {
+	.zpheader-style-07{
+		.zpcontainer{
+			.theme-navigation-and-icons{
+				.theme-menu-area {
+					.theme-menu{
+						>ul{
+							>li{
+								margin-inline-start: map-get($default_vars,'spacing-menu-margin-left');
+								margin-inline-end: map-get($default_vars,'spacing-menu-margin-right');
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
 
 .theme-navigation-and-icons{
 	@include flexbox;
@@ -1223,8 +1274,6 @@
 			@include respond-to(mediumdevice){
 				@include flexbox;
 				@include prefix(align-self,stretch);
-				margin-block-start:-32px;
-				margin-block-end:-32px;
 				position: relative;
 			}
 			padding-block-start:0;
@@ -1522,10 +1571,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding-block-start:14px;
-							padding-block-end:14px;
-							padding-inline-start:20px;
-							padding-inline-end:48px;
+							padding-block-start:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-top-sm');
+							padding-block-end:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-bottom-sm');
+							padding-inline-start:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-left-sm');
+							padding-inline-end:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-right-sm');
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
@@ -1540,7 +1589,6 @@
 						}
 						&.theme-menu-selected{
 							> a{
-								// background:map-get($default_vars, 'color-submenu-hover-background');
 								color : map-get($default_vars, 'color-submenu-hover-active-text');
 								@include respond-to(mediumdevice){
 									background:map-get($default_vars, 'color-navigation-hover-active-arrow-background');
@@ -1558,11 +1606,9 @@
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
-								display:none;
-								background:none;
 								z-index: 280;
-								padding-block-start:43px;
 								top:100%;
+								min-inline-size:228px;
 								&.theme-sub-menu-position-change{
 									left:auto;
 									right: 0px;
@@ -1580,7 +1626,7 @@
 								word-break: break-word;
 								word-wrap: break-word;
 								padding-inline-end:0;
-								padding-inline-start:20px;
+								padding-inline-start:map-get($default_vars,'spacing-submenu-submenu-01-02-indent-sm');
 								&:first-child{
 									border-block-start:1px solid map-get($default_vars,'color-submenu-border');
 								}
@@ -1599,12 +1645,11 @@
 									}
 								}
 								a{
-									padding-block-start:14px;
-									padding-block-end:14px;
-									padding-inline-start:20px;
-									padding-inline-end:0px;
+									padding-block-start:map-get($default_vars, 'spacing-submenu-submenu-01-02-padding-top-sm');
+									padding-block-end:map-get($default_vars, 'spacing-submenu-submenu-01-02-padding-bottom-sm');
+									padding-inline-start:map-get($default_vars, 'spacing-submenu-submenu-01-02-padding-left-sm');
+									padding-inline-end:map-get($default_vars, 'spacing-submenu-submenu-01-02-padding-right-sm');
 									display:block;
-									padding-inline-end:48px;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
 									font-size:map-get($default_vars,'font-size-submenu');
@@ -1618,19 +1663,12 @@
 									-webkit-text-size-adjust: 100%;
 									line-height: normal;
 									@include respond-to(mediumdevice){
-										color:map-get($default_vars, 'color-submenu');
 										background:map-get($default_vars, 'color-submenu-background');
-										font-family:map-get($default_vars, 'font-family-submenu');
-										font-size:map-get($default_vars,'font-size-submenu');
-										font-weight: map-get($default_vars,'font-weight-submenu');
-										text-transform: map-get($default_vars,'font-transform-submenu');
-										line-height: map-get($default_vars,'font-line-height-submenu');
-										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding-block-start:14px;
-										padding-block-end:14px;
-										padding-inline-start:20px;
-										padding-inline-end:20px;
+										padding-block-start:map-get($default_vars,'spacing-submenu-padding-top-01');
+										padding-block-end:map-get($default_vars,'spacing-submenu-padding-bottom-01');
+										padding-inline-start:map-get($default_vars,'spacing-submenu-padding-left-01');
+										padding-inline-end:map-get($default_vars,'spacing-submenu-padding-right-01');
 										-webkit-text-size-adjust: auto;
 									}
 									.theme-sub-li-menu{
@@ -1664,7 +1702,6 @@
 									padding-inline-start:0px;
 								}
 								li{
-									padding-inline-start:20px;
 									@include respond-to(mediumdevice){
 										padding-inline-start:0px;
 									}
@@ -1672,7 +1709,6 @@
 							}
 						}
 						&:hover > a{
-							// background:map-get($default_vars, 'color-submenu-hover-background');
 							color:map-get($default_vars, 'color-submenu-hover-active-text');
 							@include respond-to(mediumdevice){
 								background:map-get($default_vars, 'color-navigation-hover-active-arrow-background');
@@ -1692,12 +1728,15 @@
           }
           .menu-highlight-primary, .menu-highlight-secondary{
             >a{
-							margin-block-start:5px;
-							margin-block-end:5px;
-							margin-inline-start:20px;
-							margin-inline-end:5px;
+							margin-block-start:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-top-sm');
+							margin-block-end:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-bottom-sm');
+							margin-inline-start:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-left-sm');
+							margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-right-sm');
 							@include respond-to(mediumdevice){
-								margin:5px;
+								margin-block-start: map-get($default_vars,'spacing-submenu-highlight-margin-top');
+								margin-block-end: map-get($default_vars,'spacing-submenu-highlight-margin-bottom');
+								margin-inline-start: map-get($default_vars,'spacing-submenu-highlight-margin-left');
+								margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-margin-right');
 							}
             }
             .theme-sub-li-menu{
@@ -1726,8 +1765,8 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-block-start:20px;
-			padding-block-end:20px;
+			padding-block-start:map-get($default_vars,'spacing-header-padding-top-sm');
+			padding-block-end:map-get($default_vars,'spacing-header-padding-bottom-sm');
 			@include prefix(flex,0 1 auto);
 			margin-inline-start:auto;
 			@include prefix(align-self,center);
@@ -1788,14 +1827,12 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:22px;
-							padding-inline-end:22px;
+							padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-bottom');
+							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-left');
+							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-right');
 							@include prefix(align-items,center);
 							li{
-								padding-block-start:8px;
-								padding-block-end:8px;
 								padding-inline-start:0;
 								padding-inline-end:0;
 								margin-block-start:0px;
@@ -1829,6 +1866,11 @@
 				.theme-topbar-contact-info{
 					@include flexbox;
 					@include prefix(flex-direction,row-reverse);
+					align-items: center;
+					padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-top');
+					padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-bottom');
+					padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-left');
+					padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-right');
 					ul{
 						@include flexbox;
 						margin-inline-start:auto;
@@ -1838,12 +1880,18 @@
 								margin-inline-start:0px;
 								margin-inline-end:20px;
 								a{
+									padding-block-start:0px;
+									padding-block-end:0px;
 									padding-inline-start:0px;
 									padding-inline-end:0px;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
+									}
+									.theme-topbar-info-icon{
+										display: flex;
+										align-items: center;
 									}
 									.theme-topbar-info-icon-text{
 										display: none;
@@ -1852,7 +1900,17 @@
 										}
 									}
 								}
+								&:last-child{
+									margin-inline-end:0;
+								}
 							}
+						}
+					}
+					ul{
+						&.theme-scoialicon-inner-parent{
+							padding-block-start:0;
+							padding-block-end:0;
+							padding-inline-start:0;
 						}
 					}
 				}
@@ -1897,10 +1955,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-			padding-block-start:15px;
-			padding-block-end:15px;
-			padding-inline-start:20px;
-			padding-inline-end:20px;
+						@media all and (max-width:992px){
+							padding-block-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-bottom');
+							padding-inline-start:0;
+							padding-inline-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-right');
+						}
 		        .theme-currency-label{
 			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
@@ -1912,7 +1972,9 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-			padding-inline-start:20px;
+							@media all and (max-width:992px){
+								padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-left');
+							}
 		          z-index: 310;
 		        }
 		        ul{
@@ -2158,10 +2220,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding-block-start:14px;
-							padding-block-end:14px;
-							padding-inline-start:20px;
-							padding-inline-end:48px;
+							padding-block-start:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-top-sm');
+							padding-block-end:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-bottom-sm');
+							padding-inline-start:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-left-sm');
+							padding-inline-end:map-get($default_vars,'spacing-main-menu-submenu-01-02-padding-right-sm');
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
@@ -2176,7 +2238,6 @@
 						}
 						&.theme-menu-selected{
 							> a{
-								// background:map-get($default_vars, 'color-submenu-hover-background');
 								color : map-get($default_vars, 'color-submenu-hover-active-text');
 								@include respond-to(mediumdevice){
 									background:map-get($default_vars, 'color-navigation-hover-active-arrow-background');
@@ -2198,10 +2259,7 @@
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
-								display:none;
-								background:none;
 								z-index: 280;
-								padding-block-start:43px;
 								top:100%;
 								min-inline-size:228px;
 								border-radius: 3px;
@@ -2221,7 +2279,7 @@
 								text-align: start;
 								word-break: break-word;
 								word-wrap:break-word;
-								padding-inline-start:20px;
+								padding-inline-start:map-get($default_vars,'spacing-submenu-submenu-01-02-indent-sm');
 								padding-inline-end:0px;
 								@include respond-to(mediumdevice){
 									width: 100%;
@@ -2232,10 +2290,10 @@
 									padding-inline-start:0px;
 								}
 								a{
-									padding-block-start:14px;
-									padding-block-end:14px;
-									padding-inline-start:20px;
-									padding-inline-end:48px;
+									padding-block-start:map-get($default_vars,'spacing-submenu-submenu-01-02-padding-top-sm');
+									padding-block-end:map-get($default_vars,'spacing-submenu-submenu-01-02-padding-bottom-sm');
+									padding-inline-start:map-get($default_vars,'spacing-submenu-submenu-01-02-padding-left-sm');
+									padding-inline-end:map-get($default_vars,'spacing-submenu-submenu-01-02-padding-right-sm');
 									display:block;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
@@ -2248,17 +2306,12 @@
 									-webkit-text-size-adjust : 100%;
 									line-height: normal;
 									@include respond-to(mediumdevice){
-										color:map-get($default_vars, 'color-submenu');
 										background:map-get($default_vars, 'color-submenu-background');
-										font-family:map-get($default_vars, 'font-family-submenu');
-										font-size:map-get($default_vars,'font-size-submenu');
-										font-weight: map-get($default_vars,'font-weight-submenu');
-										text-transform: map-get($default_vars,'font-transform-submenu');
 										width:100%;
-										padding-block-start:10px;
-										padding-block-end:10px;
-										padding-inline-start:20px;
-										padding-block-end:20px;
+										padding-block-start: map-get($default_vars,'spacing-submenu-padding-top-02');
+										padding-block-end: map-get($default_vars,'spacing-submenu-padding-bottom-02');
+										padding-inline-start: map-get($default_vars,'spacing-submenu-padding-left-02');
+										padding-inline-end: map-get($default_vars,'spacing-submenu-padding-right-02');
 										-webkit-text-size-adjust : auto;
 									}
 									.theme-sub-li-menu{
@@ -2362,7 +2415,6 @@
 									padding-inline-start:0px;
 								}
 								li{
-									padding-inline-start:20px;
 									@include respond-to(mediumdevice){
 										padding-inline-start:0px;
 									}
@@ -2412,16 +2464,26 @@
 					}
 					.menu-highlight-primary, .menu-highlight-secondary{
 						>a{
-							margin-block-start:5px;
-							margin-block-end:5px;
-							margin-inline-start:20px;
-							margin-inline-end:5px;
+							margin-block-start:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-top-sm');
+							margin-block-end:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-bottom-sm');
+							margin-inline-start:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-left-sm');
+							margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-submenu-01-02-margin-right-sm');
 							@include respond-to(mediumdevice){
-								margin: 5px;
+								margin-block-start: map-get($default_vars,'spacing-submenu-highlight-margin-top');
+								margin-block-end: map-get($default_vars,'spacing-submenu-highlight-margin-bottom');
+								margin-inline-start: map-get($default_vars,'spacing-submenu-highlight-margin-left');
+								margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-margin-right');
 							}
 						}
 						.theme-sub-li-menu{
 							right:10px;
+						}
+						@include respond-to(mediumdevice){
+							&:first-child{
+								a{
+									padding-block-start: 15px;
+								}
+							}
 						}
 					}
 				}
@@ -2467,8 +2529,8 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-block-start:20px;
-			padding-block-end:20px;
+			padding-block-start:map-get($default_vars,'spacing-header-padding-top-sm');
+			padding-block-end:map-get($default_vars,'spacing-header-padding-bottom-sm');
 			@include prefix(flex,0 1 auto);
 			margin-inline-start:auto;
 			@include prefix(align-self,center);
@@ -2531,14 +2593,12 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:22px;
-							padding-inline-end:22px;
+							padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-bottom');
+							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-left');
+							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-right');
 							@include prefix(align-items,center);
 							li{
-							padding-block-start:8px;
-							padding-block-end:8px;
 							padding-inline-start:0;
 							padding-inline-end:0;
 							margin-block-start:0;
@@ -2572,6 +2632,11 @@
 				.theme-topbar-contact-info{
 					@include flexbox;
 					@include prefix(flex-direction,row-reverse);
+					align-items: center;
+			    padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-top');
+			    padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-bottom');
+			    padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-left');
+			    padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-right');
 					ul{
 						@include flexbox;
 						margin-inline-start:auto;
@@ -2581,12 +2646,18 @@
 								margin-inline-start:0px;
 								margin-inline-end:20px;
 								a{
+									padding-block-start:0px;
+									padding-block-end:0px;
 									padding-inline-start:0px;
 									padding-inline-end:0px;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
+									}
+									.theme-topbar-info-icon{
+										display: flex;
+										align-items: center;
 									}
 									.theme-topbar-info-icon-text{
 										display: none;
@@ -2595,7 +2666,17 @@
 										}
 									}
 								}
+								&:last-child{
+			            margin-inline-end:0;
+			          }
 							}
+						}
+					}
+					ul{
+						&.theme-scoialicon-inner-parent{
+							padding-block-start:0;
+							padding-block-end:0;
+							padding-inline-start:0;
 						}
 					}
 				}
@@ -2661,10 +2742,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-			padding-block-start:15px;
-			padding-block-end:15px;
-			padding-inline-start:20px;
-			padding-inline-end:20px;
+						@media all and (max-width:992px){
+					    padding-block-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-top');
+					    padding-block-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-bottom');
+					    padding-inline-start:0;
+					    padding-inline-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-right');
+					  }
 		        .theme-currency-label{
 			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
@@ -2676,7 +2759,9 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-			padding-inline-start:20px;
+							@media all and (max-width:992px){
+					      padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-left');
+					    }
 		          z-index: 310;
 		        }
 		        ul{
@@ -2836,7 +2921,6 @@
 			}
 		}
 }
-
 //  SUB MENU STYLE - 03
 
 @if map-get($user_layout_vars,'submenu_style') == 03 {
@@ -2949,7 +3033,7 @@
 					li{
 						padding-block-start:0px;
 						padding-block-end:0px;
-						padding-inline-start:20px;
+						padding-inline-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-indent-submenu-03-04-sm');
 						padding-inline-end:0px;
 						a{
 							@include flexbox;
@@ -2963,12 +3047,12 @@
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 							padding:0px;
-							margin-block-start:14px;
-							margin-block-end:14px;
+							margin-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-03-04-margin-top');
+							margin-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-03-04-margin-bottom');
 							margin-inline-start:0px;
 							margin-inline-end:0px;
 							border-radius:3px;
-							padding-inline-end:45px;
+							padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-03-04-padding-right');
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
@@ -3006,16 +3090,16 @@
 							padding-inline-end:0px;
 							max-block-size:none;
 							@if map-get($user_layout_vars,'store_template_no') == 03 {
-								background-color:map-get($base_vars,'color-light');
+								@media all and (max-width:991px){
+									background-color:map-get($base_vars,'color-light');
+								}
 							}
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
-								display:none;
-								background:none;
 								z-index: 280;
-								padding-block-start:10px;
 								top:100%;
+								min-inline-size:228px;
 								&.theme-sub-menu-position-change{
 									left:auto;
 									padding-inline-start:0px;
@@ -3034,7 +3118,7 @@
 								padding-block-start:0;
 								padding-block-end:0;
 								padding-inline-end:0;
-								padding-inline-start:10px;
+								padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-01-indent-submenu-03-04-sm');
 								@include respond-to(mediumdevice){
 									min-inline-size:228px;
 									width: 100%;
@@ -3045,9 +3129,9 @@
 								}
 								a{
 									padding:0;
-									padding-inline-end:48px;
-									margin-block-start:14px;
-									margin-block-end:14px;
+									padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-03-04-padding-right');
+									margin-block-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-03-04-margin-top');
+									margin-block-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-03-04-margin-bottom');
 									margin-inline-start:0px;
 									margin-inline-end:0px;
 									display:block;
@@ -3064,19 +3148,12 @@
 									-webkit-text-size-adjust : 100%;
 									line-height: normal;
 									@include respond-to(mediumdevice){
-										color:map-get($default_vars, 'color-submenu');
 										background:map-get($default_vars, 'color-submenu-background');
-										font-family:map-get($default_vars, 'font-family-submenu');
-										font-size:map-get($default_vars,'font-size-submenu');
-										font-weight: map-get($default_vars,'font-weight-submenu');
-										text-transform: map-get($default_vars,'font-transform-submenu');
-										line-height: map-get($default_vars,'font-line-height-submenu');
-										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding-block-start:10px;
-										padding-block-end:10px;
-										padding-inline-start:20px;
-										padding-inline-end:20px;
+										padding-block-start: map-get($default_vars,'spacing-submenu-padding-top-03');
+										padding-block-end: map-get($default_vars,'spacing-submenu-padding-bottom-03');
+										padding-inline-start: map-get($default_vars,'spacing-submenu-padding-left-03');
+										padding-inline-end: map-get($default_vars,'spacing-submenu-padding-right-03');
 										margin:0px;
 										-webkit-text-size-adjust: auto;
 									}
@@ -3091,10 +3168,8 @@
 								}
 								&:hover > a,
 								&.theme-menu-selected > a{
-									// background:map-get($base_vars,'color-light');
 									color : map-get($default_vars, 'color-submenu-hover-active-text');
 									@include respond-to(mediumdevice){
-										color:map-get($default_vars, 'color-submenu-hover-active-text');
 										background:map-get($default_vars, 'color-submenu-hover-background');
 									}
 								}
@@ -3128,7 +3203,10 @@
 							margin-inline-start:20px;
 							margin-inline-end:5px;
 							@include respond-to(mediumdevice){
-								margin: 5px;
+								margin-block-start: map-get($default_vars,'spacing-submenu-highlight-margin-top');
+								margin-block-end: map-get($default_vars,'spacing-submenu-highlight-margin-bottom');
+								margin-inline-start: map-get($default_vars,'spacing-submenu-highlight-margin-left');
+								margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-margin-right');
 							}
 						}
 						.theme-sub-li-menu{
@@ -3157,8 +3235,8 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-block-start:20px;
-			padding-block-end:20px;
+			padding-block-start:map-get($default_vars,'spacing-header-padding-top-sm');
+			padding-block-end:map-get($default_vars,'spacing-header-padding-bottom-sm');
 			@include prefix(flex,0 1 auto);
 			margin-inline-start:auto;
 			@include prefix(align-self,center);
@@ -3219,14 +3297,12 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:22px;
-							padding-inline-end:22px;
+							padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-bottom');
+							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-left');
+							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-right');
 							@include prefix(align-items,center);
 							li{
-							padding-block-start:8px;
-							padding-block-end:8px;
 							padding-inline-start:0;
 							padding-inline-end:0;
 							margin-block-start:0;
@@ -3236,6 +3312,8 @@
 							border-block-end: 0 none;
 								a{
 									padding:0;
+									margin-block-start:0;
+									margin-block-end:0;
 									svg, img{
 										width:map-get($default_vars, 'size-social-icon');
 										height:map-get($default_vars, 'size-social-icon');
@@ -3260,6 +3338,11 @@
 				.theme-topbar-contact-info{
 					@include flexbox;
 					@include prefix(flex-direction,row-reverse);
+					align-items: center;
+					padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-top');
+					padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-bottom');
+					padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-left');
+					padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-right');
 					ul{
 						@include flexbox;
 						margin-inline-start:auto;
@@ -3268,9 +3351,10 @@
 								padding:0px;
 								margin-inline-start:0px;
 								margin-inline-end:20px;
+								&:last-child{
+									margin-inline-end:0px;
+								}
 								a{
-									padding-block-start:10px;
-									padding-block-end:10px;
 									padding-inline-start:0px;
 									padding-inline-end:0px;
 									@include flexbox;
@@ -3283,6 +3367,10 @@
 											fill:map-get($default_vars, 'color-contact-info');
 										}
 									}
+									.theme-topbar-info-icon{
+										display: flex;
+										align-items: center;
+									}
 									.theme-topbar-info-icon-text{
 										display: none;
 										@include respond-to(mediumdevice){
@@ -3291,6 +3379,13 @@
 									}
 								}
 							}
+						}
+					}
+					ul{
+						&.theme-scoialicon-inner-parent{
+							padding-block-start:0;
+							padding-block-end:0;
+							padding-inline-start:0;
 						}
 					}
 				}
@@ -3319,12 +3414,12 @@
 						> ul{
 							>li{
 								&.menu-highlight-primary, &.menu-highlight-secondary{
+									padding-inline-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-padding-left-sm');
 									>a{
-										width:calc(100% - 5px);
-										margin-block-start:5px;
-										margin-block-end:5px;
+										margin-block-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-top-sm');
+										margin-block-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-bottom-sm');
 										margin-inline-start:0px;
-										margin-inline-end:5px;
+										margin-inline-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-right-sm');
                                         .theme-sub-li-menu{
                                             right:15px;
                                         }
@@ -3336,12 +3431,12 @@
 							right:20px;
 						}
 						.menu-highlight-primary, .menu-highlight-secondary{
+							padding-inline-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-padding-left-sm');
 							>a{
-								width:calc(100% - 5px);
-								margin-block-start:5px;
-								margin-block-end:5px;
+								margin-block-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-top-sm');
+								margin-block-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-bottom-sm');
 								margin-inline-start:0px;
-								margin-inline-end:5px;
+								margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-right-sm');
                                 .theme-sub-li-menu{
                                     right:15px;
                                 }
@@ -3370,10 +3465,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-			padding-block-start:15px;
-			padding-block-end:15px;
-			padding-inline-start:20px;
-			padding-inline-end:20px;
+						@media all and (max-width:992px){
+					    padding-block-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-top');
+					    padding-block-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-bottom');
+					    padding-inline-start:0;
+					    padding-inline-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-right');
+					  }
 		        .theme-currency-label{
 			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
@@ -3385,7 +3482,9 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-			padding-inline-start:20px;
+							@media all and (max-width:992px){
+					      padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-01-02-03-padding-left');
+					    }
 		          z-index: 310;
 		        }
 		        ul{
@@ -3622,7 +3721,7 @@
 					li{
 						padding-block-start:0px;
 						padding-block-end:0px;
-						padding-inline-start:20px;
+						padding-inline-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-indent-submenu-03-04-sm');
 						padding-inline-end:0px;
 						a{
 							@include flexbox;
@@ -3636,12 +3735,12 @@
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 							padding:0px;
-							margin-block-start:14px;
-							margin-block-end:14px;
+							margin-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-03-04-margin-top');
+							margin-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-03-04-margin-bottom');
 							margin-inline-start:0px;
 							margin-inline-end:0px;
 							border-radius:3px;
-							padding-inline-end:45px;
+							padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-03-04-padding-right');
 							@include prefix(transition,0.15s linear);
 							-webkit-text-size-adjust: 100%;
 							@include respond-to(mediumdevice){
@@ -3680,11 +3779,9 @@
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
-								display:none;
-								background:none;
 								z-index: 280;
-								padding-block-start:10px;
 								top:100%;
+								min-inline-size:228px;
 								&.theme-sub-menu-position-change{
 									left:auto;
 									padding-inline-start:0px;
@@ -3702,7 +3799,7 @@
 								word-break: break-word;
 								padding-block-start:0px;
 								padding-block-end:0px;
-								padding-inline-start:10px;
+								padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-01-indent-submenu-03-04-sm');
 								padding-inline-end:0px;
 								background: map-get($default_vars, 'color-submenu-background');
 								@include respond-to(mediumdevice){
@@ -3720,9 +3817,9 @@
 								}
 								a{
 									padding:0;
-									padding-inline-end:45px;
-									margin-block-start:14px;
-									margin-block-end:14px;
+									padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-03-04-padding-right');
+									margin-block-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-03-04-margin-top');
+									margin-block-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-03-04-margin-bottom');
 									margin-inline-start:0px;
 									margin-inline-end:0px;
 									display:block;
@@ -3736,17 +3833,12 @@
 									-webkit-text-size-adjust : 100%;
 									line-height: normal;
 									@include respond-to(mediumdevice){
-										color:map-get($default_vars, 'color-submenu');
 										background:map-get($default_vars, 'color-submenu-background');
-										font-family:map-get($default_vars, 'font-family-submenu');
-										font-size:map-get($default_vars,'font-size-submenu');
-										font-weight: map-get($default_vars,'font-weight-submenu');
-										text-transform: map-get($default_vars,'font-transform-submenu');
 										width:100%;
-										padding-block-start:10px;
-										padding-block-end:10px;
-										padding-inline-start:20px;
-										padding-inline-end:20px;
+										padding-block-start: map-get($default_vars,'spacing-submenu-padding-top-04');
+										padding-block-end: map-get($default_vars,'spacing-submenu-padding-bottom-04');
+										padding-inline-start: map-get($default_vars,'spacing-submenu-padding-left-04');
+										padding-inline-end: map-get($default_vars,'spacing-submenu-padding-right-04');
 										margin:0px;
 										-webkit-text-size-adjust : auto;
 									}
@@ -3809,7 +3901,10 @@
 							margin-inline-start:20px;
 							margin-inline-end:5px;
 							@include respond-to(mediumdevice){
-								margin: 5px;
+								margin-block-start: map-get($default_vars,'spacing-submenu-highlight-margin-top');
+								margin-block-end: map-get($default_vars,'spacing-submenu-highlight-margin-bottom');
+								margin-inline-start: map-get($default_vars,'spacing-submenu-highlight-margin-left');
+								margin-inline-end: map-get($default_vars,'spacing-submenu-highlight-margin-right');
 							}
 						}
 						.theme-sub-li-menu{
@@ -3837,8 +3932,8 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-block-start:20px;
-			padding-block-end:20px;
+			padding-block-start:map-get($default_vars,'spacing-header-padding-top-sm');
+			padding-block-end:map-get($default_vars,'spacing-header-padding-bottom-sm');
 			@include prefix(flex,0 1 auto);
 			margin-inline-start:auto;
 			@include prefix(align-self,center);
@@ -3899,14 +3994,16 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:22px;
-							padding-inline-end:22px;
+							margin-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-top');
+							margin-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-bottom');
+							margin-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-left');
+							margin-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-right');
+							padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-bottom');
+							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-left');
+							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-right');
 							@include prefix(align-items,center);
 							li{
-								padding-block-start:8px;
-								padding-block-end:8px;
 								padding-inline-start:0;
 								padding-inline-end:0;
 								margin-block-start:0;
@@ -3916,6 +4013,7 @@
 								border-block-end:0 none;
 								a{
 									padding:0;
+									margin:0;
 									svg, img{
 										width:map-get($default_vars, 'size-social-icon');
 										height:map-get($default_vars, 'size-social-icon');
@@ -3937,8 +4035,16 @@
 				.theme-topbar-contact-info{
 					@include flexbox;
 					@include prefix(flex-direction,row-reverse);
-					margin: 15px;
+					align-items: center;
+					margin-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-top');
+					margin-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-bottom');
+					margin-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-left');
+					margin-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-margin-right');
 					background: map-get($base_vars,'color-light');
+					padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-top');
+					padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-bottom');
+					padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-left');
+					padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-right');
 					ul{
 						@include flexbox;
 						margin-inline-start:auto;
@@ -3951,6 +4057,7 @@
 								a{
 									padding-inline-start:0px;
 									padding-inline-end:0px;
+									margin:0;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
@@ -3959,6 +4066,10 @@
 									span{
 										line-height: 0px
 									}
+									.theme-topbar-info-icon{
+										display: flex;
+										align-items: center;
+									}
 									.theme-topbar-info-icon-text{
 										display: none;
 										@include respond-to(mediumdevice){
@@ -3966,7 +4077,18 @@
 										}
 									}
 								}
+								&:last-child{
+									margin-inline-end:0px;
+								}
 							}
+						}
+					}
+					ul{
+						&.theme-scoialicon-inner-parent{
+							padding-block-start:0;
+							padding-block-end:0;
+							padding-inline-start:0;
+							margin:0;
 						}
 					}
 				}
@@ -3995,12 +4117,12 @@
 						> ul{
 							>li{
 								&.menu-highlight-primary, &.menu-highlight-secondary{
+									padding-inline-start: map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-padding-left-sm');
 									>a{
-										width:calc(100% - 5px);
-										margin-block-start:5px;
-										margin-block-end:5px;
+										margin-block-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-top-sm');
+										margin-block-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-bottom-sm');
 										margin-inline-start:0px;
-										margin-inline-end:5px;
+										margin-inline-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-03-04-margin-right-sm');
                                         .theme-sub-li-menu{
                                             right:0px;
                                         }
@@ -4012,12 +4134,12 @@
 							right:5px;
 						}
 						.menu-highlight-primary, .menu-highlight-secondary{
+							padding-inline-start: map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-padding-left-sm');
 							>a{
-								width:calc(100% - 5px);
-								margin-block-start:5px;
-								margin-block-end:5px;
+								margin-block-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-top-sm');
+								margin-block-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-bottom-sm');
 								margin-inline-start:0px;
-								margin-inline-end:5px;
+								margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-03-04-margin-right-sm');
                                 .theme-sub-li-menu{
                                     right:0px;
                                 }
@@ -4035,13 +4157,18 @@
 		  .theme-menu-area{
 		    .theme-menu{
 		      .theme-currency-res{
-			padding-block-start:10px;
-			padding-block-end:10px;
-			padding-inline-start:20px;
-			padding-inline-end:20px;
-		        background-color: map-get($base_vars,'color-light');
+						background-color: map-get($base_vars,'color-light');
 		        @include flexbox;
-		        margin: 15px;
+						@media all and (max-width:992px){
+							padding-block-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-padding-bottom');
+							padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-padding-left');
+							padding-inline-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-padding-right');
+			        margin-block-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-margin-top');
+							margin-block-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-margin-bottom');
+							margin-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-margin-left');
+							margin-inline-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-04-margin-right');
+						}
 		        @include respond-to(mediumdevice){
 		          display: none;
 		        }
@@ -4309,10 +4436,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:20px;
-							padding-inline-end:40px;
+							padding-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-05-padding-top-sm');
+							padding-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-05-padding-bottom-sm');
+							padding-inline-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-05-padding-left-sm');
+							padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-05-padding-right-sm');
 							word-wrap:break-word;
 							word-break: break-word;
 							@include prefix(transition,0.15s linear);
@@ -4338,11 +4465,9 @@
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
-								display:none;
-								background:none;
 								z-index: 280;
-								padding-block-start:43px;
 								top:100%;
+								min-inline-size:228px;
 								&.theme-sub-menu-position-change{
 									left:auto;
 									padding-inline-start:0px;
@@ -4358,20 +4483,20 @@
 								border-block-end:0;
 								margin-inline-start:0px;
 								text-align: start;
-								padding-inline-start:20px;
+								padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-05-indent-sm');
 								@include respond-to(mediumdevice){
 									min-inline-size:250px;
 									width: 100%;
 									margin-block-start:0px;
 									background:map-get($default_vars, 'color-submenu-background');
 									@include box-shadow(0,3px,3px,RGBA(0,0,0,0.1));
-									padding: 5px;
+									padding-inline-start:0;
 								}
 								a{
-									padding-block-start:8px;
-									padding-block-end:8px;
-									padding-inline-start:10px;
-									padding-inline-end:40px;
+									padding-block-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-05-padding-top-sm');
+									padding-block-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-05-padding-bottom-sm');
+									padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-05-padding-left-sm');;
+									padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-05-padding-right-sm');
 									display:block;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
@@ -4385,19 +4510,16 @@
 									-webkit-text-size-adjust : 100%;
 									line-height: normal;
 									@include respond-to(mediumdevice){
-										color:map-get($default_vars, 'color-submenu');
 										background:map-get($default_vars, 'color-submenu-background');
-										font-family:map-get($default_vars, 'font-family-submenu');
-										font-size:map-get($default_vars,'font-size-submenu');
-										font-weight: map-get($default_vars,'font-weight-submenu');
-										text-transform: map-get($default_vars,'font-transform-submenu');
-										line-height: map-get($default_vars,'font-line-height-submenu');
-										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding-block-start:8px;
-										padding-block-end:8px;
-										padding-inline-start:10px;
-										padding-inline-end:20px;
+										padding-block-start: map-get($default_vars,'spacing-submenu-padding-top-05');
+										padding-block-end: map-get($default_vars,'spacing-submenu-padding-bottom-05');
+										padding-inline-start: map-get($default_vars,'spacing-submenu-padding-left-05');
+										padding-inline-end: map-get($default_vars,'spacing-submenu-padding-right-05');
+										margin-block-start:map-get($default_vars,'spacing-submenu-margin-top-05');
+										margin-block-end:map-get($default_vars,'spacing-submenu-margin-bottom-05');
+										margin-inline-start:map-get($default_vars,'spacing-submenu-margin-left-05');
+										margin-inline-end:map-get($default_vars,'spacing-submenu-margin-right-05');
 										@include prefix(justify-content,space-between);
 										-webkit-text-size-adjust : auto;
 									}
@@ -4419,11 +4541,34 @@
 								}
 								@include respond-to(mediumdevice){
 									&:first-child {
-										padding-block-start:10px;
+										> a{
+											margin-block-start:10px;
+										}
 										@include prefix(box-shadow, 0px 0px 3px RGBA(0,0,0,0.1));
 									}
 									&:last-child {
-										padding-block-end:10px;
+										> a{
+											margin-block-end:10px;
+										}
+									}
+									&.menu-highlight-primary,
+									&.menu-highlight-secondary{
+										a{
+											margin-block-start:map-get($default_vars,'spacing-submenu-highlight-margin-top');
+											margin-block-end:map-get($default_vars,'spacing-submenu-highlight-margin-bottom');
+											margin-inline-start:map-get($default_vars,'spacing-submenu-highlight-margin-left');
+											margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-margin-right');
+										}
+										&:first-child{
+											a{
+												margin-block-start: 10px;
+											}
+										}
+										&:last-child{
+											a{
+												margin-block-end: 10px;
+											}
+										}
 									}
 								}
 							}
@@ -4473,8 +4618,8 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-block-start:20px;
-			padding-block-end:20px;
+			padding-block-start:map-get($default_vars,'spacing-header-padding-top-sm');
+			padding-block-end:map-get($default_vars,'spacing-header-padding-bottom-sm');
 			@include prefix(flex,0 1 auto);
 			margin-inline-start:auto;
 			@include prefix(align-self,center);
@@ -4535,14 +4680,12 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:22px;
-							padding-inline-end:22px;
+							padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-top');
+							padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-bottom');
+							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-left');
+							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-right');
 							@include prefix(align-items,center);
 							li{
-								padding-block-start:8px;
-								padding-block-end:8px;
 								padding-inline-start:0;
 								padding-inline-end:0;
 								margin-block-start:0;
@@ -4575,22 +4718,28 @@
 				.theme-topbar-contact-info{
 					@include flexbox;
 					@include prefix(flex-direction,row-reverse);
+					align-items: center;
+					padding-block-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-top');
+					padding-block-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-bottom');
+					padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-left');
+					padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-right');
 					ul{
 						@include flexbox;
 						margin-inline-start:auto;
-						margin-inline-end:15px;
 						&:first-child{
 							li{
 								padding:0;
-
 								a{
-									padding-inline-start:0px;
-									padding-inline-end:0px;
+									padding:0;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
 										margin-inline-end:10px;
+									}
+									.theme-topbar-info-icon{
+										display: flex;
+										align-items: center;
 									}
 									.theme-topbar-info-icon-text{
 										display: none;
@@ -4599,7 +4748,21 @@
 										}
 									}
 								}
+								&:last-child{
+									a{
+										svg{
+											margin-inline-end:0px;
+										}
+									}
+								}
 							}
+						}
+					}
+					ul{
+						&.theme-scoialicon-inner-parent{
+							padding-block-start:0;
+							padding-block-end:0;
+							padding-inline-start:0;
 						}
 					}
 				}
@@ -4629,11 +4792,10 @@
 							>li{
 								&.menu-highlight-primary, &.menu-highlight-secondary{
 									>a{
-										width:calc(100% - 25px);
-										margin-block-start:5px;
-										margin-block-end:5px;
-										margin-inline-start:20px;
-										margin-inline-end:5px;
+										margin-block-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-top-sm');
+										margin-block-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-bottom-sm');
+										margin-inline-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-left-sm');
+										margin-inline-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-05-margin-right-sm');
                                         .theme-sub-li-menu{
                                             right:10px;
                                         }
@@ -4646,11 +4808,10 @@
 						}
 						.menu-highlight-primary, .menu-highlight-secondary{
 							>a{
-								width:calc(100% - 15px);
-								margin-block-start:10px;
-								margin-block-end:10px;
-								margin-inline-start:10px;
-								margin-inline-end:5px;
+								margin-block-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-05-margin-top-sm');
+								margin-block-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-05-margin-bottom-sm');
+								margin-inline-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-05-margin-left-sm');
+								margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-05-margin-right-sm');
                                 .theme-sub-li-menu{
                                     right:10px;
                                 }
@@ -4681,10 +4842,10 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-			padding-block-start:10px;
-			padding-block-end:10px;
-			padding-inline-start:20px;
-			padding-inline-end:20px;
+						padding-block-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-05-padding-top');
+						padding-block-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-05-padding-bottom');
+						padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-05-padding-left');
+						padding-inline-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-05-padding-right');
 		        .theme-currency-label{
 			margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
@@ -4696,7 +4857,7 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-			padding-inline-start:22px;
+							padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-05-padding-left');
 		          z-index: 310;
 		        }
 		        ul{
@@ -4941,10 +5102,10 @@
 							text-transform: map-get($default_vars,'font-transform-submenu');
 							line-height: map-get($default_vars,'font-line-height-submenu');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:15px;
-							padding-inline-end:45px;
+							padding-block-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-06-padding-top-sm');
+							padding-block-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-06-padding-bottom-sm');
+							padding-inline-start:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-06-padding-left-sm');
+							padding-inline-end:map-get($default_vars,'spacing-main-menu-mobile-header-01-submenu-06-padding-right-sm');
 							word-wrap:break-word;
 							word-break: break-word;
 							@include prefix(transition,0.15s linear);
@@ -4969,11 +5130,9 @@
 							@include respond-to(mediumdevice){
 								position:absolute;
 								left:0;
-								display:none;
-								background:none;
 								z-index: 280;
-								padding-block-start:25px;
 								top:100%;
+								min-inline-size:260px;
 								&.theme-sub-menu-position-change{
 									left:auto;
 									padding-inline-start:0px;
@@ -4989,16 +5148,13 @@
 								border-block-end:0px;
 								margin-inline-start:0px;
 								text-align: start;
-								padding-inline-start:15px;
+								padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-06-indent-sm');
 								@include respond-to(mediumdevice){
 									min-inline-size:260px;
 									width: 100%;
 									margin-block-start:0px;
 									background:map-get($default_vars, 'color-submenu-background');
-									padding-block-start:5px;
-									padding-block-end:5px;
-									padding-inline-start:10px;
-									padding-inline-end:10px;
+									padding: 0;
 									@include prefix(box-shadow,0px 4px 4px RGBA(0,0,0,0.1));
 								}
 								&:only-of-type {
@@ -5010,7 +5166,9 @@
 								}
 								&:first-child {
 									@include respond-to(mediumdevice){
-										padding-block-start:10px;
+										> a{
+											margin-block-start:10px;
+										}
 										@include prefix(border-radius,5px 5px 0 0);
 										border-start-start-radius:5px;
 										border-start-end-radius:5px;
@@ -5027,12 +5185,16 @@
 										border-end-start-radius:5px;
 										border-end-end-radius:5px;
 										@include prefix(box-shadow,0 2px 3px RGBA(0,0,0,0.1));
-										padding-block-end:10px;
+										> a{
+											margin-block-end:10px;
+										}
 									}
 								}
 								a{
-									padding:10px;
-									padding-block-end:10px;
+									padding-block-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-06-padding-top-sm');
+									padding-block-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-06-padding-bottom-sm');
+									padding-inline-start:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-06-padding-left-sm');
+									padding-inline-end:map-get($default_vars,'spacing-submenu-mobile-header-01-submenu-06-padding-right-sm');
 									display:block;
 									color:map-get($default_vars, 'color-submenu');
 									font-family:map-get($default_vars, 'font-family-submenu');
@@ -5046,19 +5208,16 @@
 									-webkit-text-size-adjust : 100%;
 									line-height: normal;
 									@include respond-to(mediumdevice){
-										color:map-get($default_vars, 'color-submenu');
 										background:map-get($default_vars, 'color-submenu-background');
-										font-family:map-get($default_vars, 'font-family-submenu');
-										font-size:map-get($default_vars,'font-size-submenu');
-										font-weight: map-get($default_vars,'font-weight-submenu');
-										text-transform: map-get($default_vars,'font-transform-submenu');
-										line-height: map-get($default_vars,'font-line-height-submenu');
-										letter-spacing: map-get($default_vars,'font-letter-spacing-submenu');
 										width:100%;
-										padding-block-start:8px;
-										padding-block-end:8px;
-										padding-inline-start:10px;
-										padding-inline-end:25px;
+										padding-block-start:map-get($default_vars,'spacing-submenu-padding-top-06');
+										padding-block-end:map-get($default_vars,'spacing-submenu-padding-bottom-06');
+										padding-inline-start:map-get($default_vars,'spacing-submenu-padding-left-06');
+										padding-inline-end:map-get($default_vars,'spacing-submenu-padding-right-06');
+										margin-block-start:map-get($default_vars,'spacing-submenu-margin-top-06');
+										margin-block-end:map-get($default_vars,'spacing-submenu-margin-bottom-06');
+										margin-inline-start:map-get($default_vars,'spacing-submenu-margin-left-06');
+										margin-inline-end:map-get($default_vars,'spacing-submenu-margin-right-06');
 										@include prefix(justify-content,space-between);
 										-webkit-text-size-adjust : auto;
 									}
@@ -5081,6 +5240,28 @@
 									&:only-child {
 										@include prefix(border-radius,5px);
 										@include prefix(box-shadow,0px 0 4px RGBA(0,0,0,0.1));
+										a{
+											margin:0;
+										}
+									}
+									&.menu-highlight-primary,
+									&.menu-highlight-secondary{
+										a{
+											margin-block-start:map-get($default_vars,'spacing-submenu-highlight-margin-top');
+											margin-block-end:map-get($default_vars,'spacing-submenu-highlight-margin-bottom');
+											margin-inline-start:map-get($default_vars,'spacing-submenu-highlight-margin-left-06');
+											margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-margin-right-06');
+										}
+										&:first-child{
+											a{
+												margin-block-start: 10px;
+											}
+										}
+										&:last-child{
+											a{
+												margin-block-end: 10px;
+											}
+										}
 									}
 								}
 							}
@@ -5099,11 +5280,9 @@
 							background:none;
 						}
 						&.theme-menu-selected > a {
-							// background:map-get($default_vars, 'color-submenu-hover-background-06');
 							color:map-get($default_vars, 'color-submenu-hover-active-text');
 							@include respond-to(mediumdevice){
 								background:map-get($default_vars, 'color-submenu-hover-background-06');
-								color:map-get($default_vars, 'color-submenu-hover-active-text');
 							}
 						}
 						&:hover > ul{
@@ -5124,7 +5303,6 @@
 											background:map-get($default_vars, 'color-highlight-primary-background');
 											@include respond-to(mediumdevice){
 												color:map-get($default_vars, 'color-highlight-primary');
-												background:map-get($default_vars, 'color-highlight-primary-background');
 											}
 										}
 									}
@@ -5133,7 +5311,6 @@
 											background:map-get($default_vars, 'color-highlight-secondary-background');
 											@include respond-to(mediumdevice){
 												color:map-get($default_vars, 'color-highlight-secondary');
-												background:map-get($default_vars, 'color-highlight-secondary-background');
 											}
 										}
 									}
@@ -5162,8 +5339,8 @@
 	.theme-responsive-menu-area{
 		&.zpcontainer{
 			display: block;
-			padding-block-start:20px;
-			padding-block-end:20px;
+			padding-block-start:map-get($default_vars,'spacing-header-padding-top-sm');
+			padding-block-end:map-get($default_vars,'spacing-header-padding-bottom-sm');
 			@include prefix(flex,0 1 auto);
 			margin-inline-start:auto;
 			@include prefix(align-self,center);
@@ -5224,14 +5401,12 @@
 							@include prefix(flex,1 1 0px);
 							@include flexbox;
 							@include prefix(flex-wrap,wrap);
-							padding-block-start:10px;
-							padding-block-end:10px;
-							padding-inline-start:22px;
-							padding-inline-end:22px;
+							padding-block-start: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-top');
+							padding-block-end: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-bottom');
+							padding-inline-start: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-left');
+							padding-inline-end: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-right');
 							@include prefix(align-items,center);
 							li{
-								padding-block-start:8px;
-								padding-block-end:8px;
 								padding-inline-start:0;
 								padding-inline-end:0;
 								margin-block-start:0;
@@ -5264,6 +5439,11 @@
 				.theme-topbar-contact-info{
 					@include flexbox;
 					@include prefix(flex-direction,row-reverse);
+					align-items: center;
+					padding-block-start: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-top');
+					padding-block-end: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-bottom');
+					padding-inline-start: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-left');
+					padding-inline-end: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-right');
 					ul{
 						@include flexbox;
 						margin-inline-start:auto;
@@ -5272,13 +5452,16 @@
 								padding:0;
 								margin-inline-end:20px;
 								a{
-									padding-inline-start:0px;
-									padding-inline-end:0px;
+									padding: 0;
 									svg{
 										width:map-get($default_vars, 'font-size-contact-info');
 										height:map-get($default_vars, 'font-size-contact-info');
 										fill:map-get($default_vars, 'color-contact-info');
 										margin-inline-end:10px;
+									}
+									.theme-topbar-info-icon{
+										display: flex;
+										align-items: center;
 									}
 									.theme-topbar-info-icon-text{
 										display: none;
@@ -5287,7 +5470,20 @@
 										}
 									}
 								}
+								&:last-child{
+									margin-inline-end:0;
+									svg{
+										margin-inline-end:0;
+									}
+								}
 							}
+						}
+					}
+					ul{
+						&.theme-scoialicon-inner-parent{
+							padding-block-start:0;
+							padding-block-end:0;
+							padding-inline-start:0;
 						}
 					}
 				}
@@ -5317,11 +5513,10 @@
 							>li{
 								&.menu-highlight-primary, &.menu-highlight-secondary{
 									>a{
-										width:calc(100% - 20px);
-										margin-block-start:5px;
-										margin-block-end:5px;
-										margin-inline-start:15px;
-										margin-inline-end:5px;
+										margin-block-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-top-sm');
+										margin-block-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-bottom-sm');
+										margin-inline-start:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-left-sm');
+										margin-inline-end:map-get($default_vars,'spacing-main-menu-highlight-mobile-header-01-submenu-06-margin-right-sm');
                                         .theme-sub-li-menu{
                                             right:10px;
                                         }
@@ -5335,11 +5530,10 @@
 						}
 						.menu-highlight-primary, .menu-highlight-secondary{
 							>a{
-								width:calc(100% - 15px);
-								margin-block-start:10px;
-								margin-block-end:10px;
-								margin-inline-start:10px;
-								margin-inline-end:5px;
+								margin-block-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-06-margin-top-sm');
+								margin-block-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-06-margin-bottom-sm');
+								margin-inline-start:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-06-margin-left-sm');
+								margin-inline-end:map-get($default_vars,'spacing-submenu-highlight-mobile-header-01-submenu-06-margin-right-sm');
                                 .theme-sub-li-menu{
                                     right:10px;
                                 }
@@ -5370,12 +5564,12 @@
 		        width: 100%;
 		        @include flexbox;
 		        @include prefix(align-items,center);
-			padding-block-start:10px;
-			padding-block-end:10px;
-			padding-inline-start:20px;
-			padding-inline-end:20px;
+						padding-block-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-06-padding-top');
+						padding-block-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-06-padding-bottom');
+						padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-06-padding-left');
+						padding-inline-end:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-06-padding-right');
 		        .theme-currency-label{
-			margin-inline-end:auto;
+							margin-inline-end:auto;
 		          color:map-get($default_vars, 'color-currency-option');
 		          font-size: map-get($default_vars,'font-size-base');
 		          font-family: map-get($default_vars,'font-family-navigation');
@@ -5385,7 +5579,7 @@
 		          left: 0;
 		          @include flexbox;
 		          @include prefix(align-items,center);
-			padding-inline-start:20px;
+							padding-inline-start:map-get($default_vars,'spacing-currency-mobile-header-01-submenu-06-padding-left');
 		          z-index: 310;
 		        }
 		        ul{
@@ -5614,7 +5808,6 @@
 				li{
 					position: relative;
 					list-style: none;
-					// border-bottom:1px solid rgba(map-get($base_vars,'color-border'),0.4);
 					word-break: break-word;
 					word-wrap: break-word;
 					padding-block-start:0px;
@@ -5622,6 +5815,8 @@
 					@include respond-to(mediumdevice) {
 						display: flex;
 						align-items: center;
+						padding: 0px;
+						border-block-end:0 none;
 					}
 					&:last-of-type{
 						border-block-end:none;
@@ -5631,20 +5826,16 @@
 							margin-inline-start:0px;
 						}
 					}
-					@include respond-to(mediumdevice){
-						padding: 0px;
-						border-block-end:0 none;
-					}
 					a{
 						@include respond-to(mediumdevice){
 							padding:0;
 							border-block-end:0 none;
 							position:relative;
-							padding-block-start:8px;
-							padding-block-end:8px;
-							padding-inline-start:16px;
-							padding-inline-end:16px;
-							border-radius:3px;
+							padding-block-start: map-get($default_vars,"spacing-menu-padding-top");
+							padding-block-end: map-get($default_vars,"spacing-menu-padding-bottom");
+							padding-inline-start: map-get($default_vars,"spacing-menu-padding-left");
+							padding-inline-end:map-get($default_vars,"spacing-menu-padding-right");
+							border-radius: map-get($default_vars, 'size-main-menu-border-radius' );
 							line-height: map-get($default_vars,'font-line-height-navigation-one');
 							letter-spacing: map-get($default_vars,'font-letter-spacing-navigation');
 							@include flexbox;
@@ -5659,7 +5850,6 @@
 					}
 					&.theme-menu-selected{
 						> a{
-							// background:map-get($default_vars, 'color-submenu-hover-background');
 							color : map-get($default_vars, 'color-submenu-hover-active-text');
 							@include respond-to(mediumdevice){
 								background:map-get($default_vars, 'color-navigation-hover-active-arrow-background');
@@ -5667,11 +5857,7 @@
 							}
 						}
 					}
-					@include respond-to(mediumdevice){
-						margin-inline-start:25px;
-					}
 					&:hover > a{
-						// background:map-get($default_vars, 'color-submenu-hover-background');
 						color : map-get($default_vars, 'color-submenu-hover-active-text');
 						@include respond-to(mediumdevice){
 							background:map-get($default_vars, 'color-navigation-hover-active-arrow-background');
@@ -5715,6 +5901,19 @@
 							}
 						}
 					}
+					ul{
+						@include respond-to(mediumdevice){
+							padding-block-start:map-get($default_vars,"spacing-main-submenu-padding-top");
+							ul{
+								padding-block-start:0px;
+							}
+						}
+						li{
+							@include respond-to(mediumdevice){
+								margin:0;
+							}
+						}
+					}
 				}
 			}
 			.theme-topbar-contact-info{
@@ -5739,11 +5938,10 @@
                 }
                 &.menu-highlight-primary, &.menu-highlight-secondary{
                     >a{
-                        width:calc(100% - 25px);
-						margin-block-start:10px;
-						margin-block-end:10px;
-						margin-inline-start:20px;
-						margin-inline-end:5px;
+						margin-block-start:map-get($default_vars,'spacing-main-menu-highlight-submenu-01-02-margin-top-sm');
+						margin-block-end:map-get($default_vars,'spacing-main-menu-highlight-submenu-01-02-margin-bottom-sm');
+						margin-inline-start:map-get($default_vars,'spacing-main-menu-highlight-submenu-01-02-margin-left-sm');
+						margin-inline-end:map-get($default_vars,'spacing-main-menu-highlight-submenu-01-02-margin-right-sm');
                         .theme-sub-li-menu{
                             right:10px;
                         }
@@ -5781,6 +5979,10 @@ body{
 								display:flex;
 								align-items: center;
 								margin-inline-end:5px;
+								@include respond-to(mediumdevice){
+									margin-inline-end: map-get($default_vars, 'spacing-menu-icon');
+								}
+								margin-block-end:0;
 							}
 						}
 
@@ -5794,6 +5996,10 @@ body{
 									}
 									.theme-menu-icon{
 										margin-inline-end:5px;
+										@include respond-to(mediumdevice){
+											margin-inline-end: map-get($default_vars, 'spacing-submenu-icon');
+										}
+										margin-block-end:0;
 									}
 								}
 								&.menu-highlight-primary,&.menu-highlight-secondary{
@@ -5823,10 +6029,23 @@ body{
 								.theme-menu-content{
 									&.theme-menu-icon-enabled{
 										display:flex;
-										align-items: center;
+										align-items: flex-start;
+										@include respond-to(mediumdevice){
+											align-items: center;
+										}
 										flex-flow: column;
-										.theme-menu-name{
-											padding-block-start: 5px;
+										.theme-menu-icon{
+											margin-block-end:5px;
+											@include respond-to(mediumdevice){
+												margin-block-end: map-get($default_vars, 'spacing-menu-icon');
+											}
+											margin-inline-end:0;
+										}
+										.theme-menu-empty-icon{
+											@include respond-to(mediumdevice){
+													display:flex;
+											}
+											display:none;
 										}
 										svg{
 											fill:currentcolor;
@@ -5841,9 +6060,14 @@ body{
 												display:flex;
 												align-items: center;
 												flex-flow:row;
-												.theme-menu-name{
-													padding-block-start: 0px;
+												.theme-menu-icon{
+													margin-inline-end:5px;
+													@include respond-to(mediumdevice){
+														margin-inline-end: map-get($default_vars, 'spacing-submenu-icon');
+													}
+													margin-block-end:0;
 												}
+
 											}
 										}
 										&.menu-highlight-primary,&.menu-highlight-secondary{
@@ -5863,26 +6087,57 @@ body{
 			}
 		}
 	}
+	.theme-vertical-navigation-container{
+		.theme-navigation-and-icons{
+			.theme-menu-area{
+				.theme-menu{
+					&.theme-menu-icon-top{
+						>ul{
+							>li{
+								.theme-menu-content{
+									&.theme-menu-icon-enabled{
+										align-items:flex-start;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 @if map-get($user_layout_vars,'navigation_menu_icon_position') == 02 and map-get($user_layout_vars,'sub_menu_icon_position') == 02 {
 	.theme-navigation-and-icons{
 		.theme-menu-area{
 			.theme-menu{
 				&.theme-menu-icon-top{
-
 					&.theme-submenu-icon-top{          //Both navigation and submenu icon position changes
 						ul{
 							li{
 								.theme-menu-content{
 									&.theme-menu-icon-enabled{
 										display:flex;
-										align-items: center;
+										align-items: flex-start;
+										@include respond-to(mediumdevice){
+											align-items: center;
+										}
 										flex-flow: column;
-										.theme-menu-name{
-											padding-block-start: 5px;
+										.theme-menu-icon{
+											margin-block-end:5px;
+											@include respond-to(mediumdevice){
+												margin-block-end: map-get($default_vars, 'spacing-menu-icon');
+											}
+											margin-inline-end:0;
 										}
 										svg{
 											fill:currentcolor;
+										}
+										.theme-menu-empty-icon{
+											@include respond-to(mediumdevice){
+													display:flex;
+											}
+											display:none;
 										}
 									}
 								}
@@ -5894,11 +6149,45 @@ body{
 												display:flex;
 												align-items: flex-start;
 												flex-flow: column;
-												.theme-menu-name{
-													padding-block-start: 5px;
+												.theme-menu-icon{
+													margin-block-end:5px;
+													@include respond-to(mediumdevice){
+														margin-block-end: map-get($default_vars, 'spacing-submenu-icon');
+													}
+													margin-inline-end:0;
 												}
 											}
 										}
+										ul{
+											li
+											{
+												.theme-menu-content{
+													&.theme-menu-icon-enabled{
+														align-items: flex-start;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.theme-vertical-navigation-container{
+		.theme-navigation-and-icons{
+			.theme-menu-area{
+				.theme-menu{
+					&.theme-menu-icon-top{
+						>ul{
+							>li{
+								.theme-menu-content{
+									&.theme-menu-icon-enabled{
+										align-items:flex-start;
 									}
 								}
 							}
@@ -5923,12 +6212,17 @@ body{
 										display:flex;
 										align-items: center;
 										flex-flow: row;
-										.theme-menu-name{
-											padding-block-start: 0px;
+										.theme-menu-icon{
+											margin-inline-end:5px;
+											@include respond-to(mediumdevice){
+												margin-inline-end: map-get($default_vars, 'spacing-menu-icon');
+											}
+											margin-block-end:0;
 										}
+
 										svg{
-									fill:currentcolor;
-								}
+											fill:currentcolor;
+										}
 									}
 								}
 								ul{
@@ -5939,8 +6233,22 @@ body{
 												display:flex;
 												align-items: flex-start;
 												flex-flow:column;
-												.theme-menu-name{
-													padding-block-start: 5px;
+												.theme-menu-icon{
+													margin-block-end:5px;
+													@include respond-to(mediumdevice){
+														margin-block-end: map-get($default_vars, 'spacing-submenu-icon');
+													}
+													margin-inline-end:0;
+												}
+											}
+										}
+										ul{
+											li
+											{
+												.theme-menu-content{
+													&.theme-menu-icon-enabled{
+														align-items: flex-start;
+													}
 												}
 											}
 										}
@@ -5954,6 +6262,8 @@ body{
 		}
 	}
 }
+
+
 /* Portal Position Menubar Action Starts */
 @if map-get($user_layout_vars,'portal_position') == 02 {
 	.zpdark-header-portion{
@@ -6138,12 +6448,12 @@ body{
 		.theme-navigation-and-icons{
 			&.theme-search-minicart-responsive{
 				@media all and (max-width:992px){
-					width: 100%;	
+					width: 100%;
 				}
 			}
 			.theme-search-and-mini-cart-group{
 				@media all and (max-width:992px){
-					width: 100%;	
+					width: 100%;
 				}
 			}
 		}
@@ -6171,13 +6481,13 @@ body{
 						}
 					}
 				}
-				
+
 			}
 			@if map-get($user_layout_vars,'mobile_header_style') == 01 {
 				.theme-navigation-and-icons{
 					&.theme-search-minicart-responsive{
 						@media all and (max-width:992px){
-							width: auto;	
+							width: auto;
 						}
 					}
 				}
@@ -6190,7 +6500,7 @@ body{
 				.theme-navigation-and-icons{
 					&.theme-search-minicart-responsive{
 						@media all and (max-width:992px){
-							width: auto;	
+							width: auto;
 						}
 					}
 				}
@@ -6213,12 +6523,12 @@ body{
 			.theme-navigation-and-icons{
 				&.theme-search-minicart-responsive{
 					@media all and (max-width:992px){
-						width: auto;	
+						width: auto;
 					}
 				}
 				.theme-search-and-mini-cart-group{
 					@media all and (max-width:992px){
-						width: auto;	
+						width: auto;
 					}
 				}
 			}

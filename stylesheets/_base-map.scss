@@ -29,7 +29,7 @@ $header-color-array:(
 );
 
 $default_vars : color-header($default_vars,$header-color-array);
-
+  
 $menu-var-array:(
   'font-size-navigation',
   'color-navigation',
