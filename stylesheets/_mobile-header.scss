@@ -10,7 +10,7 @@ $header_style_06_selector2: "";
 	[data-zs-display-mode="webview"]{
 		.theme-header{
 			.theme-responsive-goback{
-				display: flex;		
+				display: flex;
 			}
 		}
 	}
@@ -1050,8 +1050,13 @@ $header_style_06_selector2: "";
 							padding-inline-start:map-get($default_vars,'spacing-social-mobile-header-03-padding-left');
 							padding-inline-end:map-get($default_vars,'spacing-social-mobile-header-03-padding-right');
 							list-style: none;
+							@media all and (max-width: 991px){
+								flex-wrap: wrap;
+								margin-block-start:-16px;
+							}
 							border-block-end:1px solid map-get($base_vars,'color-border');
 							.theme-socialicon-list{
+								margin-block-start:16px;
 								margin-inline-end: 8px;
 								padding: 0;
 								a{

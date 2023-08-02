@@ -29,6 +29,7 @@
         </ul>
       </div>
     </div>
+    {% if page.is_blog_rss_enabled %}
     <div class="theme-blog-category-container theme-blog-rss-feed">
       <a href="{{page.blog_feed_url}}" target="_blank">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -41,6 +42,7 @@
         <span>{{i18n.get("blog.rss.subscribe_rss_feed")}}</span>
       </a>
     </div>
+    {% endif %}
   </div>
   <div class="zpcol-md-7 zpcol-sm-12 theme-blog-container-column">
     {% if page.blog_author.name || page.blog_category.name || page.blog_tag.name %}

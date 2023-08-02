@@ -1832,6 +1832,9 @@
 							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-left');
 							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-right');
 							@include prefix(align-items,center);
+							@media all and (max-width: 991px){
+								margin-block-start:-8px;
+							}
 							li{
 								padding-inline-start:0;
 								padding-inline-end:0;
@@ -1840,6 +1843,9 @@
 								margin-inline-start:4px;
 								margin-inline-end:4px;
 								border-block-end:0 none;
+								@media all and (max-width: 991px){
+									margin-block-start:8px;
+								}
 								a{
 									padding:0;
 									svg, img{
@@ -2598,6 +2604,9 @@
 							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-left');
 							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-01-02-padding-right');
 							@include prefix(align-items,center);
+							@media all and (max-width: 991px){
+								margin-block-start:-8px;
+							}
 							li{
 							padding-inline-start:0;
 							padding-inline-end:0;
@@ -2606,6 +2615,9 @@
 							margin-inline-start:4px;
 							margin-inline-end:4px;
 							border-block-end:0 none;
+							@media all and (max-width: 991px){
+								margin-block-start:8px;
+							}
 								a{
 									padding:0;
 									svg, img{
@@ -3302,6 +3314,9 @@
 							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-left');
 							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-03-padding-right');
 							@include prefix(align-items,center);
+							@media all and (max-width: 991px){
+								margin-block-start:-8px;
+							}
 							li{
 							padding-inline-start:0;
 							padding-inline-end:0;
@@ -3310,6 +3325,9 @@
 							margin-inline-start:4px;
 							margin-inline-end:4px;
 							border-block-end: 0 none;
+							@media all and (max-width: 991px){
+								margin-block-start:8px;
+							}
 								a{
 									padding:0;
 									margin-block-start:0;
@@ -4003,6 +4021,9 @@
 							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-left');
 							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-04-padding-right');
 							@include prefix(align-items,center);
+							@media all and (max-width: 991px){
+								margin-block-start:-8px;
+							}
 							li{
 								padding-inline-start:0;
 								padding-inline-end:0;
@@ -4011,6 +4032,9 @@
 								margin-inline-start:4px;
 								margin-inline-end:4px;
 								border-block-end:0 none;
+								@media all and (max-width: 991px){
+									margin-block-start:8px;
+								}
 								a{
 									padding:0;
 									margin:0;
@@ -4685,6 +4709,9 @@
 							padding-inline-start:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-left');
 							padding-inline-end:map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-05-padding-right');
 							@include prefix(align-items,center);
+							@media all and (max-width: 991px){
+								margin-block-start:-8px;
+							}
 							li{
 								padding-inline-start:0;
 								padding-inline-end:0;
@@ -4692,6 +4719,9 @@
 								margin-block-end:0;
 								margin-inline-start:4px;
 								margin-inline-end:4px;
+								@media all and (max-width: 991px){
+									margin-block-start:8px;
+								}
 								a{
 									padding:0;
 									svg, img{
@@ -5406,6 +5436,9 @@
 							padding-inline-start: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-left');
 							padding-inline-end: map-get($default_vars,'spacing-social-contact-mobile-header-01-submenu-06-padding-right');
 							@include prefix(align-items,center);
+							@media all and (max-width: 991px){
+								margin-block-start:-8px;
+							}
 							li{
 								padding-inline-start:0;
 								padding-inline-end:0;
@@ -5413,6 +5446,9 @@
 								margin-block-end:0;
 								margin-inline-start:4px;
 								margin-inline-end:4px;
+								@media all and (max-width: 991px){
+									margin-block-start:8px;
+								}
 								a{
 									padding:0;
 									svg, img{

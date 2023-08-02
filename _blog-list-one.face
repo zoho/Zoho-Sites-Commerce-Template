@@ -115,6 +115,7 @@
         </ul>
       </div>
     </div>
+    {% if page.is_blog_rss_enabled %}
     <div class="theme-blog-category-container theme-blog-rss-feed">
       <a href="{{page.blog_feed_url}}" target="_blank">
         <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -127,5 +128,6 @@
         <span>{{i18n.get("blog.rss.subscribe_rss_feed")}}</span>
       </a>
     </div>
+    {% endif %}
   </div>
 </div>
