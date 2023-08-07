@@ -6615,3 +6615,39 @@ body{
 	}
 }
 /* Portal Position Menubar Action Ends */
+
+
+// MENU ICON SIZE
+
+.theme-menu{
+	svg{
+		transition: 0.2s linear;
+	}
+}
+[data-theme-menu-icon]{
+	svg{
+		width:map-get($default_vars,'size-menu-icon-width');
+		height:map-get($default_vars,'size-menu-icon-height');
+	}
+}
+.theme-menu{
+	ul{
+		li{
+			ul{
+				[data-theme-menu-icon]{
+					svg{
+						width:map-get($default_vars,'size-submenu-icon-width');
+						height:map-get($default_vars,'size-submenu-icon-height');
+					}
+				}
+			}
+		}
+	}
+}
+[data-theme-megamenu-icon]{
+	svg{
+		transition: 0.2s linear;
+		width:map-get($default_vars,'size-megamenu-icon-width');
+		height:map-get($default_vars,'size-megamenu-icon-height');
+	}
+}

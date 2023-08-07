@@ -2168,7 +2168,18 @@ color-searchresult-pagination-background : map-get($base_vars, 'color-default'),
   spacing-contact-mobile-header-03-submenu-06-padding-top:10px,
   spacing-contact-mobile-header-03-submenu-06-padding-bottom:10px,
   spacing-contact-mobile-header-03-submenu-06-padding-left:15px,
-  spacing-contact-mobile-header-03-submenu-06-padding-right:48px
+  spacing-contact-mobile-header-03-submenu-06-padding-right:48px,
+
+  // MENU ICON SIZE
+
+  size-menu-icon-width: inherit,
+  size-menu-icon-height: inherit,
+  size-submenu-icon-width: inherit,
+  size-submenu-icon-height: inherit,
+  size-megamenu-icon-width: inherit,
+  size-megamenu-icon-height: inherit
+
+  // MENU ICON SIZE END
 );
 
 @import "_base-map";
