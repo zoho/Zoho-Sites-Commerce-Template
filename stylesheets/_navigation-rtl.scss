@@ -476,6 +476,9 @@ html[dir="rtl"] {
 							&.theme-submenu-up-arrow{
 								right: auto;
 								left:20px;
+								@include respond-to(mediumdevice) {
+									transform: rotate(-135deg);
+								}
 							}
 						}
 						.theme-sub-menu{

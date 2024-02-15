@@ -6361,8 +6361,8 @@ body{
 			.theme-portal-container-dropdown {
 				@include respond-to(mediumdevice){
 					position: absolute;
-					top: 100%;
-					right: -16px;
+					inset-block-start: 100%;
+					inset-inline-end: -16px;
 					padding-block-start: 12px;
 					visibility: hidden;
 					z-index: 400;

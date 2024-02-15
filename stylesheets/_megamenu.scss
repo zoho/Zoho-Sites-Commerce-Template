@@ -84,9 +84,16 @@
             }
             .zpcontainer{
                 width: 100%;
+                max-inline-size: none;
                 @include respond-to(mediumdevice){
                   padding-block-start:0px !important;
                   padding-block-end:0px !important;
+                  padding-inline-start:0;
+                  padding-inline-end:0;
+                }
+                @include respond-to(largedevice){
+                  padding-inline-start:15px;
+                  padding-inline-end:15px;
                 }
             }
         }
@@ -432,6 +439,23 @@
         }
     }
 }
+
+// SITE FULL STRETCH
+
+.theme-pages-full-stretch{
+  .zpmm{
+    @if map-get($user_layout_vars,'megamenu_container_style') == 01 {
+      &.zpmm-container-style-01{
+        @include respond-to(mediumdevice){
+          width:100%;
+        }
+      }
+    }
+  }
+}
+
+// SITE FULL STRETCH END
+
 .theme-responsive-menu-area{
     .theme-responsive-menu{
         .theme-menu {

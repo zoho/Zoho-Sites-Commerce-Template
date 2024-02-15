@@ -568,6 +568,12 @@
 		}
 	}
 
+	@include respond-to(mediumdevice){
+		.theme-portal-position-02{
+			padding-inline-start:15px;
+		}
+	}
+
 	// MAIN HEADER STYLE ENDS HERE
 
 @if map-get($user_layout_vars,'header_style') == 01 {
@@ -1224,6 +1230,8 @@
 				@include respond-to(mediumdevice){
 					width:auto;
 					padding-block-end:0px;
+					margin-inline-start: auto;
+					flex-wrap: wrap;
 				}
 			}
 
@@ -2007,7 +2015,6 @@
          }
        }
 	   .theme-lang-container-non-res{
-		   margin-inline-start:0px;
 		   align-self: flex-end;
 		   &.theme-lang-option-left-space {
 			   @include respond-to(mediumdevice) {
@@ -2389,3 +2396,28 @@ body{
 }
 
 // LOADER STYLE END
+
+// SITES FULL STRETCH
+
+.theme-pages-full-stretch{
+  .zpcontainer{
+    @include respond-to(mediumdevice){
+      width: 100%;
+      max-inline-size:1440px;
+      padding-inline-start:50px;
+      padding-inline-end:50px;
+    }
+  }
+	&.zphero-boxed{
+		&.zpcontainer{
+			@include respond-to(mediumdevice){
+				width: 100%;
+	      max-inline-size:1440px;
+	      padding-inline-start:50px;
+	      padding-inline-end:50px;
+			}
+		}
+	}
+}
+
+// SITES FULL STRETCH END

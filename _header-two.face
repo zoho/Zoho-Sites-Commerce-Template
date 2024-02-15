@@ -28,7 +28,7 @@
 					</div>
 				{% endif %}
                 {% if LANGUAGE_LIST_ENABLED %}
-                <div class="theme-lang-container-non-res {% if page.is_portal_enabled %}theme-lang-option-left-space{% endif %}" data-theme-lang-container-non-res>
+                <div class="theme-lang-container-non-res {% if page.is_portal_enabled && portal_position != '02' %}theme-lang-option-left-space{% endif %}" data-theme-lang-container-non-res>
                     {% include '_language-list' %}
                 </div>
                 {% endif %}

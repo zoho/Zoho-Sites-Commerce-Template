@@ -1,4 +1,4 @@
-<div class="theme-search-and-mini-cart-group" data-theme-search-cart-group="zptheme-search-cart-group">
+<div class="theme-search-and-mini-cart-group {% if portal_position == "02" && !page.is_store_enabled && (page.template_vars.header_style == "01" || page.template_vars.header_style == "04" || page.template_vars.header_style == "05") %}theme-portal-position-02{% endif %}" data-theme-search-cart-group="zptheme-search-cart-group">
 
     {% comment %} SEARCH STARTS {% endcomment %}
 

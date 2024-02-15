@@ -26,7 +26,7 @@
                     </div>
                 {% endif %}
                 {% if LANGUAGE_LIST_ENABLED %}
-                    <div class="theme-lang-container-non-res {% if page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.is_portal_enabled || page.is_contact_information_enabled %}theme-lang-option-left-space{% endif %}" data-theme-lang-container-non-res>
+                    <div class="theme-lang-container-non-res {% if page.is_portal_enabled && portal_position != '02' %}theme-lang-option-left-space{% endif %}" data-theme-lang-container-non-res>
                         {% include '_language-list' %}
                     </div>
                 {% endif %}
