@@ -18,9 +18,13 @@
           </span>
         </p>
       </div>
-      <div class="theme-blog-part">
-        {{blog_post.content}}
-      </div>
+      {% if !blog_post.is_permission_restricted %}
+          <div class="theme-blog-part">
+            {{blog_post.content}}
+          </div>
+      {% else %}
+        {% include '_blog-post-restriction' %}
+      {% endif %}
 
       {% include '_blog-author-profile' %}
 

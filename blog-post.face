@@ -33,6 +33,7 @@
 
 		</div>
 	</div>
+	{% if !blog_post.is_permission_restricted %}
 	<div class="zpsection {% if page.template_vars.blog_post_style != '05' %}theme-single-blog-comment-container{% endif %} {% if page.template_vars.blog_post_style == '05' %}theme-single-blog-post-commentbox-area{% endif %} {% if page.template_vars.header_style == "06" && page.is_portal_enabled || page.template_vars.header_style == "06" && page.is_contact_information_enabled || page.template_vars.header_style == "06" && page.is_menu_enabled || page.template_vars.header_style == "06" && page.is_social_icon_enabled && !page.template_vars.is_social_icon_floater_enabled || page.template_vars.header_style == "06" && page.is_search_enabled || page.template_vars.header_style == "06" && page.is_store_enabled || page.template_vars.header_style == "06" && page.is_logo_enabled || page.template_vars.header_style == "06" && page.is_title_enabled || page.template_vars.header_style == "06" && page.is_caption_enabled %}zpcontent-for-header-06{% endif %} {% if page.template_vars.is_site_full_stretch %}theme-pages-full-stretch{% endif %}">
 		<div class="zpcontainer">
 			<div class="zprow">
@@ -44,5 +45,6 @@
 			</div>
 		</div>
 	</div>
+	{% endif %}
 
 {% endblock %}

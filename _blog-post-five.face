@@ -14,10 +14,13 @@
           {% endif %}
       </div>
       </div>
-      <div class="theme-blog-part theme-blog-single-post-content">
-        {{blog_post.content}}
-      </div>
-
+      {% if !blog_post.is_permission_restricted %}
+          <div class="theme-blog-part theme-blog-single-post-content">
+            {{blog_post.content}}
+          </div>
+      {% else %}
+        {% include '_blog-post-restriction' %}
+      {% endif %}
       {% include '_blog-author-profile' %}
 
         <div class="theme-blog-part theme-blog-single-post-footer">

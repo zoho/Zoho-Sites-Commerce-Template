@@ -2550,3 +2550,23 @@
 .theme-blog-author-website {
 	font-size: calc(#{map-get($default_vars, 'font-size-text')} * .9);
 }
+.theme-blog-restriction-container, 
+.theme-blog-restriction-image, 
+.theme-blog-restriction-summary{
+    margin-block-start:24px
+}
+
+.theme-blog-restriction-action {
+    text-align: center;
+    padding-block-start: 60px;
+    padding-block-end: 60px;
+}
+.theme-blog-restriction-heading,
+.theme-blog-restriction-desc,
+.theme-blog-restriction-actionbtn{
+    margin-block-start:16px;
+    line-height: normal;
+}
+.theme-blog-restriction-actionbtn .zpbutton + .zpbutton{
+  margin-inline-start:12px;
+}

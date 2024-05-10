@@ -1,0 +1,36 @@
+<div class="zprow theme-blog-restriction-container">
+  <div class="zpcol-md-12 zpcol-sm-12">
+    {% if blog_post.post_image %}
+        <div class="theme-blog-restriction-image">
+          <picture>
+            <img src="{{blog_post.post_image}}" alt="{{blog_post.post_title}}" />
+          </picture>
+        </div>
+    {% endif %}
+  	{% if !blog_post.post_image && blog_post.summary_image %}
+      <div class="theme-blog-restriction-image">
+        <picture>
+          <img src="{{blog_post.summary_image}}" alt="{{blog_post.post_title}}" />
+        </picture>
+      </div>
+  {% endif %}
+  <div class="theme-blog-restriction-summary">{{blog_post.summary}} </div>
+    <div class="theme-blog-restriction-action">
+        {% if blog_post.restricted_permission_type == 1 %}
+        <h3 class="theme-blog-restriction-heading">{{i18n.get("blog.post.user.access.restriction.title")}}</h3>
+        <p class="theme-blog-restriction-desc"> {{i18n.get("blog.post.user.access.restriction.guest.msg")}} </p>
+        <div class="theme-blog-restriction-actionbtn">
+          <a class="zpbutton zpbutton-type-primary zpbutton-size-md zpbutton-style-none"
+            data-portal-blog-signin="">{{
+            i18n.get("portal.signin") }}</a>
+          <a class="zpbutton zpbutton-type-primary zpbutton-size-md zpbutton-outline zpbutton-style-none"
+            data-portal-blog-signup="">{{
+            i18n.get("portal.signup") }}</a>
+        </div>
+        {% elif blog_post.restricted_permission_type == 2%}
+        <h3 class="theme-blog-restriction-heading">{{i18n.get("blog.post.user.access.restriction.title")}}</h3>
+        <p class="theme-blog-restriction-desc"> {{i18n.get("blog.post.user.access.restriction.user.msg")}}</p>
+        {% endif %}
+    </div>
+  </div>
+</div>
